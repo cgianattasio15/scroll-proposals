@@ -1858,7 +1858,107 @@
 .idea-funnel.mofu-tag { background: rgba(96,165,250,0.12); color: #60a5fa; }
 .idea-funnel.bofu-tag { background: rgba(249,115,22,0.12); color: #f97316; }
 
-/* ===== RESULT KPI ROW ===== */
+/* ===== MOBILE OPTIMIZATIONS (480px and below) ===== */
+    @media (max-width: 480px) {
+      /* Hero */
+      .hero { padding: 80px 20px 60px; }
+      .hero-badge { font-size: 10px; padding: 6px 14px; }
+      .hero-eyebrow { font-size: 10px; }
+      h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-meta { flex-direction: column; align-items: center; gap: 16px; }
+      .hero-meta-item { text-align: center; }
+      .hero-meta-divider { display: none; }
+
+      /* Nav */
+      nav { padding: 0 16px; height: 52px; }
+      .nav-client { display: none; }
+      .nav-divider { display: none; }
+
+      /* Sections */
+      section { padding: 56px 0; }
+      .container { padding: 0 16px; }
+      .section-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+
+      /* Timeline — switch to vertical stack on mobile */
+      .timeline-graphic { overflow-x: visible; padding: 0; }
+      .timeline-track {
+        flex-direction: column;
+        min-width: unset;
+        padding: 0;
+        gap: 0;
+        align-items: flex-start;
+      }
+      .timeline-track::before {
+        top: 0;
+        left: 20px;
+        right: auto;
+        bottom: 0;
+        width: 2px;
+        height: auto;
+        background: linear-gradient(to bottom, rgba(200,241,53,0.2), rgba(200,241,53,0.6), rgba(200,241,53,1));
+      }
+      .timeline-node {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 0 0 24px 0;
+        width: 100%;
+      }
+      .timeline-dot {
+        margin-top: 0;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        margin-left: 13px;
+      }
+      .timeline-node-text { text-align: left; }
+      .timeline-week { text-align: left; margin-bottom: 4px; }
+      .timeline-event { text-align: left; max-width: none; }
+
+      /* Phase pricing */
+      .phase-price { font-size: 2.6rem; }
+      .phase-price-row { flex-direction: column; gap: 12px; }
+      .phase-card { padding: 28px 20px; }
+
+      /* IVP card header */
+      .ivp-card-header { flex-wrap: wrap; gap: 12px; padding: 20px 20px; }
+      .ivp-preview-badge { margin-left: 0; }
+      .ivp-field { padding: 20px 20px; }
+      .ivp-strategy-bridge { padding: 20px 20px; }
+
+      /* Onboarding steps */
+      .onboarding-step { padding: 20px 18px; gap: 14px; }
+      .onboarding-step-num { font-size: 1.5rem; width: 36px; }
+
+      /* TAM keywords */
+      .tam-keywords { gap: 6px; }
+      .tam-kw { font-size: 11px; padding: 5px 10px; }
+
+      /* Ideas funnel labels */
+      .ideas-funnel-desc { font-size: 12px; }
+      .ideas-funnel-badge { font-size: 10px; }
+
+      /* Funnel stage headers */
+      .funnel-stage-header { flex-direction: column; gap: 10px; padding: 18px 18px; }
+
+      /* Analytics */
+      .analytics-screenshots { grid-template-columns: 1fr; }
+      .analytics-screenshot img { max-height: 320px; }
+
+      /* Results grid */
+      .results-grid { grid-template-columns: 1fr; }
+
+      /* SPARK grid */
+      .spark-grid { grid-template-columns: 1fr; }
+
+      /* Package cards */
+      .package-cards { grid-template-columns: 1fr; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 16px; }
+    }
+
+    /* ===== RESULT KPI ROW ===== */
 .result-kpi-row {
   display: flex;
   flex-direction: column;

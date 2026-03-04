@@ -1989,9 +1989,116 @@
 .mofu-kpi .result-kpi-stage { background: rgba(96,165,250,0.15); color: #60a5fa; }
 .bofu-kpi .result-kpi-stage { background: rgba(249,115,22,0.15); color: #f97316; }
 
+
+/* ===== CONTENT CALENDAR ===== */
+.calendar-section { background: var(--bg-2); }
+.cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.cal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cal-dot-shoot { background: var(--lime); }
+.cal-dot-feed { background: #4A9EFF; }
+.cal-dot-story { background: #B06EFF; }
+.cal-dot-off { background: var(--border); }
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 40px;
+}
+.cal-header {
+  background: var(--bg-3);
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 10px 4px;
+  border-radius: 6px;
+}
+.cal-day {
+  border-radius: 8px;
+  padding: 10px 8px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cal-off { background: var(--bg-3); opacity: 0.4; }
+.cal-empty { background: transparent; }
+.cal-feed { background: rgba(74,158,255,0.08); border: 1px solid rgba(74,158,255,0.2); }
+.cal-story { background: rgba(176,110,255,0.08); border: 1px solid rgba(176,110,255,0.2); }
+.cal-shoot { background: rgba(200,241,53,0.08); border: 1px solid rgba(200,241,53,0.35); }
+.cal-date { font-size: 11px; font-weight: 700; color: var(--text-dim); margin-bottom: 2px; }
+.cal-tag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+.feed-tag { background: rgba(74,158,255,0.2); color: #4A9EFF; }
+.story-tag { background: rgba(176,110,255,0.2); color: #B06EFF; }
+.shoot-tag { background: rgba(200,241,53,0.2); color: var(--lime); }
+.cal-content { font-size: 10px; color: var(--text-dim); line-height: 1.4; }
+.cal-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.cal-summary-item {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.cal-summary-num { font-size: 2.2rem; font-weight: 800; color: var(--lime); line-height: 1; margin-bottom: 6px; }
+.cal-summary-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.cal-note {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cal-note-icon { color: var(--lime); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.cal-note-text { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+@media (max-width: 768px) {
+  .cal-grid { gap: 2px; }
+  .cal-day { min-height: 60px; padding: 6px 4px; }
+  .cal-content { display: none; }
+  .cal-tag { font-size: 8px; padding: 1px 4px; }
+  .cal-summary { grid-template-columns: repeat(2, 1fr); }
+  .cal-header { font-size: 9px; padding: 8px 2px; }
+}
 </style>
 </head>
-<body>
 
 <!-- ===== NAV ===== -->
 <nav>
@@ -2002,16 +2109,18 @@
   </div>
   <ul class="nav-links">
     <li><a href="#situation">Opportunity</a></li>
-    <li><a href="#strategy">Our Approach</a></li>
-    <li><a href="#seo">Social SEO</a></li>
+    <li><a href="#strategy">Who We Are</a></li>
+    <li><a href="#package">Investment</a></li>
+    <li><a href="#spark">Your Stage</a></li>
+    <li><a href="#ivp">IVP Preview</a></li>
     <li><a href="#content">Content Plan</a></li>
     <li><a href="#inspiration">Inspiration</a></li>
-            <li><a href="#ivp">IVP Preview</a></li>
+    <li><a href="#calendar">Calendar</a></li>
     <li><a href="#results">Results</a></li>
-    <li><a href="#package">The Package</a></li>
     <li><a href="#next-steps">Next Steps</a></li>
   </ul>
 </nav>
+
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
@@ -2042,6 +2151,7 @@
   </div>
   <div class="hero-scroll-cue">Scroll</div>
 </section>
+
 
 <!-- ===== SITUATION ===== -->
 <section class="situation" id="situation">
@@ -2084,6 +2194,7 @@
   </div>
 </section>
 
+
 <!-- ===== ABOUT ===== -->
 <section class="about" id="strategy">
   <div class="container">
@@ -2125,6 +2236,7 @@
   </div>
 </section>
 
+
 <!-- ===== FUNNEL ===== -->
 <section class="funnel" id="funnel">
   <div class="container">
@@ -2160,48 +2272,6 @@
   </div>
 </section>
 
-<!-- ===== SPARK ===== -->
-<section class="spark" id="spark">
-  <div class="container">
-    <span class="section-label">Where You Are &amp; Where You&rsquo;re Going</span>
-    <h2 class="section-title">Instagram Maturity Stages &mdash;<br><span class="accent">your growth journey.</span></h2>
-    <p class="section-body">Every brand we work with starts at a defined stage in their social media growth journey. Rooted Grounds is currently in the <strong style="color:var(--lime);">SPARK stage</strong> &mdash; the highest-leverage moment to invest in social. This is where the biggest gains happen fastest, and where we&rsquo;ll build the foundation for everything that follows.</p>
-    <div class="spark-grid">
-      <div class="spark-card active">
-        <div class="spark-letter">S</div>
-        <div class="spark-title">SPARK</div>
-        <div class="spark-sub">0 &ndash; 2,500 followers</div>
-        <div class="spark-body">Foundation building, brand voice, content infrastructure, and format testing. The highest-leverage stage &mdash; biggest gains happen fastest here. <strong style="color:rgba(200,241,53,0.8);">Rooted Grounds is here today.</strong></div>
-        <div class="spark-focus">Focus: Discovery &mdash; &ldquo;What content works for our audience?&rdquo;</div>
-      </div>
-      <div class="spark-card">
-        <div class="spark-letter">L</div>
-        <div class="spark-title">LIFT</div>
-        <div class="spark-sub">2,500 &ndash; 10,000 followers</div>
-        <div class="spark-body">Scaling proven formats, building conversion paths, and growing a qualified audience. Consistent cadence established. D2C traffic from social begins to compound.</div>
-        <div class="spark-focus">Focus: Momentum &mdash; &ldquo;How do we scale our wins?&rdquo;</div>
-      </div>
-      <div class="spark-card">
-        <div class="spark-letter">R</div>
-        <div class="spark-title">RISE</div>
-        <div class="spark-sub">10,000 &ndash; 50,000 followers</div>
-        <div class="spark-body">Brand authority at scale. Optimization for conversion. Social becomes a measurable, primary D2C acquisition channel. Subscription and product revenue directly attributable to content.</div>
-        <div class="spark-focus">Focus: Optimization &mdash; &ldquo;How do we convert at scale?&rdquo;</div>
-      </div>
-      <div class="spark-card">
-        <div class="spark-letter">T</div>
-        <div class="spark-title">THRIVE</div>
-        <div class="spark-sub">50,000+ followers</div>
-        <div class="spark-body">Brand equity and ecosystem building. Social is a primary driver of revenue, community, and long-term brand value. Compounding authority that competitors cannot easily replicate.</div>
-        <div class="spark-focus">Focus: Authority &mdash; &ldquo;How do we maximize brand equity?&rdquo;</div>
-      </div>
-    </div>
-    <div class="spark-note">
-      <div class="spark-note-icon">&#8594;</div>
-      <div class="spark-note-text">With a consistent 3-posts/week strategy, brands in the SPARK stage typically reach LIFT within 90 days and RISE within 12&ndash;18 months. The content infrastructure we build in Month 1 is what makes that trajectory possible.</div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== SEO ===== -->
 <section class="seo" id="seo">
@@ -2295,6 +2365,227 @@
     </div>
   </div>
 </section>
+
+
+<!-- ===== PACKAGE ===== -->
+<section class="package" id="package">
+  <div class="container">
+    <span class="section-label">The Investment</span>
+    <h2 class="section-title">The Signature Package &mdash;<br><span class="accent">built for growth.</span></h2>
+    <p class="section-body">Two phases. One clear path to D2C growth. We start with a dedicated strategy month to build the foundation right &mdash; then move into execution. No guessing, no wasted spend.</p>
+
+    <!-- Phase 1: Strategy Month -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-number">Phase 1</div>
+        <div class="phase-title">Strategy Month</div>
+        <div class="phase-duration">3&ndash;4 Weeks &bull; One-Time</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-price-row">
+          <div>
+            <div class="phase-price">$1,917</div>
+            <div class="phase-price-sub">one-time &bull; Month 1 only</div>
+          </div>
+          <div class="phase-badge-wrap">
+            <div class="phase-badge">Starts Here</div>
+          </div>
+        </div>
+        <ul class="package-features">
+          <li>60-minute onboarding strategy call with David &amp; Patsy</li>
+          <li>Full brand audit &amp; competitor analysis</li>
+          <li>Ideal Viewer Profile (IVP) development</li>
+          <li>Content pillar strategy (4 pillars mapped to D2C goals)</li>
+          <li>Custom keyword bank &amp; Social SEO setup (TAM Ladder)</li>
+          <li>Profile optimization (bio, highlights, link-in-bio)</li>
+          <li>First content calendar delivered &amp; approved</li>
+          <li>Shot list prepared for first content shoot</li>
+        </ul>
+        <div class="phase-outcome">&#8594; Deliverable: A complete, approved strategy document and content system ready for execution</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="phase-arrow">&#8595; Then</div>
+
+    <!-- Phase 2: Execution Retainer -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-number">Phase 2</div>
+        <div class="phase-title">Execution Retainer</div>
+        <div class="phase-duration">Month 2+ &bull; Billed Every 15 Days</div>
+      </div>
+      <div class="package-cards">
+        <div class="package-card">
+          <div class="package-tier">Foundation Tier</div>
+          <div class="package-name">Essentials</div>
+          <div class="package-price">$2,088</div>
+          <div class="package-price-sub">per month &bull; 2 posts per week</div>
+          <ul class="package-features">
+            <li>8 pieces of content per month (Reels, carousels, static)</li>
+            <li>Professional copywriting for every post</li>
+            <li>On-site content shoots every 3&ndash;4 weeks</li>
+            <li>Content scheduling &amp; publishing</li>
+            <li>Community engagement management</li>
+            <li>Monthly performance report &amp; KPI tracking</li>
+            <li>Dedicated account strategist</li>
+          </ul>
+          <div class="package-total">
+            <span class="package-total-label">Billed every 15 days</span>
+            <span class="package-total-value">$1,044 / cycle</span>
+          </div>
+        </div>
+        <div class="package-card recommended">
+          <div class="package-badge">Recommended</div>
+          <div class="package-tier">Growth Tier</div>
+          <div class="package-name">Growth</div>
+          <div class="package-price">$2,676</div>
+          <div class="package-price-sub">per month &bull; 3 posts per week</div>
+          <ul class="package-features">
+            <li>12 pieces of content per month (Reels, carousels, static)</li>
+            <li>Professional copywriting for every post</li>
+            <li>On-site content shoots every 2&ndash;3 weeks</li>
+            <li>Content scheduling &amp; publishing</li>
+            <li>Community engagement management</li>
+            <li>Monthly performance report with strategic recommendations</li>
+            <li>Dedicated account strategist</li>
+            <li><strong style="color:var(--lime);">Priority content turnaround</strong></li>
+            <li><strong style="color:var(--lime);">Quarterly strategy review call</strong></li>
+          </ul>
+          <div class="package-total">
+            <span class="package-total-label">Billed every 15 days</span>
+            <span class="package-total-value">$1,338 / cycle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text-dim); text-align:center; margin-top:16px;">Strategy month is a one-time investment. Execution retainer begins Month 2 and continues month-to-month.</p>
+  </div>
+</section>
+
+
+<!-- ===== SPARK ===== -->
+<section class="spark" id="spark">
+  <div class="container">
+    <span class="section-label">Where You Are &amp; Where You&rsquo;re Going</span>
+    <h2 class="section-title">Instagram Maturity Stages &mdash;<br><span class="accent">your growth journey.</span></h2>
+    <p class="section-body">Every brand we work with starts at a defined stage in their social media growth journey. Rooted Grounds is currently in the <strong style="color:var(--lime);">SPARK stage</strong> &mdash; the highest-leverage moment to invest in social. This is where the biggest gains happen fastest, and where we&rsquo;ll build the foundation for everything that follows.</p>
+    <div class="spark-grid">
+      <div class="spark-card active">
+        <div class="spark-letter">S</div>
+        <div class="spark-title">SPARK</div>
+        <div class="spark-sub">0 &ndash; 2,500 followers</div>
+        <div class="spark-body">Foundation building, brand voice, content infrastructure, and format testing. The highest-leverage stage &mdash; biggest gains happen fastest here. <strong style="color:rgba(200,241,53,0.8);">Rooted Grounds is here today.</strong></div>
+        <div class="spark-focus">Focus: Discovery &mdash; &ldquo;What content works for our audience?&rdquo;</div>
+      </div>
+      <div class="spark-card">
+        <div class="spark-letter">L</div>
+        <div class="spark-title">LIFT</div>
+        <div class="spark-sub">2,500 &ndash; 10,000 followers</div>
+        <div class="spark-body">Scaling proven formats, building conversion paths, and growing a qualified audience. Consistent cadence established. D2C traffic from social begins to compound.</div>
+        <div class="spark-focus">Focus: Momentum &mdash; &ldquo;How do we scale our wins?&rdquo;</div>
+      </div>
+      <div class="spark-card">
+        <div class="spark-letter">R</div>
+        <div class="spark-title">RISE</div>
+        <div class="spark-sub">10,000 &ndash; 50,000 followers</div>
+        <div class="spark-body">Brand authority at scale. Optimization for conversion. Social becomes a measurable, primary D2C acquisition channel. Subscription and product revenue directly attributable to content.</div>
+        <div class="spark-focus">Focus: Optimization &mdash; &ldquo;How do we convert at scale?&rdquo;</div>
+      </div>
+      <div class="spark-card">
+        <div class="spark-letter">T</div>
+        <div class="spark-title">THRIVE</div>
+        <div class="spark-sub">50,000+ followers</div>
+        <div class="spark-body">Brand equity and ecosystem building. Social is a primary driver of revenue, community, and long-term brand value. Compounding authority that competitors cannot easily replicate.</div>
+        <div class="spark-focus">Focus: Authority &mdash; &ldquo;How do we maximize brand equity?&rdquo;</div>
+      </div>
+    </div>
+    <div class="spark-note">
+      <div class="spark-note-icon">&#8594;</div>
+      <div class="spark-note-text">With a consistent 3-posts/week strategy, brands in the SPARK stage typically reach LIFT within 90 days and RISE within 12&ndash;18 months. The content infrastructure we build in Month 1 is what makes that trajectory possible.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== IVP ===== -->
+<section class="ivp" id="ivp">
+  <div class="container">
+    <span class="section-label">Ideal Viewer Profile</span>
+    <h2 class="section-title">Before we write a single caption,<br><span class="accent">we build this.</span></h2>
+    <p class="section-body">The Ideal Viewer Profile (IVP) is the strategic foundation of everything we create. It&rsquo;s a detailed portrait of the exact person your content is designed to reach &mdash; their motivators, obstacles, dream outcomes, and the content that moves them to buy. Most agencies skip this step. We consider it non-negotiable. Here&rsquo;s a preview of what we&rsquo;ll build for Rooted Grounds.</p>
+
+    <div class="ivp-card-wrapper">
+      <div class="ivp-card">
+        <div class="ivp-card-header">
+          <div class="ivp-avatar-icon">&#9749;</div>
+          <div class="ivp-card-title-block">
+            <div class="ivp-card-title">The Craft Coffee Loyalist</div>
+            <div class="ivp-card-sub">Primary IVP &bull; Rooted Grounds Coffee &bull; D2C Subscription Focus</div>
+          </div>
+          <div class="ivp-preview-badge">Preview</div>
+        </div>
+
+        <div class="ivp-grid">
+          <div class="ivp-field">
+            <div class="ivp-field-label">Who They Are</div>
+            <div class="ivp-field-value">35&ndash;55 year old professional, homeowner, household income $75K+. Lives in or near Mason, Cincinnati, or greater Ohio. Takes their morning coffee seriously &mdash; it&rsquo;s a ritual, not just caffeine. Currently buying from a national brand (Starbucks, Peet&rsquo;s) but feels like they&rsquo;re settling.</div>
+          </div>
+          <div class="ivp-field">
+            <div class="ivp-field-label">Core Motivators</div>
+            <div class="ivp-field-value">
+              <ul class="ivp-list">
+                <li>Wants to support local, independent businesses over corporate chains</li>
+                <li>Values quality and craft &mdash; willing to pay premium for the real thing</li>
+                <li>Wants to feel connected to where their coffee comes from</li>
+                <li>Loves the idea of a subscription that &ldquo;just works&rdquo; &mdash; fresh coffee, no effort</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ivp-field">
+            <div class="ivp-field-label">Key Obstacles</div>
+            <div class="ivp-field-value">
+              <ul class="ivp-list">
+                <li>Doesn&rsquo;t know Rooted Grounds exists yet &mdash; zero social SEO footprint</li>
+                <li>Skeptical of online coffee subscriptions &mdash; &ldquo;will it actually be fresh?&rdquo;</li>
+                <li>Doesn&rsquo;t understand the difference between commodity and specialty roasting</li>
+                <li>Hasn&rsquo;t been given a compelling reason to switch from their current brand</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ivp-field">
+            <div class="ivp-field-label">Dream Outcome</div>
+            <div class="ivp-field-value">A consistent supply of exceptional, locally-roasted coffee delivered to their door &mdash; from a brand they feel proud to support and tell their friends about. They become a brand advocate, not just a customer.</div>
+          </div>
+        </div>
+
+        <div class="ivp-strategy-bridge">
+          <div class="ivp-strategy-title">How This Maps to Our Strategy</div>
+          <div class="ivp-strategy-grid">
+            <div class="ivp-strategy-item">
+              <div class="ivp-strategy-stage tofu-tag">TOFU</div>
+              <div class="ivp-strategy-desc">Roastery tour Reels and behind-the-scenes content reach them on Instagram before they&rsquo;ve heard of Rooted Grounds. The 25,000 sq ft facility is the hook.</div>
+            </div>
+            <div class="ivp-strategy-item">
+              <div class="ivp-strategy-stage mofu-tag">MOFU</div>
+              <div class="ivp-strategy-desc">David &amp; Patsy&rsquo;s founder story, the B2B client roster (hospitals, resorts), and craft education content answers their skepticism and builds trust.</div>
+            </div>
+            <div class="ivp-strategy-item">
+              <div class="ivp-strategy-stage bofu-tag">BOFU</div>
+              <div class="ivp-strategy-desc">Subscription showcase content, unboxing Reels, and gift-occasion posts with a direct Shopify CTA convert them from follower to paying subscriber.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ivp-full-note">
+          <div class="ivp-full-note-icon">&#128196;</div>
+          <div class="ivp-full-note-text">This is a preview. Your full IVP &mdash; including secondary avatars, complete keyword mapping, content format recommendations per avatar, and objection-handling content strategy &mdash; is delivered as part of your Month 1 Strategy deliverable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== CONTENT PLAN ===== -->
 <section class="content-plan" id="content">
@@ -2486,6 +2777,7 @@
   </div>
 </section>
 
+
 <!-- ===== INSPIRATION ===== -->
 <section class="inspiration" id="inspiration">
   <div class="container">
@@ -2639,6 +2931,287 @@
   </div>
 </section>
 
+
+
+<!-- ===== CONTENT CALENDAR ===== -->
+<section class="calendar-section" id="calendar">
+  <div class="container">
+    <span class="section-label">Sample Content Calendar</span>
+    <h2 class="section-title">What an execution month<br><span class="accent">actually looks like.</span></h2>
+    <p class="section-body">This is a sample execution month for Rooted Grounds &mdash; showing how we structure content shoots, feed posts, and story days across a real calendar. Every week is intentional. Every post has a purpose. Every shoot fuels multiple pieces of content.</p>
+
+    <div class="cal-legend">
+      <div class="cal-legend-item"><span class="cal-dot cal-dot-shoot"></span>Content Shoot</div>
+      <div class="cal-legend-item"><span class="cal-dot cal-dot-feed"></span>Feed Post (Mon/Wed/Fri)</div>
+      <div class="cal-legend-item"><span class="cal-dot cal-dot-story"></span>Story Day (Tue/Thu)</div>
+      <div class="cal-legend-item"><span class="cal-dot cal-dot-off"></span>Off Day</div>
+    </div>
+
+    <div class="cal-grid">
+      <!-- Header Row -->
+      <div class="cal-header">Sun</div>
+      <div class="cal-header">Mon</div>
+      <div class="cal-header">Tue</div>
+      <div class="cal-header">Wed</div>
+      <div class="cal-header">Thu</div>
+      <div class="cal-header">Fri</div>
+      <div class="cal-header">Sat</div>
+
+      <!-- Week 1 -->
+      <div class="cal-day cal-off"><span class="cal-date">1</span></div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">2</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">TOFU Reel &mdash; Roastery Tour Hook</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">3</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Behind-the-scenes roasting process</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">4</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">MOFU Carousel &mdash; Founder Story</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">5</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Product spotlight + poll</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">6</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">BOFU Static &mdash; Subscription CTA</span>
+      </div>
+      <div class="cal-day cal-off"><span class="cal-date">7</span></div>
+
+      <!-- Week 2 — Content Shoot Week -->
+      <div class="cal-day cal-off"><span class="cal-date">8</span></div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">9</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">TOFU Reel &mdash; Bean-to-Bag Process</span>
+      </div>
+      <div class="cal-day cal-shoot">
+        <span class="cal-date">10</span>
+        <span class="cal-tag shoot-tag">&#9679; Content Shoot</span>
+        <span class="cal-content">On-site shoot &mdash; Reels, carousels &amp; statics captured for Weeks 3&ndash;5</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">11</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">MOFU Carousel &mdash; Roast Education</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">12</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Shoot day BTS &mdash; audience engagement</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">13</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">TOFU Reel &mdash; B2B Credibility Hook</span>
+      </div>
+      <div class="cal-day cal-off"><span class="cal-date">14</span></div>
+
+      <!-- Week 3 -->
+      <div class="cal-day cal-off"><span class="cal-date">15</span></div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">16</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">MOFU Static &mdash; Women-Owned Story</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">17</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Community Q&amp;A &mdash; coffee questions</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">18</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">BOFU Reel &mdash; Subscription Unboxing</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">19</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Link-in-bio promo &mdash; subscription offer</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">20</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">TOFU Carousel &mdash; Coffee Origin Story</span>
+      </div>
+      <div class="cal-day cal-off"><span class="cal-date">21</span></div>
+
+      <!-- Week 4 -->
+      <div class="cal-day cal-off"><span class="cal-date">22</span></div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">23</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">MOFU Reel &mdash; Day in the Life at RG</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">24</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Client partner spotlight &mdash; OSU/resort</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">25</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">BOFU Static &mdash; Gift Subscription CTA</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">26</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Monthly performance recap &mdash; engagement</span>
+      </div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">27</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">TOFU Reel &mdash; Fresh Roast Process Close-Up</span>
+      </div>
+      <div class="cal-day cal-off"><span class="cal-date">28</span></div>
+
+      <!-- Week 5 partial -->
+      <div class="cal-day cal-off"><span class="cal-date">29</span></div>
+      <div class="cal-day cal-feed">
+        <span class="cal-date">30</span>
+        <span class="cal-tag feed-tag">Feed Post</span>
+        <span class="cal-content">MOFU Carousel &mdash; Brewing Guide</span>
+      </div>
+      <div class="cal-day cal-story">
+        <span class="cal-date">31</span>
+        <span class="cal-tag story-tag">Stories</span>
+        <span class="cal-content">Month-end engagement &amp; CTA stories</span>
+      </div>
+      <div class="cal-day cal-empty"></div>
+      <div class="cal-day cal-empty"></div>
+      <div class="cal-day cal-empty"></div>
+      <div class="cal-day cal-empty"></div>
+    </div>
+
+    <div class="cal-summary">
+      <div class="cal-summary-item">
+        <div class="cal-summary-num">13</div>
+        <div class="cal-summary-label">Feed Posts</div>
+      </div>
+      <div class="cal-summary-item">
+        <div class="cal-summary-num">9</div>
+        <div class="cal-summary-label">Story Days</div>
+      </div>
+      <div class="cal-summary-item">
+        <div class="cal-summary-num">1</div>
+        <div class="cal-summary-label">Content Shoot</div>
+      </div>
+      <div class="cal-summary-item">
+        <div class="cal-summary-num">~30+</div>
+        <div class="cal-summary-label">Assets Captured</div>
+      </div>
+    </div>
+
+    <div class="cal-note">
+      <div class="cal-note-icon">&#8594;</div>
+      <div class="cal-note-text">This is a sample execution month. Your actual calendar is built during Month 1 strategy and delivered for your review and approval before any content goes live. Content shoots are scheduled every 3 weeks to keep your content pipeline full and fresh.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="roadmap" id="roadmap">
+  <div class="container">
+    <span class="section-label">90-Day Plan</span>
+    <h2 class="section-title">What the first 90 days<br><span class="accent">look like.</span></h2>
+    <p class="section-body">A clear, phased approach to building Rooted Grounds&rsquo; social presence from the ground up &mdash; with measurable milestones at every stage. The first 90 days are about building the right foundation: strategy, content systems, brand voice, and audience. Meaningful business impact from social media typically develops over 6&ndash;12 months of consistent execution, with compounding results over 2&ndash;3 years.</p>
+
+    <!-- Timeline Graphic -->
+    <div class="timeline-graphic">
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-node node-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">Week 1&ndash;2</div>
+          <div class="timeline-event">Strategy &amp; Onboarding</div>
+        </div>
+        <div class="timeline-node node-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">Week 3&ndash;4</div>
+          <div class="timeline-event">Strategy Delivered &amp; Approved</div>
+        </div>
+        <div class="timeline-node node-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">Week 4&ndash;5</div>
+          <div class="timeline-event">First Content Shoot</div>
+        </div>
+        <div class="timeline-node node-4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">Week 5</div>
+          <div class="timeline-event">First Posts Go Live</div>
+        </div>
+        <div class="timeline-node node-5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">Month 2</div>
+          <div class="timeline-event">Audience Growth &amp; First D2C Signals</div>
+        </div>
+        <div class="timeline-node node-6">
+          <div class="timeline-dot active-dot"></div>
+          <div class="timeline-week">Month 3</div>
+          <div class="timeline-event">Foundation Complete &mdash; Long-Term Growth Begins</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-card">
+        <div class="roadmap-month">Month 1 &mdash; Foundation</div>
+        <div class="roadmap-title">Build the Base</div>
+        <ul class="roadmap-items">
+          <li>60-minute onboarding strategy call</li>
+          <li>Brand audit &amp; competitor analysis</li>
+          <li>Ideal Viewer Profile (IVP) developed</li>
+          <li>Content pillar strategy (4 pillars mapped to D2C)</li>
+          <li>Custom keyword bank &amp; Social SEO setup</li>
+          <li>Profile optimization (bio, highlights, link-in-bio)</li>
+          <li>First content calendar delivered &amp; approved</li>
+          <li>First content shoot scheduled &amp; executed</li>
+          <li>First posts go live</li>
+        </ul>
+        <div class="roadmap-outcome">&#8594; Outcome: Brand voice established, content system live, baseline metrics set</div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-month">Month 2 &mdash; Momentum</div>
+        <div class="roadmap-title">Build the Audience</div>
+        <ul class="roadmap-items">
+          <li>Content cadence fully in motion (2&ndash;3x/week)</li>
+          <li>Follower growth tracking begins</li>
+          <li>Top-performing content formats identified</li>
+          <li>SEO keywords showing in search results</li>
+          <li>First D2C conversion content deployed</li>
+          <li>Subscription-focused content live</li>
+          <li>Mid-month performance check-in</li>
+          <li>Strategy adjusted based on data</li>
+        </ul>
+        <div class="roadmap-outcome">&#8594; Outcome: Content cadence established, follower growth beginning, first D2C link taps appearing</div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-month">Month 3 &mdash; Traction</div>
+        <div class="roadmap-title">Build the Foundation for D2C Growth</div>
+        <ul class="roadmap-items">
+          <li>Content compounding &mdash; older posts still driving traffic</li>
+          <li>Subscription &amp; product content fully deployed</li>
+          <li>Early D2C traffic signals from social to Shopify</li>
+          <li>90-day performance report delivered</li>
+          <li>Quarterly strategy review call</li>
+          <li>Month 4+ strategy plan presented</li>
+          <li>LIFT stage trajectory confirmed &mdash; 6&ndash;12 month growth plan set</li>
+        </ul>
+        <div class="roadmap-outcome">&#8594; Outcome: Foundation is complete. Content system is live. The groundwork for long-term D2C growth is in place &mdash; the compounding begins now.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ===== RESULTS ===== -->
 <section class="results" id="results">
   <div class="container">
@@ -2781,273 +3354,6 @@
   </div>
 </section>
 
-<!-- ===== IVP ===== -->
-<section class="ivp" id="ivp">
-  <div class="container">
-    <span class="section-label">Ideal Viewer Profile</span>
-    <h2 class="section-title">Before we write a single caption,<br><span class="accent">we build this.</span></h2>
-    <p class="section-body">The Ideal Viewer Profile (IVP) is the strategic foundation of everything we create. It&rsquo;s a detailed portrait of the exact person your content is designed to reach &mdash; their motivators, obstacles, dream outcomes, and the content that moves them to buy. Most agencies skip this step. We consider it non-negotiable. Here&rsquo;s a preview of what we&rsquo;ll build for Rooted Grounds.</p>
-
-    <div class="ivp-card-wrapper">
-      <div class="ivp-card">
-        <div class="ivp-card-header">
-          <div class="ivp-avatar-icon">&#9749;</div>
-          <div class="ivp-card-title-block">
-            <div class="ivp-card-title">The Craft Coffee Loyalist</div>
-            <div class="ivp-card-sub">Primary IVP &bull; Rooted Grounds Coffee &bull; D2C Subscription Focus</div>
-          </div>
-          <div class="ivp-preview-badge">Preview</div>
-        </div>
-
-        <div class="ivp-grid">
-          <div class="ivp-field">
-            <div class="ivp-field-label">Who They Are</div>
-            <div class="ivp-field-value">35&ndash;55 year old professional, homeowner, household income $75K+. Lives in or near Mason, Cincinnati, or greater Ohio. Takes their morning coffee seriously &mdash; it&rsquo;s a ritual, not just caffeine. Currently buying from a national brand (Starbucks, Peet&rsquo;s) but feels like they&rsquo;re settling.</div>
-          </div>
-          <div class="ivp-field">
-            <div class="ivp-field-label">Core Motivators</div>
-            <div class="ivp-field-value">
-              <ul class="ivp-list">
-                <li>Wants to support local, independent businesses over corporate chains</li>
-                <li>Values quality and craft &mdash; willing to pay premium for the real thing</li>
-                <li>Wants to feel connected to where their coffee comes from</li>
-                <li>Loves the idea of a subscription that &ldquo;just works&rdquo; &mdash; fresh coffee, no effort</li>
-              </ul>
-            </div>
-          </div>
-          <div class="ivp-field">
-            <div class="ivp-field-label">Key Obstacles</div>
-            <div class="ivp-field-value">
-              <ul class="ivp-list">
-                <li>Doesn&rsquo;t know Rooted Grounds exists yet &mdash; zero social SEO footprint</li>
-                <li>Skeptical of online coffee subscriptions &mdash; &ldquo;will it actually be fresh?&rdquo;</li>
-                <li>Doesn&rsquo;t understand the difference between commodity and specialty roasting</li>
-                <li>Hasn&rsquo;t been given a compelling reason to switch from their current brand</li>
-              </ul>
-            </div>
-          </div>
-          <div class="ivp-field">
-            <div class="ivp-field-label">Dream Outcome</div>
-            <div class="ivp-field-value">A consistent supply of exceptional, locally-roasted coffee delivered to their door &mdash; from a brand they feel proud to support and tell their friends about. They become a brand advocate, not just a customer.</div>
-          </div>
-        </div>
-
-        <div class="ivp-strategy-bridge">
-          <div class="ivp-strategy-title">How This Maps to Our Strategy</div>
-          <div class="ivp-strategy-grid">
-            <div class="ivp-strategy-item">
-              <div class="ivp-strategy-stage tofu-tag">TOFU</div>
-              <div class="ivp-strategy-desc">Roastery tour Reels and behind-the-scenes content reach them on Instagram before they&rsquo;ve heard of Rooted Grounds. The 25,000 sq ft facility is the hook.</div>
-            </div>
-            <div class="ivp-strategy-item">
-              <div class="ivp-strategy-stage mofu-tag">MOFU</div>
-              <div class="ivp-strategy-desc">David &amp; Patsy&rsquo;s founder story, the B2B client roster (hospitals, resorts), and craft education content answers their skepticism and builds trust.</div>
-            </div>
-            <div class="ivp-strategy-item">
-              <div class="ivp-strategy-stage bofu-tag">BOFU</div>
-              <div class="ivp-strategy-desc">Subscription showcase content, unboxing Reels, and gift-occasion posts with a direct Shopify CTA convert them from follower to paying subscriber.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ivp-full-note">
-          <div class="ivp-full-note-icon">&#128196;</div>
-          <div class="ivp-full-note-text">This is a preview. Your full IVP &mdash; including secondary avatars, complete keyword mapping, content format recommendations per avatar, and objection-handling content strategy &mdash; is delivered as part of your Month 1 Strategy deliverable.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PACKAGE ===== -->
-<section class="package" id="package">
-  <div class="container">
-    <span class="section-label">The Investment</span>
-    <h2 class="section-title">The Signature Package &mdash;<br><span class="accent">built for growth.</span></h2>
-    <p class="section-body">Two phases. One clear path to D2C growth. We start with a dedicated strategy month to build the foundation right &mdash; then move into execution. No guessing, no wasted spend.</p>
-
-    <!-- Phase 1: Strategy Month -->
-    <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-number">Phase 1</div>
-        <div class="phase-title">Strategy Month</div>
-        <div class="phase-duration">3&ndash;4 Weeks &bull; One-Time</div>
-      </div>
-      <div class="phase-card">
-        <div class="phase-price-row">
-          <div>
-            <div class="phase-price">$1,917</div>
-            <div class="phase-price-sub">one-time &bull; Month 1 only</div>
-          </div>
-          <div class="phase-badge-wrap">
-            <div class="phase-badge">Starts Here</div>
-          </div>
-        </div>
-        <ul class="package-features">
-          <li>60-minute onboarding strategy call with David &amp; Patsy</li>
-          <li>Full brand audit &amp; competitor analysis</li>
-          <li>Ideal Viewer Profile (IVP) development</li>
-          <li>Content pillar strategy (4 pillars mapped to D2C goals)</li>
-          <li>Custom keyword bank &amp; Social SEO setup (TAM Ladder)</li>
-          <li>Profile optimization (bio, highlights, link-in-bio)</li>
-          <li>First content calendar delivered &amp; approved</li>
-          <li>Shot list prepared for first content shoot</li>
-        </ul>
-        <div class="phase-outcome">&#8594; Deliverable: A complete, approved strategy document and content system ready for execution</div>
-      </div>
-    </div>
-
-    <!-- Arrow -->
-    <div class="phase-arrow">&#8595; Then</div>
-
-    <!-- Phase 2: Execution Retainer -->
-    <div class="phase-block">
-      <div class="phase-header">
-        <div class="phase-number">Phase 2</div>
-        <div class="phase-title">Execution Retainer</div>
-        <div class="phase-duration">Month 2+ &bull; Billed Every 15 Days</div>
-      </div>
-      <div class="package-cards">
-        <div class="package-card">
-          <div class="package-tier">Foundation Tier</div>
-          <div class="package-name">Essentials</div>
-          <div class="package-price">$2,088</div>
-          <div class="package-price-sub">per month &bull; 2 posts per week</div>
-          <ul class="package-features">
-            <li>8 pieces of content per month (Reels, carousels, static)</li>
-            <li>Professional copywriting for every post</li>
-            <li>On-site content shoots every 3&ndash;4 weeks</li>
-            <li>Content scheduling &amp; publishing</li>
-            <li>Community engagement management</li>
-            <li>Monthly performance report &amp; KPI tracking</li>
-            <li>Dedicated account strategist</li>
-          </ul>
-          <div class="package-total">
-            <span class="package-total-label">Billed every 15 days</span>
-            <span class="package-total-value">$1,044 / cycle</span>
-          </div>
-        </div>
-        <div class="package-card recommended">
-          <div class="package-badge">Recommended</div>
-          <div class="package-tier">Growth Tier</div>
-          <div class="package-name">Growth</div>
-          <div class="package-price">$2,676</div>
-          <div class="package-price-sub">per month &bull; 3 posts per week</div>
-          <ul class="package-features">
-            <li>12 pieces of content per month (Reels, carousels, static)</li>
-            <li>Professional copywriting for every post</li>
-            <li>On-site content shoots every 2&ndash;3 weeks</li>
-            <li>Content scheduling &amp; publishing</li>
-            <li>Community engagement management</li>
-            <li>Monthly performance report with strategic recommendations</li>
-            <li>Dedicated account strategist</li>
-            <li><strong style="color:var(--lime);">Priority content turnaround</strong></li>
-            <li><strong style="color:var(--lime);">Quarterly strategy review call</strong></li>
-          </ul>
-          <div class="package-total">
-            <span class="package-total-label">Billed every 15 days</span>
-            <span class="package-total-value">$1,338 / cycle</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:13px; color:var(--text-dim); text-align:center; margin-top:16px;">Strategy month is a one-time investment. Execution retainer begins Month 2 and continues month-to-month.</p>
-  </div>
-</section>
-
-<!-- ===== ROADMAP ===== -->
-<section class="roadmap" id="roadmap">
-  <div class="container">
-    <span class="section-label">90-Day Plan</span>
-    <h2 class="section-title">What the first 90 days<br><span class="accent">look like.</span></h2>
-    <p class="section-body">A clear, phased approach to building Rooted Grounds&rsquo; social presence from the ground up &mdash; with measurable milestones at every stage. The first 90 days are about building the right foundation: strategy, content systems, brand voice, and audience. Meaningful business impact from social media typically develops over 6&ndash;12 months of consistent execution, with compounding results over 2&ndash;3 years.</p>
-
-    <!-- Timeline Graphic -->
-    <div class="timeline-graphic">
-      <div class="timeline-track">
-        <div class="timeline-line"></div>
-        <div class="timeline-node node-1">
-          <div class="timeline-dot"></div>
-          <div class="timeline-week">Week 1&ndash;2</div>
-          <div class="timeline-event">Strategy &amp; Onboarding</div>
-        </div>
-        <div class="timeline-node node-2">
-          <div class="timeline-dot"></div>
-          <div class="timeline-week">Week 3&ndash;4</div>
-          <div class="timeline-event">Strategy Delivered &amp; Approved</div>
-        </div>
-        <div class="timeline-node node-3">
-          <div class="timeline-dot"></div>
-          <div class="timeline-week">Week 4&ndash;5</div>
-          <div class="timeline-event">First Content Shoot</div>
-        </div>
-        <div class="timeline-node node-4">
-          <div class="timeline-dot"></div>
-          <div class="timeline-week">Week 5</div>
-          <div class="timeline-event">First Posts Go Live</div>
-        </div>
-        <div class="timeline-node node-5">
-          <div class="timeline-dot"></div>
-          <div class="timeline-week">Month 2</div>
-          <div class="timeline-event">Audience Growth &amp; First D2C Signals</div>
-        </div>
-        <div class="timeline-node node-6">
-          <div class="timeline-dot active-dot"></div>
-          <div class="timeline-week">Month 3</div>
-          <div class="timeline-event">Foundation Complete &mdash; Long-Term Growth Begins</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="roadmap-grid">
-      <div class="roadmap-card">
-        <div class="roadmap-month">Month 1 &mdash; Foundation</div>
-        <div class="roadmap-title">Build the Base</div>
-        <ul class="roadmap-items">
-          <li>60-minute onboarding strategy call</li>
-          <li>Brand audit &amp; competitor analysis</li>
-          <li>Ideal Viewer Profile (IVP) developed</li>
-          <li>Content pillar strategy (4 pillars mapped to D2C)</li>
-          <li>Custom keyword bank &amp; Social SEO setup</li>
-          <li>Profile optimization (bio, highlights, link-in-bio)</li>
-          <li>First content calendar delivered &amp; approved</li>
-          <li>First content shoot scheduled &amp; executed</li>
-          <li>First posts go live</li>
-        </ul>
-        <div class="roadmap-outcome">&#8594; Outcome: Brand voice established, content system live, baseline metrics set</div>
-      </div>
-      <div class="roadmap-card">
-        <div class="roadmap-month">Month 2 &mdash; Momentum</div>
-        <div class="roadmap-title">Build the Audience</div>
-        <ul class="roadmap-items">
-          <li>Content cadence fully in motion (2&ndash;3x/week)</li>
-          <li>Follower growth tracking begins</li>
-          <li>Top-performing content formats identified</li>
-          <li>SEO keywords showing in search results</li>
-          <li>First D2C conversion content deployed</li>
-          <li>Subscription-focused content live</li>
-          <li>Mid-month performance check-in</li>
-          <li>Strategy adjusted based on data</li>
-        </ul>
-        <div class="roadmap-outcome">&#8594; Outcome: Content cadence established, follower growth beginning, first D2C link taps appearing</div>
-      </div>
-      <div class="roadmap-card">
-        <div class="roadmap-month">Month 3 &mdash; Traction</div>
-        <div class="roadmap-title">Build the Foundation for D2C Growth</div>
-        <ul class="roadmap-items">
-          <li>Content compounding &mdash; older posts still driving traffic</li>
-          <li>Subscription &amp; product content fully deployed</li>
-          <li>Early D2C traffic signals from social to Shopify</li>
-          <li>90-day performance report delivered</li>
-          <li>Quarterly strategy review call</li>
-          <li>Month 4+ strategy plan presented</li>
-          <li>LIFT stage trajectory confirmed &mdash; 6&ndash;12 month growth plan set</li>
-        </ul>
-        <div class="roadmap-outcome">&#8594; Outcome: Foundation is complete. Content system is live. The groundwork for long-term D2C growth is in place &mdash; the compounding begins now.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== TESTIMONIALS ===== -->
 <section class="testimonials" id="testimonials">
@@ -3076,6 +3382,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ===== NEXT STEPS ===== -->
 <section class="next-steps" id="next-steps">
@@ -3148,6 +3455,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ===== FOOTER ===== -->
 <footer>

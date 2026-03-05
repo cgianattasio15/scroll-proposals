@@ -447,75 +447,6 @@
       margin-bottom: 28px;
     }
 
-    /* ─── RESULTS ─── */
-    #results { background: var(--navy-mid); }
-    .results-intro { max-width: 640px; margin-bottom: 64px; }
-    .results-intro h2 { margin-bottom: 20px; }
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .result-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .result-card:hover { border-color: rgba(200,241,53,0.25); transform: translateY(-3px); }
-    .result-card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-    .result-client-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .result-niche {
-      font-size: 0.78rem;
-      color: rgba(200,241,53,0.75);
-      font-weight: 600;
-    }
-    .result-ig-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.5);
-    }
-    .result-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .result-metric-val {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--lime);
-      letter-spacing: -1px;
-      line-height: 1;
-    }
-    .result-metric-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
-      margin-top: 4px;
-      line-height: 1.3;
-    }
-    .result-divider { height: 1px; background: var(--border); margin: 20px 0; }
-    .result-challenge {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
-      font-style: italic;
-    }
-
     /* ─── TESTIMONIALS ─── */
     #testimonials { background: var(--navy-deep); }
     .testimonials-intro { max-width: 640px; margin-bottom: 64px; }
@@ -742,132 +673,240 @@
       .hero-headline { font-size: clamp(2.2rem, 8vw, 3.5rem); }
     }
 
-    /* --- CONTENT SHOWCASE --- */
-    #showcase { background: var(--navy-deep); }
-    .showcase-intro { max-width: 700px; margin-bottom: 64px; }
-    .showcase-intro h2 { margin-bottom: 20px; }
-    .showcase-tabs {
+
+
+    /* ─── CLIENT SUCCESS SECTION ─── */
+    #results { background: var(--navy-mid); }
+    .results-header { max-width: 700px; margin-bottom: 48px; }
+    .results-header h2 { margin-bottom: 16px; }
+    .results-subhead { color: rgba(255,255,255,0.6); font-size: 1rem; margin: 0; }
+
+    /* Macro stats bar */
+    .macro-stats-bar {
       display: flex;
-      gap: 12px;
+      align-items: center;
+      gap: 0;
+      background: var(--navy-deep);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 40px;
       margin-bottom: 48px;
       flex-wrap: wrap;
     }
-    .showcase-tab {
-      padding: 10px 22px;
+    .macro-stat { flex: 1; min-width: 120px; text-align: center; padding: 8px 16px; }
+    .macro-stat-val { font-size: 2rem; font-weight: 900; color: var(--lime); line-height: 1; }
+    .macro-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .macro-stat-divider { width: 1px; height: 48px; background: var(--border); flex-shrink: 0; }
+
+    /* Client tabs */
+    .cs-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .cs-tab {
+      padding: 9px 20px;
       border-radius: 50px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
       border: 1.5px solid var(--border);
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.5);
       background: transparent;
       transition: all 0.2s;
       letter-spacing: 0.3px;
     }
-    .showcase-tab.active, .showcase-tab:hover {
+    .cs-tab.active, .cs-tab:hover {
       border-color: var(--lime);
       color: var(--lime);
       background: rgba(200,241,53,0.07);
     }
-    .showcase-client-block { display: none; }
-    .showcase-client-block.active { display: block; }
-    .showcase-client-header {
+
+    /* Client blocks */
+    .cs-block { display: none; }
+    .cs-block.active { display: block; }
+
+    /* Client header */
+    .cs-client-header {
       display: flex;
       align-items: center;
       gap: 20px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
       padding: 24px 28px;
-      background: var(--navy-mid);
+      background: var(--navy-deep);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       flex-wrap: wrap;
     }
-    .showcase-client-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--lime);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .showcase-client-name {
-      font-size: 1rem;
-      font-weight: 800;
-    }
-    .showcase-client-niche {
-      font-size: 0.78rem;
-      color: rgba(200,241,53,0.75);
-      font-weight: 600;
-    }
-    .showcase-client-stat {
-      margin-left: auto;
-      text-align: right;
-    }
-    .showcase-client-stat-val {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--lime);
-      line-height: 1;
-    }
-    .showcase-client-stat-label {
+    .cs-client-dot { width: 10px; height: 10px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
+    .cs-client-name { font-size: 1.05rem; font-weight: 800; }
+    .cs-client-niche { font-size: 0.75rem; color: rgba(200,241,53,0.7); font-weight: 600; margin-top: 3px; }
+    .cs-client-kpis { display: flex; gap: 32px; margin-left: auto; flex-wrap: wrap; }
+    .cs-kpi { text-align: right; }
+    .cs-kpi-val { display: block; font-size: 1.5rem; font-weight: 900; color: var(--lime); line-height: 1; }
+    .cs-kpi-label { font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Section label within client block */
+    .cs-section-label {
       font-size: 0.7rem;
-      color: rgba(255,255,255,0.45);
-      margin-top: 4px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 20px;
     }
-    .showcase-posts-grid {
+
+    /* Featured grid (embed + stats side by side) */
+    .cs-featured-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       align-items: start;
     }
-    .showcase-post-wrap {
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--navy-mid);
+    .cs-featured-grid-single { grid-template-columns: 400px 1fr; }
+    .cs-featured-item {
+      background: var(--navy-deep);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
-    .showcase-post-label {
-      padding: 10px 16px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--lime);
-      border-bottom: 1px solid var(--border);
-    }
-    .showcase-post-wrap iframe {
+    .cs-embed-wrap { background: var(--navy-deep); }
+    .cs-embed-wrap iframe {
       width: 100%;
       border: none;
       display: block;
       min-height: 480px;
     }
-    .showcase-value-note {
-      margin-top: 48px;
-      padding: 28px 32px;
-      background: rgba(200,241,53,0.05);
-      border: 1px solid var(--border-lime);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: flex-start;
+    .cs-featured-stats { padding: 20px; }
+    .cs-featured-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .cs-featured-stat-row-highlight {
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .cs-featured-stat-val { font-size: 1.3rem; font-weight: 900; line-height: 1; }
+    .cs-featured-stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cs-lime { color: var(--lime); }
+
+    /* Stats-only grid */
+    .cs-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
     }
-    .showcase-value-icon {
-      font-size: 1.5rem;
+    .cs-stat-card {
+      background: var(--navy-deep);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .cs-stat-card:hover { border-color: rgba(200,241,53,0.2); }
+    .cs-stat-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-thumb {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 8px;
       flex-shrink: 0;
-      margin-top: 2px;
+      border: 1px solid var(--border);
     }
-    .showcase-value-text h4 {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 8px;
+    .cs-stat-card-meta { display: flex; flex-direction: column; gap: 6px; }
+    .cs-post-type-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(200,241,53,0.1);
+      color: var(--lime);
+      border: 1px solid rgba(200,241,53,0.2);
     }
-    .showcase-value-text p {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      margin: 0;
+    .cs-post-date { font-size: 0.72rem; color: rgba(255,255,255,0.35); }
+    .cs-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      padding: 0;
     }
-    @media (max-width: 960px) {
-      .showcase-posts-grid { grid-template-columns: 1fr; }
-      .showcase-client-stat { margin-left: 0; text-align: left; }
+    .cs-metric {
+      padding: 14px 16px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .cs-metric:nth-child(3n) { border-right: none; }
+    .cs-metric:nth-child(4), .cs-metric:nth-child(5), .cs-metric:nth-child(6) { border-bottom: none; }
+    .cs-metric-val { font-size: 1.1rem; font-weight: 900; line-height: 1; }
+    .cs-metric-label { font-size: 0.62rem; color: rgba(255,255,255,0.35); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cs-metric-highlight .cs-metric-val { color: var(--lime); }
+    .cs-view-post {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(200,241,53,0.7);
+      text-decoration: none;
+      border-top: 1px solid var(--border);
+      transition: color 0.2s, background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .cs-view-post:hover { color: var(--lime); background: rgba(200,241,53,0.05); }
+
+    /* Aggregate bar */
+    .cs-aggregate-bar {
+      margin-top: 56px;
+      padding: 32px 40px;
+      background: var(--navy-deep);
+      border: 1px solid var(--border-lime);
+      border-radius: var(--radius);
+    }
+    .cs-agg-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(200,241,53,0.6);
+      margin-bottom: 24px;
+    }
+    .cs-agg-stats {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .cs-agg-stat { flex: 1; min-width: 100px; text-align: center; padding: 8px 16px; }
+    .cs-agg-val { font-size: 1.8rem; font-weight: 900; color: var(--lime); line-height: 1; }
+    .cs-agg-stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cs-agg-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .cs-featured-grid { grid-template-columns: 1fr 1fr; }
+      .cs-featured-grid-single { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .cs-featured-grid { grid-template-columns: 1fr; }
+      .cs-client-kpis { margin-left: 0; }
+      .macro-stats-bar { padding: 24px 20px; }
+      .macro-stat-divider { display: none; }
+      .macro-stat { min-width: 45%; }
+      .cs-agg-divider { display: none; }
+      .cs-agg-stat { min-width: 45%; }
     }
 
   </style>
@@ -1088,267 +1127,486 @@
     </div>
   </section>
 
-  <!-- RESULTS -->
+
+  <!-- CLIENT SUCCESS -->
   <section id="results">
     <div class="container">
-      <div class="results-intro">
+
+      <!-- Section Header -->
+      <div class="results-header">
         <span class="section-label">Client Results</span>
         <h2>Real brands. Real numbers. No fluff.</h2>
-        <p>These aren't cherry-picked outliers. This is what happens when strategy meets consistent execution. Every client below started with no defined social strategy — and a clear goal to change that.</p>
-      </div>
-      <div class="results-grid">
-        <div class="result-card">
-          <div class="result-card-header">
-            <div>
-              <div class="result-client-name">Lane & Kate</div>
-              <div class="result-niche">Boutique Jewelry</div>
-            </div>
-            <div class="result-ig-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </div>
-          </div>
-          <div class="result-metrics">
-            <div>
-              <div class="result-metric-val">96%+</div>
-              <div class="result-metric-label">Engagement Rate (last 30 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">77%</div>
-              <div class="result-metric-label">Reach Increase (first 6 months)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">2.8K+</div>
-              <div class="result-metric-label">Avg. Reel Views</div>
-            </div>
-          </div>
-          <div class="result-divider"></div>
-          <div class="result-challenge">Started with: No defined strategy, inconsistent posting, low local discoverability.</div>
-        </div>
-
-        <div class="result-card">
-          <div class="result-card-header">
-            <div>
-              <div class="result-client-name">Launch Party</div>
-              <div class="result-niche">Boutique Wellness Products</div>
-            </div>
-            <div class="result-ig-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </div>
-          </div>
-          <div class="result-metrics">
-            <div>
-              <div class="result-metric-val">71%+</div>
-              <div class="result-metric-label">Total Views (last 90 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">70%+</div>
-              <div class="result-metric-label">Avg. Reach (last 90 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">33%+</div>
-              <div class="result-metric-label">Total Interactions</div>
-            </div>
-          </div>
-          <div class="result-divider"></div>
-          <div class="result-challenge">Started with: No content creation skills, no strategy, zero qualified lead generation.</div>
-        </div>
-
-        <div class="result-card">
-          <div class="result-card-header">
-            <div>
-              <div class="result-client-name">Up and Running</div>
-              <div class="result-niche">Fitness Shoes & Apparel</div>
-            </div>
-            <div class="result-ig-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </div>
-          </div>
-          <div class="result-metrics">
-            <div>
-              <div class="result-metric-val">209%+</div>
-              <div class="result-metric-label">Total Reach (last 90 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">25%+</div>
-              <div class="result-metric-label">Total Views (last 30 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">34%+</div>
-              <div class="result-metric-label">Reels Engagement</div>
-            </div>
-          </div>
-          <div class="result-divider"></div>
-          <div class="result-challenge">Started with: No social capacity, no strategy, needed to grow e-commerce and wellness partnerships.</div>
-        </div>
-
-        <div class="result-card">
-          <div class="result-card-header">
-            <div>
-              <div class="result-client-name">MEAS Active</div>
-              <div class="result-niche">Boutique Fitness Apparel</div>
-            </div>
-            <div class="result-ig-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </div>
-          </div>
-          <div class="result-metrics">
-            <div>
-              <div class="result-metric-val">65%+</div>
-              <div class="result-metric-label">Total Views (last 90 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">72%+</div>
-              <div class="result-metric-label">Avg. Reach (last 90 days)</div>
-            </div>
-            <div>
-              <div class="result-metric-val">127%+</div>
-              <div class="result-metric-label">Total Interactions</div>
-            </div>
-          </div>
-          <div class="result-divider"></div>
-          <div class="result-challenge">Started with: Minimal ICP engagement, no defined strategy, needed to grow email list and wholesale leads.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CONTENT SHOWCASE -->
-  <section id="showcase">
-    <div class="container">
-      <div class="showcase-intro">
-        <span class="section-label">The Work</span>
-        <h2>This is what we actually build.</h2>
-        <p>Every post below was strategically planned, shot, edited, and published by Scroll Media. These are real posts from real client accounts, performing in the real world. This is what your brand looks like when strategy meets execution.</p>
+        <p class="results-subhead">Every result below came from a business that started with no defined social strategy. What changed: the system behind the content.</p>
       </div>
 
-      <div class="showcase-tabs">
-        <button class="showcase-tab active" onclick="showClient(event, 'lk')">Lane &amp; Kate</button>
-        <button class="showcase-tab" onclick="showClient(event, 'lp')">Launch Party</button>
-        <button class="showcase-tab" onclick="showClient(event, 'uar')">Up and Running</button>
+      <!-- Macro Stats Bar -->
+      <div class="macro-stats-bar">
+        <div class="macro-stat">
+          <div class="macro-stat-val">209%+</div>
+          <div class="macro-stat-label">Best Reach Growth</div>
+        </div>
+        <div class="macro-stat-divider"></div>
+        <div class="macro-stat">
+          <div class="macro-stat-val">25K+</div>
+          <div class="macro-stat-label">Single Post Views (Top)</div>
+        </div>
+        <div class="macro-stat-divider"></div>
+        <div class="macro-stat">
+          <div class="macro-stat-val">10.45%</div>
+          <div class="macro-stat-label">Best Engagement Rate</div>
+        </div>
+        <div class="macro-stat-divider"></div>
+        <div class="macro-stat">
+          <div class="macro-stat-val">6</div>
+          <div class="macro-stat-label">Active Client Accounts</div>
+        </div>
+        <div class="macro-stat-divider"></div>
+        <div class="macro-stat">
+          <div class="macro-stat-val">100%</div>
+          <div class="macro-stat-label">5-Star Google Rating</div>
+        </div>
       </div>
 
-      <!-- Lane & Kate -->
-      <div class="showcase-client-block active" id="showcase-lk">
-        <div class="showcase-client-header">
-          <div class="showcase-client-dot"></div>
-          <div>
-            <div class="showcase-client-name">Lane &amp; Kate</div>
-            <div class="showcase-client-niche">Boutique Jewelry &mdash; Cincinnati, OH</div>
+      <!-- Client Tabs -->
+      <div class="cs-tabs" id="cs-tabs">
+        <button class="cs-tab active" onclick="showCS(event,'lk')">Lane &amp; Kate</button>
+        <button class="cs-tab" onclick="showCS(event,'lp')">Launch Party</button>
+        <button class="cs-tab" onclick="showCS(event,'meas')">MEAS Active</button>
+        <button class="cs-tab" onclick="showCS(event,'uar')">Up and Running</button>
+        <button class="cs-tab" onclick="showCS(event,'define')">Define Oakley</button>
+        <button class="cs-tab" onclick="showCS(event,'sbbl')">Skin by Brownlee</button>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           LANE & KATE
+      ═══════════════════════════════════════════════════════ -->
+      <div class="cs-block active" id="cs-lk">
+        <div class="cs-client-header">
+          <div class="cs-client-dot"></div>
+          <div class="cs-client-info">
+            <div class="cs-client-name">Lane &amp; Kate</div>
+            <div class="cs-client-niche">Boutique Jewelry &mdash; Cincinnati, OH</div>
           </div>
-          <div class="showcase-client-stat">
-            <div class="showcase-client-stat-val">96%+</div>
-            <div class="showcase-client-stat-label">Engagement Rate Growth</div>
-          </div>
-          <div class="showcase-client-stat" style="margin-left: 24px;">
-            <div class="showcase-client-stat-val">77%</div>
-            <div class="showcase-client-stat-label">Reach Increase (6 mo.)</div>
+          <div class="cs-client-kpis">
+            <div class="cs-kpi"><span class="cs-kpi-val">96%+</span><span class="cs-kpi-label">Engagement Growth</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">77%</span><span class="cs-kpi-label">Reach Increase (6 mo.)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">6.91%</span><span class="cs-kpi-label">Top Post Engagement</span></div>
           </div>
         </div>
-        <div class="showcase-posts-grid">
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#1 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/reel/DVPAhkDEQPv/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
-          </div>
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#2 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/reel/DU9AUockcwV/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
-          </div>
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#3 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/p/DUq2m2jkZg4/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+
+        <!-- Stats-only posts (no embed) -->
+        <div class="cs-section-label">Top Performing Posts</div>
+        <div class="cs-stats-grid">
+          <div class="cs-stat-card">
+            <div class="cs-stat-card-header">
+              <img src="https://scontent-lhr8-2.cdninstagram.com/v/t51.82787-15/620552205_18562630099058404_1692365562893166702_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=BNiIEFwLkvcQ7kNvwHe8ooT&_nc_oc=AdlfJLJxSZ42on2UQZPNdT93Gy1ZODa6ZeBmwm4cPvfYb_fSemh3VZKGHKs5v4pjGGw&_nc_zt=23&_nc_ht=scontent-lhr8-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=12s-kcaPlQ6-pCEYnVLOpA&oh=00_AfxN365PQSDNvUKWQ_hKo-5F2A2NCaYBIi3l9Fc4QXpaMA&oe=69AF093E" alt="Lane &amp; Kate post" class="cs-thumb" onerror="this.style.display='none'" />
+              <div class="cs-stat-card-meta">
+                <span class="cs-post-type-badge">Carousel</span>
+                <span class="cs-post-date">Jan 22, 2026</span>
+              </div>
+            </div>
+            <div class="cs-metrics-grid">
+              <div class="cs-metric"><div class="cs-metric-val">10,039</div><div class="cs-metric-label">Views</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">4,324</div><div class="cs-metric-label">Reach</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">156</div><div class="cs-metric-label">Likes</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">82</div><div class="cs-metric-label">Saves</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">37</div><div class="cs-metric-label">Shares</div></div>
+              <div class="cs-metric cs-metric-highlight"><div class="cs-metric-val">6.91%</div><div class="cs-metric-label">Engagement</div></div>
+            </div>
+            <a href="https://www.instagram.com/p/DT01fhPEbtg/" target="_blank" class="cs-view-post">View Post &rarr;</a>
           </div>
         </div>
       </div>
 
-      <!-- Launch Party -->
-      <div class="showcase-client-block" id="showcase-lp">
-        <div class="showcase-client-header">
-          <div class="showcase-client-dot"></div>
-          <div>
-            <div class="showcase-client-name">Launch Party</div>
-            <div class="showcase-client-niche">Boutique Beauty &amp; Wellness &mdash; Cincinnati, OH</div>
+      <!-- ═══════════════════════════════════════════════════════
+           LAUNCH PARTY
+      ═══════════════════════════════════════════════════════ -->
+      <div class="cs-block" id="cs-lp">
+        <div class="cs-client-header">
+          <div class="cs-client-dot"></div>
+          <div class="cs-client-info">
+            <div class="cs-client-name">Launch Party</div>
+            <div class="cs-client-niche">Boutique Beauty &amp; Wellness &mdash; Cincinnati, OH</div>
           </div>
-          <div class="showcase-client-stat">
-            <div class="showcase-client-stat-val">15.14%</div>
-            <div class="showcase-client-stat-label">CTR &mdash; 2.5x Industry Avg.</div>
-          </div>
-          <div class="showcase-client-stat" style="margin-left: 24px;">
-            <div class="showcase-client-stat-val">8.3/10</div>
-            <div class="showcase-client-stat-label">Performance Score (Feb 2026)</div>
+          <div class="cs-client-kpis">
+            <div class="cs-kpi"><span class="cs-kpi-val">71%+</span><span class="cs-kpi-label">Total Views (90 days)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">15.14%</span><span class="cs-kpi-label">CTR (2.5x avg)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">8.09%</span><span class="cs-kpi-label">Top Post Engagement</span></div>
           </div>
         </div>
-        <div class="showcase-posts-grid">
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#1 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/reel/DUTLB1zDu_4/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+
+        <!-- Featured embeds with stats -->
+        <div class="cs-section-label">Featured Content</div>
+        <div class="cs-featured-grid">
+
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Reel</div>
+              <iframe src="https://www.instagram.com/reel/DT0P-zUjmVh/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">16,197</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">10,878</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">85</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">9</div><div class="cs-featured-stat-label">Shares</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">0.9%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">Jan 2026</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
           </div>
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#2 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/reel/DUYVtFmjmJ-/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Reel</div>
+              <iframe src="https://www.instagram.com/reel/DOqm0RWDt3Y/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">13,063</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">8,851</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">317</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">15</div><div class="cs-featured-stat-label">Shares</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">4.33%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">Sep 2025</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
           </div>
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#3 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/reel/DVOiOvAjsGB/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Carousel</div>
+              <iframe src="https://www.instagram.com/p/DJzBoX4OiCu/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">7,424</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">2,696</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">148</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">47</div><div class="cs-featured-stat-label">Shares</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">8.09%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">May 2025</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Stats-only -->
+        <div class="cs-section-label" style="margin-top:40px;">Additional Top Posts</div>
+        <div class="cs-stats-grid">
+          <div class="cs-stat-card">
+            <div class="cs-stat-card-header">
+              <img src="https://scontent-lhr8-2.cdninstagram.com/v/t51.82787-15/590424238_18147342076436396_447954519957225412_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=uCbj03R7IuMQ7kNvwE1NYG1&_nc_oc=Admgo85wuc_Z15KrIe7_y0sK9fmlLnbWik5HOvvtdE4KFJRCpzxxrTeZZFI-givYCbA&_nc_zt=23&_nc_ht=scontent-lhr8-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=iaeo5xMH9rODNr6Xcn3dRA&_nc_tpa=Q5bMBQF5RDnA6HeIKEyqaQXy2bZ1wtWPS3zIrDyhmi_oCrYOvq9dVpSiZJorFHoDntyRum1fl8hTsM0l&oh=00_Afy6pYFvcuvC2SMB8HNtDm6TH9pT0spjfvLvueRCc0MzPw&oe=69AF09A2" alt="Launch Party post" class="cs-thumb" onerror="this.style.display='none'" />
+              <div class="cs-stat-card-meta">
+                <span class="cs-post-type-badge">Reel</span>
+                <span class="cs-post-date">Dec 9, 2025</span>
+              </div>
+            </div>
+            <div class="cs-metrics-grid">
+              <div class="cs-metric"><div class="cs-metric-val">21,304</div><div class="cs-metric-label">Views</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">13,606</div><div class="cs-metric-label">Reach</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">355</div><div class="cs-metric-label">Likes</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">6</div><div class="cs-metric-label">Saves</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">150</div><div class="cs-metric-label">Shares</div></div>
+              <div class="cs-metric cs-metric-highlight"><div class="cs-metric-val">6.11%</div><div class="cs-metric-label">Engagement</div></div>
+            </div>
+            <a href="https://www.instagram.com/reel/DSDBZvCDlUH/" target="_blank" class="cs-view-post">View Post &rarr;</a>
           </div>
         </div>
       </div>
 
-      <!-- Up and Running -->
-      <div class="showcase-client-block" id="showcase-uar">
-        <div class="showcase-client-header">
-          <div class="showcase-client-dot"></div>
-          <div>
-            <div class="showcase-client-name">Up and Running</div>
-            <div class="showcase-client-niche">Local Running Specialty Store &mdash; Dayton, OH</div>
+      <!-- ═══════════════════════════════════════════════════════
+           MEAS ACTIVE
+      ═══════════════════════════════════════════════════════ -->
+      <div class="cs-block" id="cs-meas">
+        <div class="cs-client-header">
+          <div class="cs-client-dot"></div>
+          <div class="cs-client-info">
+            <div class="cs-client-name">MEAS Active</div>
+            <div class="cs-client-niche">Boutique Fitness Apparel &mdash; Cincinnati, OH</div>
           </div>
-          <div class="showcase-client-stat">
-            <div class="showcase-client-stat-val">209%+</div>
-            <div class="showcase-client-stat-label">Total Reach Growth</div>
-          </div>
-          <div class="showcase-client-stat" style="margin-left: 24px;">
-            <div class="showcase-client-stat-val">8.2/10</div>
-            <div class="showcase-client-stat-label">Performance Score (Feb 2026)</div>
+          <div class="cs-client-kpis">
+            <div class="cs-kpi"><span class="cs-kpi-val">65%+</span><span class="cs-kpi-label">Total Views (90 days)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">127%+</span><span class="cs-kpi-label">Total Interactions</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">9.97%</span><span class="cs-kpi-label">Top Post Engagement</span></div>
           </div>
         </div>
-        <div class="showcase-posts-grid">
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#1 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/p/DUYhENZEV7A/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+
+        <!-- Featured embed -->
+        <div class="cs-section-label">Featured Content</div>
+        <div class="cs-featured-grid cs-featured-grid-single">
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Carousel</div>
+              <iframe src="https://www.instagram.com/p/DQceThjkdzI/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">16,579</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">3,840</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">350</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">6</div><div class="cs-featured-stat-label">Shares</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">9.97%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">Oct 2025</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
           </div>
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#2 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/p/DUtK3jIETIV/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+
+        <!-- Stats-only -->
+        <div class="cs-section-label" style="margin-top:40px;">Additional Top Posts</div>
+        <div class="cs-stats-grid">
+          <div class="cs-stat-card">
+            <div class="cs-stat-card-header">
+              <img src="https://scontent-lhr6-1.cdninstagram.com/v/t51.82787-15/579438941_18328010203210075_1923481792951169843_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=sDJbH__f5SIQ7kNvwHAJh5u&_nc_oc=AdlemLDD_1mLIWwhyGBwjwZAzwdfKAfJ8TFgHhrz3d111eNCs-4N7bbLQMEMFQZoFh4&_nc_zt=23&_nc_ht=scontent-lhr6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hueccEDMlBCnyf2QvBm8Rw&_nc_tpa=Q5bMBQG6P4fgIkFDgvVcOYvD7nqi_0KT4yJTyiSy21vg2nboj74LaaD6yH6sob2stTr3ZwxxIqM9RbqC&oh=00_AfzSNSgMhdDvAk8G9NAOGls9gzK-2OUB_EFrWGO0shWuAw&oe=69AF0BFF" alt="MEAS post" class="cs-thumb" onerror="this.style.display='none'" />
+              <div class="cs-stat-card-meta">
+                <span class="cs-post-type-badge">Reel</span>
+                <span class="cs-post-date">Nov 10, 2025</span>
+              </div>
+            </div>
+            <div class="cs-metrics-grid">
+              <div class="cs-metric"><div class="cs-metric-val">15,265</div><div class="cs-metric-label">Views</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">10,742</div><div class="cs-metric-label">Reach</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">184</div><div class="cs-metric-label">Likes</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">5</div><div class="cs-metric-label">Saves</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">97</div><div class="cs-metric-label">Shares</div></div>
+              <div class="cs-metric cs-metric-highlight"><div class="cs-metric-val">4.95%</div><div class="cs-metric-label">Engagement</div></div>
+            </div>
+            <a href="https://www.instagram.com/reel/DQ4-nOlEbOx/" target="_blank" class="cs-view-post">View Post &rarr;</a>
           </div>
-          <div class="showcase-post-wrap">
-            <div class="showcase-post-label">#3 Top Post &mdash; Feb 2026</div>
-            <iframe src="https://www.instagram.com/reel/DUTcodXkdXb/embed/captioned/" height="560" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+          <div class="cs-stat-card">
+            <div class="cs-stat-card-header">
+              <img src="https://scontent-lhr6-2.cdninstagram.com/v/t51.82787-15/560061040_18322634911210075_1029489942340146581_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=srgQLLeWe6MQ7kNvwGoD-II&_nc_oc=AdmIXxNDC1W_P2Ty9GlJ2jKQXqKAVciFtiG4CTg4lLr8zBZR7osNybCcBIK0_mfGQ78&_nc_zt=23&_nc_ht=scontent-lhr6-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hueccEDMlBCnyf2QvBm8Rw&oh=00_AfxcgHPnAdZlDA8lsA7HRE8Dz9O7_pVASwwz43tkzQSEsg&oe=69AEDCB5" alt="MEAS post" class="cs-thumb" onerror="this.style.display='none'" />
+              <div class="cs-stat-card-meta">
+                <span class="cs-post-type-badge">Image</span>
+                <span class="cs-post-date">Oct 6, 2025</span>
+              </div>
+            </div>
+            <div class="cs-metrics-grid">
+              <div class="cs-metric"><div class="cs-metric-val">18,794</div><div class="cs-metric-label">Views</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">3,821</div><div class="cs-metric-label">Reach</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">100</div><div class="cs-metric-label">Likes</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">2</div><div class="cs-metric-label">Saves</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">6</div><div class="cs-metric-label">Shares</div></div>
+              <div class="cs-metric cs-metric-highlight"><div class="cs-metric-val">2.88%</div><div class="cs-metric-label">Engagement</div></div>
+            </div>
+            <a href="https://www.instagram.com/p/DPeFRDDDcXH/" target="_blank" class="cs-view-post">View Post &rarr;</a>
           </div>
         </div>
       </div>
 
-      <div class="showcase-value-note">
-        <div class="showcase-value-icon">&#128202;</div>
-        <div class="showcase-value-text">
-          <h4>Every post is tracked. Every decision is data-driven.</h4>
-          <p>Each client receives a monthly performance report scoring 13 metrics across reach, engagement, and conversion. We don't just create content &mdash; we measure what works, cut what doesn't, and compound results month over month. <a href="https://reports.scrollmedia.co" style="color: var(--lime); text-decoration: underline; text-underline-offset: 3px;">View a live client report &rarr;</a></p>
+      <!-- ═══════════════════════════════════════════════════════
+           UP AND RUNNING
+      ═══════════════════════════════════════════════════════ -->
+      <div class="cs-block" id="cs-uar">
+        <div class="cs-client-header">
+          <div class="cs-client-dot"></div>
+          <div class="cs-client-info">
+            <div class="cs-client-name">Up and Running</div>
+            <div class="cs-client-niche">Running Specialty Store &mdash; Dayton, OH</div>
+          </div>
+          <div class="cs-client-kpis">
+            <div class="cs-kpi"><span class="cs-kpi-val">209%+</span><span class="cs-kpi-label">Total Reach Growth</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">25%+</span><span class="cs-kpi-label">Views (30 days)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">10.45%</span><span class="cs-kpi-label">Top Post Engagement</span></div>
+          </div>
+        </div>
+
+        <div class="cs-section-label">Top Performing Posts</div>
+        <div class="cs-stats-grid">
+          <div class="cs-stat-card">
+            <div class="cs-stat-card-header">
+              <img src="https://scontent-lhr8-2.cdninstagram.com/v/t51.82787-15/627150127_18551673922033716_7724234785029328079_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=oxK0DxJMDycQ7kNvwGBfzQl&_nc_oc=Adk6JMPin4GPM0oz8LxPMvVxKnqYyrTmV8ZEihNaeTqJF5p3bW-eyWLoo2bEEk-uT1o&_nc_zt=23&_nc_ht=scontent-lhr8-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=H4hKArOkFALIRqChwDFXww&oh=00_Afx_8NXtdfE8kZ4dOBBhCxLC5b3qkfS8mC9LoBNMRgR-uA&oe=69AEEC98" alt="Up and Running post" class="cs-thumb" onerror="this.style.display='none'" />
+              <div class="cs-stat-card-meta">
+                <span class="cs-post-type-badge">Image</span>
+                <span class="cs-post-date">Feb 5, 2026</span>
+              </div>
+            </div>
+            <div class="cs-metrics-grid">
+              <div class="cs-metric"><div class="cs-metric-val">15,172</div><div class="cs-metric-label">Views</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">995</div><div class="cs-metric-label">Reach</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">94</div><div class="cs-metric-label">Likes</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">&mdash;</div><div class="cs-metric-label">Saves</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">2</div><div class="cs-metric-label">Shares</div></div>
+              <div class="cs-metric cs-metric-highlight"><div class="cs-metric-val">10.45%</div><div class="cs-metric-label">Engagement</div></div>
+            </div>
+            <a href="https://www.instagram.com/p/DUYhENZEV7A/" target="_blank" class="cs-view-post">View Post &rarr;</a>
+          </div>
         </div>
       </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           DEFINE OAKLEY
+      ═══════════════════════════════════════════════════════ -->
+      <div class="cs-block" id="cs-define">
+        <div class="cs-client-header">
+          <div class="cs-client-dot"></div>
+          <div class="cs-client-info">
+            <div class="cs-client-name">Define Oakley</div>
+            <div class="cs-client-niche">Boutique Fitness Studio &mdash; Cincinnati, OH</div>
+          </div>
+          <div class="cs-client-kpis">
+            <div class="cs-kpi"><span class="cs-kpi-val">14.6K</span><span class="cs-kpi-label">Top Reel Views</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">87</span><span class="cs-kpi-label">Shares (Top Post)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">4.8%</span><span class="cs-kpi-label">Top Post Engagement</span></div>
+          </div>
+        </div>
+
+        <div class="cs-section-label">Featured Content</div>
+        <div class="cs-featured-grid">
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Reel</div>
+              <iframe src="https://www.instagram.com/reel/DR2JZRkDYCb/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">14,614</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">8,862</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">139</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">4</div><div class="cs-featured-stat-label">Shares</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">1.65%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">Dec 2025</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Reel</div>
+              <iframe src="https://www.instagram.com/reel/DTvLsB9jSOg/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">7,820</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">4,704</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">102</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">87</div><div class="cs-featured-stat-label">Shares</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">4.8%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">Jan 2026</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SKIN BY BROWNLEE
+      ═══════════════════════════════════════════════════════ -->
+      <div class="cs-block" id="cs-sbbl">
+        <div class="cs-client-header">
+          <div class="cs-client-dot"></div>
+          <div class="cs-client-info">
+            <div class="cs-client-name">Skin by Brownlee</div>
+            <div class="cs-client-niche">Medical Aesthetics &amp; Skincare &mdash; Cincinnati, OH</div>
+          </div>
+          <div class="cs-client-kpis">
+            <div class="cs-kpi"><span class="cs-kpi-val">25.4K</span><span class="cs-kpi-label">Top Post Views</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">59</span><span class="cs-kpi-label">Saves (Top Post)</span></div>
+            <div class="cs-kpi"><span class="cs-kpi-val">7.73%</span><span class="cs-kpi-label">Top Post Engagement</span></div>
+          </div>
+        </div>
+
+        <div class="cs-section-label">Featured Content</div>
+        <div class="cs-featured-grid cs-featured-grid-single">
+          <div class="cs-featured-item">
+            <div class="cs-embed-wrap">
+              <div class="cs-post-type-badge" style="margin:12px 12px 0;">Reel</div>
+              <iframe src="https://www.instagram.com/reel/DUa79waCAC7/embed/captioned/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="cs-featured-stats">
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">25,432</div><div class="cs-featured-stat-label">Views</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">1,177</div><div class="cs-featured-stat-label">Reach</div></div>
+              </div>
+              <div class="cs-featured-stat-row">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">62</div><div class="cs-featured-stat-label">Likes</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val">59</div><div class="cs-featured-stat-label">Saves</div></div>
+              </div>
+              <div class="cs-featured-stat-row cs-featured-stat-row-highlight">
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">7.73%</div><div class="cs-featured-stat-label">Engagement</div></div>
+                <div class="cs-featured-stat"><div class="cs-featured-stat-val cs-lime">Feb 2026</div><div class="cs-featured-stat-label">Date</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section-label" style="margin-top:40px;">Additional Top Posts</div>
+        <div class="cs-stats-grid">
+          <div class="cs-stat-card">
+            <div class="cs-stat-card-header">
+              <img src="https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-15/612484475_18548680483001948_7047880358437404396_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Jw1Jycn6MzYQ7kNvwFxiaJm&_nc_oc=AdkHUKQPib_I82awNHdH8KLjYiRUXXmYKl0ls5GDGI0lTLgfAVEGD7rxf6yKnhnCqmI&_nc_zt=23&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ohzHqYZmWpBhS5LuMV20lg&_nc_tpa=Q5bMBQHJa_i8mh_5ujjstITpfrcWZjYXMn_NYJevh1Gh3YVcRP-MfHg0E9RfgvwC-6glM3GbG6EvUKzA&oh=00_AfwgsPgxnlWvYcE15aFE5yLUU6rw3XTo8oQNOn1Em4CJ6w&oe=69AEE104" alt="Skin by Brownlee post" class="cs-thumb" onerror="this.style.display='none'" />
+              <div class="cs-stat-card-meta">
+                <span class="cs-post-type-badge">Reel</span>
+                <span class="cs-post-date">Jan 12, 2026</span>
+              </div>
+            </div>
+            <div class="cs-metrics-grid">
+              <div class="cs-metric"><div class="cs-metric-val">4,120</div><div class="cs-metric-label">Views</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">2,719</div><div class="cs-metric-label">Reach</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">122</div><div class="cs-metric-label">Likes</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">34</div><div class="cs-metric-label">Saves</div></div>
+              <div class="cs-metric"><div class="cs-metric-val">35</div><div class="cs-metric-label">Shares</div></div>
+              <div class="cs-metric cs-metric-highlight"><div class="cs-metric-val">7.1%</div><div class="cs-metric-label">Engagement</div></div>
+            </div>
+            <a href="https://www.instagram.com/reel/DTafgITjYuO/" target="_blank" class="cs-view-post">View Post &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio-wide aggregate -->
+      <div class="cs-aggregate-bar">
+        <div class="cs-agg-label">Portfolio-Wide Performance</div>
+        <div class="cs-agg-stats">
+          <div class="cs-agg-stat"><div class="cs-agg-val">13</div><div class="cs-agg-stat-label">Posts Tracked</div></div>
+          <div class="cs-agg-divider"></div>
+          <div class="cs-agg-stat"><div class="cs-agg-val">185K+</div><div class="cs-agg-stat-label">Combined Views</div></div>
+          <div class="cs-agg-divider"></div>
+          <div class="cs-agg-stat"><div class="cs-agg-val">6</div><div class="cs-agg-stat-label">Active Clients</div></div>
+          <div class="cs-agg-divider"></div>
+          <div class="cs-agg-stat"><div class="cs-agg-val">5.7%</div><div class="cs-agg-stat-label">Avg Engagement Rate</div></div>
+          <div class="cs-agg-divider"></div>
+          <div class="cs-agg-stat"><div class="cs-agg-val"><a href="https://reports.scrollmedia.co" target="_blank" style="color:var(--lime);text-decoration:none;">View Reports &rarr;</a></div><div class="cs-agg-stat-label">Live Client Data</div></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <script>
-    function showClient(e, id) {
-      document.querySelectorAll('.showcase-client-block').forEach(function(b) { b.classList.remove('active'); });
-      document.querySelectorAll('.showcase-tab').forEach(function(t) { t.classList.remove('active'); });
-      document.getElementById('showcase-' + id).classList.add('active');
+    function showCS(e, id) {
+      document.querySelectorAll('.cs-block').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.cs-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.getElementById('cs-' + id).classList.add('active');
       e.target.classList.add('active');
     }
   </script>
+
 
   <!-- TESTIMONIALS -->
   <section id="testimonials">
@@ -1356,7 +1614,7 @@
       <div class="testimonials-intro">
         <span class="section-label">What Clients Say</span>
         <h2>Don't take our word for it.</h2>
-        <p>Every review below is real, unedited, and publicly available on Google. We don't coach clients on what to say — we just do the work.</p>
+        <p>Every review below is real, unedited, and publicly available on Google. We don't coach clients on what to say &mdash; we just do the work.</p>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
@@ -1476,7 +1734,7 @@
         <h2>Stop posting and hoping.<br>Start building a system.</h2>
         <p>A 30-minute discovery call is all it takes to find out if Scroll Media is the right fit for your business. No pressure. No pitch. Just a real conversation about where you are and where you want to go.</p>
         <div class="cta-actions">
-          <a href="https://calendly.com/scrollmedia" class="btn-primary" style="font-size: 1rem; padding: 18px 40px;">Book a Discovery Call →</a>
+          <a href="https://calendly.com/scrollmedia/quick-chat" class="btn-primary" style="font-size: 1rem; padding: 18px 40px;">Book a Discovery Call →</a>
           <a href="mailto:chase@getscrollmedia.com" class="btn-ghost">Or email us directly</a>
         </div>
         <div class="cta-note">We only take on 15 clients at a time. Spots are limited.</div>

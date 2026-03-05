@@ -1007,6 +1007,150 @@
   .client-tab-btn { padding: 8px 12px; font-size: 0.78rem; }
 }
 
+
+    /* ─── HERO VISUAL ENHANCEMENTS ─── */
+    .hero { position: relative; overflow: hidden; }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(198,241,53,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(198,241,53,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none; z-index: 0;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none;
+      animation: orb-float 8s ease-in-out infinite;
+    }
+    .hero-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(198,241,53,0.12) 0%, transparent 70%);
+      top: -150px; right: -100px; animation-delay: 0s;
+    }
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(27,43,107,0.6) 0%, transparent 70%);
+      bottom: -100px; left: -80px; animation-delay: -4s;
+    }
+    .hero-orb-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(198,241,53,0.07) 0%, transparent 70%);
+      top: 40%; left: 30%; animation-delay: -2s;
+    }
+    @keyframes orb-float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* ─── SCROLLING TICKER ─── */
+    .ticker-wrap {
+      overflow: hidden; background: var(--lime);
+      padding: 12px 0; white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker-scroll 35s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center;
+      gap: 12px; padding: 0 32px;
+      font-size: 0.8125rem; font-weight: 700;
+      color: var(--navy); letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .ticker-dot {
+      width: 5px; height: 5px;
+      background: var(--navy); border-radius: 50%; opacity: 0.4;
+    }
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── PROBLEM SVG ICONS ─── */
+    .problem-icon {
+      width: 52px; height: 52px;
+      background: rgba(198,241,53,0.1);
+      border: 1px solid rgba(198,241,53,0.2);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; flex-shrink: 0;
+    }
+    .problem-icon svg {
+      width: 24px; height: 24px;
+      stroke: var(--lime); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ─── WHY CARDS VISUAL ─── */
+    .why-card { position: relative; overflow: hidden; }
+    .why-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--lime), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .why-card:hover::before { opacity: 1; }
+    .why-card-num {
+      font-size: 4rem; font-weight: 900;
+      color: rgba(198,241,53,0.06);
+      letter-spacing: -0.05em; line-height: 1;
+      position: absolute; top: 12px; right: 16px;
+      pointer-events: none;
+    }
+
+    /* ─── SECTION GLOW DIVIDERS ─── */
+    .section-glow {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(198,241,53,0.25), transparent);
+    }
+
+    /* ─── FINAL CTA VISUAL ─── */
+    .final-cta { position: relative; overflow: hidden; }
+    .final-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(198,241,53,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(198,241,53,0.025) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .final-cta .container { position: relative; z-index: 1; }
+    .cta-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); pointer-events: none;
+    }
+    .cta-orb-1 {
+      width: 700px; height: 400px;
+      background: radial-gradient(circle, rgba(198,241,53,0.07) 0%, transparent 70%);
+      top: -100px; left: 50%; transform: translateX(-50%);
+    }
+
+    /* ─── NICHE CARD HOVER ACCENT ─── */
+    .niche-card { position: relative; overflow: hidden; }
+    .niche-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--lime);
+      transform: scaleX(0); transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .niche-card:hover::after { transform: scaleX(1); }
+
+    /* ─── PROCESS PHASE ICON ─── */
+    .process-phase-icon-wrap {
+      width: 56px; height: 56px;
+      background: var(--lime); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; flex-shrink: 0;
+    }
+    .process-phase-icon-wrap svg {
+      width: 26px; height: 26px;
+      stroke: var(--navy); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
 </style>
 </head>
 <body>
@@ -1028,8 +1172,33 @@
   <a href="https://calendly.com/scrollmedia/quick-chat" class="nav-cta nav-mobile-cta">Book a Call →</a>
 </nav>
 
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">Strategy-First Agency<span class="ticker-dot"></span></span>
+    <span class="ticker-item">100% 5-Star Reviews<span class="ticker-dot"></span></span>
+    <span class="ticker-item">209%+ Reach Growth<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Instagram-First Execution<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Data-Driven Results<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Done-For-You Social Media<span class="ticker-dot"></span></span>
+    <span class="ticker-item">30+ Brands Served<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Boutique Agency, Premium Results<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Strategy-First Agency<span class="ticker-dot"></span></span>
+    <span class="ticker-item">100% 5-Star Reviews<span class="ticker-dot"></span></span>
+    <span class="ticker-item">209%+ Reach Growth<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Instagram-First Execution<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Data-Driven Results<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Done-For-You Social Media<span class="ticker-dot"></span></span>
+    <span class="ticker-item">30+ Brands Served<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Boutique Agency, Premium Results<span class="ticker-dot"></span></span>
+  </div>
+</div>
+
 <!-- ===== HERO ===== -->
 <section class="hero" id="home">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
   <div class="container">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
@@ -1064,6 +1233,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== PROBLEM ===== -->
 <section class="problem" id="problem">
   <div class="container">
@@ -1072,32 +1243,32 @@
     <p class="section-body">For founder-led, service-based businesses, Instagram should be your highest-leverage trust-building channel. Instead, it's an afterthought — inconsistent, unfocused, and disconnected from your actual business goals.</p>
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="problem-icon">📉</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
         <div class="problem-title">You're posting without a strategy</div>
         <div class="problem-body">Random content, no clear funnel, no defined audience. You're creating content for the sake of it — not to move people from discovery to booked appointment. Without a strategy, every post is a guess.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">🎯</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <div class="problem-title">Your content doesn't convert</div>
         <div class="problem-body">Before-and-afters, promos, and product shots aren't enough. Today's buyers need to trust you before they book. If your content isn't building credibility, educating your audience, and driving clear action — it's not working.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">⏱️</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <div class="problem-title">You don't have time to do it right</div>
         <div class="problem-body">You're running a business. Social media is a full-time job. Trying to do both means neither gets done well. The brands winning on Instagram aren't doing it themselves — they have a system and a team behind it.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">🔍</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="problem-title">You have no idea what's actually working</div>
         <div class="problem-body">Without a performance framework, you're flying blind. You can't optimize what you don't measure — and most agencies don't measure the right things. Vanity metrics (likes, followers) don't pay the bills. Reach, engagement rate, and conversion signals do.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">🏷️</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
         <div class="problem-title">You blend in instead of standing out</div>
         <div class="problem-body">In crowded niches — med spas, fitness studios, jewelry, real estate — every brand looks the same. Generic content, same hooks, same formats. Your brand has a real story and real expertise. Your Instagram should reflect that — and make the right people stop scrolling.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon">🔄</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
         <div class="problem-title">Past agencies didn't deliver</div>
         <div class="problem-body">You've tried it before. You hired someone who posted pretty pictures, sent a monthly report full of numbers that didn't matter, and never really understood your business. You're not skeptical of social media — you're skeptical of agencies that don't treat it like a growth channel.</div>
       </div>
@@ -1109,6 +1280,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== WHY SCROLL MEDIA ===== -->
 <section class="why" id="why">
   <div class="container">
@@ -1117,6 +1290,7 @@
     <p class="section-body">Scroll Media exists at the intersection of two things most agencies get wrong separately: simplifying social media so it's actually executable, and grounding every decision in data so it actually performs. We become a true extension of your brand — not a vendor you manage, but a strategic partner you rely on.</p>
     <div class="why-grid">
       <div class="why-card">
+          <div class="why-card-num">01</div>
         <div class="why-num">01</div>
         <div>
           <div class="why-title">We Start by Listening — Deep Brand Immersion</div>
@@ -1124,6 +1298,7 @@
         </div>
       </div>
       <div class="why-card">
+          <div class="why-card-num">02</div>
         <div class="why-num">02</div>
         <div>
           <div class="why-title">We Master One Channel — Instagram-First Philosophy</div>
@@ -1131,6 +1306,7 @@
         </div>
       </div>
       <div class="why-card">
+          <div class="why-card-num">03</div>
         <div class="why-num">03</div>
         <div>
           <div class="why-title">We Build Around Your Audience — Goal-Mapped Strategy & IVP</div>
@@ -1138,6 +1314,7 @@
         </div>
       </div>
       <div class="why-card">
+          <div class="why-card-num">04</div>
         <div class="why-num">04</div>
         <div>
           <div class="why-title">We Apply Human Psychology — Psychology-Driven Content</div>
@@ -1145,6 +1322,7 @@
         </div>
       </div>
       <div class="why-card">
+          <div class="why-card-num">05</div>
         <div class="why-num">05</div>
         <div>
           <div class="why-title">We Evolve & Execute — Data-Driven. Done-For-You.</div>
@@ -1155,6 +1333,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== HOW WE WORK ===== -->
 <section class="process" id="process">
   <div class="container">
@@ -1275,6 +1455,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== CLIENT RESULTS ===== -->
 <section id="results" class="section results-section">
   <div class="container">
@@ -1686,6 +1868,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== THE WORK ===== -->
 <section class="work-section" id="work">
   <div class="container">
@@ -1951,6 +2135,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== TESTIMONIALS ===== -->
 <section class="testimonials" id="testimonials">
   <div class="container">
@@ -1992,6 +2178,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== WHO WE WORK WITH ===== -->
 <section class="niches" id="niches">
   <div class="container">
@@ -2039,6 +2227,8 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== TEAM ===== -->
 <section class="team" id="team">
   <div class="container">
@@ -2059,8 +2249,11 @@
   </div>
 </section>
 
+<div class="section-glow"></div>
+<div class="section-glow"></div>
 <!-- ===== FINAL CTA ===== -->
 <section class="final-cta">
+  <div class="cta-orb cta-orb-1"></div>
   <div class="container">
     <div class="final-cta-inner">
       <h2 class="final-cta-headline">Stop posting and hoping.<br><span class="accent">Start building a system.</span></h2>
@@ -2120,6 +2313,81 @@
       card.classList.remove('playing');
     }
   }
+
+
+  // ─── ANIMATED STAT COUNTERS ───
+  function animateCounter(el, target, suffix) {
+    const duration = 2000;
+    const start = performance.now();
+    const isFloat = target % 1 !== 0;
+    
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = isFloat ? (target * eased).toFixed(1) : Math.round(target * eased);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const text = el.dataset.target;
+        const match = text.match(/^([\d.]+)(.*)$/);
+        if (match) {
+          animateCounter(el, parseFloat(match[1]), match[2]);
+        }
+        statObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.hero-stat-num').forEach(el => {
+    const text = el.textContent.trim();
+    el.dataset.target = text;
+    el.textContent = '0' + text.replace(/[\d.]/g, '').trim();
+    statObserver.observe(el);
+  });
+
+
+  // ─── ANIMATED STAT COUNTERS ───
+  (function() {
+    function animateCounter(el, target, suffix) {
+      var duration = 1800;
+      var start = performance.now();
+      var isFloat = (target % 1 !== 0);
+      function update(now) {
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = isFloat ? (target * eased).toFixed(1) : Math.round(target * eased);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+    var statObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var text = el.dataset.target;
+          var match = text.match(/^([\d.]+)(.*)$/);
+          if (match) animateCounter(el, parseFloat(match[1]), match[2]);
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.hero-stat-num').forEach(function(el) {
+      var text = el.textContent.trim();
+      el.dataset.target = text;
+      el.textContent = '0';
+      statObserver.observe(el);
+    });
+  })();
 
 </script>
 <script>

@@ -1878,12 +1878,12 @@
     <p style="color:rgba(255,255,255,0.55);max-width:560px;margin-bottom:40px;line-height:1.7;">Every reel below was strategically planned, shot-directed, edited, and published by Scroll Media. This is what your brand looks like when strategy meets execution.</p>
 
     <div class="work-filter-tabs">
-      <button class="work-filter-btn active" onclick="filterWork('all', this)">All</button>
-      <button class="work-filter-btn" onclick="filterWork('fitness', this)">Boutique Fitness</button>
-      <button class="work-filter-btn" onclick="filterWork('beauty', this)">Makeup &amp; Beauty</button>
-      <button class="work-filter-btn" onclick="filterWork('retail', this)">Boutique Retail</button>
-      <button class="work-filter-btn" onclick="filterWork('wellness', this)">Wellness &amp; Community</button>
-      <button class="work-filter-btn" onclick="filterWork('service', this)">Service Business</button>
+      <button class="work-filter-btn" data-niche="all" active" onclick="filterWork('all', this)">All</button>
+      <button class="work-filter-btn" data-niche="fitness"" onclick="filterWork('fitness', this)">Boutique Fitness</button>
+      <button class="work-filter-btn" data-niche="beauty"" onclick="filterWork('beauty', this)">Makeup &amp; Beauty</button>
+      <button class="work-filter-btn" data-niche="retail"" onclick="filterWork('retail', this)">Boutique Retail</button>
+      <button class="work-filter-btn" data-niche="wellness"" onclick="filterWork('wellness', this)">Wellness &amp; Community</button>
+      <button class="work-filter-btn" data-niche="service"" onclick="filterWork('service', this)">Service Business</button>
     </div>
 
     <div class="video-grid" id="videoGrid">
@@ -2279,125 +2279,182 @@
   </div>
 </footer>
 
-<script async src="//www.instagram.com/embed.js">
-  function filterWork(niche, btn) {
-    // Update active button
-    document.querySelectorAll('.work-filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    // Show/hide cards
-    document.querySelectorAll('.video-card').forEach(card => {
-      if (niche === 'all' || card.dataset.niche === niche) {
-        card.classList.remove('hidden');
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ============================================================
+  // CLIENT RESULTS TABS
+  // ============================================================
+  var clientTabBtns = document.querySelectorAll('.client-tab-btn');
+  var clientPanels = document.querySelectorAll('.client-tab-panel');
+
+  function showClientPanel(targetId) {
+    clientPanels.forEach(function(panel) {
+      if (panel.id === targetId) {
+        panel.style.display = 'block';
       } else {
-        card.classList.add('hidden');
-        // Pause any playing video in hidden card
-        const vid = card.querySelector('video');
-        if (vid) { vid.pause(); vid.currentTime = 0; }
-        card.classList.remove('playing');
+        panel.style.display = 'none';
       }
     });
+    if (window.instgrm) window.instgrm.Embeds.process();
   }
 
-  function toggleVideo(card) {
-    const vid = card.querySelector('video');
-    if (!vid) return;
-    if (vid.paused) {
-      // Pause all other videos
-      document.querySelectorAll('.video-card video').forEach(v => {
-        if (v !== vid) { v.pause(); v.currentTime = 0; v.closest('.video-card').classList.remove('playing'); }
-      });
-      vid.play();
-      card.classList.add('playing');
-    } else {
-      vid.pause();
-      card.classList.remove('playing');
-    }
-  }
-
-
-  // ─── ANIMATED STAT COUNTERS ───
-  function animateCounter(el, target, suffix) {
-    const duration = 2000;
-    const start = performance.now();
-    const isFloat = target % 1 !== 0;
-    
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = isFloat ? (target * eased).toFixed(1) : Math.round(target * eased);
-      el.textContent = current + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const text = el.dataset.target;
-        const match = text.match(/^([\d.]+)(.*)$/);
-        if (match) {
-          animateCounter(el, parseFloat(match[1]), match[2]);
-        }
-        statObserver.unobserve(el);
-      }
+  clientTabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.getAttribute('data-target');
+      clientTabBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      showClientPanel(target);
     });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.hero-stat-num').forEach(el => {
-    const text = el.textContent.trim();
-    el.dataset.target = text;
-    el.textContent = '0' + text.replace(/[\d.]/g, '').trim();
-    statObserver.observe(el);
   });
 
+  // Show first panel on load
+  if (clientPanels.length > 0) {
+    clientPanels.forEach(function(p, i) { p.style.display = i === 0 ? 'block' : 'none'; });
+  }
 
-  // ─── ANIMATED STAT COUNTERS ───
-  (function() {
-    function animateCounter(el, target, suffix) {
-      var duration = 1800;
-      var start = performance.now();
-      var isFloat = (target % 1 !== 0);
-      function update(now) {
-        var elapsed = now - start;
-        var progress = Math.min(elapsed / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3);
-        var current = isFloat ? (target * eased).toFixed(1) : Math.round(target * eased);
-        el.textContent = current + suffix;
-        if (progress < 1) requestAnimationFrame(update);
+  // ============================================================
+  // WORK SECTION VIDEO FILTER
+  // ============================================================
+  var videoCards = document.querySelectorAll('.video-card');
+  var workFilterBtns = document.querySelectorAll('.work-filter-btn');
+
+  window.filterWork = function(niche, btn) {
+    workFilterBtns.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    videoCards.forEach(function(card) {
+      var cardNiche = card.getAttribute('data-niche');
+      if (niche === 'all' || cardNiche === niche) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+        var vid = card.querySelector('video');
+        if (vid) vid.pause();
       }
-      requestAnimationFrame(update);
+    });
+  };
+
+  // ============================================================
+  // VIDEO CLICK TO PLAY / PAUSE
+  // ============================================================
+  window.toggleVideo = function(card) {
+    var video = card.querySelector('video');
+    var overlay = card.querySelector('.video-play-overlay');
+    if (!video) return;
+
+    if (video.paused) {
+      // Pause all other videos
+      document.querySelectorAll('.video-card video').forEach(function(v) {
+        if (v !== video) {
+          v.pause();
+          var ov = v.closest('.video-card').querySelector('.video-play-overlay');
+          if (ov) ov.style.opacity = '1';
+        }
+      });
+      video.play().then(function() {
+        if (overlay) overlay.style.opacity = '0';
+      }).catch(function(e) {
+        console.log('Video play error:', e);
+        // Try loading first then playing
+        video.load();
+        video.play();
+      });
+    } else {
+      video.pause();
+      if (overlay) overlay.style.opacity = '1';
     }
-    var statObserver = new IntersectionObserver(function(entries) {
+  };
+
+  // Preload videos on hover
+  videoCards.forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      var video = card.querySelector('video');
+      if (video && video.readyState === 0) {
+        video.preload = 'metadata';
+        video.load();
+      }
+    });
+    var video = card.querySelector('video');
+    if (video) {
+      video.addEventListener('ended', function() {
+        var overlay = card.querySelector('.video-play-overlay');
+        if (overlay) overlay.style.opacity = '1';
+      });
+    }
+  });
+
+  // ============================================================
+  // COUNTER ANIMATION
+  // ============================================================
+  var counters = document.querySelectorAll('.stat-number[data-target]');
+  if (counters.length > 0 && window.IntersectionObserver) {
+    var counterObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           var el = entry.target;
-          var text = el.dataset.target;
-          var match = text.match(/^([\d.]+)(.*)$/);
-          if (match) animateCounter(el, parseFloat(match[1]), match[2]);
-          statObserver.unobserve(el);
+          var target = parseFloat(el.getAttribute('data-target'));
+          var suffix = el.getAttribute('data-suffix') || '';
+          var prefix = el.getAttribute('data-prefix') || '';
+          var duration = 1500;
+          var steps = 60;
+          var increment = target / steps;
+          var current = 0;
+          var timer = setInterval(function() {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = prefix + (Number.isInteger(target) ? Math.floor(current) : current.toFixed(1)) + suffix;
+          }, duration / steps);
+          counterObserver.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
-    document.querySelectorAll('.hero-stat-num').forEach(function(el) {
-      var text = el.textContent.trim();
-      el.dataset.target = text;
-      el.textContent = '0';
-      statObserver.observe(el);
-    });
-  })();
+    counters.forEach(function(c) { counterObserver.observe(c); });
+  }
 
+  // ============================================================
+  // SCROLL ANIMATIONS
+  // ============================================================
+  var animEls = document.querySelectorAll('.fade-in-up');
+  if (animEls.length > 0 && window.IntersectionObserver) {
+    var animObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    animEls.forEach(function(el) { animObserver.observe(el); });
+  }
+
+  // ============================================================
+  // SMOOTH SCROLL FOR NAV LINKS
+  // ============================================================
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetEl = document.querySelector(link.getAttribute('href'));
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ============================================================
+  // TICKER ANIMATION
+  // ============================================================
+  var ticker = document.querySelector('.ticker-track');
+  if (ticker && !ticker.parentNode.querySelector('.ticker-track + .ticker-track')) {
+    var clone = ticker.cloneNode(true);
+    ticker.parentNode.appendChild(clone);
+  }
+
+});
 </script>
-<script>
-function showWork(e, id) {
-  document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.work-client').forEach(c => c.classList.remove('active'));
-  e.target.classList.add('active');
-  document.getElementById(id).classList.add('active');
-  if (window.instgrm) window.instgrm.Embeds.process();
-}
-</script>
+
 </body>
 </html>

@@ -1634,6 +1634,75 @@
     color: var(--text-secondary);
   }
 
+  /* -- Client Logo Ticker -- */
+  .logo-ticker-section {
+    background: #fff;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(21,21,22,0.08);
+    overflow: hidden;
+  }
+  .logo-ticker-label {
+    text-align: center;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(21,21,22,0.5);
+    margin-bottom: 20px;
+  }
+  .logo-ticker-track { position: relative; overflow: hidden; }
+  .logo-ticker-track::before,
+  .logo-ticker-track::after {
+    content: ''; position: absolute; top: 0; bottom: 0;
+    width: 80px; z-index: 2; pointer-events: none;
+  }
+  .logo-ticker-track::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
+  .logo-ticker-track::after  { right: 0; background: linear-gradient(to left, #fff, transparent); }
+  .logo-ticker-inner {
+    display: flex; align-items: center; gap: 64px;
+    width: max-content;
+    animation: logo-ticker-scroll 32s linear infinite;
+    will-change: transform;
+  }
+  .logo-ticker-inner:hover { animation-play-state: paused; }
+  @keyframes logo-ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .logo-item {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    height: 56px;
+  }
+  .logo-item img {
+    height: 56px; width: auto; max-width: 140px;
+    object-fit: contain; display: block;
+    filter: grayscale(100%); opacity: 0.55;
+    transition: filter 0.3s, opacity 0.3s;
+  }
+  .logo-item img:hover { filter: grayscale(0%); opacity: 1; }
+  /* -- Recognition Section -- */
+  .recognition-section {
+    background: #fff;
+    padding: 48px 24px;
+    border-top: 1px solid rgba(21,21,22,0.08);
+    border-bottom: 1px solid rgba(21,21,22,0.08);
+    text-align: center;
+  }
+  .recognition-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(21,21,22,0.45);
+    margin-bottom: 28px;
+  }
+  .recog-grid {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    align-items: center; gap: 32px 48px;
+    max-width: 860px; margin: 0 auto;
+  }
+  .recog-item {
+    display: flex; align-items: center; justify-content: center;
+    filter: grayscale(100%); opacity: 0.5;
+    transition: filter 0.3s, opacity 0.3s;
+  }
+  .recog-item:hover { opacity: 0.9; filter: grayscale(0%); }
+  .recog-item img { height: 52px; width: auto; max-width: 130px; object-fit: contain; display: block; }
   </style>
 </head>
 <body>
@@ -1698,8 +1767,33 @@
 </section>
 
 <div class="section-divider"></div>
-
-<!-- ── PROBLEM ── -->
+<!-- CLIENT LOGO TICKER -->
+<div class="logo-ticker-section">
+  <div class="logo-ticker-label">Trusted by service businesses across Cincinnati &amp; beyond</div>
+  <div class="logo-ticker-track">
+    <div class="logo-ticker-inner">
+      <div class="logo-item"><img src="logos/cl-lane-kate.png" alt="Lane &amp; Kate" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-launch-party.png" alt="Launch Party" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-define.png" alt="Define" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-meas.png" alt="MEAS Active" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-beauty-boost.png" alt="The Beauty Boost" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-ombre-gallery.png" alt="Ombre Gallery" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-date-cincy.png" alt="Date Cincy" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-elaine-b.png" alt="Elaine B. Jewelry" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-women100.png" alt="Women100" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-lane-kate.png" alt="Lane &amp; Kate" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-launch-party.png" alt="Launch Party" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-define.png" alt="Define" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-meas.png" alt="MEAS Active" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-beauty-boost.png" alt="The Beauty Boost" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-ombre-gallery.png" alt="Ombre Gallery" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-date-cincy.png" alt="Date Cincy" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-elaine-b.png" alt="Elaine B. Jewelry" loading="lazy"></div>
+      <div class="logo-item"><img src="logos/cl-women100.png" alt="Women100" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+<!-- PROBLEM -->
 <section id="problem" class="problem">
   <div class="container">
     <div class="section-label">The Real Problem</div>
@@ -2540,8 +2634,21 @@
 </section>
 
 <div class="section-divider"></div>
-
-<!-- ── NICHES ── -->
+<!-- RECOGNITION -->
+<div class="recognition-section">
+  <div class="recognition-label">As Seen In &amp; Notable Recognition</div>
+  <div class="recog-grid">
+    <div class="recog-item"><img src="logos/rg-clutch-realestate.png" alt="Clutch Top Social Media Marketing Company" loading="lazy"></div>
+    <div class="recog-item"><img src="logos/rg-clutch-instagram.png" alt="Clutch Top Instagram Influencer Marketing" loading="lazy"></div>
+    <div class="recog-item"><img src="logos/rg-otr-chamber.png" alt="OTR Chamber of Commerce" loading="lazy"></div>
+    <div class="recog-item"><img src="logos/rg-now-in-nati.png" alt="Now in the Nati" loading="lazy"></div>
+    <div class="recog-item"><img src="logos/rg-breef.png" alt="Breef" loading="lazy"></div>
+    <div class="recog-item"><img src="logos/rg-big-brothers.png" alt="Big Brothers Big Sisters Cincinnati" loading="lazy"></div>
+    <div class="recog-item"><img src="logos/rg-kiss-1071.png" alt="KISS 107.1" loading="lazy"></div>
+  </div>
+</div>
+<div class="section-divider"></div>
+<!-- NICHES -->
 <section id="niches" class="niches">
   <div class="container">
     <div class="section-label">Who We Work With</div>

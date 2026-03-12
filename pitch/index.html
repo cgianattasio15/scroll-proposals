@@ -1346,6 +1346,90 @@
     margin-top: 12px;
   }
 
+  /* ── DM Screenshot Testimonials ── */
+  .dm-testimonials {
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .dm-testimonials-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--azure);
+    margin-bottom: 8px;
+  }
+
+  .dm-testimonials-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .dm-testimonials-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .dm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .dm-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .dm-card:hover {
+    border-color: rgba(12,51,135,0.2);
+    box-shadow: 0 4px 20px rgba(12,51,135,0.06);
+  }
+
+  .dm-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .dm-card-footer {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+
+  .dm-card-client {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .dm-card-type {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 768px) {
+    .dm-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .dm-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── Niches Section ── */
   .niches { background: var(--ghost); }
 
@@ -1634,75 +1718,6 @@
     color: var(--text-secondary);
   }
 
-  /* -- Client Logo Ticker -- */
-  .logo-ticker-section {
-    background: #fff;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(21,21,22,0.08);
-    overflow: hidden;
-  }
-  .logo-ticker-label {
-    text-align: center;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(21,21,22,0.5);
-    margin-bottom: 20px;
-  }
-  .logo-ticker-track { position: relative; overflow: hidden; }
-  .logo-ticker-track::before,
-  .logo-ticker-track::after {
-    content: ''; position: absolute; top: 0; bottom: 0;
-    width: 80px; z-index: 2; pointer-events: none;
-  }
-  .logo-ticker-track::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
-  .logo-ticker-track::after  { right: 0; background: linear-gradient(to left, #fff, transparent); }
-  .logo-ticker-inner {
-    display: flex; align-items: center; gap: 64px;
-    width: max-content;
-    animation: logo-ticker-scroll 32s linear infinite;
-    will-change: transform;
-  }
-  .logo-ticker-inner:hover { animation-play-state: paused; }
-  @keyframes logo-ticker-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .logo-item {
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    height: 56px;
-  }
-  .logo-item img {
-    height: 56px; width: auto; max-width: 140px;
-    object-fit: contain; display: block;
-    filter: grayscale(100%); opacity: 0.55;
-    transition: filter 0.3s, opacity 0.3s;
-  }
-  .logo-item img:hover { filter: grayscale(0%); opacity: 1; }
-  /* -- Recognition Section -- */
-  .recognition-section {
-    background: #fff;
-    padding: 48px 24px;
-    border-top: 1px solid rgba(21,21,22,0.08);
-    border-bottom: 1px solid rgba(21,21,22,0.08);
-    text-align: center;
-  }
-  .recognition-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: rgba(21,21,22,0.45);
-    margin-bottom: 28px;
-  }
-  .recog-grid {
-    display: flex; flex-wrap: wrap; justify-content: center;
-    align-items: center; gap: 32px 48px;
-    max-width: 860px; margin: 0 auto;
-  }
-  .recog-item {
-    display: flex; align-items: center; justify-content: center;
-    filter: grayscale(100%); opacity: 0.5;
-    transition: filter 0.3s, opacity 0.3s;
-  }
-  .recog-item:hover { opacity: 0.9; filter: grayscale(0%); }
-  .recog-item img { height: 52px; width: auto; max-width: 130px; object-fit: contain; display: block; }
   </style>
 </head>
 <body>
@@ -1767,33 +1782,8 @@
 </section>
 
 <div class="section-divider"></div>
-<!-- CLIENT LOGO TICKER -->
-<div class="logo-ticker-section">
-  <div class="logo-ticker-label">Trusted by service businesses across Cincinnati &amp; beyond</div>
-  <div class="logo-ticker-track">
-    <div class="logo-ticker-inner">
-      <div class="logo-item"><img src="logos/cl-lane-kate.png" alt="Lane &amp; Kate" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-launch-party.png" alt="Launch Party" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-define.png" alt="Define" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-meas.png" alt="MEAS Active" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-beauty-boost.png" alt="The Beauty Boost" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-ombre-gallery.png" alt="Ombre Gallery" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-date-cincy.png" alt="Date Cincy" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-elaine-b.png" alt="Elaine B. Jewelry" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-women100.png" alt="Women100" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-lane-kate.png" alt="Lane &amp; Kate" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-launch-party.png" alt="Launch Party" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-define.png" alt="Define" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-meas.png" alt="MEAS Active" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-beauty-boost.png" alt="The Beauty Boost" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-ombre-gallery.png" alt="Ombre Gallery" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-date-cincy.png" alt="Date Cincy" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-elaine-b.png" alt="Elaine B. Jewelry" loading="lazy"></div>
-      <div class="logo-item"><img src="logos/cl-women100.png" alt="Women100" loading="lazy"></div>
-    </div>
-  </div>
-</div>
-<!-- PROBLEM -->
+
+<!-- ── PROBLEM ── -->
 <section id="problem" class="problem">
   <div class="container">
     <div class="section-label">The Real Problem</div>
@@ -2709,25 +2699,70 @@
       <br>
       <span class="reviews-badge">100% 5-star rated — verified on Google</span>
     </div>
+
+    <!-- DM Screenshot Testimonials -->
+    <div class="dm-testimonials">
+      <div class="dm-testimonials-label">Direct from Clients</div>
+      <div class="dm-testimonials-heading">Real reactions. Unscripted.</div>
+      <div class="dm-testimonials-sub">Unedited DMs and text messages from clients responding to their content.</div>
+      <div class="dm-grid">
+
+        <div class="dm-card fade-in-up">
+          <img src="testimonials/testimonial_01_holos_igdm.jpg" alt="Holos House IG DM testimonial" loading="lazy" />
+          <div class="dm-card-footer">
+            <span class="dm-card-client">Holos House</span>
+            <span class="dm-card-type">IG DM</span>
+          </div>
+        </div>
+
+        <div class="dm-card fade-in-up">
+          <img src="testimonials/testimonial_02_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+          <div class="dm-card-footer">
+            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-type">Text Message</span>
+          </div>
+        </div>
+
+        <div class="dm-card fade-in-up">
+          <img src="testimonials/testimonial_03_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+          <div class="dm-card-footer">
+            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-type">Text Message</span>
+          </div>
+        </div>
+
+        <div class="dm-card fade-in-up">
+          <img src="testimonials/testimonial_04_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+          <div class="dm-card-footer">
+            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-type">Text Message</span>
+          </div>
+        </div>
+
+        <div class="dm-card fade-in-up">
+          <img src="testimonials/testimonial_05_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+          <div class="dm-card-footer">
+            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-type">Text Message</span>
+          </div>
+        </div>
+
+        <div class="dm-card fade-in-up">
+          <img src="testimonials/testimonial_06_holos_text.jpg" alt="Holos House text message testimonial" loading="lazy" />
+          <div class="dm-card-footer">
+            <span class="dm-card-client">Holos House</span>
+            <span class="dm-card-type">Text Message</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
-<!-- RECOGNITION -->
-<div class="recognition-section">
-  <div class="recognition-label">As Seen In &amp; Notable Recognition</div>
-  <div class="recog-grid">
-    <div class="recog-item"><img src="logos/rg-clutch-realestate.png" alt="Clutch Top Social Media Marketing Company" loading="lazy"></div>
-    <div class="recog-item"><img src="logos/rg-clutch-instagram.png" alt="Clutch Top Instagram Influencer Marketing" loading="lazy"></div>
-    <div class="recog-item"><img src="logos/rg-otr-chamber.png" alt="OTR Chamber of Commerce" loading="lazy"></div>
-    <div class="recog-item"><img src="logos/rg-now-in-nati.png" alt="Now in the Nati" loading="lazy"></div>
-    <div class="recog-item"><img src="logos/rg-breef.png" alt="Breef" loading="lazy"></div>
-    <div class="recog-item"><img src="logos/rg-big-brothers.png" alt="Big Brothers Big Sisters Cincinnati" loading="lazy"></div>
-    <div class="recog-item"><img src="logos/rg-kiss-1071.png" alt="KISS 107.1" loading="lazy"></div>
-  </div>
-</div>
-<div class="section-divider"></div>
-<!-- NICHES -->
+
+<!-- ── NICHES ── -->
 <section id="niches" class="niches">
   <div class="container">
     <div class="section-label">Who We Work With</div>

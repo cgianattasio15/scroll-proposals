@@ -2469,14 +2469,16 @@
     <div class="work-filters" id="workFilters">
       <button class="work-filter-btn active" data-niche="all" onclick="filterWork('all', this)">All</button>
       <button class="work-filter-btn" data-niche="fitness" onclick="filterWork('fitness', this)">Boutique Fitness</button>
-      <button class="work-filter-btn" data-niche="beauty" onclick="filterWork('beauty', this)">Makeup &amp; Beauty</button>
+      <button class="work-filter-btn" data-niche="jewelry" onclick="filterWork('jewelry', this)">Jewelry &amp; Accessories</button>
       <button class="work-filter-btn" data-niche="retail" onclick="filterWork('retail', this)">Boutique Retail</button>
+      <button class="work-filter-btn" data-niche="medspas" onclick="filterWork('medspas', this)">Med Spas</button>
       <button class="work-filter-btn" data-niche="wellness" onclick="filterWork('wellness', this)">Wellness &amp; Community</button>
       <button class="work-filter-btn" data-niche="service" onclick="filterWork('service', this)">Service Business</button>
     </div>
 
     <div class="video-grid" id="videoGrid">
 
+      <!-- Boutique Fitness -->
       <div class="video-card" data-niche="fitness" onclick="toggleVideo(this)">
         <div class="video-niche-badge">Boutique Fitness</div>
         <div class="video-wrap">
@@ -2498,32 +2500,33 @@
       <div class="video-card" data-niche="fitness" onclick="toggleVideo(this)">
         <div class="video-niche-badge">Boutique Fitness</div>
         <div class="video-wrap">
-          <video src="videos/video_06_fitness_event_recap.mp4" poster="posters/video_06_fitness_event_recap.jpg" preload="none" loop playsinline></video>
-          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-        </div>
-        <div class="video-card-footer-bar"><span class="video-type-label">Event Recap</span></div>
-      </div>
-
-      <div class="video-card" data-niche="fitness" onclick="toggleVideo(this)">
-        <div class="video-niche-badge">Boutique Fitness</div>
-        <div class="video-wrap">
           <video src="videos/video_07_fitness_funny_trend.mp4" poster="posters/video_07_fitness_funny_trend.jpg" preload="none" loop playsinline></video>
           <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
         </div>
         <div class="video-card-footer-bar"><span class="video-type-label">Trend Content</span></div>
       </div>
 
-      <div class="video-card" data-niche="beauty" onclick="toggleVideo(this)">
-        <div class="video-niche-badge">Makeup &amp; Beauty</div>
+      <div class="video-card" data-niche="fitness" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Boutique Fitness</div>
+        <div class="video-wrap">
+          <video src="videos/video_14_define_trend.mp4" poster="posters/video_14_define_trend.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Trend Content</span></div>
+      </div>
+
+      <!-- Jewelry & Accessories -->
+      <div class="video-card" data-niche="jewelry" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Jewelry &amp; Accessories</div>
         <div class="video-wrap">
           <video src="videos/video_09_beauty_product_features.mp4" poster="posters/video_09_beauty_product_features.jpg" preload="none" loop playsinline></video>
           <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
         </div>
-        <div class="video-card-footer-bar"><span class="video-type-label">Product Showcase</span></div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Product Feature</span></div>
       </div>
 
-      <div class="video-card" data-niche="beauty" onclick="toggleVideo(this)">
-        <div class="video-niche-badge">Makeup &amp; Beauty</div>
+      <div class="video-card" data-niche="jewelry" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Jewelry &amp; Accessories</div>
         <div class="video-wrap">
           <video src="videos/video_10_beauty_funny_trend.mp4" poster="posters/video_10_beauty_funny_trend.jpg" preload="none" loop playsinline></video>
           <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
@@ -2531,17 +2534,45 @@
         <div class="video-card-footer-bar"><span class="video-type-label">Trend Content</span></div>
       </div>
 
-      <div class="video-card" data-niche="beauty" onclick="toggleVideo(this)">
-        <div class="video-niche-badge">Makeup &amp; Beauty</div>
+      <div class="video-card" data-niche="jewelry" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Jewelry &amp; Accessories</div>
         <div class="video-wrap">
-          <video src="videos/video_11_beauty_funny_trend2.mp4" poster="posters/video_11_beauty_funny_trend2.jpg" preload="none" loop playsinline></video>
+          <video src="videos/video_15_launchparty_tips.mp4" poster="posters/video_15_launchparty_tips.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Tips &amp; Tricks</span></div>
+      </div>
+
+      <div class="video-card" data-niche="jewelry" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Jewelry &amp; Accessories</div>
+        <div class="video-wrap">
+          <video src="videos/video_16_launchparty_trend.mp4" poster="posters/video_16_launchparty_trend.jpg" preload="none" loop playsinline></video>
           <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
         </div>
         <div class="video-card-footer-bar"><span class="video-type-label">Trend Content</span></div>
       </div>
 
+      <div class="video-card" data-niche="jewelry" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Jewelry &amp; Accessories</div>
+        <div class="video-wrap">
+          <video src="videos/video_20_launchparty_founder_pov.mp4" poster="posters/video_20_launchparty_founder_pov.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Founder POV</span></div>
+      </div>
+
+      <div class="video-card" data-niche="jewelry" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Jewelry &amp; Accessories</div>
+        <div class="video-wrap">
+          <video src="videos/video_21_lanekate_product_feature.mp4" poster="posters/video_21_lanekate_product_feature.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Product Feature</span></div>
+      </div>
+
+      <!-- Boutique Retail -->
       <div class="video-card" data-niche="retail" onclick="toggleVideo(this)">
-        <div class="video-niche-badge">Boutique Jewelry</div>
+        <div class="video-niche-badge">Boutique Retail</div>
         <div class="video-wrap">
           <video src="videos/video_08_jewelry_collab_bts.mp4" poster="posters/video_08_jewelry_collab_bts.jpg" preload="none" loop playsinline></video>
           <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
@@ -2549,6 +2580,44 @@
         <div class="video-card-footer-bar"><span class="video-type-label">Collab BTS</span></div>
       </div>
 
+      <div class="video-card" data-niche="retail" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Boutique Retail</div>
+        <div class="video-wrap">
+          <video src="videos/video_13_ombre_product_feature.mp4" poster="posters/video_13_ombre_product_feature.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Product Feature</span></div>
+      </div>
+
+      <div class="video-card" data-niche="retail" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Boutique Retail</div>
+        <div class="video-wrap">
+          <video src="videos/video_22_meas_lofi_checkin.mp4" poster="posters/video_22_meas_lofi_checkin.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Low-Fi Check-In</span></div>
+      </div>
+
+      <!-- Med Spas -->
+      <div class="video-card" data-niche="medspas" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Med Spas</div>
+        <div class="video-wrap">
+          <video src="videos/video_17_sbbl_founder_pov.mp4" poster="posters/video_17_sbbl_founder_pov.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Founder POV</span></div>
+      </div>
+
+      <div class="video-card" data-niche="medspas" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Med Spas</div>
+        <div class="video-wrap">
+          <video src="videos/video_18_sbbl_transformation.mp4" poster="posters/video_18_sbbl_transformation.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Transformation</span></div>
+      </div>
+
+      <!-- Wellness & Community -->
       <div class="video-card" data-niche="wellness" onclick="toggleVideo(this)">
         <div class="video-niche-badge">Wellness Collective</div>
         <div class="video-wrap">
@@ -2559,6 +2628,16 @@
       </div>
 
       <div class="video-card" data-niche="wellness" onclick="toggleVideo(this)">
+        <div class="video-niche-badge">Community</div>
+        <div class="video-wrap">
+          <video src="videos/video_19_holos_tips.mp4" poster="posters/video_19_holos_tips.jpg" preload="none" loop playsinline></video>
+          <div class="video-play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        </div>
+        <div class="video-card-footer-bar"><span class="video-type-label">Tips &amp; Tricks</span></div>
+      </div>
+
+      <!-- Service Business -->
+      <div class="video-card" data-niche="service" onclick="toggleVideo(this)">
         <div class="video-niche-badge">Travel Agency</div>
         <div class="video-wrap">
           <video src="videos/video_04_travel_product_launch.mp4" poster="posters/video_04_travel_product_launch.jpg" preload="none" loop playsinline></video>

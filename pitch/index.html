@@ -1409,8 +1409,8 @@
 
   .dm-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 
   .dm-card {
@@ -1418,20 +1418,46 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
   }
 
   .dm-card:hover {
-    border-color: rgba(12,51,135,0.2);
-    box-shadow: 0 4px 20px rgba(12,51,135,0.06);
+    border-color: rgba(12,51,135,0.25);
+    box-shadow: 0 6px 24px rgba(12,51,135,0.1);
+    transform: translateY(-2px);
+  }
+
+  .dm-card-img-wrap {
+    position: relative;
+    overflow: hidden;
   }
 
   .dm-card-img {
     width: 100%;
-    height: 160px;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
     display: block;
+    min-height: 80px;
+  }
+
+  .dm-card-expand-hint {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(12,51,135,0.75);
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .dm-card:hover .dm-card-expand-hint {
+    opacity: 1;
   }
 
   .dm-card-footer {
@@ -1456,11 +1482,73 @@
     letter-spacing: 1px;
   }
 
-  @media (max-width: 900px) {
-    .dm-grid { grid-template-columns: repeat(3, 1fr); }
+  /* Lightbox */
+  .dm-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,15,40,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
   }
 
-  @media (max-width: 768px) {
+  .dm-lightbox.open {
+    display: flex;
+  }
+
+  .dm-lightbox-inner {
+    position: relative;
+    max-width: 560px;
+    width: 100%;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    animation: lb-in 0.2s ease;
+  }
+
+  @keyframes lb-in {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .dm-lightbox-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .dm-lightbox-footer {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+
+  .dm-lightbox-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .dm-lightbox-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.15s;
+  }
+
+  .dm-lightbox-close:hover { color: var(--azure); }
+
+  @media (max-width: 900px) {
     .dm-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -2746,94 +2834,135 @@
 
       <div class="dm-filter-tabs">
         <button class="dm-filter-btn active" data-client="all" onclick="filterDM('all', this)">All</button>
-        <button class="dm-filter-btn" data-client="lanekate" onclick="filterDM('lanekate', this)">Lane &amp; Kate</button>
-        <button class="dm-filter-btn" data-client="holos" onclick="filterDM('holos', this)">Holos House</button>
-        <button class="dm-filter-btn" data-client="define" onclick="filterDM('define', this)">Define Oakley</button>
-        <button class="dm-filter-btn" data-client="launchparty" onclick="filterDM('launchparty', this)">Launch Party</button>
+        <button class="dm-filter-btn" data-client="lanekate" onclick="filterDM('lanekate', this)">Jewelry &amp; Accessories Client</button>
+        <button class="dm-filter-btn" data-client="holos" onclick="filterDM('holos', this)">Wellness &amp; Community Client</button>
+        <button class="dm-filter-btn" data-client="define" onclick="filterDM('define', this)">Boutique Fitness Client</button>
+        <button class="dm-filter-btn" data-client="launchparty" onclick="filterDM('launchparty', this)">Indie Beauty Client</button>
       </div>
 
       <div class="dm-grid">
 
-        <div class="dm-card fade-in-up" data-client="holos">
-          <img class="dm-card-img" src="testimonials/testimonial_01_holos_igdm.jpg" alt="Holos House IG DM testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="holos" onclick="openDMLightbox('testimonials/testimonial_01_holos_igdm.jpg', 'Wellness &amp; Community Client', 'IG DM')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_01_holos_igdm.jpg" alt="Wellness &amp; Community client IG DM testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Holos House</span>
+            <span class="dm-card-client">Wellness &amp; Community Client</span>
             <span class="dm-card-type">IG DM</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="lanekate">
-          <img class="dm-card-img" src="testimonials/testimonial_02_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="lanekate" onclick="openDMLightbox('testimonials/testimonial_02_lanekate_text.jpg', 'Jewelry &amp; Accessories Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_02_lanekate_text.jpg" alt="Jewelry client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-client">Jewelry &amp; Accessories Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="lanekate">
-          <img class="dm-card-img" src="testimonials/testimonial_03_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="lanekate" onclick="openDMLightbox('testimonials/testimonial_03_lanekate_text.jpg', 'Jewelry &amp; Accessories Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_03_lanekate_text.jpg" alt="Jewelry client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-client">Jewelry &amp; Accessories Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="lanekate">
-          <img class="dm-card-img" src="testimonials/testimonial_04_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="lanekate" onclick="openDMLightbox('testimonials/testimonial_04_lanekate_text.jpg', 'Jewelry &amp; Accessories Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_04_lanekate_text.jpg" alt="Jewelry client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-client">Jewelry &amp; Accessories Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="lanekate">
-          <img class="dm-card-img" src="testimonials/testimonial_05_lanekate_text.jpg" alt="Lane &amp; Kate text message testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="lanekate" onclick="openDMLightbox('testimonials/testimonial_05_lanekate_text.jpg', 'Jewelry &amp; Accessories Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_05_lanekate_text.jpg" alt="Jewelry client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Lane &amp; Kate</span>
+            <span class="dm-card-client">Jewelry &amp; Accessories Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="holos">
-          <img class="dm-card-img" src="testimonials/testimonial_06_holos_text.jpg" alt="Holos House text message testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="holos" onclick="openDMLightbox('testimonials/testimonial_06_holos_text.jpg', 'Wellness &amp; Community Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_06_holos_text.jpg" alt="Wellness client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Holos House</span>
+            <span class="dm-card-client">Wellness &amp; Community Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="define">
-          <img class="dm-card-img" src="testimonials/testimonial_07_define_text.jpg" alt="Define Oakley fitness studio testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="define" onclick="openDMLightbox('testimonials/testimonial_07_define_text.jpg', 'Boutique Fitness Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_07_define_text.jpg" alt="Boutique fitness client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Define Oakley</span>
+            <span class="dm-card-client">Boutique Fitness Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="define">
-          <img class="dm-card-img" src="testimonials/testimonial_08_define_text.jpg" alt="Define Oakley fitness studio testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="define" onclick="openDMLightbox('testimonials/testimonial_08_define_text.jpg', 'Boutique Fitness Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_08_define_text.jpg" alt="Boutique fitness client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Define Oakley</span>
+            <span class="dm-card-client">Boutique Fitness Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="launchparty">
-          <img class="dm-card-img" src="testimonials/testimonial_09_launchparty_text.jpg" alt="Launch Party indie beauty client testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="launchparty" onclick="openDMLightbox('testimonials/testimonial_09_launchparty_text.jpg', 'Indie Beauty Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_09_launchparty_text.jpg" alt="Indie beauty client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Launch Party</span>
+            <span class="dm-card-client">Indie Beauty Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
-        <div class="dm-card fade-in-up" data-client="launchparty">
-          <img class="dm-card-img" src="testimonials/testimonial_10_launchparty_text.jpg" alt="Launch Party indie beauty client testimonial" loading="lazy" />
+        <div class="dm-card fade-in-up" data-client="launchparty" onclick="openDMLightbox('testimonials/testimonial_10_launchparty_text.jpg', 'Indie Beauty Client', 'Text Message')">
+          <div class="dm-card-img-wrap">
+            <img class="dm-card-img" src="testimonials/testimonial_10_launchparty_text.jpg" alt="Indie beauty client text message testimonial" loading="lazy" />
+            <span class="dm-card-expand-hint">TAP TO EXPAND</span>
+          </div>
           <div class="dm-card-footer">
-            <span class="dm-card-client">Launch Party</span>
+            <span class="dm-card-client">Indie Beauty Client</span>
             <span class="dm-card-type">Text Message</span>
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="dm-lightbox" id="dmLightbox" onclick="closeDMLightbox(event)">
+      <div class="dm-lightbox-inner">
+        <img class="dm-lightbox-img" id="dmLightboxImg" src="" alt="" />
+        <div class="dm-lightbox-footer">
+          <span class="dm-lightbox-label" id="dmLightboxLabel"></span>
+          <button class="dm-lightbox-close" onclick="closeDMLightboxBtn()" aria-label="Close">&times;</button>
+        </div>
       </div>
     </div>
   </div>
@@ -2948,6 +3077,30 @@ function filterDM(client, btn) {
     }
   });
 }
+
+// DM Lightbox
+function openDMLightbox(src, label, type) {
+  const lb = document.getElementById('dmLightbox');
+  document.getElementById('dmLightboxImg').src = src;
+  document.getElementById('dmLightboxLabel').textContent = label + ' — ' + type;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDMLightbox(e) {
+  if (e.target === document.getElementById('dmLightbox')) {
+    closeDMLightboxBtn();
+  }
+}
+
+function closeDMLightboxBtn() {
+  document.getElementById('dmLightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDMLightboxBtn();
+});
 
 // Work section filter
 function filterWork(niche, btn) {

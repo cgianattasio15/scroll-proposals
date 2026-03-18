@@ -283,10 +283,17 @@
       font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--text-dim); margin-bottom: 6px;
     }
-    .detail-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .detail-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .detail-bullet { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--text-mid); line-height: 1.5; }
-    .detail-bullet.good::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; }
-    .detail-bullet.improve::before { content: '↑'; color: #f59e0b; font-weight: 800; flex-shrink: 0; }
+    .detail-bullet::before { content: '•'; font-weight: 800; flex-shrink: 0; }
+    .detail-bullet.good::before { content: '✓'; color: #059669; }
+    .detail-bullet.improve::before { content: '↑'; color: #f59e0b; }
+    .goal-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .goal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+    .goal-funnel { display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+    .goal-funnel.tofu { background: rgba(99,102,241,0.15); color: #6366f1; }
+    .goal-funnel.mofu { background: rgba(245,158,11,0.15); color: #d97706; }
+    .goal-funnel.bofu { background: rgba(16,185,129,0.15); color: #059669; }
 
     /* IG Profile Card */
     .ig-profile-card {
@@ -678,80 +685,36 @@
           </table>
         </div>
         <div class="profile-card reveal reveal-delay-1">
-          <div class="profile-card-label">Social Media Today</div>
-          <table class="profile-table">
-            <tr><td>Instagram</td><td>@dwell513 · 3,803 followers · 714 posts</td></tr>
-            <tr><td>Facebook</td><td>Active · ~2,027 followers</td></tr>
-            <tr><td>YouTube</td><td>Active (low) · 63 subscribers · 185 videos</td></tr>
-            <tr><td>TikTok</td><td>Just started · 23 followers</td></tr>
-            <tr><td>LinkedIn</td><td>Company page · minimal activity</td></tr>
-          </table>
-        </div>
-        <div class="profile-card reveal reveal-delay-1">
           <div class="profile-card-label">Current Pain Points</div>
           <ul class="pain-list">
             <li class="pain-item"><strong>Posting regularly, not seeing results</strong> — content isn't converting to leads or inquiries</li>
             <li class="pain-item"><strong>No marketing management</strong> — no system, no strategy, no accountability behind the content</li>
             <li class="pain-item"><strong>Low social media engagement</strong> — content isn't reaching the right audience or driving meaningful interaction</li>
-            <li class="pain-item"><strong>714 posts → 3,803 followers</strong> — high volume, low return. Effort without direction doesn't compound.</li>
           </ul>
         </div>
         <div class="profile-card reveal reveal-delay-2">
           <div class="profile-card-label">Primary Goals</div>
           <ul class="goal-list">
-            <li class="goal-item"><strong>Generate more leads and direct inquiries</strong> — social media should be a lead source, not just a presence</li>
-            <li class="goal-item"><strong>Fix the engagement problem</strong> — content that actually reaches and resonates with the right buyers and sellers</li>
-            <li class="goal-item"><strong>Get real marketing management</strong> — a system and a team behind the content, not just posting and hoping</li>
-            <li class="goal-item"><strong>Make 10+ years of expertise visible</strong> — turn credibility into content that builds authority over time</li>
+            <li class="goal-item">
+              <span class="goal-funnel tofu">TOFU</span>
+              <strong>Build brand authority and awareness</strong> — get in front of the right Cincinnati buyers and sellers who don't know DWELL513 yet
+            </li>
+            <li class="goal-item">
+              <span class="goal-funnel mofu">MOFU</span>
+              <strong>Drive real engagement from the right audience</strong> — content that educates, builds trust, and keeps the right people coming back
+            </li>
+            <li class="goal-item">
+              <span class="goal-funnel bofu">BOFU</span>
+              <strong>Generate leads and direct inquiries</strong> — turn Instagram into a consistent source of new business, not just a presence
+            </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WHAT WE SAW ===== -->
-  <section>
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">What We Saw</div>
-        <h2>Three things that<br><em>stood out immediately.</em></h2>
-        <p>We spent time on the account before this call. Here's what jumped out — the good, the gap, and the opportunity.</p>
-      </div>
-
-      <div class="obs-grid">
-        <div class="obs-card reveal">
-          <div class="obs-num">Observation 01</div>
-          <div class="obs-title">10+ years of credibility — not showing up in the content.</div>
-          <div class="obs-body">The brand has a decade of market expertise, a strong Cincinnati identity, and a clear point of view. None of that is coming through in the feed. The content looks like listings, not a brand. That's the gap.</div>
-          <div class="obs-stat">10+ years in market · 0 authority content</div>
-        </div>
-        <div class="obs-card reveal reveal-delay-1">
-          <div class="obs-num">Observation 02</div>
-          <div class="obs-title">714 posts. 3,803 followers. The math doesn't add up.</div>
-          <div class="obs-body">That's a lot of effort for the return. The issue isn't consistency — it's strategy. Without a clear IVP, content pillars, and a distribution system, posting more just creates more noise. Volume without direction doesn't compound.</div>
-          <div class="obs-stat">714 posts · 5.3 followers per post</div>
-        </div>
-        <div class="obs-card reveal reveal-delay-2">
-          <div class="obs-num">Observation 03</div>
-          <div class="obs-title">The 513Eats highlight is the most interesting thing on the profile.</div>
-          <div class="obs-body">Community-first content is the right instinct for a Cincinnati real estate brand. That's the direction. The problem is it's buried in a highlight instead of being the centerpiece of the strategy. That's exactly what we'd build on.</div>
-          <div class="obs-stat">Community angle → underutilized</div>
-        </div>
-      </div>
-
-      <div class="opportunity-box reveal">
-        <div class="opp-icon">🎯</div>
-        <div>
-          <div class="opp-label">The Opportunity</div>
-          <div class="opp-title">Nobody has claimed the Cincinnati real estate brand on Instagram. That's the opening.</div>
-          <div class="opp-body">Oyler Hines, Finn Team — they're all in the same 3K–3.8K follower range. Nobody has broken out. The brand that builds a real strategy first wins. DWELL513 already has the identity, the credibility, and the community angle. It just needs the system behind it.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== SOCIAL AUDIT ===== -->
-  <section class="alt">
+  <section>
     <div class="container-wide">
       <div class="section-header reveal">
         <div class="eyebrow">Social Media Audit</div>
@@ -984,6 +947,47 @@
     </div>
   </section>
 
+  <!-- ===== WHAT WE SAW ===== -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">What We Saw</div>
+        <h2>Three things that<br><em>stood out immediately.</em></h2>
+        <p>Based on our audit, here's what we took away — the strengths, the gaps, and where the real opportunity lives.</p>
+      </div>
+
+      <div class="obs-grid">
+        <div class="obs-card reveal">
+          <div class="obs-num">Observation 01</div>
+          <div class="obs-title">A proven brand. Now it's time to get it in front of the right people.</div>
+          <div class="obs-body">DWELL513 has 10+ years of credibility, a strong Cincinnati identity, and a clear point of view. The foundation is there. What's missing is using the Instagram algorithm to get that brand in front of the right audience — people who are actively looking for a Cincinnati agent and will convert when they find one they trust.</div>
+          <div class="obs-stat">Strong brand · Untapped audience reach</div>
+        </div>
+        <div class="obs-card reveal reveal-delay-1">
+          <div class="obs-num">Observation 02</div>
+          <div class="obs-title">3,803 followers is a foundation — but how many are actually the right people?</div>
+          <div class="obs-body">The account has built a real base to work from. But follower count is the wrong metric. The real question is: how many of those 3,803 followers are high-quality — buyers, sellers, and referral sources in Cincinnati? We shift the focus to quality over quantity — using proper keyword strategy, proven storytelling techniques, and psychological hooks that capture attention, drive engagement, and move the right viewers to take action.</div>
+          <div class="obs-stat">Quality followers · Not just volume</div>
+        </div>
+        <div class="obs-card reveal reveal-delay-2">
+          <div class="obs-num">Observation 03</div>
+          <div class="obs-title">No consistent strategy. No clear funnel. Social media as a sales tool doesn't work.</div>
+          <div class="obs-body">The biggest gap isn't posting frequency — it's the absence of a system. Minimum 2–3x per week, mapped to a top, middle, and bottom of funnel strategy. TOFU builds awareness and gets you discovered. MOFU educates and builds trust. BOFU drives action. Instagram isn't a place to sell — it's a place to capture the right audience and give them what they want, so that purchasing becomes a natural next step.</div>
+          <div class="obs-stat">Needs: consistency + funnel strategy</div>
+        </div>
+      </div>
+
+      <div class="opportunity-box reveal">
+        <div class="opp-icon">🎯</div>
+        <div>
+          <div class="opp-label">The Opportunity</div>
+          <div class="opp-title">Nobody has claimed the Cincinnati real estate brand on Instagram. That's the opening.</div>
+          <div class="opp-body">Oyler Hines, Finn Team — they're all in the same 3K–3.8K follower range. Nobody has broken out. The brand that builds a real strategy first wins. DWELL513 already has the identity, the credibility, and the community angle. It just needs the system behind it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== WHO WE ARE ===== -->
   <section>
     <div class="container">
@@ -1084,26 +1088,26 @@
         </div>
         <div class="phase-card reveal reveal-delay-2">
           <div class="phase-num">2</div>
-          <div class="phase-label">Months 2–3 · Execution</div>
-          <div class="phase-title">Execution Retainer</div>
-          <div class="phase-body">Full-service execution. We handle everything — content creation, scheduling, engagement, and monthly reporting.</div>
+          <div class="phase-label">Months 2–3 · Testing</div>
+          <div class="phase-title">Execution &amp; Testing</div>
+          <div class="phase-body">Full-service execution with an intentional testing mindset. We run a wide range of formats and hooks to see what resonates with your specific audience — and let the data drive the strategy from there.</div>
           <ul class="phase-deliverables">
             <li class="phase-deliverable">Monthly content shoot</li>
             <li class="phase-deliverable">Reels + static + Stories</li>
+            <li class="phase-deliverable">Format &amp; hook testing</li>
             <li class="phase-deliverable">Caption writing + SEO</li>
-            <li class="phase-deliverable">Scheduling + publishing</li>
             <li class="phase-deliverable">Monthly performance report</li>
           </ul>
         </div>
         <div class="phase-card reveal reveal-delay-3">
           <div class="phase-num">3</div>
-          <div class="phase-label">Month 4+ · Compounding</div>
-          <div class="phase-title">Compounding Authority</div>
-          <div class="phase-body">The strategy compounds. Content builds on content. The audience grows. The brand becomes the go-to name in the market.</div>
+          <div class="phase-label">Month 4+ · Optimization</div>
+          <div class="phase-title">Refine, Optimize &amp; Convert</div>
+          <div class="phase-body">Now we know what works. We double down on the formats and hooks that perform, cut what doesn't, and shift the focus toward lead generation — turning an engaged audience into real business inquiries.</div>
           <ul class="phase-deliverables">
-            <li class="phase-deliverable">Ongoing strategy refinement</li>
-            <li class="phase-deliverable">Performance-based iteration</li>
-            <li class="phase-deliverable">Audience growth tracking</li>
+            <li class="phase-deliverable">Data-driven content refinement</li>
+            <li class="phase-deliverable">Lead gen content focus (BOFU)</li>
+            <li class="phase-deliverable">Audience quality optimization</li>
             <li class="phase-deliverable">Lead attribution reporting</li>
           </ul>
         </div>
@@ -1113,10 +1117,10 @@
         <div class="niche-callout-label">Real Estate — How We Handle It Differently</div>
         <div class="niche-callout-title">Real estate moves fast. Our system is built to keep up.</div>
         <div class="niche-scenarios">
-          <div class="niche-scenario">Listing-responsive shoots — rapid turnaround when a new property goes live</div>
-          <div class="niche-scenario">Market authority content — neighborhood expertise, market updates, buyer/seller education</div>
-          <div class="niche-scenario">Community-first strategy — the 513 identity as a content pillar, not just a hashtag</div>
-          <div class="niche-scenario">Buyer/seller funnel alignment — content mapped to where the client is in their decision journey</div>
+          <div class="niche-scenario"><strong>Listing-responsive shoots</strong> — when a new listing goes live, we move fast. We recommend a minimum of 1 dedicated content shoot per listing, capturing 3–5 short-form video clips and 5–8 still assets for use across Reels, Stories, and static posts</div>
+          <div class="niche-scenario"><strong>Shoot setup &amp; equipment</strong> — for listing content, we use a wide-angle lens for interior walk-throughs, a gimbal for smooth Reel transitions, and natural light prioritization. Drone footage for exterior shots where applicable. The goal is cinematic, not just functional.</div>
+          <div class="niche-scenario"><strong>Community-first content</strong> — the 513 identity is a content pillar, not just a hashtag. Neighborhood spotlights, local business features, and lifestyle content that makes DWELL513 the authority on Cincinnati living</div>
+          <div class="niche-scenario"><strong>Buyer/seller funnel alignment</strong> — TOFU content builds brand awareness and community trust, MOFU educates buyers and sellers on the process, BOFU drives direct inquiries and listing consultations</div>
         </div>
       </div>
     </div>

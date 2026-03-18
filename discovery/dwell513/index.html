@@ -457,6 +457,71 @@
     .inspo-apply-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
     .inspo-apply-text { font-size: 12px; color: var(--accent); line-height: 1.5; font-weight: 500; }
 
+    /* ── BRAND INSPO EMBEDDED POSTS ── */
+    .inspo-account-block { margin-bottom: 56px; }
+    .inspo-account-block:last-child { margin-bottom: 0; }
+    .inspo-account-header {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .inspo-account-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; flex-shrink: 0;
+    }
+    .inspo-account-name { font-size: 18px; font-weight: 900; color: var(--text); letter-spacing: -0.02em; }
+    .inspo-account-meta { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+    .inspo-account-why {
+      font-size: 14px; color: var(--text-mid); line-height: 1.7;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius); padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .inspo-posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .inspo-post-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; box-shadow: var(--shadow-sm);
+    }
+    .inspo-post-embed {
+      background: #000; aspect-ratio: 9/16; max-height: 480px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .inspo-post-embed iframe {
+      width: 100%; height: 100%; border: none;
+      min-height: 400px;
+    }
+    .inspo-post-analysis { padding: 20px; }
+    .inspo-post-stats {
+      display: flex; gap: 16px; margin-bottom: 14px;
+    }
+    .inspo-post-stat {
+      font-size: 12px; font-weight: 800; color: var(--accent);
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      border-radius: 8px; padding: 5px 10px;
+    }
+    .inspo-post-funnel {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .inspo-post-funnel.tofu { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.25); }
+    .inspo-post-funnel.mofu { background: rgba(245,158,11,0.1); color: #d97706; border: 1px solid rgba(245,158,11,0.25); }
+    .inspo-post-funnel.bofu { background: rgba(239,68,68,0.1); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+    .inspo-post-why-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .inspo-post-why { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 14px; }
+    .inspo-post-apply {
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      border-radius: var(--radius); padding: 12px 14px;
+    }
+    .inspo-post-apply-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+    .inspo-post-apply-text { font-size: 12px; color: var(--accent); line-height: 1.55; font-weight: 500; }
+    @media (max-width: 768px) {
+      .inspo-posts-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── DISCOVERY QUESTIONS ── */
     .q-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
     .q-nav { position: sticky; top: 80px; }
@@ -510,7 +575,25 @@
     }
     .q-note strong { color: var(--accent); }
 
-    /* ── INVESTMENT ── */
+
+    /* -- DISCOVERY QUESTIONS TABLE -- */
+    .dq-blocks { display: flex; flex-direction: column; gap: 32px; }
+    .dq-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .dq-block-header { display: flex; align-items: center; gap: 20px; padding: 20px 28px; background: var(--accent); }
+    .dq-block-num { font-size: 28px; font-weight: 900; color: rgba(255,255,255,0.25); letter-spacing: -0.04em; line-height: 1; flex-shrink: 0; }
+    .dq-block-title { font-size: 15px; font-weight: 800; color: #fff; }
+    .dq-block-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .dq-table { display: flex; flex-direction: column; }
+    .dq-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .dq-row:last-child { border-bottom: none; }
+    .dq-q-col { padding: 20px 24px; border-right: 1px solid var(--border); }
+    .dq-a-col { padding: 20px 24px; background: var(--accent-dim); }
+    .dq-q-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .dq-a-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .dq-q-text { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.6; }
+    .dq-a-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+        /* ── INVESTMENT ── */
     .investment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .inv-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -560,14 +643,15 @@
 
     /* ── FOOTER ── */
     .footer {
-      background: var(--text); color: rgba(255,255,255,0.6);
+      background: #ffffff; color: rgba(21,21,22,0.5);
+      border-top: 1px solid var(--border);
       padding: 40px 0; text-align: center;
     }
     .footer-logo { margin-bottom: 16px; }
-    .footer-logo img { height: 24px; width: auto; filter: brightness(0) invert(1); opacity: 0.8; }
+    .footer-logo img { height: 24px; width: auto; }
     .footer-text { font-size: 13px; }
-    .footer-text a { color: rgba(255,255,255,0.5); text-decoration: none; }
-    .footer-text a:hover { color: #fff; }
+    .footer-text a { color: rgba(21,21,22,0.45); text-decoration: none; }
+    .footer-text a:hover { color: var(--accent); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -672,19 +756,19 @@
         <div class="profile-card reveal reveal-delay-1">
           <div class="profile-card-label">Current Pain Points</div>
           <ul class="pain-list">
-            <li class="pain-item">Posting regularly but not seeing meaningful results — content isn't converting</li>
-            <li class="pain-item">Lack of marketing management — no clear system or strategy behind the content</li>
-            <li class="pain-item">Low engagement — content isn't reaching the right people or driving interaction</li>
-            <li class="pain-item">714 posts with only 3,803 followers — strong effort, weak return</li>
+            <li class="pain-item"><strong>Posting regularly, not seeing results</strong> — content isn't converting to leads or inquiries</li>
+            <li class="pain-item"><strong>No marketing management</strong> — no system, no strategy, no accountability behind the content</li>
+            <li class="pain-item"><strong>Low social media engagement</strong> — content isn't reaching the right audience or driving meaningful interaction</li>
+            <li class="pain-item"><strong>714 posts → 3,803 followers</strong> — high volume, low return. Effort without direction doesn't compound.</li>
           </ul>
         </div>
         <div class="profile-card reveal reveal-delay-2">
           <div class="profile-card-label">Primary Goals</div>
           <ul class="goal-list">
-            <li class="goal-item">Generate more leads and direct inquiries through Instagram</li>
-            <li class="goal-item">Build brand authority as the go-to Cincinnati real estate brand on social</li>
-            <li class="goal-item">Turn 10+ years of market expertise into visible, credible content</li>
-            <li class="goal-item">Create a consistent, strategy-backed presence that compounds over time</li>
+            <li class="goal-item"><strong>Generate more leads and direct inquiries</strong> — social media should be a lead source, not just a presence</li>
+            <li class="goal-item"><strong>Fix the engagement problem</strong> — content that actually reaches and resonates with the right buyers and sellers</li>
+            <li class="goal-item"><strong>Get real marketing management</strong> — a system and a team behind the content, not just posting and hoping</li>
+            <li class="goal-item"><strong>Make 10+ years of expertise visible</strong> — turn credibility into content that builds authority over time</li>
           </ul>
         </div>
       </div>
@@ -1106,194 +1190,331 @@
 
   <!-- ===== BRAND INSPIRATION ===== -->
   <section>
-    <div class="container">
+    <div class="container-wide">
       <div class="section-header reveal">
         <div class="eyebrow">Brand Inspiration</div>
         <h2>Accounts you mentioned.<br><em>Here's what we see.</em></h2>
-        <p>You pulled these three as inspiration. We looked at all of them. Here's what they're doing well — and how we'd apply those lessons to DWELL513.</p>
+        <p>We pulled the top-performing posts from each account and broke down exactly why they work — and how we'd build something similar for DWELL513 using the Scroll content framework.</p>
       </div>
 
-      <div class="inspo-grid">
-        <div class="inspo-card reveal">
-          <div class="inspo-card-header">
-            <div class="inspo-handle">@oylerhines</div>
-            <div class="inspo-meta">Cincinnati Real Estate · ~3,351 followers</div>
-          </div>
-          <div class="inspo-card-body">
-            <div class="inspo-why-label">Why It Works</div>
-            <div class="inspo-why">Oyler Hines has the strongest visual brand identity in the Cincinnati real estate space. The consistent OH logo system, clean aesthetic, and polished photography make them immediately recognizable. They've built a brand, not just a feed.</div>
-            <ul class="inspo-lessons">
-              <li class="inspo-lesson">Consistent visual identity across every post — logo, colors, typography</li>
-              <li class="inspo-lesson">Professional photography as the baseline — not MLS photos</li>
-              <li class="inspo-lesson">Brand-first approach — the agency is the brand, not individual agents</li>
-            </ul>
-          </div>
-          <div class="inspo-apply">
-            <div class="inspo-apply-label">Applied to DWELL513</div>
-            <div class="inspo-apply-text">Build a consistent visual system around the DWELL513 identity — the 513 mark, a defined color palette, and a photography style that's instantly recognizable as yours.</div>
+      <!-- OYLER HINES -->
+      <div class="inspo-account-block reveal">
+        <div class="inspo-account-header">
+          <div class="inspo-account-icon">OH</div>
+          <div>
+            <div class="inspo-account-name">@oylerhines</div>
+            <div class="inspo-account-meta">Cincinnati Real Estate · 3,352 followers · #1 Team in Cincinnati</div>
           </div>
         </div>
-
-        <div class="inspo-card reveal reveal-delay-1">
-          <div class="inspo-card-header">
-            <div class="inspo-handle">@finnteamrealestate</div>
-            <div class="inspo-meta">Cincinnati Real Estate · ~3,153 followers</div>
-          </div>
-          <div class="inspo-card-body">
-            <div class="inspo-why-label">Why It Works</div>
-            <div class="inspo-why">Finn Team does neighborhood authority content better than anyone in Cincinnati. Hyde Park spotlights, local restaurant features, community events — they've positioned themselves as the neighborhood experts, not just agents who sell there.</div>
-            <ul class="inspo-lessons">
-              <li class="inspo-lesson">Neighborhood authority content — own a specific area, not just the city</li>
-              <li class="inspo-lesson">Local lifestyle content — restaurants, events, community — builds trust</li>
-              <li class="inspo-lesson">Education-forward — market updates, buyer tips, seller guides</li>
-            </ul>
-          </div>
-          <div class="inspo-apply">
-            <div class="inspo-apply-label">Applied to DWELL513</div>
-            <div class="inspo-apply-text">The 513Eats highlight is already this instinct. We'd build that into a full content pillar — Cincinnati neighborhood content that makes DWELL513 the community expert, not just the listing agent.</div>
-          </div>
+        <div class="inspo-account-why">
+          <strong>Why they're a smart reference:</strong> Oyler Hines has the strongest visual brand identity in the Cincinnati real estate space. Consistent OH logo system, polished photography, and agent-on-camera Reels that build trust fast. They've built a brand, not just a feed — and their top content shows exactly how.
         </div>
-
-        <div class="inspo-card reveal reveal-delay-2">
-          <div class="inspo-card-header">
-            <div class="inspo-handle">@hartandcru</div>
-            <div class="inspo-meta">Cincinnati · Community-Forward Brand</div>
+        <div class="inspo-posts-grid">
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVKU7nKkUMW/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-stats">
+                <div class="inspo-post-stat">17.2K Views</div>
+                <div class="inspo-post-stat">101 Likes</div>
+              </div>
+              <div class="inspo-post-funnel mofu">MOFU — Authority Content</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <div class="inspo-post-why">Scarcity hook ("86 acres... extraordinarily rare") + specific $5M price point + agent on camera = instant credibility. This is a <strong>Talking Head Reel</strong> — agent on location, storytelling about a marquee listing. Specificity and scarcity drive shares and saves from warm buyers.</div>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to DWELL513</div>
+                <div class="inspo-post-apply-text">Agent on camera at a standout listing — specific address, specific story, specific price point. "This home just hit the market in [neighborhood]. Here's why it's different." MOFU format that builds authority and drives DMs from warm buyers.</div>
+              </div>
+            </div>
           </div>
-          <div class="inspo-card-body">
-            <div class="inspo-why-label">Why It Works</div>
-            <div class="inspo-why">Hart & Cru isn't real estate — and that's exactly why it's such a smart reference. They've built a brand around Cincinnati identity and community belonging. The content feels warm, intentional, and local. That's the emotional register DWELL513 should own.</div>
-            <ul class="inspo-lessons">
-              <li class="inspo-lesson">Community-first content — people and places, not just products</li>
-              <li class="inspo-lesson">Warm, approachable tone — feels like a friend, not a brand</li>
-              <li class="inspo-lesson">Cincinnati pride as a content pillar — the city is the brand</li>
-            </ul>
-          </div>
-          <div class="inspo-apply">
-            <div class="inspo-apply-label">Applied to DWELL513</div>
-            <div class="inspo-apply-text">"Home is found here" is already the right tagline. We'd build content that makes people feel that — Cincinnati stories, local love, and a brand that feels like it belongs to the city.</div>
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVwNwd6EZsC/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-stats">
+                <div class="inspo-post-stat">3,779 Views</div>
+                <div class="inspo-post-stat">47 Likes</div>
+              </div>
+              <div class="inspo-post-funnel tofu">TOFU — Discovery Content</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <div class="inspo-post-why">Lifestyle hook (coffee → golf → dinner) + Cincinnati name-drops + agent on camera = broad discovery appeal. This is a <strong>Lifestyle Location Reel</strong> — it's not about the listing, it's about the life. That's what stops the scroll for buyers who are still dreaming, not yet searching.</div>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to DWELL513</div>
+                <div class="inspo-post-apply-text">"This is what your Saturday looks like when you live in [Cincinnati neighborhood]." TOFU content that reaches buyers before they're actively searching — builds brand awareness through lifestyle identity, not listings.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- FINN TEAM -->
+      <div class="inspo-account-block reveal">
+        <div class="inspo-account-header">
+          <div class="inspo-account-icon">FT</div>
+          <div>
+            <div class="inspo-account-name">@finnteamrealestate</div>
+            <div class="inspo-account-meta">Cincinnati Real Estate · 3,154 followers · Coldwell Banker</div>
+          </div>
+        </div>
+        <div class="inspo-account-why">
+          <strong>Why they're a smart reference:</strong> Finn Team does two things well — community tie-ins that drive massive reach, and neighborhood authority content that builds trust. Their top posts show how local identity and agent-on-camera formats compound over time.
+        </div>
+        <div class="inspo-posts-grid">
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVb18e3EdKk/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-stats">
+                <div class="inspo-post-stat">9,694 Views</div>
+                <div class="inspo-post-stat">302 Likes</div>
+              </div>
+              <div class="inspo-post-funnel tofu">TOFU — Community Reach</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <div class="inspo-post-why">Giveaway mechanic (like to enter) + local Cincinnati identity (Reds Opening Day) = massive reach. This is a <strong>Community Event Reel</strong> — not real estate content at all. Pure brand awareness through local identity. 9.6K views on a 3K-follower account is a 3x reach multiplier.</div>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to DWELL513</div>
+                <div class="inspo-post-apply-text">DWELL513 already has the 513 identity — use it. Tie into Cincinnati events, local milestones, and community moments. Community event tie-in Reels are the highest-reach TOFU format in the Scroll playbook for local brands. Builds awareness before the buyer is ready to buy.</div>
+              </div>
+            </div>
+          </div>
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT-7doZkVn3/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-stats">
+                <div class="inspo-post-stat">6,433 Views</div>
+                <div class="inspo-post-stat">101 Likes</div>
+              </div>
+              <div class="inspo-post-funnel mofu">MOFU — Neighborhood Authority</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <div class="inspo-post-why">Hyde Park name-drop (high-intent local keyword) + agent on camera + renovation story = warm audience trust-builder. This is a <strong>Coming Soon Listing Reel</strong> — the neighborhood name is the hook, not the listing. Buyers searching Hyde Park on Instagram find this content.</div>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to DWELL513</div>
+                <div class="inspo-post-apply-text">Own specific Cincinnati neighborhoods in your content — OTR, Hyde Park, Oakley, NKY. "Coming to market in [neighborhood]" Reels with agent on camera are a core MOFU format in the Scroll framework. Builds Social SEO and neighborhood authority simultaneously.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HART & CRU -->
+      <div class="inspo-account-block reveal">
+        <div class="inspo-account-header">
+          <div class="inspo-account-icon">HC</div>
+          <div>
+            <div class="inspo-account-name">@hartandcru</div>
+            <div class="inspo-account-meta">Cincinnati · OTR Bottle Shop &amp; Tasting Room · 10.4K followers</div>
+          </div>
+        </div>
+        <div class="inspo-account-why">
+          <strong>Why they're the most interesting reference:</strong> Hart &amp; Cru isn't real estate — and that's exactly the point. They've built a brand around Cincinnati identity and community belonging. Their content feels warm, intentional, and local. That's the emotional register DWELL513 should own. The lesson isn't what they sell — it's how they make people feel.
+        </div>
+        <div class="inspo-posts-grid">
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVY6IFtEcor/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-stats">
+                <div class="inspo-post-stat">10.3K Views</div>
+                <div class="inspo-post-stat">374 Likes</div>
+              </div>
+              <div class="inspo-post-funnel bofu">BOFU — Conversion Content</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <div class="inspo-post-why">Scarcity framing ("seats are limited, this will sell out") + founder on camera + prestige positioning = direct conversion. This is a <strong>Founder Event Announcement Reel</strong> — high-intent audience, clear CTA, urgency built in. Founder credibility is the conversion lever.</div>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to DWELL513</div>
+                <div class="inspo-post-apply-text">Doug on camera announcing an exclusive open house, a new listing with limited showing windows, or a market update. "I only have 3 showing slots this week" creates the same urgency mechanic. Founder-forward BOFU content drives DMs and direct inquiries.</div>
+              </div>
+            </div>
+          </div>
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DOttj1REXpD/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-stats">
+                <div class="inspo-post-stat">10K Views</div>
+                <div class="inspo-post-stat">393 Likes</div>
+              </div>
+              <div class="inspo-post-funnel tofu">TOFU — Community Activation</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <div class="inspo-post-why">Bold hook ("Skip cooking") + recurring event + local collab (Saint Francis Apizza) = massive discovery reach. This is a <strong>Community Activation Reel</strong> — it's not about the product, it's about the vibe. The casual tone and local collab tap into a completely new audience.</div>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to DWELL513</div>
+                <div class="inspo-post-apply-text">DWELL513's 513Eats angle is exactly this instinct. Feature local Cincinnati restaurants, shops, and experiences — "This is why people move to [neighborhood]." Community collab content is the highest-performing TOFU format for local brands. It builds the brand before the buyer is ready to buy.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ===== DISCOVERY QUESTIONS ===== -->
+    <!-- ===== DISCOVERY QUESTIONS ===== -->
   <section class="alt">
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">Discovery Questions</div>
-        <h2>Let's talk about<br><em>your business.</em></h2>
-        <p>These are the questions we want to work through together. The more honest you are, the better we can build for you. This is a conversation — not an interview.</p>
+        <h2>What we want to<br><em>work through together.</em></h2>
+        <p>These are the questions we've prepared based on what you shared. Think of this as a guide for the conversation — not a script. The goal is to get to the real picture fast.</p>
       </div>
 
-      <div class="q-content reveal">
+      <div class="dq-blocks reveal">
 
-        <div class="q-group-card">
-          <div class="q-group-header">
-            <div class="q-group-icon">🏢</div>
-            <div class="q-group-title">Business & Goals</div>
-            <div class="q-group-count">3 questions</div>
+        <!-- BLOCK 1: Business & Goals -->
+        <div class="dq-block">
+          <div class="dq-block-header">
+            <div class="dq-block-num">01</div>
+            <div>
+              <div class="dq-block-title">Business &amp; Goals</div>
+              <div class="dq-block-sub">Understanding what success actually looks like</div>
+            </div>
           </div>
-          <div class="q-items">
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q1</div>
-                <div class="q-text">You mentioned generating more leads and inquiries as the primary goal. What does a "lead" actually look like — a DM, a phone call, a form submission? And what's the typical value of a closed deal?</div>
+          <div class="dq-table">
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">What does a "lead" actually look like for you — a DM, a call, a form submission? And what's the typical commission on a closed deal?</div>
               </div>
-              <div class="q-note"><strong>Listen for:</strong> Frames the ROI conversation. One closed deal at $10K+ commission = months of service paid for. Use this to anchor the investment conversation later.</div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">One closed deal at $10K+ commission = months of retainer paid for. This anchors the ROI conversation and reframes the investment.</div>
+              </div>
             </div>
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q2</div>
-                <div class="q-text">Are you primarily focused on seller leads, buyer leads, or overall brand authority in Cincinnati? Is there a specific neighborhood or price point you want to own?</div>
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">Are you focused on seller leads, buyer leads, or overall brand authority? Is there a specific neighborhood or price point you want to own?</div>
               </div>
-              <div class="q-note"><strong>Listen for:</strong> Niche focus — luxury, first-time buyers, OTR, Hyde Park, NKY, etc. This shapes the entire IVP and content strategy.</div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Niche focus shapes the entire Ideal Viewer Profile (IVP) and content strategy. Luxury vs. first-time buyers vs. OTR vs. NKY = completely different content systems.</div>
+              </div>
             </div>
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q3</div>
-                <div class="q-text">DWELL513 has been in business 10+ years and rebranded in 2017. What's driven the most business historically — and why hasn't Instagram been a bigger part of that equation?</div>
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">DWELL513 has been around 10+ years. What's driven the most business historically — and why hasn't Instagram been a bigger part of that equation?</div>
               </div>
-              <div class="q-note"><strong>Listen for:</strong> Referral-heavy business, skepticism about social ROI, or just never had the right system. Helps address the real objection.</div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Referral-heavy business, skepticism about social ROI, or just never had the right system. This is where the real objection lives — address it directly.</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="q-group-card">
-          <div class="q-group-header">
-            <div class="q-group-icon">🔍</div>
-            <div class="q-group-title">Current Situation & Pain Points</div>
-            <div class="q-group-count">3 questions</div>
-          </div>
-          <div class="q-items">
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q4</div>
-                <div class="q-text">You said you're posting regularly but not seeing results. What does "regularly" look like — how often, what types of content? And what result would make you feel like it's actually working?</div>
-              </div>
-              <div class="q-note"><strong>Listen for:</strong> Defines their baseline and success criteria. Also reveals if they're posting without strategy — which is the core problem to solve.</div>
-            </div>
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q5</div>
-                <div class="q-text">You mentioned lack of marketing management and low engagement as the biggest bottlenecks. Is the issue bandwidth — not enough time to do it right — or is it more about not knowing what to do?</div>
-              </div>
-              <div class="q-note"><strong>Listen for:</strong> Time vs. strategy gap. If it's time, they need full handoff (Signature). If it's strategy, Blueprint might be the right entry point.</div>
-            </div>
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q6</div>
-                <div class="q-text">Have you worked with a social media agency or freelancer before? What happened?</div>
-              </div>
-              <div class="q-note"><strong>Listen for:</strong> Previous bad experiences, what they're trying to avoid, trust barriers to address. This is often where the real objection lives.</div>
+        <!-- BLOCK 2: Current Situation -->
+        <div class="dq-block">
+          <div class="dq-block-header">
+            <div class="dq-block-num">02</div>
+            <div>
+              <div class="dq-block-title">Current Situation &amp; Pain Points</div>
+              <div class="dq-block-sub">Diagnosing the real problem behind the symptoms</div>
             </div>
           </div>
-        </div>
-
-        <div class="q-group-card">
-          <div class="q-group-header">
-            <div class="q-group-icon">📸</div>
-            <div class="q-group-title">Content & Assets</div>
-            <div class="q-group-count">2 questions</div>
-          </div>
-          <div class="q-items">
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q7</div>
-                <div class="q-text">You mentioned Oyler Hines, Finn Team, and Hart & Cru as brand inspiration. What specifically do you like about how they show up — is it the aesthetic, the content types, the tone, or something else?</div>
+          <div class="dq-table">
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">You said you're posting regularly but not seeing results. What does "regularly" look like — how often, what types of content? And what result would make you feel like it's working?</div>
               </div>
-              <div class="q-note"><strong>Listen for:</strong> Visual direction, lifestyle vs. listing balance, founder-forward vs. brand-forward. Shapes the creative brief for the proposal.</div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Defines their baseline and success criteria. If they're posting without a strategy, that's the core problem. 714 posts with 3,803 followers confirms this — volume isn't the issue.</div>
+              </div>
             </div>
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q8</div>
-                <div class="q-text">When a new listing goes live, how quickly do you typically need content ready? Do you have a photographer you work with for listings, or do you rely on MLS photos?</div>
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">You mentioned lack of marketing management and low engagement as the biggest bottlenecks. Is the issue bandwidth — not enough time to do it right — or is it more about not knowing what to do?</div>
               </div>
-              <div class="q-note"><strong>Real estate niche question</strong> — scopes listing-responsive shoot needs and existing asset pipeline. Informs whether we need a flexible shoot structure in the proposal.</div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Time vs. strategy gap. If it's time → full handoff (Signature). If it's strategy → Blueprint as entry point. This determines the right offer to lead with in the proposal.</div>
+              </div>
+            </div>
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">Have you worked with a social media agency or freelancer before? What happened?</div>
+              </div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Previous bad experiences, what they're trying to avoid, trust barriers to address. This is often where the real objection lives — and where Scroll's strategy-first approach differentiates.</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="q-group-card">
-          <div class="q-group-header">
-            <div class="q-group-icon">💰</div>
-            <div class="q-group-title">Fit & Investment</div>
-            <div class="q-group-count">2 questions</div>
-          </div>
-          <div class="q-items">
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q9</div>
-                <div class="q-text">What does success look like at 6 months? What would need to be true for you to say "this was worth it"?</div>
-              </div>
-              <div class="q-note"><strong>Listen for:</strong> Specific metrics, lead volume, brand recognition, time savings. This becomes the benchmark for the proposal and the 6-month check-in.</div>
+        <!-- BLOCK 3: Content & Assets -->
+        <div class="dq-block">
+          <div class="dq-block-header">
+            <div class="dq-block-num">03</div>
+            <div>
+              <div class="dq-block-title">Content &amp; Assets</div>
+              <div class="dq-block-sub">What we're working with and what we need to build</div>
             </div>
-            <div class="q-item">
-              <div class="q-item-top">
-                <div class="q-num">Q10</div>
-                <div class="q-text">Our retainer engagements start at $2,750/month. I want to be upfront about that so we're both working with the right expectations. Does that range make sense for where you are right now?</div>
+          </div>
+          <div class="dq-table">
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">You mentioned Oyler Hines, Finn Team, and Hart &amp; Cru as inspiration. What specifically do you like about how they show up — the aesthetic, the content types, the tone, or something else?</div>
               </div>
-              <div class="q-note"><strong>Budget qualification</strong> — if it's a stretch, explore Blueprint as an entry point (credited toward Signature). If yes, move straight to Signature in the proposal.</div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Visual direction, lifestyle vs. listing balance, founder-forward vs. brand-forward. This shapes the creative brief and the IVP for the proposal. Specificity here = better strategy.</div>
+              </div>
+            </div>
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">When a new listing goes live, how quickly do you need content ready? Do you have a photographer you work with, or do you rely on MLS photos?</div>
+              </div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Scopes listing-responsive shoot needs and existing asset pipeline. Real estate moves fast — we need to know if a flexible shoot structure is required in the proposal.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 4: Fit & Investment -->
+        <div class="dq-block">
+          <div class="dq-block-header">
+            <div class="dq-block-num">04</div>
+            <div>
+              <div class="dq-block-title">Fit &amp; Investment</div>
+              <div class="dq-block-sub">Making sure we're aligned before we build anything</div>
+            </div>
+          </div>
+          <div class="dq-table">
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">What does success look like at 6 months? What would need to be true for you to say "this was worth it"?</div>
+              </div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">Specific metrics, lead volume, brand recognition, time savings. This becomes the benchmark for the proposal and the 6-month check-in. Vague answers = need to push for specifics.</div>
+              </div>
+            </div>
+            <div class="dq-row">
+              <div class="dq-q-col">
+                <div class="dq-q-label">Ask</div>
+                <div class="dq-q-text">Our retainer engagements start at $2,750/month. I want to be upfront about that so we're both working with the right expectations. Does that range make sense for where you are right now?</div>
+              </div>
+              <div class="dq-a-col">
+                <div class="dq-a-label">Listen For</div>
+                <div class="dq-a-text">If it's a stretch → explore Blueprint as entry point (credited toward Signature within 60 days). If yes → move straight to Signature in the proposal. Don't oversell the wrong tier.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1302,7 +1523,7 @@
     </div>
   </section>
 
-  <!-- ===== INVESTMENT ===== -->
+    <!-- ===== INVESTMENT ===== -->
   <section>
     <div class="container">
       <div class="section-header reveal">
@@ -1432,5 +1653,7 @@
     }
   </script>
 
+
+  <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>

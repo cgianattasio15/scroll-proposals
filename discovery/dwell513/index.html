@@ -140,33 +140,62 @@
     .section-header p { font-size: 16px; color: var(--text-mid); max-width: 580px; line-height: 1.75; }
 
     /* ── CLIENT PROFILE ── */
-    .profile-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-      margin-bottom: 32px;
+    .profile-layout { display: flex; flex-direction: column; gap: 20px; }
+    .profile-hero-card {
+      background: var(--accent); border-radius: var(--radius-lg);
+      padding: 36px 40px; box-shadow: 0 8px 32px rgba(12,51,135,0.22);
+      position: relative; overflow: hidden;
     }
+    .profile-hero-card::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;
+    }
+    .profile-hero-card::after {
+      content: ''; position: absolute; bottom: -60px; left: 20%;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none;
+    }
+    .profile-hero-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px; position: relative; z-index: 1;
+    }
+    .profile-hero-label::before { content: ''; width: 4px; height: 14px; background: rgba(255,255,255,0.5); border-radius: 2px; }
+    .profile-hero-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius);
+      overflow: hidden; position: relative; z-index: 1;
+    }
+    .profile-hero-item {
+      padding: 18px 22px; border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .profile-hero-item:last-child { border-right: none; }
+    .profile-hero-item-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 5px; }
+    .profile-hero-item-value { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.4; }
+    .profile-hero-brand {
+      margin-top: 24px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      position: relative; z-index: 1;
+    }
+    .profile-hero-brand-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+    .profile-hero-brand-value { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.5; }
+    .profile-secondary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .profile-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
       padding: 28px 32px; box-shadow: var(--shadow-sm);
     }
-    .profile-card.full { grid-column: 1 / -1; }
     .profile-card-label {
       font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 16px;
       display: flex; align-items: center; gap: 8px;
     }
     .profile-card-label::before { content: ''; width: 4px; height: 14px; background: var(--accent); border-radius: 2px; }
-    .profile-table { width: 100%; border-collapse: collapse; }
-    .profile-table tr { border-bottom: 1px solid var(--border); }
-    .profile-table tr:last-child { border-bottom: none; }
-    .profile-table td { padding: 10px 0; font-size: 14px; vertical-align: top; }
-    .profile-table td:first-child { font-weight: 700; color: var(--text); width: 42%; padding-right: 16px; }
-    .profile-table td:last-child { color: var(--text-mid); }
     .pain-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .pain-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-mid); line-height: 1.55; }
-    .pain-item::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 6px; }
-    .goal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-mid); line-height: 1.55; }
-    .goal-item::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #10b981; flex-shrink: 0; margin-top: 6px; }
-    .goal-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .pain-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+    .pain-item::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 5px; }
+    .goal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+    .goal-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
     /* ── OBSERVATIONS ── */
     .obs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
@@ -210,6 +239,18 @@
     .opp-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 10px; position: relative; z-index: 1; }
     .opp-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; line-height: 1.3; position: relative; z-index: 1; }
     .opp-body { font-size: 15px; opacity: 0.88; line-height: 1.75; position: relative; z-index: 1; }
+
+    .diff-ideas {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px;
+    }
+    .diff-idea-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 24px; box-shadow: var(--shadow-sm);
+      border-top: 3px solid var(--accent);
+    }
+    .diff-idea-num { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .diff-idea-title { font-size: 14px; font-weight: 800; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+    .diff-idea-body { font-size: 12px; color: var(--text-mid); line-height: 1.65; }
 
     /* ── SOCIAL AUDIT ── */
     .audit-layout {
@@ -356,6 +397,24 @@
     }
 
     /* ── WHO WE ARE ── */
+    .why-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
+    .why-item {
+      display: flex; align-items: flex-start; gap: 28px;
+      padding: 28px 0; border-bottom: 1px solid var(--border);
+    }
+    .why-item:first-child { padding-top: 0; }
+    .why-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .why-num {
+      font-size: 13px; font-weight: 900; color: var(--accent);
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      border-radius: 50%; width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; letter-spacing: 0;
+    }
+    .why-content { flex: 1; }
+    .why-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 8px; line-height: 1.35; }
+    .why-body { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+
     .stats-row {
       display: grid; grid-template-columns: repeat(4, 1fr);
       border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -512,27 +571,9 @@
     .inspo-apply-bullet { font-size: 12px; color: var(--accent); line-height: 1.5; font-weight: 500; }
     .inspo-apply-bullet strong { font-weight: 800; }
 
-    /* ── DISCOVERY QUESTIONS ── */
-    .dq-blocks { display: flex; flex-direction: column; gap: 32px; }
-    .dq-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .dq-block-header { display: flex; align-items: center; gap: 20px; padding: 20px 28px; background: var(--accent); }
-    .dq-block-num { font-size: 28px; font-weight: 900; color: rgba(255,255,255,0.25); letter-spacing: -0.04em; line-height: 1; flex-shrink: 0; }
-    .dq-block-title { font-size: 15px; font-weight: 800; color: #fff; }
-    .dq-block-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
-    .dq-table { display: flex; flex-direction: column; }
-    .dq-header-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); background: var(--bg-section); }
-    .dq-header-q { padding: 10px 24px; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border-right: 1px solid var(--border); }
-    .dq-header-a { padding: 10px 24px; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #059669; }
-    .dq-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
-    .dq-row:last-child { border-bottom: none; }
-    .dq-q-col { padding: 20px 24px; border-right: 1px solid var(--border); }
-    .dq-a-col { padding: 20px 24px; background: rgba(16,185,129,0.05); border-left: 3px solid rgba(16,185,129,0.3); }
-    .dq-q-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .dq-a-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #059669; margin-bottom: 8px; }
-    .dq-q-text { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.6; }
-    .dq-a-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; font-style: italic; }
+    /* DQ CSS removed — section moved to internal Notion doc */
 
-        /* ── INVESTMENT ── */
+    /* ── INVESTMENT ── */
     .investment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .inv-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -611,14 +652,33 @@
       .niche-scenarios { grid-template-columns: 1fr; }
       .investment-grid { grid-template-columns: 1fr; }
       .next-steps { grid-template-columns: 1fr; }
-      .profile-grid { grid-template-columns: 1fr; }
-      .profile-card.full { grid-column: 1; }
+      .profile-hero-grid { grid-template-columns: 1fr 1fr; }
+      .profile-hero-item:nth-child(2) { border-right: none; }
+      .profile-hero-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.12); grid-column: 1 / -1; }
+      .profile-secondary-row { grid-template-columns: 1fr; }
       .opportunity-box { flex-direction: column; }
+      .diff-ideas { grid-template-columns: 1fr 1fr; }
       .inspo-posts-grid { grid-template-columns: 1fr; }
       .inspo-account-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .dq-row { grid-template-columns: 1fr; }
-      .dq-q-col { border-right: none; border-bottom: 1px solid var(--border); }
-      .dq-a-col { border-left: none; border-top: 3px solid rgba(16,185,129,0.3); }
+      .why-item { flex-direction: column; gap: 12px; }
+      .why-num { width: 32px; height: 32px; font-size: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .profile-hero-card { padding: 24px 20px; }
+      .profile-hero-grid { grid-template-columns: 1fr; }
+      .profile-hero-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .profile-hero-item:last-child { border-bottom: none; }
+      .diff-ideas { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 36px; }
+      .section-header h2 { font-size: 28px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3) { border-top: 1px solid var(--border); }
+      .phases { grid-template-columns: 1fr; }
+      .niche-scenarios { grid-template-columns: 1fr; }
+      .investment-grid { grid-template-columns: 1fr; }
+      .next-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -673,42 +733,60 @@
         <p>We pulled this together before the call. If anything's off, correct us — that's exactly the kind of context that shapes a better strategy.</p>
       </div>
 
-      <div class="profile-grid">
-        <div class="profile-card reveal">
-          <div class="profile-card-label">Business Overview</div>
-          <table class="profile-table">
-            <tr><td>Business</td><td>DWELL513 Real Estate</td></tr>
-            <tr><td>Market</td><td>Cincinnati, OH + Northern Kentucky</td></tr>
-            <tr><td>Niche</td><td>Residential real estate — buyer & seller representation</td></tr>
-            <tr><td>In Business</td><td>10+ years (rebranded as DWELL513 in 2017)</td></tr>
-            <tr><td>Brand Angle</td><td>Cincinnati-identity, community-forward, lifestyle-driven</td></tr>
-          </table>
+      <div class="profile-layout">
+
+        <!-- Hero: Business Overview -->
+        <div class="profile-hero-card reveal">
+          <div class="profile-hero-label">Business Overview</div>
+          <div class="profile-hero-grid">
+            <div class="profile-hero-item">
+              <div class="profile-hero-item-label">Business</div>
+              <div class="profile-hero-item-value">DWELL513 Real Estate</div>
+            </div>
+            <div class="profile-hero-item">
+              <div class="profile-hero-item-label">Market</div>
+              <div class="profile-hero-item-value">Cincinnati, OH + Northern Kentucky</div>
+            </div>
+            <div class="profile-hero-item">
+              <div class="profile-hero-item-label">In Business</div>
+              <div class="profile-hero-item-value">10+ years (rebranded 2017)</div>
+            </div>
+          </div>
+          <div class="profile-hero-brand">
+            <div class="profile-hero-brand-label">Brand Angle</div>
+            <div class="profile-hero-brand-value"><strong>Cincinnati-identity, community-forward, lifestyle-driven</strong> — residential buyer &amp; seller representation rooted in the 513</div>
+          </div>
         </div>
-        <div class="profile-card reveal reveal-delay-1">
-          <div class="profile-card-label">Current Pain Points</div>
-          <ul class="pain-list">
-            <li class="pain-item"><strong>Posting regularly, not seeing results</strong> — content isn't converting to leads or inquiries</li>
-            <li class="pain-item"><strong>No marketing management</strong> — no system, no strategy, no accountability behind the content</li>
-            <li class="pain-item"><strong>Low social media engagement</strong> — content isn't reaching the right audience or driving meaningful interaction</li>
-          </ul>
+
+        <!-- Secondary: Pain Points + Goals -->
+        <div class="profile-secondary-row">
+          <div class="profile-card reveal reveal-delay-1">
+            <div class="profile-card-label">Current Pain Points</div>
+            <ul class="pain-list">
+              <li class="pain-item"><strong>Posting regularly, not seeing results</strong> — content isn't converting to leads or inquiries</li>
+              <li class="pain-item"><strong>No marketing management</strong> — no system, no strategy, no accountability behind the content</li>
+              <li class="pain-item"><strong>Low social media engagement</strong> — content isn't reaching the right audience or driving meaningful interaction</li>
+            </ul>
+          </div>
+          <div class="profile-card reveal reveal-delay-2">
+            <div class="profile-card-label">Primary Goals</div>
+            <ul class="goal-list">
+              <li class="goal-item">
+                <span class="goal-funnel tofu">TOFU</span>
+                <strong>Build brand authority and awareness</strong> — get in front of the right Cincinnati buyers and sellers who don't know DWELL513 yet
+              </li>
+              <li class="goal-item">
+                <span class="goal-funnel mofu">MOFU</span>
+                <strong>Drive real engagement from the right audience</strong> — content that educates, builds trust, and keeps the right people coming back
+              </li>
+              <li class="goal-item">
+                <span class="goal-funnel bofu">BOFU</span>
+                <strong>Generate leads and direct inquiries</strong> — turn Instagram into a consistent source of new business, not just a presence
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="profile-card reveal reveal-delay-2">
-          <div class="profile-card-label">Primary Goals</div>
-          <ul class="goal-list">
-            <li class="goal-item">
-              <span class="goal-funnel tofu">TOFU</span>
-              <strong>Build brand authority and awareness</strong> — get in front of the right Cincinnati buyers and sellers who don't know DWELL513 yet
-            </li>
-            <li class="goal-item">
-              <span class="goal-funnel mofu">MOFU</span>
-              <strong>Drive real engagement from the right audience</strong> — content that educates, builds trust, and keeps the right people coming back
-            </li>
-            <li class="goal-item">
-              <span class="goal-funnel bofu">BOFU</span>
-              <strong>Generate leads and direct inquiries</strong> — turn Instagram into a consistent source of new business, not just a presence
-            </li>
-          </ul>
-        </div>
+
       </div>
     </div>
   </section>
@@ -980,9 +1058,31 @@
       <div class="opportunity-box reveal">
         <div class="opp-icon">🎯</div>
         <div>
-          <div class="opp-label">The Opportunity</div>
-          <div class="opp-title">Nobody has claimed the Cincinnati real estate brand on Instagram. That's the opening.</div>
-          <div class="opp-body">Oyler Hines, Finn Team — they're all in the same 3K–3.8K follower range. Nobody has broken out. The brand that builds a real strategy first wins. DWELL513 already has the identity, the credibility, and the community angle. It just needs the system behind it.</div>
+          <div class="opp-label">The Real Opportunity</div>
+          <div class="opp-title">Cincinnati real estate is competitive. But most agents are posting without a strategy — and that's exactly the opening.</div>
+          <div class="opp-body">The market is crowded. But when you look at what local competitors are actually posting, the pattern is clear: listing dumps, generic content, no clear funnel, no real differentiation. The algorithm rewards specificity, consistency, and content that earns engagement — not just presence. The agent who builds a proven, data-backed system first — one that uses the right tactics to get in front of the right audience and gives them a reason to care — is the one who breaks out. DWELL513 has the foundation to do exactly that. Here's what sets you apart:</div>
+        </div>
+      </div>
+      <div class="diff-ideas reveal">
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">01</div>
+          <div class="diff-idea-title">The 513 Identity</div>
+          <div class="diff-idea-body">DWELL513 isn't just a real estate brand — it's a Cincinnati brand. The 513Eats angle, the neighborhood knowledge, the local lifestyle content — this is a content pillar most agents completely ignore. You don't just sell homes in Cincinnati. You live here. That's the differentiator.</div>
+        </div>
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">02</div>
+          <div class="diff-idea-title">10+ Years of Earned Expertise</div>
+          <div class="diff-idea-body">A decade of market experience is a credibility asset most agents can't claim. That expertise — market insights, neighborhood trends, buyer and seller education — is exactly the kind of MOFU content that builds trust before a prospect ever reaches out.</div>
+        </div>
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">03</div>
+          <div class="diff-idea-title">Lifestyle-First, Not Listing-First</div>
+          <div class="diff-idea-body">Most real estate accounts lead with listings. DWELL513 can lead with the life — the neighborhoods, the restaurants, the community, the experience of living in Cincinnati. That positioning attracts buyers earlier in the journey and builds a warmer, more loyal audience over time.</div>
+        </div>
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">04</div>
+          <div class="diff-idea-title">Community-Embedded Brand</div>
+          <div class="diff-idea-body">Local business collabs, neighborhood spotlights, community events — this is the content that earns shares and reach beyond your existing follower base. DWELL513 has the relationships and the market knowledge to own this lane. Nobody else in Cincinnati real estate is doing it consistently.</div>
         </div>
       </div>
     </div>
@@ -993,8 +1093,8 @@
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">Who We Are</div>
-        <h2>Strategy-first.<br><em>Results-obsessed.</em></h2>
-        <p>Most agencies post and hope. We build systems that compound — turning Instagram into a trust engine that drives real business growth.</p>
+        <h2>Built at the crossroads of<br><em>simplicity and data.</em></h2>
+        <p>Scroll Media exists at the intersection of two things most agencies get wrong separately: simplifying social media so it’s actually executable, and grounding every decision in data so it actually performs. We become a true extension of your brand — not a vendor you manage, but a strategic partner you rely on.</p>
       </div>
 
       <div class="stats-row reveal">
@@ -1016,45 +1116,46 @@
         </div>
       </div>
 
-      <div class="diff-grid">
-        <div class="diff-card hero-card reveal">
-          <div class="diff-icon">🧠</div>
-          <div class="diff-tag">Our Philosophy</div>
-          <div class="diff-title">We're not a content mill. We're a strategy-first agency that happens to execute.</div>
-          <div class="diff-body">Most agencies hand you a content calendar and call it strategy. We start with positioning — who you're talking to, what you're saying, and why it matters — then build content that compounds. We become a true extension of your brand, not a vendor you manage.</div>
+      <div class="why-list reveal">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div class="why-content">
+            <div class="why-title">We Start by Listening — Deep Brand Immersion</div>
+            <div class="why-body">Before we write a single caption or build a single strategy, we send you a detailed onboarding form covering your brand story, business goals, audience, competitors, and tone of voice. We don’t guess — we learn. Then we audit your current social profiles and use our strategic framework to shape a clear, simple strategy that is effective and produces real results. We become a true extension of your brand.</div>
+          </div>
         </div>
-        <div class="diff-card reveal reveal-delay-1">
-          <div class="diff-icon">📍</div>
-          <div class="diff-tag">01 — Instagram-First</div>
-          <div class="diff-title">We specialize in one channel and go deep.</div>
-          <div class="diff-body">No scattered multi-platform approach that delivers nothing everywhere. Instagram is where your ideal client discovers brands, researches services, and makes decisions. We master it completely — so you don't have to.</div>
-          <div class="diff-badge">Depth over breadth</div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div class="why-content">
+            <div class="why-title">We Master One Channel — Instagram-First Philosophy</div>
+            <div class="why-body">We specialize on Instagram — and that’s intentional. We believe in mastering attention on the channel with the highest opportunity for your business. Instagram is where your ideal buyer discovers brands, researches services, and makes decisions. We go deep where it matters most and build a compounding presence that actually drives results — not a scattered multi-platform approach that delivers nothing everywhere.</div>
+          </div>
         </div>
-        <div class="diff-card reveal reveal-delay-2">
-          <div class="diff-icon">🎯</div>
-          <div class="diff-tag">02 — Ideal Viewer Profile</div>
-          <div class="diff-title">Every strategy is built around a specific person.</div>
-          <div class="diff-body">We build a detailed portrait of the exact person your content is designed to reach — and map every content pillar, format, and CTA directly to your business goals. No generic content. Every post has a purpose.</div>
-          <div class="diff-badge">Precision targeting</div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div class="why-content">
+            <div class="why-title">We Build Around Your Audience — Goal-Mapped Strategy &amp; IVP</div>
+            <div class="why-body">Every strategy is anchored to a specific Ideal Viewer Profile — a detailed portrait of the exact person your content is designed to reach. We develop no more than two IVPs per account and map every content pillar, post format, and CTA directly to your business goals. No generic content. No guessing. Every post has a purpose, a target, and a measurable outcome.</div>
+          </div>
         </div>
-        <div class="diff-card reveal reveal-delay-1">
-          <div class="diff-icon">🔍</div>
-          <div class="diff-tag">03 — Social SEO System</div>
-          <div class="diff-title">Your content gets found by people searching for you.</div>
-          <div class="diff-body">We build a custom keyword bank for your market and embed it into every caption, alt text, and hashtag strategy. When someone searches "Cincinnati real estate agent" on Instagram, you show up. Discoverability is engineered, not left to chance.</div>
-          <div class="diff-badge">Discoverability engine</div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div class="why-content">
+            <div class="why-title">We Apply Human Psychology — Psychology-Driven Content</div>
+            <div class="why-body">Trust, social proof, authority, scarcity, and identity — these are the levers that move people from passive viewers to active buyers. Every content decision we make is grounded in how people actually think and behave online. We walk your viewer through a clear purchasing journey from first discovery to booked appointment, using psychology to drive action at every step.</div>
+          </div>
         </div>
-        <div class="diff-card reveal reveal-delay-2">
-          <div class="diff-icon">⚡</div>
-          <div class="diff-tag">04 — Psychology-Driven Content</div>
-          <div class="diff-title">We use the levers that actually move people.</div>
-          <div class="diff-body">Trust, authority, social proof, identity — these are what convert passive viewers into booked appointments. Every content decision is grounded in how people actually think and behave online, not what looks good on a content calendar.</div>
-          <div class="diff-badge">Behavior-first strategy</div>
+        <div class="why-item">
+          <div class="why-num">05</div>
+          <div class="why-content">
+            <div class="why-title">We Evolve &amp; Execute — Data-Driven. Done-For-You.</div>
+            <div class="why-body">Monthly performance reports, strategic adjustments, content creation, copywriting, scheduling, and community management — all handled. We track 13 core metrics across reach, engagement, and conversion. We share the data, make the adjustments, and keep the strategy evolving. You run your business. We handle the rest.</div>
+          </div>
         </div>
       </div>
 
       <div class="testimonial-box reveal">
-        <div class="testimonial-quote">Scroll Media completely transformed how we show up on Instagram. We went from inconsistent posting to a real strategy — and the results followed. Our engagement is up, our reach is up, and we're actually getting inquiries from Instagram now.</div>
+        <div class="testimonial-quote">Scroll Media completely transformed how we show up on Instagram. We went from inconsistent posting to a real strategy — and the results followed. Our engagement is up, our reach is up, and we’re actually getting inquiries from Instagram now.</div>
         <div class="testimonial-attr">Scroll Media Client — Boutique Fitness Studio, Cincinnati, OH</div>
         <div class="testimonial-cta">
           <a href="https://decks.scrollmedia.co/pitch/#reviews" target="_blank">See more client reviews →</a>
@@ -1342,168 +1443,6 @@
     </div>
   </section>
 
-    <!-- ===== DISCOVERY QUESTIONS ===== -->
-  <section class="alt">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Discovery Questions</div>
-        <h2>Questions we want to<br><em>explore together.</em></h2>
-        <p>These are the topics we want to cover during our conversation. There are no right or wrong answers — the more specific you can be, the better we can tailor a strategy that actually fits your business.</p>
-      </div>
-
-      <div class="dq-blocks reveal">
-
-        <!-- BLOCK 1: Business & Goals -->
-        <div class="dq-block">
-          <div class="dq-block-header">
-            <div class="dq-block-num">01</div>
-            <div>
-              <div class="dq-block-title">Business &amp; Goals</div>
-              <div class="dq-block-sub">Understanding what success actually looks like</div>
-            </div>
-          </div>
-          <div class="dq-table">
-            <div class="dq-header-row">
-              <div class="dq-header-q">Question</div>
-              <div class="dq-header-a">Example Answer</div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">What does a "lead" actually look like for you — a DM, a call, a form submission? And what's a typical deal worth to you?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"Most of my leads come through referrals or calls. A typical deal is $400–600K, so even one new client from Instagram would more than cover the cost."</div>
-              </div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">Are you more focused on attracting sellers, buyers, or building overall brand authority in Cincinnati? Is there a specific neighborhood or price point you want to own?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"Honestly both, but if I had to pick — sellers. I want to be the agent people think of when they're ready to list in OTR, Hyde Park, or Oakley."</div>
-              </div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">DWELL513 has been in the market 10+ years. What's driven most of your business historically — and what's kept Instagram from being a bigger part of that?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"Mostly referrals and repeat clients. Instagram has always felt like a lot of effort with no clear return — I post, but nothing really comes from it."</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- BLOCK 2: Current Situation -->
-        <div class="dq-block">
-          <div class="dq-block-header">
-            <div class="dq-block-num">02</div>
-            <div>
-              <div class="dq-block-title">Current Situation &amp; Pain Points</div>
-              <div class="dq-block-sub">Diagnosing the real problem behind the symptoms</div>
-            </div>
-          </div>
-          <div class="dq-table">
-            <div class="dq-header-row">
-              <div class="dq-header-q">Question</div>
-              <div class="dq-header-a">Example Answer</div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">You mentioned posting regularly but not seeing results. What does your current posting routine look like — how often, what types of content? And what would "working" actually look like to you?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"I post 3–4 times a week — mostly listings, some lifestyle stuff. Working would mean people are actually reaching out, not just liking photos."</div>
-              </div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">Is the bigger challenge bandwidth — not having enough time to do it right — or is it more about not having a clear strategy and system behind the content?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"Both, honestly. I don't have time to do it consistently, and even when I do post I'm not sure it's the right stuff. I just need someone to take it off my plate."</div>
-              </div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">Have you worked with a social media agency or freelancer before? If so, what was that experience like?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"I tried a freelancer a while back. They posted content but it never felt like my brand, and there was no real strategy behind it. Nothing came from it."</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- BLOCK 3: Content & Assets -->
-        <div class="dq-block">
-          <div class="dq-block-header">
-            <div class="dq-block-num">03</div>
-            <div>
-              <div class="dq-block-title">Content &amp; Assets</div>
-              <div class="dq-block-sub">What we're working with and what we need to build</div>
-            </div>
-          </div>
-          <div class="dq-table">
-            <div class="dq-header-row">
-              <div class="dq-header-q">Question</div>
-              <div class="dq-header-a">Example Answer</div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">You mentioned Oyler Hines, Finn Team, and Hart &amp; Cru as inspiration. What specifically resonates — the aesthetic, the content types, the tone, or the way they show up in the community?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"I love how Oyler Hines looks so polished and professional. And Hart &amp; Cru just feels warm and local — like they actually belong to Cincinnati. I want DWELL513 to feel like that."</div>
-              </div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">When a new listing goes live, how quickly do you need content ready? Do you have a photographer you already work with, or do you typically rely on MLS photos?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"I have a photographer I use for listings, but I don't have a dedicated content person. I'd want social content ready within a day or two of a listing going live."</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- BLOCK 4: Fit & Investment -->
-        <div class="dq-block">
-          <div class="dq-block-header">
-            <div class="dq-block-num">04</div>
-            <div>
-              <div class="dq-block-title">Fit &amp; Investment</div>
-              <div class="dq-block-sub">Making sure we're aligned before we build anything</div>
-            </div>
-          </div>
-          <div class="dq-table">
-            <div class="dq-header-row">
-              <div class="dq-header-q">Question</div>
-              <div class="dq-header-a">Example Answer</div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">What does success look like at 6 months? What would need to be true for you to feel like this was worth it?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"I'd want to see real engagement, people reaching out from Instagram, and a feed that actually looks like a brand — not just a listing dump. Even one or two deals tied back to social would make it a win."</div>
-              </div>
-            </div>
-            <div class="dq-row">
-              <div class="dq-q-col">
-                <div class="dq-q-text">Our full-service engagements typically start in the $2,750/month range. I want to be upfront about that so we're working with the right expectations. Does that feel like it's in the right ballpark for where you are?</div>
-              </div>
-              <div class="dq-a-col">
-                <div class="dq-a-text">"That's a bit more than I expected, but I can see the value if it actually drives leads. Is there a way to start smaller and scale up once we see results?"</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
     <!-- ===== INVESTMENT ===== -->
   <section>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Most Real Estate Social Media Doesn't Work — Scroll Media</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #fafdff;
+      --bg-section:    #f2f4f7;
+      --bg-card:       #ffffff;
+      --border:        rgba(21,21,22,0.09);
+      --border-mid:    rgba(21,21,22,0.15);
+      --accent:        #0c3387;
+      --accent-dim:    rgba(12,51,135,0.07);
+      --accent-mid:    rgba(12,51,135,0.14);
+      --accent-border: rgba(12,51,135,0.22);
+      --highlight:     #e2ed7a;
+      --green:         #22c55e;
+      --green-dim:     rgba(34,197,94,0.10);
+      --red:           #ef4444;
+      --red-dim:       rgba(239,68,68,0.08);
+      --text:          #151516;
+      --text-mid:      rgba(21,21,22,0.60);
+      --text-dim:      rgba(21,21,22,0.40);
+      --shadow-sm:     0 1px 4px rgba(21,21,22,0.06);
+      --shadow-md:     0 4px 20px rgba(21,21,22,0.08);
+      --shadow-lg:     0 12px 40px rgba(21,21,22,0.11);
+      --radius:        12px;
+      --radius-lg:     18px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,253,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 28px; width: auto; display: block; }
+    .nav-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border);
+      padding: 5px 14px; border-radius: 100px;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+    section { padding: 88px 0; }
+    section.alt { background: var(--bg-section); }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 18px;
+    }
+    .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .hero-canvas { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .hero-orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5;
+    }
+    .hero-orb-1 { width: 500px; height: 500px; top: -200px; right: -100px; background: radial-gradient(circle, rgba(12,51,135,0.12) 0%, transparent 70%); }
+    .hero-orb-2 { width: 300px; height: 300px; bottom: -100px; left: -50px; background: radial-gradient(circle, rgba(203,233,255,0.4) 0%, transparent 70%); }
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(12,51,135,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-for {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-mid); margin-bottom: 24px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 100px;
+    }
+    .hero-for span { color: var(--accent); }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900; line-height: 1.06; letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 17px; color: var(--text-mid); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+    .hero-context {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px 20px;
+      font-size: 13px; color: var(--text-mid);
+    }
+    .hero-context strong { color: var(--text); font-weight: 700; }
+    .hero-context-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+    /* ── SECTION HEADERS ── */
+    .section-header { margin-bottom: 48px; }
+    .section-header h2 { font-size: clamp(28px, 3.8vw, 44px); font-weight: 900; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 14px; }
+    .section-header h2 em { font-style: normal; color: var(--accent); }
+    .section-header p { font-size: 16px; color: var(--text-mid); max-width: 560px; line-height: 1.75; }
+
+    /* ── FAILURE PATTERN ── */
+    .failure-list { display: flex; flex-direction: column; gap: 16px; }
+    .failure-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      border-radius: var(--radius); padding: 24px 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .failure-item:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
+    .failure-num {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--red); background: var(--red-dim); border-radius: 6px;
+      padding: 4px 10px; flex-shrink: 0; margin-top: 2px;
+    }
+    .failure-body {}
+    .failure-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+    .failure-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .failure-desc strong { color: var(--text); font-weight: 700; }
+
+    /* ── FUNNEL SECTION ── */
+    .funnel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .funnel-card {
+      border-radius: var(--radius-lg); padding: 28px 24px;
+      border: 1px solid var(--border); background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
+      position: relative; overflow: hidden;
+    }
+    .funnel-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .funnel-card.tofu::before { background: #6366f1; }
+    .funnel-card.mofu::before { background: #f59e0b; }
+    .funnel-card.bofu::before { background: var(--green); }
+    .funnel-badge {
+      display: inline-flex; align-items: center;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .funnel-card.tofu .funnel-badge { color: #6366f1; background: rgba(99,102,241,0.1); }
+    .funnel-card.mofu .funnel-badge { color: #d97706; background: rgba(245,158,11,0.1); }
+    .funnel-card.bofu .funnel-badge { color: #16a34a; background: rgba(34,197,94,0.1); }
+    .funnel-stage { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .funnel-goal { font-size: 12px; font-weight: 600; color: var(--text-mid); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .funnel-desc { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+    .funnel-desc strong { color: var(--text); font-weight: 700; }
+    .funnel-example {
+      margin-top: 14px; padding: 12px 14px;
+      background: var(--bg-section); border-radius: 8px;
+      font-size: 12px; color: var(--text-mid); line-height: 1.55;
+      font-style: italic;
+    }
+    .funnel-example strong { color: var(--accent); font-style: normal; font-weight: 700; }
+
+    /* ── TIMELINE SECTION ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 28px; top: 28px; bottom: 28px;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 24px 0;
+    }
+    .timeline-item:not(:last-child) { border-bottom: 1px solid var(--border); }
+    .timeline-dot {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; flex-shrink: 0;
+      position: relative; z-index: 1;
+      border: 2px solid var(--border);
+    }
+    .timeline-dot.phase-1 { background: var(--bg-card); color: var(--accent); border-color: var(--accent-border); }
+    .timeline-dot.phase-2 { background: var(--bg-card); color: #f59e0b; border-color: rgba(245,158,11,0.3); }
+    .timeline-dot.phase-3 { background: var(--bg-card); color: var(--green); border-color: rgba(34,197,94,0.3); }
+    .timeline-dot.phase-4 { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .timeline-content { flex: 1; padding-top: 12px; }
+    .timeline-phase { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px; }
+    .timeline-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .timeline-desc { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+    .timeline-desc strong { color: var(--text); font-weight: 700; }
+    .timeline-callout {
+      margin-top: 10px; padding: 10px 14px;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      border-radius: 8px; font-size: 12px; color: var(--accent); font-weight: 600;
+    }
+    .honest-box {
+      margin-top: 40px; padding: 28px 32px;
+      background: var(--accent); border-radius: var(--radius-lg);
+      color: #fff; position: relative; overflow: hidden;
+    }
+    .honest-box::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;
+    }
+    .honest-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+    .honest-text { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.7; position: relative; z-index: 1; }
+    .honest-text strong { color: var(--highlight); }
+
+    /* ── RESULTS SECTION ── */
+    .results-intro {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 24px 28px;
+      margin-bottom: 32px; font-size: 14px; color: var(--text-mid); line-height: 1.7;
+    }
+    .results-intro strong { color: var(--text); font-weight: 700; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .result-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .result-niche {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border);
+      padding: 4px 10px; border-radius: 100px; display: inline-block; margin-bottom: 14px;
+    }
+    .result-challenge { font-size: 12px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.55; }
+    .result-challenge strong { color: var(--text); font-weight: 700; }
+    .result-stats { display: flex; flex-direction: column; gap: 10px; }
+    .result-stat {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: var(--bg-section); border-radius: 8px;
+    }
+    .result-stat-label { font-size: 11px; color: var(--text-mid); font-weight: 500; }
+    .result-stat-value { font-size: 14px; font-weight: 800; color: var(--green); }
+    .result-timeframe { font-size: 11px; color: var(--text-dim); margin-top: 12px; text-align: center; }
+    .bridge-box {
+      margin-top: 32px; padding: 24px 28px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius-lg);
+    }
+    .bridge-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .bridge-text { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+    .bridge-text strong { color: var(--text); font-weight: 700; }
+
+    /* ── NEXT STEPS ── */
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .step-card {
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      border: 1px solid var(--border); background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .step-card.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+    }
+    .step-card:not(.primary) .step-num { background: var(--accent-dim); color: var(--accent); }
+    .step-card.primary .step-num { background: rgba(255,255,255,0.15); color: #fff; }
+    .step-title { font-size: 18px; font-weight: 800; line-height: 1.2; }
+    .step-card:not(.primary) .step-title { color: var(--text); }
+    .step-card.primary .step-title { color: #fff; }
+    .step-desc { font-size: 13px; line-height: 1.65; }
+    .step-card:not(.primary) .step-desc { color: var(--text-mid); }
+    .step-card.primary .step-desc { color: rgba(255,255,255,0.8); }
+    .step-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      padding: 12px 20px; border-radius: 8px;
+      transition: all 0.2s ease; margin-top: auto;
+    }
+    .step-card:not(.primary) .step-cta {
+      background: var(--accent); color: #fff;
+    }
+    .step-card:not(.primary) .step-cta:hover { background: #0a2a6e; transform: translateY(-1px); }
+    .step-card.primary .step-cta {
+      background: var(--highlight); color: var(--accent);
+    }
+    .step-card.primary .step-cta:hover { background: #d4e060; transform: translateY(-1px); }
+    .step-or {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--text-dim);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #ffffff; border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo img { height: 24px; width: auto; }
+    .footer-text { font-size: 12px; color: var(--text-dim); }
+    .footer-text a { color: var(--accent); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .container { padding: 0 20px; }
+      section { padding: 60px 0; }
+      .hero { padding: 56px 0 48px; }
+      .funnel-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .timeline::before { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 32px; }
+      .failure-item { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="https://decks.scrollmedia.co/pitch/" target="_blank">
+      <img src="scroll-media-logo.svg" alt="Scroll Media" height="28">
+    </a>
+    <div class="nav-tag">For DWELL513</div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-canvas">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-dots"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-for">Prepared for <span>DWELL513 Real Estate</span></div>
+      <h1 class="reveal">Why most real estate<br>social media <em>doesn't work.</em><br>And what does.</h1>
+      <p class="hero-sub reveal reveal-delay-1">This isn't a pitch. It's an honest breakdown of the patterns we see across every service business that tries social media and doesn't get results — and what the ones that do get results have in common.</p>
+      <div class="hero-context reveal reveal-delay-2">
+        <div class="hero-context-dot"></div>
+        <div>Prepared by <strong>Chase Gianattasio</strong> · Scroll Media · Following our discovery conversation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE PATTERN ===== -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">The Pattern We See</div>
+        <h2>Five reasons social media<br><em>stops working.</em></h2>
+        <p>These aren't guesses. They're the same five things we see across every business that's tried social media and walked away frustrated.</p>
+      </div>
+
+      <div class="failure-list">
+        <div class="failure-item reveal">
+          <div class="failure-num">01</div>
+          <div class="failure-body">
+            <div class="failure-title">Posting without a strategy</div>
+            <div class="failure-desc">Content goes up when someone has time, not when the strategy calls for it. There's no system behind what gets posted, why it gets posted, or what it's supposed to do for the business. <strong>Presence without purpose doesn't convert.</strong></div>
+          </div>
+        </div>
+        <div class="failure-item reveal">
+          <div class="failure-num">02</div>
+          <div class="failure-body">
+            <div class="failure-title">No content funnel — no purchasing journey</div>
+            <div class="failure-desc">Social media isn't a place to sell. It's a place to walk someone from not knowing you exist, to trusting you enough to reach out. Without a top, middle, and bottom of funnel strategy, <strong>you're skipping steps in the buyer's journey</strong> — and losing people before they ever get to the decision stage.</div>
+          </div>
+        </div>
+        <div class="failure-item reveal">
+          <div class="failure-num">03</div>
+          <div class="failure-body">
+            <div class="failure-title">Zero Social SEO — invisible to the algorithm</div>
+            <div class="failure-desc">Instagram is a search engine now. Captions, keywords, hashtags, and alt text all feed the algorithm's understanding of who your content is for. Without intentional Social SEO, <strong>your content only reaches people who already follow you</strong> — not the new buyers and sellers you're trying to reach.</div>
+          </div>
+        </div>
+        <div class="failure-item reveal">
+          <div class="failure-num">04</div>
+          <div class="failure-body">
+            <div class="failure-title">No clear IVP — blending in with everyone else</div>
+            <div class="failure-desc">Every real estate agent in Cincinnati is posting listings, market updates, and "just sold" posts. If your content looks like everyone else's, the algorithm treats it like everyone else's. <strong>Your Ideal Value Proposition — what makes DWELL513 different</strong> — needs to be the backbone of every piece of content you create.</div>
+          </div>
+        </div>
+        <div class="failure-item reveal">
+          <div class="failure-num">05</div>
+          <div class="failure-body">
+            <div class="failure-title">Copying formats without understanding why they worked</div>
+            <div class="failure-desc">Seeing a competitor's post perform well and recreating it sounds logical. But format alone isn't why content performs. The hook, the psychology, the audience signal — those are what drive results. <strong>Copying the surface without the strategy underneath it produces nothing.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE SYSTEM ===== -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">What a Real System Looks Like</div>
+        <h2>Three stages.<br><em>One clear path to leads.</em></h2>
+        <p>Every piece of content we create maps to one of three stages. Together, they walk your viewer from discovering you to trusting you to reaching out.</p>
+      </div>
+
+      <div class="funnel-grid">
+        <div class="funnel-card tofu reveal">
+          <div class="funnel-badge">TOFU</div>
+          <div class="funnel-stage">Top of Funnel</div>
+          <div class="funnel-goal">Awareness &amp; Discovery</div>
+          <div class="funnel-desc">Get in front of people who don't know you yet. <strong>The goal here isn't to sell — it's to be discovered</strong> by the right buyers and sellers in Cincinnati who are actively looking for an agent they can trust.</div>
+          <div class="funnel-example"><strong>For DWELL513:</strong> "5 Cincinnati neighborhoods most buyers overlook" — broad reach, local authority, no ask.</div>
+        </div>
+        <div class="funnel-card mofu reveal reveal-delay-1">
+          <div class="funnel-badge">MOFU</div>
+          <div class="funnel-stage">Middle of Funnel</div>
+          <div class="funnel-goal">Education &amp; Trust</div>
+          <div class="funnel-desc">Turn awareness into credibility. <strong>This is where 10+ years of market expertise becomes your biggest asset.</strong> Educational content, market insights, and behind-the-scenes process content build the trust that makes someone choose you over the next agent.</div>
+          <div class="funnel-example"><strong>For DWELL513:</strong> "What I tell every first-time buyer before they make an offer" — positions Doug as the expert, not the salesperson.</div>
+        </div>
+        <div class="funnel-card bofu reveal reveal-delay-2">
+          <div class="funnel-badge">BOFU</div>
+          <div class="funnel-stage">Bottom of Funnel</div>
+          <div class="funnel-goal">Action &amp; Lead Gen</div>
+          <div class="funnel-desc">Convert trust into conversations. <strong>By the time someone reaches this stage, they already know you, like you, and trust you.</strong> The ask becomes natural — not a cold pitch, but the logical next step for someone who's been following your journey.</div>
+          <div class="funnel-example"><strong>For DWELL513:</strong> "Thinking about buying or selling in 2026? Here's where to start." — direct CTA to a warm, already-interested audience.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">The Honest Timeline</div>
+        <h2>What to expect<br><em>and when.</em></h2>
+        <p>Most agencies won't tell you this. We will. Social media is a long game — and the businesses that win are the ones who understand what they're building and stay the course.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot phase-1">M1</div>
+          <div class="timeline-content">
+            <div class="timeline-phase">Month 1</div>
+            <div class="timeline-title">Foundation — Strategy, IVP, Content Pillars</div>
+            <div class="timeline-desc">We don't post a single piece of content until the strategy is locked. <strong>IVP, content pillars, funnel mapping, Social SEO setup, and content calendar.</strong> This is the work that makes everything after it compound.</div>
+            <div class="timeline-callout">Early signal: Profile optimization and bio rewrite — immediate improvement in discoverability.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot phase-2">M2–3</div>
+          <div class="timeline-content">
+            <div class="timeline-phase">Months 2–3</div>
+            <div class="timeline-title">Execution &amp; Testing — Formats, Hooks, Cadence</div>
+            <div class="timeline-desc">We publish at 2–3x per week and intentionally test a wide range of formats and hooks. <strong>The goal isn't perfection — it's data.</strong> We're finding out what resonates with your specific audience so the strategy can be refined around what actually works.</div>
+            <div class="timeline-callout">Early signal: Reach and engagement start improving. You'll feel momentum before you see leads.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot phase-3">M4+</div>
+          <div class="timeline-content">
+            <div class="timeline-phase">Month 4 Onward</div>
+            <div class="timeline-title">Refine, Optimize &amp; Convert — Double Down on What Works</div>
+            <div class="timeline-desc">We know what's performing. We cut what isn't and scale what is. <strong>This is where BOFU content gets introduced and the lead gen focus sharpens.</strong> The system is now data-backed, not guesswork.</div>
+            <div class="timeline-callout">Real signal: Profile visits, DM inquiries, and link taps start converting to real conversations.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot phase-4">6–12M</div>
+          <div class="timeline-content">
+            <div class="timeline-phase">6–12 Months</div>
+            <div class="timeline-title">Compounding — The System Starts Working For You</div>
+            <div class="timeline-desc">This is where the investment pays off. <strong>The content library is built, the audience is warm, and the funnel is running.</strong> New content compounds on top of what's already performing. Instagram becomes a consistent source of qualified leads — not a random one.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="honest-box reveal">
+        <div class="honest-label">The honest truth</div>
+        <div class="honest-text">Anyone who promises you leads in 30 days is selling you something. <strong>Social media is a trust-building machine</strong> — and trust takes time. The businesses that win on Instagram are the ones who commit to the system, stay consistent, and let the data drive the decisions. <strong>That's the game. And it's winnable.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Real Results</div>
+        <h2>What this looks like<br><em>in practice.</em></h2>
+        <p>We don't have a real estate client yet — we'll be direct about that. What we do have is a proven track record with service-based businesses where trust, expertise, and long buying cycles drive every decision. Sound familiar?</p>
+      </div>
+
+      <div class="results-intro reveal">
+        <strong>The buying psychology is the same.</strong> A buyer choosing a real estate agent and a patient choosing a med spa are making the same type of decision — they're not buying a product, they're buying trust in a person. That's exactly the type of business we're built for.
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card reveal">
+          <div class="result-niche">Med Spa / Aesthetics</div>
+          <div class="result-challenge"><strong>Starting point:</strong> Posting without a strategy, no content funnel, no Social SEO. Sound familiar?</div>
+          <div class="result-stats">
+            <div class="result-stat">
+              <span class="result-stat-label">Reach Growth</span>
+              <span class="result-stat-value">77%+</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Monthly Score (Feb 2026)</span>
+              <span class="result-stat-value">8.1 / 10</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">CTR (Link Clicks)</span>
+              <span class="result-stat-value">13.0%</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">New Followers (Feb)</span>
+              <span class="result-stat-value">481</span>
+            </div>
+          </div>
+          <div class="result-timeframe">Client since Oct 2024 · 16 months in</div>
+        </div>
+        <div class="result-card reveal reveal-delay-1">
+          <div class="result-niche">Specialty Retail / Local Service</div>
+          <div class="result-challenge"><strong>Starting point:</strong> No capacity for social media, no defined strategy. Month 4 in — already exceeding targets.</div>
+          <div class="result-stats">
+            <div class="result-stat">
+              <span class="result-stat-label">Total Reach Growth</span>
+              <span class="result-stat-value">209%+</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Monthly Score (Feb 2026)</span>
+              <span class="result-stat-value">8.3 / 10</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Avg Reach / Day</span>
+              <span class="result-stat-value">1,772</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Top Post Views</span>
+              <span class="result-stat-value">15,157</span>
+            </div>
+          </div>
+          <div class="result-timeframe">Client since Oct 2025 · 4 months in</div>
+        </div>
+        <div class="result-card reveal reveal-delay-2">
+          <div class="result-niche">Boutique Jewelry / Local Brand</div>
+          <div class="result-challenge"><strong>Starting point:</strong> No defined social strategy, inconsistent posting. Same starting point as most of our clients.</div>
+          <div class="result-stats">
+            <div class="result-stat">
+              <span class="result-stat-label">Reach Growth (6 months)</span>
+              <span class="result-stat-value">77%+</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Engagement Rate</span>
+              <span class="result-stat-value">96%+</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Avg Reel Views</span>
+              <span class="result-stat-value">2,800+</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-stat-label">Total Interactions (90d)</span>
+              <span class="result-stat-value">33%+</span>
+            </div>
+          </div>
+          <div class="result-timeframe">Client since May 2024 · 10+ months in</div>
+        </div>
+      </div>
+
+      <div class="bridge-box reveal">
+        <div class="bridge-label">The Bridge to Real Estate</div>
+        <div class="bridge-text">Every one of these clients came to us with the same starting point: <strong>posting without results, no clear strategy, and no system.</strong> The niche changes. The buying psychology doesn't. We build the same system for every client — and the results follow the same pattern. <strong>DWELL513 has a stronger foundation than most of these clients did when they started.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEXT STEPS ===== -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Where to Go From Here</div>
+        <h2>Two ways to<br><em>take the next step.</em></h2>
+        <p>No pressure, no hard sell. If any of this resonated, here are two simple ways to move forward — both low commitment, both designed to give you something tangible before you make any decisions.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card primary reveal">
+          <div class="step-num">01</div>
+          <div class="step-title">Strategy Session</div>
+          <div class="step-desc">We sit down together and map out exactly what a real system looks like for DWELL513 — IVP, content pillars, funnel strategy, and a 90-day roadmap. You walk away with a clear picture of what we'd build and why. No commitment required.</div>
+          <a href="mailto:hello@scrollmedia.co?subject=DWELL513 Strategy Session" class="step-cta">Let's Talk Strategy →</a>
+        </div>
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <div class="step-title">Content Shoot</div>
+          <div class="step-desc">Skip the conversation and go straight to seeing what we can create. We come out, shoot a listing or a brand story piece, and show you exactly what DWELL513 content looks like when it's built on strategy. Show, don't tell.</div>
+          <a href="mailto:hello@scrollmedia.co?subject=DWELL513 Content Shoot" class="step-cta">Book a Shoot →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="https://scrollmedia.co" class="footer-logo" target="_blank">
+          <img src="scroll-media-logo.svg" alt="Scroll Media">
+        </a>
+        <div class="footer-text">
+          Questions? Reach us at <a href="mailto:hello@scrollmedia.co">hello@scrollmedia.co</a> · <a href="https://decks.scrollmedia.co/pitch/" target="_blank">scrollmedia.co</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

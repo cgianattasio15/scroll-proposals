@@ -58,20 +58,41 @@
     /* ── NAV ── */
     .nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(250,253,255,0.92);
+      background: rgba(250,253,255,0.97);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
     }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
     .nav-logo img { height: 28px; width: auto; display: block; }
+    .nav-links {
+      display: flex; align-items: center; gap: 2px;
+      flex: 1; justify-content: center;
+    }
+    .nav-links a {
+      color: var(--text-mid);
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      padding: 6px 11px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
     .nav-badge {
       font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border);
-      padding: 5px 14px; border-radius: 100px;
+      padding: 5px 14px; border-radius: 100px; flex-shrink: 0;
     }
 
     /* ── LAYOUT ── */
@@ -636,6 +657,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav { padding: 0 20px; }
+      .nav-links { display: none; }
       .container, .container-wide { padding: 0 20px; }
       section { padding: 64px 0; }
       .hero { padding: 60px 0 52px; }
@@ -689,6 +711,15 @@
     <a class="nav-logo" href="https://decks.scrollmedia.co/pitch/" target="_blank">
       <img src="scroll-media-logo.svg" alt="Scroll Media" height="28">
     </a>
+    <div class="nav-links">
+      <a href="#profile">Profile</a>
+      <a href="#audit">Audit</a>
+      <a href="#observations">Observations</a>
+      <a href="#who-we-are">Who We Are</a>
+      <a href="#how-we-work">How We Work</a>
+      <a href="#inspo">Inspiration</a>
+      <a href="#investment">Investment</a>
+    </div>
     <div class="nav-badge">Discovery Session</div>
   </nav>
 
@@ -725,7 +756,7 @@
   </section>
 
   <!-- ===== CLIENT PROFILE ===== -->
-  <section class="alt">
+  <section class="alt" id="profile">
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">Client Profile</div>
@@ -792,7 +823,7 @@
   </section>
 
   <!-- ===== SOCIAL AUDIT ===== -->
-  <section>
+  <section id="audit">
     <div class="container-wide">
       <div class="section-header reveal">
         <div class="eyebrow">Social Media Audit</div>
@@ -1026,7 +1057,7 @@
   </section>
 
   <!-- ===== WHAT WE SAW ===== -->
-  <section class="alt">
+  <section class="alt" id="observations">
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">What We Saw</div>
@@ -1089,7 +1120,7 @@
   </section>
 
   <!-- ===== WHO WE ARE ===== -->
-  <section>
+  <section id="who-we-are">
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">Who We Are</div>
@@ -1165,7 +1196,7 @@
   </section>
 
   <!-- ===== HOW WE WORK ===== -->
-  <section class="alt">
+  <section class="alt" id="how-we-work">
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">How We Work</div>
@@ -1228,7 +1259,7 @@
   </section>
 
   <!-- ===== BRAND INSPIRATION ===== -->
-  <section>
+  <section id="inspo">
     <div class="container-wide">
       <div class="section-header reveal">
         <div class="eyebrow">Brand Inspiration</div>
@@ -1445,7 +1476,7 @@
 
 
     <!-- ===== INVESTMENT ===== -->
-  <section>
+  <section id="investment">
     <div class="container">
       <div class="section-header reveal">
         <div class="eyebrow">Investment</div>

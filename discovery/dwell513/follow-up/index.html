@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Real Estate Social Media Playbook — Scroll Media × DWELL513</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #0f0f10;
+      --ink-mid:    rgba(15,15,16,0.55);
+      --ink-dim:    rgba(15,15,16,0.35);
+      --ink-faint:  rgba(15,15,16,0.08);
+      --paper:      #faf9f6;
+      --paper-warm: #f4f1eb;
+      --paper-card: #ffffff;
+      --rule:       rgba(15,15,16,0.12);
+      --rule-mid:   rgba(15,15,16,0.07);
+      --navy:       #0c3387;
+      --navy-dim:   rgba(12,51,135,0.08);
+      --navy-mid:   rgba(12,51,135,0.15);
+      --lime:       #d4e060;
+      --lime-dark:  #b8c840;
+      --check:      #16a34a;
+      --check-dim:  rgba(22,163,74,0.10);
+      --warn:       #dc2626;
+      --warn-dim:   rgba(220,38,38,0.08);
+      --amber:      #d97706;
+      --amber-dim:  rgba(217,119,6,0.10);
+      --shadow:     0 2px 12px rgba(15,15,16,0.07);
+      --shadow-lg:  0 8px 32px rgba(15,15,16,0.10);
+      --r:          10px;
+      --r-lg:       16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade.in { opacity: 1; transform: translateY(0); }
+    .fade-d1 { transition-delay: 0.07s; }
+    .fade-d2 { transition-delay: 0.14s; }
+    .fade-d3 { transition-delay: 0.21s; }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--ink);
+      padding: 14px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .masthead-logo img { height: 22px; width: auto; filter: brightness(0) invert(1); }
+    .masthead-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .masthead-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--lime); background: rgba(212,224,96,0.12); border: 1px solid rgba(212,224,96,0.25);
+      padding: 4px 12px; border-radius: 100px;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--ink);
+      padding: 72px 40px 64px;
+      position: relative; overflow: hidden;
+    }
+    .cover-texture {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+    }
+    .cover-accent {
+      position: absolute; bottom: -80px; right: -80px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(12,51,135,0.4) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .cover-kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--lime); margin-bottom: 28px;
+    }
+    .cover-kicker::before { content: ''; width: 28px; height: 2px; background: var(--lime); }
+    .cover-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 900; line-height: 1.02; letter-spacing: -0.02em;
+      color: #fff; margin-bottom: 10px;
+    }
+    .cover-title em { font-style: italic; color: var(--lime); }
+    .cover-subtitle {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(20px, 2.8vw, 32px);
+      font-weight: 700; font-style: italic;
+      color: rgba(255,255,255,0.5); margin-bottom: 32px;
+    }
+    .cover-desc {
+      font-size: 15px; color: rgba(255,255,255,0.65); max-width: 520px; line-height: 1.75; margin-bottom: 40px;
+    }
+    .cover-meta {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .cover-meta-item { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .cover-meta-item strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .cover-meta-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); }
+    .cover-toc {
+      margin-top: 40px; padding: 24px 28px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg);
+    }
+    .cover-toc-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 14px;
+    }
+    .cover-toc-items { display: flex; flex-direction: column; gap: 8px; }
+    .cover-toc-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cover-toc-item:hover { color: var(--lime); }
+    .cover-toc-num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+      color: var(--lime); opacity: 0.7; width: 20px; flex-shrink: 0;
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── CHAPTER DIVIDER ── */
+    .chapter {
+      padding: 64px 0 0;
+    }
+    .chapter-header {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding-bottom: 28px; border-bottom: 2px solid var(--ink); margin-bottom: 36px;
+    }
+    .chapter-num-block {
+      flex-shrink: 0;
+    }
+    .chapter-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 56px; font-weight: 900; line-height: 1;
+      color: var(--ink-faint); letter-spacing: -0.04em;
+    }
+    .chapter-meta { flex: 1; padding-top: 6px; }
+    .chapter-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 6px;
+    }
+    .chapter-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink);
+    }
+    .chapter-title em { font-style: italic; color: var(--navy); }
+    .chapter-intro { font-size: 15px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 32px; }
+
+    /* ── CHECKLIST ── */
+    .checklist { display: flex; flex-direction: column; gap: 0; }
+    .check-item {
+      display: flex; gap: 0; align-items: stretch;
+      border-bottom: 1px solid var(--rule-mid);
+      transition: background 0.15s;
+    }
+    .check-item:first-child { border-top: 1px solid var(--rule-mid); }
+    .check-item:hover { background: var(--paper-warm); }
+    .check-gutter {
+      width: 56px; flex-shrink: 0;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding-top: 22px;
+    }
+    .check-box {
+      width: 20px; height: 20px; border-radius: 4px;
+      border: 2px solid var(--rule); background: var(--paper-card);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .check-box.fail { border-color: var(--warn); background: var(--warn-dim); }
+    .check-box.fail::after { content: '✕'; font-size: 10px; font-weight: 800; color: var(--warn); }
+    .check-box.pass { border-color: var(--check); background: var(--check-dim); }
+    .check-box.pass::after { content: '✓'; font-size: 11px; font-weight: 800; color: var(--check); }
+    .check-body { flex: 1; padding: 20px 20px 20px 0; }
+    .check-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 5px; line-height: 1.3; }
+    .check-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.65; }
+    .check-desc strong { color: var(--ink); font-weight: 700; }
+    .check-tag {
+      margin-top: 8px; display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 100px;
+    }
+    .check-tag.missing { color: var(--warn); background: var(--warn-dim); }
+    .check-tag.fix { color: var(--navy); background: var(--navy-dim); }
+    .check-tag.quick-win { color: var(--check); background: var(--check-dim); }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-radius: var(--r-lg); padding: 24px 28px; margin: 32px 0;
+    }
+    .callout.navy { background: var(--navy); }
+    .callout.warm { background: var(--paper-warm); border: 1px solid var(--rule); }
+    .callout.ink { background: var(--ink); }
+    .callout-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .callout.navy .callout-label { color: rgba(255,255,255,0.45); }
+    .callout.warm .callout-label { color: var(--ink-dim); }
+    .callout.ink .callout-label { color: rgba(255,255,255,0.35); }
+    .callout-text { font-size: 14px; line-height: 1.75; }
+    .callout.navy .callout-text { color: rgba(255,255,255,0.85); }
+    .callout.warm .callout-text { color: var(--ink-mid); }
+    .callout.ink .callout-text { color: rgba(255,255,255,0.75); }
+    .callout-text strong { font-weight: 700; }
+    .callout.navy .callout-text strong { color: var(--lime); }
+    .callout.warm .callout-text strong { color: var(--ink); }
+    .callout.ink .callout-text strong { color: var(--lime); }
+
+    /* ── FUNNEL CARDS ── */
+    .funnel-stack { display: flex; flex-direction: column; gap: 16px; }
+    .funnel-row {
+      display: flex; gap: 0; border: 1px solid var(--rule);
+      border-radius: var(--r); overflow: hidden; background: var(--paper-card);
+      box-shadow: var(--shadow);
+    }
+    .funnel-stripe { width: 6px; flex-shrink: 0; }
+    .funnel-row.tofu .funnel-stripe { background: #6366f1; }
+    .funnel-row.mofu .funnel-stripe { background: var(--amber); }
+    .funnel-row.bofu .funnel-stripe { background: var(--check); }
+    .funnel-inner { flex: 1; padding: 20px 24px; display: grid; grid-template-columns: 120px 1fr 1fr; gap: 20px; align-items: start; }
+    .funnel-stage-col {}
+    .funnel-badge {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 100px; display: inline-block; margin-bottom: 6px;
+    }
+    .funnel-row.tofu .funnel-badge { color: #6366f1; background: rgba(99,102,241,0.1); }
+    .funnel-row.mofu .funnel-badge { color: var(--amber); background: var(--amber-dim); }
+    .funnel-row.bofu .funnel-badge { color: var(--check); background: var(--check-dim); }
+    .funnel-stage-name { font-size: 14px; font-weight: 800; color: var(--ink); line-height: 1.2; }
+    .funnel-stage-goal { font-size: 11px; color: var(--ink-dim); margin-top: 2px; }
+    .funnel-col-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 6px; }
+    .funnel-col-text { font-size: 12px; color: var(--ink-mid); line-height: 1.6; }
+    .funnel-col-text strong { color: var(--ink); font-weight: 700; }
+    .funnel-col-example {
+      font-size: 12px; color: var(--navy); font-style: italic; line-height: 1.55;
+      padding: 8px 12px; background: var(--navy-dim); border-radius: 6px; margin-top: 4px;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-strip { display: flex; gap: 0; margin: 32px 0; }
+    .tl-item {
+      flex: 1; padding: 20px 18px; position: relative;
+      border: 1px solid var(--rule); background: var(--paper-card);
+      margin-right: -1px;
+    }
+    .tl-item:first-child { border-radius: var(--r) 0 0 var(--r); }
+    .tl-item:last-child { border-radius: 0 var(--r) var(--r) 0; margin-right: 0; }
+    .tl-item.active { background: var(--navy); border-color: var(--navy); z-index: 1; }
+    .tl-phase { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .tl-item:not(.active) .tl-phase { color: var(--ink-dim); }
+    .tl-item.active .tl-phase { color: rgba(255,255,255,0.5); }
+    .tl-label { font-size: 13px; font-weight: 700; line-height: 1.25; }
+    .tl-item:not(.active) .tl-label { color: var(--ink); }
+    .tl-item.active .tl-label { color: #fff; }
+    .tl-note { font-size: 11px; margin-top: 6px; line-height: 1.5; }
+    .tl-item:not(.active) .tl-note { color: var(--ink-dim); }
+    .tl-item.active .tl-note { color: rgba(255,255,255,0.6); }
+
+    /* ── RESULTS TABLE ── */
+    .results-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .results-table thead tr { border-bottom: 2px solid var(--ink); }
+    .results-table th { padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
+    .results-table tbody tr { border-bottom: 1px solid var(--rule-mid); transition: background 0.15s; }
+    .results-table tbody tr:hover { background: var(--paper-warm); }
+    .results-table td { padding: 14px 14px; font-size: 13px; color: var(--ink-mid); vertical-align: top; }
+    .results-table td:first-child { font-weight: 700; color: var(--ink); }
+    .results-table .stat { font-size: 15px; font-weight: 800; color: var(--check); }
+    .results-table .sub { font-size: 11px; color: var(--ink-dim); margin-top: 2px; }
+    .niche-tag {
+      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 4px; background: var(--navy-dim); color: var(--navy);
+    }
+
+    /* ── NEXT STEPS ── */
+    .next-steps { padding: 64px 0 80px; }
+    .steps-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    .step-card {
+      border-radius: var(--r-lg); padding: 28px 24px;
+      border: 1px solid var(--rule); background: var(--paper-card);
+      box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px;
+    }
+    .step-card.primary { background: var(--ink); border-color: var(--ink); }
+    .step-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .step-card:not(.primary) .step-icon { background: var(--navy-dim); }
+    .step-card.primary .step-icon { background: rgba(255,255,255,0.08); }
+    .step-title { font-size: 17px; font-weight: 800; line-height: 1.2; }
+    .step-card:not(.primary) .step-title { color: var(--ink); }
+    .step-card.primary .step-title { color: #fff; }
+    .step-desc { font-size: 13px; line-height: 1.65; }
+    .step-card:not(.primary) .step-desc { color: var(--ink-mid); }
+    .step-card.primary .step-desc { color: rgba(255,255,255,0.65); }
+    .step-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      padding: 11px 18px; border-radius: 8px; margin-top: auto;
+      transition: all 0.2s ease;
+    }
+    .step-card:not(.primary) .step-cta { background: var(--navy); color: #fff; }
+    .step-card:not(.primary) .step-cta:hover { background: #0a2a6e; }
+    .step-card.primary .step-cta { background: var(--lime); color: var(--ink); }
+    .step-card.primary .step-cta:hover { background: var(--lime-dark); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #fff; border-top: 1px solid var(--rule);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo img { height: 22px; width: auto; }
+    .footer-text { font-size: 12px; color: var(--ink-dim); }
+    .footer-text a { color: var(--navy); text-decoration: none; }
+
+    /* ── RULE ── */
+    .hr { border: none; border-top: 1px solid var(--rule-mid); margin: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .masthead { padding: 12px 20px; }
+      .cover { padding: 48px 20px 40px; }
+      .page { padding: 0 20px; }
+      .funnel-inner { grid-template-columns: 1fr; gap: 12px; }
+      .timeline-strip { flex-direction: column; }
+      .tl-item { border-radius: var(--r) !important; margin-right: 0; margin-bottom: -1px; }
+      .steps-row { grid-template-columns: 1fr; }
+      .footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .cover-title { font-size: 36px; }
+      .chapter-num { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <a href="https://decks.scrollmedia.co/pitch/" target="_blank" class="masthead-logo">
+      <img src="scroll-media-logo.svg" alt="Scroll Media">
+    </a>
+    <div class="masthead-label">Scroll Media — Field Guide Series</div>
+    <div class="masthead-tag">For DWELL513</div>
+  </div>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-texture"></div>
+    <div class="cover-accent"></div>
+    <div class="cover-inner">
+      <div class="cover-kicker fade">The Real Estate Social Media Field Guide</div>
+      <h1 class="cover-title fade fade-d1">The <em>Strategy</em><br>Checklist</h1>
+      <div class="cover-subtitle fade fade-d2">What separates agents who get leads from Instagram<br>from the ones who don't.</div>
+      <p class="cover-desc fade fade-d3">A practical, no-fluff guide built specifically for DWELL513 — covering the five gaps most real estate social media has, how a real content system works, and what the path to qualified leads actually looks like.</p>
+      <div class="cover-meta fade">
+        <div class="cover-meta-item">Prepared by <strong>Chase Gianattasio</strong></div>
+        <div class="cover-meta-divider"></div>
+        <div class="cover-meta-item"><strong>Scroll Media</strong> — Strategy-First Social</div>
+        <div class="cover-meta-divider"></div>
+        <div class="cover-meta-item">Following our <strong>discovery conversation</strong></div>
+      </div>
+      <div class="cover-toc fade">
+        <div class="cover-toc-label">What's inside</div>
+        <div class="cover-toc-items">
+          <a href="#ch1" class="cover-toc-item"><span class="cover-toc-num">01</span>The 5-Point Social Media Audit — where most real estate accounts break down</a>
+          <a href="#ch2" class="cover-toc-item"><span class="cover-toc-num">02</span>The Content Funnel — how to walk a stranger to a signed client</a>
+          <a href="#ch3" class="cover-toc-item"><span class="cover-toc-num">03</span>The Honest Timeline — what to expect and when</a>
+          <a href="#ch4" class="cover-toc-item"><span class="cover-toc-num">04</span>Proof it works — results from businesses with the same buying psychology</a>
+          <a href="#ch5" class="cover-toc-item"><span class="cover-toc-num">05</span>Two ways to take the next step</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHAPTER 1 ===== -->
+  <div class="page" id="ch1">
+    <div class="chapter">
+      <div class="chapter-header fade">
+        <div class="chapter-num-block"><div class="chapter-num">01</div></div>
+        <div class="chapter-meta">
+          <div class="chapter-label">The 5-Point Audit</div>
+          <h2 class="chapter-title">Where most real estate<br>social media <em>breaks down.</em></h2>
+        </div>
+      </div>
+      <p class="chapter-intro fade">Run through this checklist. Every item marked with an ✕ is a gap that's costing you reach, trust, and leads — regardless of how much content you're posting.</p>
+
+      <div class="checklist fade">
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box fail"></div></div>
+          <div class="check-body">
+            <div class="check-title">A defined content strategy with clear goals</div>
+            <div class="check-desc">Not "post 3x a week" — a real strategy with IVP, content pillars, and funnel mapping. <strong>Presence without purpose doesn't convert.</strong> Posting consistently to the wrong audience with the wrong message is just noise.</div>
+            <span class="check-tag missing">Most common gap</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box fail"></div></div>
+          <div class="check-body">
+            <div class="check-title">A content funnel (TOFU → MOFU → BOFU)</div>
+            <div class="check-desc">Every post should have a job. Awareness content gets you discovered. Education content builds trust. Conversion content drives action. <strong>Without a funnel, you're asking strangers to hire you before they know who you are.</strong></div>
+            <span class="check-tag missing">Critical gap</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box fail"></div></div>
+          <div class="check-body">
+            <div class="check-title">Social SEO — keywords, captions, and discoverability</div>
+            <div class="check-desc">Instagram is a search engine. Captions, hashtags, alt text, and account keywords all tell the algorithm who your content is for. <strong>Without Social SEO, your content only reaches people who already follow you</strong> — not the new buyers and sellers you need.</div>
+            <span class="check-tag fix">Fixable fast</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box fail"></div></div>
+          <div class="check-body">
+            <div class="check-title">A clear IVP — what makes you different from every other agent</div>
+            <div class="check-desc">Every Cincinnati agent posts listings, market updates, and "just sold" photos. <strong>If your content looks like everyone else's, the algorithm treats it like everyone else's.</strong> Your Ideal Value Proposition needs to be the backbone of every piece of content you create.</div>
+            <span class="check-tag missing">Differentiator gap</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box fail"></div></div>
+          <div class="check-body">
+            <div class="check-title">Consistent posting cadence — minimum 2–3x per week</div>
+            <div class="check-desc">The Instagram algorithm rewards consistency above almost everything else. <strong>Posting once a week or going dark for two weeks resets your distribution.</strong> The accounts that win are the ones that show up on a schedule and let the data drive the content decisions.</div>
+            <span class="check-tag fix">Systems fix</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout navy fade">
+        <div class="callout-label">The DWELL513 opportunity</div>
+        <div class="callout-text">The Cincinnati real estate market is competitive — but most agents are posting without any of the above. <strong>The opportunity isn't to outpost them. It's to out-strategize them.</strong> One account with a clear IVP, a real funnel, and consistent execution will outperform ten accounts posting randomly every time.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- ===== CHAPTER 2 ===== -->
+  <div class="page" id="ch2">
+    <div class="chapter">
+      <div class="chapter-header fade">
+        <div class="chapter-num-block"><div class="chapter-num">02</div></div>
+        <div class="chapter-meta">
+          <div class="chapter-label">The Content Funnel</div>
+          <h2 class="chapter-title">How to walk a stranger<br>to a <em>signed client.</em></h2>
+        </div>
+      </div>
+      <p class="chapter-intro fade">Social media isn't a place to sell. It's a place to earn trust at scale. Every piece of content maps to one of three stages — and together they create a system that turns cold audiences into warm leads without a single cold call.</p>
+
+      <div class="funnel-stack fade">
+        <div class="funnel-row tofu">
+          <div class="funnel-stripe"></div>
+          <div class="funnel-inner">
+            <div class="funnel-stage-col">
+              <div class="funnel-badge">TOFU</div>
+              <div class="funnel-stage-name">Top of Funnel</div>
+              <div class="funnel-stage-goal">Awareness &amp; Discovery</div>
+            </div>
+            <div>
+              <div class="funnel-col-label">What it does</div>
+              <div class="funnel-col-text">Gets you in front of people who don't know you yet. <strong>The goal isn't to sell — it's to be discovered</strong> by buyers and sellers in Cincinnati who are actively looking for an agent they can trust.</div>
+            </div>
+            <div>
+              <div class="funnel-col-label">For DWELL513</div>
+              <div class="funnel-col-example">"5 Cincinnati neighborhoods most buyers overlook in 2026" — broad reach, local authority, no ask.</div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-row mofu">
+          <div class="funnel-stripe"></div>
+          <div class="funnel-inner">
+            <div class="funnel-stage-col">
+              <div class="funnel-badge">MOFU</div>
+              <div class="funnel-stage-name">Middle of Funnel</div>
+              <div class="funnel-stage-goal">Education &amp; Trust</div>
+            </div>
+            <div>
+              <div class="funnel-col-label">What it does</div>
+              <div class="funnel-col-text">Turns awareness into credibility. <strong>This is where 10+ years of market expertise becomes your biggest asset.</strong> Educational content, market insights, and process transparency build the trust that makes someone choose you over the next agent.</div>
+            </div>
+            <div>
+              <div class="funnel-col-label">For DWELL513</div>
+              <div class="funnel-col-example">"What I tell every first-time buyer before they make an offer" — positions Doug as the expert, not the salesperson.</div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-row bofu">
+          <div class="funnel-stripe"></div>
+          <div class="funnel-inner">
+            <div class="funnel-stage-col">
+              <div class="funnel-badge">BOFU</div>
+              <div class="funnel-stage-name">Bottom of Funnel</div>
+              <div class="funnel-stage-goal">Action &amp; Lead Gen</div>
+            </div>
+            <div>
+              <div class="funnel-col-label">What it does</div>
+              <div class="funnel-col-text">Converts trust into conversations. <strong>By the time someone reaches this stage, they already know you, like you, and trust you.</strong> The ask becomes natural — the logical next step for someone who's been following your content.</div>
+            </div>
+            <div>
+              <div class="funnel-col-label">For DWELL513</div>
+              <div class="funnel-col-example">"Thinking about buying or selling in 2026? Here's where to start." — direct CTA to a warm, already-interested audience.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warm fade">
+        <div class="callout-label">The key insight</div>
+        <div class="callout-text"><strong>Most agents skip straight to BOFU.</strong> They post listings and "just sold" content and wonder why no one reaches out. That's like asking someone to marry you on the first date. The funnel works because it earns the ask before it makes it.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- ===== CHAPTER 3 ===== -->
+  <div class="page" id="ch3">
+    <div class="chapter">
+      <div class="chapter-header fade">
+        <div class="chapter-num-block"><div class="chapter-num">03</div></div>
+        <div class="chapter-meta">
+          <div class="chapter-label">The Honest Timeline</div>
+          <h2 class="chapter-title">What to expect<br><em>and when.</em></h2>
+        </div>
+      </div>
+      <p class="chapter-intro fade">Most agencies won't tell you this. We will. Social media is a long game — and the businesses that win are the ones who understand what they're building and stay the course.</p>
+
+      <div class="timeline-strip fade">
+        <div class="tl-item">
+          <div class="tl-phase">Month 1</div>
+          <div class="tl-label">Foundation</div>
+          <div class="tl-note">IVP, strategy, content pillars, Social SEO setup</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">Months 2–3</div>
+          <div class="tl-label">Execution &amp; Testing</div>
+          <div class="tl-note">2–3x/week, wide format testing, data collection</div>
+        </div>
+        <div class="tl-item active">
+          <div class="tl-phase">Month 4+</div>
+          <div class="tl-label">Refine &amp; Convert</div>
+          <div class="tl-note">Double down on what works, BOFU focus begins</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">6–12 Months</div>
+          <div class="tl-label">Compounding</div>
+          <div class="tl-note">System runs, leads become consistent, not random</div>
+        </div>
+      </div>
+
+      <div class="checklist fade">
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box pass"></div></div>
+          <div class="check-body">
+            <div class="check-title">Early wins are real — but they're not leads yet</div>
+            <div class="check-desc">In the first 60–90 days you'll see reach improve, engagement increase, and profile visits climb. <strong>These are the leading indicators that the system is working.</strong> Leads follow trust, and trust takes time to build.</div>
+            <span class="check-tag quick-win">Months 1–3</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box pass"></div></div>
+          <div class="check-body">
+            <div class="check-title">Real conversations start around Month 4</div>
+            <div class="check-desc">By Month 4 we know what content resonates with your audience. <strong>BOFU content gets introduced and the lead gen focus sharpens.</strong> Profile visits start converting to DMs and inquiries.</div>
+            <span class="check-tag quick-win">Month 4+</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-gutter"><div class="check-box pass"></div></div>
+          <div class="check-body">
+            <div class="check-title">The system compounds — leads become predictable</div>
+            <div class="check-desc">At 6–12 months, the content library is built, the audience is warm, and the funnel is running. <strong>New content compounds on top of what's already performing.</strong> Instagram becomes a consistent source of qualified leads, not a random one.</div>
+            <span class="check-tag quick-win">6–12 months</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout ink fade">
+        <div class="callout-label">The honest truth</div>
+        <div class="callout-text">Anyone who promises you leads in 30 days is selling you something. <strong>Social media is a trust-building machine</strong> — and trust takes time. The businesses that win on Instagram are the ones who commit to the system, stay consistent, and let the data drive the decisions. <strong>That's the game. And it's winnable.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- ===== CHAPTER 4 ===== -->
+  <div class="page" id="ch4">
+    <div class="chapter">
+      <div class="chapter-header fade">
+        <div class="chapter-num-block"><div class="chapter-num">04</div></div>
+        <div class="chapter-meta">
+          <div class="chapter-label">Proof It Works</div>
+          <h2 class="chapter-title">Results from businesses<br>with the <em>same buying psychology.</em></h2>
+        </div>
+      </div>
+      <p class="chapter-intro fade">We don't have a real estate client yet — we'll be direct about that. What we do have is a proven track record with service-based businesses where trust, expertise, and long buying cycles drive every decision. The niche changes. The system doesn't.</p>
+
+      <div class="callout warm fade">
+        <div class="callout-label">Why this matters for real estate</div>
+        <div class="callout-text">A buyer choosing a real estate agent and a patient choosing a med spa are making the same type of decision — <strong>they're not buying a product, they're buying trust in a person.</strong> That's exactly the type of business our system is built for. Every client below started with the same gaps DWELL513 has today.</div>
+      </div>
+
+      <table class="results-table fade">
+        <thead>
+          <tr>
+            <th>Business Type</th>
+            <th>Starting Point</th>
+            <th>Key Result</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="niche-tag">Med Spa</span><br>
+              <div class="sub" style="margin-top:6px;">Aesthetics &amp; Skincare</div>
+            </td>
+            <td>No strategy, no funnel, no Social SEO. Posting without results.</td>
+            <td>
+              <div class="stat">13.0% CTR</div>
+              <div class="sub">2.6× the industry ceiling</div>
+              <div class="stat" style="margin-top:8px;">8.1/10</div>
+              <div class="sub">Monthly performance score</div>
+            </td>
+            <td>16 months<br><span class="sub">Client since Oct 2024</span></td>
+          </tr>
+          <tr>
+            <td>
+              <span class="niche-tag">Specialty Retail</span><br>
+              <div class="sub" style="margin-top:6px;">Local Service Business</div>
+            </td>
+            <td>No capacity for social media, no defined strategy. Started from zero.</td>
+            <td>
+              <div class="stat">209%+ Reach</div>
+              <div class="sub">In first 90 days</div>
+              <div class="stat" style="margin-top:8px;">15,157 views</div>
+              <div class="sub">Single founder story post</div>
+            </td>
+            <td>4 months<br><span class="sub">Client since Oct 2025</span></td>
+          </tr>
+          <tr>
+            <td>
+              <span class="niche-tag">Boutique Brand</span><br>
+              <div class="sub" style="margin-top:6px;">Local Service &amp; Retail</div>
+            </td>
+            <td>Inconsistent posting, no strategy, no IVP clarity.</td>
+            <td>
+              <div class="stat">77%+ Reach</div>
+              <div class="sub">First 6 months</div>
+              <div class="stat" style="margin-top:8px;">96%+ Engagement</div>
+              <div class="sub">Last 30 days</div>
+            </td>
+            <td>10+ months<br><span class="sub">Client since May 2024</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout navy fade">
+        <div class="callout-label">The bridge to DWELL513</div>
+        <div class="callout-text">Every one of these clients started exactly where DWELL513 is today — posting without results, no clear strategy, no system. <strong>DWELL513 actually has a stronger foundation than most of them did when they started.</strong> The brand is established, the expertise is real, and the market is there. What's missing is the system.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- ===== CHAPTER 5 ===== -->
+  <div class="page" id="ch5">
+    <div class="next-steps">
+      <div class="chapter-header fade">
+        <div class="chapter-num-block"><div class="chapter-num">05</div></div>
+        <div class="chapter-meta">
+          <div class="chapter-label">Next Steps</div>
+          <h2 class="chapter-title">Two ways to<br><em>take the next step.</em></h2>
+        </div>
+      </div>
+      <p class="chapter-intro fade">No pressure, no hard sell. If any of this resonated, here are two ways to move forward — both low commitment, both designed to give you something tangible before any decisions are made.</p>
+
+      <div class="steps-row">
+        <div class="step-card primary fade">
+          <div class="step-icon">🗺</div>
+          <div class="step-title">Strategy Session</div>
+          <div class="step-desc">We map out exactly what a real system looks like for DWELL513 — IVP, content pillars, funnel strategy, and a 90-day roadmap. You walk away with a clear picture of the path forward. No commitment required.</div>
+          <a href="mailto:hello@scrollmedia.co?subject=DWELL513 - Strategy Session" class="step-cta">Let's Talk Strategy →</a>
+        </div>
+        <div class="step-card fade fade-d1">
+          <div class="step-icon">🎬</div>
+          <div class="step-title">Content Shoot</div>
+          <div class="step-desc">Skip the conversation and go straight to seeing what we can create. We come out, shoot a listing or a brand story piece, and show you exactly what DWELL513 content looks like when it's built on strategy. Show, don't tell.</div>
+          <a href="mailto:hello@scrollmedia.co?subject=DWELL513 - Content Shoot" class="step-cta">Book a Shoot →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="https://scrollmedia.co" target="_blank" class="footer-logo">
+      <img src="scroll-media-logo.svg" alt="Scroll Media">
+    </a>
+    <div class="footer-text">
+      Questions? <a href="mailto:hello@scrollmedia.co">hello@scrollmedia.co</a> · <a href="https://decks.scrollmedia.co/pitch/" target="_blank">See our full pitch →</a>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

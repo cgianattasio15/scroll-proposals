@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Media × Maggie's Marvelous Mini Cheesecakes — Discovery Session</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Scheme B — Light/Pitch — REQUIRED for discovery decks */
+      --bg:            #fafdff;
+      --bg-section:    #f2f4f7;
+      --bg-card:       #ffffff;
+      --border:        rgba(21,21,22,0.09);
+      --border-mid:    rgba(21,21,22,0.15);
+      --accent:        #0c3387;
+      --accent-dim:    rgba(12,51,135,0.07);
+      --accent-mid:    rgba(12,51,135,0.14);
+      --accent-border: rgba(12,51,135,0.22);
+      --accent-glow:   rgba(12,51,135,0.18);
+      --highlight:     #e2ed7a;
+      --text:          #151516;
+      --text-mid:      rgba(21,21,22,0.60);
+      --text-dim:      rgba(21,21,22,0.40);
+      --shadow-sm:     0 1px 4px rgba(21,21,22,0.06);
+      --shadow-md:     0 4px 20px rgba(21,21,22,0.08);
+      --shadow-lg:     0 12px 40px rgba(21,21,22,0.11);
+      --shadow-xl:     0 24px 64px rgba(21,21,22,0.13);
+      --radius:        12px;
+      --radius-lg:     18px;
+      --radius-xl:     26px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ── NAV ── */
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(250,253,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 28px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.68rem; font-weight: 600; letter-spacing: 1.3px; text-transform: uppercase; padding: 6px 11px; border-radius: 6px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-dim); }
+    .nav-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); padding: 5px 14px; border-radius: 100px; flex-shrink: 0; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+    section { padding: 96px 0; }
+    section.alt { background: var(--bg-section); }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* ── HERO ── */
+    .hero { padding: 88px 0 80px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero-canvas { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; }
+    .hero-orb-1 { width: 500px; height: 500px; top: -200px; right: -100px; background: radial-gradient(circle, rgba(12,51,135,0.12) 0%, transparent 70%); }
+    .hero-orb-2 { width: 300px; height: 300px; bottom: -100px; left: -50px; background: radial-gradient(circle, rgba(203,233,255,0.4) 0%, transparent 70%); }
+    .hero-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(12,51,135,0.07) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 100%); }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { font-size: clamp(40px, 5.5vw, 66px); font-weight: 900; line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 22px; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.75; margin-bottom: 44px; }
+    .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-md); }
+    .hero-meta-item { padding: 22px 24px; border-right: 1px solid var(--border); }
+    .hero-meta-item:last-child { border-right: none; }
+    .hero-meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 5px; }
+    .hero-meta-value { font-size: 14px; font-weight: 700; color: var(--text); }
+
+    /* ── SECTION HEADERS ── */
+    .section-header { margin-bottom: 56px; }
+    .section-header h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 900; line-height: 1.07; letter-spacing: -0.025em; margin-bottom: 14px; }
+    .section-header h2 em { font-style: normal; color: var(--accent); }
+    .section-header p { font-size: 16px; color: var(--text-mid); max-width: 580px; line-height: 1.75; }
+
+    /* ── CLIENT PROFILE ── */
+    .profile-layout { display: flex; flex-direction: column; gap: 20px; }
+    .profile-hero-card { background: var(--accent); border-radius: var(--radius-lg); padding: 36px 40px; box-shadow: 0 8px 32px rgba(12,51,135,0.22); position: relative; overflow: hidden; }
+    .profile-hero-card::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none; }
+    .profile-hero-card::after { content: ''; position: absolute; bottom: -60px; left: 20%; width: 200px; height: 200px; background: rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none; }
+    .profile-hero-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; position: relative; z-index: 1; }
+    .profile-hero-label::before { content: ''; width: 4px; height: 14px; background: rgba(255,255,255,0.5); border-radius: 2px; }
+    .profile-hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); overflow: hidden; position: relative; z-index: 1; }
+    .profile-hero-item { padding: 18px 22px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .profile-hero-item:last-child { border-right: none; }
+    .profile-hero-item-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 5px; }
+    .profile-hero-item-value { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.4; }
+    .profile-hero-brand { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); position: relative; z-index: 1; }
+    .profile-hero-brand-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+    .profile-hero-brand-value { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.5; }
+    .profile-secondary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .profile-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 32px; box-shadow: var(--shadow-sm); }
+    .profile-card-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .profile-card-label::before { content: ''; width: 4px; height: 14px; background: var(--accent); border-radius: 2px; }
+    .pain-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .pain-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+    .pain-item::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 5px; }
+    .goal-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .goal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+    .goal-funnel { display: inline-flex; align-items: center; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+    .goal-funnel.tofu { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.25); }
+    .goal-funnel.mofu { background: rgba(245,158,11,0.1); color: #d97706; border: 1px solid rgba(245,158,11,0.25); }
+    .goal-funnel.bofu { background: rgba(239,68,68,0.1); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+
+    /* ── AUDIT ── */
+    .audit-layout { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
+    .audit-left { display: flex; flex-direction: column; gap: 12px; }
+    .audit-primary-badge { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .platform-row { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+    .platform-row:hover { border-color: var(--accent-border); box-shadow: var(--shadow-md); }
+    .platform-row.primary { border-color: var(--accent-border); box-shadow: 0 0 0 2px var(--accent-dim); }
+    .platform-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; }
+    .platform-icon { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .platform-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .platform-icon.ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .platform-icon.fb { background: #1877f2; }
+    .platform-icon.web { background: var(--accent); }
+    .platform-info { flex: 1; min-width: 0; }
+    .platform-name { font-size: 14px; font-weight: 800; color: var(--text); }
+    .platform-detail { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+    .platform-status { font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; flex-shrink: 0; }
+    .status-primary { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
+    .status-active { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.25); }
+    .status-attention { background: rgba(245,158,11,0.1); color: #d97706; border: 1px solid rgba(245,158,11,0.25); }
+    .platform-chevron { font-size: 10px; color: var(--text-dim); transition: transform 0.25s; flex-shrink: 0; }
+    .platform-row.open .platform-chevron { transform: rotate(180deg); }
+    .platform-detail-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .platform-row.open .platform-detail-panel { max-height: 600px; }
+    .platform-detail-inner { padding: 0 20px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .detail-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+    .detail-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .detail-bullet { font-size: 12px; color: var(--text-mid); line-height: 1.55; display: flex; align-items: flex-start; gap: 8px; }
+    .detail-bullet.good::before { content: '✓'; color: #059669; font-weight: 800; flex-shrink: 0; }
+    .detail-bullet.improve::before { content: '→'; color: var(--accent); font-weight: 800; flex-shrink: 0; }
+
+    /* ── IG PROFILE CARD ── */
+    .ig-profile-card { background: var(--bg-card); border: 1px solid var(--accent-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); position: sticky; top: 80px; }
+    .ig-card-header { background: var(--accent); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .ig-card-header-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .ig-card-header-handle { font-size: 13px; font-weight: 800; color: #fff; }
+    .ig-card-body { padding: 20px; }
+    .ig-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+    .ig-stat-cell { padding: 14px 12px; border-right: 1px solid var(--border); text-align: center; }
+    .ig-stat-cell:last-child { border-right: none; }
+    .ig-stat-num { font-size: 20px; font-weight: 900; color: var(--text); letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+    .ig-stat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+    .maturity-section { margin-top: 4px; }
+    .maturity-title { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+    .maturity-track { display: flex; gap: 4px; margin-bottom: 8px; }
+    .maturity-step { flex: 1; height: 6px; border-radius: 3px; background: var(--border); }
+    .maturity-step.filled { background: var(--accent); opacity: 0.4; }
+    .maturity-step.current { background: var(--accent); }
+    .maturity-labels { display: flex; gap: 4px; margin-bottom: 12px; }
+    .maturity-label-item { flex: 1; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); line-height: 1.4; }
+    .maturity-label-item.current { color: var(--accent); font-weight: 800; }
+    .maturity-insight { font-size: 12px; color: var(--text-mid); line-height: 1.6; background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: var(--radius); padding: 12px 14px; }
+    .ig-strategy-box { margin-top: 20px; background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-lg); padding: 24px 28px; box-shadow: var(--shadow-sm); }
+    .ig-strategy-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .ig-strategy-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .ig-strategy-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin-bottom: 16px; }
+    .ig-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ig-chip { font-size: 11px; font-weight: 700; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 100px; padding: 5px 12px; }
+
+    /* ── OBSERVATIONS ── */
+    .obs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+    .obs-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); }
+    .obs-num { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .obs-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; line-height: 1.4; }
+    .obs-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin-bottom: 14px; }
+    .obs-stat { font-size: 11px; font-weight: 700; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 8px; padding: 6px 10px; display: inline-block; }
+
+    .opportunity-box { background: var(--bg-card); border: 1px solid var(--accent-border); border-radius: var(--radius-lg); padding: 32px 36px; box-shadow: var(--shadow-md); display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+    .opp-icon { font-size: 32px; flex-shrink: 0; }
+    .opp-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .opp-title { font-size: 18px; font-weight: 900; color: var(--text); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.02em; }
+    .opp-body { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+
+    .diff-ideas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .diff-idea-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
+    .diff-idea-num { font-size: 28px; font-weight: 900; color: var(--accent-dim); letter-spacing: -0.04em; line-height: 1; margin-bottom: 10px; }
+    .diff-idea-title { font-size: 13px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .diff-idea-body { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── WHO WE ARE ── */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-sm); margin-bottom: 48px; }
+    .stat-cell { padding: 28px 24px; border-right: 1px solid var(--border); text-align: center; }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-size: 36px; font-weight: 900; color: var(--accent); letter-spacing: -0.04em; line-height: 1; display: block; margin-bottom: 6px; }
+    .stat-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+    .why-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 48px; }
+    .why-item { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .why-item:last-child { border-bottom: none; }
+    .why-num { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-dim); border: 2px solid var(--accent-border); color: var(--accent); font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .why-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+    .testimonial-box { background: var(--accent); border-radius: var(--radius-lg); padding: 36px 40px; box-shadow: 0 8px 32px rgba(12,51,135,0.22); }
+    .testimonial-quote { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+    .testimonial-attr { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; }
+    .testimonial-cta a { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .testimonial-cta a:hover { color: #fff; border-color: #fff; }
+
+    /* ── HOW WE WORK ── */
+    .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+    .phase-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+    .phase-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .phase-num { font-size: 48px; font-weight: 900; color: var(--accent-dim); letter-spacing: -0.04em; line-height: 1; margin-bottom: 16px; }
+    .phase-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+    .phase-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .phase-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin-bottom: 16px; }
+    .phase-deliverables { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .phase-deliverable { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--text-mid); }
+    .phase-deliverable::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .niche-callout { background: var(--bg-card); border: 1px solid var(--accent-border); border-left: 4px solid var(--accent); border-radius: var(--radius-lg); padding: 28px 32px; box-shadow: var(--shadow-sm); }
+    .niche-callout-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .niche-callout-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 16px; }
+    .niche-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .niche-scenario { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+    .niche-scenario::before { content: '✓'; color: var(--accent); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── BRAND INSPIRATION ── */
+    .inspo-account-block { margin-bottom: 56px; }
+    .inspo-account-block:last-child { margin-bottom: 0; }
+    .inspo-account-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .inspo-account-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; flex-shrink: 0; }
+    .inspo-account-name { font-size: 18px; font-weight: 900; color: var(--text); letter-spacing: -0.02em; }
+    .inspo-account-meta { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+    .inspo-account-why { font-size: 14px; color: var(--text-mid); line-height: 1.7; background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; }
+    .inspo-posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .inspo-post-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .inspo-post-embed { background: var(--bg-section); display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0; }
+    .inspo-post-embed .instagram-media { margin: 0 auto !important; width: 100% !important; max-width: 100% !important; min-width: 0 !important; }
+    .inspo-post-analysis { padding: 20px; }
+    .inspo-post-stats { display: flex; gap: 16px; margin-bottom: 14px; }
+    .inspo-post-stat { font-size: 12px; font-weight: 800; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 8px; padding: 5px 10px; }
+    .inspo-post-funnel { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-bottom: 14px; }
+    .inspo-post-funnel.tofu { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.25); }
+    .inspo-post-funnel.mofu { background: rgba(245,158,11,0.1); color: #d97706; border: 1px solid rgba(245,158,11,0.25); }
+    .inspo-post-funnel.bofu { background: rgba(239,68,68,0.1); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+    .inspo-post-why-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .inspo-post-why { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 14px; }
+    .inspo-post-apply { background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: var(--radius); padding: 12px 14px; }
+    .inspo-post-apply-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .inspo-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .inspo-bullet { font-size: 12px; color: var(--text-mid); line-height: 1.55; }
+    .inspo-bullet strong { color: var(--text); font-weight: 700; }
+    .inspo-apply-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .inspo-apply-bullet { font-size: 12px; color: var(--accent); line-height: 1.5; font-weight: 500; }
+    .inspo-apply-bullet strong { font-weight: 800; }
+
+    /* ── INVESTMENT ── */
+    .investment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .inv-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); position: relative; display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .inv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .inv-card.featured { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-border), var(--shadow-md); }
+    .inv-featured-label { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+    .inv-type { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+    .inv-name { font-size: 20px; font-weight: 900; color: var(--text); margin-bottom: 12px; letter-spacing: -0.02em; }
+    .inv-card.featured .inv-name { color: var(--accent); }
+    .inv-desc { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+    .inv-price { font-size: 26px; font-weight: 900; color: var(--text); letter-spacing: -0.03em; margin-bottom: 4px; }
+    .inv-price-note { font-size: 11px; color: var(--text-dim); margin-bottom: 14px; }
+    .inv-badge { font-size: 11px; font-weight: 700; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 8px; padding: 7px 12px; margin-bottom: 12px; }
+    .inv-best-for { font-size: 11px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── NEXT STEPS ── */
+    .next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .step-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+    .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .step-num { font-size: 40px; font-weight: 900; color: var(--accent-dim); letter-spacing: -0.04em; line-height: 1; margin-bottom: 16px; }
+    .step-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .step-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+
+    /* ── FOOTER ── */
+    .footer { background: #ffffff; color: rgba(21,21,22,0.5); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+    .footer-logo { margin-bottom: 16px; }
+    .footer-logo img { height: 24px; width: auto; }
+    .footer-text { font-size: 13px; }
+    .footer-text a { color: rgba(21,21,22,0.45); text-decoration: none; }
+    .footer-text a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .container, .container-wide { padding: 0 20px; }
+      section { padding: 64px 0; }
+      .hero { padding: 60px 0 52px; }
+      .hero-meta { grid-template-columns: repeat(2, 1fr); }
+      .hero-meta-item:nth-child(2) { border-right: none; }
+      .hero-meta-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .obs-grid { grid-template-columns: 1fr; }
+      .audit-layout { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .phases { grid-template-columns: 1fr; }
+      .niche-scenarios { grid-template-columns: 1fr; }
+      .investment-grid { grid-template-columns: 1fr; }
+      .next-steps { grid-template-columns: 1fr; }
+      .profile-hero-grid { grid-template-columns: 1fr 1fr; }
+      .profile-hero-item:nth-child(2) { border-right: none; }
+      .profile-hero-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.12); grid-column: 1 / -1; }
+      .profile-secondary-row { grid-template-columns: 1fr; }
+      .opportunity-box { flex-direction: column; }
+      .diff-ideas { grid-template-columns: 1fr 1fr; }
+      .inspo-posts-grid { grid-template-columns: 1fr; }
+      .inspo-account-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .why-item { flex-direction: column; gap: 12px; }
+      .why-num { width: 32px; height: 32px; font-size: 12px; }
+    }
+    @media (max-width: 480px) {
+      .profile-hero-card { padding: 24px 20px; }
+      .profile-hero-grid { grid-template-columns: 1fr; }
+      .profile-hero-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .profile-hero-item:last-child { border-bottom: none; }
+      .diff-ideas { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 36px; }
+      .section-header h2 { font-size: 28px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .niche-scenarios { grid-template-columns: 1fr; }
+      .investment-grid { grid-template-columns: 1fr; }
+      .next-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="https://decks.scrollmedia.co/pitch/" target="_blank">
+      <img src="scroll-media-logo.svg" alt="Scroll Media" height="28">
+    </a>
+    <div class="nav-links">
+      <a href="#profile">Profile</a>
+      <a href="#audit">Audit</a>
+      <a href="#observations">Observations</a>
+      <a href="#who-we-are">Who We Are</a>
+      <a href="#how-we-work">How We Work</a>
+      <a href="#inspo">Inspiration</a>
+      <a href="#investment">Investment</a>
+    </div>
+    <div class="nav-badge">Discovery Session</div>
+  </nav>
+
+  <!-- ===== SECTION 1: HERO ===== -->
+  <section class="hero">
+    <div class="hero-canvas">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-dots"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="eyebrow reveal">Prepared for Maggie's Marvelous Mini Cheesecakes &middot; March 2026</div>
+      <h1 class="reveal reveal-delay-1">Let's talk about what's<br><em>possible for Maggie's.</em></h1>
+      <p class="hero-sub reveal reveal-delay-2">We did our homework before this call. Here's what we found, how we think, and the questions we want to work through together — so we can figure out if there's a real fit.</p>
+      <div class="hero-meta reveal reveal-delay-3">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Business</div>
+          <div class="hero-meta-value">Maggie's Marvelous Mini Cheesecakes</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Market</div>
+          <div class="hero-meta-value">Blue Ash, OH</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Niche</div>
+          <div class="hero-meta-value">Food &amp; Bev / Specialty Desserts</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Session Type</div>
+          <div class="hero-meta-value">Discovery Call</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: CLIENT PROFILE ===== -->
+  <section class="alt" id="profile">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Client Profile</div>
+        <h2>Here's what we<br><em>know about you.</em></h2>
+        <p>We pulled this together before the call. If anything's off, correct us — that's exactly the kind of context that shapes a better strategy.</p>
+      </div>
+
+      <div class="profile-layout">
+        <div class="profile-hero-card reveal">
+          <div class="profile-hero-label">Business Overview</div>
+          <div class="profile-hero-grid">
+            <div class="profile-hero-item">
+              <div class="profile-hero-item-label">Business</div>
+              <div class="profile-hero-item-value">Maggie's Marvelous Mini Cheesecakes</div>
+            </div>
+            <div class="profile-hero-item">
+              <div class="profile-hero-item-label">Market</div>
+              <div class="profile-hero-item-value">Blue Ash, OH (Greater Cincinnati)</div>
+            </div>
+            <div class="profile-hero-item">
+              <div class="profile-hero-item-label">Revenue Model</div>
+              <div class="profile-hero-item-value">Corporate Catering · Events · Gifting · Retail</div>
+            </div>
+          </div>
+          <div class="profile-hero-brand">
+            <div class="profile-hero-brand-label">Brand Angle</div>
+            <div class="profile-hero-brand-value"><strong>Artisan, founder-made mini cheesecakes</strong> built for corporate catering and event dessert tables — premium product, personal story, highest-margin opportunity in corporate and event catering</div>
+          </div>
+        </div>
+
+        <div class="profile-secondary-row">
+          <div class="profile-card reveal reveal-delay-1">
+            <div class="profile-card-label">Current Pain Points</div>
+            <ul class="pain-list">
+              <li class="pain-item"><strong>No process content</strong> — nobody is seeing the "behind the bake." The craft, the crust press, the flavor development — it's invisible online</li>
+              <li class="pain-item"><strong>No corporate or event proof</strong> — highest-value orders come from catering, but the feed lacks scale, professional setup, and logistics proof</li>
+              <li class="pain-item"><strong>No DM automation or CTA system</strong> — posts lack keyword triggers to capture warm leads and automate catering inquiries</li>
+              <li class="pain-item"><strong>No Social SEO</strong> — missing local and intent-based keywords in bio, captions, and on-screen text — invisible to people searching for event desserts</li>
+            </ul>
+          </div>
+          <div class="profile-card reveal reveal-delay-2">
+            <div class="profile-card-label">Primary Goals</div>
+            <ul class="goal-list">
+              <li class="goal-item">
+                <span class="goal-funnel tofu">TOFU</span>
+                <strong>Build brand authority in the Cincinnati dessert and catering space</strong> — get discovered by event planners, corporate buyers, and brides who don't know Maggie's yet
+              </li>
+              <li class="goal-item">
+                <span class="goal-funnel mofu">MOFU</span>
+                <strong>Educate and build desire through process and proof content</strong> — show the craft, the scale, and the experience so buyers trust the product before they ever order
+              </li>
+              <li class="goal-item">
+                <span class="goal-funnel bofu">BOFU</span>
+                <strong>Generate consistent corporate and event catering inquiries</strong> — turn Instagram into a predictable inbound channel for high-margin catering orders
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: SOCIAL AUDIT ===== -->
+  <section id="audit">
+    <div class="container-wide">
+      <div class="section-header reveal">
+        <div class="eyebrow">Social Media Audit</div>
+        <h2>Where you are today<br><em>across every platform.</em></h2>
+        <p>We mapped every channel — what's active, what's not, and where the real opportunity lives. Click any platform to see our quick take.</p>
+      </div>
+
+      <div class="audit-layout">
+        <div class="audit-left">
+          <div class="audit-primary-badge">Primary Focus</div>
+
+          <!-- Instagram — PRIMARY -->
+          <div class="platform-row primary reveal" onclick="togglePlatform(this)">
+            <div class="platform-header">
+              <div class="platform-icon ig">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </div>
+              <div class="platform-info">
+                <div class="platform-name">Instagram</div>
+                <div class="platform-detail">@maggiesminicheesecakes &middot; ~345 followers &middot; 203 posts</div>
+              </div>
+              <div class="platform-status status-primary">Primary</div>
+              <div class="platform-chevron">&#9660;</div>
+            </div>
+            <div class="platform-detail-panel">
+              <div class="platform-detail-inner">
+                <div>
+                  <div class="detail-label">What's Working</div>
+                  <ul class="detail-bullets">
+                    <li class="detail-bullet good">Active posting history — 203 posts shows real commitment to showing up</li>
+                    <li class="detail-bullet good">Product photography is clean and appetizing — the product itself is visually compelling</li>
+                    <li class="detail-bullet good">Seasonal and gifting content shows good instinct for occasion-based marketing</li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="detail-label">Where to Improve</div>
+                  <ul class="detail-bullets">
+                    <li class="detail-bullet improve">Low follower-to-post ratio (~1.7 per post) — content isn't driving discovery or new audience growth</li>
+                    <li class="detail-bullet improve">No process or behind-the-scenes content — the craft and story that builds desire is completely missing</li>
+                    <li class="detail-bullet improve">No corporate or event proof — highest-value orders aren't being showcased on the feed</li>
+                    <li class="detail-bullet improve">No keyword strategy — invisible to people searching for event desserts or catering in Cincinnati</li>
+                    <li class="detail-bullet improve">No CTA system — no comment triggers, no DM automation, no clear path from viewer to inquiry</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Facebook -->
+          <div class="platform-row reveal" onclick="togglePlatform(this)">
+            <div class="platform-header">
+              <div class="platform-icon fb">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <div class="platform-info">
+                <div class="platform-name">Facebook</div>
+                <div class="platform-detail">Maggie's Marvelous Mini Cheesecakes &middot; ~2,935 likes</div>
+              </div>
+              <div class="platform-status status-active">Active</div>
+              <div class="platform-chevron">&#9660;</div>
+            </div>
+            <div class="platform-detail-panel">
+              <div class="platform-detail-inner">
+                <div>
+                  <div class="detail-label">What's Working</div>
+                  <ul class="detail-bullets">
+                    <li class="detail-bullet good">Established page with a meaningful existing audience — 2,935 likes is a real asset</li>
+                    <li class="detail-bullet good">Active community with real engagement — people are already paying attention here</li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="detail-label">Where to Improve</div>
+                  <ul class="detail-bullets">
+                    <li class="detail-bullet improve">Facebook organic reach is declining — not the right platform to build new audience from scratch</li>
+                    <li class="detail-bullet improve">Strategy should originate on Instagram and cross-post to Facebook — not the other way around</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Website -->
+          <div class="platform-row reveal" onclick="togglePlatform(this)">
+            <div class="platform-header">
+              <div class="platform-icon web">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="white"/></svg>
+              </div>
+              <div class="platform-info">
+                <div class="platform-name">Website</div>
+                <div class="platform-detail">maggiesmarvelousminicheesecakes.com</div>
+              </div>
+              <div class="platform-status status-attention">Needs Attention</div>
+              <div class="platform-chevron">&#9660;</div>
+            </div>
+            <div class="platform-detail-panel">
+              <div class="platform-detail-inner">
+                <div>
+                  <div class="detail-label">What's Working</div>
+                  <ul class="detail-bullets">
+                    <li class="detail-bullet good">Online ordering capability is in place — a critical conversion asset for catering inquiries</li>
+                    <li class="detail-bullet good">Clear product catalog with seasonal offerings shows operational maturity</li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="detail-label">Where to Improve</div>
+                  <ul class="detail-bullets">
+                    <li class="detail-bullet improve">Social content should be driving traffic to the site — the funnel from Instagram to order isn't built yet</li>
+                    <li class="detail-bullet improve">Corporate catering and event inquiry pathways need to be prominent and frictionless</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: IG Profile Card -->
+        <div>
+          <div class="ig-profile-card">
+            <div class="ig-card-header">
+              <div class="ig-card-header-label">Instagram Profile</div>
+              <div class="ig-card-header-handle">@maggiesminicheesecakes</div>
+            </div>
+            <div class="ig-card-body">
+              <div class="ig-stats-row">
+                <div class="ig-stat-cell">
+                  <div class="ig-stat-num">203</div>
+                  <div class="ig-stat-label">Posts</div>
+                </div>
+                <div class="ig-stat-cell">
+                  <div class="ig-stat-num">345</div>
+                  <div class="ig-stat-label">Followers</div>
+                </div>
+                <div class="ig-stat-cell">
+                  <div class="ig-stat-num">104</div>
+                  <div class="ig-stat-label">Following</div>
+                </div>
+              </div>
+              <div class="maturity-section">
+                <div class="maturity-title">Instagram Maturity Stage</div>
+                <div class="maturity-track">
+                  <div class="maturity-step current"></div>
+                  <div class="maturity-step"></div>
+                  <div class="maturity-step"></div>
+                  <div class="maturity-step"></div>
+                </div>
+                <div class="maturity-labels">
+                  <div class="maturity-label-item current">SPARK &#8592;<br><span style="font-size:8px;font-weight:500;">0–2.5K</span></div>
+                  <div class="maturity-label-item">LIFT<br><span style="font-size:8px;font-weight:500;opacity:0.7;">2.5K–10K</span></div>
+                  <div class="maturity-label-item">RISE<br><span style="font-size:8px;font-weight:500;opacity:0.7;">10K–50K</span></div>
+                  <div class="maturity-label-item">THRIVE<br><span style="font-size:8px;font-weight:500;opacity:0.7;">50K+</span></div>
+                </div>
+                <div class="maturity-insight">
+                  Currently in the <strong>SPARK stage</strong> — the foundation phase. The product is exceptional. What's missing is the system to turn that product into a discoverable, inbound-generating brand. This is exactly the right moment to build it.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ig-strategy-box reveal">
+            <div class="ig-strategy-label">Our Recommendation</div>
+            <div class="ig-strategy-title">Instagram first. Build the system that drives catering orders.</div>
+            <div class="ig-strategy-body">Instagram is where event planners, brides, and corporate buyers discover specialty food brands. The opportunity isn't just more followers — it's building a content system that turns viewers into catering inquiries. We go all-in on Instagram, then intelligently cross-post to Facebook where the existing audience already lives.</div>
+            <div class="ig-chips">
+              <div class="ig-chip">Instagram-First</div>
+              <div class="ig-chip">Facebook Cross-Post</div>
+              <div class="ig-chip">Reels-Led Growth</div>
+              <div class="ig-chip">DM Automation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: WHAT WE SAW ===== -->
+  <section class="alt" id="observations">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">What We Saw</div>
+        <h2>Three things that<br><em>stood out immediately.</em></h2>
+        <p>Based on our audit, here's what we took away — the strengths, the gaps, and where the real opportunity lives.</p>
+      </div>
+
+      <div class="obs-grid">
+        <div class="obs-card reveal">
+          <div class="obs-num">Observation 01</div>
+          <div class="obs-title">An exceptional product that nobody outside your current circle knows about yet.</div>
+          <div class="obs-body">The product is genuinely remarkable — artisan-made, visually stunning, and built for high-value occasions. The Facebook community proves there's real demand. What's missing is a content system that gets that product in front of the right people at scale — event planners, corporate buyers, and brides who are actively searching for exactly what Maggie's offers.</div>
+          <div class="obs-stat">Strong product &middot; Untapped discovery</div>
+        </div>
+        <div class="obs-card reveal reveal-delay-1">
+          <div class="obs-num">Observation 02</div>
+          <div class="obs-title">The highest-value revenue stream — corporate catering — is completely invisible on social.</div>
+          <div class="obs-body">Corporate catering is the highest-margin, highest-volume order type. But the feed doesn't show it. No proof of scale, no event setups, no behind-the-scenes of a 400-mini corporate order going out the door. That proof content is the single most powerful trust signal for a buyer evaluating a catering vendor. Right now, it doesn't exist.</div>
+          <div class="obs-stat">Biggest gap: corporate proof content</div>
+        </div>
+        <div class="obs-card reveal reveal-delay-2">
+          <div class="obs-num">Observation 03</div>
+          <div class="obs-title">Process content is your highest-leverage untapped asset — and nobody is doing it.</div>
+          <div class="obs-body">The "behind the bake" — the crust press, the flavor development, the packaging, the setup — is the content that builds desire before the order. It's the content that gets saved, shared, and commented on. It builds trust with buyers who've never tasted the product. In the specialty dessert space, process content is the category's most proven growth format. It's completely absent from the current feed.</div>
+          <div class="obs-stat">Highest leverage: process Reels</div>
+        </div>
+      </div>
+
+      <div class="opportunity-box reveal">
+        <div class="opp-icon">&#127919;</div>
+        <div>
+          <div class="opp-label">The Real Opportunity</div>
+          <div class="opp-title">The product is already there. What's missing is the system that makes it impossible to ignore.</div>
+          <div class="opp-body">Most specialty food brands on Instagram are posting product photos and hoping for the best. No strategy, no funnel, no system for turning viewers into buyers. The brands that break out in this space do three things consistently: they show the process (builds desire), they prove the scale (builds trust for high-value orders), and they make it frictionless to inquire (DM automation, clear CTAs). Maggie's has the product to compete at the highest level. Here's what sets you apart from every other dessert brand in Cincinnati:</div>
+        </div>
+      </div>
+
+      <div class="diff-ideas reveal">
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">01</div>
+          <div class="diff-idea-title">The Craft Story</div>
+          <div class="diff-idea-body">Maggie's isn't a factory — it's a founder-made product with a real story behind it. That authenticity is a content pillar most food brands can't claim. The "behind the bake" angle builds desire and trust simultaneously.</div>
+        </div>
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">02</div>
+          <div class="diff-idea-title">Corporate Catering Authority</div>
+          <div class="diff-idea-body">Showing scale — 400 minis prepped, packaged, and set up at a corporate venue — is the proof content that converts high-value buyers. Nobody else in the Cincinnati dessert space is owning this lane.</div>
+        </div>
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">03</div>
+          <div class="diff-idea-title">The Mini Format Advantage</div>
+          <div class="diff-idea-body">Mini cheesecakes are inherently shareable — visually, practically, and socially. The format lends itself to event content, gifting content, and variety showcase content that performs across every funnel stage.</div>
+        </div>
+        <div class="diff-idea-card">
+          <div class="diff-idea-num">04</div>
+          <div class="diff-idea-title">Local + Occasion SEO</div>
+          <div class="diff-idea-body">People are searching "mini cheesecake catering Cincinnati," "dessert table wedding Cincinnati," and "corporate event desserts" right now. With the right keyword strategy, Maggie's becomes the obvious answer.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: WHO WE ARE ===== -->
+  <section id="who-we-are">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Who We Are</div>
+        <h2>Built at the crossroads of<br><em>simplicity and data.</em></h2>
+        <p>Scroll Media exists at the intersection of two things most agencies get wrong separately: simplifying social media so it's actually executable, and grounding every decision in data so it actually performs. We become a true extension of your brand — not a vendor you manage, but a strategic partner you rely on.</p>
+      </div>
+
+      <div class="stats-row reveal">
+        <div class="stat-cell">
+          <span class="stat-num count-up" data-target="30" data-suffix="+">30+</span>
+          <div class="stat-label">Brands Served</div>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num count-up" data-target="209" data-suffix="%">209%</span>
+          <div class="stat-label">Best Reach Growth</div>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num count-up" data-target="100" data-suffix="%">100%</span>
+          <div class="stat-label">5-Star Rated</div>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num">2+ yrs</span>
+          <div class="stat-label">Avg. Client Relationship</div>
+        </div>
+      </div>
+
+      <div class="why-list reveal">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div class="why-content">
+            <div class="why-title">We Start by Listening — Deep Brand Immersion</div>
+            <div class="why-body">Before we write a single caption or build a single strategy, we send you a detailed onboarding form covering your brand story, business goals, audience, competitors, and tone of voice. We don't guess — we learn. Then we audit your current social profiles and use our strategic framework to shape a clear, simple strategy that is effective and produces real results. We become a true extension of your brand.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div class="why-content">
+            <div class="why-title">We Master One Channel — Instagram-First Philosophy</div>
+            <div class="why-body">We specialize on Instagram — and that's intentional. We believe in mastering attention on the channel with the highest opportunity for your business. Instagram is where event planners, corporate buyers, and brides discover specialty food brands, research vendors, and make decisions. We go deep where it matters most and build a compounding presence that actually drives catering inquiries — not a scattered multi-platform approach that delivers nothing everywhere.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div class="why-content">
+            <div class="why-title">We Build Around Your Audience — Goal-Mapped Strategy &amp; IVP</div>
+            <div class="why-body">Every strategy is anchored to a specific Ideal Viewer Profile — a detailed portrait of the exact person your content is designed to reach. We develop no more than two IVPs per account and map every content pillar, post format, and CTA directly to your business goals. No generic content. No guessing. Every post has a purpose, a target, and a measurable outcome.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div class="why-content">
+            <div class="why-title">We Apply Human Psychology — Psychology-Driven Content</div>
+            <div class="why-body">Trust, social proof, authority, scarcity, and identity — these are the levers that move people from passive viewers to active buyers. Every content decision we make is grounded in how people actually think and behave online. We walk your viewer through a clear purchasing journey from first discovery to booked catering order, using psychology to drive action at every step.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">05</div>
+          <div class="why-content">
+            <div class="why-title">We Evolve &amp; Execute — Data-Driven. Done-For-You.</div>
+            <div class="why-body">Monthly performance reports, strategic adjustments, content creation, copywriting, scheduling, and community management — all handled. We track 13 core metrics across reach, engagement, and conversion. We share the data, make the adjustments, and keep the strategy evolving. You bake. We handle the rest.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-box reveal">
+        <div class="testimonial-quote">"Scroll Media completely transformed how we show up on Instagram. We went from inconsistent posting to a real strategy — and the results followed. Our engagement is up, our reach is up, and we're actually getting inquiries from Instagram now."</div>
+        <div class="testimonial-attr">Scroll Media Client — Boutique Fitness Studio, Cincinnati, OH</div>
+        <div class="testimonial-cta">
+          <a href="https://decks.scrollmedia.co/pitch/#reviews" target="_blank">See more client reviews &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: HOW WE WORK ===== -->
+  <section class="alt" id="how-we-work">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">How We Work</div>
+        <h2>Three phases.<br><em>One clear system.</em></h2>
+        <p>We don't show up and start posting. Every engagement starts with a dedicated strategy month — so when we execute, every piece of content has a purpose and a plan behind it.</p>
+      </div>
+
+      <div class="phases">
+        <div class="phase-card reveal reveal-delay-1">
+          <div class="phase-num">1</div>
+          <div class="phase-label">Month 1 &middot; Foundation</div>
+          <div class="phase-title">Strategy Month</div>
+          <div class="phase-body">We build the entire strategic foundation before a single post goes live. This is where we get the strategy right.</div>
+          <ul class="phase-deliverables">
+            <li class="phase-deliverable">Ideal Viewer Profile (IVP)</li>
+            <li class="phase-deliverable">Content pillars + formats</li>
+            <li class="phase-deliverable">Social SEO keyword bank</li>
+            <li class="phase-deliverable">90-day content calendar</li>
+            <li class="phase-deliverable">Brand voice + visual direction</li>
+          </ul>
+        </div>
+        <div class="phase-card reveal reveal-delay-2">
+          <div class="phase-num">2</div>
+          <div class="phase-label">Months 2–3 &middot; Testing</div>
+          <div class="phase-title">Execution &amp; Testing</div>
+          <div class="phase-body">Full-service execution with an intentional testing mindset. We run a wide range of formats and hooks to see what resonates with your specific audience — and let the data drive the strategy from there.</div>
+          <ul class="phase-deliverables">
+            <li class="phase-deliverable">Monthly content shoot</li>
+            <li class="phase-deliverable">Reels + static + Stories</li>
+            <li class="phase-deliverable">Format &amp; hook testing</li>
+            <li class="phase-deliverable">Caption writing + SEO</li>
+            <li class="phase-deliverable">Monthly performance report</li>
+          </ul>
+        </div>
+        <div class="phase-card reveal reveal-delay-3">
+          <div class="phase-num">3</div>
+          <div class="phase-label">Month 4+ &middot; Optimization</div>
+          <div class="phase-title">Refine, Optimize &amp; Convert</div>
+          <div class="phase-body">Now we know what works. We double down on the formats and hooks that perform, cut what doesn't, and shift the focus toward lead generation — turning an engaged audience into real catering inquiries.</div>
+          <ul class="phase-deliverables">
+            <li class="phase-deliverable">Data-driven content refinement</li>
+            <li class="phase-deliverable">Lead gen content focus (BOFU)</li>
+            <li class="phase-deliverable">Audience quality optimization</li>
+            <li class="phase-deliverable">Lead attribution reporting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="niche-callout reveal">
+        <div class="niche-callout-label">Food &amp; Bev / Specialty Desserts — How We Handle It Differently</div>
+        <div class="niche-callout-title">Specialty food brands live and die by desire. Our system is built to manufacture it.</div>
+        <div class="niche-scenarios">
+          <div class="niche-scenario"><strong>Process-first content shoots</strong> — every shoot captures the "behind the bake" — crust pressing, flavor layering, packaging, and final product reveal. This is the content that builds desire before the order and trust before the inquiry.</div>
+          <div class="niche-scenario"><strong>Corporate and event proof content</strong> — we document every large catering order: the scale, the setup, the final table. This is the social proof that converts high-value buyers who need to see you can handle their event before they commit.</div>
+          <div class="niche-scenario"><strong>DM automation and CTA systems</strong> — we build keyword triggers directly into captions (e.g., "Comment MENU" or "DM BOOK") so every post becomes an active lead capture tool, not just a brand awareness play.</div>
+          <div class="niche-scenario"><strong>Occasion and local SEO</strong> — captions, bio, and on-screen text are optimized for the exact keywords buyers use: "mini cheesecake catering Cincinnati," "wedding dessert table," "corporate event desserts." We make Maggie's the obvious answer when someone searches.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: BRAND INSPIRATION ===== -->
+  <section id="inspo">
+    <div class="container-wide">
+      <div class="section-header reveal">
+        <div class="eyebrow">Brand Inspiration</div>
+        <h2>Accounts you mentioned.<br><em>Here's what we see.</em></h2>
+        <p>We pulled the top-performing posts from each account and broke down exactly why they work — and how we'd build something similar for Maggie's using the Scroll content framework.</p>
+      </div>
+
+      <!-- THE JAM LAB -->
+      <div class="inspo-account-block reveal">
+        <div class="inspo-account-header">
+          <div class="inspo-account-icon">TJ</div>
+          <div>
+            <div class="inspo-account-name">@thejamlab</div>
+            <div class="inspo-account-meta">Food Content Creator &middot; 79K followers &middot; Bay Area, CA</div>
+          </div>
+        </div>
+        <div class="inspo-account-why">
+          <strong>Why they're a smart reference:</strong> The Jam Lab has built a massive following by doing two things exceptionally well: process-forward content that shows the craft in detail, and comment trigger mechanics ("Comment RECIPE") that turn every post into an active lead capture tool. Their content doesn't just look good — it converts. That's the exact system Maggie's needs to build.
+        </div>
+        <div class="inspo-posts-grid">
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/thejamlab/reel/DWAX0sYjxOO/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-funnel mofu">MOFU — Process + Payoff</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <ul class="inspo-bullets">
+                <li class="inspo-bullet"><strong>Format:</strong> Process Reel — ingredient reveal, step-by-step build, final product close-up</li>
+                <li class="inspo-bullet"><strong>Hook:</strong> Specific ingredient combination + visual payoff = stops the scroll for food-interested viewers immediately</li>
+                <li class="inspo-bullet"><strong>Why it works:</strong> Process content builds desire before the product is even available to buy. The viewer is sold on the craft before they ever see a price or a CTA.</li>
+              </ul>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to Maggie's</div>
+                <ul class="inspo-apply-bullets">
+                  <li class="inspo-apply-bullet"><strong>Format:</strong> "The Crust Press Reel" — show the graham cracker base being pressed, the filling being piped, the flavor being finished. Let the process be the hook.</li>
+                  <li class="inspo-apply-bullet"><strong>Hook:</strong> "This is how we make 400 mini cheesecakes for a corporate event." Scale + process = the most powerful trust-builder in the catering space.</li>
+                  <li class="inspo-apply-bullet"><strong>Goal:</strong> MOFU content that builds desire and trust simultaneously — the foundation of the Scroll content system for Maggie's</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DLNscGZvnyK/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-funnel bofu">BOFU — Comment Trigger / Lead Capture</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <ul class="inspo-bullets">
+                <li class="inspo-bullet"><strong>Format:</strong> Recipe/process Reel with a comment trigger CTA ("Comment RECIPE and I'll send it to you")</li>
+                <li class="inspo-bullet"><strong>Hook:</strong> Useful, specific content + frictionless lead capture = comment volume that boosts algorithmic reach AND captures warm leads in DMs simultaneously</li>
+                <li class="inspo-bullet"><strong>Why it works:</strong> The comment trigger mechanic drives engagement (which the algorithm rewards) while capturing leads (which the business needs). One post does both jobs.</li>
+              </ul>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to Maggie's</div>
+                <ul class="inspo-apply-bullets">
+                  <li class="inspo-apply-bullet"><strong>Format:</strong> "Comment MENU and I'll send you our full flavor list" — or "Comment BOOK and I'll send you our catering availability." Every post becomes a lead capture tool.</li>
+                  <li class="inspo-apply-bullet"><strong>Hook:</strong> "Planning an event in Cincinnati? Comment GUIDE and I'll send you exactly how many mini cheesecakes you need per guest."</li>
+                  <li class="inspo-apply-bullet"><strong>Goal:</strong> BOFU conversion content that drives DMs and catering inquiries from warm viewers who are already interested</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEET CUTE CAKES -->
+      <div class="inspo-account-block reveal">
+        <div class="inspo-account-header">
+          <div class="inspo-account-icon">MC</div>
+          <div>
+            <div class="inspo-account-name">@meetcutecakes_</div>
+            <div class="inspo-account-meta">Specialty Cake Brand &middot; 16K followers &middot; Manchester, UK &middot; 19.3M view outlier Reel</div>
+          </div>
+        </div>
+        <div class="inspo-account-why">
+          <strong>Why they're the most interesting reference:</strong> Meet Cute Cakes went from a small local bakery to a brand with a 19.3M view viral Reel — and that one post doubled their following. Their formula is specific and repeatable: pair beautiful product with shareable, relatable text overlays and a strong founder personality. They don't just show cakes — they make people feel something. That emotional register is exactly what Maggie's needs to own in the Cincinnati market.
+        </div>
+        <div class="inspo-posts-grid">
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVp2wvWCZ7n/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-funnel tofu">TOFU — Brand Voice / Discovery</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <ul class="inspo-bullets">
+                <li class="inspo-bullet"><strong>Format:</strong> Founder-voice Reel — direct to camera, personality-forward, relatable business truth</li>
+                <li class="inspo-bullet"><strong>Hook:</strong> "Content sells before product does" — a shareable, opinion-led statement that resonates with small business owners and food lovers alike</li>
+                <li class="inspo-bullet"><strong>Why it works:</strong> People don't just buy the product — they buy the person behind it. Founder-voice content builds the emotional connection that turns a viewer into a loyal customer and a loyal customer into a referral source.</li>
+              </ul>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to Maggie's</div>
+                <ul class="inspo-apply-bullets">
+                  <li class="inspo-apply-bullet"><strong>Format:</strong> Maggie on camera — "I started making mini cheesecakes in my kitchen. Now I'm delivering 400 of them to corporate events. Here's what changed." Founder story = brand trust at scale.</li>
+                  <li class="inspo-apply-bullet"><strong>Hook:</strong> Lead with the transformation, not the product. "From home kitchen to corporate catering" is a story people share.</li>
+                  <li class="inspo-apply-bullet"><strong>Goal:</strong> TOFU brand awareness that builds the Maggie's identity before a buyer is ready to order — the content that earns followers and future customers simultaneously</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="inspo-post-card">
+            <div class="inspo-post-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTP5RLWjCwo/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+            </div>
+            <div class="inspo-post-analysis">
+              <div class="inspo-post-funnel mofu">MOFU — Social Proof / Viral Milestone</div>
+              <div class="inspo-post-why-label">Why It Performed</div>
+              <ul class="inspo-bullets">
+                <li class="inspo-bullet"><strong>Format:</strong> Milestone Reel — "Our first viral reel had 19.3M views. Here's what happened next." Transparency + relatability + proof = massive engagement</li>
+                <li class="inspo-bullet"><strong>Hook:</strong> Specific number (19.3M) + business outcome (doubled following) + honest reflection = the kind of content small business owners and food lovers share because it feels real</li>
+                <li class="inspo-bullet"><strong>Why it works:</strong> Social proof compounds. When you show that other people love your brand at scale, it validates the decision for every new viewer who's on the fence about ordering.</li>
+              </ul>
+              <div class="inspo-post-apply">
+                <div class="inspo-post-apply-label">Applied to Maggie's</div>
+                <ul class="inspo-apply-bullets">
+                  <li class="inspo-apply-bullet"><strong>Format:</strong> "We just delivered 400 mini cheesecakes to a corporate holiday party. Here's what that looked like." Event proof + scale + behind-the-scenes = the highest-converting content type for catering buyers.</li>
+                  <li class="inspo-apply-bullet"><strong>Hook:</strong> Specific numbers + specific occasion = instant credibility. "400 minis. 3 flavors. 1 corporate event. Here's how we pulled it off."</li>
+                  <li class="inspo-apply-bullet"><strong>Goal:</strong> MOFU trust-building content that converts warm viewers into catering inquiries — the core conversion engine in the Scroll framework for Maggie's</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SECTION 8: INVESTMENT ===== -->
+  <section id="investment">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Investment</div>
+        <h2>Three ways to<br><em>start working together.</em></h2>
+        <p>Every path leads to the same destination — a compounding Instagram presence that drives real catering inquiries. The right starting point depends on where you are and what you need most right now.</p>
+      </div>
+
+      <div class="investment-grid">
+        <div class="inv-card reveal reveal-delay-1">
+          <div class="inv-type">One-Time</div>
+          <div class="inv-name">Content Day</div>
+          <div class="inv-desc">A focused, strategy-led shoot that captures high-quality photo and video assets — process content, product showcases, and event-ready visuals. The fastest way to see what Scroll Media can do for your brand and get real content in the market immediately.</div>
+          <div class="inv-price">$950 – $1,750</div>
+          <div class="inv-price-note">Flat one-time fee</div>
+          <div class="inv-badge">&#9733; Credited toward Signature within 60 days</div>
+          <div class="inv-best-for">Best for: Testing the relationship</div>
+        </div>
+        <div class="inv-card reveal reveal-delay-2">
+          <div class="inv-type">Done-With-You</div>
+          <div class="inv-name">Growth Blueprint</div>
+          <div class="inv-desc">A complete 90-day Instagram strategy built for Maggie's in 3 weeks. You get the full plan — IVP, content pillars, SEO keyword bank, and content calendar — and the option to hand off execution to us or run it yourself.</div>
+          <div class="inv-price">$950 – $1,500</div>
+          <div class="inv-price-note">One-time engagement</div>
+          <div class="inv-badge">&#9733; Credited toward Signature within 60 days</div>
+          <div class="inv-best-for">Best for: Strategy-first, DIY execution</div>
+        </div>
+        <div class="inv-card featured reveal reveal-delay-3">
+          <div class="inv-featured-label">Gold Standard</div>
+          <div class="inv-type">Done-For-You</div>
+          <div class="inv-name">Signature Package</div>
+          <div class="inv-desc">Full-service, done-for-you Instagram management. Strategy, content creation, execution, and reporting — all handled. You bake. We handle the rest.</div>
+          <div class="inv-price">$2,750 – $3,750</div>
+          <div class="inv-price-note">Monthly retainer &middot; 3-month initial engagement</div>
+          <div class="inv-best-for">Best for: Brands ready to grow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEXT STEPS ===== -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="eyebrow">Next Steps</div>
+        <h2>Here's what the path<br><em>forward looks like.</em></h2>
+        <p>If there's a fit, the process is simple. We keep things clear and move at a pace that works for both sides.</p>
+      </div>
+
+      <div class="next-steps">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <div class="step-title">Custom Proposal</div>
+          <div class="step-body">Based on what we cover today, we'll put together a tailored proposal with a specific strategy recommendation and investment options built around Maggie's goals and the catering growth opportunity.</div>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <div class="step-title">Proposal Review</div>
+          <div class="step-body">We'll walk through the proposal together, answer any questions, and make sure we're fully aligned on the right path forward before anything moves.</div>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <div class="step-title">Contract &amp; Kickoff</div>
+          <div class="step-body">Once we're aligned, we get the paperwork sorted and schedule the onboarding call. Strategy Month kicks off — and we start building the content system that turns Maggie's into a catering inquiry machine.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="scroll-media-logo.svg" alt="Scroll Media" height="24">
+      </div>
+      <div class="footer-text">
+        <a href="https://decks.scrollmedia.co/pitch/" target="_blank">scrollmedia.co</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@scrollmedia.co">hello@scrollmedia.co</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || '';
+          const duration = 1800;
+          const start = performance.now();
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.count-up').forEach(el => counterObserver.observe(el));
+
+    function togglePlatform(row) {
+      const isOpen = row.classList.contains('open');
+      document.querySelectorAll('.platform-row.open').forEach(r => r.classList.remove('open'));
+      if (!isOpen) row.classList.add('open');
+    }
+  </script>
+
+  <script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>

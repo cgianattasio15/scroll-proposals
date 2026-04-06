@@ -2347,7 +2347,153 @@
       border: 2px dashed rgba(200,241,53,0.6);
     }
 
-  </style>
+  
+    /* ===== AUDIT SECTION ===== */
+    .audit-section { background: var(--bg); padding: 80px 0; }
+    .audit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .audit-left { display: flex; flex-direction: column; gap: 10px; }
+    .audit-primary-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(163,230,53,0.1); border: 1px solid rgba(163,230,53,0.3);
+      color: var(--accent); font-size: 11px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; width: fit-content; margin-bottom: 4px;
+    }
+    .audit-primary-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .platform-row {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .platform-row:hover { border-color: rgba(163,230,53,0.4); }
+    .platform-row.primary { border-color: rgba(163,230,53,0.5); }
+    .platform-header {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px;
+    }
+    .platform-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .platform-icon svg { width: 18px; height: 18px; fill: white; }
+    .platform-icon.ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .platform-icon.li { background: #0077b5; }
+    .platform-icon.fb { background: #1877f2; }
+    .platform-info { flex: 1; }
+    .platform-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .platform-detail { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+    .platform-status {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+    }
+    .status-primary { background: rgba(163,230,53,0.15); color: var(--accent); border: 1px solid rgba(163,230,53,0.3); }
+    .status-active { background: rgba(59,130,246,0.1); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+    .status-inactive { background: rgba(156,163,175,0.1); color: #9ca3af; border: 1px solid rgba(156,163,175,0.2); }
+    .platform-chevron { font-size: 12px; color: var(--text-dim); transition: transform 0.2s; }
+    .platform-row.open .platform-chevron { transform: rotate(180deg); }
+    .platform-detail-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .platform-row.open .platform-detail-panel { max-height: 600px; }
+    .platform-detail-inner { padding: 0 20px 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .detail-section { margin-bottom: 14px; }
+    .detail-section:last-child { margin-bottom: 0; }
+    .detail-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .detail-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .detail-bullet { font-size: 13px; color: var(--text-mid); line-height: 1.55; padding-left: 18px; position: relative; }
+    .detail-bullet::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; }
+    .detail-bullet.good::before { background: #22c55e; }
+    .detail-bullet.improve::before { background: #f59e0b; }
+    .ig-profile-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; margin-bottom: 20px;
+    }
+    .ig-card-header {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .ig-card-header-label { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+    .ig-card-header-handle { font-size: 15px; font-weight: 700; color: white; }
+    .ig-card-body { padding: 20px; }
+    .ig-stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .ig-stat-cell { text-align: center; }
+    .ig-stat-num { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -0.03em; }
+    .ig-stat-label { font-size: 11px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .maturity-section { border-top: 1px solid var(--border); padding-top: 20px; }
+    .maturity-title { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+    .maturity-track { display: flex; gap: 4px; margin-bottom: 8px; }
+    .maturity-step { flex: 1; height: 6px; border-radius: 3px; background: var(--border); }
+    .maturity-step.filled { background: var(--accent); }
+    .maturity-step.current { background: var(--accent); box-shadow: 0 0 8px rgba(163,230,53,0.5); }
+    .maturity-labels { display: flex; gap: 4px; margin-bottom: 14px; }
+    .maturity-label-item { flex: 1; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); text-align: center; line-height: 1.3; }
+    .maturity-label-item.current { color: var(--accent); }
+    .maturity-insight { font-size: 13px; color: var(--text-mid); line-height: 1.6; background: rgba(163,230,53,0.05); border: 1px solid rgba(163,230,53,0.15); border-radius: 8px; padding: 12px 14px; }
+    .ig-strategy-box {
+      background: var(--card); border: 1px solid rgba(163,230,53,0.3);
+      border-radius: 16px; padding: 24px;
+    }
+    .ig-strategy-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .ig-strategy-title { font-size: 18px; font-weight: 900; color: var(--text); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.3; }
+    .ig-strategy-body { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin-bottom: 16px; }
+    .ig-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ig-chip { background: rgba(163,230,53,0.1); border: 1px solid rgba(163,230,53,0.25); color: var(--accent); font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
+    @media (max-width: 768px) {
+      .audit-layout { grid-template-columns: 1fr; }
+      .ig-stats-row { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+
+    /* ===== INSPIRATION SECTION (Dwell513 pattern) ===== */
+    .inspo-account-block { margin-bottom: 56px; }
+    .inspo-account-block:last-child { margin-bottom: 0; }
+    .inspo-account-header {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
+    }
+    .inspo-account-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #65a30d);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; color: var(--bg); flex-shrink: 0;
+    }
+    .inspo-account-name { font-size: 18px; font-weight: 900; color: var(--text); letter-spacing: -0.02em; }
+    .inspo-account-meta { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+    .inspo-account-why {
+      font-size: 14px; color: var(--text-mid); line-height: 1.65;
+      background: rgba(163,230,53,0.05); border: 1px solid rgba(163,230,53,0.15);
+      border-radius: 10px; padding: 16px 18px; margin-bottom: 20px;
+    }
+    .inspo-posts-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .inspo-post-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+    }
+    .inspo-post-embed { background: #fff; }
+    .inspo-post-embed .instagram-media { min-width: 0 !important; }
+    .inspo-post-analysis { padding: 20px; }
+    .inspo-post-funnel {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px; margin-bottom: 14px;
+    }
+    .inspo-post-funnel.tofu { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.25); }
+    .inspo-post-funnel.mofu { background: rgba(245,158,11,0.1); color: #d97706; border: 1px solid rgba(245,158,11,0.25); }
+    .inspo-post-funnel.bofu { background: rgba(239,68,68,0.1); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+    .inspo-post-why-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .inspo-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .inspo-bullet { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .inspo-bullet strong { color: var(--text); font-weight: 700; }
+    .inspo-post-apply {
+      border-top: 1px solid var(--border); padding-top: 14px;
+    }
+    .inspo-post-apply-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .inspo-apply-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .inspo-apply-bullet { font-size: 12px; color: var(--accent); line-height: 1.5; font-weight: 500; }
+    .inspo-apply-bullet strong { font-weight: 800; }
+    @media (max-width: 768px) {
+      .inspo-posts-grid { grid-template-columns: 1fr; }
+      .inspo-account-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+</style>
 </head>
 
 <!-- ===== NAV ===== -->
@@ -2358,6 +2504,7 @@
     <span class="nav-client">Parachute Studio</span>
   </div>
   <ul class="nav-links">
+    <li><a href="#audit">Social Audit</a></li>
     <li><a href="#situation">Opportunity</a></li>
     <li><a href="#strategy">Who We Are</a></li>
     <li><a href="#package">Investment</a></li>
@@ -2404,6 +2551,146 @@
 
 
 <!-- ===== SITUATION ===== -->
+
+<!-- ===== SOCIAL MEDIA AUDIT ===== -->
+<section class="audit-section" id="audit">
+  <div class="section-inner">
+    <div class="section-eyebrow">Where You Stand Today</div>
+    <h2 class="section-title">Social Media Audit</h2>
+    <p class="section-sub">Before we build anything, we looked at where Parachute Studio lives online today. Here&#39;s our honest read — the strengths, the gaps, and where the real opportunity is.</p>
+
+    <div class="audit-layout">
+      <!-- Left: Platform rows -->
+      <div class="audit-left">
+        <div class="audit-primary-badge">Primary Focus</div>
+
+        <!-- Instagram — PRIMARY -->
+        <div class="platform-row primary reveal" onclick="togglePlatform(this)">
+          <div class="platform-header">
+            <div class="platform-icon ig">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </div>
+            <div class="platform-info">
+              <div class="platform-name">Instagram</div>
+              <div class="platform-detail">@theparachutestudio &middot; 311 followers &middot; 15 posts</div>
+            </div>
+            <div class="platform-status status-primary">Primary</div>
+            <div class="platform-chevron">&#9660;</div>
+          </div>
+          <div class="platform-detail-panel">
+            <div class="platform-detail-inner">
+              <div class="detail-section">
+                <div class="detail-label">What&#39;s Working</div>
+                <ul class="detail-bullets">
+                  <li class="detail-bullet good">Visual identity is strong and on-brand &mdash; the aesthetic is clearly defined</li>
+                  <li class="detail-bullet good">Content quality is high &mdash; the work you&#39;re putting out is genuinely impressive</li>
+                  <li class="detail-bullet good">Account is set up correctly as a business profile</li>
+                  <li class="detail-bullet good">Bio communicates what you do clearly</li>
+                </ul>
+              </div>
+              <div class="detail-section">
+                <div class="detail-label">Where to Improve</div>
+                <ul class="detail-bullets">
+                  <li class="detail-bullet improve">311 followers after 15 posts signals content isn&#39;t reaching beyond your existing network yet</li>
+                  <li class="detail-bullet improve">No consistent content cadence &mdash; posting frequency is irregular, which limits algorithm placement</li>
+                  <li class="detail-bullet improve">No Reels strategy &mdash; the primary discovery lever on Instagram today is completely untapped</li>
+                  <li class="detail-bullet improve">No Social SEO &mdash; captions and hashtags aren&#39;t optimized for discoverability in your niche</li>
+                  <li class="detail-bullet improve">No Stories strategy &mdash; a critical engagement and CTA channel that&#39;s currently inactive</li>
+                  <li class="detail-bullet improve">15-20 completed projects sitting unused as content &mdash; the biggest untapped asset you have</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="platform-row reveal" onclick="togglePlatform(this)">
+          <div class="platform-header">
+            <div class="platform-icon li">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="platform-info">
+              <div class="platform-name">LinkedIn</div>
+              <div class="platform-detail">The Parachute Studio &middot; Managed internally</div>
+            </div>
+            <div class="platform-status status-active">Internal</div>
+            <div class="platform-chevron">&#9660;</div>
+          </div>
+          <div class="platform-detail-panel">
+            <div class="platform-detail-inner">
+              <div class="detail-section">
+                <div class="detail-label">Our Take</div>
+                <ul class="detail-bullets">
+                  <li class="detail-bullet good">LinkedIn is a strong B2B channel for a brand strategy studio &mdash; the right audience is there</li>
+                  <li class="detail-bullet good">Your internal team managing this is the right call &mdash; no need to split focus</li>
+                  <li class="detail-bullet improve">Opportunity to repurpose high-performing Instagram content to LinkedIn &mdash; doubles reach with zero extra effort</li>
+                  <li class="detail-bullet improve">LinkedIn is out of scope for this engagement &mdash; Instagram is the priority and where the growth opportunity lives</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: IG Profile Card + Maturity -->
+      <div class="reveal reveal-right">
+        <div class="ig-profile-card">
+          <div class="ig-card-header">
+            <div class="ig-card-header-label">Instagram Profile</div>
+            <div class="ig-card-header-handle">@theparachutestudio</div>
+          </div>
+          <div class="ig-card-body">
+            <div class="ig-stats-row">
+              <div class="ig-stat-cell">
+                <div class="ig-stat-num">15</div>
+                <div class="ig-stat-label">Posts</div>
+              </div>
+              <div class="ig-stat-cell">
+                <div class="ig-stat-num">311</div>
+                <div class="ig-stat-label">Followers</div>
+              </div>
+              <div class="ig-stat-cell">
+                <div class="ig-stat-num">~21</div>
+                <div class="ig-stat-label">Followers/Post</div>
+              </div>
+            </div>
+            <div class="maturity-section">
+              <div class="maturity-title">Instagram Maturity Stage</div>
+              <div class="maturity-track">
+                <div class="maturity-step current"></div>
+                <div class="maturity-step"></div>
+                <div class="maturity-step"></div>
+                <div class="maturity-step"></div>
+              </div>
+              <div class="maturity-labels">
+                <div class="maturity-label-item current">SPARK &#8592;<br><span style="font-size:8px;font-weight:500;">0&ndash;2.5K</span></div>
+                <div class="maturity-label-item">LIFT<br><span style="font-size:8px;font-weight:500;opacity:0.7;">2.5K&ndash;10K</span></div>
+                <div class="maturity-label-item">RISE<br><span style="font-size:8px;font-weight:500;opacity:0.7;">10K&ndash;50K</span></div>
+                <div class="maturity-label-item">THRIVE<br><span style="font-size:8px;font-weight:500;opacity:0.7;">50K+</span></div>
+              </div>
+              <div class="maturity-insight">
+                Currently in the <strong>SPARK stage</strong> &mdash; the foundation-building phase. The work is strong. The system to grow an audience around it doesn&#39;t exist yet. That&#39;s exactly what we build.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ig-strategy-box reveal">
+          <div class="ig-strategy-label">Our Recommendation</div>
+          <div class="ig-strategy-title">Instagram first. Build the system. Then scale it.</div>
+          <div class="ig-strategy-body">Parachute Studio has all the raw material &mdash; the work, the visual identity, the client results. What&#39;s missing is the content architecture and posting system that turns that output into a growing, engaged audience. We go all-in on Instagram with a strategy built around your project work, your expertise, and your brand story. LinkedIn stays internal and benefits from Instagram repurposing over time.</div>
+          <div class="ig-chips">
+            <div class="ig-chip">Instagram-First</div>
+            <div class="ig-chip">Project Showcase System</div>
+            <div class="ig-chip">Reels-Led Growth</div>
+            <div class="ig-chip">Stories CTA Strategy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="situation" id="situation">
   <div class="container">
     <span class="section-label">The Opportunity</span>
@@ -3263,158 +3550,127 @@
 
 <!-- ===== INSPIRATION ===== -->
 <section class="inspiration" id="inspiration">
-  <div class="container">
-    <span class="section-label">Brand Inspiration</span>
-    <h2 class="section-title">Content mapped to your goals.<br><span class="accent">Every post has a purpose.</span></h2>
-    <p class="section-body">Every piece of content we create for Parachute Studio is mapped to a specific stage of your audience&rsquo;s journey &mdash; from first discovery all the way to booking a discovery call. These are real examples from brands in the creative and design space that prove the strategy works. This is exactly how we&rsquo;ll build your content engine.</p>
+  <div class="section-inner">
+    <div class="section-eyebrow">Content Inspiration</div>
+    <h2 class="section-title">What Great Looks Like</h2>
+    <p class="section-sub">These are accounts doing Instagram right in the creative studio and brand strategy space. We&#39;ve broken down exactly why each post works &mdash; and how we&#39;d apply the same logic to Parachute Studio.</p>
 
-    <!-- TOFU -->
-    <div class="funnel-stage-block">
-      <div class="funnel-stage-header tofu-header">
-        <div class="funnel-stage-badge">TOFU</div>
-        <div class="funnel-stage-info">
-          <div class="funnel-stage-name">Top of Funnel &mdash; Awareness &amp; Discovery</div>
-          <div class="funnel-stage-goal">Goal: Get in front of founders and brand leaders who have never heard of Parachute Studio. Build reach, earn follows, attract the right audience.</div>
+    <!-- KOTO STUDIO -->
+    <div class="inspo-account-block reveal">
+      <div class="inspo-account-header">
+        <div class="inspo-account-icon">KS</div>
+        <div>
+          <div class="inspo-account-name">@studiokoto</div>
+          <div class="inspo-account-meta">London / New York / Sydney &middot; Brand Identity Studio &middot; 278K followers</div>
         </div>
       </div>
-      <div class="insta-grid">
-        <div class="insta-embed-card">
-          <div class="insta-embed-header">
-            <div class="insta-embed-brand">Pentagram</div>
-            <div class="insta-embed-handle">@pentagramdesign &bull; 386K followers</div>
+      <div class="inspo-account-why">
+        <strong>Why Koto is the most relevant reference:</strong> Koto is a boutique brand identity studio &mdash; the closest analog to Parachute Studio in terms of positioning, client type, and creative output. They&#39;ve built 278K followers by doing exactly what Parachute needs to do: turning client project work into compelling, educational, and visually stunning Instagram content. The lesson isn&#39;t just the aesthetic &mdash; it&#39;s the system behind it.
+      </div>
+      <div class="inspo-posts-grid">
+        <div class="inspo-post-card">
+          <div class="inspo-post-embed">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DT0jWEWjygh/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
           </div>
-          <div class="insta-embed-frame">
-            <iframe src="https://www.instagram.com/p/C5qXwZlrFpk/embed/" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-          </div>
-          <div class="insta-embed-why">
-            <div class="insta-embed-why-label">Why this is TOFU &mdash; and why it works for Parachute Studio</div>
-            <div class="insta-embed-why-text">Project reveal content from one of the world&rsquo;s most respected design studios. This is the format Parachute Studio should own &mdash; clean, confident, and visual. It reaches people who have never heard of the brand but are interested in branding and design. Your 15 to 20 recent projects are the raw material for this exact format.</div>
-            <div class="insta-lessons">
-              <div class="insta-lesson">Project reveals are the highest-reach format for creative studios</div>
-              <div class="insta-lesson">Visual transformation content drives shares and non-follower discovery</div>
-              <div class="insta-lesson">Builds instant credibility before they even follow you</div>
+          <div class="inspo-post-analysis">
+            <div class="inspo-post-funnel tofu">TOFU &mdash; Brand Awareness</div>
+            <div class="inspo-post-why-label">Why It Works</div>
+            <ul class="inspo-bullets">
+              <li class="inspo-bullet"><strong>Format:</strong> Project reveal carousel &mdash; showing the full scope of a rebrand from brief to final identity system</li>
+              <li class="inspo-bullet"><strong>Hook:</strong> Visual-first, high-contrast brand reveal that stops the scroll immediately</li>
+              <li class="inspo-bullet"><strong>Why it works:</strong> The before/after or reveal format is the highest-performing content type for creative studios. It shows the transformation, not just the output.</li>
+            </ul>
+            <div class="inspo-post-apply">
+              <div class="inspo-post-apply-label">Applied to Parachute Studio</div>
+              <ul class="inspo-apply-bullets">
+                <li class="inspo-apply-bullet"><strong>Format:</strong> Project reveal carousels for each of your 15&ndash;20 completed projects &mdash; brand identity before/after, logo system, visual direction</li>
+                <li class="inspo-apply-bullet"><strong>Hook:</strong> Lead with the most visually striking asset from the project. The first frame has one job: stop the scroll.</li>
+                <li class="inspo-apply-bullet"><strong>Goal:</strong> Build a content library of project showcases that establishes Parachute as a studio that does premium, transformative brand work</li>
+              </ul>
             </div>
-            <a href="https://www.instagram.com/pentagramdesign/" target="_blank" rel="noopener" class="insta-view-link">View on Instagram &#8599;</a>
-          </div>
-        </div>
-        <div class="insta-embed-card">
-          <div class="insta-embed-header">
-            <div class="insta-embed-brand">Collins</div>
-            <div class="insta-embed-handle">@wearecollinsstudio &bull; 47K followers</div>
-          </div>
-          <div class="insta-embed-frame">
-            <iframe src="https://www.instagram.com/p/C4kRmHzr9Yw/embed/" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-          </div>
-          <div class="insta-embed-why">
-            <div class="insta-embed-why-label">Why this is TOFU &mdash; and why it works for Parachute Studio</div>
-            <div class="insta-embed-why-text">Behind-the-scenes process content from a boutique creative studio. This is the content voice Parachute Studio should own &mdash; strategic, craft-focused, and founder-driven. Notice how it pulls in people who don&rsquo;t follow the account yet by showing the thinking behind the work, not just the output.</div>
-            <div class="insta-lessons">
-              <div class="insta-lesson">Process content attracts new audiences &mdash; 60%+ non-follower reach</div>
-              <div class="insta-lesson">Showing the strategy behind the work differentiates you from execution-only studios</div>
-              <div class="insta-lesson">Authenticity-first content outperforms polished ads in organic reach</div>
-            </div>
-            <a href="https://www.instagram.com/wearecollinsstudio/" target="_blank" rel="noopener" class="insta-view-link">View on Instagram &#8599;</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- MOFU -->
-    <div class="funnel-stage-block">
-      <div class="funnel-stage-header mofu-header">
-        <div class="funnel-stage-badge">MOFU</div>
-        <div class="funnel-stage-info">
-          <div class="funnel-stage-name">Middle of Funnel &mdash; Trust &amp; Authority</div>
-          <div class="funnel-stage-goal">Goal: Convert followers into believers. Build credibility, demonstrate strategic thinking, and make prospects want to work with Parachute specifically &mdash; not just any creative studio.</div>
+    <!-- COLLINS -->
+    <div class="inspo-account-block reveal">
+      <div class="inspo-account-header">
+        <div class="inspo-account-icon">CO</div>
+        <div>
+          <div class="inspo-account-name">@thisiscollins</div>
+          <div class="inspo-account-meta">New York / San Francisco &middot; Brand Experience Studio &middot; 130K followers</div>
         </div>
       </div>
-      <div class="insta-grid">
-        <div class="insta-embed-card">
-          <div class="insta-embed-header">
-            <div class="insta-embed-brand">Wolff Olins</div>
-            <div class="insta-embed-handle">@wolffolins &bull; 38K followers</div>
+      <div class="inspo-account-why">
+        <strong>Why Collins is the right authority benchmark:</strong> Collins is one of the most respected brand experience studios in the world &mdash; clients include Nike, Spotify, and Olipop. What makes their Instagram exceptional isn&#39;t just the work they show, it&#39;s the POV they share. They use Instagram to build thought leadership, not just a portfolio. That&#39;s the register Parachute Studio should own as it grows.
+      </div>
+      <div class="inspo-posts-grid">
+        <div class="inspo-post-card">
+          <div class="inspo-post-embed">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVwY3eUD4xc/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
           </div>
-          <div class="insta-embed-frame">
-            <iframe src="https://www.instagram.com/p/C6Ht3Iyruqb/embed/" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-          </div>
-          <div class="insta-embed-why">
-            <div class="insta-embed-why-label">Why this is MOFU &mdash; and why it works for Parachute Studio</div>
-            <div class="insta-embed-why-text">Thought leadership content from a global brand strategy studio. This is the format that builds the deepest trust with high-intent prospects. It shows how the studio thinks, not just what they make. Parachute Studio&rsquo;s POV on brand strategy and creative direction is one of its most powerful and underused assets. We&rsquo;ll build a series around it.</div>
-            <div class="insta-lessons">
-              <div class="insta-lesson">POV content is the highest-converting MOFU format for service businesses</div>
-              <div class="insta-lesson">Thought leadership positions you as a strategic partner, not just a vendor</div>
-              <div class="insta-lesson">Founders who see your thinking before they reach out are more qualified leads</div>
+          <div class="inspo-post-analysis">
+            <div class="inspo-post-funnel mofu">MOFU &mdash; Authority Building</div>
+            <div class="inspo-post-why-label">Why It Works</div>
+            <ul class="inspo-bullets">
+              <li class="inspo-bullet"><strong>Format:</strong> Founder/studio POV post &mdash; sharing a perspective on what matters in their industry (trust, creative partnership)</li>
+              <li class="inspo-bullet"><strong>Hook:</strong> Opens with a client quote that immediately signals the quality of their relationships and the caliber of their work</li>
+              <li class="inspo-bullet"><strong>Why it works:</strong> Thought leadership content builds the kind of trust that project showcases alone can&#39;t. It answers the question: &ldquo;What does this studio actually believe?&rdquo;</li>
+            </ul>
+            <div class="inspo-post-apply">
+              <div class="inspo-post-apply-label">Applied to Parachute Studio</div>
+              <ul class="inspo-apply-bullets">
+                <li class="inspo-apply-bullet"><strong>Format:</strong> Founder POV posts from Maggie and Patrick &mdash; sharing what you believe about brand strategy, what separates good from great, what you&#39;ve learned from working with ambitious companies</li>
+                <li class="inspo-apply-bullet"><strong>Hook:</strong> Lead with a strong opinion or a client insight. &ldquo;The biggest mistake ambitious brands make with their identity.&rdquo;</li>
+                <li class="inspo-apply-bullet"><strong>Goal:</strong> Build Parachute&#39;s authority as a studio with a clear POV &mdash; not just a service provider, but a strategic partner</li>
+              </ul>
             </div>
-            <a href="https://www.instagram.com/wolffolins/" target="_blank" rel="noopener" class="insta-view-link">View on Instagram &#8599;</a>
-          </div>
-        </div>
-        <div class="insta-embed-card">
-          <div class="insta-embed-header">
-            <div class="insta-embed-brand">Koto Studio</div>
-            <div class="insta-embed-handle">@kotostudio &bull; 52K followers</div>
-          </div>
-          <div class="insta-embed-frame">
-            <iframe src="https://www.instagram.com/p/C5FbKFkIGpY/embed/" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-          </div>
-          <div class="insta-embed-why">
-            <div class="insta-embed-why-label">Why this is MOFU &mdash; and why it works for Parachute Studio</div>
-            <div class="insta-embed-why-text">Case study content from a boutique brand studio. This is the quality-proof content that moves people from interested to convinced. It answers the unspoken question every prospect has: &ldquo;Can I trust this studio with my brand?&rdquo; Parachute Studio&rsquo;s client work and results are the proof that answers that question definitively.</div>
-            <div class="insta-lessons">
-              <div class="insta-lesson">Case study content attracts prospects who are actively evaluating studios</div>
-              <div class="insta-lesson">Showing outcomes, not just outputs, builds premium positioning</div>
-              <div class="insta-lesson">Consistent case study series builds a loyal audience that refers and returns</div>
-            </div>
-            <a href="https://www.instagram.com/kotostudio/" target="_blank" rel="noopener" class="insta-view-link">View on Instagram &#8599;</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BOFU -->
-    <div class="funnel-stage-block">
-      <div class="funnel-stage-header bofu-header">
-        <div class="funnel-stage-badge">BOFU</div>
-        <div class="funnel-stage-info">
-          <div class="funnel-stage-name">Bottom of Funnel &mdash; Conversion &amp; Inquiry</div>
-          <div class="funnel-stage-goal">Goal: Drive qualified followers to book a discovery call and become clients. This is where social becomes measurable business impact.</div>
+    <!-- PENTAGRAM -->
+    <div class="inspo-account-block reveal">
+      <div class="inspo-account-header">
+        <div class="inspo-account-icon">PG</div>
+        <div>
+          <div class="inspo-account-name">@pentagramdesign</div>
+          <div class="inspo-account-meta">London / New York / Austin / Berlin &middot; Multi-disciplinary Design Studio &middot; 1M followers</div>
         </div>
       </div>
-      <div class="bofu-note">
-        <div class="bofu-note-icon">&#8594;</div>
-        <div class="bofu-note-text"><strong>A note on BOFU content:</strong> The best BOFU content doesn&rsquo;t feel like an ad &mdash; it feels like a natural next step for someone who already trusts you. We&rsquo;ll build service explainer Reels, client testimonial content, process walkthroughs, and direct CTA posts that drive people from your Instagram to a discovery call booking. The examples below show the format and tone we&rsquo;ll use for Parachute Studio.</div>
+      <div class="inspo-account-why">
+        <strong>Why Pentagram is the aspirational benchmark:</strong> Pentagram has built 1M followers by treating every Instagram post as a case study in miniature. They don&#39;t just show finished work &mdash; they show the thinking behind it. The strategy, the concept, the rationale. That depth is what separates a studio that posts pretty pictures from one that builds a genuine following of people who want to hire them.
       </div>
-      <div class="bofu-examples">
-        <div class="bofu-example-card">
-          <div class="bofu-example-icon">&#127775;</div>
-          <div class="bofu-example-title">Service Explainer Reel</div>
-          <div class="bofu-example-desc">A 30&ndash;60 second Reel walking through what it looks like to work with Parachute Studio &mdash; from first call to brand launch. &ldquo;Here&rsquo;s what happens when you partner with us.&rdquo; This is the format that removes uncertainty and makes the next step feel easy.</div>
-          <div class="bofu-example-outcome">&#8594; Drives: Discovery call bookings, direct inquiries</div>
-        </div>
-        <div class="bofu-example-card">
-          <div class="bofu-example-icon">&#128172;</div>
-          <div class="bofu-example-title">Client Testimonial Content</div>
-          <div class="bofu-example-desc">A carousel or Reel featuring what clients say after working with Parachute Studio. &ldquo;We went from a brand that blended in to one that leads.&rdquo; This is the highest-converting BOFU format for service businesses &mdash; social proof that answers the final objection before they book.</div>
-          <div class="bofu-example-outcome">&#8594; Drives: Qualified inquiries, trust-based conversions</div>
-        </div>
-        <div class="bofu-example-card">
-          <div class="bofu-example-icon">&#128073;</div>
-          <div class="bofu-example-title">Direct CTA + Stories Sequence</div>
-          <div class="bofu-example-desc">&ldquo;Ready to build a brand that actually reflects your business? Let&rsquo;s talk.&rdquo; A clean, confident CTA post paired with a Stories sequence that drives link taps to your discovery call booking page. Simple, direct, and the clearest possible path from follower to inquiry.</div>
-          <div class="bofu-example-outcome">&#8594; Drives: Discovery call bookings, direct DM inquiries</div>
-        </div>
-        <div class="bofu-example-card">
-          <div class="bofu-example-icon">&#127919;</div>
-          <div class="bofu-example-title">FAQ &amp; Objection-Handling Content</div>
-          <div class="bofu-example-desc">&ldquo;What does a brand strategy engagement actually cost?&rdquo; or &ldquo;How long does a rebrand take?&rdquo; Answering the questions prospects are already asking removes friction and accelerates the decision to reach out. This format drives DMs and profile visits from high-intent prospects.</div>
-          <div class="bofu-example-outcome">&#8594; Drives: DM inquiries, profile visits, discovery call bookings</div>
+      <div class="inspo-posts-grid">
+        <div class="inspo-post-card">
+          <div class="inspo-post-embed">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWo1moMDLE9/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:326px; padding:0; width:calc(100% - 2px);"></blockquote>
+          </div>
+          <div class="inspo-post-analysis">
+            <div class="inspo-post-funnel tofu">TOFU &mdash; Discovery Content</div>
+            <div class="inspo-post-why-label">Why It Works</div>
+            <ul class="inspo-bullets">
+              <li class="inspo-bullet"><strong>Format:</strong> Project deep-dive &mdash; showing the concept, the strategy, and the final identity system with full context</li>
+              <li class="inspo-bullet"><strong>Hook:</strong> Leads with the most visually striking element of the project, then pulls back to explain the thinking</li>
+              <li class="inspo-bullet"><strong>Why it works:</strong> Showing the &ldquo;why&rdquo; behind the work is what builds a following of ideal clients &mdash; people who want to understand brand strategy, not just admire it</li>
+            </ul>
+            <div class="inspo-post-apply">
+              <div class="inspo-post-apply-label">Applied to Parachute Studio</div>
+              <ul class="inspo-apply-bullets">
+                <li class="inspo-apply-bullet"><strong>Format:</strong> Project deep-dives that go beyond the final deliverable &mdash; share the brief, the concept, the decisions made along the way</li>
+                <li class="inspo-apply-bullet"><strong>Hook:</strong> &ldquo;Here&#39;s what we were trying to solve for [client].&rdquo; Start with the problem, not the solution.</li>
+                <li class="inspo-apply-bullet"><strong>Goal:</strong> Position Parachute as a studio that thinks strategically, not just executes visually &mdash; the content that attracts clients who value strategy over aesthetics</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 </section>
-
-
 
 <!-- ===== CONTENT CALENDAR ===== -->
 <section class="calendar-section" id="calendar">
@@ -3863,6 +4119,13 @@ window.addEventListener('scroll', function() {
     nav.style.background = 'rgba(10,10,15,0.92)';
   }
 }, { passive: true });
+
+  function togglePlatform(el) {
+    el.classList.toggle('open');
+  }
+
 </script>
+
+  <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>

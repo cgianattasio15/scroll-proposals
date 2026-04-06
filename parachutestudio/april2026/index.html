@@ -2509,7 +2509,457 @@
       .inspo-account-header { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
 
-</style>
+
+    /* ============================================================
+       COMPREHENSIVE MOBILE OPTIMIZATION — Parachute Studio Proposal
+       Covers: 768px (tablet) and 480px (mobile) breakpoints
+       Added: April 2026
+    ============================================================ */
+
+    /* ---- AUDIT SECTION ---- */
+    @media (max-width: 768px) {
+      /* Stack audit layout vertically */
+      .audit-layout {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+      /* Platform rows full width */
+      .audit-platform-rows,
+      .audit-ig-card {
+        width: 100%;
+      }
+      /* IG stats row stays 3-col on tablet */
+      .ig-stats-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      /* Maturity bar — allow text to wrap */
+      .audit-maturity {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      /* Recommendation tags wrap */
+      .audit-rec-tags {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      /* Platform row dropdown text */
+      .audit-platform-row {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* IG stats — keep 3 columns but shrink */
+      .ig-stats-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .ig-stat-value {
+        font-size: 1.6rem;
+      }
+      .ig-stat-label {
+        font-size: 10px;
+      }
+      /* Audit section header */
+      #audit .section-eyebrow {
+        font-size: 10px;
+      }
+      /* Recommendation panel */
+      .audit-rec {
+        padding: 20px 16px;
+      }
+      .audit-rec-title {
+        font-size: 1.1rem;
+      }
+      .audit-rec-body {
+        font-size: 0.9rem;
+      }
+      .audit-rec-tag {
+        font-size: 10px;
+        padding: 5px 10px;
+      }
+    }
+
+    /* ---- INSPIRATION SECTION ---- */
+    @media (max-width: 768px) {
+      /* Stack embed + analysis vertically */
+      .inspo-post-card {
+        grid-template-columns: 1fr !important;
+      }
+      /* Remove left border on analysis panel when stacked */
+      .inspo-post-analysis {
+        border-left: none !important;
+        border-top: 1px solid var(--border);
+        padding: 24px 20px !important;
+      }
+      /* Constrain embed height on mobile */
+      .inspo-post-embed {
+        min-height: 420px !important;
+        max-height: 520px;
+        overflow: hidden;
+      }
+      /* Account header stacks */
+      .inspo-account-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      /* Funnel tags wrap */
+      .inspo-funnel-tags {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .inspo-post-embed {
+        min-height: 380px !important;
+      }
+      .inspo-post-analysis {
+        padding: 20px 16px !important;
+      }
+      .inspo-analysis-title {
+        font-size: 1rem;
+      }
+      .inspo-analysis-body {
+        font-size: 0.88rem;
+      }
+      .inspo-account-name {
+        font-size: 1rem;
+      }
+      .inspo-account-meta {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ---- RESULTS SECTION ---- */
+    @media (max-width: 768px) {
+      .results-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .result-card {
+        padding: 24px 20px;
+      }
+      /* Result metrics row — allow wrapping */
+      .result-metrics {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .result-metric {
+        min-width: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .result-card {
+        padding: 20px 16px;
+      }
+      .result-card-title {
+        font-size: 1rem;
+      }
+      .result-metric-value {
+        font-size: 1.6rem;
+      }
+      .result-metric-label {
+        font-size: 10px;
+      }
+      .result-relevance-tag {
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+    }
+
+    /* ---- CONTENT PILLARS SECTION ---- */
+    @media (max-width: 768px) {
+      .content-pillars {
+        grid-template-columns: 1fr !important;
+      }
+      .pillar-card {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pillar-card {
+        padding: 20px 16px;
+      }
+      .pillar-card-title {
+        font-size: 1rem;
+      }
+      .pillar-card-body {
+        font-size: 0.88rem;
+      }
+      .pillar-icon {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* ---- ROADMAP / YOUR STAGE SECTION ---- */
+    @media (max-width: 768px) {
+      .roadmap-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .roadmap-card {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .roadmap-card {
+        padding: 20px 16px;
+      }
+      .roadmap-card-title {
+        font-size: 1rem;
+      }
+      .roadmap-card-phase {
+        font-size: 10px;
+      }
+    }
+
+    /* ---- DELIVERABLES TABLE ---- */
+    @media (max-width: 768px) {
+      .deliverables-table {
+        font-size: 13px;
+      }
+      .deliverables-table th,
+      .deliverables-table td {
+        padding: 10px 12px;
+      }
+      /* Allow horizontal scroll on very small screens */
+      .deliverables-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .deliverables-table {
+        font-size: 12px;
+        min-width: 480px;
+      }
+    }
+
+    /* ---- INVESTMENT / PACKAGE SECTION ---- */
+    @media (max-width: 768px) {
+      .package-cards {
+        grid-template-columns: 1fr !important;
+      }
+      .phase-card {
+        padding: 28px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .phase-card {
+        padding: 24px 16px;
+      }
+      .phase-price {
+        font-size: 2.4rem;
+      }
+      .phase-price-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .phase-label {
+        font-size: 10px;
+      }
+      .phase-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* ---- CALENDAR SECTION ---- */
+    @media (max-width: 480px) {
+      .cal-grid {
+        gap: 1px;
+      }
+      .cal-day {
+        min-height: 50px;
+        padding: 4px 2px;
+      }
+      .cal-content {
+        display: none;
+      }
+      .cal-tag {
+        font-size: 7px;
+        padding: 1px 3px;
+      }
+      .cal-header {
+        font-size: 8px;
+        padding: 6px 2px;
+      }
+      .cal-summary {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .cal-summary-item {
+        padding: 12px;
+      }
+      .cal-summary-value {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* ---- IVP SECTION ---- */
+    @media (max-width: 768px) {
+      .ivp-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .ivp-field {
+        border-right: none !important;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ivp-card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 18px 16px;
+      }
+      .ivp-field {
+        padding: 18px 16px;
+      }
+      .ivp-field-label {
+        font-size: 10px;
+      }
+      .ivp-field-value {
+        font-size: 0.9rem;
+      }
+      .ivp-strategy-bridge {
+        padding: 18px 16px;
+      }
+    }
+
+    /* ---- NEXT STEPS / ONBOARDING ---- */
+    @media (max-width: 768px) {
+      .steps-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .onboarding-step {
+        padding: 20px 16px;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .onboarding-step {
+        padding: 18px 14px;
+        gap: 10px;
+      }
+      .onboarding-step-num {
+        font-size: 1.4rem;
+        width: 32px;
+        flex-shrink: 0;
+      }
+      .onboarding-step-title {
+        font-size: 0.95rem;
+      }
+      .onboarding-step-body {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ---- ABOUT / WHO WE ARE SECTION ---- */
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* ---- SITUATION / OPPORTUNITY SECTION ---- */
+    @media (max-width: 768px) {
+      .situation-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .situation-card {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .situation-card {
+        padding: 20px 16px;
+      }
+      .situation-card-icon {
+        font-size: 1.6rem;
+      }
+      .situation-card-title {
+        font-size: 1rem;
+      }
+    }
+
+    /* ---- GENERAL TYPOGRAPHY SCALING ---- */
+    @media (max-width: 480px) {
+      .section-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+      .section-title {
+        font-size: clamp(1.5rem, 7vw, 2.2rem);
+        line-height: 1.2;
+      }
+      .section-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ---- GENERAL TOUCH / USABILITY ---- */
+    @media (max-width: 768px) {
+      /* Ensure all buttons are touch-friendly */
+      a, button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      /* Prevent horizontal overflow */
+      body {
+        overflow-x: hidden;
+      }
+      /* Ensure images don't overflow */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    /* ---- NAV MOBILE ---- */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 20px;
+        height: 56px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .nav-client {
+        font-size: 12px;
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 0 16px;
+        height: 52px;
+      }
+      .nav-client {
+        display: none;
+      }
+      .nav-divider {
+        display: none;
+      }
+    }
+
+    </style>
 </head>
 
 <!-- ===== NAV ===== -->

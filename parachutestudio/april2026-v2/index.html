@@ -188,9 +188,9 @@
 
     /* ─── INSPIRATION ────────────────────────────────────── */
     .inspo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 20px; }
-    .inspo-card { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-card); }
-    .inspo-embed { min-height: 220px; background: var(--porcelain); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
-    .inspo-embed blockquote { width: 100%; margin: 0; }
+    .inspo-card { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: var(--shadow-card); }
+    .inspo-embed { background: var(--porcelain); display: flex; align-items: flex-start; justify-content: center; border-bottom: 1px solid var(--border); overflow: visible; }
+    .inspo-embed blockquote { width: 100% !important; min-width: 0 !important; margin: 0 !important; }
     .inspo-body { padding: 16px; }
     .funnel-tag {
       display: inline-block; font-size: 10px; font-weight: 700;
@@ -448,11 +448,21 @@
       .cal-grid { grid-template-columns: repeat(7,1fr); gap: 3px; }
       .cal-cell { min-height: 48px; padding: 5px 3px; }
       .cal-content { display: none; }
+      /* Philosophy section mobile */
+      #philosophy .two-col-phil { grid-template-columns: 1fr !important; }
+      #philosophy .signal-steps { grid-template-columns: 1fr 1fr !important; }
+      #philosophy .diff-grid { grid-template-columns: 1fr 1fr !important; }
     }
     @media (max-width: 420px) {
       .audit-stats { grid-template-columns: 1fr 1fr; }
       .astat:last-child { grid-column: span 2; }
       .hero-stats { flex-direction: column; gap: 16px; }
+    }
+    @media (max-width: 768px) {
+      #philosophy [style*="grid-template-columns:1fr 1fr"],
+      #philosophy [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      #philosophy [style*="grid-template-columns:repeat(5"],
+      #philosophy [style*="grid-template-columns: repeat(5"] { grid-template-columns: 1fr 1fr !important; }
     }
   </style>
 </head>
@@ -467,6 +477,7 @@
   </div>
   <div class="nav-links">
     <a href="#audit">Audit</a>
+    <a href="#philosophy">Our Approach</a>
     <a href="#content">Content</a>
     <a href="#engagement">Engagement</a>
     <a href="#pricing">Investment</a>
@@ -580,6 +591,144 @@
   </div>
 </section>
 
+<!-- OUR PHILOSOPHY & FRAMEWORK -->
+<section id="philosophy" style="background:var(--shadow);">
+  <div class="wrap">
+
+    <!-- Header -->
+    <div class="sh">
+      <span class="label white" style="margin-bottom:14px;">How We Think</span>
+      <h2 style="color:var(--white); margin-bottom:10px;">Media is the new word of mouth.<br><span style="color:var(--highlight);">We turn that into a system.</span></h2>
+      <p class="lead" style="color:rgba(255,255,255,.72); max-width:640px;">Right now, 70% of the global population are on social media. That's the largest concentration of human attention in history. Our job is to take advantage of that attention arbitrage — and use Instagram's algorithm to put Parachute's work in front of the exact people who need it.</p>
+    </div>
+
+    <!-- Belief vs Reject contrast -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:28px;">
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-md); padding:28px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:14px;">What we reject</div>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+          <li style="font-size:14px; color:rgba(255,255,255,.55); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:rgba(255,255,255,.2);">✕</span>Posting and hoping something goes viral</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.55); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:rgba(255,255,255,.2);">✕</span>Chasing follower counts over qualified leads</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.55); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:rgba(255,255,255,.2);">✕</span>Generic content that blends into the feed</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.55); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:rgba(255,255,255,.2);">✕</span>Scattered multi-platform approaches that deliver nothing everywhere</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.55); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:rgba(255,255,ffffff.2);">✕</span>Vanity metrics that don't predict business outcomes</li>
+        </ul>
+      </div>
+      <div style="background:rgba(226,237,122,.07); border:1px solid rgba(226,237,122,.2); border-radius:var(--radius-md); padding:28px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:var(--highlight); margin-bottom:14px;">What we stand for</div>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+          <li style="font-size:14px; color:rgba(255,255,255,.8); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:var(--highlight);">→</span>Strategy before tactics — understand the why before executing the what</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.8); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:var(--highlight);">→</span>Retention over reach — saves, shares, and watch time over impressions</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.8); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:var(--highlight);">→</span>Consistency over virality — compounding systems beat one-off spikes</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.8); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:var(--highlight);">→</span>Audience psychology over platform hacks — what people care about and why</li>
+          <li style="font-size:14px; color:rgba(255,255,255,.8); line-height:1.5; padding-left:20px; position:relative;"><span style="position:absolute;left:0;color:var(--highlight);">→</span>Strategic partners, not content vendors — we immerse in the brand</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- The Signal Method -->
+    <div style="background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-lg); padding:32px 36px; margin-bottom:20px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:32px; flex-wrap:wrap; margin-bottom:32px;">
+        <div style="flex:1; min-width:260px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:var(--highlight); margin-bottom:10px;">Proprietary Framework</div>
+          <h3 style="color:var(--white); font-size:22px; margin-bottom:10px; line-height:1.3;">The Signal Method</h3>
+          <p style="font-size:14px; color:rgba(255,255,255,.55); line-height:1.65; margin:0;">Like finding a signal in the noise, the system <strong style="color:rgba(255,255,255,.8);">expands</strong> during testing to find what resonates, then <strong style="color:rgba(255,255,255,.8);">contracts</strong> to double down on winners — and resets every 6 months to stay ahead of creative fatigue. The result: content-market fit built on Parachute's own data, not industry assumptions.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; flex:1; min-width:300px;">
+          <div style="background:rgba(255,255,255,.06); border-radius:10px; padding:16px 12px; text-align:center;">
+            <div style="font-size:11px; font-weight:800; color:var(--highlight); margin-bottom:6px; letter-spacing:.5px;">PHASE 1</div>
+            <div style="font-size:12px; font-weight:700; color:var(--white); margin-bottom:5px;">Heavy Testing</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.45); line-height:1.4;">8–12 formats tested. Max variety. Build the baseline.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06); border-radius:10px; padding:16px 12px; text-align:center;">
+            <div style="font-size:11px; font-weight:800; color:var(--highlight); margin-bottom:6px; letter-spacing:.5px;">PHASE 2</div>
+            <div style="font-size:12px; font-weight:700; color:var(--white); margin-bottom:5px;">Refinement</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.45); line-height:1.4;">Top 2–3 formats per funnel stage. Eliminate losers.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06); border-radius:10px; padding:16px 12px; text-align:center;">
+            <div style="font-size:11px; font-weight:800; color:var(--highlight); margin-bottom:6px; letter-spacing:.5px;">PHASE 3</div>
+            <div style="font-size:12px; font-weight:700; color:var(--white); margin-bottom:5px;">Optimization</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.45); line-height:1.4;">80% proven formats. Content compounds on itself.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06); border-radius:10px; padding:16px 12px; text-align:center;">
+            <div style="font-size:11px; font-weight:800; color:var(--highlight); margin-bottom:6px; letter-spacing:.5px;">PHASE 4</div>
+            <div style="font-size:12px; font-weight:700; color:var(--white); margin-bottom:5px;">Reset</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.45); line-height:1.4;">6-month refresh. Challenge baseline. Find new winners.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Trust Funnel -->
+    <div style="background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-lg); padding:32px 36px; margin-bottom:20px;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:var(--highlight); margin-bottom:8px;">Content Architecture</div>
+      <h3 style="color:var(--white); font-size:18px; margin-bottom:6px;">The Social Trust Funnel</h3>
+      <p style="font-size:13px; color:rgba(255,255,255,.45); margin-bottom:24px;">Every post we create maps to a specific stage of the buyer journey. For a SPARK-stage account like Parachute, the mix is weighted heavily toward TOFU to build audience and gather data fast.</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <div style="border-left:3px solid var(--highlight); padding:18px 20px; background:rgba(255,255,255,.04); border-radius:0 10px 10px 0;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:.8px; color:var(--highlight);">TOFU — 60%</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.3);">Top of Funnel</div>
+          </div>
+          <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:6px;">Reach & Discovery</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">Gets Parachute in front of cold audiences who've never heard of them. Project reveals, transformation showcases, industry takes. CTAs: Save this. Share with someone building a brand.</div>
+        </div>
+        <div style="border-left:3px solid rgba(203,233,255,.6); padding:18px 20px; background:rgba(255,255,255,.04); border-radius:0 10px 10px 0;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:.8px; color:rgba(203,233,255,.8);">MOFU — 25%</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.3);">Middle of Funnel</div>
+          </div>
+          <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:6px;">Trust & Education</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">Builds credibility with warm audiences already following Parachute. Process deep-dives, founder POV, client results, strategy breakdowns. CTAs: Comment or DM to learn more.</div>
+        </div>
+        <div style="border-left:3px solid rgba(12,51,135,.9); padding:18px 20px; background:rgba(255,255,255,.04); border-radius:0 10px 10px 0;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:.8px; color:rgba(203,233,255,.5);">BOFU — 15%</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.3);">Bottom of Funnel</div>
+          </div>
+          <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:6px;">Conversion</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">Converts high-intent followers into inbound inquiries. Social proof, testimonials, outcome-focused content. CTAs: Link in bio to see our work. Book a discovery call.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 Differentiators -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-md); padding:22px 20px;">
+        <div style="font-size:20px; margin-bottom:10px;">🎯</div>
+        <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:5px;">IVP-Anchored Strategy</div>
+        <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">Before a single post, we build a detailed Ideal Viewer Profile — not a demographic, a specific human. Their motivators, challenges, dream outcome, and decision triggers. Every piece of content is written for that person.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-md); padding:22px 20px;">
+        <div style="font-size:20px; margin-bottom:10px;">🔍</div>
+        <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:5px;">Social SEO & TAM Ladder</div>
+        <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">Instagram is a search engine. We build a 4-level keyword architecture — from broad industry discovery down to hyper-specific purchase intent — into every caption, on-screen text, and video from day one.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-md); padding:22px 20px;">
+        <div style="font-size:20px; margin-bottom:10px;">🧠</div>
+        <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:5px;">Psychology-Driven Copy</div>
+        <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">We use pattern interrupts, loss aversion framing, and curiosity gaps to stop the scroll. Copy is engineered — not accidental. Every hook is reviewed by a senior strategist before it goes live.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-md); padding:22px 20px;">
+        <div style="font-size:20px; margin-bottom:10px;">📡</div>
+        <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:5px;">Signal-Based Measurement</div>
+        <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">We track 13 metrics across a 3-tier weighted scoring system. Tier 1 signals — saves, shares, retention rate, CTR, profile conversion — carry 1.5× weight because they predict business outcomes. Likes don't.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-md); padding:22px 20px;">
+        <div style="font-size:20px; margin-bottom:10px;">⚙️</div>
+        <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:5px;">The Mandatory Strategy Month</div>
+        <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">We don't post until the infrastructure is built. Month 1 is IVP development, content architecture, keyword bank, profile optimization, and a content calendar approved before anything goes live. Non-negotiable.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-md); padding:22px 20px;">
+        <div style="font-size:20px; margin-bottom:10px;">📐</div>
+        <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:5px;">Instagram-Only Focus</div>
+        <div style="font-size:12px; color:rgba(255,255,255,.5); line-height:1.55;">We don't do TikTok. We don't do Facebook. We master one channel — the one where 81% of users discover brands, 48% of marketers see the highest ROI, and your ideal clients are actively researching agencies.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- INSPIRATION -->
 <section id="inspiration">
   <div class="wrap">
@@ -592,40 +741,40 @@
     <div class="inspo-grid">
       <div class="inspo-card">
         <div class="inspo-embed">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DT0jWEWjygh/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:240px;padding:0;width:calc(100% - 2px);"></blockquote>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWmD8R1juAR/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:240px;padding:0;width:calc(100% - 2px);"></blockquote>
         </div>
         <div class="inspo-body">
           <div class="funnel-tag ft-tofu">TOFU — Attract</div>
-          <div class="inspo-studio">@studiokoto · 278K followers</div>
-          <div class="inspo-why">Project reveal carousels showing the full scope of a rebrand. Visual-first, transformation-led. The highest-reach format for creative studios — applied to Parachute's backlog of 15–20 projects.</div>
+          <div class="inspo-studio">@camillemoore · Educational Carousel</div>
+          <div class="inspo-why">Takes a breaking news moment in the branding space and leads with a clear opinion. High saves because it's shareable to founders watching the same conversation. This is the format we build for Parachute around industry shifts — your POV on what's happening, not just what you made.</div>
         </div>
       </div>
 
       <div class="inspo-card">
         <div class="inspo-embed">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVwY3eUD4xc/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:240px;padding:0;width:calc(100% - 2px);"></blockquote>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Cxk-tzsr4kP/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:240px;padding:0;width:calc(100% - 2px);"></blockquote>
         </div>
         <div class="inspo-body">
           <div class="funnel-tag ft-mofu">MOFU — Build Trust</div>
-          <div class="inspo-studio">@thisiscollins · 130K followers</div>
-          <div class="inspo-why">Founder POV posts sharing a perspective on what matters. Opens with a client insight, signals strategic depth. Builds the trust that project showcases alone can't. Applied as Parachute founder POV content.</div>
+          <div class="inspo-studio">@orenmeetsworld · 632K followers · Signature Series</div>
+          <div class="inspo-why">Recurring "Product vs Brand" series — same frame, same structure, fresh insight each time. Audiences return because they know what to expect. This is exactly the signature series format we build for Parachute: a recurring concept that compounds familiarity over time and signals deep strategic thinking.</div>
         </div>
       </div>
 
       <div class="inspo-card">
         <div class="inspo-embed">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWo1moMDLE9/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:240px;padding:0;width:calc(100% - 2px);"></blockquote>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWgtwiUhv2Z/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:240px;padding:0;width:calc(100% - 2px);"></blockquote>
         </div>
         <div class="inspo-body">
           <div class="funnel-tag ft-bofu">BOFU — Convert</div>
-          <div class="inspo-studio">@pentagramdesign · 1M followers</div>
-          <div class="inspo-why">Project deep-dives showing the concept, the strategy, and the rationale — not just the final output. Builds a following of ideal clients who want to understand brand strategy, not just admire it.</div>
+          <div class="inspo-studio">@keyla.designs · 93K followers · Live Demo</div>
+          <div class="inspo-why">Live logo and redesign walkthrough — shows the craft in real time, not just the polished final output. Converts because viewers see the skill, not just the result. Applied to Parachute's backlog of 15–20 projects as process-driven Reels that turn passive followers into inbound inquiries.</div>
         </div>
       </div>
     </div>
 
     <div class="card accent-left" style="padding:20px 24px;">
-      <p style="font-size:14px; color:var(--text-muted); margin:0; line-height:1.6;"><strong style="color:var(--shadow);">The pattern:</strong> The best creative studio accounts don't just post finished work. They post the <em>thinking</em> behind it. That intellectual process is what earns followers, builds trust, and attracts aligned clients. Parachute's content system is built entirely around this framework.</p>
+      <p style="font-size:14px; color:var(--text-muted); margin:0; line-height:1.6;"><strong style="color:var(--shadow);">The pattern:</strong> Every one of these accounts wins by showing the <em>thinking</em>, not just the work. An opinion on what matters, a recurring framework that builds familiarity, a live demonstration of craft. That's the content architecture we build for Parachute — posts that earn trust from the exact founders and brand managers who would hire you.</p>
     </div>
   </div>
 </section>

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scroll Media — Decks</title>
+  <title>Scroll Media — Decks & Assets</title>
+  <link rel="icon" type="image/svg+xml" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351235918/scroll-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -11,27 +12,32 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:       #1B2B6B;
-      --navy-deep:  #0F1A45;
-      --navy-mid:   #162258;
-      --navy-card:  #1E2F72;
-      --navy-light: #243580;
-      --lime:       #C8F135;
-      --lime-dark:  #A8D020;
-      --white:      #FFFFFF;
-      --off-white:  #F4F6FF;
-      --muted:      rgba(255,255,255,0.55);
-      --border:     rgba(255,255,255,0.10);
-      --border-lime:rgba(200,241,53,0.25);
-      --radius:     14px;
-      --radius-sm:  8px;
+      --shadow:      #151516;
+      --azure:       #0c3387;
+      --azure-mid:   #1B2B6B;
+      --azure-deep:  #0F1A45;
+      --azure-card:  #162258;
+      --azure-light: #1E2F72;
+      --lime:        #C8F135;
+      --lime-dim:    rgba(200,241,53,0.12);
+      --lime-border: rgba(200,241,53,0.25);
+      --lime-dark:   #A8D020;
+      --white:       #FFFFFF;
+      --ghost:       #fafdff;
+      --muted:       rgba(255,255,255,0.5);
+      --muted-strong:rgba(255,255,255,0.7);
+      --border:      rgba(255,255,255,0.09);
+      --border-hover:rgba(200,241,53,0.4);
+      --radius:      12px;
+      --radius-sm:   8px;
+      --max-w:       1100px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy-deep);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--azure-deep);
       color: var(--white);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -41,7 +47,7 @@
     #gate {
       position: fixed;
       inset: 0;
-      background: var(--navy-deep);
+      background: var(--azure-deep);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,89 +56,59 @@
     }
 
     .gate-card {
-      background: var(--navy-mid);
+      background: var(--azure-card);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 48px 40px;
       width: 100%;
-      max-width: 420px;
+      max-width: 400px;
       text-align: center;
     }
 
-    .gate-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .gate-logo-mark {
-      width: 40px;
-      height: 40px;
-      background: var(--lime);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gate-logo-mark svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .gate-logo-text {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--white);
-    }
-
-    .gate-logo-text span {
-      color: var(--lime);
+    .gate-logo-img {
+      height: 28px;
+      width: auto;
+      margin-bottom: 28px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .gate-title {
-      font-size: 1.5rem;
+      font-size: 1.375rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .gate-sub {
       font-size: 0.875rem;
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       line-height: 1.5;
     }
 
     .gate-input-wrap {
       position: relative;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .gate-input {
       width: 100%;
-      background: var(--navy-card);
+      background: rgba(0,0,0,0.2);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 14px 48px 14px 16px;
-      font-size: 1rem;
-      font-family: 'Inter', sans-serif;
+      padding: 13px 48px 13px 16px;
+      font-size: 0.9375rem;
+      font-family: inherit;
       color: var(--white);
       outline: none;
       transition: border-color 0.2s;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
 
-    .gate-input:focus {
-      border-color: var(--lime);
-    }
-
-    .gate-input::placeholder {
-      letter-spacing: 0;
-      color: var(--muted);
-    }
+    .gate-input:focus { border-color: var(--lime); }
+    .gate-input::placeholder { letter-spacing: 0; color: var(--muted); }
 
     .gate-toggle {
       position: absolute;
@@ -151,13 +127,13 @@
     .gate-btn {
       width: 100%;
       background: var(--lime);
-      color: var(--navy-deep);
+      color: var(--azure-deep);
       border: none;
       border-radius: var(--radius-sm);
-      padding: 14px;
+      padding: 13px;
       font-size: 0.9375rem;
       font-weight: 700;
-      font-family: 'Inter', sans-serif;
+      font-family: inherit;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
       letter-spacing: 0.01em;
@@ -169,13 +145,13 @@
     .gate-error {
       font-size: 0.8125rem;
       color: #FF6B6B;
-      margin-top: 12px;
+      margin-top: 10px;
       display: none;
     }
 
     .gate-error.visible { display: block; }
 
-    /* ─── MAIN DASHBOARD (hidden until unlocked) ─── */
+    /* ─── MAIN DASHBOARD ─── */
     #dashboard {
       display: none;
       opacity: 0;
@@ -187,174 +163,387 @@
       opacity: 1;
     }
 
-    /* ─── HEADER ─── */
-    .header {
-      background: var(--navy-mid);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* ─── STICKY NAV ─── */
+    .nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
+      background: rgba(15,26,69,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 24px;
     }
 
-    .header-logo {
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 22px;
+      width: auto;
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-link {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-right {
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
+      flex-shrink: 0;
     }
 
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      background: var(--lime);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-mark svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .logo-text {
-      font-size: 0.9375rem;
+    .nav-badge {
+      font-size: 0.6875rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--white);
-    }
-
-    .logo-text span { color: var(--lime); }
-
-    .header-meta {
-      font-size: 0.8125rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--muted);
-      font-weight: 500;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px 10px;
     }
 
-    .header-lock {
+    .nav-lock {
       background: none;
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 6px 12px;
-      font-size: 0.8rem;
+      padding: 5px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--muted);
       cursor: pointer;
-      font-family: 'Inter', sans-serif;
+      font-family: inherit;
       transition: border-color 0.2s, color 0.2s;
+      letter-spacing: 0.02em;
     }
 
-    .header-lock:hover {
+    .nav-lock:hover {
       border-color: var(--lime);
       color: var(--lime);
     }
 
-    /* ─── HERO BANNER ─── */
-    .hero-banner {
-      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, var(--azure-card) 0%, var(--azure-deep) 60%);
       border-bottom: 1px solid var(--border);
-      padding: 56px 40px 48px;
+      padding: 64px 40px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(200,241,53,0.06) 0%, transparent 65%);
+      pointer-events: none;
     }
 
     .hero-inner {
-      max-width: 1100px;
+      max-width: var(--max-w);
       margin: 0 auto;
+      position: relative;
     }
 
-    .hero-label {
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(200,241,53,0.12);
-      border: 1px solid var(--border-lime);
+      gap: 7px;
+      background: var(--lime-dim);
+      border: 1px solid var(--lime-border);
       border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      padding: 4px 14px;
+      font-size: 0.6875rem;
+      font-weight: 700;
       color: var(--lime);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
 
-    .hero-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 12px;
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--lime);
+      border-radius: 50%;
     }
 
-    .hero-title span { color: var(--lime); }
+    .hero-h1 {
+      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--lime);
+    }
 
     .hero-sub {
       font-size: 1rem;
       color: var(--muted);
-      max-width: 520px;
-      line-height: 1.6;
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 36px;
     }
 
     .hero-stats {
       display: flex;
-      gap: 32px;
-      margin-top: 32px;
+      gap: 36px;
       flex-wrap: wrap;
     }
 
     .hero-stat {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }
 
     .hero-stat-num {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+      font-size: 1.625rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
       color: var(--lime);
+      line-height: 1;
     }
 
     .hero-stat-label {
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
       color: var(--muted);
-      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
+    }
+
+    /* ─── LAYOUT ─── */
+    .layout {
+      display: flex;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      padding: 40px 0 40px 0;
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      scrollbar-width: none;
+      border-right: 1px solid var(--border);
+    }
+
+    .sidebar::-webkit-scrollbar { display: none; }
+
+    .sidebar-section {
+      margin-bottom: 8px;
+      padding: 0 16px;
+    }
+
+    .sidebar-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 8px;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      border-radius: 7px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--muted-strong);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(255,255,255,0.06);
+      color: var(--white);
+    }
+
+    .sidebar-link svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .sidebar-count {
+      margin-left: auto;
+      font-size: 0.625rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 2px 7px;
+      color: var(--muted);
     }
 
     /* ─── MAIN CONTENT ─── */
     .main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 56px 40px 80px;
+      flex: 1;
+      min-width: 0;
+      padding: 40px 40px 80px;
     }
 
-    /* ─── SECTION HEADERS ─── */
-    .section-header {
+    /* ─── SEARCH ─── */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 11px 16px 11px 42px;
+      font-size: 0.875rem;
+      font-family: inherit;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: rgba(200,241,53,0.35);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .search-input::placeholder { color: var(--muted); }
+
+    /* ─── QUICK ACCESS ─── */
+    .quick-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .quick-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .quick-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted-strong);
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .quick-chip:hover {
+      background: rgba(200,241,53,0.08);
+      border-color: var(--lime-border);
+      color: var(--lime);
+    }
+
+    .quick-chip svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-hd {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .section-title-group {
+    .section-hd-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .section-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(200,241,53,0.12);
-      border: 1px solid var(--border-lime);
-      border-radius: 9px;
+      width: 32px;
+      height: 32px;
+      background: var(--lime-dim);
+      border: 1px solid var(--lime-border);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -362,61 +551,64 @@
     }
 
     .section-icon svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       color: var(--lime);
     }
 
     .section-title {
-      font-size: 1.125rem;
+      font-size: 1rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
 
     .section-count {
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       font-weight: 600;
       color: var(--muted);
       background: rgba(255,255,255,0.07);
       border-radius: 100px;
-      padding: 3px 10px;
+      padding: 3px 9px;
     }
 
-    .section-divider {
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 56px;
+    .section-spacer {
+      height: 48px;
     }
 
     /* ─── CARD GRID ─── */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 48px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
     }
 
     /* ─── DECK CARD ─── */
     .deck-card {
-      background: var(--navy-card);
+      background: var(--azure-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       text-decoration: none;
       display: flex;
       flex-direction: column;
     }
 
     .deck-card:hover {
-      border-color: rgba(200,241,53,0.4);
+      border-color: var(--border-hover);
       transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .deck-card.placeholder {
+      opacity: 0.4;
+      pointer-events: none;
     }
 
     .deck-card-thumb {
-      height: 140px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      height: 120px;
+      background: linear-gradient(135deg, var(--azure-mid) 0%, var(--azure-light) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -424,131 +616,128 @@
       overflow: hidden;
     }
 
-    .deck-card-thumb::before {
+    .deck-card-thumb::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(200,241,53,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 25% 50%, rgba(200,241,53,0.07) 0%, transparent 65%);
     }
 
-    .deck-card-thumb-label {
-      font-size: 2.5rem;
+    .deck-card-monogram {
+      font-size: 2.25rem;
       font-weight: 900;
       letter-spacing: -0.05em;
-      color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.1);
       text-transform: uppercase;
       user-select: none;
+      position: relative;
+      z-index: 1;
     }
 
-    .deck-card-thumb-icon {
+    .deck-card-badge {
       position: absolute;
-      bottom: 16px;
-      right: 16px;
-      width: 32px;
-      height: 32px;
+      bottom: 12px;
+      right: 12px;
       background: var(--lime);
-      border-radius: 8px;
+      border-radius: 6px;
+      width: 28px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1;
     }
 
-    .deck-card-thumb-icon svg {
-      width: 16px;
-      height: 16px;
-      color: var(--navy-deep);
+    .deck-card-badge svg {
+      width: 14px;
+      height: 14px;
+      color: var(--azure-deep);
     }
 
     .deck-card-body {
-      padding: 20px;
+      padding: 16px 18px;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .deck-card-meta {
+    .deck-card-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .deck-card-type {
-      font-size: 0.6875rem;
+      font-size: 0.625rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--lime);
     }
 
-    .deck-card-status {
-      font-size: 0.6875rem;
+    .deck-status {
+      font-size: 0.625rem;
       font-weight: 600;
-      padding: 3px 9px;
+      padding: 2px 8px;
       border-radius: 100px;
       letter-spacing: 0.04em;
     }
 
     .status-live {
-      background: rgba(200,241,53,0.15);
+      background: rgba(200,241,53,0.14);
       color: var(--lime);
-      border: 1px solid rgba(200,241,53,0.3);
+      border: 1px solid rgba(200,241,53,0.28);
     }
 
     .status-draft {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.06);
       color: var(--muted);
       border: 1px solid var(--border);
     }
 
-    .status-coming {
-      background: rgba(255,165,0,0.12);
-      color: #FFB347;
-      border: 1px solid rgba(255,165,0,0.25);
-    }
-
     .deck-card-name {
-      font-size: 1.0625rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.3;
     }
 
     .deck-card-desc {
-      font-size: 0.8125rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
       flex: 1;
     }
 
-    .deck-card-footer {
+    .deck-card-foot {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 20px;
+      padding: 12px 18px;
       border-top: 1px solid var(--border);
-      background: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.12);
     }
 
     .deck-card-date {
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       color: var(--muted);
       font-weight: 500;
     }
 
     .deck-card-cta {
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       font-weight: 700;
       color: var(--lime);
       display: flex;
       align-items: center;
       gap: 4px;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
     }
 
     .deck-card-cta svg {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       transition: transform 0.2s;
     }
 
@@ -556,122 +745,132 @@
       transform: translateX(3px);
     }
 
-    /* Placeholder card */
-    .deck-card.placeholder {
-      opacity: 0.5;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .deck-card.placeholder:hover {
-      transform: none;
-      border-color: var(--border);
-    }
-
-    /* ─── INTERNAL SECTION ─── */
+    /* ─── INTERNAL GRID ─── */
     .internal-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 48px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
-    .internal-card {
-      background: var(--navy-card);
+    .int-card {
+      background: var(--azure-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
+      padding: 18px;
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
       transition: border-color 0.2s;
-      cursor: default;
     }
 
-    .internal-card.clickable {
-      cursor: pointer;
+    .int-card.link {
       text-decoration: none;
+      cursor: pointer;
     }
 
-    .internal-card.clickable:hover {
-      border-color: rgba(200,241,53,0.4);
+    .int-card.link:hover {
+      border-color: var(--border-hover);
     }
 
-    .internal-card-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(200,241,53,0.10);
-      border: 1px solid var(--border-lime);
-      border-radius: 10px;
+    .int-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--lime-dim);
+      border: 1px solid var(--lime-border);
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .internal-card-icon svg {
-      width: 20px;
-      height: 20px;
+    .int-icon svg {
+      width: 17px;
+      height: 17px;
       color: var(--lime);
     }
 
-    .internal-card-body {
-      flex: 1;
-      min-width: 0;
-    }
+    .int-body { flex: 1; min-width: 0; }
 
-    .internal-card-label {
-      font-size: 0.6875rem;
+    .int-label {
+      font-size: 0.625rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--lime);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
-    .internal-card-title {
-      font-size: 0.9375rem;
+    .int-title {
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: -0.01em;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
-    .internal-card-desc {
-      font-size: 0.8rem;
+    .int-desc {
+      font-size: 0.775rem;
       color: var(--muted);
       line-height: 1.5;
     }
 
-    .internal-card-status {
-      font-size: 0.6875rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 100px;
-      margin-top: 8px;
+    .int-tag {
       display: inline-block;
+      font-size: 0.625rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 100px;
+      margin-top: 7px;
+    }
+
+    .tag-notion {
+      background: rgba(200,241,53,0.1);
+      color: var(--lime);
+      border: 1px solid rgba(200,241,53,0.2);
+    }
+
+    .tag-soon {
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      border: 1px solid var(--border);
     }
 
     /* ─── FOOTER ─── */
     .footer {
       border-top: 1px solid var(--border);
       padding: 24px 40px;
-      text-align: center;
-      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-logo img {
+      height: 18px;
+      width: auto;
+      opacity: 0.6;
+    }
+
+    .footer-text {
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
-    .footer strong { color: var(--lime); }
-
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      .header { padding: 0 20px; }
-      .header-meta { display: none; }
-      .hero-banner { padding: 40px 20px 36px; }
-      .main { padding: 40px 20px 60px; }
-      .hero-stats { gap: 20px; }
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { padding: 32px 24px 60px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 40px 20px 40px; }
+      .nav { padding: 0 20px; gap: 12px; }
+      .nav-links { display: none; }
       .card-grid { grid-template-columns: 1fr; }
       .internal-grid { grid-template-columns: 1fr; }
-      .footer { padding: 20px; }
+      .hero-stats { gap: 20px; }
+      .footer { padding: 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -680,63 +879,58 @@
 <!-- ─── PASSWORD GATE ─── -->
 <div id="gate">
   <div class="gate-card">
-    <div class="gate-logo">
-      <div class="gate-logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1B2B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <span class="gate-logo-text">Scroll <span>Media</span></span>
-    </div>
+    <img class="gate-logo-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351235918/XZQtdKpUJwIfArMn.png" alt="Scroll Media" />
     <div class="gate-title">Decks &amp; Assets</div>
-    <div class="gate-sub">This workspace is private. Enter your access code to continue.</div>
+    <div class="gate-sub">Internal workspace. Enter your access code to continue.</div>
     <div class="gate-input-wrap">
-      <input class="gate-input" id="gate-input" type="password" placeholder="Enter access code" autocomplete="off" />
+      <input class="gate-input" id="gate-input" type="password" placeholder="Access code" autocomplete="off" />
       <button class="gate-toggle" id="gate-toggle" type="button" aria-label="Toggle visibility">
-        <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
         </svg>
       </button>
     </div>
     <button class="gate-btn" id="gate-btn">Access Workspace</button>
-    <div class="gate-error" id="gate-error">Incorrect access code. Please try again.</div>
+    <div class="gate-error" id="gate-error">Incorrect access code. Try again.</div>
   </div>
 </div>
 
 <!-- ─── MAIN DASHBOARD ─── -->
 <div id="dashboard">
 
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="header-logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1B2B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <span class="logo-text">Scroll <span>Media</span></span>
+  <!-- Sticky Nav -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351235918/XZQtdKpUJwIfArMn.png" alt="Scroll Media" />
     </a>
-    <span class="header-meta">Simplifying Social Media</span>
-    <button class="header-lock" id="lock-btn">Lock</button>
-  </header>
+    <div class="nav-divider"></div>
+    <div class="nav-links">
+      <a href="#proposals" class="nav-link">Client Proposals</a>
+      <a href="#internal" class="nav-link">Internal Assets</a>
+    </div>
+    <div class="nav-right">
+      <span class="nav-badge">Internal</span>
+      <button class="nav-lock" id="lock-btn">Lock</button>
+    </div>
+  </nav>
 
-  <!-- Hero Banner -->
-  <div class="hero-banner">
+  <!-- Hero -->
+  <div class="hero">
     <div class="hero-inner">
-      <div class="hero-label">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
         Internal Workspace
       </div>
-      <h1 class="hero-title">Decks &amp; <span>Assets</span></h1>
-      <p class="hero-sub">Central hub for all client proposals, strategy decks, and internal Scroll Media resources.</p>
+      <h1 class="hero-h1">Decks &amp; <em>Assets</em></h1>
+      <p class="hero-sub">Central hub for all client proposals, strategy decks, and pitch materials.</p>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-num" id="stat-live">1</span>
+          <span class="hero-stat-num">4</span>
           <span class="hero-stat-label">Live Decks</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num" id="stat-clients">1</span>
-          <span class="hero-stat-label">Active Clients</span>
+          <span class="hero-stat-num">2</span>
+          <span class="hero-stat-label">Active Prospects</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-num">2026</span>
@@ -746,325 +940,384 @@
     </div>
   </div>
 
-  <!-- Main Content -->
-  <main class="main">
+  <!-- Layout -->
+  <div class="layout">
 
-    <!-- CLIENT PROPOSALS -->
-    <div class="section-header">
-      <div class="section-title-group">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
-        <span class="section-title">Client Proposals</span>
-        <span class="section-count">4 live</span>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Navigate</div>
+        <a href="#proposals" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Client Proposals
+          <span class="sidebar-count">4</span>
+        </a>
+        <a href="#internal" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Internal Assets
+          <span class="sidebar-count">6</span>
+        </a>
       </div>
-    </div>
-
-    <div class="card-grid">
-      <!-- Pitch Page — LIVE -->
-      <a href="/pitch/" class="deck-card" target="_blank">
-        <div class="deck-card-thumb" style="background: linear-gradient(135deg, #0F1A45 0%, #1B2B6B 100%);">
-          <span class="deck-card-thumb-label" style="color: rgba(188,255,0,0.25);">SM</span>
-          <div class="deck-card-thumb-icon" style="background: #bcff00;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0F1A45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </div>
-        </div>
-        <div class="deck-card-body">
-          <div class="deck-card-meta">
-            <span class="deck-card-type">Agency Pitch</span>
-            <span class="deck-card-status status-live">Live</span>
-          </div>
-          <div class="deck-card-name">Scroll Media Pitch Page</div>
-          <div class="deck-card-desc">Cold prospect pitch deck — services, results, video portfolio, testimonials, and CTA.</div>
-        </div>
-        <div class="deck-card-footer">
-          <span class="deck-card-date">March 2026</span>
-          <span class="deck-card-cta">View Deck
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </span>
-        </div>
-      </a>
-      <!-- Rooted Grounds — LIVE -->
-      <a href="/rootedgrounds/march2026/" class="deck-card" target="_blank">
-        <div class="deck-card-thumb">
-          <span class="deck-card-thumb-label">RG</span>
-          <div class="deck-card-thumb-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </div>
-        </div>
-        <div class="deck-card-body">
-          <div class="deck-card-meta">
-            <span class="deck-card-type">Prospect Proposal</span>
-            <span class="deck-card-status status-live">Live</span>
-          </div>
-          <div class="deck-card-name">Rooted Grounds Coffee</div>
-          <div class="deck-card-desc">Full strategy proposal including IVP, content pillars, 90-day roadmap, and investment overview.</div>
-        </div>
-        <div class="deck-card-footer">
-          <span class="deck-card-date">March 2026</span>
-          <span class="deck-card-cta">View Deck
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </span>
-        </div>
-      </a>
-
-       <!-- Parachute Studio V1 — LIVE -->
-      <a href="/parachutestudio/april2026/" class="deck-card" target="_blank">
-        <div class="deck-card-thumb" style="background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);">          <span class="deck-card-thumb-label" style="color: rgba(188,255,0,0.25);">PS</span>
-          <div class="deck-card-thumb-icon" style="background: #bcff00;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0F1A45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </div>
-        </div>
-        <div class="deck-card-body">
-          <div class="deck-card-meta">
-            <span class="deck-card-type">Prospect Proposal — V1</span>
-            <span class="deck-card-status status-live">Live</span>
-          </div>
-          <div class="deck-card-name">Parachute Studio</div>
-          <div class="deck-card-desc">Original proposal for Parachute Studio — Dallas creative and brand strategy studio. Breef RFP, $2.5K&ndash;$5K/mo.</div>
-        </div>
-        <div class="deck-card-footer">
-          <span class="deck-card-date">April 2026</span>
-          <span class="deck-card-cta">View Deck
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </span>
-        </div>
-      </a>
-
-      <!-- Parachute Studio V2 — LIVE -->
-      <a href="/parachutestudio/april2026-v2/" class="deck-card" target="_blank">
-        <div class="deck-card-thumb" style="background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);">          <span class="deck-card-thumb-label" style="color: rgba(188,255,0,0.25);">PS</span>
-          <div class="deck-card-thumb-icon" style="background: #bcff00;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0F1A45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </div>
-        </div>
-        <div class="deck-card-body">
-          <div class="deck-card-meta">
-            <span class="deck-card-type">Prospect Proposal — V2</span>
-            <span class="deck-card-status status-live">Live</span>
-          </div>
-          <div class="deck-card-name">Parachute Studio</div>
-          <div class="deck-card-desc">Revised proposal for Parachute Studio — updated version with second-pass refinements. Latest build.</div>
-        </div>
-        <div class="deck-card-footer">
-          <span class="deck-card-date">April 2026</span>
-          <span class="deck-card-cta">View Deck
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </span>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- INTERNAL ASSETS -->
-    <div class="section-header">
-      <div class="section-title-group">
-        <div class="section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-            <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
-        </div>
-        <span class="section-title">Scroll Media — Internal</span>
-        <span class="section-count">Coming soon</span>
+      <div class="sidebar-section" style="margin-top:16px;">
+        <div class="sidebar-label">Quick Links</div>
+        <a href="https://tools.scrollmedia.co" target="_blank" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Tools Dashboard
+        </a>
+        <a href="https://reports.scrollmedia.co" target="_blank" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Reports
+        </a>
       </div>
-    </div>
+    </aside>
 
-    <div class="internal-grid">
+    <!-- Main -->
+    <main class="main">
 
-      <div class="internal-card">
-        <div class="internal-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-          </svg>
-        </div>
-        <div class="internal-card-body">
-          <div class="internal-card-label">Process</div>
-          <div class="internal-card-title">Proposal Creation SOP</div>
-          <div class="internal-card-desc">Master instructions for building new client proposals. v1.2 — Final.</div>
-          <span class="internal-card-status status-live">Stored in Notion</span>
+      <!-- Search -->
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input class="search-input" id="search-input" type="text" placeholder="Search decks, prospects, assets…" autocomplete="off" />
+      </div>
+
+      <!-- Quick Access -->
+      <div class="quick-label">Quick Access</div>
+      <div class="quick-grid">
+        <a href="/pitch/" target="_blank" class="quick-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Pitch Page
+        </a>
+        <a href="/rootedgrounds/march2026/" target="_blank" class="quick-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Rooted Grounds
+        </a>
+        <a href="/parachutestudio/april2026-v2/" target="_blank" class="quick-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Parachute Studio V2
+        </a>
+        <a href="https://tools.scrollmedia.co" target="_blank" class="quick-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Tools Dashboard
+        </a>
+      </div>
+
+      <!-- CLIENT PROPOSALS -->
+      <div id="proposals" class="section-hd">
+        <div class="section-hd-left">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <span class="section-title">Client Proposals</span>
+          <span class="section-count">4 live</span>
         </div>
       </div>
 
-      <div class="internal-card">
-        <div class="internal-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-        </div>
-        <div class="internal-card-body">
-          <div class="internal-card-label">Performance</div>
-          <div class="internal-card-title">Monthly Report Template</div>
-          <div class="internal-card-desc">Scroll Media monthly performance reporting process. v6.2.</div>
-          <span class="internal-card-status status-live">Stored in Notion</span>
+      <div class="card-grid" id="cards-container">
+
+        <!-- Scroll Media Pitch Page -->
+        <a href="/pitch/" class="deck-card" target="_blank">
+          <div class="deck-card-thumb" style="background: linear-gradient(135deg, #0F1A45 0%, #1B2B6B 100%);">
+            <span class="deck-card-monogram" style="color: rgba(200,241,53,0.18);">SM</span>
+            <div class="deck-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="deck-card-body">
+            <div class="deck-card-row">
+              <span class="deck-card-type">Agency Pitch</span>
+              <span class="deck-status status-live">Live</span>
+            </div>
+            <div class="deck-card-name">Scroll Media Pitch Page</div>
+            <div class="deck-card-desc">Cold prospect pitch deck — services, results, video portfolio, testimonials, and CTA.</div>
+          </div>
+          <div class="deck-card-foot">
+            <span class="deck-card-date">March 2026</span>
+            <span class="deck-card-cta">View Deck <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- Rooted Grounds Coffee -->
+        <a href="/rootedgrounds/march2026/" class="deck-card" target="_blank">
+          <div class="deck-card-thumb" style="background: linear-gradient(135deg, #1a2e1a 0%, #2a4a2a 100%);">
+            <span class="deck-card-monogram" style="color: rgba(200,241,53,0.15);">RG</span>
+            <div class="deck-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="deck-card-body">
+            <div class="deck-card-row">
+              <span class="deck-card-type">Prospect Proposal</span>
+              <span class="deck-status status-live">Live</span>
+            </div>
+            <div class="deck-card-name">Rooted Grounds Coffee</div>
+            <div class="deck-card-desc">Full strategy proposal — IVP, content pillars, 90-day roadmap, and investment overview.</div>
+          </div>
+          <div class="deck-card-foot">
+            <span class="deck-card-date">March 2026</span>
+            <span class="deck-card-cta">View Deck <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- Parachute Studio V1 -->
+        <a href="/parachutestudio/april2026/" class="deck-card" target="_blank">
+          <div class="deck-card-thumb" style="background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);">
+            <span class="deck-card-monogram" style="color: rgba(200,241,53,0.15);">PS</span>
+            <div class="deck-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="deck-card-body">
+            <div class="deck-card-row">
+              <span class="deck-card-type">Prospect Proposal — V1</span>
+              <span class="deck-status status-live">Live</span>
+            </div>
+            <div class="deck-card-name">Parachute Studio</div>
+            <div class="deck-card-desc">Original proposal — Dallas creative &amp; brand studio. Breef RFP, $2.5K–$5K/mo.</div>
+          </div>
+          <div class="deck-card-foot">
+            <span class="deck-card-date">April 2026</span>
+            <span class="deck-card-cta">View Deck <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- Parachute Studio V2 -->
+        <a href="/parachutestudio/april2026-v2/" class="deck-card" target="_blank">
+          <div class="deck-card-thumb" style="background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);">
+            <span class="deck-card-monogram" style="color: rgba(200,241,53,0.15);">PS</span>
+            <div class="deck-card-badge" style="background: var(--lime);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0F1A45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="deck-card-body">
+            <div class="deck-card-row">
+              <span class="deck-card-type">Prospect Proposal — V2</span>
+              <span class="deck-status status-live">Live</span>
+            </div>
+            <div class="deck-card-name">Parachute Studio</div>
+            <div class="deck-card-desc">Revised proposal — second-pass refinements. Latest build. Breef RFP, $2.5K–$5K/mo.</div>
+          </div>
+          <div class="deck-card-foot">
+            <span class="deck-card-date">April 2026</span>
+            <span class="deck-card-cta">View Deck <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="section-spacer"></div>
+
+      <!-- INTERNAL ASSETS -->
+      <div id="internal" class="section-hd">
+        <div class="section-hd-left">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <span class="section-title">Internal Assets</span>
+          <span class="section-count">6 docs</span>
         </div>
       </div>
 
-      <div class="internal-card">
-        <div class="internal-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
+      <div class="internal-grid">
+
+        <div class="int-card">
+          <div class="int-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="int-body">
+            <div class="int-label">Process</div>
+            <div class="int-title">Proposal Creation SOP</div>
+            <div class="int-desc">Master instructions for building new client proposals. v1.2 — Final.</div>
+            <span class="int-tag tag-notion">Stored in Notion</span>
+          </div>
         </div>
-        <div class="internal-card-body">
-          <div class="internal-card-label">Strategy</div>
-          <div class="internal-card-title">Brand Strategy Template</div>
-          <div class="internal-card-desc">Scroll Media master strategy framework and brand positioning guide.</div>
-          <span class="internal-card-status status-coming">Coming Soon</span>
+
+        <div class="int-card">
+          <div class="int-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="int-body">
+            <div class="int-label">Performance</div>
+            <div class="int-title">Monthly Report Template</div>
+            <div class="int-desc">Scroll Media monthly performance reporting process. v6.4.</div>
+            <span class="int-tag tag-notion">Stored in Notion</span>
+          </div>
         </div>
+
+        <div class="int-card">
+          <div class="int-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <div class="int-body">
+            <div class="int-label">Strategy</div>
+            <div class="int-title">Brand Strategy Template</div>
+            <div class="int-desc">Master strategy framework and brand positioning guide.</div>
+            <span class="int-tag tag-soon">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="int-card">
+          <div class="int-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <div class="int-body">
+            <div class="int-label">Operations</div>
+            <div class="int-title">Content Calendar Template</div>
+            <div class="int-desc">Standard monthly content calendar format for client execution.</div>
+            <span class="int-tag tag-soon">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="int-card">
+          <div class="int-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="int-body">
+            <div class="int-label">Onboarding</div>
+            <div class="int-title">Client Onboarding Deck</div>
+            <div class="int-desc">Post-signature onboarding presentation for new Scroll Media clients.</div>
+            <span class="int-tag tag-soon">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="int-card">
+          <div class="int-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="int-body">
+            <div class="int-label">Case Studies</div>
+            <div class="int-title">Client Success Stories</div>
+            <div class="int-desc">Curated client results and case studies for use in proposals and pitches.</div>
+            <span class="int-tag tag-soon">Coming Soon</span>
+          </div>
+        </div>
+
       </div>
 
-      <div class="internal-card">
-        <div class="internal-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-          </svg>
-        </div>
-        <div class="internal-card-body">
-          <div class="internal-card-label">Operations</div>
-          <div class="internal-card-title">Content Calendar Template</div>
-          <div class="internal-card-desc">Standard monthly content calendar format for client execution.</div>
-          <span class="internal-card-status status-coming">Coming Soon</span>
-        </div>
-      </div>
-
-      <div class="internal-card">
-        <div class="internal-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
-        <div class="internal-card-body">
-          <div class="internal-card-label">Onboarding</div>
-          <div class="internal-card-title">Client Onboarding Deck</div>
-          <div class="internal-card-desc">Post-signature onboarding presentation for new Scroll Media clients.</div>
-          <span class="internal-card-status status-coming">Coming Soon</span>
-        </div>
-      </div>
-
-      <div class="internal-card">
-        <div class="internal-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-        </div>
-        <div class="internal-card-body">
-          <div class="internal-card-label">Case Studies</div>
-          <div class="internal-card-title">Client Success Stories</div>
-          <div class="internal-card-desc">Curated client results and case studies for use in proposals and pitches.</div>
-          <span class="internal-card-status status-coming">Coming Soon</span>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
+    </main>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
-    <strong>Scroll Media</strong> — Simplifying Social Media &nbsp;·&nbsp; Internal Use Only &nbsp;·&nbsp; © 2026
+    <div class="footer-logo">
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351235918/XZQtdKpUJwIfArMn.png" alt="Scroll Media" />
+    </div>
+    <div class="footer-text">© 2026 Scroll Media &nbsp;·&nbsp; Simplifying Social Media &nbsp;·&nbsp; Internal Use Only</div>
   </footer>
 
 </div>
 
 <script>
-  // ─── PASSWORD GATE ───
-  const CORRECT_PASSWORD = 'scrollies';
-
+  const PASS = 'scrollies';
   const gate = document.getElementById('gate');
-  const dashboard = document.getElementById('dashboard');
-  const gateInput = document.getElementById('gate-input');
-  const gateBtn = document.getElementById('gate-btn');
-  const gateError = document.getElementById('gate-error');
-  const gateToggle = document.getElementById('gate-toggle');
-  const lockBtn = document.getElementById('lock-btn');
+  const dash = document.getElementById('dashboard');
+  const inp = document.getElementById('gate-input');
+  const btn = document.getElementById('gate-btn');
+  const err = document.getElementById('gate-error');
+  const tog = document.getElementById('gate-toggle');
+  const lock = document.getElementById('lock-btn');
 
-  // Check session storage for existing auth
-  if (sessionStorage.getItem('sm_decks_auth') === 'true') {
+  if (sessionStorage.getItem('sm_decks_v2') === '1') {
     gate.style.display = 'none';
-    dashboard.style.display = 'block';
-    dashboard.style.opacity = '1';
+    dash.style.display = 'block';
+    dash.style.opacity = '1';
   }
 
   function unlock() {
-    const val = gateInput.value.trim();
-    if (val === CORRECT_PASSWORD) {
-      sessionStorage.setItem('sm_decks_auth', 'true');
+    if (inp.value.trim() === PASS) {
+      sessionStorage.setItem('sm_decks_v2', '1');
       gate.style.opacity = '0';
-      gate.style.transition = 'opacity 0.3s ease';
+      gate.style.transition = 'opacity 0.3s';
       setTimeout(() => {
         gate.style.display = 'none';
-        dashboard.style.display = 'block';
-        requestAnimationFrame(() => {
-          dashboard.classList.add('visible');
-        });
+        dash.style.display = 'block';
+        requestAnimationFrame(() => dash.classList.add('visible'));
       }, 300);
     } else {
-      gateError.classList.add('visible');
-      gateInput.style.borderColor = '#FF6B6B';
-      setTimeout(() => {
-        gateError.classList.remove('visible');
-        gateInput.style.borderColor = '';
-      }, 3000);
+      err.classList.add('visible');
+      inp.style.borderColor = '#FF6B6B';
+      setTimeout(() => { err.classList.remove('visible'); inp.style.borderColor = ''; }, 3000);
     }
   }
 
-  gateBtn.addEventListener('click', unlock);
-  gateInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
+  btn.addEventListener('click', unlock);
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
 
-  // Toggle password visibility
-  gateToggle.addEventListener('click', () => {
-    const isPassword = gateInput.type === 'password';
-    gateInput.type = isPassword ? 'text' : 'password';
-    document.getElementById('eye-icon').innerHTML = isPassword
+  tog.addEventListener('click', () => {
+    const isPw = inp.type === 'password';
+    inp.type = isPw ? 'text' : 'password';
+    document.getElementById('eye-icon').innerHTML = isPw
       ? '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
       : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
   });
 
-  // Lock button
-  lockBtn.addEventListener('click', () => {
-    sessionStorage.removeItem('sm_decks_auth');
-    dashboard.style.opacity = '0';
-    dashboard.style.transition = 'opacity 0.3s ease';
+  lock.addEventListener('click', () => {
+    sessionStorage.removeItem('sm_decks_v2');
+    dash.style.opacity = '0';
+    dash.style.transition = 'opacity 0.3s';
     setTimeout(() => {
-      dashboard.style.display = 'none';
+      dash.style.display = 'none';
       gate.style.display = 'flex';
       gate.style.opacity = '0';
-      gate.style.transition = 'opacity 0.3s ease';
-      gateInput.value = '';
-      requestAnimationFrame(() => { gate.style.opacity = '1'; });
+      inp.value = '';
+      requestAnimationFrame(() => { gate.style.opacity = '1'; gate.style.transition = 'opacity 0.3s'; });
     }, 300);
+  });
+
+  // Search filter
+  const searchInput = document.getElementById('search-input');
+  const cards = document.getElementById('cards-container');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase();
+    Array.from(cards.querySelectorAll('.deck-card')).forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = text.includes(q) ? '' : 'none';
+    });
   });
 </script>
 

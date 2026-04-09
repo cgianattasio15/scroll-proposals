@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<!--
+=======================================================================
+SCROLL MEDIA — SIGNATURE PACKAGE PROPOSAL TEMPLATE
+Version: 1.0 | Last Updated: April 2026
+=======================================================================
+
+HOW TO USE THIS TEMPLATE
+─────────────────────────
+Replace every {{PLACEHOLDER}} with client-specific content.
+All placeholders are listed below for quick reference.
+
+REQUIRED INPUTS (minimum intake to build this proposal):
+  {{CLIENT_NAME}}         e.g. "Carl's Deli"
+  {{CLIENT_NICHE}}        e.g. "Local food / restaurant"
+  {{CLIENT_IG_HANDLE}}    e.g. "@carlsdelihydepark"
+  {{CLIENT_LOCATION}}     e.g. "Cincinnati, OH"
+  {{CLIENT_STAGE}}        SPARK / LIFT / RISE / THRIVE
+  {{CLIENT_FOLLOWER_COUNT}} e.g. "7,310"
+  {{PRICING_TIER}}        Essential ($2,975) / Growth ($3,250) or custom
+  {{MONTHLY_RATE}}        e.g. "$3,250"
+  {{STRATEGY_FEE}}        Always $1,917 (Month 1 flat fee)
+  {{THREE_MONTH_TOTAL}}   Strategy fee + (monthly × 2)
+  {{MONTH}}               e.g. "April 2026"
+  {{SLUG}}                URL slug, e.g. "carlsdeli"
+  {{STRATEGIST}}          e.g. "Chase Gianattasio"
+
+  GOAL_1 / GOAL_2 / GOAL_3: Client's top 3 goals from discovery call
+  GOAL_1_FUNNEL etc.: TOFU / MOFU / BOFU
+  GOAL_1_TYPE etc.: Awareness / Trust / Revenue / Community
+
+  IVP_1_NAME / IVP_2_NAME: e.g. "B2C Customer" / "B2B Catering Buyer"
+  (full IVP details filled in per section)
+
+  INSPO_ACCOUNT_1 / INSPO_ACCOUNT_2: Inspiration IG accounts mentioned
+  (if client didn't mention any, use top performers in their niche)
+
+  KEYWORD_T1_1 through T4_3: Social SEO keyword bank (4 tiers × 3-5 each)
+
+DEPLOYMENT:
+  File name: [slug]-proposal-[monthyear].html
+  Deploy to: decks.scrollmedia.co/[slug]/[monthyear]/index.html
+  Repo: scroll-proposals (cgianattasio15/scroll-proposals)
+  Framework page: decks.scrollmedia.co/how-we-work/
+=======================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} × Scroll Media — Signature Package Proposal</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.14);
+      --lucid:     #cbe9ff;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --green:     #2a7a3a;
+      --green-lt:  rgba(42,122,58,0.08);
+      --radius:    12px;
+      --card-shadow: 0 2px 14px rgba(12,51,135,0.07);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%;
+      background:linear-gradient(90deg,var(--azure),var(--hi)); z-index:1001; transition:width .1s linear; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:rgba(250,253,255,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    .nav-logo img { height:26px; display:block; }
+    .nav-links { list-style:none; display:flex; gap:3px; }
+    .nav-links a {
+      display:block; padding:5px 10px; font-size:12px; font-weight:600;
+      color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
+    @media(max-width:900px){ .nav-links{display:none;} nav{padding:0 20px;} }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:600px; margin-bottom:28px; line-height:1.65; }
+
+    /* ── CARDS ── */
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .card-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+
+    /* ── LISTS ── */
+    .tick-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tick-list li { font-size:14px; color:var(--ink-mid); padding-left:22px; position:relative; line-height:1.5; }
+    .tick-list li::before { content:'✓'; color:var(--azure); position:absolute; left:0; font-weight:700; font-size:12px; top:2px; }
+    .arrow-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .arrow-list li { font-size:14px; color:var(--ink-mid); padding-left:18px; position:relative; line-height:1.5; }
+    .arrow-list li::before { content:'→'; color:var(--azure); font-weight:700; position:absolute; left:0; }
+
+    /* ── GRIDS ── */
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .g2,.g3{grid-template-columns:1fr;} }
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    /* ── CALLOUTS ── */
+    .insight { background:rgba(226,237,122,.1); border:1px solid rgba(200,214,0,.3); border-left:4px solid #c8d600; border-radius:var(--radius); padding:16px 20px; }
+    .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ── HERO ── */
+    .hero { padding:150px 32px 72px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:540px; line-height:1.65; margin-bottom:28px; }
+    .hero-meta { display:flex; gap:10px; flex-wrap:wrap; }
+    .hero-meta span { background:var(--porcelain); border:1px solid var(--border); border-radius:100px; padding:6px 16px; font-size:13px; color:var(--ink-mid); }
+    .hero-meta span strong { color:var(--shadow); }
+
+    /* ── GOALS ── */
+    .goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:640px){ .goals-grid{grid-template-columns:1fr;} }
+    .goal-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; display:flex; flex-direction:column; gap:10px; }
+    .goal-num { width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0; }
+    .goal-card h4 { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .goal-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; flex:1; }
+    .goal-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; align-self:flex-start; }
+    .tag-tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .tag-mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .tag-bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* ── IVP TABS ── */
+    .ivp-tabs { display:flex; gap:8px; }
+    .ivp-tab { padding:8px 18px; border-radius:8px 8px 0 0; font-size:13px; font-weight:700; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--porcelain); color:var(--ink-soft); transition:background .15s,color .15s; user-select:none; }
+    .ivp-tab.active { background:#fff; color:var(--azure); }
+    .ivp-panels { border:1px solid var(--border); border-radius:0 var(--radius) var(--radius) var(--radius); background:#fff; box-shadow:var(--card-shadow); }
+    .ivp-panel { display:none; padding:26px; }
+    .ivp-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:640px){ .ivp-panel.active{grid-template-columns:1fr;} }
+    .ivp-col h4 { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+    .ivp-col p  { font-size:14px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px; }
+
+    /* ── PHASE FLOW ── */
+    .phase-flow { display:flex; flex-direction:column; }
+    .phase-item { display:grid; grid-template-columns:28px 1fr; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); }
+    .phase-item:last-child { border-bottom:none; }
+    .phase-dot { width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; margin-top:2px; }
+    .phase-dot.muted { background:var(--porcelain); color:var(--ink-soft); border:1px solid var(--border); }
+    .phase-body h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .phase-body p  { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ── SOCIAL SEO ── */
+    .seo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    @media(max-width:640px){ .seo-grid{grid-template-columns:1fr;} }
+    .seo-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; }
+    .seo-card h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .seo-card p  { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .keyword-bank { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .kw  { font-size:12px; font-weight:600; padding:5px 12px; border-radius:100px; border:1px solid var(--azure-bd); background:var(--azure-lt); color:var(--azure); }
+    .kw.tier2 { background:rgba(226,237,122,.3); border-color:rgba(200,214,0,.3); color:#4d5e00; }
+    .kw.tier3 { background:var(--porcelain); border-color:var(--border); color:var(--ink-mid); }
+    .kw.tier4 { background:rgba(12,51,135,.05); border-color:rgba(12,51,135,.12); color:var(--azure); font-weight:700; }
+
+    /* ── IDEATION ACCORDION ── */
+    .lane-labels { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+    @media(max-width:640px){ .lane-labels{grid-template-columns:1fr;} }
+    .lane-label { display:flex; gap:12px; align-items:flex-start; padding:14px 18px; border-radius:var(--radius); border:1px solid; }
+    .lane1-label { background:rgba(203,233,255,.2); border-color:rgba(12,51,135,.15); }
+    .lane2-label { background:rgba(226,237,122,.15); border-color:rgba(200,214,0,.25); }
+    .lane-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .lane1-dot { background:var(--azure); }
+    .lane2-dot { background:#8a9e00; }
+    .lane-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:3px; }
+    .lane-desc { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .accordion { display:flex; flex-direction:column; gap:10px; }
+    .acc-item { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .acc-header { padding:16px 22px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; transition:background .15s; }
+    .acc-header:hover { background:var(--porcelain); }
+    .acc-header-left { display:flex; align-items:center; gap:14px; }
+    .acc-icon { font-size:20px; flex-shrink:0; }
+    .acc-title { font-size:15px; font-weight:700; color:var(--shadow); }
+    .acc-sub   { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+    .acc-tags  { display:flex; gap:6px; flex-wrap:wrap; }
+    .acc-tag   { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:4px; }
+    .tag-reel     { background:rgba(12,51,135,.1); color:var(--azure); }
+    .tag-carousel { background:rgba(226,237,122,.4); color:#4d5e00; }
+    .tag-stories  { background:rgba(255,190,80,.22); color:#7a4800; }
+    .lane-badge   { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px; }
+    .lane1-badge  { background:rgba(12,51,135,.1); color:var(--azure); }
+    .lane2-badge  { background:rgba(138,158,0,.2); color:#4d5e00; }
+    .acc-chevron { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; margin-left:12px; }
+    .acc-item.open .acc-chevron { transform:rotate(180deg); }
+    .acc-body { display:none; padding:0 22px 20px; border-top:1px solid var(--border); }
+    .acc-item.open .acc-body { display:block; }
+    .acc-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:14px; }
+    .acc-body-hooks { margin-top:14px; display:flex; flex-direction:column; gap:10px; }
+    .hook-item { background:var(--porcelain); border-radius:8px; padding:12px 16px; }
+    .hook-item .hook { font-size:14px; font-weight:700; color:var(--shadow); font-style:italic; margin-bottom:4px; }
+    .hook-item .hook-detail { font-size:13px; color:var(--ink-mid); line-height:1.5; }
+    .acc-metrics { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .metric-tag { font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; background:rgba(12,51,135,.08); color:var(--azure); border:1px solid var(--azure-bd); }
+
+    /* ── INSPIRATION ── */
+    .inspo-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .inspo-grid{grid-template-columns:1fr;} }
+    .inspo-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inspo-header { padding:16px 20px; border-bottom:1px solid var(--border); }
+    .inspo-handle { font-size:15px; font-weight:700; color:var(--azure); margin-bottom:2px; }
+    .inspo-meta { font-size:12px; color:var(--ink-soft); }
+    .inspo-desc { font-size:13px; color:var(--ink-mid); line-height:1.55; margin-top:8px; }
+    .inspo-posts { padding:16px 20px; display:flex; flex-direction:column; gap:10px; }
+    .inspo-post { border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+    .inspo-post-type { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .inspo-post-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .inspo-post-why { font-size:12px; color:var(--ink-mid); line-height:1.5; }
+    .inspo-lesson { padding:12px 20px 16px; background:var(--azure-lt); border-top:1px solid var(--border); }
+    .inspo-lesson p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ── SCOPE TABLE ── */
+    .scope-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; padding:24px 26px; }
+    .scope-table { width:100%; border-collapse:collapse; font-size:14px; min-width:520px; }
+    .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
+    .scope-table th:last-child { text-align:center; }
+    .scope-table td { padding:11px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:36%; padding-right:16px; }
+    .scope-table td:last-child { text-align:center; width:80px; }
+    .scope-table tr:last-child td { border-bottom:none; }
+    .scope-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:var(--azure-lt); color:var(--azure); }
+    .check { color:var(--azure); font-weight:700; font-size:16px; }
+
+    /* ── TIMELINE MILESTONE ── */
+    .tl-cta { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:#fff; line-height:1.55; opacity:.9; }
+    .tl-cta p strong { opacity:1; }
+    .milestone-wrap { width:100%; }
+    .milestone-track { display:grid; grid-template-columns:repeat(6,1fr); gap:0; position:relative; padding-top:20px; }
+    @media(max-width:760px){ .milestone-track{grid-template-columns:1fr 1fr;gap:16px;} .ms-line{display:none;} }
+    @media(max-width:480px){ .milestone-track{grid-template-columns:1fr;} }
+    .milestone-col { display:flex; flex-direction:column; align-items:center; position:relative; }
+    .ms-dot { width:16px; height:16px; border-radius:50%; flex-shrink:0; z-index:2; border:3px solid #fff; box-shadow:0 0 0 2px currentColor; }
+    .ms-blue { background:var(--azure); color:var(--azure); }
+    .ms-green { background:#2a7a3a; color:#2a7a3a; }
+    .ms-highlight { background:#8a9e00; color:#8a9e00; }
+    .ms-line { position:absolute; top:8px; left:50%; right:-50%; height:2px; background:var(--border); z-index:1; }
+    .ms-line-fade { background:linear-gradient(90deg,var(--border),transparent); }
+    .ms-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%; font-size:13px; }
+    .ms-card-featured { border-color:var(--azure); box-shadow:0 0 0 2px rgba(12,51,135,.12),var(--card-shadow); }
+    .ms-week  { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .ms-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .ms-items { display:flex; flex-direction:column; gap:4px; }
+    .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:8px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+    .milestone-banner { background:rgba(203,233,255,.25); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 22px; display:flex; gap:14px; align-items:flex-start; }
+    .milestone-banner-icon { font-size:22px; flex-shrink:0; }
+    .milestone-banner-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .milestone-banner-desc { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ── CONTENT CALENDAR ── */
+    .cal-wrap-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .cal-wrap { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; min-width:480px; }
+    .cal-header { padding:18px 22px; border-bottom:1px solid var(--border); }
+    .cal-header-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .cal-header-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .cal-grid { display:grid; grid-template-columns:repeat(5,1fr); border-bottom:1px solid var(--border); }
+    .cal-day-header { padding:10px; text-align:center; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); background:var(--porcelain); border-right:1px solid var(--border); }
+    .cal-day-header:last-child { border-right:none; }
+    .cal-cell { padding:10px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); min-height:85px; }
+    .cal-cell:nth-child(5n) { border-right:none; }
+    .cal-cell.feed.tofu  { background:rgba(203,233,255,.15); }
+    .cal-cell.feed.mofu  { background:rgba(226,237,122,.12); }
+    .cal-cell.feed.bofu  { background:rgba(12,51,135,.05); }
+    .cal-cell.story      { background:rgba(255,190,80,.1); }
+    .cal-type   { font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .cal-name   { font-size:12px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .cal-funnel { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .tofu-tag { background:rgba(203,233,255,.5); color:var(--azure); }
+    .mofu-tag { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .bofu-tag { background:rgba(12,51,135,.09); color:var(--azure); }
+    .cal-goal  { font-size:10px; color:var(--ink-soft); }
+    .cal-legend { display:flex; gap:12px; flex-wrap:wrap; padding:12px 18px; background:var(--porcelain); border-top:1px solid var(--border); }
+    .leg { font-size:11px; font-weight:600; }
+    .tofu-leg { color:var(--azure); } .mofu-leg { color:#4d5e00; } .bofu-leg { color:var(--azure); } .story-leg { color:#7a4800; }
+
+    /* ── INVESTMENT ── */
+    .inv-hero { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
+    .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+    .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; }
+    .inv-hero-row { display:flex; gap:32px; flex-wrap:wrap; }
+    .inv-hero-stat .amount { font-size:32px; font-weight:800; line-height:1; }
+    .inv-hero-stat .lbl { font-size:12px; opacity:.7; margin-top:3px; }
+    @media(max-width:640px){ .inv-hero{padding:24px 20px;} }
+    .inv-breakdown { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inv-row { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); font-size:14px; gap:16px; }
+    .inv-row:last-child { border-bottom:none; }
+    .inv-row.total { background:var(--azure-lt); font-weight:700; }
+    .inv-row .item { color:var(--ink-mid); flex:1; }
+    .inv-row .item strong { color:var(--shadow); display:block; font-size:15px; margin-bottom:2px; }
+    .inv-row .item small { font-size:12px; color:var(--ink-soft); }
+    .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
+    .inv-row.total .amt { color:var(--azure); font-size:17px; }
+    .credit-note { font-size:13px; color:var(--green); font-weight:600; background:var(--green-lt); border:1px solid rgba(42,122,58,.2); border-radius:8px; padding:12px 16px; margin-top:14px; }
+
+    /* ── NEXT STEPS ── */
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .steps-grid{grid-template-columns:1fr;} }
+    .step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .step-n { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .step h3 { font-size:16px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ── CTA ── */
+    .cta-block { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.5); margin-top:14px; }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ── FOOTER ── */
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+    </a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#heard"        data-section="heard">What We Heard</a></li>
+    <li><a href="#strategy"     data-section="strategy">Strategy</a></li>
+    <li><a href="#seo"          data-section="seo">Social SEO</a></li>
+    <li><a href="#ideation"     data-section="ideation">Content Ideas</a></li>
+    <li><a href="#scope"        data-section="scope">Scope</a></li>
+    <li><a href="#timeline"     data-section="timeline">Timeline</a></li>
+    <li><a href="#what-we-need" data-section="what-we-need">What We Need</a></li>
+    <li><a href="#investment"   data-section="investment">Investment</a></li>
+    <li><a href="#next-steps"   data-section="next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="top">
+  <div class="hero-chip">Scroll Media × {{CLIENT_NAME}} — Signature Package Proposal</div>
+  <h1>Built around<br/><em>what you actually need.</em></h1>
+  <p class="hero-sub">We listened. Here's what we heard, how we'd approach it, what we'd build, and what it costs.</p>
+  <div class="hero-meta">
+    <span><strong>Client</strong> {{CLIENT_NAME}}</span>
+    <span><strong>Package</strong> Signature — {{PRICING_TIER}}</span>
+    <span><strong>Prepared</strong> {{MONTH}}</span>
+    <span><strong>Strategist</strong> {{STRATEGIST}}</span>
+    <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--azure);font-weight:700;text-decoration:none;">📖 How We Work →</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ WHAT WE HEARD ══ -->
+<div class="wrap" id="heard">
+  <div class="eyebrow">What We Heard</div>
+  <h2 class="section-title">Three goals. <em>One system.</em></h2>
+  <p class="section-sub">Everything in this proposal maps directly to what {{CLIENT_NAME}} shared with us. These three goals shape every strategic decision.</p>
+
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <h4>{{GOAL_1}}</h4>
+      <p>{{GOAL_1_DESCRIPTION}}</p>
+      <span class="goal-tag {{GOAL_1_FUNNEL_CLASS}}">{{GOAL_1_FUNNEL}} · {{GOAL_1_TYPE}}</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <h4>{{GOAL_2}}</h4>
+      <p>{{GOAL_2_DESCRIPTION}}</p>
+      <span class="goal-tag {{GOAL_2_FUNNEL_CLASS}}">{{GOAL_2_FUNNEL}} · {{GOAL_2_TYPE}}</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <h4>{{GOAL_3}}</h4>
+      <p>{{GOAL_3_DESCRIPTION}}</p>
+      <span class="goal-tag {{GOAL_3_FUNNEL_CLASS}}">{{GOAL_3_FUNNEL}} · {{GOAL_3_TYPE}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ STRATEGY ══ -->
+<div class="wrap" id="strategy">
+  <div class="eyebrow">Strategic Approach</div>
+  <h2 class="section-title">Who we're talking to. <em>How we'll reach them.</em></h2>
+  <p class="section-sub">{{CLIENT_NAME}} serves {{IVP_COUNT}} distinct audiences. The strategy is built around both — and every piece of content knows which one it's for.</p>
+
+  <div class="ivp-tabs">
+    <div class="ivp-tab active" onclick="switchTab(0)">IVP 1 — {{IVP_1_NAME}}</div>
+    <div class="ivp-tab" onclick="switchTab(1)">IVP 2 — {{IVP_2_NAME}}</div>
+  </div>
+  <div class="ivp-panels">
+    <div class="ivp-panel active" id="ivp-0">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>{{IVP_1_WHO}}</p>
+        <h4 style="margin-top:16px;">What Drives Them</h4>
+        <p>{{IVP_1_DRIVERS}}</p>
+        <h4 style="margin-top:16px;">Primary CTA</h4>
+        <p>{{IVP_1_CTA}}</p>
+      </div>
+      <div class="ivp-col">
+        <h4>Content That Moves Them</h4>
+        <ul class="arrow-list">
+          <!-- Add 5-7 content angles specific to IVP 1 -->
+          <li>{{IVP_1_CONTENT_1}}</li>
+          <li>{{IVP_1_CONTENT_2}}</li>
+          <li>{{IVP_1_CONTENT_3}}</li>
+          <li>{{IVP_1_CONTENT_4}}</li>
+          <li>{{IVP_1_CONTENT_5}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ivp-panel" id="ivp-1">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>{{IVP_2_WHO}}</p>
+        <h4 style="margin-top:16px;">What Drives Them</h4>
+        <p>{{IVP_2_DRIVERS}}</p>
+        <h4 style="margin-top:16px;">Primary CTA</h4>
+        <p>{{IVP_2_CTA}}</p>
+      </div>
+      <div class="ivp-col">
+        <h4>Content That Moves Them</h4>
+        <ul class="arrow-list">
+          <li>{{IVP_2_CONTENT_1}}</li>
+          <li>{{IVP_2_CONTENT_2}}</li>
+          <li>{{IVP_2_CONTENT_3}}</li>
+          <li>{{IVP_2_CONTENT_4}}</li>
+          <li>{{IVP_2_CONTENT_5}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- ADD additional strategy sections here (account architecture, consolidation plan, etc.) if applicable -->
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SOCIAL SEO ══ -->
+<div class="wrap" id="seo">
+  <div class="eyebrow">Social SEO</div>
+  <h2 class="section-title">How we get {{CLIENT_NAME}} <em>found.</em></h2>
+  <p class="section-sub">Instagram is a search engine. Most brands don't treat it like one. We do — and it's how we make sure the right people find you before they even follow you.</p>
+
+  <div class="seo-grid">
+    <div class="seo-card">
+      <h4>🔑 Keyword Architecture</h4>
+      <p>We build a 4-tier keyword bank that maps search intent from broad discovery all the way to high-intent buyer phrases. Keywords are embedded in your bio, captions, on-screen text, and alt text.</p>
+    </div>
+    <div class="seo-card">
+      <h4>📐 Format Signals</h4>
+      <p>Reels optimized for retention and shares. Carousels optimized for saves. Stories optimized for completion and link taps. Every format has a specific performance job.</p>
+    </div>
+    <div class="seo-card">
+      <h4>🎣 Hook Strategy</h4>
+      <p>The first 1–3 seconds determine whether a Reel gets distributed or dies. Every piece of content is engineered with a layered hook — verbal, visual, and on-screen text.</p>
+    </div>
+    <div class="seo-card">
+      <h4>📊 Signal Optimization</h4>
+      <p>Two Tier 1 metrics above all others: <strong>retention % on Reels</strong> and <strong>saves on carousels</strong>. Shares trigger exponential organic reach. Every monthly adjustment is data-driven against these signals.</p>
+    </div>
+  </div>
+
+  <div class="card mt-lg">
+    <div class="card-label">Social SEO Keyword Bank — {{CLIENT_NAME}} Sample</div>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px;">Full keyword bank delivered in Month 1 strategy document.</p>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 1 — Broad Discovery</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw">{{KEYWORD_T1_1}}</span>
+      <span class="kw">{{KEYWORD_T1_2}}</span>
+      <span class="kw">{{KEYWORD_T1_3}}</span>
+      <span class="kw">{{KEYWORD_T1_4}}</span>
+    </div>
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 2 — Niche Specific</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw tier2">{{KEYWORD_T2_1}}</span>
+      <span class="kw tier2">{{KEYWORD_T2_2}}</span>
+      <span class="kw tier2">{{KEYWORD_T2_3}}</span>
+      <span class="kw tier2">{{KEYWORD_T2_4}}</span>
+    </div>
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 3 — Service + Location</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw tier3">{{KEYWORD_T3_1}}</span>
+      <span class="kw tier3">{{KEYWORD_T3_2}}</span>
+      <span class="kw tier3">{{KEYWORD_T3_3}}</span>
+    </div>
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 4 — High-Intent Buyer</p>
+    <div class="keyword-bank" style="margin-top:0;">
+      <span class="kw tier4">{{KEYWORD_T4_1}}</span>
+      <span class="kw tier4">{{KEYWORD_T4_2}}</span>
+      <span class="kw tier4">{{KEYWORD_T4_3}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ CONTENT IDEATION ══ -->
+<div class="wrap" id="ideation">
+  <div class="eyebrow">Content Ideation</div>
+  <h2 class="section-title">What {{CLIENT_NAME}} looks like <em>when it's working.</em></h2>
+  <p class="section-sub">Two lanes running simultaneously. Lane 1 adapts proven formats from the niche. Lane 2 invents formats unique to {{CLIENT_NAME}}. Both feed the Signal Method testing phase.</p>
+
+  <div class="lane-labels">
+    <div class="lane-label lane1-label">
+      <div class="lane-dot lane1-dot"></div>
+      <div>
+        <div class="lane-name">Lane 1 — Proven &amp; Adapted</div>
+        <div class="lane-desc">Formats already working in the niche and adjacent niches. We copy the structure, apply {{CLIENT_NAME}}'s story.</div>
+      </div>
+    </div>
+    <div class="lane-label lane2-label">
+      <div class="lane-dot lane2-dot"></div>
+      <div>
+        <div class="lane-name">Lane 2 — Original &amp; Invented</div>
+        <div class="lane-desc">Formats built from scratch using {{CLIENT_NAME}}'s unique assets — culture, brand quirks, and stories only they can tell.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion" id="accordion">
+    <!-- IDEA TEMPLATE (copy and repeat for each idea — minimum 6, aim for 8) -->
+    <!-- Lane 1 example: -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">{{IDEA_1_EMOJI}}</div>
+          <div>
+            <div class="acc-title">{{IDEA_1_TITLE}}</div>
+            <div class="acc-sub">{{IDEA_1_FORMAT_LIBRARY_NAME}} · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <div class="acc-tags">
+            <span class="acc-tag {{IDEA_1_FORMAT_TAG}}">{{IDEA_1_FORMAT}}</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>{{IDEA_1_RATIONALE}}</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🎯 {{IDEA_1_METRIC_1}}</span>
+          <span class="metric-tag">{{IDEA_1_METRIC_2}}</span>
+          <span class="metric-tag">📱 {{IDEA_1_LENGTH}}</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"{{IDEA_1_HOOK_1}}"</div>
+            <div class="hook-detail">{{IDEA_1_HOOK_1_DETAIL}}</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"{{IDEA_1_HOOK_2}}"</div>
+            <div class="hook-detail">{{IDEA_1_HOOK_2_DETAIL}}</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> {{IDEA_1_SUCCESS_SIGNALS}}
+        </div>
+      </div>
+    </div>
+    <!-- ADD MORE IDEAS HERE — aim for 4 Lane 1 + 4 Lane 2 -->
+  </div>
+
+  <!-- CONTENT INSPIRATION (fold into ideation — never standalone section) -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">Content Inspiration</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Accounts that show us <em style="font-style:italic;color:var(--azure);">what good looks like.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">{{INSPO_INTRO_TEXT}}</p>
+    <div class="inspo-grid">
+      <div class="inspo-card">
+        <div class="inspo-header">
+          <div class="inspo-handle">@{{INSPO_ACCOUNT_1_HANDLE}}</div>
+          <div class="inspo-meta">{{INSPO_ACCOUNT_1_META}}</div>
+          <div class="inspo-desc">{{INSPO_ACCOUNT_1_DESC}}</div>
+        </div>
+        <div class="inspo-posts">
+          <div class="inspo-post">
+            <div class="inspo-post-type">{{INSPO_1_POST_1_TYPE}}</div>
+            <div class="inspo-post-title">{{INSPO_1_POST_1_TITLE}}</div>
+            <div class="inspo-post-why">{{INSPO_1_POST_1_WHY}}</div>
+          </div>
+          <div class="inspo-post">
+            <div class="inspo-post-type">{{INSPO_1_POST_2_TYPE}}</div>
+            <div class="inspo-post-title">{{INSPO_1_POST_2_TITLE}}</div>
+            <div class="inspo-post-why">{{INSPO_1_POST_2_WHY}}</div>
+          </div>
+        </div>
+        <div class="inspo-lesson"><p><strong>Lesson for {{CLIENT_NAME}}:</strong> {{INSPO_1_LESSON}}</p></div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-header">
+          <div class="inspo-handle">@{{INSPO_ACCOUNT_2_HANDLE}}</div>
+          <div class="inspo-meta">{{INSPO_ACCOUNT_2_META}}</div>
+          <div class="inspo-desc">{{INSPO_ACCOUNT_2_DESC}}</div>
+        </div>
+        <div class="inspo-posts">
+          <div class="inspo-post">
+            <div class="inspo-post-type">{{INSPO_2_POST_1_TYPE}}</div>
+            <div class="inspo-post-title">{{INSPO_2_POST_1_TITLE}}</div>
+            <div class="inspo-post-why">{{INSPO_2_POST_1_WHY}}</div>
+          </div>
+          <div class="inspo-post">
+            <div class="inspo-post-type">{{INSPO_2_POST_2_TYPE}}</div>
+            <div class="inspo-post-title">{{INSPO_2_POST_2_TITLE}}</div>
+            <div class="inspo-post-why">{{INSPO_2_POST_2_WHY}}</div>
+          </div>
+        </div>
+        <div class="inspo-lesson"><p><strong>Lesson for {{CLIENT_NAME}}:</strong> {{INSPO_2_LESSON}}</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>Want to understand the thinking behind these ideas?</strong> The <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="color:var(--azure);font-weight:700;text-decoration:underline;">Scroll Media Framework →</a> walks through our full ideation approach — the two-lane system, how we align formats to algorithm signals, and how every content decision maps to your specific goals.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SCOPE ══ -->
+<div class="wrap" id="scope">
+  <div class="eyebrow">Scope of Work</div>
+  <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
+  <p class="section-sub">Everything below is included in the monthly retainer.</p>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div class="scope-table-wrap">
+    <table class="scope-table">
+      <thead><tr><th>Deliverable</th><th>Details</th><th>Incl.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Full Strategy Build <span class="scope-badge">Month 1</span></td>
+          <td>Dual IVP development, content pillars, Social SEO keyword bank, 90-day calendar, profile optimization, brand voice. No posts go live until strategy is approved.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Feed Posts</td>
+          <td>3 posts per week — Reels, carousels, and statics. Every post mapped to a content pillar and funnel stage. Months 2–3 are a dedicated Signal Method testing phase.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Story Strategy</td>
+          <td>5 story days per week — Tuesday and Thursday are dedicated story-only days. Monday, Wednesday, and Friday support each feed post with a story.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Bi-Weekly Shoots</td>
+          <td>Content shoot every 3 weeks. Shot list and direction from Scroll Media. Approximately 2 hours per session.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Social SEO</td>
+          <td>Full keyword bank built in Month 1. Keywords embedded in bio, captions, on-screen text, and alt text. Signal optimization applied to every format.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Copywriting &amp; Hooks</td>
+          <td>All captions written with keyword optimization. Every Reel hook engineered for first-3-second retention. Bio and highlights rewritten in Month 1.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management</td>
+          <td>Comment responses and DM handling. Proactive outreach to relevant accounts. Inquiries flagged and routed to client contact.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Monthly Report</td>
+          <td>13 core metrics tracked. Report delivered first week of the following month. Tier 1 signals (retention, saves, shares) reviewed first.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Biweekly Check-ins</td>
+          <td>30-minute calls every two weeks — content approvals, performance review, upcoming priorities.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <!-- ADD any client-specific scope items here -->
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Content approvals:</strong> All content submitted for approval 5 business days before publish date. Max 2 rounds of revisions per cycle, batched and discussed on biweekly calls.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ TIMELINE ══ -->
+<div class="wrap" id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2 class="section-title">Fast start. <em>First post in week 4.</em></h2>
+  <p class="section-sub">Strategy before execution — always.</p>
+
+  <div class="tl-cta">
+    <div style="font-size:24px;">⚡</div>
+    <p><strong>Ready to move fast.</strong> Contract signed this week → kickoff call within 48 hours → strategy built in 3 weeks → first post live by week 4.</p>
+  </div>
+
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-track">
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Contract Signed</div>
+          <div class="ms-items"><span>✓ Onboarding form sent</span><span>✓ Kickoff call booked</span></div>
+        </div>
+      </div>
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Kickoff Call</div>
+          <div class="ms-items"><span>✓ Goals &amp; expectations</span><span>✓ Access &amp; assets</span><span>✓ First shoot booked</span></div>
+        </div>
+      </div>
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Weeks 1–3</div>
+          <div class="ms-title">Strategy Build</div>
+          <div class="ms-items"><span>✓ Both IVPs built</span><span>✓ Content pillars</span><span>✓ SEO keyword bank</span></div>
+        </div>
+      </div>
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">End of Week 3</div>
+          <div class="ms-title">Strategy Review</div>
+          <div class="ms-items"><span>✓ Strategy presented</span><span>✓ Calendar approved</span></div>
+        </div>
+      </div>
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 3–4</div>
+          <div class="ms-title">🎬 First Shoot</div>
+          <div class="ms-items"><span>✓ Shot list delivered</span><span>✓ Assets edited &amp; ready</span></div>
+        </div>
+      </div>
+      <div class="milestone-col">
+        <div class="ms-dot ms-highlight"></div>
+        <div class="ms-line ms-line-fade"></div>
+        <div class="ms-card ms-card-featured">
+          <div class="ms-week">Week 4</div>
+          <div class="ms-title">🚀 First Post Live</div>
+          <div class="ms-items"><span>✓ 3 posts/week begins</span><span>✓ 5 story days/week</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rhythm-row mt-lg">
+      <div class="rhythm-label">Week 4 onwards — Execution Mode</div>
+      <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;"><strong>3 feed posts every week</strong> (Mon/Wed/Fri) and <strong>2 dedicated story days every week</strong> (Tue/Thu). Every 3 weeks, a content shoot keeps the asset pipeline full.</div>
+      <div class="rhythm-steps">
+        <div class="rhythm-step"><div class="rhythm-icon">📸</div><div class="rhythm-name">Content Shoot</div><div class="rhythm-detail">Every 3 weeks · Shot list from Scroll · ~2 hrs</div></div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step"><div class="rhythm-icon">✂️</div><div class="rhythm-name">Edit &amp; Approve</div><div class="rhythm-detail">Scroll edits · Client approves · 5 business days</div></div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step"><div class="rhythm-icon">📅</div><div class="rhythm-name">Weekly Posting</div><div class="rhythm-detail">Mon · Wed · Fri = 3 feed posts<br/>Tue · Thu = 2 story days</div></div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step"><div class="rhythm-icon">📊</div><div class="rhythm-name">Read Signals</div><div class="rhythm-detail">Retention · Saves · Shares → adjust next cycle</div></div>
+      </div>
+    </div>
+
+    <!-- ADD client-specific milestone banner here if applicable (e.g. account rebrand, location launch) -->
+    <!--
+    <div class="milestone-banner mt-md">
+      <div class="milestone-banner-icon">🏷️</div>
+      <div>
+        <div class="milestone-banner-title">{{MILESTONE_TITLE}} — {{MILESTONE_TIMING}}</div>
+        <div class="milestone-banner-desc">{{MILESTONE_DESCRIPTION}}</div>
+      </div>
+    </div>
+    -->
+
+    <div class="cal-wrap-outer">
+    <div class="cal-wrap mt-lg" style="min-width:480px;">
+      <div class="cal-header">
+        <div class="cal-header-title">Sample Content Calendar — Month 2</div>
+        <div class="cal-header-sub">Illustrative view of a standard execution week. Format names and exact hooks finalized in Month 1 strategy.</div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day-header">Mon</div>
+        <div class="cal-day-header">Tue</div>
+        <div class="cal-day-header">Wed</div>
+        <div class="cal-day-header">Thu</div>
+        <div class="cal-day-header">Fri</div>
+        <!-- Week 1 — customize format names to match client niche -->
+        <div class="cal-cell feed tofu"><div class="cal-type">Feed · Reel</div><div class="cal-name">{{CAL_W1_MON}}</div><div class="cal-funnel tofu-tag">TOFU</div><div class="cal-goal">Reach · Shares</div></div>
+        <div class="cal-cell story"><div class="cal-type">Story Day</div><div class="cal-name">{{CAL_W1_TUE}}</div><div class="cal-funnel mofu-tag">MOFU</div><div class="cal-goal">Retention · DMs</div></div>
+        <div class="cal-cell feed mofu"><div class="cal-type">Feed · Carousel</div><div class="cal-name">{{CAL_W1_WED}}</div><div class="cal-funnel mofu-tag">MOFU</div><div class="cal-goal">Saves · Profile Visits</div></div>
+        <div class="cal-cell story"><div class="cal-type">Story Day</div><div class="cal-name">{{CAL_W1_THU}}</div><div class="cal-funnel bofu-tag">BOFU</div><div class="cal-goal">Link Taps · DMs</div></div>
+        <div class="cal-cell feed bofu"><div class="cal-type">Feed · Reel</div><div class="cal-name">{{CAL_W1_FRI}}</div><div class="cal-funnel bofu-tag">BOFU</div><div class="cal-goal">CTR · Link Taps</div></div>
+        <!-- Week 2 -->
+        <div class="cal-cell feed tofu"><div class="cal-type">Feed · Reel</div><div class="cal-name">{{CAL_W2_MON}}</div><div class="cal-funnel tofu-tag">TOFU</div><div class="cal-goal">Reach · New Followers</div></div>
+        <div class="cal-cell story"><div class="cal-type">Story Day</div><div class="cal-name">{{CAL_W2_TUE}}</div><div class="cal-funnel tofu-tag">TOFU</div><div class="cal-goal">Views · Replies</div></div>
+        <div class="cal-cell feed mofu"><div class="cal-type">Feed · Reel</div><div class="cal-name">{{CAL_W2_WED}}</div><div class="cal-funnel mofu-tag">MOFU</div><div class="cal-goal">Watch Time · Saves</div></div>
+        <div class="cal-cell story"><div class="cal-type">Story Day</div><div class="cal-name">{{CAL_W2_THU}}</div><div class="cal-funnel mofu-tag">MOFU</div><div class="cal-goal">Engagement · DMs</div></div>
+        <div class="cal-cell feed tofu"><div class="cal-type">Feed · Carousel</div><div class="cal-name">{{CAL_W2_FRI}}</div><div class="cal-funnel tofu-tag">TOFU</div><div class="cal-goal">Saves · Shares</div></div>
+        <!-- Week 3 -->
+        <div class="cal-cell feed mofu"><div class="cal-type">Feed · Reel</div><div class="cal-name">{{CAL_W3_MON}}</div><div class="cal-funnel mofu-tag">MOFU</div><div class="cal-goal">Profile Visits · Saves</div></div>
+        <div class="cal-cell story"><div class="cal-type">Story Day</div><div class="cal-name">{{CAL_W3_TUE}}</div><div class="cal-funnel tofu-tag">TOFU</div><div class="cal-goal">Reach · Awareness</div></div>
+        <div class="cal-cell feed bofu"><div class="cal-type">Feed · Reel</div><div class="cal-name">{{CAL_W3_WED}}</div><div class="cal-funnel bofu-tag">BOFU</div><div class="cal-goal">CTR · PCR</div></div>
+        <div class="cal-cell story"><div class="cal-type">Story Day</div><div class="cal-name">{{CAL_W3_THU}}</div><div class="cal-funnel tofu-tag">TOFU</div><div class="cal-goal">Shares · Reach</div></div>
+        <div class="cal-cell feed mofu"><div class="cal-type">Feed · Carousel</div><div class="cal-name">{{CAL_W3_FRI}}</div><div class="cal-funnel mofu-tag">MOFU</div><div class="cal-goal">Saves · Profile Visits</div></div>
+      </div>
+      <div class="cal-legend">
+        <span class="leg tofu-leg">TOFU — Reach &amp; Discovery</span>
+        <span class="leg mofu-leg">MOFU — Trust &amp; Education</span>
+        <span class="leg bofu-leg">BOFU — Conversion</span>
+        <span class="leg story-leg">Story Days — Tue &amp; Thu</span>
+      </div>
+    </div><!-- /cal-wrap -->
+    </div><!-- /cal-wrap-outer -->
+  </div><!-- /milestone-wrap -->
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ WHAT WE NEED ══ -->
+<div class="wrap" id="what-we-need">
+  <div class="eyebrow">What We Need From You</div>
+  <h2 class="section-title">Your side of <em>the equation.</em></h2>
+  <p class="section-sub">We handle the heavy lifting. Here's what makes it run smoothly on your end.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-label">The Non-Negotiables</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>One dedicated point of contact</strong> — the single person who approves content, reviews strategy, and attends check-in calls. This is the most common bottleneck.</li>
+        <li><strong>Onboarding form completed</strong> before the kickoff call. 20 minutes. It's the foundation everything is built on.</li>
+        <li><strong>Content approvals within 5 business days</strong> of submission. Late approvals = delayed posts = broken momentum.</li>
+        <li><strong>Shoot access</strong> — 2-hour sessions every 3 weeks. Scroll Media brings the shot list and direction.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">What Slows Things Down (And How We Prevent It)</div>
+      <ul class="arrow-list mt-sm">
+        <li><strong>Multiple approvers</strong> — build that into your internal process before it hits our deadline.</li>
+        <li><strong>Missing key details</strong> — we'll ask for everything we need during onboarding. Have it ready.</li>
+        <li><strong>Delayed shoot scheduling</strong> — the first shoot happens in Week 3. Block it now.</li>
+        <li><strong>Limited on-camera access</strong> — founder content is the highest-performing format. We'll need someone on camera at least once per shoot cycle.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ INVESTMENT ══ -->
+<div class="wrap" id="investment">
+  <div class="eyebrow">Investment</div>
+  <h2 class="section-title">What it <em>costs.</em></h2>
+  <p class="section-sub">Straightforward pricing. No hidden fees. Billed month-by-month.</p>
+
+  <div class="inv-hero">
+    <div class="inv-hero-label">Signature Package — {{PRICING_TIER}} · 3-Month Initial Engagement</div>
+    <h3>{{CLIENT_NAME}}</h3>
+    <div class="inv-hero-sub">Months 2–3 are a Signal Method testing phase — formats tested, signals read, top performers identified and scaled.</div>
+    <div class="inv-hero-row">
+      <div class="inv-hero-stat"><div class="amount">{{MONTHLY_RATE}}</div><div class="lbl">Monthly retainer (Months 2–3)</div></div>
+      <div class="inv-hero-stat"><div class="amount">{{THREE_MONTH_TOTAL}}</div><div class="lbl">Total 3-month engagement</div></div>
+    </div>
+  </div>
+
+  <div class="inv-breakdown">
+    <div class="inv-row">
+      <div class="item"><strong>Month 1 — Strategy Fee</strong><small>Dual IVP · content pillars · Social SEO keyword bank · 90-day calendar · profile optimization · first shoot · strategy review meeting</small></div>
+      <div class="amt">{{STRATEGY_FEE}}</div>
+    </div>
+    <div class="inv-row">
+      <div class="item"><strong>Month 2 — Full Execution</strong><small>3 posts/week · 5 story days/week · shoots every 3 weeks · community management · Signal Method testing · monthly report</small></div>
+      <div class="amt">{{MONTHLY_RATE}}</div>
+    </div>
+    <div class="inv-row">
+      <div class="item"><strong>Month 3 — Full Execution</strong><small>3 posts/week · 5 story days/week · shoots every 3 weeks · community management · monthly report · quarterly strategy review</small></div>
+      <div class="amt">{{MONTHLY_RATE}}</div>
+    </div>
+    <div class="inv-row total">
+      <div class="item"><strong>3-Month Total</strong><small>Billed monthly</small></div>
+      <div class="amt">{{THREE_MONTH_TOTAL}}</div>
+    </div>
+  </div>
+
+  <div class="credit-note mt-md">★ After the initial 3-month engagement, {{CLIENT_NAME}} rolls into a monthly retainer at {{MONTHLY_RATE}}/month — no additional strategy fees, no resets.</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ NEXT STEPS ══ -->
+<div class="wrap" id="next-steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2 class="section-title">Three steps to <em>the first post.</em></h2>
+  <p class="section-sub">Questions before signing? Chase is available to answer over email or on a quick call.</p>
+
+  <div class="steps-grid">
+    <div class="step"><div class="step-n">Step 01</div><h3>Sign the Contract</h3><p>Chase sends the Signature Package contract within 24 hours of approval. E-sign takes under 5 minutes.</p></div>
+    <div class="step"><div class="step-n">Step 02</div><h3>Complete Onboarding Form</h3><p>Sent immediately after signing. Takes about 20 minutes — forms the foundation of the entire strategy.</p></div>
+    <div class="step"><div class="step-n">Step 03</div><h3>Kickoff Call</h3><p>Scheduling unlocks after the onboarding form is submitted. Strategy Month 1 starts immediately — first post live by week 4.</p></div>
+  </div>
+
+  <div class="cta-block mt-lg">
+    <h2>Ready to move?</h2>
+    <p>Reply to this proposal or reach Chase directly. A contract can be sent today.</p>
+    <a href="mailto:chase@getscrollmedia.com" class="cta-btn">chase@getscrollmedia.com</a>
+    <div class="cta-sub">Prefer a quick call first? Just reply — happy to connect before anything moves forward.</div>
+  </div>
+</div>
+
+<footer>
+  <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
+  const sections = ['heard','strategy','seo','ideation','scope','timeline','what-we-need','investment','next-steps'];
+  const links = document.querySelectorAll('.nav-links a[data-section]');
+  function onScroll() {
+    const y = window.scrollY + 80;
+    let active = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) active = id; });
+    links.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  function switchTab(idx) {
+    document.querySelectorAll('.ivp-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.ivp-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
+  function toggleAcc(header) { header.parentElement.classList.toggle('open'); }
+</script>
+</body>
+</html>

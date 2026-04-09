@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Work — Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.13);
+      --lucid:     #cbe9ff;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --radius:    12px;
+      --card-shadow: 0 2px 14px rgba(12,51,135,0.07);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--azure),var(--hi)); z-index:1001; transition:width .1s linear; }
+
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:rgba(250,253,255,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    .nav-logo img { height:26px; display:block; }
+    .nav-links { list-style:none; display:flex; gap:4px; }
+    .nav-links a { display:block; padding:5px 11px; font-size:12px; font-weight:600; color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
+    @media(max-width:1020px){ .nav-links{display:none;} nav{padding:0 20px;} }
+
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:600px; margin-bottom:28px; line-height:1.65; }
+
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .card-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .g2,.g3{grid-template-columns:1fr;} }
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    .tick-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tick-list li { font-size:14px; color:var(--ink-mid); padding-left:22px; position:relative; line-height:1.5; }
+    .tick-list li::before { content:'✓'; color:var(--azure); position:absolute; left:0; font-weight:700; font-size:12px; top:2px; }
+
+    /* ══ HERO ══ */
+    .hero { padding:150px 32px 72px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:540px; line-height:1.65; margin-bottom:28px; }
+
+    /* ══ PHILOSOPHY ══ */
+    .phil-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .phil-grid{grid-template-columns:1fr;} }
+    .phil-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .phil-icon { font-size:24px; margin-bottom:10px; }
+    .phil-card h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .phil-card p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ SIGNAL METHOD ══ */
+    .signal-phases { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    @media(max-width:640px){ .signal-phases{grid-template-columns:1fr 1fr;} }
+    .signal-phase { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px; text-align:center; }
+    .signal-phase-num { width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; margin:0 auto 10px; }
+    .signal-phase h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .signal-phase p  { font-size:12px; color:var(--ink-mid); line-height:1.5; }
+    .signal-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:4px; margin-top:8px; background:var(--azure-lt); color:var(--azure); }
+
+    /* ══ IVP ══ */
+    .ivp-card { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:36px; color:#fff; }
+    .ivp-card h3 { font-size:22px; font-weight:800; margin-bottom:10px; line-height:1.2; }
+    .ivp-card p  { font-size:15px; opacity:.88; line-height:1.65; max-width:680px; }
+    .ivp-components { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px; }
+    @media(max-width:640px){ .ivp-components{grid-template-columns:1fr;} }
+    .ivp-comp { background:rgba(255,255,255,.1); border-radius:8px; padding:16px; }
+    .ivp-comp h5 { font-size:13px; font-weight:700; color:#fff; margin-bottom:6px; }
+    .ivp-comp p  { font-size:12px; color:rgba(255,255,255,.75); line-height:1.5; }
+
+    /* ══ CONTENT MIX ══ */
+    .mix-bar { border-radius:var(--radius); overflow:hidden; height:52px; display:flex; margin-bottom:16px; }
+    .mix-seg { display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; flex-direction:column; gap:2px; }
+    .mix-seg.tofu { background:var(--azure); flex:40; }
+    .mix-seg.mofu { background:#4d5e00; flex:35; }
+    .mix-seg.bofu { background:#0a276a; flex:25; }
+    .mix-seg .pct { font-size:16px; font-weight:800; }
+    .mix-seg .lbl { font-size:10px; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+    .mix-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    @media(max-width:640px){ .mix-cards{grid-template-columns:1fr;} }
+    .mix-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px; }
+    .mix-card-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
+    .mix-card.tofu .mix-card-label { color:var(--azure); }
+    .mix-card.mofu .mix-card-label { color:#4d5e00; }
+    .mix-card.bofu .mix-card-label { color:var(--azure); }
+    .mix-card h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .mix-card p  { font-size:12px; color:var(--ink-mid); line-height:1.5; }
+    .mix-card ul { list-style:none; display:flex; flex-direction:column; gap:4px; margin-top:8px; }
+    .mix-card ul li { font-size:12px; color:var(--ink-mid); padding-left:12px; position:relative; }
+    .mix-card ul li::before { content:'·'; position:absolute; left:0; color:var(--azure); font-weight:900; }
+
+    /* ══ FORMATS ══ */
+    .formats-tabs { display:flex; gap:8px; margin-bottom:0; }
+    .ftab { padding:8px 18px; border-radius:8px 8px 0 0; font-size:13px; font-weight:700; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--porcelain); color:var(--ink-soft); transition:background .15s,color .15s; user-select:none; }
+    .ftab.active { background:#fff; color:var(--azure); }
+    .formats-panels { border:1px solid var(--border); border-radius:0 var(--radius) var(--radius) var(--radius); background:#fff; box-shadow:var(--card-shadow); }
+    .formats-panel { display:none; padding:24px; }
+    .formats-panel.active { display:block; }
+    .format-row { display:grid; grid-template-columns:180px 80px 80px 1fr; gap:16px; align-items:start; padding:12px 0; border-bottom:1px solid var(--border); font-size:13px; }
+    .format-row:last-child { border-bottom:none; }
+    .format-row.header { font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft); padding-bottom:10px; }
+    @media(max-width:640px){
+      .format-row { grid-template-columns:1fr 1fr; gap:8px; }
+      .format-row.header { display:none; }
+      .format-row > div:nth-child(3) { display:none; } /* hide Status col */
+      .format-row > div:nth-child(4) { grid-column:1/-1; }
+    }
+    @media(max-width:480px){
+      .format-row { grid-template-columns:1fr; }
+      .format-row > div:nth-child(2) { display:none; }
+    }
+    .format-name { font-weight:700; color:var(--shadow); }
+    .format-stage { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px; }
+    .fstage-top  { background:rgba(203,233,255,.5); color:var(--azure); }
+    .fstage-mid  { background:rgba(226,237,122,.4); color:#4d5e00; }
+    .fstage-bot  { background:rgba(12,51,135,.09); color:var(--azure); }
+    .format-status-core { color:var(--green); font-weight:700; }
+    .format-status-test { color:#8a6500; font-weight:700; }
+    .format-status-sea  { color:var(--azure); font-weight:700; }
+    .format-metric { font-size:12px; color:var(--ink-mid); }
+
+    /* ══ SOCIAL SEO ══ */
+    .tam-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:640px){ .tam-steps{grid-template-columns:1fr 1fr;} }
+    .tam-step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px; text-align:center; }
+    .tam-num { font-size:24px; font-weight:800; color:var(--azure); margin-bottom:6px; }
+    .tam-step h4 { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .tam-step p  { font-size:12px; color:var(--ink-mid); line-height:1.5; }
+    .tam-example { font-size:11px; font-style:italic; color:var(--ink-soft); margin-top:6px; }
+
+    /* ══ METRICS ══ */
+    .tier-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    @media(max-width:640px){ .tier-grid{grid-template-columns:1fr;} }
+    .tier-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px; }
+    .tier-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
+    .tier1 .tier-label { color:var(--azure); }
+    .tier2 .tier-label { color:#4d5e00; }
+    .tier3 .tier-label { color:var(--ink-soft); }
+    .tier-weight { font-size:22px; font-weight:800; color:var(--shadow); margin-bottom:8px; }
+    .tier-metrics { display:flex; flex-direction:column; gap:4px; }
+    .tier-metric { font-size:12px; color:var(--ink-mid); padding-left:12px; position:relative; }
+    .tier-metric::before { content:'·'; position:absolute; left:0; font-weight:900; }
+    .tier1 .tier-metric::before { color:var(--azure); }
+    .tier2 .tier-metric::before { color:#4d5e00; }
+    .tier3 .tier-metric::before { color:var(--ink-soft); }
+
+    /* ══ STAGES ══ */
+    .stages-track { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:640px){ .stages-track{grid-template-columns:1fr 1fr;} }
+    .stage-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px; }
+    .stage-name { font-size:16px; font-weight:800; color:var(--azure); margin-bottom:4px; }
+    .stage-range { font-size:12px; color:var(--ink-soft); margin-bottom:10px; }
+    .stage-card p { font-size:12px; color:var(--ink-mid); line-height:1.55; }
+    .stage-arrow { text-align:center; font-size:20px; color:var(--azure); display:flex; align-items:center; }
+
+    /* ══ REPORTING ══ */
+    .report-flow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .report-step { flex:1; min-width:120px; background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:16px; text-align:center; }
+    .report-icon { font-size:22px; margin-bottom:6px; }
+    .report-step h4 { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .report-step p  { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .report-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .report-arrow{display:none;} }
+
+    /* ══ CTA ══ */
+    .cta-block { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.55); margin-top:14px; }
+    .cta-sub a { color:rgba(255,255,255,.75); }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ══ IDEATION FRAMEWORK ══ */
+    .ideation-lanes { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:24px; }
+    @media(max-width:640px){ .ideation-lanes{grid-template-columns:1fr;} }
+    .ideation-lane { border-radius:var(--radius); padding:22px; border:1px solid; }
+    .ideation-lane.lane1 { background:rgba(203,233,255,.2); border-color:rgba(12,51,135,.15); }
+    .ideation-lane.lane2 { background:rgba(226,237,122,.15); border-color:rgba(200,214,0,.25); }
+    .ideation-lane-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:10px; }
+    .lane1-badge { background:rgba(12,51,135,.1); color:var(--azure); }
+    .lane2-badge { background:rgba(138,158,0,.2); color:#4d5e00; }
+    .ideation-lane h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .ideation-lane p  { font-size:13px; color:var(--ink-mid); line-height:1.6; margin-bottom:10px; }
+    .ideation-lane ul { list-style:none; display:flex; flex-direction:column; gap:5px; }
+    .ideation-lane ul li { font-size:12px; color:var(--ink-mid); padding-left:14px; position:relative; line-height:1.5; }
+    .ideation-lane ul li::before { content:'→'; color:var(--azure); position:absolute; left:0; font-weight:700; }
+    .algo-signals { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px; }
+    @media(max-width:640px){ .algo-signals{grid-template-columns:1fr;} }
+    .algo-signal { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:16px; text-align:center; }
+    .algo-signal-icon { font-size:22px; margin-bottom:6px; }
+    .algo-signal h4 { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .algo-signal p  { font-size:12px; color:var(--ink-soft); line-height:1.45; }
+    .algo-signal .format-pref { font-size:11px; font-weight:700; color:var(--azure); margin-top:6px; }
+
+    /* ══ ORGANIC PHILOSOPHY ══ */
+    .org-stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+    @media(max-width:640px){ .org-stat-row{grid-template-columns:1fr;} }
+    .org-stat { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:22px; text-align:center; color:#fff; }
+    .org-stat-num { font-size:36px; font-weight:800; line-height:1; margin-bottom:6px; }
+    .org-stat-label { font-size:12px; opacity:.8; line-height:1.4; }
+    .org-funnel { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--card-shadow); }
+    @media(max-width:640px){ .org-funnel{grid-template-columns:1fr 1fr;} }
+    @media(max-width:480px){ .org-funnel{grid-template-columns:1fr;} }
+    .org-funnel-step { padding:18px 16px; border-right:1px solid var(--border); background:#fff; }
+    .org-funnel-step:last-child { border-right:none; }
+    .org-funnel-num { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--azure); margin-bottom:6px; }
+    .org-funnel-step h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .org-funnel-step p  { font-size:12px; color:var(--ink-mid); line-height:1.5; }
+    .org-arrow { display:flex; align-items:center; justify-content:center; padding:0 4px; font-size:16px; color:var(--azure); background:#fff; border-right:1px solid var(--border); }
+
+    /* ══ CTA FRAMEWORK ══ */
+    .cta-framework-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .cta-framework-grid{grid-template-columns:1fr;} }
+    .cta-funnel-card { border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--card-shadow); overflow:hidden; }
+    .cta-funnel-header { padding:14px 18px; }
+    .cta-funnel-header.tofu-h { background:var(--azure); }
+    .cta-funnel-header.mofu-h { background:#4d5e00; }
+    .cta-funnel-header.bofu-h { background:#0a276a; }
+    .cta-funnel-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:2px; }
+    .cta-funnel-name  { font-size:15px; font-weight:800; color:#fff; margin-bottom:2px; }
+    .cta-funnel-goal  { font-size:11px; color:rgba(255,255,255,.75); }
+    .cta-funnel-body  { background:#fff; padding:16px 18px; }
+    .cta-funnel-body p { font-size:13px; color:var(--ink-mid); line-height:1.55; margin-bottom:12px; }
+    .cta-examples { display:flex; flex-direction:column; gap:6px; }
+    .cta-example { background:var(--porcelain); border-radius:6px; padding:8px 12px; font-size:12px; font-style:italic; color:var(--shadow); font-weight:600; line-height:1.45; }
+    .cta-rule-box { background:rgba(226,237,122,.1); border:1px solid rgba(200,214,0,.3); border-left:4px solid #c8d600; border-radius:var(--radius); padding:16px 20px; margin-top:20px; }
+    .cta-rule-box p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+    </a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#organic"     data-section="organic">Our Approach</a></li>
+    <li><a href="#signal"      data-section="signal">Signal Method</a></li>
+    <li><a href="#ivp"         data-section="ivp">IVP</a></li>
+    <li><a href="#content-mix" data-section="content-mix">Content Mix</a></li>
+    <li><a href="#formats"     data-section="formats">Formats</a></li>
+    <li><a href="#ideation"    data-section="ideation">Ideation</a></li>
+    <li><a href="#cta"         data-section="cta">CTA &amp; SEO</a></li>
+    <li><a href="#metrics"     data-section="metrics">Metrics</a></li>
+    <li><a href="#stages"      data-section="stages">Stages</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-chip">Scroll Media — Strategic Framework</div>
+  <h1>How we think.<br/><em>How we work.</em></h1>
+  <p class="hero-sub">Every engagement is built on the same strategic foundation. This is the system behind the strategy — so you know exactly how we approach your Instagram and why every decision is made.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- WHY ORGANIC SOCIAL -->
+<div class="wrap" id="organic">
+  <div class="eyebrow">Why Organic Social</div>
+  <h2 class="section-title">The biggest concentration of consumer attention<br/><em>in the history of marketing.</em></h2>
+  <p class="section-sub">We built Scroll Media around a single insight: where attention goes, opportunity follows. And right now, more human attention is concentrated on social media than anywhere else in the marketing funnel — by a historic margin.</p>
+
+  <div class="org-stat-row">
+    <div class="org-stat">
+      <div class="org-stat-num">70%+</div>
+      <div class="org-stat-label">of the global population are active social media users</div>
+    </div>
+    <div class="org-stat">
+      <div class="org-stat-num">2.5 hrs</div>
+      <div class="org-stat-label">average daily time spent on social media platforms per user</div>
+    </div>
+    <div class="org-stat">
+      <div class="org-stat-num">2B+</div>
+      <div class="org-stat-label">monthly active users on Instagram alone — the highest-quality purchase-intent platform</div>
+    </div>
+  </div>
+
+  <div class="card mt-md" style="margin-bottom:20px;">
+    <div class="card-label">The Opportunity Most Businesses Are Missing</div>
+    <p style="font-size:15px;color:var(--ink-mid);line-height:1.7;margin-bottom:0;">We have never, in the history of marketing, seen this volume of consumer attention concentrated in a single channel. And Instagram sits at the top of that channel — not just as a place where people scroll, but as a platform where purchasing decisions are actively being made. People discover brands, evaluate them, build trust with them, and buy from them entirely through organic Instagram content. <strong style="color:var(--shadow);">The brands winning right now are the ones treating Instagram like the primary growth engine it is — not an afterthought.</strong></p>
+  </div>
+
+  <div class="eyebrow" style="margin-top:28px;">How We Think About It</div>
+  <h3 style="font-size:20px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Get in front of the right people. <em style="font-style:italic;color:var(--azure);">Get them to do what you want.</em></h3>
+  <p style="font-size:15px;color:var(--ink-mid);max-width:640px;line-height:1.65;margin-bottom:22px;">The entire Scroll Media system reduces to one idea: use the Instagram algorithm to surface your brand to the highest-quality audience possible — the people most likely to care, trust, and buy — then guide them through a clear purchasing journey that ends in action.</p>
+
+  <div class="org-funnel">
+    <div class="org-funnel-step">
+      <div class="org-funnel-num">Step 1</div>
+      <h4>Algorithm Optimization</h4>
+      <p>Use Social SEO, signal-driven formats, and content strategy to make the algorithm surface your content to the right audience — before they even follow you.</p>
+    </div>
+    <div class="org-funnel-step">
+      <div class="org-funnel-num">Step 2</div>
+      <h4>Awareness</h4>
+      <p>TOFU content (40% of mix) reaches new audiences and earns shares, growing your qualified follower base with people who actually care about what you offer.</p>
+    </div>
+    <div class="org-funnel-step">
+      <div class="org-funnel-num">Step 3</div>
+      <h4>Trust &amp; Authority</h4>
+      <p>MOFU content (35% of mix) builds credibility through education, proof, and consistency. Saves and profile visits signal that the audience is warming toward a decision.</p>
+    </div>
+    <div class="org-funnel-step">
+      <div class="org-funnel-num">Step 4</div>
+      <h4>Conversion</h4>
+      <p>BOFU content (25% of mix) with precision CTAs converts warm followers into leads, inquiries, bookings, and sales — directly attributable to organic social.</p>
+    </div>
+  </div>
+
+  <div style="background:rgba(226,237,122,.1);border:1px solid rgba(200,214,0,.3);border-left:4px solid #c8d600;border-radius:var(--radius);padding:18px 22px;margin-top:20px;">
+    <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;"><strong style="color:var(--shadow);">Why Instagram specifically:</strong> Of all social platforms, Instagram has the highest concentration of purchase-intent behavior. Users come to discover, evaluate, and connect with brands. The combination of visual storytelling, search functionality, DM conversion, and link infrastructure makes it the most complete organic marketing channel available to service businesses and local brands — with zero ad spend required to build real momentum.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PHILOSOPHY -->
+<div class="wrap" id="philosophy">
+  <div class="eyebrow">Our Philosophy</div>
+  <h2 class="section-title">Simplifying social media. <em>On purpose.</em></h2>
+  <p class="section-sub">The social media industry is overcomplicated. We believe the brands that win are the ones who do fewer things with more intention — and build systems that compound over time.</p>
+
+  <div class="phil-grid">
+    <div class="phil-card">
+      <div class="phil-icon">🎯</div>
+      <h4>Attention First</h4>
+      <p>If content doesn't earn attention in the first 3 seconds, nothing else matters. Every hook is engineered — not guessed.</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">📈</div>
+      <h4>Retention Over Reach</h4>
+      <p>Watch time, saves, and shares signal content quality. Likes and follower counts are lagging indicators. We optimize for what actually moves the algorithm.</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">🔁</div>
+      <h4>Consistency Beats Virality</h4>
+      <p>One viral post doesn't build a brand. A repeatable system of quality content, posted consistently, compounds over 6–12 months into real business outcomes.</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">🧠</div>
+      <h4>Audience Psychology First</h4>
+      <p>Understanding what your audience fears, wants, and responds to always outperforms chasing platform trends. We build content around human behavior, not algorithm rumors.</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">📊</div>
+      <h4>Strategy Before Tactics</h4>
+      <p>We don't post until the strategy is approved. Every post has a purpose, a target audience, a funnel stage, and a measurable signal we're optimizing for.</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">⚙️</div>
+      <h4>Systems Enable Scale</h4>
+      <p>We build repeatable formats, documented processes, and data-driven feedback loops. The system gets smarter every month — not dependent on any single person.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SIGNAL METHOD -->
+<div class="wrap" id="signal">
+  <div class="eyebrow">The Signal Method</div>
+  <h2 class="section-title">Our testing framework. <em>Built to compound.</em></h2>
+  <p class="section-sub">The Signal Method is how we turn raw content experiments into a proven, data-backed format library for your account. Every engagement runs through all four phases over the client lifecycle.</p>
+
+  <div class="signal-phases">
+    <div class="signal-phase">
+      <div class="signal-phase-num">1</div>
+      <h4>Expand</h4>
+      <p>Heavy testing phase. Run 8–12 different format types across TOFU, MOFU, and BOFU. Let the data speak before committing to any approach.</p>
+      <span class="signal-tag">Months 2–3</span>
+    </div>
+    <div class="signal-phase">
+      <div class="signal-phase-num">2</div>
+      <h4>Contract</h4>
+      <p>Cut the formats with weak signal. Double down on the top 2–3 performers. Reduce variety, increase quality and consistency.</p>
+      <span class="signal-tag">Month 4–5</span>
+    </div>
+    <div class="signal-phase">
+      <div class="signal-phase-num">3</div>
+      <h4>Expand</h4>
+      <p>Scale the proven winners. Introduce new format variations to prevent creative fatigue without abandoning what's working.</p>
+      <span class="signal-tag">Month 6–8</span>
+    </div>
+    <div class="signal-phase">
+      <div class="signal-phase-num">4</div>
+      <h4>Compound</h4>
+      <p>Focus on the proven CORE formats that consistently drive results. The system runs on signal, not guesswork. Growth becomes predictable.</p>
+      <span class="signal-tag">Month 9+</span>
+    </div>
+  </div>
+
+  <div style="background:rgba(226,237,122,.1);border:1px solid rgba(200,214,0,.3);border-left:4px solid #c8d600;border-radius:var(--radius);padding:16px 20px;margin-top:20px;">
+    <p style="font-size:14px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">Why this matters:</strong> Most agencies post the same content month after month without reading what's actually working. The Signal Method means every month, we're getting smarter about your specific audience — not applying a generic playbook.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- IVP -->
+<div class="wrap" id="ivp">
+  <div class="eyebrow">Ideal Viewer Profile</div>
+  <h2 class="section-title">Content built for <em>a real person.</em></h2>
+  <p class="section-sub">Before we write a single caption, we build a detailed portrait of the exact person your content is designed to reach. Not a demographic. A human being with specific goals, objections, and buying triggers.</p>
+
+  <div class="ivp-card">
+    <h3>The IVP isn't "your target audience." It's the specific person your content is talking to.</h3>
+    <p>Most brands post content that could be for anyone. That's why it resonates with no one. An IVP narrows the aperture — so every post speaks directly to one person's goals, fears, and motivations. When that person feels seen, they save, share, and act.</p>
+    <div class="ivp-components">
+      <div class="ivp-comp">
+        <h5>Demographics</h5>
+        <p>Age, location, income, life stage — the factual foundation for reaching the right person.</p>
+      </div>
+      <div class="ivp-comp">
+        <h5>Psychographics</h5>
+        <p>Values, identity, lifestyle priorities — what drives decisions beyond the obvious.</p>
+      </div>
+      <div class="ivp-comp">
+        <h5>Motivators &amp; Pain Points</h5>
+        <p>What they're trying to achieve, what's standing in their way, what makes them act.</p>
+      </div>
+      <div class="ivp-comp">
+        <h5>Content Triggers</h5>
+        <p>The specific topics, formats, and hooks that make them stop scrolling and engage.</p>
+      </div>
+      <div class="ivp-comp">
+        <h5>Decision Triggers</h5>
+        <p>What moves them from passive follower to active buyer — the final push to act.</p>
+      </div>
+      <div class="ivp-comp">
+        <h5>Discovery Behavior</h5>
+        <p>How they find content, what platforms they use, what they search for — where to reach them.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTENT MIX -->
+<div class="wrap" id="content-mix">
+  <div class="eyebrow">Content Mix</div>
+  <h2 class="section-title">Every post has <em>a job.</em></h2>
+  <p class="section-sub">We maintain a strict 40/35/25 content mix across every month — ensuring your audience is consistently reached, educated, and converted without the feed feeling like a non-stop sales pitch.</p>
+
+  <div class="mix-bar">
+    <div class="mix-seg tofu"><span class="pct">40%</span><span class="lbl">TOFU</span></div>
+    <div class="mix-seg mofu"><span class="pct">35%</span><span class="lbl">MOFU</span></div>
+    <div class="mix-seg bofu"><span class="pct">25%</span><span class="lbl">BOFU</span></div>
+  </div>
+
+  <div class="mix-cards">
+    <div class="mix-card tofu">
+      <div class="mix-card-label">Top of Funnel — 40%</div>
+      <h4>Reach &amp; Discovery</h4>
+      <p>Content engineered to reach people who don't know you yet. Optimized for shares, reach, and new followers.</p>
+      <ul>
+        <li>Founder POV Reels</li>
+        <li>Quick-Shot B-Roll</li>
+        <li>Hot-Take / Counter Position</li>
+        <li>Trends &amp; Community Content</li>
+      </ul>
+    </div>
+    <div class="mix-card mofu">
+      <div class="mix-card-label">Middle of Funnel — 35%</div>
+      <h4>Trust &amp; Authority</h4>
+      <p>Content for people already following you. Builds credibility and deepens the relationship. Optimized for saves and profile visits.</p>
+      <ul>
+        <li>Authority Builder (Expert Tips)</li>
+        <li>Educational Carousels</li>
+        <li>Case Study / Transformation</li>
+        <li>Signature Series</li>
+      </ul>
+    </div>
+    <div class="mix-card bofu">
+      <div class="mix-card-label">Bottom of Funnel — 25%</div>
+      <h4>Conversion &amp; Action</h4>
+      <p>Content with a clear, specific CTA. Drives link taps, DMs, bookings, and inquiries. Optimized for CTR and profile conversion rate.</p>
+      <ul>
+        <li>Product Feature Reel</li>
+        <li>Direct Response Story</li>
+        <li>Customer Testimonial</li>
+        <li>BTS Strategy</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FORMATS LIBRARY -->
+<div class="wrap" id="formats">
+  <div class="eyebrow">Formats Library</div>
+  <h2 class="section-title">Proven formats. <em>Specific jobs.</em></h2>
+  <p class="section-sub">Every format in our library has a defined purpose, a target metric, and an execution blueprint. We use CORE formats as the foundation and test new formats at a controlled rate each month.</p>
+
+  <div class="formats-tabs">
+    <div class="ftab active" onclick="switchFTab(0)">Feed Formats</div>
+    <div class="ftab" onclick="switchFTab(1)">Story Strategy</div>
+  </div>
+  <div class="formats-panels">
+
+    <!-- FEED -->
+    <div class="formats-panel active" id="fpanel-0">
+      <div class="format-row header">
+        <div>Format</div>
+        <div>Stage</div>
+        <div>Status</div>
+        <div>Primary Signal</div>
+      </div>
+      <!-- TOFU -->
+      <div class="format-row">
+        <div><div class="format-name">Founder POV</div><div style="font-size:11px;color:var(--ink-soft);">First-person Reel, talking head, relatable hook</div></div>
+        <div><span class="format-stage fstage-top">TOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Reach · Shares · New Followers</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Quick-Shot B-Roll</div><div style="font-size:11px;color:var(--ink-soft);">Fast-cut clips, punchy text overlays</div></div>
+        <div><span class="format-stage fstage-top">TOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Reach · Views · Shares</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Text-First Reel</div><div style="font-size:11px;color:var(--ink-soft);">On-screen text is the star, minimal voiceover</div></div>
+        <div><span class="format-stage fstage-top">TOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Reach · Views · Shares</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Hot-Take / Counter Position</div><div style="font-size:11px;color:var(--ink-soft);">Contrarian opinion, sparks debate</div></div>
+        <div><span class="format-stage fstage-top">TOFU</span></div>
+        <div><span class="format-status-test">🟡 TEST</span></div>
+        <div class="format-metric">Shares · New Followers</div>
+      </div>
+      <!-- MOFU -->
+      <div class="format-row">
+        <div><div class="format-name">Authority Builder</div><div style="font-size:11px;color:var(--ink-soft);">Expert tips carousel or Reel, insider knowledge</div></div>
+        <div><span class="format-stage fstage-mid">MOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Saves · Profile Visits · Comments</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Educational Carousel (How-To)</div><div style="font-size:11px;color:var(--ink-soft);">Step-by-step guide, deep value</div></div>
+        <div><span class="format-stage fstage-mid">MOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Saves · Profile Visits · Comments</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Case Study / Transformation</div><div style="font-size:11px;color:var(--ink-soft);">Before/after story, real results</div></div>
+        <div><span class="format-stage fstage-mid">MOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Saves · Avg Watch Time · Profile Visits</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Signature Series</div><div style="font-size:11px;color:var(--ink-soft);">Recognizable recurring format, builds anticipation</div></div>
+        <div><span class="format-stage fstage-mid">MOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">Profile Visits · Saves · Comments</div>
+      </div>
+      <!-- BOFU -->
+      <div class="format-row">
+        <div><div class="format-name">Product Feature Reel</div><div style="font-size:11px;color:var(--ink-soft);">Service/product in action, benefits-led</div></div>
+        <div><span class="format-stage fstage-bot">BOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">CTR · Link Taps · PCR</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">Customer Testimonial</div><div style="font-size:11px;color:var(--ink-soft);">Real customer experience, video or text</div></div>
+        <div><span class="format-stage fstage-bot">BOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">CTR · Link Taps · PCR</div>
+      </div>
+      <div class="format-row">
+        <div><div class="format-name">BTS Strategy</div><div style="font-size:11px;color:var(--ink-soft);">Behind-the-scenes, transparency builds trust</div></div>
+        <div><span class="format-stage fstage-bot">BOFU</span></div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div class="format-metric">CTR · Link Taps · PCR</div>
+      </div>
+    </div>
+
+    <!-- STORY -->
+    <div class="formats-panel" id="fpanel-1">
+      <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;margin-bottom:20px;">Stories run 5 days a week with two distinct strategies — dedicated story days (Tue/Thu) and feed-support stories (Mon/Wed/Fri). Each story format below maps to a specific intent, CTA type, and algorithm signal, just like feed formats.</p>
+
+      <div class="format-row header">
+        <div>Story Format</div>
+        <div>Status</div>
+        <div>Intent</div>
+        <div>Primary Signal</div>
+      </div>
+
+      <!-- Feed support -->
+      <div class="format-row">
+        <div>
+          <div class="format-name">Feed Amplifier Story</div>
+          <div style="font-size:11px;color:var(--ink-soft);">Mon/Wed/Fri · Promotes same-day feed post · 1–2 frames</div>
+        </div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div><span class="format-stage fstage-top">TOFU/MOFU</span></div>
+        <div class="format-metric">Profile Visits · Story Reach · Swipe-Ups</div>
+      </div>
+
+      <!-- Direct Response Story -->
+      <div class="format-row">
+        <div>
+          <div class="format-name">Direct Response Story</div>
+          <div style="font-size:11px;color:var(--ink-soft);">Tue/Thu · 5–7 frames with link sticker · problem → build case → CTA</div>
+        </div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div><span class="format-stage fstage-bot">BOFU</span></div>
+        <div class="format-metric">CTR · Link Taps · PCR</div>
+      </div>
+
+      <!-- Community Poll -->
+      <div class="format-row">
+        <div>
+          <div class="format-name">Community Poll / Q&amp;A</div>
+          <div style="font-size:11px;color:var(--ink-soft);">Tue/Thu · Interactive sticker · "which sandwich wins?" · open questions</div>
+        </div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div><span class="format-stage fstage-mid">MOFU</span></div>
+        <div class="format-metric">Replies · Engagement Rate · DMs</div>
+      </div>
+
+      <!-- BTS / Behind the Counter -->
+      <div class="format-row">
+        <div>
+          <div class="format-name">Behind-the-Counter BTS</div>
+          <div style="font-size:11px;color:var(--ink-soft);">Tue/Thu · Raw, unscripted · prep day, daily specials, team moments</div>
+        </div>
+        <div><span class="format-status-core">🟢 CORE</span></div>
+        <div><span class="format-stage fstage-mid">MOFU</span></div>
+        <div class="format-metric">Story Completion · Replies · Profile Visits</div>
+      </div>
+
+      <!-- Limited Time CTA -->
+      <div class="format-row">
+        <div>
+          <div class="format-name">Limited-Time Offer Story</div>
+          <div style="font-size:11px;color:var(--ink-soft);">Seasonal/launch · urgency frame + link sticker · short and direct</div>
+        </div>
+        <div><span class="format-status-sea">🟠 SEASONAL</span></div>
+        <div><span class="format-stage fstage-bot">BOFU</span></div>
+        <div class="format-metric">CTR · Link Taps · Swipe-Ups</div>
+      </div>
+
+      <!-- Low-Fi Check-In -->
+      <div class="format-row">
+        <div>
+          <div class="format-name">Low-Fi Check-In</div>
+          <div style="font-size:11px;color:var(--ink-soft);">Occasional · front-facing camera · real moment · builds personal connection</div>
+        </div>
+        <div><span class="format-status-sea">🟠 SEASONAL</span></div>
+        <div><span class="format-stage fstage-top">TOFU</span></div>
+        <div class="format-metric">Replies · Story Reach · New Follows</div>
+      </div>
+
+      <div class="card mt-md" style="background:var(--azure-lt);border-color:var(--azure-bd);">
+        <div class="card-label" style="color:var(--azure);">Story CTA Rule</div>
+        <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;">Every story has one CTA — never two. TOFU/MOFU stories use engagement CTAs (polls, questions, replies) to build community signal. BOFU stories use conversion CTAs (link stickers) only when the viewer is warm. Using conversion CTAs on cold audiences trains the algorithm that your audience doesn't click — and reduces future distribution.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- IDEATION FRAMEWORK -->
+<div class="wrap" id="ideation">
+  <div class="eyebrow">Ideation Framework</div>
+  <h2 class="section-title">Two lanes. <em>One content library that stands out.</em></h2>
+  <p class="section-sub">Every content idea we bring to a client runs through the same two-lane system. Lane 1 borrows what's already proven. Lane 2 invents what nobody else has done. Both lanes feed the Signal Method testing phase — and together they're how we build a content library that doesn't look like everyone else's.</p>
+
+  <div class="ideation-lanes">
+    <div class="ideation-lane lane1">
+      <span class="ideation-lane-badge lane1-badge">Lane 1 — Proven &amp; Adapted</span>
+      <h4>Copy the structure. Apply your story.</h4>
+      <p>Study what's performing in the client's niche and in adjacent niches with similar audiences. Extract the underlying format structure — not the surface aesthetic. Then rebuild it around the client's specific brand, voice, and audience.</p>
+      <ul>
+        <li>Analyze top-performing accounts in the client's niche</li>
+        <li>Study adjacent niches with overlapping IVP audiences</li>
+        <li>Identify format patterns that earn saves, shares, or high retention</li>
+        <li>Adapt the structure — change the brand, voice, hook, and story</li>
+        <li>Cross-reference with the Formats Library to confirm format fit</li>
+      </ul>
+    </div>
+    <div class="ideation-lane lane2">
+      <span class="ideation-lane-badge lane2-badge">Lane 2 — Original &amp; Invented</span>
+      <h4>Build what only this brand can do.</h4>
+      <p>Pull from the client's unique assets — their culture, their history, their quirks, their community. Combine that with pop culture references, analogies, and things people already identify with. Invent a format that no other account in the niche has done.</p>
+      <ul>
+        <li>Identify brand-specific assets (heritage, culture, community moments)</li>
+        <li>Find pop culture angles that connect to the brand's world</li>
+        <li>Use analogy and metaphor to create unexpected connections</li>
+        <li>Ask: what would make someone screenshot this and send it to a friend?</li>
+        <li>Goal: formats that are genuinely new to the algorithm — highest distribution potential</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt-md" style="margin-bottom:24px;">
+    <div class="card-label">How Ideas Get Scored Before We Pitch Them</div>
+    <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;margin-bottom:12px;">Every idea — regardless of which lane it comes from — has to answer three questions before it goes into a proposal or a content calendar. Weak answers mean the idea doesn't make the cut.</p>
+    <div class="g3">
+      <div style="background:var(--porcelain);border-radius:8px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--azure);margin-bottom:4px;">Stop the scroll?</div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.5;">Is there a hook — verbal, visual, or on-screen text — that would stop someone mid-scroll in the first 1.5 seconds?</div>
+      </div>
+      <div style="background:var(--porcelain);border-radius:8px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--azure);margin-bottom:4px;">Keep watching?</div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.5;">Is there a reason to watch past the 3-second mark — curiosity, payoff, or a structural loop that builds through the content?</div>
+      </div>
+      <div style="background:var(--porcelain);border-radius:8px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--azure);margin-bottom:4px;">Save or share?</div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.5;">Would someone bookmark this to reference later, or send it to a friend? If neither, the format isn't doing conversion or distribution work.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALGORITHM ALIGNMENT -->
+  <div class="eyebrow" style="margin-top:28px;">Algorithm Alignment</div>
+  <h3 style="font-size:20px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Format choices are <em style="font-style:italic;color:var(--azure);">algorithm choices.</em></h3>
+  <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:20px;">Every format decision signals to the algorithm what kind of content this is and who to show it to. Ideation isn't just about what looks good — it's about choosing formats that earn the specific signals Instagram prioritizes for distribution.</p>
+
+  <div class="algo-signals">
+    <div class="algo-signal">
+      <div class="algo-signal-icon">🎬</div>
+      <h4>Reels</h4>
+      <p>Primary reach and discovery driver. Algorithm prioritizes Reels with strong retention rate (50%+) and high share count. Reach rate 30%+ vs. 13% for static posts.</p>
+      <div class="format-pref">Optimize for: Retention % · Shares</div>
+    </div>
+    <div class="algo-signal">
+      <div class="algo-signal-icon">📑</div>
+      <h4>Carousels</h4>
+      <p>Highest save rate of any format. Algorithm re-serves carousels to non-engagers 24–48 hrs after posting, giving a second distribution window. Best for MOFU authority content.</p>
+      <div class="format-pref">Optimize for: Saves · Completion Rate</div>
+    </div>
+    <div class="algo-signal">
+      <div class="algo-signal-icon">📱</div>
+      <h4>Stories</h4>
+      <p>Over 70% of brand posts on Instagram are Stories. Primary signal for Stories is completion rate and link taps. Direct line to warm audience — highest CTA conversion of any format.</p>
+      <div class="format-pref">Optimize for: Completion · Link Taps</div>
+    </div>
+  </div>
+
+  <div class="card mt-lg" style="background:var(--azure-lt);border-color:var(--azure-bd);">
+    <div class="card-label" style="color:var(--azure);">How Ideation Maps to Client Goals</div>
+    <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;margin-bottom:12px;">Format choice isn't random — it's driven by where the client is in their maturity stage and what goal the content needs to achieve. Before ideating, we ask: what does this client need most right now?</p>
+    <div class="g3">
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--azure);margin-bottom:6px;">Awareness goal</div>
+        <div style="font-size:13px;color:var(--ink-mid);line-height:1.55;">Lead with Reels. Prioritize Lane 1 formats that already have proven reach in the niche. High-share angles (founder story, community content, pop culture tie-ins). Target: new followers, non-follower reach.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#4d5e00;margin-bottom:6px;">Trust goal</div>
+        <div style="font-size:13px;color:var(--ink-mid);line-height:1.55;">Lead with carousels and signature series. Authority-building formats that earn saves. Both lanes — adapt proven education formats and invent client-specific knowledge formats. Target: saves, profile visits.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--azure);margin-bottom:6px;">Conversion goal</div>
+        <div style="font-size:13px;color:var(--ink-mid);line-height:1.55;">BOFU Reels and Direct Response Stories. Lane 1 proven formats (product feature, testimonial). Clear CTA, link sticker, catering or booking-focused copy. Target: link taps, DMs, PCR.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SOCIAL SEO -->
+<div class="wrap" id="social-seo">
+  <div class="eyebrow">Social SEO</div>
+  <h2 class="section-title">Instagram is a search engine. <em>We treat it like one.</em></h2>
+  <p class="section-sub">Social SEO is everything we do to make sure your content surfaces to the right people — before they even follow you. It's bigger than keywords alone.</p>
+
+  <div class="tam-steps">
+    <div class="tam-step">
+      <div class="tam-num">T1</div>
+      <h4>Broad Discovery</h4>
+      <p>Industry-level keywords. Wide net, high volume, low intent.</p>
+      <div class="tam-example">e.g. "Cincinnati food"</div>
+    </div>
+    <div class="tam-step">
+      <div class="tam-num">T2</div>
+      <h4>Niche Specific</h4>
+      <p>Niche-level terms. Relevant audience, active searchers.</p>
+      <div class="tam-example">e.g. "Hyde Park deli Cincinnati"</div>
+    </div>
+    <div class="tam-step">
+      <div class="tam-num">T3</div>
+      <h4>Service + Location</h4>
+      <p>Service-specific. People actively looking for what you offer.</p>
+      <div class="tam-example">e.g. "corporate catering Cincinnati"</div>
+    </div>
+    <div class="tam-step">
+      <div class="tam-num">T4</div>
+      <h4>High-Intent Buyer</h4>
+      <p>Purchase-ready phrases. Highest intent, lowest volume.</p>
+      <div class="tam-example">e.g. "order team lunch catering Cincinnati"</div>
+    </div>
+  </div>
+
+  <div class="g2 mt-lg">
+    <div class="card">
+      <div class="card-label">Where Keywords Are Placed</div>
+      <ul class="tick-list mt-sm">
+        <li>Instagram bio and name field</li>
+        <li>Caption text (naturally woven in, not stuffed)</li>
+        <li>On-screen text overlays in Reels</li>
+        <li>Alt text on static posts and carousels</li>
+        <li>Hashtags (3–5 per post, niche-specific)</li>
+        <li>Story text and location tags</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Signal Optimization (Beyond Keywords)</div>
+      <ul class="tick-list mt-sm">
+        <li>Retention % on Reels — optimized via hook engineering and pacing</li>
+        <li>Saves on carousels — optimized via format design and utility framing</li>
+        <li>Shares — optimized via emotional resonance and shareability angles</li>
+        <li>DM sends — the single highest-weighted signal per Instagram's algorithm</li>
+        <li>Profile visits — driven by strong content that earns discovery</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA FRAMEWORK -->
+<div class="wrap" id="cta">
+  <div class="eyebrow">CTA Framework</div>
+  <h2 class="section-title">Getting in front of the right audience<br/><em>is only half the job.</em></h2>
+  <p class="section-sub">A CTA isn't just "link in bio." It's a deliberate instruction — matched to the viewer's mindset, their position in the funnel, and the specific action you want them to take. Every piece of content ends with a CTA that's earned by what came before it.</p>
+
+  <!-- TWO CTA TYPES -->
+  <div class="g2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-label" style="color:var(--azure);">Start a Conversation — Engagement CTAs</div>
+      <p style="font-size:14px;color:var(--ink-mid);line-height:1.6;margin-bottom:10px;">Used on TOFU and MOFU content where the goal is to deepen engagement, build community signal, and earn algorithm distribution. Not the moment to push a sale.</p>
+      <p style="font-size:13px;color:var(--ink-soft);margin-bottom:8px;font-style:italic;">Goal: saves · shares · comments · DMs · profile visits</p>
+      <div class="cta-examples">
+        <div class="cta-example">"Save this for later."</div>
+        <div class="cta-example">"Tag someone who needs to see this."</div>
+        <div class="cta-example">"Which one is you? Drop it in the comments."</div>
+        <div class="cta-example">"Share this with a friend who's been asking about this."</div>
+        <div class="cta-example">"Follow for more on [topic]."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:#0a276a;">Start a Conversion — Action CTAs</div>
+      <p style="font-size:14px;color:var(--ink-mid);line-height:1.6;margin-bottom:10px;">Used on BOFU content where the audience is warm and trust is established. Direct, specific, and frictionless. One action per post — never compete with two equal-weight CTAs.</p>
+      <p style="font-size:13px;color:var(--ink-soft);margin-bottom:8px;font-style:italic;">Goal: link taps · DM inquiries · bookings · orders · catering requests</p>
+      <div class="cta-examples">
+        <div class="cta-example">"Tap the link in bio to place your order."</div>
+        <div class="cta-example">"DM us 'catering' and we'll send you the details."</div>
+        <div class="cta-example">"Book your consultation — link in bio."</div>
+        <div class="cta-example">"Slots are filling up. Tap the link to lock yours in."</div>
+        <div class="cta-example">"Reply to this story and we'll send you the menu."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUNNEL-STAGE CTA BREAKDOWN -->
+  <div class="cta-framework-grid">
+    <div class="cta-funnel-card">
+      <div class="cta-funnel-header tofu-h">
+        <div class="cta-funnel-label">Top of Funnel · 40%</div>
+        <div class="cta-funnel-name">Awareness CTAs</div>
+        <div class="cta-funnel-goal">Goal: reach new audiences · earn shares · grow following</div>
+      </div>
+      <div class="cta-funnel-body">
+        <p>The viewer doesn't know you yet. Hard conversion CTAs here will fail — the trust hasn't been earned. The job is to make the content worth sharing and the account worth following. CTAs are soft, low-friction, and social.</p>
+        <div class="cta-examples">
+          <div class="cta-example">"Follow for more [niche] content from Cincinnati."</div>
+          <div class="cta-example">"Send this to someone who'd get it."</div>
+          <div class="cta-example">"Save this — you'll want to come back to it."</div>
+          <div class="cta-example">"Tag your go-to sandwich person."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-funnel-card">
+      <div class="cta-funnel-header mofu-h">
+        <div class="cta-funnel-label">Middle of Funnel · 35%</div>
+        <div class="cta-funnel-name">Trust CTAs</div>
+        <div class="cta-funnel-goal">Goal: saves · profile visits · DMs · community depth</div>
+      </div>
+      <div class="cta-funnel-body">
+        <p>The viewer is following and engaging. They're evaluating whether you're worth their trust. CTAs here deepen the relationship and create intent signals the algorithm reads as quality. Move them toward the profile and into a conversation.</p>
+        <div class="cta-examples">
+          <div class="cta-example">"Bookmark this before your next event."</div>
+          <div class="cta-example">"Check out the link in bio for the full menu."</div>
+          <div class="cta-example">"Comment your order — we read every one."</div>
+          <div class="cta-example">"DM us your question — we'll answer it."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-funnel-card">
+      <div class="cta-funnel-header bofu-h">
+        <div class="cta-funnel-label">Bottom of Funnel · 25%</div>
+        <div class="cta-funnel-name">Conversion CTAs</div>
+        <div class="cta-funnel-goal">Goal: link taps · bookings · orders · catering inquiries</div>
+      </div>
+      <div class="cta-funnel-body">
+        <p>The viewer is warm. They've seen your content, they trust the brand. Now the job is to make the next step as simple and obvious as possible. One specific action. Zero ambiguity. Remove every friction point between their intent and the conversion.</p>
+        <div class="cta-examples">
+          <div class="cta-example">"Tap the link in bio to order now."</div>
+          <div class="cta-example">"DM us 'catering' to get the details."</div>
+          <div class="cta-example">"Holiday slots are limited — link in bio to book."</div>
+          <div class="cta-example">"Reply to this story with your event date."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY CTA RULE -->
+  <div class="cta-rule-box">
+    <p><strong style="color:var(--shadow);">The one-CTA rule:</strong> Every piece of content gets one CTA — and one only. Two CTAs competing in the same post splits the viewer's attention and reduces conversion on both. The primary CTA is chosen based on where the viewer is in the funnel. The content earns the CTA before it's delivered — not the other way around.</p>
+  </div>
+
+  <!-- FORMAT-SPECIFIC -->
+  <div class="g3 mt-lg">
+    <div class="card">
+      <div class="card-label">Feed Posts</div>
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.55;margin-bottom:10px;">CTA lives in the caption. Keep it to one sentence. The hook earns the watch — the caption earns the action. For BOFU: direct, specific, frictionless. For TOFU/MOFU: conversational, low-commitment.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Reels</div>
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.55;margin-bottom:10px;">CTA is spoken in the last 3 seconds AND reinforced with on-screen text. The verbal hook opens; the verbal CTA closes. Never lead with the CTA — earn it through the content first.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Stories</div>
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.55;margin-bottom:10px;">Link stickers for BOFU. Poll and question stickers for MOFU. Never put a conversion CTA on a cold story — it trains the algorithm that your audience doesn't click, which kills future distribution.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- METRICS -->
+<div class="wrap" id="metrics">
+  <div class="eyebrow">Performance Measurement</div>
+  <h2 class="section-title">We track 13 metrics. <em>Three tiers matter most.</em></h2>
+  <p class="section-sub">Not all metrics are equal. Our weighted scoring framework prioritizes the signals that reflect real content quality and business impact — not vanity numbers that look good but don't move anything.</p>
+
+  <div class="tier-grid">
+    <div class="tier-card tier1">
+      <div class="tier-label">Tier 1 — 1.5× Weight</div>
+      <div class="tier-weight">Quality &amp; Conversion</div>
+      <p style="font-size:12px;color:var(--ink-mid);margin-bottom:12px;">Direct signals of content quality and audience intent. Platform-resistant. These are the metrics Scroll Media most directly influences.</p>
+      <div class="tier-metrics">
+        <div class="tier-metric">Saves</div>
+        <div class="tier-metric">Shares</div>
+        <div class="tier-metric">Retention %</div>
+        <div class="tier-metric">Click-Through Rate (CTR)</div>
+        <div class="tier-metric">Profile Conversion Rate (PCR)</div>
+      </div>
+    </div>
+    <div class="tier-card tier2">
+      <div class="tier-label">Tier 2 — 1.0× Weight</div>
+      <div class="tier-weight">Volume &amp; Distribution</div>
+      <p style="font-size:12px;color:var(--ink-mid);margin-bottom:12px;">Important growth indicators, partially algorithm and platform-dependent. Strong content helps, but distribution has variables outside our control.</p>
+      <div class="tier-metrics">
+        <div class="tier-metric">Avg Reach / Day</div>
+        <div class="tier-metric">New Followers</div>
+        <div class="tier-metric">Total Views</div>
+        <div class="tier-metric">Profile Visits</div>
+        <div class="tier-metric">Link Taps</div>
+      </div>
+    </div>
+    <div class="tier-card tier3">
+      <div class="tier-label">Tier 3 — 0.75× Weight</div>
+      <div class="tier-weight">Context &amp; Community</div>
+      <p style="font-size:12px;color:var(--ink-mid);margin-bottom:12px;">Valuable context signals, but more variable by niche and content type. Useful as supporting data, not primary decision drivers.</p>
+      <div class="tier-metrics">
+        <div class="tier-metric">Comments</div>
+        <div class="tier-metric">Avg Watch Time</div>
+        <div class="tier-metric">Views</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-flow mt-lg">
+    <div class="report-step">
+      <div class="report-icon">📊</div>
+      <h4>Data Pull</h4>
+      <p>13 metrics pulled from Instagram Insights first week of the month</p>
+    </div>
+    <div class="report-arrow">→</div>
+    <div class="report-step">
+      <div class="report-icon">⚖️</div>
+      <h4>Weighted Score</h4>
+      <p>Tier 1/2/3 weighting applied. Score calculated on 6.0–10.0 scale</p>
+    </div>
+    <div class="report-arrow">→</div>
+    <div class="report-step">
+      <div class="report-icon">🔍</div>
+      <h4>Format Analysis</h4>
+      <p>Top 3 formats identified. Underperformers flagged for adjustment</p>
+    </div>
+    <div class="report-arrow">→</div>
+    <div class="report-step">
+      <div class="report-icon">📋</div>
+      <h4>Monthly Report</h4>
+      <p>Full report delivered. Strategic adjustments documented and actioned</p>
+    </div>
+    <div class="report-arrow">→</div>
+    <div class="report-step">
+      <div class="report-icon">🔄</div>
+      <h4>Next Month</h4>
+      <p>Content calendar updated based on data. Winning formats scaled</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MATURITY STAGES -->
+<div class="wrap" id="stages">
+  <div class="eyebrow">Maturity Stages</div>
+  <h2 class="section-title">Where you are. <em>Where you're going.</em></h2>
+  <p class="section-sub">Every account is assessed against our four-stage maturity model. Stage determines your benchmarks, your content strategy, and what success looks like for your specific account right now.</p>
+
+  <div class="stages-track">
+    <div class="stage-card">
+      <div class="stage-name">SPARK</div>
+      <div class="stage-range">0–2,500 followers</div>
+      <p>Building foundation, testing formats, IVP discovery. Priority: find what resonates before scaling.</p>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">LIFT</div>
+      <div class="stage-range">2.5K–10K followers</div>
+      <p>Scaling what works. Building conversion path. Doubling down on 2–3 proven formats.</p>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">RISE</div>
+      <div class="stage-range">10K–50K followers</div>
+      <p>Optimization at scale. Converting audience to revenue. Refining funnel and authority position.</p>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">THRIVE</div>
+      <div class="stage-range">50K+ followers</div>
+      <p>Authority position and brand equity dominance. Social as primary business growth engine.</p>
+    </div>
+  </div>
+
+  <div style="background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:var(--radius);padding:18px 22px;margin-top:20px;">
+    <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;"><strong style="color:var(--azure);">Stage is not just follower count.</strong> It's assessed across five dimensions: audience size and growth velocity, engagement quality and conversion signals, content system maturity, business integration, and platform sophistication. A 3K-follower account with 200+ saves per post and a proven conversion path is LIFT. A 12K-follower account with no strategy and sporadic posting stays LIFT too.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<div class="wrap">
+  <div class="cta-block">
+    <h2>Want to work with Scroll Media?</h2>
+    <p>See what a Scroll Media engagement looks like — from strategy to execution to results.</p>
+    <a href="https://decks.scrollmedia.co/pitch/" class="cta-btn">View Our Work →</a>
+    <div class="cta-sub">Questions? Reach us at <a href="mailto:help@scrollmedia.co" style="color:rgba(255,255,255,.7);text-decoration:underline;">help@scrollmedia.co</a></div>
+  </div>
+</div>
+
+<footer>
+  <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
+
+  const sections = ['organic','philosophy','signal','ivp','content-mix','formats','ideation','cta','social-seo','metrics','stages'];
+  const links = document.querySelectorAll('.nav-links a[data-section]');
+  function onScroll() {
+    const y = window.scrollY + 80;
+    let active = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) active = id; });
+    links.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  function switchFTab(idx) {
+    document.querySelectorAll('.ftab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.formats-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
+</script>
+</body>
+</html>

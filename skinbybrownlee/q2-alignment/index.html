@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin by Brownlee — Q2 Strategy Alignment | Scroll Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --shadow:     #151516;
+      --azure:      #0c3387;
+      --azure-mid:  #1a4db0;
+      --lucid:      #cbe9ff;
+      --hi:         #e2ed7a;
+      --porcelain:  #f2f3f4;
+      --ghost:      #fafdff;
+      --t1:         #151516;
+      --t2:         #4a4a4c;
+      --t3:         #888890;
+      --border:     rgba(21,21,22,0.08);
+      --border-md:  rgba(21,21,22,0.15);
+      --tier1:      #7c3aed;
+      --tier1-bg:   #f5f3ff;
+      --tier2:      #0c3387;
+      --tier2-bg:   #eff6ff;
+      --exc:        #7c3aed;
+      --exc-bg:     #f5f3ff;
+      --ont:        #059669;
+      --ont-bg:     #ecfdf5;
+      --wat:        #d97706;
+      --wat-bg:     #fffbeb;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--ghost); color: var(--t1); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    /* PROGRESS */
+    #prog { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--azure), #4a7fd4); z-index: 200; transition: width .1s linear; }
+
+    /* NAV — light bg, dark logo */
+    nav { position: sticky; top: 0; background: rgba(250,253,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); z-index: 100; }
+    .nav-inner { max-width: 980px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 54px; }
+    .nav-left { display: flex; align-items: center; gap: 10px; }
+    .nav-logo { height: 22px; display: block; }
+    .nav-logo-fb { font-size: 15px; font-weight: 800; color: var(--azure); letter-spacing: -.02em; display: none; }
+    .nav-divider { width: 1px; height: 16px; background: var(--border-md); }
+    .nav-client { font-size: 13px; color: var(--t3); }
+    .nav-right { font-size: 12px; color: var(--t3); }
+
+    /* SECTION NAV */
+    .sec-nav { background: rgba(250,253,255,0.97); border-bottom: 1px solid var(--border); position: sticky; top: 54px; z-index: 99; }
+    .sec-nav-inner { max-width: 980px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; gap: 4px; height: 40px; overflow-x: auto; scrollbar-width: none; }
+    .sec-nav-inner::-webkit-scrollbar { display: none; }
+    .sn-btn { flex-shrink: 0; font-size: 12px; font-weight: 600; color: var(--t3); background: none; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; transition: background .15s, color .15s; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+    .sn-btn:hover { background: var(--porcelain); color: var(--t1); }
+    .sn-btn.active { background: var(--azure); color: #fff; }
+    .sn-num { font-size: 10px; font-weight: 800; opacity: .6; }
+
+    /* PAGE */
+    .wrap { max-width: 980px; margin: 0 auto; padding: 2rem 2rem 5rem; }
+
+    /* HERO — dark bg, white logo */
+    .hero { background: var(--shadow); border-radius: 16px; padding: 2.5rem 3rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(12,51,135,.5) 0%, transparent 65%); pointer-events: none; }
+    .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem; }
+    /* White logo for dark backgrounds — use the white PNG */
+    .hero-logo { height: 24px; display: block; }
+    .hero-logo-fb { font-size: 15px; font-weight: 800; color: rgba(255,255,255,.8); letter-spacing: -.02em; display: none; }
+    .hero-badge { background: var(--hi); color: var(--shadow); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; white-space: nowrap; }
+    .hero h1 { font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: #fff; line-height: 1.2; letter-spacing: -.025em; margin-bottom: .75rem; }
+    .hero h1 em { color: var(--lucid); font-style: normal; }
+    .hero-sub { font-size: 15px; color: rgba(255,255,255,.5); max-width: 560px; line-height: 1.65; }
+    .hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem; margin-top: 1.75rem; }
+    .hm-lbl { font-size: 10px; color: rgba(255,255,255,.3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; }
+    .hm-val { font-size: 14px; color: rgba(255,255,255,.8); font-weight: 600; }
+
+    /* GOAL BANNER */
+    .goal-banner { background: linear-gradient(135deg, var(--azure) 0%, var(--azure-mid) 100%); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start; }
+    .gb-icon { font-size: 24px; flex-shrink: 0; margin-top: 1px; }
+    .gb-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: rgba(255,255,255,.45); margin-bottom: 3px; }
+    .gb-title { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: 5px; }
+    .gb-body { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 2.5rem; scroll-margin-top: 108px; }
+    .sec-hd { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.25rem; }
+    .sec-n { width: 28px; height: 28px; border-radius: 50%; background: var(--azure); color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .sec-title { font-size: 19px; font-weight: 800; letter-spacing: -.02em; }
+    .sec-sub { font-size: 13px; color: var(--t3); margin-top: 1px; }
+
+    /* CARDS */
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+    .card + .card { margin-top: 10px; }
+    .ct { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+    .cb { font-size: 14px; color: var(--t2); line-height: 1.65; }
+    .card-dark { background: var(--shadow); border-radius: 12px; padding: 1.5rem 2rem; }
+    .card-dark .ct { color: #fff; }
+    .card-dark .cb { color: rgba(255,255,255,.6); }
+    .cl { border-radius: 0 12px 12px 0; background: #fff; padding: 1.1rem 1.5rem; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cl-azure { border-left: 4px solid var(--azure); }
+    .cl-green { border-left: 4px solid #059669; }
+    .cl-amber { border-left: 4px solid #d97706; }
+    .card-feat { background: linear-gradient(140deg, var(--shadow) 0%, #182f70 100%); border-radius: 14px; padding: 2rem 2.5rem; position: relative; overflow: hidden; }
+    .card-feat::after { content: ''; position: absolute; bottom: -50px; right: -50px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(203,233,255,.09) 0%, transparent 70%); }
+    .card-feat h3 { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -.02em; margin: .625rem 0 .5rem; }
+    .card-feat p { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.65; max-width: 560px; }
+    .card-warn { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 1rem 1.25rem; display: flex; gap: 10px; align-items: flex-start; }
+    .card-warn p { font-size: 13px; color: #78350f; line-height: 1.55; }
+
+    /* GRIDS */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .mt1 { margin-top: 10px; }
+    .mt2 { margin-top: 1.25rem; }
+
+    @media(max-width:680px) {
+      .g2,.g3 { grid-template-columns: 1fr; }
+      .hero { padding: 1.75rem 1.5rem; }
+      .hero-top { flex-direction: column; gap: .625rem; }
+      .wrap { padding: 1.5rem 1rem 4rem; }
+    }
+
+    /* SCORE STRIP */
+    .score-strip { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+    .score-big { font-size: 46px; font-weight: 800; color: var(--azure); letter-spacing: -.04em; line-height: 1; }
+    .score-denom { font-size: 18px; font-weight: 400; color: var(--t3); }
+    .score-label { font-size: 13px; font-weight: 700; color: var(--t2); margin-top: 4px; }
+    .score-sub-txt { font-size: 12px; color: var(--t3); }
+    .score-sep { width: 1px; min-height: 56px; background: var(--border); align-self: stretch; flex-shrink: 0; }
+    .bars { display: flex; align-items: flex-end; gap: 8px; }
+    .bw { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .bv { font-size: 11px; font-weight: 700; color: var(--t2); }
+    .bv.cur { color: var(--azure); }
+    .br { width: 34px; border-radius: 4px 4px 0 0; background: var(--porcelain); }
+    .br.cur { background: var(--azure); }
+    .bm { font-size: 10px; color: var(--t3); }
+    .score-badges { display: flex; flex-direction: column; gap: 5px; }
+    .sbr { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--t2); }
+    .dot-exc { width: 9px; height: 9px; border-radius: 50%; background: var(--exc); flex-shrink: 0; }
+    .dot-ont { width: 9px; height: 9px; border-radius: 50%; background: var(--ont); flex-shrink: 0; }
+    .dot-wat { width: 9px; height: 9px; border-radius: 50%; background: var(--wat); flex-shrink: 0; }
+    .fw-note { width: 100%; font-size: 12px; color: var(--t3); border-top: 1px solid var(--border); padding-top: 10px; margin-top: 6px; line-height: 1.55; }
+    .fw-note a { color: var(--azure); font-weight: 700; }
+    @media(max-width:680px) { .score-sep { display: none; } .score-strip { flex-direction: column; gap: 1rem; align-items: flex-start; } }
+
+    /* TIER LEGEND */
+    .tier-leg { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.5rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.25rem; }
+    .tier-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 2px 9px 2px 5px; border-radius: 20px; margin-bottom: 4px; }
+    .tp-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .tp1 { background: var(--tier1-bg); color: var(--tier1); }
+    .tp2 { background: var(--tier2-bg); color: var(--tier2); }
+    .tp3 { background: var(--porcelain); color: var(--t3); }
+    .tier-wt { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+    .tier-desc { font-size: 12px; color: var(--t3); line-height: 1.5; }
+    .tier-mets { font-size: 12px; color: var(--t2); margin-top: 3px; font-style: italic; }
+    @media(max-width:680px) { .tier-leg { grid-template-columns: 1fr; } }
+
+    /* METRICS TABLE */
+    .tbl-wrap { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .tbl-hd { display: grid; grid-template-columns: 160px 1fr 1fr 1fr 84px 52px; background: var(--shadow); padding: 9px 16px; gap: 8px; }
+    .tbl-hd span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: rgba(255,255,255,.55); }
+    .tbl-row { display: grid; grid-template-columns: 160px 1fr 1fr 1fr 84px 52px; padding: 11px 16px; gap: 8px; align-items: center; border-bottom: 1px solid var(--border); }
+    .tbl-row:last-child { border-bottom: none; }
+    .tbl-row.alt { background: #fafafa; }
+    .tbl-row.t2r { background: #f8faff; }
+    .tbl-met { font-size: 14px; font-weight: 700; }
+    .tbl-val { font-size: 14px; color: var(--t2); }
+    .tbl-val.hi { font-weight: 700; color: var(--t1); }
+    .ch-up { color: #059669; font-weight: 700; font-size: 13px; }
+    .ch-dn { color: #dc2626; font-weight: 700; font-size: 13px; }
+    .ch-fl { color: var(--t3); font-size: 13px; }
+    .sbadge { font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 20px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+    .se { background: var(--exc-bg); color: var(--exc); }
+    .so { background: var(--ont-bg); color: var(--ont); }
+    .sw { background: var(--wat-bg); color: var(--wat); }
+    .tt { font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 5px; text-transform: uppercase; letter-spacing: .04em; }
+    .t1t { background: var(--tier1-bg); color: var(--tier1); }
+    .t2t { background: var(--tier2-bg); color: var(--tier2); }
+
+    /* WIN/GAP CARDS */
+    .signal-row { display: flex; flex-direction: column; gap: 8px; }
+    .sig-lbl { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+    .metric-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: #fff; border: 1px solid var(--border); border-radius: 8px; gap: 10px; flex-wrap: wrap; }
+    .mr-name { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .mr-right { display: flex; align-items: center; gap: 10px; }
+    .mr-target { font-size: 12px; color: var(--t3); }
+    .mr-val { font-size: 15px; font-weight: 800; }
+
+    /* TARGET TABLE (section 02) */
+    .target-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .target-tbl th { background: var(--shadow); color: rgba(255,255,255,.6); padding: 8px 12px; text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+    .target-tbl td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--t2); vertical-align: top; }
+    .target-tbl tr:last-child td { border-bottom: none; }
+    .target-tbl tr:nth-child(even) td { background: #fafafa; }
+    .target-tbl td:first-child { font-weight: 700; color: var(--t1); white-space: nowrap; }
+    .target-tbl td:nth-child(2) { font-weight: 700; color: var(--t1); white-space: nowrap; }
+
+    /* GOAL BOXES */
+    .goal-box { background: #fff; border: 2px solid var(--azure); border-radius: 12px; padding: 1.1rem 1.25rem; }
+    .gb-num { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; color: var(--azure); margin-bottom: 4px; }
+    .gb-ttl { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .gb-bdy { font-size: 13px; color: var(--t2); line-height: 1.6; }
+
+    /* FLOW */
+    .flow { display: flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 1rem 0; }
+    .flow-step { flex: 1; min-width: 80px; padding: .875rem .5rem; text-align: center; background: #fff; border-right: 1px solid var(--border); }
+    .flow-step:last-child { border-right: none; }
+    .fi { font-size: 18px; margin-bottom: 4px; }
+    .ft { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    .fs { font-size: 10px; color: var(--t3); margin-top: 2px; }
+
+    /* FEAT SPECS */
+    .feat-specs { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1.25rem; }
+    .fsv { font-size: 22px; font-weight: 800; color: var(--lucid); letter-spacing: -.02em; }
+    .fsl { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 1px; }
+
+    /* SCOPE */
+    .scope-wrap { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .scope-hd { background: var(--shadow); padding: 9px 18px; display: grid; grid-template-columns: 1fr auto; }
+    .scope-hd span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: rgba(255,255,255,.5); }
+    .scope-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 10px 18px; border-bottom: 1px solid var(--border); }
+    .scope-row:last-child { border-bottom: none; }
+    .scope-row:nth-child(even) { background: #fafafa; }
+    .scope-item { font-size: 14px; display: flex; align-items: center; gap: 8px; }
+    .scope-owner { font-size: 12px; color: var(--t3); white-space: nowrap; }
+    .sdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dg { background: #059669; } .db { background: var(--azure); } .dgr { background: #9ca3af; }
+
+    /* NEXT STEPS */
+    .steps-wrap { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .step { display: flex; gap: 14px; align-items: flex-start; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+    .sn { width: 28px; height: 28px; background: var(--azure); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .st { font-size: 15px; font-weight: 800; margin-bottom: 3px; }
+    .sb { font-size: 13px; color: var(--t2); line-height: 1.6; }
+    .so-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-top: 6px; text-transform: uppercase; letter-spacing: .04em; }
+    .so-scroll { background: #dbeafe; color: #1e40af; }
+    .so-cmo { background: var(--porcelain); color: var(--t3); }
+    .so-both { background: var(--tier1-bg); color: var(--tier1); }
+
+    /* BADGES */
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .04em; }
+    .b-blue { background: #dbeafe; color: #1e40af; }
+    .b-gray { background: var(--porcelain); color: var(--t3); }
+    .b-new { background: var(--hi); color: var(--shadow); }
+    .b-purple { background: var(--tier1-bg); color: var(--tier1); }
+    .b-green { background: #d1fae5; color: #065f46; }
+
+    /* POST CARD */
+    .post-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
+    .post-card + .post-card { margin-top: 8px; }
+    .pm { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; color: var(--t3); flex-wrap: wrap; }
+    .ph { font-size: 14px; color: var(--t1); font-style: italic; background: #f8feff; border-left: 3px solid var(--lucid); padding: 7px 12px; border-radius: 0 6px 6px 0; margin-bottom: 9px; line-height: 1.5; }
+    .ps { display: flex; gap: 16px; flex-wrap: wrap; }
+    .psv { font-size: 15px; font-weight: 800; color: var(--azure); }
+    .psl { font-size: 11px; color: var(--t3); }
+
+    hr.div { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .muted { font-size: 12px; color: var(--t3); margin-top: 6px; }
+
+    /* FOOTER — dark bg, white logo */
+    footer { background: var(--shadow); padding: 2.25rem 2rem; text-align: center; }
+    .footer-logo { height: 24px; display: block; margin: 0 auto .625rem; }
+    .footer-logo-fb { font-size: 15px; font-weight: 800; color: rgba(255,255,255,.65); letter-spacing: -.02em; display: none; margin-bottom: .625rem; }
+    footer p { font-size: 12px; color: rgba(255,255,255,.3); line-height: 1.8; }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- NAV: light bg → dark logo via SVG (no filter needed) -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <img class="nav-logo" src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fb">Scroll Media</span>
+      <div class="nav-divider"></div>
+      <span class="nav-client">Skin by Brownlee</span>
+    </div>
+    <div class="nav-right">Q2 Strategy Alignment · April 2026</div>
+  </div>
+</nav>
+<!-- SECTION NAV -->
+<div class="sec-nav">
+  <div class="sec-nav-inner">
+    <a class="sn-btn" href="#s-performance"><span class="sn-num">01</span> Performance</a>
+    <a class="sn-btn" href="#s-targets"><span class="sn-num">02</span> Targets</a>
+    <a class="sn-btn" href="#s-strategy"><span class="sn-num">03</span> Strategy</a>
+    <a class="sn-btn" href="#s-q2"><span class="sn-num">04</span> Q2 Plan</a>
+    <a class="sn-btn" href="#s-platform"><span class="sn-num">05</span> Platform</a>
+    <a class="sn-btn" href="#s-scope"><span class="sn-num">06</span> Scope</a>
+    <a class="sn-btn" href="#s-steps"><span class="sn-num">07</span> Next Steps</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO: dark bg → white PNG logo -->
+  <div class="hero">
+    <div class="hero-top">
+      <img class="hero-logo"
+           src="https://reports.scrollmedia.co/assets/scroll-media-logo-white.png"
+           alt="Scroll Media"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="hero-logo-fb">Scroll Media</span>
+      <div class="hero-badge">Q2 Strategy Alignment</div>
+    </div>
+    <h1>Aligning organic social<br>with <em>Sylvia's e-commerce vision</em></h1>
+    <p class="hero-sub">A shared framework for how Scroll Media's organic strategy and the broader CMO roadmap work together — to drive product sales, email growth, and brand authority.</p>
+    <div class="hero-meta">
+      <div><div class="hm-lbl">Client</div><div class="hm-val">Skin by Brownlee &amp; Co.</div></div>
+      <div><div class="hm-lbl">Account Stage</div><div class="hm-val">Rise — Month 6</div></div>
+      <div><div class="hm-lbl">Current Score</div><div class="hm-val">8.3 / 10 — Solid Month</div></div>
+      <div><div class="hm-lbl">Account Manager</div><div class="hm-val">Riley Walker</div></div>
+      <div><div class="hm-lbl">Date</div><div class="hm-val">April 2026</div></div>
+    </div>
+  </div>
+
+  <!-- SHARED GOAL BANNER -->
+  <div class="goal-banner">
+    <div class="gb-icon">🎯</div>
+    <div>
+      <div class="gb-label">Shared North Star</div>
+      <div class="gb-title">Sylvia gets out of the chair by EOY 2026</div>
+      <div class="gb-body">Skin by Brownlee is transitioning from in-person services to e-commerce-first revenue. Organic social's job is to build the trust, authority, and audience that convert browsers into buyers — and make every other channel more effective. Everything on this page maps to that goal.</div>
+    </div>
+  </div>
+
+  <!-- ── 01: PERFORMANCE ── -->
+  <div class="section" id="s-performance">
+    <div class="sec-hd">
+      <div class="sec-n">01</div>
+      <div>
+        <div class="sec-title">Six months of performance — the honest picture</div>
+        <div class="sec-sub">What's working, where the gaps are, and what we're doing about it</div>
+      </div>
+    </div>
+
+    <!-- Score strip -->
+    <div class="score-strip">
+      <div>
+        <div><span class="score-big">8.3</span><span class="score-denom"> / 10</span></div>
+        <div class="score-label">Solid Month — March 2026</div>
+        <div class="score-sub-txt">Rise Stage · Month 6 · Best score yet</div>
+      </div>
+      <div class="score-sep"></div>
+      <div>
+        <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">5-month trend</div>
+        <div class="bars">
+          <div class="bw"><div class="bv">7.9</div><div class="br" style="height:34px;"></div><div class="bm">Nov</div></div>
+          <div class="bw"><div class="bv">7.7</div><div class="br" style="height:26px;"></div><div class="bm">Dec</div></div>
+          <div class="bw"><div class="bv">7.8</div><div class="br" style="height:30px;"></div><div class="bm">Jan</div></div>
+          <div class="bw"><div class="bv">8.1</div><div class="br" style="height:48px;"></div><div class="bm">Feb</div></div>
+          <div class="bw"><div class="bv cur">8.3</div><div class="br cur" style="height:60px;"></div><div class="bm">Mar</div></div>
+        </div>
+      </div>
+      <div class="score-sep"></div>
+      <div class="score-badges">
+        <div class="sbr"><div class="dot-exc"></div><strong>3</strong> Exceeding</div>
+        <div class="sbr"><div class="dot-ont"></div><strong>3</strong> On Track</div>
+        <div class="sbr"><div class="dot-wat"></div><strong>4</strong> Watch</div>
+      </div>
+      <div class="fw-note">
+        Scored using <strong>Scroll Media Weighted Performance Framework v2.0</strong> — Tier 1 (quality &amp; conversion) 1.5× weight, Tier 2 (volume &amp; distribution) 1.0×, Tier 3 (context) 0.75×. Stage-calibrated against Rise benchmarks.
+        <a href="https://reports.scrollmedia.co/skinbybrownleeandco/march2026/" target="_blank">View full March report →</a>
+      </div>
+    </div>
+
+    <!-- Tier legend -->
+    <div class="tier-leg">
+      <div>
+        <div class="tier-pill tp1"><div class="tp-dot" style="background:var(--tier1);"></div>Tier 1 · 1.5× weight</div>
+        <div class="tier-wt" style="color:var(--tier1);">Quality &amp; Conversion</div>
+        <div class="tier-desc">Platform-resistant. Direct signals of content quality and buyer intent.</div>
+        <div class="tier-mets">Saves · Shares · Retention % · CTR · PCR</div>
+      </div>
+      <div>
+        <div class="tier-pill tp2"><div class="tp-dot" style="background:var(--tier2);"></div>Tier 2 · 1.0× weight</div>
+        <div class="tier-wt" style="color:var(--tier2);">Volume &amp; Distribution</div>
+        <div class="tier-desc">Important growth signals, but partially algorithm-dependent.</div>
+        <div class="tier-mets">Reach/Day · New Followers · Views · Profile Visits · Link Taps</div>
+      </div>
+      <div>
+        <div class="tier-pill tp3"><div class="tp-dot" style="background:var(--t3);"></div>Tier 3 · 0.75× weight</div>
+        <div class="tier-wt" style="color:var(--t3);">Context &amp; Community</div>
+        <div class="tier-desc">Variable by niche and content type. Supporting signal, not primary.</div>
+        <div class="tier-mets">Comments · Avg Watch Time</div>
+      </div>
+    </div>
+
+    <!-- 3-month table -->
+    <div class="tbl-wrap">
+      <div class="tbl-hd">
+        <span>Metric</span><span>Jan 2026</span><span>Feb 2026</span><span>Mar 2026</span><span>Status</span><span>Tier</span>
+      </div>
+      <div class="tbl-row"><div class="tbl-met">CTR</div><div class="tbl-val">16.4%</div><div class="tbl-val">13.0%</div><div class="tbl-val hi" style="color:var(--exc);">19.1%</div><div><span class="sbadge se">Exceeding</span></div><div><span class="tt t1t">T1</span></div></div>
+      <div class="tbl-row alt"><div class="tbl-met">PCR</div><div class="tbl-val">17.8%</div><div class="tbl-val">15.6%</div><div class="tbl-val hi" style="color:var(--exc);">22.8%</div><div><span class="sbadge se">Exceeding</span></div><div><span class="tt t1t">T1</span></div></div>
+      <div class="tbl-row" style="background:#fffdf8;"><div class="tbl-met">Retention %</div><div class="tbl-val ch-up">39% ↑</div><div class="tbl-val ch-dn">24% ↓</div><div class="tbl-val hi" style="color:var(--wat);">24% →</div><div><span class="sbadge sw">Watch</span></div><div><span class="tt t1t">T1</span></div></div>
+      <div class="tbl-row alt" style="background:#fffdf8;"><div class="tbl-met">Saves</div><div class="tbl-val ch-up">112 ↑</div><div class="tbl-val ch-up">154 ↑</div><div class="tbl-val hi" style="color:var(--wat);">152 →</div><div><span class="sbadge sw">Watch</span></div><div><span class="tt t1t">T1</span></div></div>
+      <div class="tbl-row" style="background:#fffdf8;"><div class="tbl-met">Shares</div><div class="tbl-val">77</div><div class="tbl-val">73</div><div class="tbl-val hi" style="color:var(--wat);">71 →</div><div><span class="sbadge sw">Watch</span></div><div><span class="tt t1t">T1</span></div></div>
+      <div class="tbl-row t2r"><div class="tbl-met">New Followers</div><div class="tbl-val">359</div><div class="tbl-val">481</div><div class="tbl-val hi" style="color:var(--ont);">491 ↑</div><div><span class="sbadge so">On Track</span></div><div><span class="tt t2t">T2</span></div></div>
+      <div class="tbl-row t2r alt"><div class="tbl-met">Total Views</div><div class="tbl-val">181K</div><div class="tbl-val">189K</div><div class="tbl-val hi" style="color:var(--ont);">170K ✓</div><div><span class="sbadge so">On Track</span></div><div><span class="tt t2t">T2</span></div></div>
+      <div class="tbl-row t2r"><div class="tbl-met">Link Taps</div><div class="tbl-val">330</div><div class="tbl-val">401</div><div class="tbl-val hi" style="color:var(--ont);">412 ↑</div><div><span class="sbadge so">On Track</span></div><div><span class="tt t2t">T2</span></div></div>
+    </div>
+
+    <!-- Wins and gaps -->
+    <div class="g2 mt2">
+      <div>
+        <div class="sig-lbl" style="color:var(--ont);">What's working</div>
+        <div class="signal-row">
+          <div class="cl cl-green">
+            <div class="ct">Conversion funnel is strong</div>
+            <div class="cb">CTR at 19.1% and PCR at 22.8% — both well above Rise targets. When people find SBB, they click through and convert. This has been consistent since October. <strong>This is not a conversion problem.</strong></div>
+          </div>
+          <div class="cl cl-green">
+            <div class="ct">Perimenopause content is the clear winner</div>
+            <div class="cb">Every top-performing post across three months is anchored in perimenopause education or Sylvia's personal story. March's Silent Shift Kit carousel hit 2.1× account average views. This is the content-market fit. Scale it.</div>
+          </div>
+          <div class="cl cl-green">
+            <div class="ct">Follower growth accelerating</div>
+            <div class="cb">491 new followers in March — best month yet. The perimenopause series is consistently converting discovery to community. New followers trending up MoM across three consecutive months.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sig-lbl" style="color:var(--wat);">Where the gaps are</div>
+        <div class="signal-row">
+          <div class="cl cl-amber">
+            <div class="ct">Retention % — the highest-priority fix</div>
+            <div class="cb">At 24%, retention is well below the 65% Rise target. People are dropping off early. This is a <strong>hook problem, not a topic problem.</strong> When the hook works, the content holds — the March top Reel hit 61.3% retention. The gap is opening execution across the full calendar.</div>
+          </div>
+          <div class="cl cl-amber">
+            <div class="ct">Saves and shares are plateaued</div>
+            <div class="cb">Saves grew from 43 (Oct) to 152 (Mar) — real improvement — but still below the 300 Rise floor. Shares sit at 71 vs. a 200 target. The January Authority Builder (32 saves, 35 shares) proves the audience will engage deeply with the right format. We need more of it.</div>
+          </div>
+          <div class="cl cl-amber">
+            <div class="ct">What this pattern means</div>
+            <div class="cb">High views + strong conversion + low saves/retention = we're reaching people but not consistently giving them a compelling reason to stay and save. Distribution is working. Depth of engagement needs to improve. The fix: stronger hooks, contrarian takes, reference-worthy formats.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top posts -->
+    <div class="mt2">
+      <div class="ct" style="margin-bottom:10px;">March top performers</div>
+      <div class="post-card">
+        <div class="pm"><span class="badge b-purple">Top Post · Score 100</span> Mar 20 · Reel</div>
+        <div class="ph">"You always have options in men and in skincare. Skincare isn't one size fits all."</div>
+        <div class="ps">
+          <div><div class="psv">3,331</div><div class="psl">Views</div></div>
+          <div><div class="psv">61.3%</div><div class="psl">Retention <span class="tt t1t">T1</span></div></div>
+          <div><div class="psv">10</div><div class="psl">Saves <span class="tt t1t">T1</span></div></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="pm"><span class="badge b-blue">#2 · Score 85</span> Mar 27 · Carousel</div>
+        <div class="ph">"I'm an esthetician and even I didn't see this coming… I packaged everything into one kit so other women wouldn't have to figure it out the hard way. Real skin. No editing."</div>
+        <div class="ps">
+          <div><div class="psv">3,962</div><div class="psl">Views (2.1× avg) <span class="tt t2t">T2</span></div></div>
+          <div><div class="psv">Product CTA</div><div class="psl">Perimenopause Silent Shift Kit</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ── 02: TARGET RANGES ── -->
+  <div class="section" id="s-targets">
+    <div class="sec-hd">
+      <div class="sec-n">02</div>
+      <div>
+        <div class="sec-title">How targets are set — and why Rise stage matters</div>
+        <div class="sec-sub">The methodology behind every number in the monthly report</div>
+      </div>
+    </div>
+
+    <div class="card-dark">
+      <div class="ct">SBB is a Rise-stage account. That changes everything.</div>
+      <div class="cb">At 33,000+ followers, SBB is benchmarked against <strong>Rise-stage targets</strong> — not the same bar as a brand with 1,500 followers. Assigning the wrong stage means measuring against the wrong baseline. Rise targets are intentionally set above what's easy: On Track reflects genuine momentum. Watch is a real signal — not a technicality — and always comes with a clear action plan.</div>
+    </div>
+
+    <div class="mt2">
+      <div class="ct" style="margin-bottom:8px;">Rise-stage target ranges — what SBB is measured against</div>
+      <div class="tbl-wrap">
+        <table class="target-tbl" style="width:100%;">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Rise Target</th>
+              <th>Why it matters</th>
+              <th style="width:52px;">Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Saves</td><td>300 – 2,500 / mo</td><td>Strongest pre-purchase intent signal. Algorithm rewards saved content with wider distribution.</td><td><span class="tt t1t">T1</span></td></tr>
+            <tr><td>Retention %</td><td>65% – 80%</td><td>% of Reel watched before drop-off. Low retention = hook isn't delivering. Instagram uses this to decide whether to amplify to non-followers.</td><td><span class="tt t1t">T1</span></td></tr>
+            <tr><td>CTR</td><td>2% – 5%</td><td>Link taps ÷ profile visits. SBB is at 19.1% — well above ceiling — confirming strong audience-offer alignment.</td><td><span class="tt t1t">T1</span></td></tr>
+            <tr><td>PCR</td><td>8% – 14%</td><td>New followers ÷ profile visits. Measures profile quality. SBB at 22.8% — exceeding ceiling.</td><td><span class="tt t1t">T1</span></td></tr>
+            <tr><td>Shares</td><td>200 – 2,000 / mo</td><td>Strongest organic amplification signal. Extends reach beyond the existing audience.</td><td><span class="tt t1t">T1</span></td></tr>
+            <tr><td>New Followers</td><td>300 – 2,500 / mo</td><td>Growth signal. Followers driven by the right content attract buyers, not just an audience.</td><td><span class="tt t2t">T2</span></td></tr>
+            <tr><td>Total Views</td><td>150K – 800K / mo</td><td>Distribution reach. Context matters — views without saves or profile visits tell a different story.</td><td><span class="tt t2t">T2</span></td></tr>
+            <tr><td>Profile Visits</td><td>1,500 – 10,000 / mo</td><td>Mid-funnel intent signal. Someone visiting the profile is actively considering the brand.</td><td><span class="tt t2t">T2</span></td></tr>
+            <tr><td>Link Taps</td><td>350 – 3,000 / mo</td><td>Direct measure of organic traffic handed off to the website, product pages, or Skin Quiz.</td><td><span class="tt t2t">T2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cl cl-azure mt2">
+      <div class="ct">Targets are built on three inputs — not guesswork</div>
+      <div class="cb">
+        <strong>1. Industry benchmark research</strong> — calibrated against real data from service-based and e-comm skincare accounts, not generic averages.<br>
+        <strong>2. Instagram algorithm priority signals</strong> — Tier 1 metrics (saves, shares, retention) reflect what Instagram demonstrably rewards with distribution.<br>
+        <strong>3. Semi-aggressive calibration by design</strong> — a benchmark you hit effortlessly every month tells you nothing. On Track means genuinely building momentum.<br><br>
+        Full methodology: <a href="https://tools.scrollmedia.co/performance-targets.html" target="_blank" style="color:var(--azure);font-weight:700;">tools.scrollmedia.co/performance-targets.html</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ── 03: STRATEGY + CHANNELS ── -->
+  <div class="section" id="s-strategy">
+    <div class="sec-hd">
+      <div class="sec-n">03</div>
+      <div>
+        <div class="sec-title">Strategic direction and how the channels fit</div>
+        <div class="sec-sub">What Scroll Media is building — and where organic sits in the broader system</div>
+      </div>
+    </div>
+
+    <div class="g3">
+      <div class="goal-box">
+        <div class="gb-num">Goal 01</div>
+        <div class="gb-ttl">Build skincare authority</div>
+        <div class="gb-bdy">Education-first content that positions Sylvia as the go-to expert for perimenopause and hormonal skin</div>
+      </div>
+      <div class="goal-box">
+        <div class="gb-num">Goal 02</div>
+        <div class="gb-ttl">Drive product discovery</div>
+        <div class="gb-bdy">Introduce the product line with context — ingredient education, real results, Sylvia's story as proof</div>
+      </div>
+      <div class="goal-box">
+        <div class="gb-num">Goal 03</div>
+        <div class="gb-ttl">Build the community</div>
+        <div class="gb-bdy">Normalize perimenopause conversations. Create a space where women feel seen and supported</div>
+      </div>
+    </div>
+
+    <div class="g3 mt1">
+      <div class="card" style="border-top:3px solid var(--azure);">
+        <div class="ct">Organic Social</div>
+        <div class="cb">Trust, authority, audience building. Makes every other channel more effective.</div>
+        <div style="margin-top:8px;"><span class="badge b-blue">Scroll Media scope</span></div>
+      </div>
+      <div class="card">
+        <div class="ct">Website &amp; E-Comm</div>
+        <div class="cb">The destination organic traffic lands on. Product page and quiz quality determine whether warm traffic converts.</div>
+        <div style="margin-top:8px;"><span class="badge b-gray">CMO scope</span></div>
+      </div>
+      <div class="card">
+        <div class="ct">Paid Ads</div>
+        <div class="cb">The direct conversion layer. <strong>Purpose-built content — not repurposed organic.</strong> Different job, different format, different CTA.</div>
+        <div style="margin-top:8px;"><span class="badge b-gray">CMO scope</span></div>
+      </div>
+    </div>
+
+    <div class="cl cl-amber mt1">
+      <div class="ct">On running organic content as paid ads</div>
+      <div class="cb">Organic is built to earn algorithmic reach and trust over time. Paid needs to close on first contact — transactional, direct, single CTA. Running organic as paid dilutes both strategies. Scroll Media can create paid-specific formats as an add-on deliverable.</div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ── 04: Q2 PROPOSAL ── -->
+  <div class="section" id="s-q2">
+    <div class="sec-hd">
+      <div class="sec-n">04</div>
+      <div>
+        <div class="sec-title">Q2 proposal — Monthly Product Focus System</div>
+        <div class="sec-sub">A focused campaign loop tying organic content directly to product revenue</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ct">3 hero products per month. Everything ladders to them.</div>
+      <div class="cb">Instead of general content, we align on 3 featured products each month. All organic posts, CTAs, Stories, and lead magnets rotate around those products. Every viewer touchpoint reinforces the same products — building familiarity, intent, and purchase confidence MoM.</div>
+    </div>
+
+    <div class="flow mt2">
+      <div class="flow-step"><div class="fi">📚</div><div class="ft">Educate</div><div class="fs">Reels + Carousels</div></div>
+      <div class="flow-step"><div class="fi">🔗</div><div class="ft">CTA</div><div class="fs">Product page</div></div>
+      <div class="flow-step"><div class="fi">🎁</div><div class="ft">Lead Magnet</div><div class="fs">ManyChat DM</div></div>
+      <div class="flow-step"><div class="fi">📧</div><div class="ft">Email Capture</div><div class="fs">Opt-in gate</div></div>
+      <div class="flow-step"><div class="fi">💰</div><div class="ft">Nurture → Buy</div><div class="fs">Email sequence</div></div>
+    </div>
+
+    <div class="g2 mt1">
+      <div class="cl cl-azure">
+        <div class="ct">CTA &amp; bio optimization</div>
+        <div class="cb">Bio link should not go to the homepage. Rotate monthly to the featured Shopify PDP or a focused landing page. One product, one CTA, one clear action for the viewer.</div>
+      </div>
+      <div class="cl cl-azure">
+        <div class="ct">Lead magnet + ManyChat loop</div>
+        <div class="cb">Monthly lead magnet tied to the product focus — a checklist or guide. Gate it with email opt-in. ManyChat trigger: "Comment GLOW → DM guide." Feeds the email list. Builds on the Skin Quiz system already in place.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ── 05: PLATFORM UPDATE ── -->
+  <div class="section" id="s-platform">
+    <div class="sec-hd">
+      <div class="sec-n">05</div>
+      <div>
+        <div class="sec-title">Platform update — announced this week</div>
+        <div class="sec-sub">Native product tagging inside Instagram Reels</div>
+      </div>
+    </div>
+
+    <div class="card-feat">
+      <span class="badge b-new">New · April 2026</span>
+      <h3>Native affiliate product tagging in Reels</h3>
+      <p>Viewers tap a product tag mid-Reel and land directly on the purchase page — no bio redirect, no extra steps. TikTok Shop on Instagram, with a more professional creator base behind it. For an e-commerce skincare brand built on education-to-conversion content, this is exactly the feature the strategy has been building toward.</p>
+      <div class="feat-specs">
+        <div><div class="fsv">30</div><div class="fsl">Products per Reel</div></div>
+        <div><div class="fsv">1-tap</div><div class="fsl">Viewer to purchase page</div></div>
+        <div><div class="fsv">0%</div><div class="fsl">Meta commission cut</div></div>
+      </div>
+    </div>
+
+    <div class="g2 mt2">
+      <div class="card">
+        <div class="ct">How it's different from old Instagram Shopping</div>
+        <div class="cb"><strong>Old:</strong> Brand tags its own posts → viewer lands on an in-app product page → clunky, minimal conversions. This is what we've tested before with limited results.<br><br><strong>New:</strong> Product tag lives inside the Reel. Viewer taps while watching → directly to the Shopify purchase page. The content and purchase moment are one.</div>
+      </div>
+      <div class="card">
+        <div class="ct">Why it's directly relevant to SBB</div>
+        <div class="cb">SBB's content — perimenopause education Reels, Sylvia's founder POV, before/after transformations — is exactly what this feature is built for. The Monthly Product Focus System becomes significantly more powerful when the featured product is tagged directly inside every education Reel.</div>
+      </div>
+    </div>
+
+    <div class="card-warn mt2">
+      <div style="font-size:15px;flex-shrink:0;margin-top:1px;">⚠️</div>
+      <p><strong>Prerequisite — CMO action item:</strong> SBB's products need to be in Meta's commerce catalog (Shopify ↔ Meta integration) before this can be used. Not Scroll Media scope — but it needs to be on the Q2 roadmap now. Feature rolling out through spring 2026.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- ── 06: SCOPE ── -->
+  <div class="section" id="s-scope">
+    <div class="sec-hd">
+      <div class="sec-n">06</div>
+      <div>
+        <div class="sec-title">Scope clarity</div>
+        <div class="sec-sub">Clean lanes prevent overlap and missed execution</div>
+      </div>
+    </div>
+
+    <div class="scope-wrap">
+      <div class="scope-hd"><span>Deliverable</span><span>Owner</span></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dg"></span>Organic content strategy, scripting, editing, and publishing</div><div class="scope-owner">Scroll Media</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dg"></span>Monthly performance reporting and strategy adjustments</div><div class="scope-owner">Scroll Media</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dg"></span>Monthly product focus alignment and content calendar</div><div class="scope-owner">Scroll Media</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot db"></span>Landing pages — product-specific and lead magnet builds</div><div class="scope-owner">Add-on</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot db"></span>Paid-specific content creation (purpose-built for conversion)</div><div class="scope-owner">Add-on</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot db"></span>ManyChat DM automation setup and lead magnet delivery</div><div class="scope-owner">Add-on</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dgr"></span>Paid ads strategy and campaign management</div><div class="scope-owner">CMO / External</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dgr"></span>Website and e-commerce experience</div><div class="scope-owner">CMO / External</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dgr"></span>Meta commerce catalog setup (Shopify integration)</div><div class="scope-owner">CMO / External</div></div>
+      <div class="scope-row"><div class="scope-item"><span class="sdot dgr"></span>Email marketing and nurture sequences</div><div class="scope-owner">CMO / External</div></div>
+    </div>
+    <p class="muted" style="margin-top:6px;">Green = Scroll Media scope &nbsp;·&nbsp; Blue = available add-on &nbsp;·&nbsp; Gray = outside engagement</p>
+  </div>
+
+  <hr class="div">
+
+  <!-- ── 07: NEXT STEPS ── -->
+  <div class="section" id="s-steps">
+    <div class="sec-hd">
+      <div class="sec-n">07</div>
+      <div>
+        <div class="sec-title">What we leave this meeting with</div>
+        <div class="sec-sub">Five decisions needed to execute Q2 with alignment</div>
+      </div>
+    </div>
+
+    <div class="steps-wrap">
+      <div class="step">
+        <div class="sn">1</div>
+        <div>
+          <div class="st">Share the Q2 product and campaign roadmap</div>
+          <div class="sb">What products are being prioritized? Any launches or promotions planned? What does success look like at end of June? Scroll Media needs this to build content calendars against real business objectives.</div>
+          <span class="so-tag so-cmo">CMO action item</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <div>
+          <div class="st">Confirm the first 3 hero products — April / May</div>
+          <div class="sb">Identify the initial product set to anchor the Monthly Product Focus System. Scroll Media will build April's content calendar and CTA strategy around them.</div>
+          <span class="so-tag so-both">Both teams</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">3</div>
+        <div>
+          <div class="st">Establish a monthly pre-calendar sync</div>
+          <div class="sb">A 20–30 minute call before each month's calendar is finalized. CMO shares product priorities and campaign plans. Scroll Media aligns content accordingly. Eliminates surprise misalignment before it reaches client calls.</div>
+          <span class="so-tag so-scroll">Scroll Media to initiate</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">4</div>
+        <div>
+          <div class="st">Initiate Meta commerce catalog setup</div>
+          <div class="sb">Required for Instagram Reels affiliate tagging. SBB's Shopify products need to be connected to Meta's commerce catalog. A high-value Q2 unlock — needs to be on the roadmap now.</div>
+          <span class="so-tag so-cmo">CMO action item</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">5</div>
+        <div>
+          <div class="st">Scope add-ons (if applicable)</div>
+          <div class="sb">Landing pages, lead magnets, ManyChat setup, and paid-specific content are all available as separate deliverables. High-leverage additions that directly accelerate the e-commerce transition.</div>
+          <span class="so-tag so-both">Both teams</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER: dark bg → white PNG logo -->
+<footer>
+  <img class="footer-logo"
+       src="https://reports.scrollmedia.co/assets/scroll-media-logo-white.png"
+       alt="Scroll Media"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+  <span class="footer-logo-fb">Scroll Media</span>
+  <p>
+    Prepared by Scroll Media · Skin by Brownlee &amp; Co. · April 2026<br>
+    Data: Instagram Insights · Metricool · Scroll Media Scoring Framework v2.0
+  </p>
+</footer>
+
+<script>
+  const bar = document.getElementById('prog');
+  const sections = ['s-performance','s-targets','s-strategy','s-q2','s-platform','s-scope','s-steps'];
+  const btns = document.querySelectorAll('.sn-btn');
+
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
+
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 120) current = id;
+    });
+    btns.forEach(b => {
+      b.classList.toggle('active', b.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>

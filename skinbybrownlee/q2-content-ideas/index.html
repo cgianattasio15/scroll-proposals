@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBB Q2 Content Ideas — Scroll Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --shadow:#151516; --azure:#0c3387; --azure-mid:#1a4db0; --lucid:#cbe9ff;
+      --hi:#e2ed7a; --porcelain:#f2f3f4; --ghost:#fafdff;
+      --t1:#151516; --t2:#4a4a4c; --t3:#888890;
+      --border:rgba(21,21,22,0.08); --border-md:rgba(21,21,22,0.14);
+      --ret:#7c3aed; --ret-bg:#f5f3ff;
+      --sav:#0c3387; --sav-bg:#eff6ff;
+      --sha:#059669; --sha-bg:#ecfdf5;
+      --proven:#0c3387; --proven-bg:#eff6ff;
+      --invent:#be185d; --invent-bg:#fdf2f8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Source Sans 3',-apple-system,sans-serif; background:var(--ghost); color:var(--t1); line-height:1.65; -webkit-font-smoothing:antialiased; }
+
+    nav { position:sticky; top:0; background:rgba(250,253,255,0.96); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); z-index:100; }
+    .nav-inner { max-width:920px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:52px; }
+    .nav-l { display:flex; align-items:center; gap:10px; }
+    .nav-logo { height:20px; }
+    .nav-div { width:1px; height:14px; background:var(--border-md); }
+    .nav-client { font-size:13px; color:var(--t3); }
+    .nav-r { font-size:12px; color:var(--t3); }
+
+    .sec-nav { position:sticky; top:52px; background:rgba(250,253,255,0.97); border-bottom:1px solid var(--border); z-index:99; }
+    .sni { max-width:920px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; gap:4px; height:38px; overflow-x:auto; scrollbar-width:none; }
+    .sni::-webkit-scrollbar { display:none; }
+    .snb { flex-shrink:0; font-size:12px; font-weight:600; color:var(--t3); background:none; border:none; padding:3px 10px; border-radius:6px; cursor:pointer; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; gap:4px; transition:background .15s,color .15s; }
+    .snb:hover { background:var(--porcelain); color:var(--t1); }
+    .snb.ra { background:var(--ret-bg); color:var(--ret); }
+    .snb.sa { background:var(--sav-bg); color:var(--sav); }
+    .snb.ha { background:var(--sha-bg); color:var(--sha); }
+
+    .wrap { max-width:920px; margin:0 auto; padding:2rem 2rem 5rem; }
+
+    .hero { background:var(--shadow); border-radius:16px; padding:2.5rem 3rem; margin-bottom:1.75rem; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; top:-80px; right:-80px; width:340px; height:340px; background:radial-gradient(circle,rgba(12,51,135,.5) 0%,transparent 65%); pointer-events:none; }
+    .hero-top { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
+    .hero-logo { height:22px; }
+    .hero-badge { background:var(--hi); color:var(--shadow); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 13px; border-radius:20px; }
+    .hero h1 { font-size:clamp(20px,2.8vw,30px); font-weight:800; color:#fff; line-height:1.2; letter-spacing:-.025em; margin-bottom:.625rem; }
+    .hero h1 em { color:var(--lucid); font-style:normal; }
+    .hero-sub { font-size:14px; color:rgba(255,255,255,.5); max-width:560px; line-height:1.65; }
+    .hero-meta { display:flex; gap:2rem; flex-wrap:wrap; border-top:1px solid rgba(255,255,255,.1); padding-top:1.375rem; margin-top:1.5rem; }
+    .hml { font-size:10px; color:rgba(255,255,255,.3); text-transform:uppercase; letter-spacing:.07em; margin-bottom:2px; }
+    .hmv { font-size:13px; color:rgba(255,255,255,.8); font-weight:600; }
+
+    .path-legend { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.5rem; }
+    .pl-title { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; color:var(--t3); margin-bottom:.75rem; }
+    .pl-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .pl-card { border-radius:10px; padding:1rem 1.1rem; }
+    .pl-proven { background:var(--proven-bg); }
+    .pl-invent { background:var(--invent-bg); }
+    .pl-label { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin-bottom:5px; }
+    .pll-p { color:var(--proven); } .pll-i { color:var(--invent); }
+    .pl-dot { width:7px; height:7px; border-radius:50%; }
+    .pl-body { font-size:13px; color:var(--t2); line-height:1.6; }
+
+    .theme-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:1.75rem; }
+    .theme-card { background:var(--shadow); border-radius:12px; padding:1.1rem 1.25rem; }
+    .tc-month { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.35); margin-bottom:3px; }
+    .tc-theme { font-size:15px; font-weight:800; color:#fff; margin-bottom:8px; letter-spacing:-.015em; }
+    .tc-prods { display:flex; flex-direction:column; gap:4px; }
+    .tcp { font-size:12px; color:rgba(255,255,255,.6); padding:4px 8px; background:rgba(255,255,255,.07); border-radius:5px; }
+    .tcp.new { background:rgba(5,150,105,.2); color:#6ee7b7; }
+    .tcp.excl { background:rgba(12,51,135,.3); color:var(--lucid); }
+
+    .metric-section { margin-bottom:3rem; scroll-margin-top:106px; }
+    .metric-hd { border-radius:14px; padding:1.75rem 2rem; margin-bottom:1.25rem; }
+    .mh-ret { background:linear-gradient(135deg,var(--ret) 0%,#6d28d9 100%); }
+    .mh-sav { background:linear-gradient(135deg,var(--azure) 0%,var(--azure-mid) 100%); }
+    .mh-sha { background:linear-gradient(135deg,#059669 0%,#10b981 100%); }
+    .m-label { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:rgba(255,255,255,.4); margin-bottom:4px; }
+    .m-title { font-size:22px; font-weight:800; color:#fff; letter-spacing:-.02em; margin-bottom:.625rem; }
+    .m-sub { font-size:14px; color:rgba(255,255,255,.6); line-height:1.65; max-width:640px; }
+
+    .drivers { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.25rem; }
+    .d-label { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; margin-bottom:.75rem; }
+    .dl-ret { color:var(--ret); } .dl-sav { color:var(--sav); } .dl-sha { color:var(--sha); }
+    .d-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .d-item { background:var(--porcelain); border-radius:10px; padding:1rem 1.1rem; }
+    .d-num { font-size:22px; font-weight:800; letter-spacing:-.03em; line-height:1; margin-bottom:4px; }
+    .dn-ret { color:var(--ret); } .dn-sav { color:var(--sav); } .dn-sha { color:var(--sha); }
+    .d-title { font-size:13px; font-weight:700; color:var(--t1); margin-bottom:3px; }
+    .d-body { font-size:12px; color:var(--t3); line-height:1.55; }
+
+    .idea-card { background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-bottom:1rem; }
+    .idea-card:last-child { margin-bottom:0; }
+    .idea-hd { padding:1.25rem 1.5rem 0; display:flex; align-items:flex-start; gap:12px; }
+    .idea-n { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; margin-top:1px; }
+    .in-ret { background:var(--ret-bg); color:var(--ret); }
+    .in-sav { background:var(--sav-bg); color:var(--sav); }
+    .in-sha { background:var(--sha-bg); color:var(--sha); }
+    .idea-title { font-size:17px; font-weight:800; letter-spacing:-.02em; margin-bottom:5px; }
+    .idea-tags { display:flex; gap:5px; flex-wrap:wrap; }
+    .tag { font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.04em; }
+    .t-ret { background:var(--ret-bg); color:var(--ret); }
+    .t-sav { background:var(--sav-bg); color:var(--sav); }
+    .t-sha { background:var(--sha-bg); color:var(--sha); }
+    .t-neu { background:var(--porcelain); color:var(--t3); }
+    .t-proven { background:var(--proven-bg); color:var(--proven); }
+    .t-invent { background:var(--invent-bg); color:var(--invent); }
+    .t-apr { background:#fef9c3; color:#854d0e; }
+    .t-may { background:#dcfce7; color:#14532d; }
+    .t-jun { background:#e0f2fe; color:#0c4a6e; }
+
+    .idea-body { padding:1rem 1.5rem 0; }
+    .idea-why { font-size:14px; color:var(--t2); line-height:1.65; margin-bottom:1rem; }
+    .hooks-label { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; color:var(--t3); margin-bottom:7px; }
+    .hook-list { display:flex; flex-direction:column; gap:6px; }
+    .hook-item { font-size:13px; color:var(--t1); font-style:italic; background:var(--porcelain); border-radius:8px; padding:9px 13px; line-height:1.5; border-left:3px solid transparent; }
+    .hi-ret { border-left-color:var(--ret); } .hi-sav { border-left-color:var(--sav); } .hi-sha { border-left-color:var(--sha); }
+
+    .exec { margin-top:1rem; padding:1rem 1.5rem; background:var(--porcelain); border-top:1px solid var(--border); }
+    .exec-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+    .el { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--t3); margin-bottom:2px; }
+    .ev { font-size:13px; font-weight:600; color:var(--t1); }
+
+    hr.div { border:none; border-top:1px solid var(--border); margin:2rem 0; }
+    .muted { font-size:12px; color:var(--t3); margin-top:10px; line-height:1.55; }
+
+    footer { background:var(--shadow); padding:2rem; text-align:center; }
+    footer img { height:22px; display:block; margin:0 auto .5rem; }
+    footer p { font-size:12px; color:rgba(255,255,255,.3); line-height:1.8; }
+
+    @media(max-width:640px) {
+      .d-grid,.exec-grid,.pl-grid,.theme-strip { grid-template-columns:1fr; }
+      .hero { padding:1.75rem 1.5rem; }
+      .hero-top { flex-direction:column; gap:.5rem; }
+      .wrap { padding:1.5rem 1rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-l">
+      <img class="nav-logo" src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" onerror="this.style.display='none'">
+      <div class="nav-div"></div>
+      <span class="nav-client">Skin by Brownlee</span>
+    </div>
+    <div class="nav-r">Q2 Content Strategy · 2026</div>
+  </div>
+</nav>
+
+<div class="sec-nav">
+  <div class="sni">
+    <a class="snb" href="#s-retention">Retention %</a>
+    <a class="snb" href="#s-saves">Saves</a>
+    <a class="snb" href="#s-shares">Shares</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-top">
+      <img class="hero-logo" src="https://reports.scrollmedia.co/assets/scroll-media-logo-white.png" alt="Scroll Media" onerror="this.style.display='none'">
+      <div class="hero-badge">Q2 Content Strategy</div>
+    </div>
+    <h1>Content built to move<br><em>the metrics that matter</em></h1>
+    <p class="hero-sub">Three content ideas per metric — Retention %, Saves, and Shares — mapped to SBB's Q2 monthly themes and developed using two distinct approaches: formats proven to work in this niche, and original formats built to stand out.</p>
+    <div class="hero-meta">
+      <div><div class="hml">Client</div><div class="hmv">Skin by Brownlee &amp; Co.</div></div>
+      <div><div class="hml">Focus Metrics</div><div class="hmv">Retention · Saves · Shares</div></div>
+      <div><div class="hml">Q2 Period</div><div class="hmv">April · May · June 2026</div></div>
+    </div>
+  </div>
+
+  <div class="path-legend">
+    <div class="pl-title">Two approaches used to develop every idea</div>
+    <div class="pl-grid">
+      <div class="pl-card pl-proven">
+        <div class="pl-label pll-p"><div class="pl-dot" style="background:var(--proven)"></div>Proven Format</div>
+        <div class="pl-body">Adapted from formats with demonstrated performance in skincare, wellness, and adjacent e-commerce niches. Borrowed signal, applied to SBB's specific products and voice. Lower execution risk, faster to test.</div>
+      </div>
+      <div class="pl-card pl-invent">
+        <div class="pl-label pll-i"><div class="pl-dot" style="background:var(--invent)"></div>Pattern Break</div>
+        <div class="pl-body">Formats that haven't been done — or have been done very little — in the skincare space. Built to be distinctly SBB's own. Higher upside when it lands. These are the ideas that create a content identity, not just strong individual posts.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="theme-strip">
+    <div class="theme-card">
+      <div class="tc-month">April 2026</div>
+      <div class="tc-theme">The Dark Spot Issue</div>
+      <div class="tc-prods">
+        <div class="tcp">Toned Brightening Serum</div>
+        <div class="tcp">Radiant A Retinol</div>
+        <div class="tcp excl">Dark Spot Bundle — webinar exclusive Apr 20</div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tc-month">May 2026</div>
+      <div class="tc-theme">Glow Season</div>
+      <div class="tc-prods">
+        <div class="tcp">Toned Brightening Serum</div>
+        <div class="tcp">Broad Beam Glow 50 SPF</div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tc-month">June 2026</div>
+      <div class="tc-theme">The Reset</div>
+      <div class="tc-prods">
+        <div class="tcp new">Brightening Peel Pads — new launch</div>
+        <div class="tcp">Broad Beam Glow 50 SPF</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETENTION -->
+  <div class="metric-section" id="s-retention">
+    <div class="metric-hd mh-ret">
+      <div class="m-label">Metric 01</div>
+      <div class="m-title">Retention %</div>
+      <div class="m-sub">The percentage of a Reel watched before drop-off. SBB sits at 24% against a 65–80% Rise-stage target. This is a hook and opening architecture problem, not a topic problem — March's top Reel hit 61.3%, confirming the audience will stay when the opening delivers. Every idea below is built around the first 1.5 seconds and visual momentum through to the end.</div>
+    </div>
+    <div class="drivers">
+      <div class="d-label dl-ret">What drives high retention</div>
+      <div class="d-grid">
+        <div class="d-item"><div class="d-num dn-ret">1.5s</div><div class="d-title">The decision window</div><div class="d-body">50% of viewers drop off in the first three seconds. The hook must create immediate curiosity, urgency, or a pattern interrupt before the caption overlay even appears.</div></div>
+        <div class="d-item"><div class="d-num dn-ret">7–20s</div><div class="d-title">Optimal length</div><div class="d-body">Reels under 30 seconds achieve the highest completion rates. Short enough to loop, long enough to deliver one sharp idea. Zero filler — every second must earn its place.</div></div>
+        <div class="d-item"><div class="d-num dn-ret">3s</div><div class="d-title">Cut frequency</div><div class="d-body">Jump cuts every 1.5–3 seconds average 32% higher engagement than single-shot video. Static shots beyond 4 seconds are exit points. Visual momentum is non-negotiable.</div></div>
+      </div>
+      <p class="muted">Key principles: Start mid-action, never mid-introduction. Layer on-screen text as a second hook — half of Instagram video is watched on mute. No slow pans, no "hey guys," no context-setting before the point.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-ret">1</div>
+        <div>
+          <div class="idea-title">The Villain Reveal</div>
+          <div class="idea-tags">
+            <span class="tag t-ret">Retention</span><span class="tag t-sha">Shares</span>
+            <span class="tag t-proven">Proven Format</span>
+            <span class="tag t-neu">Reel · 10–15 sec</span><span class="tag t-apr">April</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Format origin:</strong> The "this product is hurting you" cold open is one of the highest-performing retention hooks in the skincare and wellness space — proven across dermatology creators, supplement brands, and e-commerce beauty accounts. The pattern: hold up something the audience owns → challenge its safety → reveal the better alternative. Adapted here for April's Dark Spot Issue theme.<br><br><strong>Execution:</strong> Cold open — Sylvia holds up a recognizable drugstore brightening product or popular SPF. On-screen text: <em>"This is making your dark spots worse."</em> No intro, no warmup. The viewer immediately needs to know if they own this product. Three seconds in she pivots: here's what's actually in it and why it's failing you — lands on Toned Brightening Serum or Radiant A Retinol as the contrast. The fear of being wrong about something in their bathroom is the retention engine. Shareable because women will send this to a friend who owns the same product.</div>
+        <div class="hooks-label">Hook options — test all three</div>
+        <div class="hook-list">
+          <div class="hook-item hi-ret">"The SPF you're wearing is making your dark spots worse."</div>
+          <div class="hook-item hi-ret">"Most brightening serums don't have enough niacinamide to actually do anything."</div>
+          <div class="hook-item hi-ret">"This ingredient is in half your skincare. It's the reason dark spots keep coming back."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Reel · 10–15 sec</div></div>
+          <div><div class="el">Production</div><div class="ev">iPhone or shoot day</div></div>
+          <div><div class="el">Featured Product</div><div class="ev">Toned Brightening Serum</div></div>
+          <div><div class="el">CTA</div><div class="ev">Bio → Serum PDP</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-ret">2</div>
+        <div>
+          <div class="idea-title">The SPF Education Drop</div>
+          <div class="idea-tags">
+            <span class="tag t-ret">Retention</span><span class="tag t-sav">Saves</span>
+            <span class="tag t-proven">Proven Format</span>
+            <span class="tag t-neu">Reel · 15–20 sec</span><span class="tag t-may">May</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Format origin:</strong> The "numbered checklist" Reel is the most reliable retention format in beauty content. The defined endpoint creates a completion loop — viewers stay because there are three things, they've seen one and two, and they need to see three. Proven across skincare, fitness, and wellness accounts. Adapted here for Broad Beam Glow 50 SPF as May's Glow Season anchor product.<br><br><strong>Execution:</strong> Sylvia to camera, no intro: <em>"Before you apply SPF this summer, check for these three things."</em> Three callouts with on-screen text — fast, one per cut, plain language. Ends with: <em>"If your SPF doesn't have these, it's not protecting your glow."</em> Natural product placement — Broad Beam is the recommendation. The checklist format also earns saves: people bookmark this before shopping for summer SPF.</div>
+        <div class="hooks-label">Hook options — test all three</div>
+        <div class="hook-list">
+          <div class="hook-item hi-ret">"Your SPF is missing this — and it's why your skin looks dull by noon."</div>
+          <div class="hook-item hi-ret">"Three things your summer SPF needs to actually protect your glow."</div>
+          <div class="hook-item hi-ret">"Not all SPFs are built for glow season. Here's how to pick the right one."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Reel · 15–20 sec</div></div>
+          <div><div class="el">Production</div><div class="ev">iPhone or shoot day</div></div>
+          <div><div class="el">Featured Product</div><div class="ev">Broad Beam Glow 50 SPF</div></div>
+          <div><div class="el">CTA</div><div class="ev">"Save this before shopping"</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-ret">3</div>
+        <div>
+          <div class="idea-title">The Live Product Audit</div>
+          <div class="idea-tags">
+            <span class="tag t-ret">Retention</span><span class="tag t-sha">Shares</span>
+            <span class="tag t-invent">Pattern Break</span>
+            <span class="tag t-neu">Reel · 20–30 sec</span><span class="tag t-jun">June</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Why this is a Pattern Break:</strong> Ingredient label reads exist in skincare content — but they're almost always slow, educational, and framed as information delivery. Nobody has turned this into a high-stakes, real-time format where the product either passes or fails live on camera. The tension of "will it pass?" turns a skincare lesson into a suspense arc — which is the retention mechanism.<br><br><strong>Execution:</strong> Sylvia holds up the Brightening Peel Pads (June launch). On-screen text: <em>"I'm reading this label live. Here's what I'm looking for."</em> She flips it over, reads the ingredients fast, calls out what she's checking — specific, no script, real time. Product passes. <em>"That's why I made this."</em> Under 30 seconds. The live audit works especially well for a product launch because it creates first-impression credibility — this isn't a polished ad, it's Sylvia's expert eye in real time. Audience can't scroll because they need to see if the product passes.</div>
+        <div class="hooks-label">Hook options — test all three</div>
+        <div class="hook-list">
+          <div class="hook-item hi-ret">"I'm reading this label live. Let's see if it's actually worth it."</div>
+          <div class="hook-item hi-ret">"New launch. I'm auditing it in real time — here's what I'm looking for."</div>
+          <div class="hook-item hi-ret">"I only recommend products that pass this test. Does this one?"</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Reel · 20–30 sec</div></div>
+          <div><div class="el">Production</div><div class="ev">iPhone — single take</div></div>
+          <div><div class="el">Featured Product</div><div class="ev">Brightening Peel Pads</div></div>
+          <div><div class="el">CTA</div><div class="ev">Bio → Peel Pads PDP</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- SAVES -->
+  <div class="metric-section" id="s-saves">
+    <div class="metric-hd mh-sav">
+      <div class="m-label">Metric 02</div>
+      <div class="m-title">Saves</div>
+      <div class="m-sub">A save means the viewer plans to act on this content later — the strongest pre-purchase intent signal on the platform. SBB is at 152 saves per month against a 300 Rise-stage floor, and the number has been flat for two months. The fix is format and framing — carousels generate 2–3× more saves than Reels, and content needs to function as a reference tool, not just education.</div>
+    </div>
+    <div class="drivers">
+      <div class="d-label dl-sav">What drives saves</div>
+      <div class="d-grid">
+        <div class="d-item"><div class="d-num dn-sav">8–12</div><div class="d-title">Carousel slide count</div><div class="d-body">Educational carousels with 8–12 slides consistently outperform shorter versions — they deliver enough depth to earn the bookmark. Every slide must add value. Filler kills completion rate and saves.</div></div>
+        <div class="d-item"><div class="d-num dn-sav">2–3×</div><div class="d-title">Carousels vs. Reels</div><div class="d-body">Carousels generate 2–3× more saves than Reels. The swipe mechanic creates dwell time and micro-commitments that video can't replicate. For save-first content, carousel is the format.</div></div>
+        <div class="d-item"><div class="d-num dn-sav">Utility</div><div class="d-title">The save trigger</div><div class="d-body">People save content they'll act on: routines, checklists, ingredient guides, diagnostic tools. The test: would someone screenshot this at the bathroom mirror or before placing an order?</div></div>
+      </div>
+      <p class="muted">Key principles: First slide names the value explicitly before the swipe. Last slide closes with a direct CTA — "Save this for later" works. Structure every carousel: problem → insight → steps → proof → CTA.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-sav">1</div>
+        <div>
+          <div class="idea-title">The Dark Spot Decoder</div>
+          <div class="idea-tags">
+            <span class="tag t-sav">Saves</span>
+            <span class="tag t-proven">Proven Format</span>
+            <span class="tag t-neu">Carousel · 10 slides</span><span class="tag t-apr">April</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Format origin:</strong> "Diagnostic guide" carousels are among the highest-saving formats in skincare — they give the viewer a decision-making tool, not just product information. Proven across med spa, dermatology, and skincare e-commerce accounts. The buying decision for dark spot products is complex and confusing — this carousel simplifies it into a reference people want saved.<br><br><strong>Execution:</strong> Slide 1: <em>"Not all dark spots are the same. Here's how to read yours."</em> Slides 2–4: three types of dark spots (sun damage, hormonal, post-inflammatory) with one-line visual description each. Slides 5–8: what actually treats each type — and what doesn't. Slide 9: Toned Brightening Serum and Radiant A Retinol positioned as the solution. Slide 10: <em>"Save this before your next skincare purchase."</em></div>
+        <div class="hooks-label">First slide hook options</div>
+        <div class="hook-list">
+          <div class="hook-item hi-sav">"Not all dark spots are the same. Here's how to read yours."</div>
+          <div class="hook-item hi-sav">"You've been treating the wrong type of dark spot. Save this."</div>
+          <div class="hook-item hi-sav">"3 types of dark spots. 3 completely different treatments. Which one do you have?"</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Carousel · 10 slides</div></div>
+          <div><div class="el">Production</div><div class="ev">Designed asset only</div></div>
+          <div><div class="el">Featured Products</div><div class="ev">Toned Serum · Retinol</div></div>
+          <div><div class="el">CTA</div><div class="ev">"Save before your next purchase"</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-sav">2</div>
+        <div>
+          <div class="idea-title">Glow Season AM / PM Routine — Cheat Sheet</div>
+          <div class="idea-tags">
+            <span class="tag t-sav">Saves</span>
+            <span class="tag t-proven">Proven Format</span>
+            <span class="tag t-neu">Carousel · 8 slides</span><span class="tag t-may">May</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Format origin:</strong> The "step-by-step routine" carousel is the most consistently high-saving format in skincare because it functions as a daily reference tool. The bathroom mirror use case makes saves almost automatic — viewers bookmark this to follow while building a new routine. Adapted here to anchor May's Glow Season products in a practical morning and night framework.<br><br><strong>Execution:</strong> Slide 1: <em>"Your Glow Season routine, AM and PM. Save this."</em> AM slides: cleanser → Toned Brightening Serum → Broad Beam Glow 50 SPF — one slide per step, plain-language ingredient rationale. PM slides: cleanser → moisturizer → SPF note for next morning. Final slide: glow results timeline (weeks 2, 4, 8) so viewers know what to expect. Products are the natural feature of the routine — not forced.</div>
+        <div class="hooks-label">First slide hook options</div>
+        <div class="hook-list">
+          <div class="hook-item hi-sav">"Your Glow Season routine, morning and night. Save this."</div>
+          <div class="hook-item hi-sav">"The exact AM/PM routine for glow season — step by step."</div>
+          <div class="hook-item hi-sav">"Summer skin starts with this routine. Save it before May."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Carousel · 8 slides</div></div>
+          <div><div class="el">Production</div><div class="ev">Designed asset only</div></div>
+          <div><div class="el">Featured Products</div><div class="ev">Toned Serum · Broad Beam SPF</div></div>
+          <div><div class="el">CTA</div><div class="ev">Bio → Serum + SPF PDPs</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-sav">3</div>
+        <div>
+          <div class="idea-title">The Peel Pad Owner's Manual</div>
+          <div class="idea-tags">
+            <span class="tag t-sav">Saves</span>
+            <span class="tag t-invent">Pattern Break</span>
+            <span class="tag t-neu">Carousel · 10 slides</span><span class="tag t-jun">June</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Why this is a Pattern Break:</strong> Product launch content in skincare almost always follows two formats: "look at our new product" announcements, or before/after results posts. Neither earns saves. An "owner's manual" for a new product is essentially unused in this space — but it positions the carousel as the thing you reference every time you use the product, not something you consume once and scroll past. People save it before the product even arrives.<br><br><strong>Execution:</strong> Framed as a literal owner's manual for the Brightening Peel Pads. Cover slide: <em>"The Brightening Peel Pads Owner's Manual — save this before you open the box."</em> Slides cover: what the pads actually do, who they're for, who should avoid them, frequency of use, what to layer with them, what not to layer, what to expect week 1 vs. week 4, and a one-page quick-reference summary at the end. This format earns saves before the viewer uses the product — and creates a functional reason to purchase: you want the manual so you can use it correctly.</div>
+        <div class="hooks-label">First slide hook options</div>
+        <div class="hook-list">
+          <div class="hook-item hi-sav">"The Brightening Peel Pads Owner's Manual — save this before you open the box."</div>
+          <div class="hook-item hi-sav">"New launch. Before you use it, read this."</div>
+          <div class="hook-item hi-sav">"Everything you need to know about Brightening Peel Pads — one place, saved."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Carousel · 10 slides</div></div>
+          <div><div class="el">Production</div><div class="ev">Designed asset only</div></div>
+          <div><div class="el">Featured Product</div><div class="ev">Brightening Peel Pads</div></div>
+          <div><div class="el">CTA</div><div class="ev">Bio → Peel Pads PDP (launch)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- SHARES -->
+  <div class="metric-section" id="s-shares">
+    <div class="metric-hd mh-sha">
+      <div class="m-label">Metric 03</div>
+      <div class="m-title">Shares</div>
+      <div class="m-sub">A DM send is the highest-weighted distribution signal in Instagram's 2026 algorithm — it tells the platform the content sparked a real connection between people. SBB is at 71 shares per month against a 200 Rise-stage floor. Shares require a fundamentally different content architecture than saves. The goal is the "I need to send this to someone" reaction. Design for the forward, not the like.</div>
+    </div>
+    <div class="drivers">
+      <div class="d-label dl-sha">What drives shares</div>
+      <div class="d-grid">
+        <div class="d-item"><div class="d-num dn-sha">DM</div><div class="d-title">DM sends are #1</div><div class="d-body">Instagram weights DM sends as the strongest distribution signal for Reels. Content built for the private "this reminded me of you" send — not a public tag — is the highest-value share action on the platform.</div></div>
+        <div class="d-item"><div class="d-num dn-sha">Feel</div><div class="d-title">3 share triggers</div><div class="d-body">The three types of content that get shared most: something relatable that validates a shared experience, something genuinely funny, or a strong opinion that makes someone think "I need to know if my friend agrees with this."</div></div>
+        <div class="d-item"><div class="d-num dn-sha">Short</div><div class="d-title">Under 15s for shares</div><div class="d-body">Shareable Reels are typically 7–15 seconds — short enough to watch in a group chat without context. The lower the friction to watch, the more likely someone forwards it.</div></div>
+      </div>
+      <p class="muted">Key principles: Ask "who would someone send this to?" before scripting anything. Strong opinions, relatable frustrations, and counterintuitive truths are the three most reliable share triggers in skincare. Build the tag or forward into the content itself — don't rely on a CTA to do it.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-sha">1</div>
+        <div>
+          <div class="idea-title">The Hot Take</div>
+          <div class="idea-tags">
+            <span class="tag t-sha">Shares</span><span class="tag t-ret">Retention</span>
+            <span class="tag t-proven">Proven Format</span>
+            <span class="tag t-neu">Reel · 10–15 sec</span><span class="tag t-apr">April</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Format origin:</strong> The "expert opinion with strong stance" Reel is one of the most reliably shareable formats across skincare, wellness, fitness, and finance content. Proven by dermatology creators (Dr. Dray, Doctorly), personal finance accounts, and e-comm skincare brands. Audiences share it to validate someone they agree with — or to get a friend's reaction to something bold. Adapted here around April's dark spot theme and Sylvia's 17-year credibility as the authority signal.<br><br><strong>Execution:</strong> Sylvia to camera, no intro, direct and confident. One strong skincare opinion, backed in 10 seconds with her credential. No hedging. Audience either completely agrees and sends it to a friend who needs to hear it — or disagrees and tags someone to debate it. Both reactions drive shares and comments. Zero production required — iPhone, good light, strong point of view.</div>
+        <div class="hooks-label">Hot takes tied to April's Dark Spot theme</div>
+        <div class="hook-list">
+          <div class="hook-item hi-sha">"SPF is the only true anti-aging product. Everything else is maintenance."</div>
+          <div class="hook-item hi-sha">"Most brightening serums don't have enough active ingredient to do anything. That's a label-reading problem, not a skincare problem."</div>
+          <div class="hook-item hi-sha">"Expensive skincare is not better skincare. The two most important products in your routine cost $20 combined."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Reel · 10–15 sec</div></div>
+          <div><div class="el">Production</div><div class="ev">iPhone — no setup needed</div></div>
+          <div><div class="el">Featured Products</div><div class="ev">Toned Serum · Retinol</div></div>
+          <div><div class="el">CTA</div><div class="ev">"Agree or disagree — drop it below"</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-sha">2</div>
+        <div>
+          <div class="idea-title">Skincare in Your 20s vs. Your 40s</div>
+          <div class="idea-tags">
+            <span class="tag t-sha">Shares</span><span class="tag t-ret">Retention</span>
+            <span class="tag t-proven">Proven Format</span>
+            <span class="tag t-neu">Reel · 10–15 sec</span><span class="tag t-may">May</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Format origin:</strong> "Then vs. now" comparison content is one of the most consistently shareable formats on Instagram across every niche — recognition of a shared lived experience is the forward trigger. Widely proven in fitness, parenting, and career content. Lightly used in skincare because most brand accounts won't make fun of their audience's past behavior. Sylvia can — she's the audience. Adapted here for May's Glow Season theme, naturally tied to summer prep.<br><br><strong>Execution:</strong> Fast-cut comparison. "Skincare at 22" side: bar soap, skipping SPF, sleeping in makeup — what every woman in SBB's audience did. "Skincare at 42" side: the Glow Season reality — Broad Beam SPF non-negotiable, Toned Serum in the routine. Mild humor, not mean-spirited. The "this is literally me" recognition is the share trigger. Filmable on iPhone by Sylvia in under 10 minutes.</div>
+        <div class="hooks-label">Hook options</div>
+        <div class="hook-list">
+          <div class="hook-item hi-sha">"Skincare in your 20s vs. skincare in your 40s. A horror story."</div>
+          <div class="hook-item hi-sha">"Things I did to my skin at 25 that I will not discuss."</div>
+          <div class="hook-item hi-sha">"My 22-year-old self vs. my 42-year-old self's summer skincare routine."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Reel · 10–15 sec</div></div>
+          <div><div class="el">Production</div><div class="ev">iPhone — minimal setup</div></div>
+          <div><div class="el">Featured Product</div><div class="ev">Broad Beam Glow 50 SPF</div></div>
+          <div><div class="el">CTA</div><div class="ev">Tag a friend who needs to see this</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-hd">
+        <div class="idea-n in-sha">3</div>
+        <div>
+          <div class="idea-title">The Client Text Screenshot</div>
+          <div class="idea-tags">
+            <span class="tag t-sha">Shares</span><span class="tag t-ret">Retention</span>
+            <span class="tag t-invent">Pattern Break</span>
+            <span class="tag t-neu">Reel · 15–20 sec</span><span class="tag t-jun">June</span>
+          </div>
+        </div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-why"><strong>Why this is a Pattern Break:</strong> Client testimonials in skincare almost always appear as formal before/afters or written reviews. Nobody in the skincare space has used real client text message screenshots as a Reel format — yet text screenshots are one of the most viral content types on Instagram across finance, fitness, and service businesses. The format works because it's unfiltered and specific: real words, real reactions, no production layer between the audience and the result.<br><br><strong>Execution:</strong> Sylvia opens with: <em>"I got this text this morning."</em> Camera cuts to a text screenshot from a real client reacting to their first week on the Brightening Peel Pads — raw, real, specific (something like "I can already see my skin is smoother, is that normal??"). Sylvia reacts, explains why what they're experiencing is exactly right, ties it to the June Reset theme. No formal CTA needed — the realness of the text is the share trigger. Women in SBB's audience will forward this to a friend who's been asking about peels or considering a skin reset. This can become a recurring series across Q2 — different client texts, different products, same format. <strong>Action item:</strong> Riley should collect real client texts with permission before June.</div>
+        <div class="hooks-label">Hook options</div>
+        <div class="hook-list">
+          <div class="hook-item hi-sha">"I got this text from a client this morning."</div>
+          <div class="hook-item hi-sha">"She texted me after day 5 on the Peel Pads. Here's what she said."</div>
+          <div class="hook-item hi-sha">"Real text. Real client. This is why I made these."</div>
+        </div>
+      </div>
+      <div class="exec">
+        <div class="exec-grid">
+          <div><div class="el">Format</div><div class="ev">Reel · 15–20 sec</div></div>
+          <div><div class="el">Production</div><div class="ev">iPhone — real client text needed</div></div>
+          <div><div class="el">Featured Product</div><div class="ev">Brightening Peel Pads</div></div>
+          <div><div class="el">CTA</div><div class="ev">Bio → Peel Pads PDP</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <img src="https://reports.scrollmedia.co/assets/scroll-media-logo-white.png" alt="Scroll Media" onerror="this.style.display='none'">
+  <p>Scroll Media · Skin by Brownlee &amp; Co. · Q2 Content Strategy · April 2026<br>Two-path approach: Proven Formats + Pattern Break · All ideas mapped to Q2 monthly themes and featured products</p>
+</footer>
+
+<script>
+  const sections = ['s-retention','s-saves','s-shares'];
+  const btns = document.querySelectorAll('.snb');
+  const cm = {'s-retention':'ra','s-saves':'sa','s-shares':'ha'};
+  window.addEventListener('scroll', () => {
+    let cur = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if(el && el.getBoundingClientRect().top <= 110) cur = id; });
+    btns.forEach(b => { b.classList.remove('ra','sa','ha'); const h = b.getAttribute('href').replace('#',''); if(h===cur) b.classList.add(cm[cur]); });
+  }, {passive:true});
+</script>
+</body>
+</html>

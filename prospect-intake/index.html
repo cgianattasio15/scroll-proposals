@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discovery Prep — Scroll Media</title>
+<link rel="icon" href="/scroll-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /*
+    Design reminder — Discovery Prep / Scheme B Light
+    Match the Carl's Deli onboarding form visual system exactly where possible: light-mode document surfaces,
+    sticky white nav, top scroll progress, editorial spacing, pill controls, structured section cards,
+    and mobile-first clarity. Preserve discovery form content and Formspree wiring exactly.
+  */
+
+  :root {
+    --shadow: #151516;
+    --azure: #0c3387;
+    --azure-mid: #1541a1;
+    --azure-light: #2a5fd4;
+    --lucid: #cbe9ff;
+    --highlighter: #e2ed7a;
+    --porcelain: #f2f3f4;
+    --ghost: #fafdff;
+    --surface-1: #ffffff;
+    --surface-2: #f6f8fb;
+    --surface-3: #eef2f7;
+    --surface-4: #edf1f6;
+    --border-subtle: rgba(21,21,22,0.08);
+    --border-mid: rgba(21,21,22,0.14);
+    --border-focus: rgba(12,51,135,0.32);
+    --text-primary: #151516;
+    --text-secondary: rgba(21,21,22,0.74);
+    --text-muted: rgba(21,21,22,0.52);
+    --text-dim: rgba(21,21,22,0.34);
+    --input-bg: rgba(242,243,244,0.92);
+    --input-bg-hover: rgba(235,239,244,1);
+    --input-border: rgba(21,21,22,0.12);
+    --success-bg: rgba(12,51,135,0.08);
+    --success-border: rgba(12,51,135,0.18);
+    --danger: #c84545;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --max-width: 760px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background:
+      radial-gradient(circle at top center, rgba(203,233,255,0.34) 0%, rgba(250,253,255,0.98) 28%, rgba(250,253,255,1) 62%),
+      linear-gradient(180deg, rgba(250,253,255,1) 0%, rgba(250,253,255,1) 100%);
+    color: var(--text-primary);
+    font-family: 'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, .section-title, .hero-eyebrow, .nav-tag, .field-num, .submit-btn {
+    font-family: 'Visby CF', 'Avenir Next', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--azure) 0%, var(--lucid) 100%);
+    z-index: 1000;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 68px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(21,21,22,0.08);
+    box-shadow: 0 1px 12px rgba(21,21,22,0.06);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo img {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .nav-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: rgba(21,21,22,0.46);
+    padding: 5px 12px;
+    border: 1px solid rgba(21,21,22,0.12);
+    border-radius: 100px;
+    background: rgba(250,253,255,0.92);
+  }
+
+  .hero {
+    padding: 72px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 780px;
+    height: 440px;
+    background: radial-gradient(ellipse at center, rgba(12,51,135,0.09) 0%, rgba(203,233,255,0.04) 44%, transparent 74%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(250,253,255,0) 0%, rgba(250,253,255,0.58) 82%, rgba(250,253,255,1) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(226,237,122,0.18);
+    border: 1px solid rgba(226,237,122,0.42);
+    color: var(--shadow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--azure);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.35rem, 6vw, 3.9rem);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -2.2px;
+    color: var(--shadow);
+    margin-bottom: 20px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto 34px;
+  }
+
+  .hero-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(21,21,22,0.08);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    box-shadow: 0 10px 24px rgba(21,21,22,0.05);
+  }
+
+  .hero-pill-icon { font-size: 0.85rem; }
+
+  .form-wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px 100px;
+  }
+
+  .form-card {
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(21,21,22,0.08);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 28px 90px rgba(21,21,22,0.08);
+    position: relative;
+  }
+
+  .form-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(203,233,255,0.08) 0%, rgba(255,255,255,0) 24%);
+  }
+
+  .form-progress {
+    height: 3px;
+    background: var(--surface-3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--azure) 0%, var(--lucid) 100%);
+    transition: width 0.35s ease;
+  }
+
+  .form-inner {
+    padding: 48px 48px 52px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-section { margin-bottom: 44px; }
+  .form-section:last-of-type { margin-bottom: 0; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: rgba(12,51,135,0.08);
+    border: 1px solid rgba(12,51,135,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--azure);
+  }
+
+  .section-step {
+    margin-left: auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .field-group { margin-bottom: 24px; }
+  .field-group:last-child { margin-bottom: 0; }
+
+  .field-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .field-num {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .field-question {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+
+  .field-required {
+    color: rgba(12,51,135,0.74);
+    font-size: 0.75rem;
+    margin-left: 2px;
+  }
+
+  .field-hint {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    margin-top: -4px;
+    padding-left: 26px;
+    line-height: 1.5;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-md);
+    padding: 13px 16px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="url"]::placeholder,
+  textarea::placeholder {
+    color: var(--text-dim);
+  }
+
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  input[type="url"]:hover,
+  textarea:hover,
+  select:hover {
+    background: var(--input-bg-hover);
+    border-color: rgba(21,21,22,0.18);
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: rgba(12,51,135,0.42);
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 0 0 3px rgba(12,51,135,0.10);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 104px;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(21,21,22,0.4)' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill-opt {
+    position: relative;
+  }
+
+  .pill-opt input[type="radio"],
+  .pill-opt input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .pill-opt label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1px solid var(--input-border);
+    border-radius: 100px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    line-height: 1.2;
+    background: rgba(255,255,255,0.78);
+  }
+
+  .pill-opt label:hover {
+    border-color: rgba(12,51,135,0.38);
+    background: rgba(12,51,135,0.06);
+    color: var(--text-primary);
+  }
+
+  .pill-opt input:checked + label {
+    background: rgba(12,51,135,0.10);
+    border-color: rgba(12,51,135,0.42);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 1px rgba(12,51,135,0.08);
+  }
+
+  .inline-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.84);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+  }
+
+  .inline-field:hover {
+    background: rgba(12,51,135,0.03);
+    border-color: rgba(12,51,135,0.24);
+  }
+
+  .inline-field input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--azure-mid);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .inline-field-label {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    flex: 1;
+    cursor: pointer;
+    line-height: 1.35;
+  }
+
+  .inline-field-sub {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .inline-fields-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-divider {
+    height: 1px;
+    background: var(--border-subtle);
+    margin: 40px 0;
+  }
+
+  .char-counter {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-align: right;
+    margin-top: 5px;
+  }
+
+  .submit-section {
+    padding: 36px 48px 48px;
+    background: linear-gradient(180deg, rgba(246,248,251,0.92) 0%, rgba(255,255,255,1) 100%);
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+    z-index: 1;
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--azure);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 17px 32px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 32px rgba(12,51,135,0.18);
+  }
+
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .submit-btn:hover {
+    background: var(--azure-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 36px rgba(12,51,135,0.22);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 24px rgba(12,51,135,0.18);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.82;
+    cursor: wait;
+  }
+
+  .submit-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .submit-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  .submit-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .submit-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+  }
+
+  .submit-meta-item svg {
+    width: 12px;
+    height: 12px;
+    opacity: 0.7;
+  }
+
+  #success-state {
+    display: none;
+    text-align: center;
+    padding: 80px 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .success-check {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-size: 2rem;
+    color: var(--azure);
+  }
+
+  #success-state h2 {
+    font-size: clamp(1.95rem, 4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+  }
+
+  #success-state p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .field-error {
+    font-size: 0.76rem;
+    color: var(--danger);
+    margin-top: 6px;
+    padding-left: 26px;
+    display: none;
+  }
+
+  .field-group.has-error input,
+  .field-group.has-error textarea,
+  .field-group.has-error select,
+  .field-group.has-error .inline-field,
+  .field-group.has-error .pill-opt label {
+    border-color: rgba(200,69,69,0.4);
+    box-shadow: 0 0 0 3px rgba(200,69,69,0.08);
+  }
+
+  .field-group.has-error .field-error {
+    display: block;
+  }
+
+  footer {
+    background: #ffffff;
+    padding: 28px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(21,21,22,0.08);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  footer img {
+    height: 20px;
+    width: auto;
+    display: block;
+    opacity: 0.55;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(21,21,22,0.35);
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .hero { padding: 52px 20px 44px; text-align: center; }
+    .hero-sub { font-size: 1rem; }
+    .form-wrap { padding: 0 12px 80px; }
+    .form-inner { padding: 32px 24px 36px; }
+    .submit-section { padding: 28px 24px 36px; }
+    .field-row { grid-template-columns: 1fr; }
+    #success-state { padding: 56px 24px 64px; }
+    footer { padding: 24px 20px; }
+  }
+
+  @media (max-width: 420px) {
+    .hero h1 { letter-spacing: -1.3px; }
+    .nav-tag { display: none; }
+    .hero-pill { font-size: 0.77rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <a href="https://tools.scrollmedia.co" class="nav-logo">
+    <img src="/scroll-media-logo.svg" alt="Scroll Media">
+  </a>
+  <div class="nav-right">
+    <span class="nav-tag">Discovery Prep</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-dot"></span>
+    Before We Meet
+  </div>
+  <h1>Let's get right to it.</h1>
+  <p class="hero-sub">Takes 90 seconds. Helps us skip the surface-level questions and show up to your discovery call with a real strategy — not a pitch deck.</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><span class="hero-pill-icon">📋</span> 13 questions</div>
+    <div class="hero-pill"><span class="hero-pill-icon">⏱</span> ~90 seconds</div>
+    <div class="hero-pill"><span class="hero-pill-icon">🔒</span> Sent directly to Chase</div>
+  </div>
+</section>
+
+<div class="form-wrap">
+  <div class="form-card">
+    <div class="form-progress">
+      <div class="form-progress-fill" id="form-progress-fill"></div>
+    </div>
+
+    <div id="success-state">
+      <div class="success-check">✓</div>
+      <h2>Got it. See you on the call.</h2>
+      <p>We'll review everything before we meet and come prepared with a real strategy, not a pitch.</p>
+    </div>
+
+    <form id="intake-form" novalidate>
+      <div class="form-inner">
+
+        <div class="form-section">
+          <div class="section-header">
+            <div class="section-icon">👤</div>
+            <span class="section-title">About You</span>
+            <span class="section-step">1 of 3</span>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group" id="fg-name">
+              <div class="field-header">
+                <span class="field-num">01</span>
+                <span class="field-question">Your name <span class="field-required">*</span></span>
+              </div>
+              <input type="text" id="name" name="name" placeholder="First Last" autocomplete="name" required>
+              <div class="field-error">This field is required.</div>
+            </div>
+            <div class="field-group" id="fg-business">
+              <div class="field-header">
+                <span class="field-num">02</span>
+                <span class="field-question">Business name <span class="field-required">*</span></span>
+              </div>
+              <input type="text" id="business" name="business" placeholder="Your Business" required>
+              <div class="field-error">This field is required.</div>
+            </div>
+          </div>
+
+          <div class="field-row" style="margin-top:16px;">
+            <div class="field-group" id="fg-instagram">
+              <div class="field-header">
+                <span class="field-num">03</span>
+                <span class="field-question">Instagram handle</span>
+              </div>
+              <input type="text" id="instagram" name="instagram" placeholder="@yourbusiness">
+            </div>
+            <div class="field-group" id="fg-website">
+              <div class="field-header">
+                <span class="field-num">04</span>
+                <span class="field-question">Website URL</span>
+              </div>
+              <input type="url" id="website" name="website" placeholder="https://yourbusiness.com">
+            </div>
+          </div>
+
+          <div class="field-row" style="margin-top:16px;">
+            <div class="field-group" id="fg-location">
+              <div class="field-header">
+                <span class="field-num">05</span>
+                <span class="field-question">City &amp; state <span class="field-required">*</span></span>
+              </div>
+              <input type="text" id="location" name="location" placeholder="Columbus, OH" required>
+              <div class="field-error">This field is required.</div>
+            </div>
+            <div class="field-group" id="fg-years">
+              <div class="field-header">
+                <span class="field-num">06</span>
+                <span class="field-question">Years in business</span>
+              </div>
+              <select id="years" name="years">
+                <option value="" disabled selected>Select range</option>
+                <option value="Less than 1 year">Less than 1 year</option>
+                <option value="1–2 years">1–2 years</option>
+                <option value="3–5 years">3–5 years</option>
+                <option value="6–10 years">6–10 years</option>
+                <option value="10+ years">10+ years</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-section">
+          <div class="section-header">
+            <div class="section-icon">🏢</div>
+            <span class="section-title">Your Business</span>
+            <span class="section-step">2 of 3</span>
+          </div>
+
+          <div class="field-group" id="fg-niche">
+            <div class="field-header">
+              <span class="field-num">07</span>
+              <span class="field-question">What type of business are you? <span class="field-required">*</span></span>
+            </div>
+            <select id="niche" name="niche" required>
+              <option value="" disabled selected>Select your category</option>
+              <option value="Med Spa / Aesthetics">Med Spa / Aesthetics</option>
+              <option value="Dermatologist / Skincare Clinic">Dermatologist / Skincare Clinic</option>
+              <option value="Doctor / Surgeon">Doctor / Surgeon</option>
+              <option value="Therapist / Physical Therapist">Therapist / Physical Therapist</option>
+              <option value="Coaching / Consulting">Coaching / Consulting</option>
+              <option value="Fitness Studio / Personal Training">Fitness Studio / Personal Training</option>
+              <option value="Home Builder / Contractor">Home Builder / Contractor</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Interior Design">Interior Design</option>
+              <option value="Restaurant / Café">Restaurant / Café</option>
+              <option value="Retail / E-Commerce">Retail / E-Commerce</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" style="margin-top:20px;" id="fg-revenue">
+            <div class="field-header">
+              <span class="field-num">08</span>
+              <span class="field-question">How does your business primarily generate revenue? <span class="field-required">*</span></span>
+            </div>
+            <p class="field-hint">This shapes the entire strategy — be honest.</p>
+            <div class="inline-fields-stack" id="revenue-group">
+              <label class="inline-field">
+                <input type="radio" name="revenue" value="Primarily B2C — direct to consumer (online or in-person)">
+                <span class="inline-field-label">Primarily B2C — direct to consumer (online or in-person)</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="revenue" value="Primarily B2B — selling to other businesses or referral-based">
+                <span class="inline-field-label">Primarily B2B — selling to other businesses or referral-based</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="revenue" value="Mix of both B2B and B2C">
+                <span class="inline-field-label">Mix of both B2B and B2C</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="revenue" value="Service-based — clients book or inquire directly">
+                <span class="inline-field-label">Service-based — clients book or inquire directly</span>
+              </label>
+            </div>
+            <div class="field-error">Please select an option.</div>
+          </div>
+
+          <div class="field-group" style="margin-top:20px;" id="fg-goal">
+            <div class="field-header">
+              <span class="field-num">09</span>
+              <span class="field-question">What's your #1 goal for social media in the next 6–12 months? <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group">
+              <div class="pill-opt">
+                <input type="radio" name="goal" id="goal-leads" value="Generate more leads / inquiries">
+                <label for="goal-leads">Generate more leads / inquiries</label>
+              </div>
+              <div class="pill-opt">
+                <input type="radio" name="goal" id="goal-authority" value="Build brand authority &amp; credibility">
+                <label for="goal-authority">Build brand authority &amp; credibility</label>
+              </div>
+              <div class="pill-opt">
+                <input type="radio" name="goal" id="goal-d2c" value="Grow direct-to-consumer (D2C) revenue">
+                <label for="goal-d2c">Grow D2C revenue</label>
+              </div>
+              <div class="pill-opt">
+                <input type="radio" name="goal" id="goal-awareness" value="Increase local brand awareness">
+                <label for="goal-awareness">Increase local awareness</label>
+              </div>
+              <div class="pill-opt">
+                <input type="radio" name="goal" id="goal-retention" value="Retain &amp; upsell existing clients">
+                <label for="goal-retention">Retain &amp; upsell clients</label>
+              </div>
+              <div class="pill-opt">
+                <input type="radio" name="goal" id="goal-launch" value="Launch or promote a new product / service">
+                <label for="goal-launch">Launch something new</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-section">
+          <div class="section-header">
+            <div class="section-icon">📱</div>
+            <span class="section-title">Social Media</span>
+            <span class="section-step">3 of 3</span>
+          </div>
+
+          <div class="field-group" id="fg-current-state">
+            <div class="field-header">
+              <span class="field-num">10</span>
+              <span class="field-question">Where are you at with social media right now? <span class="field-required">*</span></span>
+            </div>
+            <p class="field-hint">Be honest — this helps us skip the basics on the call.</p>
+            <div class="inline-fields-stack" id="state-group">
+              <label class="inline-field">
+                <input type="radio" name="current-state" value="Not posting consistently — no real strategy in place">
+                <span class="inline-field-label">Not posting consistently — no real strategy in place</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="current-state" value="Posting regularly but not seeing meaningful results">
+                <span class="inline-field-label">Posting regularly but not seeing meaningful results</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="current-state" value="Getting some traction — need to scale and systematize it">
+                <span class="inline-field-label">Getting some traction — need to scale and systematize it</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="current-state" value="Strong presence — need to convert it into actual revenue">
+                <span class="inline-field-label">Strong presence — need to convert it into actual revenue</span>
+              </label>
+              <label class="inline-field">
+                <input type="radio" name="current-state" value="Starting from scratch — brand new or dormant account">
+                <span class="inline-field-label">Starting from scratch — brand new or dormant account</span>
+              </label>
+            </div>
+            <div class="field-error" id="state-error">Please select an option.</div>
+          </div>
+
+          <div class="field-group" style="margin-top:20px;" id="fg-inspiration">
+            <div class="field-header">
+              <span class="field-num">11</span>
+              <span class="field-question">Name 1–2 brands whose social presence you admire</span>
+            </div>
+            <p class="field-hint">Can be in your industry or completely outside it. We use this to understand your aesthetic and content direction.</p>
+            <input type="text" id="inspiration" name="inspiration" placeholder="e.g. Glossier, Peloton, a local competitor...">
+          </div>
+
+          <div class="field-group" style="margin-top:20px;" id="fg-clv">
+            <div class="field-header">
+              <span class="field-num">12</span>
+              <span class="field-question">What's the average lifetime value of one of your clients?</span>
+            </div>
+            <p class="field-hint">Rough estimate is fine — this helps us model the ROI of social media for your business specifically.</p>
+            <select id="clv" name="clv">
+              <option value="" disabled selected>Select a range</option>
+              <option value="Under $500">Under $500</option>
+              <option value="$500 – $1,000">$500 – $1,000</option>
+              <option value="$1,000 – $2,500">$1,000 – $2,500</option>
+              <option value="$2,500 – $5,000">$2,500 – $5,000</option>
+              <option value="$5,000 – $10,000">$5,000 – $10,000</option>
+              <option value="$10,000 – $25,000">$10,000 – $25,000</option>
+              <option value="$25,000+">$25,000+</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+
+          <div class="field-group" style="margin-top:20px;" id="fg-bottleneck">
+            <div class="field-header">
+              <span class="field-num">13</span>
+              <span class="field-question">What's the biggest thing holding you back right now?</span>
+            </div>
+            <p class="field-hint">Content creation, strategy, time, knowing what to post, not seeing results — anything goes. The more specific, the better.</p>
+            <textarea id="bottleneck" name="bottleneck" placeholder="Be specific. The more context you give us, the more useful our call will be." rows="4" maxlength="600" oninput="updateCharCount(this)"></textarea>
+            <div class="char-counter"><span id="char-count">0</span> / 600</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="submit-section">
+        <button type="submit" class="submit-btn">
+          Submit &amp; See You on the Call
+          <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="submit-meta">
+          <div class="submit-meta-item">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M6 1a5 5 0 100 10A5 5 0 006 1zm0 9A4 4 0 116 2a4 4 0 010 8zm.5-6.5h-1v3l2.5 1.5.5-.8-2-1.2V3.5z" fill="currentColor"/></svg>
+            Takes ~90 seconds
+          </div>
+          <div class="submit-meta-item">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M9.5 1.5h-7A1 1 0 001.5 2.5v7a1 1 0 001 1h7a1 1 0 001-1v-7a1 1 0 00-1-1zm-3.5 7L2.5 5l.7-.7L6 7.1l3.8-3.8.7.7L6 8.5z" fill="currentColor"/></svg>
+            Responses go directly to Chase
+          </div>
+          <div class="submit-meta-item">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M6 1a5 5 0 100 10A5 5 0 006 1zM5 8.5l-2-2 .7-.7L5 7.1l3.3-3.3.7.7L5 8.5z" fill="currentColor"/></svg>
+            No spam, ever
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <img src="/scroll-media-logo.svg" alt="Scroll Media">
+    <p>&copy; 2026 Scroll Media. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  const TOTAL_REQUIRED = 6;
+
+  function updateFormProgress() {
+    let filled = 0;
+    if (document.getElementById('name').value.trim()) filled++;
+    if (document.getElementById('business').value.trim()) filled++;
+    if (document.getElementById('location').value.trim()) filled++;
+    if (document.getElementById('niche').value) filled++;
+    if (document.querySelector('input[name="revenue"]:checked')) filled++;
+    if (document.querySelector('input[name="current-state"]:checked')) filled++;
+    const pct = Math.round((filled / TOTAL_REQUIRED) * 100);
+    document.getElementById('form-progress-fill').style.width = pct + '%';
+  }
+
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', updateFormProgress);
+    el.addEventListener('change', updateFormProgress);
+  });
+
+  function updateCharCount(el) {
+    document.getElementById('char-count').textContent = el.value.length;
+  }
+
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('input', () => {
+      const group = el.closest('.field-group');
+      if (group) group.classList.remove('has-error');
+    });
+    el.addEventListener('change', () => {
+      const group = el.closest('.field-group');
+      if (group) group.classList.remove('has-error');
+      if (el.name === 'current-state' && document.getElementById('state-error')) {
+        document.getElementById('state-error').style.display = 'none';
+      }
+    });
+  });
+
+  document.querySelectorAll('.inline-field input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const stack = radio.closest('.inline-fields-stack');
+      if (stack) {
+        stack.querySelectorAll('.inline-field').forEach(f => {
+          f.style.borderColor = '';
+          f.style.background = '';
+          f.style.boxShadow = '';
+        });
+        const parent = radio.closest('.inline-field');
+        if (parent) {
+          parent.style.borderColor = 'rgba(12,51,135,0.42)';
+          parent.style.background = 'rgba(12,51,135,0.05)';
+          parent.style.boxShadow = '0 0 0 1px rgba(12,51,135,0.08)';
+        }
+      }
+      updateFormProgress();
+    });
+  });
+
+  document.getElementById('intake-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    const textRequired = [
+      { groupId: 'fg-name', inputId: 'name' },
+      { groupId: 'fg-business', inputId: 'business' },
+      { groupId: 'fg-location', inputId: 'location' },
+      { groupId: 'fg-niche', inputId: 'niche' },
+    ];
+
+    textRequired.forEach(f => {
+      const group = document.getElementById(f.groupId);
+      const input = document.getElementById(f.inputId);
+      if (!input || !input.value.trim()) {
+        if (group) group.classList.add('has-error');
+        valid = false;
+      } else {
+        if (group) group.classList.remove('has-error');
+      }
+    });
+
+    if (!document.querySelector('input[name="revenue"]:checked')) {
+      document.getElementById('fg-revenue').classList.add('has-error');
+      valid = false;
+    }
+
+    if (!document.querySelector('input[name="current-state"]:checked')) {
+      document.getElementById('fg-current-state').classList.add('has-error');
+      document.getElementById('state-error').style.display = 'block';
+      valid = false;
+    } else {
+      document.getElementById('state-error').style.display = 'none';
+    }
+
+    if (!valid) {
+      const firstError = document.querySelector('.has-error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const data = {
+      name: document.getElementById('name').value.trim(),
+      business: document.getElementById('business').value.trim(),
+      instagram: document.getElementById('instagram').value.trim(),
+      website: document.getElementById('website').value.trim(),
+      location: document.getElementById('location').value.trim(),
+      years: document.getElementById('years').value,
+      niche: document.getElementById('niche').value,
+      revenue: (document.querySelector('input[name="revenue"]:checked') || {}).value || '',
+      goal: (document.querySelector('input[name="goal"]:checked') || {}).value || '',
+      currentState: (document.querySelector('input[name="current-state"]:checked') || {}).value || '',
+      inspiration: document.getElementById('inspiration').value.trim(),
+      clv: document.getElementById('clv').value,
+      bottleneck: document.getElementById('bottleneck').value.trim(),
+      submittedAt: new Date().toLocaleString(),
+    };
+
+    document.getElementById('form-progress-fill').style.width = '100%';
+
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const payload = {
+      _subject: `Discovery Prep — ${data.business}`,
+      Name: data.name,
+      Business: data.business,
+      Instagram: data.instagram || '—',
+      Website: data.website || '—',
+      Location: data.location,
+      'Years in Business': data.years || '—',
+      Niche: data.niche,
+      'Revenue Model': data.revenue || '—',
+      'Primary Goal': data.goal || '—',
+      'Current Social State': data.currentState || '—',
+      'Brand Inspiration': data.inspiration || '—',
+      'Client Lifetime Value (CLV)': data.clv || '—',
+      'Biggest Bottleneck': data.bottleneck || '—',
+      'Submitted At': data.submittedAt,
+    };
+
+    fetch('https://formspree.io/f/xwvrwanz', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(function(response) {
+      if (response.ok) {
+        document.getElementById('intake-form').style.display = 'none';
+        document.getElementById('success-state').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit &amp; See You on the Call <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        alert('Something went wrong. Please try again or email chase@getscrollmedia.com directly.');
+      }
+    })
+    .catch(function() {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Submit &amp; See You on the Call <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      alert('Something went wrong. Please try again or email chase@getscrollmedia.com directly.');
+    });
+  });
+</script>
+
+</body>
+</html>

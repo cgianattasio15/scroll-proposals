@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discovery Question Checklist | Scroll Media</title>
+<link rel="icon" href="/scroll-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /*
+    Design reminder — Scroll Media Scheme B
+    Internal mobile-first reference tool. Fast scroll, zero clutter, high clarity at 375px.
+    No form behavior. No hero image. Preserve sticky white nav and top progress bar pattern.
+  */
+
+  :root {
+    --ghost: #fafdff;
+    --shadow: #151516;
+    --azure: #0c3387;
+    --azure-mid: #1541a1;
+    --porcelain: #f2f3f4;
+    --highlighter: #e2ed7a;
+    --lucid: #cbe9ff;
+    --surface: rgba(255,255,255,0.9);
+    --border-subtle: rgba(21,21,22,0.08);
+    --border-mid: rgba(21,21,22,0.14);
+    --text-secondary: rgba(21,21,22,0.74);
+    --text-muted: rgba(21,21,22,0.54);
+    --text-dim: rgba(21,21,22,0.38);
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --max-width: 860px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: linear-gradient(180deg, #fafdff 0%, #f7faff 100%);
+    color: var(--shadow);
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .nav-tag, .hero-eyebrow, .section-kicker, .question-number {
+    font-family: 'Visby CF', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--azure) 0%, var(--lucid) 100%);
+    z-index: 1000;
+    transition: width 0.12s linear;
+    pointer-events: none;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 68px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(21,21,22,0.08);
+    box-shadow: 0 1px 12px rgba(21,21,22,0.05);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo img {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: rgba(21,21,22,0.45);
+    padding: 6px 12px;
+    border: 1px solid rgba(21,21,22,0.12);
+    border-radius: 999px;
+    background: rgba(250,253,255,0.92);
+    white-space: nowrap;
+  }
+
+  .page-shell {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 16px 72px;
+  }
+
+  .hero {
+    padding: 48px 0 28px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(226,237,122,0.18);
+    border: 1px solid rgba(226,237,122,0.38);
+    color: var(--shadow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+  }
+
+  .hero-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--azure);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 3.4rem);
+    line-height: 1.03;
+    letter-spacing: -1.9px;
+    font-weight: 800;
+    max-width: 620px;
+    margin-bottom: 14px;
+  }
+
+  .hero p {
+    max-width: 560px;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(21,21,22,0.08);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    box-shadow: 0 8px 18px rgba(21,21,22,0.04);
+  }
+
+  .meta-pill strong {
+    color: var(--azure);
+    font-weight: 700;
+  }
+
+  .section-card {
+    position: relative;
+    margin-top: 18px;
+    padding: 24px 18px 22px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.98) 100%);
+    border: 1px solid rgba(21,21,22,0.08);
+    box-shadow: 0 20px 48px rgba(21,21,22,0.05);
+    overflow: hidden;
+  }
+
+  .section-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--azure) 0%, rgba(12,51,135,0.22) 100%);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding-left: 8px;
+    margin-bottom: 14px;
+  }
+
+  .section-kicker {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.55px;
+    text-transform: uppercase;
+    color: var(--azure);
+    margin-bottom: 4px;
+  }
+
+  .section-title {
+    font-size: 1.28rem;
+    line-height: 1.15;
+    letter-spacing: -0.7px;
+    font-weight: 800;
+  }
+
+  .section-count {
+    flex-shrink: 0;
+    padding-top: 2px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-dim);
+  }
+
+  .section-note {
+    margin: 0 0 16px 8px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(203,233,255,0.24) 0%, rgba(242,243,244,0.74) 100%);
+    border: 1px solid rgba(21,21,22,0.06);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .question-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .question-item {
+    padding: 14px;
+    border-radius: 16px;
+    background: var(--porcelain);
+    border: 1px solid rgba(21,21,22,0.06);
+  }
+
+  .question-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .question-number {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(12,51,135,0.08);
+    border: 1px solid rgba(12,51,135,0.16);
+    color: var(--azure);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .question-text {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--shadow);
+  }
+
+  .question-rationale {
+    padding-left: 38px;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+
+  .question-rationale strong {
+    color: var(--text-secondary);
+    font-weight: 700;
+  }
+
+  .after-call-block {
+    margin-top: 24px;
+    padding: 22px 18px 20px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(12,51,135,0.06) 0%, rgba(255,255,255,0.94) 100%);
+    border: 1px solid rgba(12,51,135,0.12);
+    box-shadow: 0 22px 48px rgba(12,51,135,0.06);
+  }
+
+  .after-call-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(226,237,122,0.2);
+    border: 1px solid rgba(226,237,122,0.38);
+    color: var(--shadow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.15px;
+    text-transform: uppercase;
+  }
+
+  .after-call-block h2 {
+    font-size: 1.42rem;
+    line-height: 1.15;
+    letter-spacing: -0.8px;
+    margin-bottom: 10px;
+  }
+
+  .after-call-block p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .prompt-shell {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(12,51,135,0.14);
+    background: #ffffff;
+  }
+
+  .prompt-shell::before {
+    content: 'Copy block';
+    display: block;
+    padding: 10px 14px;
+    background: rgba(12,51,135,0.06);
+    border-bottom: 1px solid rgba(12,51,135,0.1);
+    color: var(--azure);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+  }
+
+  .prompt-block {
+    width: 100%;
+    min-height: 220px;
+    resize: vertical;
+    border: none;
+    outline: none;
+    padding: 16px;
+    background: #ffffff;
+    color: var(--shadow);
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .prompt-note {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  footer {
+    margin-top: 28px;
+    padding: 24px 0 8px;
+    text-align: center;
+  }
+
+  footer img {
+    height: 20px;
+    width: auto;
+    display: block;
+    margin: 0 auto 10px;
+    opacity: 0.56;
+  }
+
+  footer p {
+    color: rgba(21,21,22,0.36);
+    font-size: 0.76rem;
+  }
+
+  @media (min-width: 640px) {
+    nav { padding: 0 28px; }
+    .page-shell { padding: 0 24px 96px; }
+    .hero { padding: 58px 0 32px; }
+    .section-card,
+    .after-call-block { padding-left: 24px; padding-right: 24px; }
+  }
+
+  @media print {
+    body {
+      background: #ffffff;
+      font-size: 11pt;
+      color: #151516;
+    }
+
+    #progress-bar,
+    nav {
+      position: static;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    nav {
+      height: auto;
+      padding: 0 0 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid #d9dce0;
+    }
+
+    .page-shell {
+      max-width: none;
+      padding: 0;
+    }
+
+    .hero {
+      padding: 8px 0 18px;
+    }
+
+    .section-card,
+    .after-call-block {
+      break-inside: avoid;
+      box-shadow: none;
+      background: #ffffff;
+      border: 1px solid #d9dce0;
+      margin-top: 14px;
+    }
+
+    .question-item {
+      background: #fafafa;
+      border-color: #e0e3e7;
+    }
+
+    .prompt-shell {
+      border-color: #c9ced6;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .nav-tag { display: none; }
+    .hero h1 { letter-spacing: -1.5px; }
+    .meta-pill { font-size: 0.78rem; }
+    .section-title { font-size: 1.18rem; }
+    .question-text { font-size: 0.97rem; }
+    .question-rationale { padding-left: 0; margin-top: 8px; }
+    .question-top { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<nav>
+  <a href="https://tools.scrollmedia.co" class="nav-logo">
+    <img src="/scroll-media-logo.svg" alt="Scroll Media">
+  </a>
+  <div class="nav-tag">Internal Checklist</div>
+</nav>
+
+<main class="page-shell">
+  <section class="hero">
+    <div class="hero-eyebrow"><span class="hero-dot"></span>Scroll Media — Internal Tool</div>
+    <h1>Discovery Question Checklist</h1>
+    <p>Work through these questions conversationally during the call. Your AI note-taker handles the rest.</p>
+    <div class="meta-pills">
+      <div class="meta-pill"><strong>6 sections</strong></div>
+      <div class="meta-pill"><strong>24 questions</strong></div>
+      <div class="meta-pill"><strong>Internal use only</strong></div>
+    </div>
+  </section>
+
+  <section class="section-card" aria-labelledby="section-1-title">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Section 01</div>
+        <h2 class="section-title" id="section-1-title">Business Basics</h2>
+      </div>
+      <div class="section-count">1 of 6</div>
+    </div>
+    <div class="section-note">Establish operational foundation before going strategic.</div>
+    <div class="question-list">
+      <article class="question-item"><div class="question-top"><div class="question-number">01</div><div class="question-text">What does your business do and who do you serve?</div></div><div class="question-rationale"><strong>Rationale:</strong> Niche categorization, IVP starting point, proposal framing.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">02</div><div class="question-text">How long have you been in business?</div></div><div class="question-rationale"><strong>Rationale:</strong> Credibility narrative, maturity context.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">03</div><div class="question-text">Where are you located? Do you serve clients locally, regionally, or nationally?</div></div><div class="question-rationale"><strong>Rationale:</strong> TAM ladder, geo-keyword strategy, content targeting.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">04</div><div class="question-text">How does your business primarily generate revenue? B2C, B2B, or both?</div></div><div class="question-rationale"><strong>Rationale:</strong> Critical — shapes entire funnel strategy and content mix.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">05</div><div class="question-text">What is the average lifetime value of one of your clients or customers?</div></div><div class="question-rationale"><strong>Rationale:</strong> ROI modeling, helps frame the investment conversation.</div></article>
+    </div>
+  </section>
+
+  <section class="section-card" aria-labelledby="section-2-title">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Section 02</div>
+        <h2 class="section-title" id="section-2-title">Goals &amp; Priorities</h2>
+      </div>
+      <div class="section-count">2 of 6</div>
+    </div>
+    <div class="section-note">Understand what success looks like before recommending anything.</div>
+    <div class="question-list">
+      <article class="question-item"><div class="question-top"><div class="question-number">06</div><div class="question-text">What is your number one goal for social media in the next 6–12 months?</div></div><div class="question-rationale"><strong>Rationale:</strong> Directs CTA strategy, content pillars, and proposal positioning.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">07</div><div class="question-text">What does success look like to you 90 days from now?</div></div><div class="question-rationale"><strong>Rationale:</strong> Sets expectation baseline, surfaces the client's real definition of results.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">08</div><div class="question-text">Are there any specific revenue goals, launches, or milestones coming up that social should support?</div></div><div class="question-rationale"><strong>Rationale:</strong> Feeds content calendar priorities and BOFU content strategy.</div></article>
+    </div>
+  </section>
+
+  <section class="section-card" aria-labelledby="section-3-title">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Section 03</div>
+        <h2 class="section-title" id="section-3-title">Current Social State</h2>
+      </div>
+      <div class="section-count">3 of 6</div>
+    </div>
+    <div class="section-note">Establish the real starting line, not the assumed one.</div>
+    <div class="question-list">
+      <article class="question-item"><div class="question-top"><div class="question-number">09</div><div class="question-text">How would you describe your current Instagram presence?</div></div><div class="question-rationale"><strong>Rationale:</strong> Stage assignment (Spark/Lift/Rise/Thrive), calibrates expectations.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">10</div><div class="question-text">What have you tried on social media before? What worked? What did not?</div></div><div class="question-rationale"><strong>Rationale:</strong> Avoids repeating failed approaches, surfaces early format signals.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">11</div><div class="question-text">What is the biggest thing holding you back on social right now?</div></div><div class="question-rationale"><strong>Rationale:</strong> Captures pain language in their own words — feeds proposal copy directly.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">12</div><div class="question-text">Who is currently managing your social media?</div></div><div class="question-rationale"><strong>Rationale:</strong> Surfaces operational context, identifies transition complexity.</div></article>
+    </div>
+  </section>
+
+  <section class="section-card" aria-labelledby="section-4-title">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Section 04</div>
+        <h2 class="section-title" id="section-4-title">Audience &amp; Positioning</h2>
+      </div>
+      <div class="section-count">4 of 6</div>
+    </div>
+    <div class="section-note">Start building the IVP before the proposal is written.</div>
+    <div class="question-list">
+      <article class="question-item"><div class="question-top"><div class="question-number">13</div><div class="question-text">Who is your ideal customer? Describe them specifically.</div></div><div class="question-rationale"><strong>Rationale:</strong> IVP foundation — demographics, psychographics, decision triggers.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">14</div><div class="question-text">What problem do you solve for them that nobody else does quite the same way?</div></div><div class="question-rationale"><strong>Rationale:</strong> Differentiation positioning, content angle development.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">15</div><div class="question-text">How do your best clients typically find you today?</div></div><div class="question-rationale"><strong>Rationale:</strong> Channel attribution, understanding the current conversion path.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">16</div><div class="question-text">What do your best clients say about you? What do they value most?</div></div><div class="question-rationale"><strong>Rationale:</strong> Social proof language, IVP values mapping, testimonial content direction.</div></article>
+    </div>
+  </section>
+
+  <section class="section-card" aria-labelledby="section-5-title">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Section 05</div>
+        <h2 class="section-title" id="section-5-title">Content &amp; Brand</h2>
+      </div>
+      <div class="section-count">5 of 6</div>
+    </div>
+    <div class="section-note">Understand aesthetic direction and content history before proposing creative.</div>
+    <div class="question-list">
+      <article class="question-item"><div class="question-top"><div class="question-number">17</div><div class="question-text">Are there any brands — in your industry or completely outside it — whose social presence you admire?</div></div><div class="question-rationale"><strong>Rationale:</strong> Aesthetic direction, content style reference, sets visual benchmark.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">18</div><div class="question-text">How comfortable are you or your team being on camera?</div></div><div class="question-rationale"><strong>Rationale:</strong> Determines founder content viability — highest-performing format in most niches.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">19</div><div class="question-text">Do you have existing brand assets? Photos, videos, logo files, brand guidelines?</div></div><div class="question-rationale"><strong>Rationale:</strong> Scopes production needs, identifies asset gaps before Month 1.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">20</div><div class="question-text">What does your content approval process look like? Who needs to sign off?</div></div><div class="question-rationale"><strong>Rationale:</strong> Identifies bottlenecks before they happen, sets expectation for 5-day approval window.</div></article>
+    </div>
+  </section>
+
+  <section class="section-card" aria-labelledby="section-6-title">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Section 06</div>
+        <h2 class="section-title" id="section-6-title">Fit &amp; Logistics</h2>
+      </div>
+      <div class="section-count">6 of 6</div>
+    </div>
+    <div class="section-note">Confirm mutual fit and surface any operational constraints before proposing.</div>
+    <div class="question-list">
+      <article class="question-item"><div class="question-top"><div class="question-number">21</div><div class="question-text">Have you worked with a social media agency or contractor before? How did it go?</div></div><div class="question-rationale"><strong>Rationale:</strong> Surfaces objections, prior experience context, calibrates expectations.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">22</div><div class="question-text">What is your timeline? When are you looking to get started?</div></div><div class="question-rationale"><strong>Rationale:</strong> Urgency signal, proposal timing, kickoff scheduling.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">23</div><div class="question-text">Is there anything that would make this a difficult engagement on your end?</div></div><div class="question-rationale"><strong>Rationale:</strong> Pre-empts problems — availability, approvals, budget concerns, team dynamics.</div></article>
+      <article class="question-item"><div class="question-top"><div class="question-number">24</div><div class="question-text">Who else is involved in this decision?</div></div><div class="question-rationale"><strong>Rationale:</strong> Identifies stakeholders, prevents post-call surprises from a second decision-maker.</div></article>
+    </div>
+  </section>
+
+  <section class="after-call-block" aria-labelledby="after-call-title">
+    <div class="after-call-kicker">After the Call</div>
+    <h2 id="after-call-title">After the Call — AI Extraction Prompt</h2>
+    <p>Drop your call transcript into Claude or your AI tool with this prompt:</p>
+    <div class="prompt-shell">
+      <textarea class="prompt-block" readonly>I just completed a discovery call. Here is the full transcript. Please extract and map the answers to each of the following questions from the Scroll Media Discovery Question Checklist. For any question that was not clearly answered during the call, flag it as [UNANSWERED] so I know what to follow up on before building the proposal. Format the output as a clean numbered list matching the checklist section structure.</textarea>
+    </div>
+    <div class="prompt-note">This output feeds directly into the proposal build. Send the mapped answers to Claude in the scroll-media project to begin the proposal.</div>
+  </section>
+
+  <footer>
+    <img src="/scroll-media-logo.svg" alt="Scroll Media">
+    <p>Internal discovery reference tool for live calls.</p>
+  </footer>
+</main>
+
+<script>
+  const progressBar = document.getElementById('progress-bar');
+
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+
+  updateScrollProgress();
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+</script>
+</body>
+</html>

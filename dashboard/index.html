@@ -18,27 +18,30 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:       #1B2B6B;
-      --navy-deep:  #0F1A45;
-      --navy-mid:   #162258;
-      --navy-card:  #1E2F72;
-      --navy-light: #243580;
-      --lime:       #C8F135;
-      --lime-dark:  #A8D020;
-      --white:      #FFFFFF;
-      --off-white:  #F4F6FF;
-      --muted:      rgba(255,255,255,0.55);
-      --border:     rgba(255,255,255,0.10);
-      --border-lime:rgba(200,241,53,0.25);
+      --navy:       #0c3387;
+      --navy-deep:  #fafdff;
+      --navy-mid:   #ffffff;
+      --navy-card:  #f2f3f4;
+      --navy-light: #cbe9ff;
+      --lime:       #0c3387;
+      --lime-dark:  #09286a;
+      --white:      #151516;
+      --off-white:  #fafdff;
+      --muted:      rgba(21,21,22,0.62);
+      --border:     rgba(12,51,135,0.12);
+      --border-lime:rgba(12,51,135,0.18);
       --radius:     14px;
       --radius-sm:  8px;
+      --surface:    #ffffff;
+      --surface-soft:#f2f3f4;
+      --shadow-soft: 0 18px 45px rgba(12,51,135,0.08);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--navy-deep);
+      background: linear-gradient(180deg, #fafdff 0%, #f2f6ff 100%);
       color: var(--white);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -48,7 +51,7 @@
     #gate {
       position: fixed;
       inset: 0;
-      background: var(--navy-deep);
+      background: linear-gradient(180deg, #fafdff 0%, #eef4ff 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -57,13 +60,14 @@
     }
 
     .gate-card {
-      background: var(--navy-mid);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 48px 40px;
       width: 100%;
       max-width: 420px;
       text-align: center;
+      box-shadow: var(--shadow-soft);
     }
 
     .gate-logo {
@@ -120,7 +124,7 @@
 
     .gate-input {
       width: 100%;
-      background: var(--navy-card);
+      background: var(--surface-soft);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 14px 48px 14px 16px;
@@ -128,12 +132,13 @@
       font-family: 'Inter', sans-serif;
       color: var(--white);
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
       letter-spacing: 0.1em;
     }
 
     .gate-input:focus {
       border-color: var(--lime);
+      box-shadow: 0 0 0 4px rgba(12,51,135,0.08);
     }
 
     .gate-input::placeholder {
@@ -196,7 +201,8 @@
 
     /* ─── HEADER ─── */
     .header {
-      background: var(--navy-mid);
+      background: rgba(250,253,255,0.92);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
       height: 64px;
@@ -264,7 +270,7 @@
 
     /* ─── HERO BANNER ─── */
     .hero-banner {
-      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+      background: linear-gradient(135deg, #eef4ff 0%, #fafdff 55%, #ffffff 100%);
       border-bottom: 1px solid var(--border);
       padding: 56px 40px 48px;
     }
@@ -383,9 +389,9 @@
     .section-count {
       font-size: 0.75rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.7);
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--lime);
+      background: rgba(12,51,135,0.06);
+      border: 1px solid rgba(12,51,135,0.14);
       border-radius: 100px;
       padding: 3px 10px;
     }
@@ -406,20 +412,22 @@
 
     /* ─── DECK CARD ─── */
     .deck-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
       text-decoration: none;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow-soft);
     }
 
     .deck-card:hover {
-      border-color: rgba(200,241,53,0.4);
+      border-color: rgba(12,51,135,0.24);
       transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(12,51,135,0.14);
     }
 
     .deck-card-thumb {
@@ -534,8 +542,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 20px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.15);
+      border-top: 1px solid var(--border);
+      background: #fbfcfe;
     }
 
     .deck-card-date {
@@ -585,15 +593,16 @@
     }
 
     .internal-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px;
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
       cursor: default;
+      box-shadow: var(--shadow-soft);
     }
 
     .internal-card.clickable {
@@ -602,7 +611,8 @@
     }
 
     .internal-card.clickable:hover {
-      border-color: rgba(200,241,53,0.4);
+      border-color: rgba(12,51,135,0.24);
+      box-shadow: 0 18px 40px rgba(12,51,135,0.12);
     }
 
     .internal-card-icon {
@@ -668,7 +678,7 @@
       color: var(--muted);
     }
 
-    .footer strong { color: var(--lime); }
+    .footer strong { color: var(--navy); }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {

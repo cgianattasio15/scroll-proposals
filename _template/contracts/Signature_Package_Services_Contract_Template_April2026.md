@@ -103,7 +103,7 @@ This table is included as a working reference for template use. If a client agre
 | Strategic Foundation / Strategy Document | Approximately Week 3 | One-time | PDF, document, or shared planning format |
 | Content Calendar | Delivered with strategy and updated during execution | Ongoing | Shared planning view, PDF, or comparable working format |
 | Creative Content | Begins after strategy approval | Ongoing based on package tier | Instagram content assets |
-| Monthly Performance Report | First week of each month during execution or as otherwise scheduled | Monthly | Email, PDF, Loom, or shared reporting view |
+| Monthly Performance Report | First week of each month during execution or as otherwise scheduled | Monthly | Email summary plus shared reporting view |
 
 ## Continuing the Engagement
 This Signature Package is an initial engagement designed to build the strategy foundation, complete the first execution cycle, and generate useful creative and performance data for both Parties.
@@ -179,7 +179,7 @@ If Client identifies a factual error in Stories content, Client must flag it as 
 ## Client Communication and Reporting
 Scroll Media will hold one (1) biweekly check-in meeting during active execution. Meetings are generally thirty (30) minutes and are used to cover content approvals, shot-list alignment, performance signals, priorities, and Stories promotional input.
 
-Scroll Media will deliver a monthly performance report during the first week of each calendar month covering the prior month's performance. Reports may be delivered by email, PDF, Loom, or a comparable shared format. No separate report-review meeting is required unless the Parties agree otherwise in writing.
+Scroll Media will deliver a monthly performance report during the first week of each calendar month covering the prior month's performance. Reports are delivered through a shared report link with a brief summary email. No separate report-review meeting is required unless the Parties agree otherwise in writing.
 
 The current client-facing policy guide that explains Scroll Media's operating process in more detail is available at: <https://tools.scrollmedia.co/policies/content-review/>.
 

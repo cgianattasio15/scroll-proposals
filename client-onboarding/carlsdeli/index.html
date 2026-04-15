@@ -561,12 +561,6 @@
     line-height: 1.3;
   }
 
-  .char-counter {
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    text-align: right;
-    margin-top: 5px;
-  }
 
   .field-error {
     font-size: 0.76rem;
@@ -679,25 +673,6 @@
     z-index: 1;
   }
 
-  .success-illustration {
-    width: 124px;
-    height: 124px;
-    border-radius: 28px;
-    background: var(--success-bg);
-    border: 1px solid var(--success-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 26px;
-    overflow: hidden;
-    box-shadow: 0 16px 36px rgba(12,51,135,0.10);
-  }
-
-  .success-illustration img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
   #success-state h2 {
     font-size: 2rem;
@@ -776,7 +751,7 @@
 <div id="progress-bar"></div>
 
 <nav>
-  <a href="https://tools.scrollmedia.co" class="nav-logo">
+  <a href="https://decks.scrollmedia.co/pitch/" class="nav-logo">
     <img src="/scroll-media-logo.svg" alt="Scroll Media">
   </a>
   <div class="nav-right">
@@ -807,11 +782,8 @@
     </div>
 
     <div id="success-state">
-      <div class="success-illustration">
-        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663351235918/Uh688g9newMYzvksQy6RyV/carls-deli-success-illustration-CcvBt47dUp2vuPWMANRygv.webp" alt="Success illustration">
-      </div>
       <h2>You're all set.</h2>
-      <p>We've received everything. We'll review your answers before the kickoff call so we can walk in prepared and keep things moving.</p>
+      <p>We've received everything. We'll review your answers before the kickoff call and come prepared to build — not catch up.</p>
     </div>
 
     <form id="onboarding-form" action="https://formspree.io/f/mzdyzeng" method="POST" novalidate>
@@ -943,9 +915,10 @@
             <div class="field-group" id="fg-deli-repeat-driver">
               <div class="field-header">
                 <span class="field-num">10</span>
-                <span class="field-question">What's the #1 thing that makes a customer come back?</span>
+                <span class="field-question">What's the #1 thing that makes a customer come back — and would they say the same thing you just said? <span class="field-required">*</span></span>
               </div>
-              <textarea id="deli-repeat-driver" name="deliRepeatDriver" placeholder="What keeps your regulars coming back week after week?" style="min-height:88px;"></textarea>
+              <textarea id="deli-repeat-driver" name="deliRepeatDriver" placeholder="Think about your most loyal regulars — what actually keeps them walking back through the door?" style="min-height:88px;" required></textarea>
+              <div class="field-error">This field is required.</div>
             </div>
           </div>
 
@@ -1015,7 +988,7 @@
           <div class="field-group" id="fg-positioning-sentence">
             <div class="field-header">
               <span class="field-num">15</span>
-              <span class="field-question">Complete this sentence <span class="field-required">*</span></span>
+              <span class="field-question">Complete this sentence about Carl's Deli <span class="field-required">*</span></span>
             </div>
             <div class="field-hint">This is the hardest question on the form — and the most important. Don't overthink it. Your gut answer is the right one.</div>
             <!-- CLIENT-SPECIFIC: update the sentence stem for each new client -->
@@ -1073,7 +1046,7 @@
 
           <div class="field-group" id="fg-industry-frustration" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">19b</span>
+              <span class="field-num">20</span>
               <span class="field-question">What does the deli or catering industry get wrong that Carl's does differently?</span>
             </div>
             <div class="field-hint">This could be about food quality, how catering works, how delis treat their customers, or anything else that frustrates you about the status quo. If Carl's is doing something most competitors aren't — this is where to say it.</div>
@@ -1092,7 +1065,7 @@
 
           <div class="field-group" id="fg-instagram-handles">
             <div class="field-header">
-              <span class="field-num">20</span>
+              <span class="field-num">21</span>
               <span class="field-question">Current Instagram handles <span class="field-required">*</span></span>
             </div>
             <div class="field-hint">List all active handles. For Carl's Deli: @carlsdelihydepark and @carlsdelifindlaymarket</div>
@@ -1104,7 +1077,7 @@
           <div class="field-row" style="margin-top:16px;">
             <div class="field-group" id="fg-follower-count">
               <div class="field-header">
-                <span class="field-num">21</span>
+                <span class="field-num">22</span>
                 <span class="field-question">Approximate follower count across accounts</span>
               </div>
               <select id="follower-count" name="followerCount">
@@ -1119,7 +1092,7 @@
             </div>
             <div class="field-group" id="fg-instagram-presence">
               <div class="field-header">
-                <span class="field-num">22</span>
+                <span class="field-num">23</span>
                 <span class="field-question">How would you describe your current Instagram presence? <span class="field-required">*</span></span>
               </div>
               <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="instagramPresence">
@@ -1135,7 +1108,7 @@
 
           <div class="field-group" id="fg-best-performing-content" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">23</span>
+              <span class="field-num">24</span>
               <span class="field-question">What type of content has performed best for you so far?</span>
             </div>
             <textarea id="best-performing-content" name="bestPerformingContent" placeholder="Videos, photos, specific topics, behind-the-scenes — anything that's gotten strong engagement or response."></textarea>
@@ -1143,17 +1116,25 @@
 
           <div class="field-group" id="fg-admired-accounts" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">24</span>
+              <span class="field-num">25</span>
               <span class="field-question">Name 1–2 Instagram accounts whose content you admire</span>
             </div>
             <div class="field-hint">Can be in food, local brands, or completely outside your industry. Helps us understand your aesthetic direction.</div>
             <input type="text" id="admired-accounts" name="admiredAccounts" placeholder="e.g. @tonyandpetes, @coffeeroom_coogee...">
           </div>
 
+          <div class="field-group" id="fg-instagram-ideal-outcome" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">26</span>
+              <span class="field-question">If Instagram was working perfectly for Carl's Deli — what would people be saying about your account? What would they be sharing, saving, or coming back to watch again?</span>
+            </div>
+            <textarea id="instagram-ideal-outcome" name="instagramIdealOutcome" placeholder="Don't hold back — this helps us build toward a version of Instagram that actually excites you."></textarea>
+          </div>
+
           <div class="field-row" style="margin-top:16px;">
             <div class="field-group" id="fg-on-camera-sydney">
               <div class="field-header">
-                <span class="field-num">25</span>
+                <span class="field-num">27</span>
                 <span class="field-question">On-camera comfort level — Sydney <span class="field-required">*</span></span>
               </div>
               <div class="field-hint">No pressure here — a clear answer helps us plan around the right content mix.</div>
@@ -1168,7 +1149,7 @@
             </div>
             <div class="field-group" id="fg-on-camera-cameron">
               <div class="field-header">
-                <span class="field-num">26</span>
+                <span class="field-num">28</span>
                 <span class="field-question">On-camera comfort level — Cameron</span>
               </div>
               <!-- CLIENT-SPECIFIC: update for each new client -->
@@ -1194,7 +1175,7 @@
           <div class="field-row">
             <div class="field-group" id="fg-catering-menu-available">
               <div class="field-header">
-                <span class="field-num">27</span>
+                <span class="field-num">29</span>
                 <span class="field-question">Do you have a catering menu available? <span class="field-required">*</span></span>
               </div>
               <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="cateringMenuAvailable">
@@ -1206,7 +1187,7 @@
             </div>
             <div class="field-group" id="fg-catering-menu-overview">
               <div class="field-header">
-                <span class="field-num">28</span>
+                <span class="field-num">30</span>
                 <span class="field-question">Catering menu or overview</span>
               </div>
               <div class="field-hint">Paste your menu, link to it, or give us a general overview of what you offer. Rough is fine.</div>
@@ -1217,7 +1198,7 @@
           <div class="field-row" style="margin-top:16px;">
             <div class="field-group" id="fg-catering-price-range">
               <div class="field-header">
-                <span class="field-num">29</span>
+                <span class="field-num">31</span>
                 <span class="field-question">General catering price range</span>
               </div>
               <select id="catering-price-range" name="cateringPriceRange">
@@ -1233,7 +1214,7 @@
             </div>
             <div class="field-group" id="fg-catering-order-channel">
               <div class="field-header">
-                <span class="field-num">30</span>
+                <span class="field-num">32</span>
                 <span class="field-question">How do clients currently place a catering order? <span class="field-required">*</span></span>
               </div>
               <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="cateringOrderChannel">
@@ -1251,7 +1232,7 @@
           <div class="field-row" style="margin-top:16px;">
             <div class="field-group" id="fg-catering-lead-time">
               <div class="field-header">
-                <span class="field-num">31</span>
+                <span class="field-num">33</span>
                 <span class="field-question">What's your standard lead time for a catering order?</span>
               </div>
               <select id="catering-lead-time" name="cateringLeadTime">
@@ -1265,7 +1246,7 @@
             </div>
             <div class="field-group" id="fg-catering-order-link">
               <div class="field-header">
-                <span class="field-num">32</span>
+                <span class="field-num">34</span>
                 <span class="field-question">Link to catering order page or inquiry form</span>
               </div>
               <input type="url" id="catering-order-link" name="cateringOrderLink" placeholder="https://">
@@ -1274,10 +1255,18 @@
 
           <div class="field-group" id="fg-catering-notes" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">33</span>
+              <span class="field-num">35</span>
               <span class="field-question">Anything else we should know about your catering operation before we start building content around it?</span>
             </div>
             <textarea id="catering-notes" name="cateringNotes" placeholder="Capacity limits, seasonal availability, areas you serve, anything that shapes how we position it."></textarea>
+          </div>
+
+          <div class="field-group" id="fg-corporate-buyer-hesitation" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">36</span>
+              <span class="field-question">What's the biggest hesitation a corporate buyer has before placing their first catering order with you? What do they need to believe to say yes?</span>
+            </div>
+            <textarea id="corporate-buyer-hesitation" name="corporateBuyerHesitation" placeholder="Think about the last time someone asked questions before committing — what were they really worried about?"></textarea>
           </div>
         </div>
 
@@ -1291,7 +1280,7 @@
 
           <div class="field-group" id="fg-shoot-availability">
             <div class="field-header">
-              <span class="field-num">34</span>
+              <span class="field-num">37</span>
               <span class="field-question">Best days and times for content shoots <span class="field-required">*</span></span>
             </div>
             <div class="field-hint">We'll need access to both Hyde Park and Findlay Market on a rotating schedule. Give us your general availability and any standing conflicts.</div>
@@ -1302,7 +1291,7 @@
 
           <div class="field-group" id="fg-brand-assets" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">35</span>
+              <span class="field-num">38</span>
               <span class="field-question">Do you have existing brand assets we should know about?</span>
             </div>
             <div class="pill-group" data-group-type="checkbox" data-group-name="brandAssets">
@@ -1317,14 +1306,14 @@
           <div class="field-row" style="margin-top:16px;">
             <div class="field-group" id="fg-asset-access">
               <div class="field-header">
-                <span class="field-num">36</span>
+                <span class="field-num">39</span>
                 <span class="field-question">Where can we access those assets?</span>
               </div>
               <input type="text" id="asset-access" name="assetAccess" placeholder="Google Drive link, Dropbox, or we can collect on first shoot">
             </div>
             <div class="field-group" id="fg-approvals-contact">
               <div class="field-header">
-                <span class="field-num">37</span>
+                <span class="field-num">40</span>
                 <span class="field-question">Who should we contact for content approvals? <span class="field-required">*</span></span>
               </div>
               <div class="field-hint">Name and best contact method. This is the person who reviews and approves content before it goes live.</div>
@@ -1335,7 +1324,7 @@
 
           <div class="field-group" id="fg-calendar-notes" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">38</span>
+              <span class="field-num">41</span>
               <span class="field-question">Are there any upcoming events, promotions, or blackout dates we should build around?</span>
             </div>
             <textarea id="calendar-notes" name="calendarNotes" placeholder="Grand openings, seasonal pushes, holidays, dates you'll be closed or unavailable..."></textarea>
@@ -1343,11 +1332,10 @@
 
           <div class="field-group" id="fg-open-notes" style="margin-top:16px;">
             <div class="field-header">
-              <span class="field-num">39</span>
+              <span class="field-num">42</span>
               <span class="field-question">Anything else you want us to know before we get started?</span>
             </div>
             <textarea id="open-notes" name="openNotes" placeholder="Open floor. Anything that helps us hit the ground running." data-maxlength="900" maxlength="900"></textarea>
-            <div class="char-counter"><span id="open-notes-count">0</span>/900</div>
           </div>
         </div>
       </div>
@@ -1366,7 +1354,7 @@
           </div>
           <div class="submit-meta-item">
             <svg viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1112 0v2M5 10h14v9H5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Responses go directly to the Scroll Media team</span>
+            <span>Responses go directly to Chase & Allison</span>
           </div>
           <div class="submit-meta-item">
             <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 4h10v16H7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1381,7 +1369,7 @@
 <footer>
   <div class="footer-inner">
     <img src="/scroll-media-logo.svg" alt="Scroll Media">
-    <p>Built by Scroll Media for a smooth kickoff.</p>
+    <p>Scroll Media — Simplifying Social Media</p>
   </div>
 </footer>
 
@@ -1393,7 +1381,6 @@
   const successState = document.getElementById('success-state');
   const submitBtn = document.getElementById('submit-btn');
   const openNotes = document.getElementById('open-notes');
-  const openNotesCount = document.getElementById('open-notes-count');
 
   const requiredTextFields = [
     'primary-contact-name',
@@ -1401,6 +1388,7 @@
     'primary-contact-email',
     'business-locations',
     'deli-customer-profile',
+    'deli-repeat-driver',
     'best-catering-clients',
     'positioning-sentence',
     'hidden-story',
@@ -1479,10 +1467,6 @@
     return isValid;
   }
 
-  function updateCharCount() {
-    openNotesCount.textContent = openNotes.value.length;
-  }
-
   requiredTextFields.forEach(field => {
     field.addEventListener('input', () => {
       if (field.closest('.field-group').classList.contains('has-error')) validateField(field);
@@ -1520,8 +1504,6 @@
     }
   });
 
-  openNotes.addEventListener('input', updateCharCount);
-  updateCharCount();
   updateScrollProgress();
   updateFormProgress();
 
@@ -1577,6 +1559,7 @@
       instagramPresence: getCheckedValues('instagramPresence')[0] || '',
       bestPerformingContent: document.getElementById('best-performing-content').value.trim(),
       admiredAccounts: document.getElementById('admired-accounts').value.trim(),
+      instagramIdealOutcome: document.getElementById('instagram-ideal-outcome').value.trim(),
       onCameraSydney: getCheckedValues('onCameraSydney')[0] || '',
       onCameraCameron: getCheckedValues('onCameraCameron')[0] || '',
       cateringMenuAvailable: getCheckedValues('cateringMenuAvailable')[0] || '',
@@ -1586,6 +1569,7 @@
       cateringLeadTime: document.getElementById('catering-lead-time').value,
       cateringOrderLink: document.getElementById('catering-order-link').value.trim(),
       cateringNotes: document.getElementById('catering-notes').value.trim(),
+      corporateBuyerHesitation: document.getElementById('corporate-buyer-hesitation').value.trim(),
       shootAvailability: document.getElementById('shoot-availability').value.trim(),
       brandAssets: getCheckedValues('brandAssets').join(', '),
       assetAccess: document.getElementById('asset-access').value.trim(),
@@ -1622,6 +1606,7 @@
       'Current Instagram Presence': data.instagramPresence,
       'Best Performing Content So Far': data.bestPerformingContent,
       'Admired Instagram Accounts': data.admiredAccounts,
+      'Ideal Instagram Outcome': data.instagramIdealOutcome,
       'On-Camera Comfort — Sydney': data.onCameraSydney,
       'On-Camera Comfort — Cameron': data.onCameraCameron,
       'Catering Menu Available': data.cateringMenuAvailable,
@@ -1631,6 +1616,7 @@
       'Standard Catering Lead Time': data.cateringLeadTime,
       'Catering Order Link': data.cateringOrderLink,
       'Additional Catering Notes': data.cateringNotes,
+      'Corporate Buyer Hesitation Before First Order': data.corporateBuyerHesitation,
       'Best Days / Times for Shoots': data.shootAvailability,
       'Existing Brand Assets': data.brandAssets,
       'Asset Access Details': data.assetAccess,

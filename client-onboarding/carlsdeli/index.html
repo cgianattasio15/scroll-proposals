@@ -199,6 +199,20 @@
     margin: 0 auto 34px;
   }
 
+  .hero-note {
+    max-width: 640px;
+    margin: 0 auto 22px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.76);
+    border: 1px solid rgba(21,21,22,0.09);
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    box-shadow: 0 16px 40px rgba(21,21,22,0.05);
+    backdrop-filter: blur(12px);
+  }
+
   .hero-pills {
     display: flex;
     align-items: center;
@@ -734,6 +748,12 @@
     nav { padding: 0 20px; }
     .hero { padding: 52px 20px 44px; text-align: center; }
     .hero-sub { font-size: 1rem; }
+    .hero-note {
+      margin-bottom: 18px;
+      padding: 14px 15px;
+      font-size: 0.9rem;
+      text-align: left;
+    }
     .form-wrap { padding: 0 12px 80px; }
     .form-inner { padding: 32px 24px 36px; }
     .submit-section { padding: 28px 24px 36px; }
@@ -772,6 +792,7 @@
   </div>
   <h1>Let's build something great.</h1>
   <p class="hero-sub">Takes about 20 minutes. The more specific your answers are, the easier it is for us to make this process smooth from day one.</p>
+  <div class="hero-note">Your answers give us the foundation. We layer our own research on top — competitor analysis, audience behavior, and niche performance data — to build a strategy that goes beyond what any form alone could produce. The more specific you are here, the sharper we can make it.</div>
   <div class="hero-pills">
     <div class="hero-pill"><span class="hero-pill-icon">🧾</span> 6 sections</div>
     <div class="hero-pill"><span class="hero-pill-icon">⏱</span> ~20 minutes</div>
@@ -991,24 +1012,25 @@
           </div>
           <!-- Legacy, positioning, and perception. This section gives us the brand truths we'll translate into voice, values, and repeatable content angles. -->
 
-          <div class="field-group" id="fg-brand-three-words">
+          <div class="field-group" id="fg-positioning-sentence">
             <div class="field-header">
               <span class="field-num">15</span>
-              <span class="field-question">How would you describe Carl's Deli in three words? <span class="field-required">*</span></span>
+              <span class="field-question">Complete this sentence <span class="field-required">*</span></span>
             </div>
-            <!-- CLIENT-SPECIFIC: update prompt for each client -->
-            <input type="text" id="brand-three-words" name="brandThreeWords" placeholder="e.g. Authentic, Cincinnati, Craft" required>
+            <div class="field-hint">This is the hardest question on the form — and the most important. Don't overthink it. Your gut answer is the right one.</div>
+            <!-- CLIENT-SPECIFIC: update the sentence stem for each new client -->
+            <textarea id="positioning-sentence" name="positioningSentence" placeholder="Carl's Deli is the only deli in Cincinnati that ___" required></textarea>
             <div class="field-error">This field is required.</div>
           </div>
 
           <div class="field-group" id="fg-hidden-story" style="margin-top:16px;">
             <div class="field-header">
               <span class="field-num">16</span>
-              <span class="field-question">What's the story behind Carl's Deli that most people don't know? <span class="field-required">*</span></span>
+              <span class="field-question">What has Carl's Deli built, earned, or experienced that no other deli in Cincinnati can claim? <span class="field-required">*</span></span>
             </div>
-            <div class="field-hint">The history, the legacy, and the personal connection all help us show what matters most to your brand.</div>
-            <!-- CLIENT-SPECIFIC: update for each new client -->
-            <textarea id="hidden-story" name="hiddenStory" required></textarea>
+            <div class="field-hint">History, relationships, milestones, moments — the things that are yours alone. This is the content gold no competitor can copy.</div>
+            <!-- CLIENT-SPECIFIC: update framing for each new client -->
+            <textarea id="hidden-story" name="hiddenStory" placeholder="Think legacy, relationships, firsts, community moments, anything that's uniquely Carl's..." required></textarea>
             <div class="field-error">This field is required.</div>
           </div>
 
@@ -1047,6 +1069,16 @@
             <!-- CLIENT-SPECIFIC: update for each new client -->
             <textarea id="brand-difference" name="brandDifference" required></textarea>
             <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" id="fg-industry-frustration" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">19b</span>
+              <span class="field-question">What does the deli or catering industry get wrong that Carl's does differently?</span>
+            </div>
+            <div class="field-hint">This could be about food quality, how catering works, how delis treat their customers, or anything else that frustrates you about the status quo. If Carl's is doing something most competitors aren't — this is where to say it.</div>
+            <!-- CLIENT-SPECIFIC: update industry framing for each new client -->
+            <textarea id="industry-frustration" name="industryFrustration" placeholder="e.g. Most delis treat catering like an afterthought. We treat it like a craft..."></textarea>
           </div>
         </div>
 
@@ -1370,7 +1402,7 @@
     'business-locations',
     'deli-customer-profile',
     'best-catering-clients',
-    'brand-three-words',
+    'positioning-sentence',
     'hidden-story',
     'brand-difference',
     'instagram-handles',
@@ -1534,11 +1566,12 @@
       bestCateringClients: document.getElementById('best-catering-clients').value.trim(),
       cateringDiscoveryChannels: getCheckedValues('cateringDiscoveryChannels').join(', '),
       idealCateringClient: document.getElementById('ideal-catering-client').value.trim(),
-      brandThreeWords: document.getElementById('brand-three-words').value.trim(),
+      positioningSentence: document.getElementById('positioning-sentence').value.trim(),
       hiddenStory: document.getElementById('hidden-story').value.trim(),
       instagramFeelings: getCheckedValues('instagramFeelings').join(', '),
       offBrand: document.getElementById('off-brand').value.trim(),
       brandDifference: document.getElementById('brand-difference').value.trim(),
+      industryFrustration: document.getElementById('industry-frustration').value.trim(),
       instagramHandles: document.getElementById('instagram-handles').value.trim(),
       followerCount: document.getElementById('follower-count').value,
       instagramPresence: getCheckedValues('instagramPresence')[0] || '',
@@ -1578,11 +1611,12 @@
       'Best Catering Client Types / Events': data.bestCateringClients,
       'Current Catering Discovery Channels': data.cateringDiscoveryChannels,
       'Ideal Catering Client': data.idealCateringClient,
-      'Brand in Three Words': data.brandThreeWords,
-      'Hidden Brand Story': data.hiddenStory,
+      'Only Statement': data.positioningSentence,
+      'Uncopyable Brand Proof': data.hiddenStory,
       'Desired Instagram Feelings': data.instagramFeelings,
       'Off-Brand Associations to Avoid': data.offBrand,
       'Primary Brand Differentiator': data.brandDifference,
+      'What the Industry Gets Wrong': data.industryFrustration,
       'Current Instagram Handles': data.instagramHandles,
       'Approximate Follower Count': data.followerCount,
       'Current Instagram Presence': data.instagramPresence,

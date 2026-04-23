@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carl's Deli × Scroll Media — Kickoff</title>
+<link rel="icon" type="image/svg+xml" href="/scroll-favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ghost: #fafdff;
+    --navy: #0c3387;
+    --navy-10: rgba(12, 51, 135, 0.1);
+    --navy-20: rgba(12, 51, 135, 0.2);
+    --navy-60: rgba(12, 51, 135, 0.6);
+    --lucid: #cbe9ff;
+    --lime: #e2ed7a;
+    --shadow: #151516;
+    --muted: #6b7280;
+    --divider: rgba(12, 51, 135, 0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #1a1a1a;
+    color: var(--shadow);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95vw;
+    max-width: 1600px;
+    aspect-ratio: 16 / 9;
+    background: var(--ghost);
+    padding: 3.5rem 4rem;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .slide.active { display: flex; }
+
+  /* ──────── HEADER ──────── */
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--divider);
+  }
+
+  .logo-scroll {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    letter-spacing: -0.015em;
+  }
+
+  .logo-client {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  .slide-counter-mark {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--navy);
+    opacity: 0.4;
+    letter-spacing: 0.15em;
+  }
+
+  /* ──────── TYPOGRAPHY ──────── */
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.85rem;
+  }
+
+  h1 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 2.75rem;
+    line-height: 1.1;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  h1.tight { font-size: 2.5rem; }
+
+  .subhead {
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-weight: 400;
+    margin-bottom: 2rem;
+    opacity: 0.75;
+    line-height: 1.4;
+  }
+
+  .body-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  p, li { font-size: 0.95rem; line-height: 1.55; color: var(--shadow); }
+
+  strong { font-weight: 700; color: var(--navy); }
+
+  em { font-style: italic; color: var(--navy-60); }
+
+  /* ──────── SLIDE 1 — TAKEAWAYS ──────── */
+  .takeaways-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 3rem;
+    flex: 1;
+  }
+
+  .takeaways-intro {
+    grid-column: 1 / -1;
+    padding: 1rem 1.5rem;
+    background: var(--lucid);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .takeaways-intro p {
+    font-size: 0.95rem;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .takeaway {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .takeaway-num {
+    flex: 0 0 2.2rem;
+    height: 2.2rem;
+    background: var(--navy);
+    color: var(--ghost);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .takeaway-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .takeaway-content p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* ──────── SLIDE 2 — SCOPE ──────── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 2.5rem;
+    flex: 1;
+  }
+
+  .scope-block h3 {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.7;
+    margin-bottom: 0.45rem;
+    margin-top: 0.9rem;
+  }
+
+  .scope-block h3:first-child { margin-top: 0; }
+
+  .scope-block ul { list-style: none; }
+
+  .scope-block li {
+    padding-left: 1.4rem;
+    position: relative;
+    margin-bottom: 0.3rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .scope-block li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.5rem;
+    height: 1px;
+    background: var(--navy);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 1.1rem;
+    bottom: 1.1rem;
+    width: 1px;
+    background: var(--navy-20);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    padding: 0.55rem 0;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 1rem;
+    height: 1rem;
+    background: var(--lime);
+    border: 2px solid var(--navy);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    z-index: 2;
+  }
+
+  .timeline-date {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 0.88rem;
+    display: block;
+  }
+
+  .timeline-label {
+    font-size: 0.85rem;
+    color: var(--shadow);
+  }
+
+  .needs-band {
+    background: var(--lucid);
+    padding: 1.15rem 1.5rem;
+    border-radius: 6px;
+    margin-top: 1.25rem;
+  }
+
+  .needs-band h4 {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .needs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .need-item p { font-size: 0.78rem; line-height: 1.4; }
+  .need-item strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  /* ──────── SLIDE 3 — GOALS ──────── */
+  .goals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+    flex: 1;
+  }
+
+  .goal-col {
+    background: var(--ghost);
+    border: 1px solid var(--divider);
+    border-radius: 8px;
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .goal-col.priority {
+    border-left: 4px solid var(--lime);
+  }
+
+  .funnel-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .goal-stage {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.55;
+    margin-bottom: 0.45rem;
+  }
+
+  .goal-stage .divider { margin: 0 0.4rem; opacity: 0.5; }
+
+  .goal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .goal-focus {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--navy);
+    opacity: 0.65;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.05em;
+    font-style: italic;
+  }
+
+  .goal-detail {
+    font-size: 0.85rem;
+    color: var(--shadow);
+    line-height: 1.5;
+  }
+
+  .framing-band {
+    background: var(--lucid);
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+    color: var(--navy);
+    font-size: 0.9rem;
+    margin-top: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .framing-band strong { display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
+
+  /* ──────── SLIDE 4 — APPROVALS ──────── */
+  .approval-hero {
+    background: var(--lucid);
+    padding: 1.15rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--lime);
+    margin-bottom: 1.25rem;
+  }
+
+  .approval-hero h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+  }
+
+  .approval-hero p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--shadow);
+  }
+
+  .approval-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .flow-step {
+    background: var(--ghost);
+    border: 1px solid var(--divider);
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .flow-step-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    opacity: 0.5;
+    margin-bottom: 0.4rem;
+  }
+
+  .flow-step-timing {
+    display: inline-block;
+    background: var(--lime);
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 0.82rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .flow-step-desc {
+    font-size: 0.82rem;
+    color: var(--shadow);
+    line-height: 1.4;
+  }
+
+  .revisions-note {
+    background: rgba(226, 237, 122, 0.3);
+    padding: 0.75rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--navy);
+    margin-bottom: 1.15rem;
+    line-height: 1.45;
+  }
+
+  .revisions-note strong { display: inline; }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .compare-panel {
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+  }
+
+  .compare-panel.good { background: var(--lucid); }
+  .compare-panel.friction {
+    background: var(--ghost);
+    border: 1px solid var(--divider);
+  }
+
+  .compare-panel h4 {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin-bottom: 0.55rem;
+  }
+
+  .compare-panel ul { list-style: none; }
+
+  .compare-panel li {
+    padding-left: 1.2rem;
+    position: relative;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .compare-panel.good li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .compare-panel.friction li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  /* ──────── SLIDE 5 — EXERCISE ──────── */
+  .exercise-intro {
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+  }
+
+  .exercise-intro p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--shadow);
+  }
+
+  .timer-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--lucid);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-top: 1rem;
+  }
+
+  .timer-inline::before {
+    content: '○';
+    font-size: 0.6rem;
+  }
+
+  .prompt-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .prompt-col {
+    border: 1.5px dashed var(--navy-20);
+    border-radius: 8px;
+    padding: 1.5rem 1.35rem;
+    background: rgba(203, 233, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .prompt-col-num {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--navy);
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .prompt-col h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .prompt-col p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--shadow);
+  }
+
+  /* ──────── SLIDE 6 — HYPOTHESIS ──────── */
+  .hypothesis-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 2rem;
+    flex: 1;
+  }
+
+  .pull-quote-block {
+    background: var(--ghost);
+    border-left: 4px solid var(--lime);
+    padding: 1.1rem 1.3rem;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy);
+    line-height: 1.45;
+    margin-bottom: 1.25rem;
+  }
+
+  .pull-quote-attr {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  .proof-section h4 {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .proof-list { list-style: none; }
+
+  .proof-list li {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .proof-list li:last-child { border-bottom: none; }
+
+  .types-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    align-content: start;
+  }
+
+  .type-card {
+    background: var(--lucid);
+    padding: 1rem 1.1rem;
+    border-radius: 6px;
+  }
+
+  .type-card h5 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+  }
+
+  .type-card p {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  /* ──────── SLIDE 7 — AUDIENCES ──────── */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .audience-col {
+    padding: 1.25rem 1.4rem;
+    border-radius: 6px;
+  }
+
+  .audience-col.primary { background: var(--lucid); }
+  .audience-col.priority {
+    background: var(--ghost);
+    border: 1px solid var(--divider);
+    border-left: 4px solid var(--lime);
+  }
+
+  .audience-col h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+  }
+
+  .audience-col .audience-status {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .audience-col ul { list-style: none; margin-bottom: 0.5rem; }
+
+  .audience-col li {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 0.3rem;
+    padding-left: 0.95rem;
+    position: relative;
+  }
+
+  .audience-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.45rem;
+    height: 1px;
+    background: var(--navy);
+  }
+
+  .byproduct-note {
+    font-size: 0.75rem;
+    color: var(--navy-60);
+    font-style: italic;
+    margin-top: 0.4rem;
+  }
+
+  .hesitation-quote {
+    font-size: 0.78rem;
+    color: var(--navy);
+    font-style: italic;
+    margin-top: 0.6rem;
+    padding: 0.55rem 0.8rem;
+    background: rgba(226, 237, 122, 0.35);
+    border-radius: 4px;
+    line-height: 1.4;
+  }
+
+  .gaps-section {
+    background: rgba(21, 21, 22, 0.03);
+    padding: 0.85rem 1.2rem;
+    border-radius: 6px;
+  }
+
+  .gaps-section h5 {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .gaps-section ul { list-style: none; }
+
+  .gaps-section li {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 0.3rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .gaps-section li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+  }
+
+  /* ──────── SLIDE 8 — CONSOLIDATION ──────── */
+  .consolidation-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2rem;
+    flex: 1;
+  }
+
+  .consolidation-visual {
+    background: var(--lucid);
+    padding: 1.5rem 1.25rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .account-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--ghost);
+    border-radius: 6px;
+    border: 1px solid var(--divider);
+  }
+
+  .account-row.primary-account { border-left: 3px solid var(--navy); }
+  .account-row.secondary-account { opacity: 0.75; }
+
+  .account-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--lucid);
+    border: 2px solid var(--navy);
+    flex-shrink: 0;
+  }
+
+  .account-info { flex: 1; }
+
+  .account-handle {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+  }
+
+  .account-meta {
+    font-size: 0.72rem;
+    color: var(--navy-60);
+  }
+
+  .account-tag {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    background: var(--lime);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .account-tag.secondary {
+    background: var(--navy-10);
+    color: var(--navy-60);
+  }
+
+  .merge-arrow-down {
+    text-align: center;
+    color: var(--navy);
+    font-size: 1.3rem;
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .account-row.result {
+    background: var(--lime);
+    border: 2px solid var(--navy);
+    border-left: 2px solid var(--navy);
+  }
+
+  .account-row.result .account-circle {
+    background: var(--ghost);
+  }
+
+  .consolidation-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .why-consolidation h4,
+  .approach-block h4 {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.55rem;
+  }
+
+  .why-consolidation ul {
+    list-style: none;
+    margin-bottom: 1.1rem;
+  }
+
+  .why-consolidation li {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .why-consolidation li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .approach-block ol {
+    list-style: none;
+    counter-reset: step;
+    margin-bottom: 1rem;
+  }
+
+  .approach-block li {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+    padding-left: 1.6rem;
+    position: relative;
+    counter-increment: step;
+  }
+
+  .approach-block li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: var(--navy);
+    color: var(--ghost);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .consolidation-question {
+    background: var(--lime);
+    padding: 0.8rem 1.3rem;
+    border-radius: 6px;
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    margin-top: auto;
+  }
+
+  /* ──────── SLIDE 9 — NEXT STEPS ──────── */
+  .next-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .next-card {
+    background: var(--ghost);
+    border: 1px solid var(--divider);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+  }
+
+  .next-card-tag {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.55;
+    margin-bottom: 0.4rem;
+  }
+
+  .next-card h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.55rem;
+    line-height: 1.25;
+  }
+
+  .next-card ul { list-style: none; }
+
+  .next-card li {
+    font-size: 0.76rem;
+    line-height: 1.45;
+    margin-bottom: 0.3rem;
+    padding-left: 0.9rem;
+    position: relative;
+  }
+
+  .next-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--navy);
+  }
+
+  .strategy-preview {
+    background: var(--lucid);
+    border-left: 4px solid var(--lime);
+    padding: 0.9rem 1.2rem;
+    border-radius: 6px;
+    margin-bottom: 0.85rem;
+  }
+
+  .strategy-preview h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .strategy-preview p { font-size: 0.78rem; line-height: 1.4; margin-bottom: 0.35rem; }
+
+  .strategy-preview ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15rem 1rem;
+  }
+
+  .strategy-preview li {
+    font-size: 0.72rem;
+    line-height: 1.45;
+    padding-left: 0.8rem;
+    position: relative;
+  }
+
+  .strategy-preview li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+  }
+
+  .dates-row {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+    align-items: center;
+  }
+
+  .dates-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-right: 0.3rem;
+  }
+
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+  }
+
+  .date-pill .date {
+    background: var(--lime);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .closing {
+    margin-top: 0.35rem;
+    color: var(--navy);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .sig {
+    font-weight: 400;
+    margin-top: 0.15rem;
+    font-size: 0.82rem;
+    opacity: 0.7;
+  }
+
+  /* ──────── NAV ──────── */
+  .nav-controls {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border-radius: 4px;
+  }
+
+  .nav-btn:hover { background: rgba(255, 255, 255, 0.15); }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .slide-counter {
+    color: white;
+    font-size: 0.8rem;
+    min-width: 3.5rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* ──────── PRINT ──────── */
+  @media print {
+    html, body {
+      background: white;
+      overflow: visible;
+      height: auto;
+    }
+    .deck { width: 100%; height: auto; }
+    .slide {
+      position: relative;
+      display: flex !important;
+      width: 100%;
+      max-width: none;
+      aspect-ratio: 16 / 9;
+      box-shadow: none;
+      page-break-after: always;
+      transform: none;
+      top: 0;
+      left: 0;
+      margin: 0;
+      border-radius: 0;
+    }
+    .nav-controls { display: none; }
+  }
+
+  @media (max-width: 1200px) {
+    h1 { font-size: 2.2rem; }
+    h1.tight { font-size: 2rem; }
+    .slide { padding: 2.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ═══════════ SLIDE 1 — WHAT WE HEARD ═══════════ -->
+  <section class="slide active" data-slide="1">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">01 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Kickoff · April 23, 2026</div>
+    <h1>Thanks for the onboarding form.</h1>
+    <p class="subhead">You gave us exactly what we needed. Here are the four takeaways we're building the strategy around.</p>
+
+    <div class="body-content">
+      <div class="takeaways-layout">
+
+        <div class="takeaway">
+          <div class="takeaway-num">1</div>
+          <div class="takeaway-content">
+            <h4>An 80-year brand with real proof points</h4>
+            <p>Same corner since 1938. Mainly women-owned despite the name. 13,000 #23 Country Clubs sold in a single year. This is content the industry can't replicate.</p>
+          </div>
+        </div>
+
+        <div class="takeaway">
+          <div class="takeaway-num">2</div>
+          <div class="takeaway-content">
+            <h4>Two audiences, one growing</h4>
+            <p>Multigenerational deli regulars plus a 25 to 35 cohort finding you through IG and TikTok. Your current content already works. The catering buyer is the audience we need to build toward.</p>
+          </div>
+        </div>
+
+        <div class="takeaway">
+          <div class="takeaway-num">3</div>
+          <div class="takeaway-content">
+            <h4>Catering has real upside</h4>
+            <p>From Sam Adams at 300+ sandwiches down to pre-wedding bridal trays, the range is already there. What's missing is a repeatable content channel that brings buyers to you.</p>
+          </div>
+        </div>
+
+        <div class="takeaway">
+          <div class="takeaway-num">4</div>
+          <div class="takeaway-content">
+            <h4>Two accounts that should be one</h4>
+            <p>@carlsdelihydepark is your primary account at 7.4K. @carlsdelifindlaymarket is secondary and newer. Consolidating to a single Carl's Deli account is the first structural move.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 2 — SCOPE ═══════════ -->
+  <section class="slide" data-slide="2">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">02 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Scope + Timeline</div>
+    <h1>Signature Growth. Strategy first, then execution.</h1>
+    <p class="subhead">Here's what we deliver every week, every three weeks, and across the first five weeks of the engagement.</p>
+
+    <div class="body-content">
+      <div class="scope-grid">
+        <div class="scope-block">
+          <h3>Every week, in execution</h3>
+          <ul>
+            <li>3 feed posts — Monday, Wednesday, Friday</li>
+            <li>2 dedicated story strategy days — Tuesday, Thursday</li>
+            <li>Feed posts shared to stories on post days</li>
+            <li>Community management on every post</li>
+            <li>Monthly performance report, delivered the first week of the following month</li>
+          </ul>
+          <h3>Every three weeks</h3>
+          <ul>
+            <li>One content shoot — Hyde Park or Findlay Market, decided in planning</li>
+          </ul>
+          <h3>Starting after strategy review</h3>
+          <ul>
+            <li>30-minute biweekly check-in with Rachel</li>
+          </ul>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-date">April 23</span>
+              <span class="timeline-label">Kickoff (today)</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-date">May 14</span>
+              <span class="timeline-label">Strategy review</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-date">May 15</span>
+              <span class="timeline-label">First content shoot — Friday AM</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-date">May 18 – 22</span>
+              <span class="timeline-label">Editing week</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <span class="timeline-date">May 25</span>
+              <span class="timeline-label">First post live</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="needs-band">
+        <h4>What we need from you to move fast</h4>
+        <div class="needs-grid">
+          <div class="need-item">
+            <p><strong>Account access</strong>2FA on both Instagram profiles this week. Without it, we can't begin.</p>
+          </div>
+          <div class="need-item">
+            <p><strong>Brand assets</strong>Logos, historical photos, press, anything archival. The more we have, the richer the content.</p>
+          </div>
+          <div class="need-item">
+            <p><strong>Shoot availability</strong>Friday AM confirmed from your onboarding form. We'll lock May 15 today.</p>
+          </div>
+          <div class="need-item">
+            <p><strong>Plan access</strong>We'll invite Sydney to Plan this week. That's where all approvals happen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 3 — GOALS ═══════════ -->
+  <section class="slide" data-slide="3">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">03 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Goal alignment</div>
+    <h1>Three goals, mapped to the funnel.</h1>
+    <p class="subhead">These are the goals you shared with us. We want to confirm them today because they shape the strategy we'll present on May 14 and every KPI we track against it.</p>
+
+    <div class="body-content">
+      <div class="goals-grid">
+
+        <div class="goal-col">
+          <svg class="funnel-icon" viewBox="0 0 40 40" fill="none">
+            <path d="M6 8 L34 8 L24 22 L24 34 L16 34 L16 22 Z" fill="#0c3387" opacity="0.2"/>
+            <path d="M6 8 L34 8 L30 14 L10 14 Z" fill="#0c3387"/>
+          </svg>
+          <div class="goal-stage">Top of funnel <span class="divider">·</span> TOFU</div>
+          <div class="goal-title">Build brand awareness in Cincinnati.</div>
+          <div class="goal-focus">Focus: get the right local audience to know who Carl's is.</div>
+          <p class="goal-detail">Consolidate into a single Carl's Deli account so the audience compounds in one place. Content built for reach and discovery in Cincinnati.</p>
+        </div>
+
+        <div class="goal-col">
+          <svg class="funnel-icon" viewBox="0 0 40 40" fill="none">
+            <path d="M6 8 L34 8 L24 22 L24 34 L16 34 L16 22 Z" fill="#0c3387" opacity="0.2"/>
+            <path d="M10 14 L30 14 L24 22 L16 22 Z" fill="#0c3387"/>
+          </svg>
+          <div class="goal-stage">Middle of funnel <span class="divider">·</span> MOFU</div>
+          <div class="goal-title">Engage your current community.</div>
+          <div class="goal-focus">Focus: education and engagement that builds trust and authority.</div>
+          <p class="goal-detail">Content that earns saves, shares, and comments from the audience already watching. Proactive community management across Cincinnati food accounts.</p>
+        </div>
+
+        <div class="goal-col priority">
+          <svg class="funnel-icon" viewBox="0 0 40 40" fill="none">
+            <path d="M6 8 L34 8 L24 22 L24 34 L16 34 L16 22 Z" fill="#0c3387" opacity="0.2"/>
+            <path d="M16 22 L24 22 L24 34 L16 34 Z" fill="#0c3387"/>
+          </svg>
+          <div class="goal-stage">Bottom of funnel <span class="divider">·</span> BOFU</div>
+          <div class="goal-title">Grow the catering revenue stream.</div>
+          <div class="goal-focus">Focus: consideration and conversion content for qualified catering buyers.</div>
+          <p class="goal-detail">Every BOFU post is built to drive a catering inquiry. Corporate orders, event buyers, and the dream clients you haven't met yet. This is the priority revenue lever.</p>
+        </div>
+
+      </div>
+
+      <div class="framing-band">
+        <strong>Confirm these three today.</strong>
+        We'll present the full KPI framework and target ranges for each funnel stage at the strategy review on May 14.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 4 — APPROVALS ═══════════ -->
+  <section class="slide" data-slide="4">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">04 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Approvals in Plan</div>
+    <h1>Two things protect the calendar: timing and clarity.</h1>
+    <p class="subhead">All content reviews and approvals run through Plan, our social media content calendar and planning tool. Here's the rhythm that keeps posts on schedule.</p>
+
+    <div class="body-content">
+
+      <div class="approval-hero">
+        <h3>Approvals are required 5 business days before a post is scheduled to go live.</h3>
+        <p>This is the single rule that keeps the calendar on track. Without approval in hand 5 business days out, the post either moves or doesn't publish.</p>
+      </div>
+
+      <div class="approval-flow">
+        <div class="flow-step">
+          <div class="flow-step-label">STEP 01 · SCROLL MEDIA</div>
+          <div class="flow-step-timing">Day 0</div>
+          <div class="flow-step-desc">We deliver content to Plan for your review.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-label">STEP 02 · CARL'S DELI</div>
+          <div class="flow-step-timing">Within 2 business days</div>
+          <div class="flow-step-desc">You leave feedback or edit requests directly in Plan.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-label">STEP 03 · CARL'S DELI</div>
+          <div class="flow-step-timing">5 business days before publish</div>
+          <div class="flow-step-desc">Final approval in hand. Content locks and goes into the publish queue.</div>
+        </div>
+      </div>
+
+      <div class="revisions-note">
+        <strong>Revisions:</strong> Up to two rounds of edits per post or batch. The first 30 days of live content is a calibration window where revisions run more freely while we lock in voice and visual direction.
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-panel good">
+          <h4>What keeps the calendar on track</h4>
+          <ul>
+            <li>All feedback in Plan, not over text or email</li>
+            <li>Edits consolidated into one round when possible</li>
+            <li>Sydney as the main point of contact for sign-off</li>
+            <li>Approvals 5 business days before publish, every time</li>
+          </ul>
+        </div>
+        <div class="compare-panel friction">
+          <h4>What pushes the calendar back</h4>
+          <ul>
+            <li>Approvals arriving under the 5-day window</li>
+            <li>Conflicting feedback from multiple stakeholders</li>
+            <li>Feedback spread across Slack, email, and text</li>
+            <li>Revision requests beyond two rounds per batch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 5 — LIVE EXERCISE ═══════════ -->
+  <section class="slide" data-slide="5">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">05 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Live exercise</div>
+
+    <div class="exercise-intro">
+      <h1 class="tight">Before we build content, we need to hear from you.</h1>
+      <p>The content types that work best for Carl's come from how you two describe the business. Take each prompt in turn.</p>
+      <div class="timer-inline">15 minutes</div>
+    </div>
+
+    <div class="body-content">
+      <div class="prompt-cols">
+        <div class="prompt-col">
+          <div class="prompt-col-num">PROMPT 01</div>
+          <h4>Personal</h4>
+          <p>Two or three things that matter to you personally, outside of Carl's.</p>
+        </div>
+        <div class="prompt-col">
+          <div class="prompt-col-num">PROMPT 02</div>
+          <h4>Professional</h4>
+          <p>Two or three things that matter to you as business owners running this place.</p>
+        </div>
+        <div class="prompt-col">
+          <div class="prompt-col-num">PROMPT 03</div>
+          <h4>Brand</h4>
+          <p>Two or three things Carl's stands for, whether or not we ever post about them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 6 — STARTING HYPOTHESIS ═══════════ -->
+  <section class="slide" data-slide="6">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">06 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Our starting hypothesis</div>
+    <h1 class="tight">We built this from your own words.</h1>
+    <p class="subhead">This is where we'd start. Use it as a reaction point, not a locked decision.</p>
+
+    <div class="body-content">
+      <div class="hypothesis-layout">
+        <div>
+          <div class="pull-quote-block">
+            "Hungry and craving it. Proud to be Cincinnati. Nostalgic. Confident choosing Carl's for catering."
+            <div class="pull-quote-attr">FROM YOUR ONBOARDING FORM</div>
+          </div>
+
+          <div class="proof-section">
+            <h4>What makes Carl's uncopyable</h4>
+            <ul class="proof-list">
+              <li>Same corner since 1938</li>
+              <li>13,000 Country Clubs sold in a single year</li>
+              <li>Mainly women-owned for most of its life, named Carl</li>
+              <li>Family background in food through Honey Baked Ham</li>
+              <li>Old school in a city of try-hards</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="types-grid">
+          <div class="type-card">
+            <h5>Cincinnati Pride</h5>
+            <p>The city, the neighborhoods, the regulars, the community Carl's has been part of since '38.</p>
+          </div>
+          <div class="type-card">
+            <h5>Sandwich Craft</h5>
+            <p>The 32+ builds, the house-made salads, the meats sliced in-house daily.</p>
+          </div>
+          <div class="type-card">
+            <h5>The Story</h5>
+            <p>80 years, mainly women-owned, the Arnold family legacy, the sisters chapter.</p>
+          </div>
+          <div class="type-card">
+            <h5>Catering Confidence</h5>
+            <p>The overwhelmed buyer, the process made simple, the proof that Carl's delivers at scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 7 — AUDIENCES ═══════════ -->
+  <section class="slide" data-slide="7">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">07 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Two audiences</div>
+    <h1 class="tight">The deli customer and the catering buyer are different people.</h1>
+    <p class="subhead">Every post speaks to one of them on purpose. The catering buyer is where we need the most clarity today.</p>
+
+    <div class="body-content">
+      <div class="audience-grid">
+        <div class="audience-col primary">
+          <h4>Deli Customer</h4>
+          <span class="audience-status">B2C · ALREADY IN MOTION</span>
+          <ul>
+            <li>Cincinnati locals, ages 25 to 50</li>
+            <li>Multigenerational regulars and a 25 to 35 cohort finding you through IG and TikTok</li>
+            <li>Community-oriented, quality-driven, nostalgic</li>
+            <li>Your current content already works here</li>
+          </ul>
+          <p class="byproduct-note">Growth in this audience is a byproduct of everything else we do.</p>
+        </div>
+
+        <div class="audience-col priority">
+          <h4>Catering Buyer</h4>
+          <span class="audience-status">B2B · PRIORITY REVENUE LEVER</span>
+          <ul>
+            <li><strong>Corporate:</strong> office managers, EAs, event planners ordering for teams</li>
+            <li><strong>Personal:</strong> pre-wedding bridal parties, milestone events, family gatherings</li>
+            <li><strong>Pop-up:</strong> City Flea, market events, brand exposure</li>
+          </ul>
+          <div class="hesitation-quote">
+            Main hesitation, in your words: "overwhelmed by the amount of sandwich options, not sure how to narrow down."
+          </div>
+        </div>
+      </div>
+
+      <div class="gaps-section">
+        <h5>Three things we need to close today</h5>
+        <ul>
+          <li><strong>Real catering price range.</strong> Your form said "under $200," but Sam Adams was 300+ sandwiches. That tells us the form answer was about individual orders, not catering scale. What is the actual range?</li>
+          <li><strong>Catering discovery channel.</strong> Your form said "not sure" where catering clients find you. Walk us through your last three catering clients.</li>
+          <li><strong>Dream catering client.</strong> What kind of company, what kind of event?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 8 — CONSOLIDATION ═══════════ -->
+  <section class="slide" data-slide="8">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">08 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Account consolidation · recommendation</div>
+    <h1 class="tight">Two accounts today. One account going forward.</h1>
+    <p class="subhead">Nothing moves until you approve it. Here's the structural move we recommend and how we'd execute it.</p>
+
+    <div class="body-content">
+      <div class="consolidation-grid">
+        <div class="consolidation-visual">
+          <div class="account-row primary-account">
+            <div class="account-circle"></div>
+            <div class="account-info">
+              <span class="account-handle">@carlsdelihydepark</span>
+              <span class="account-meta">7.4K followers</span>
+            </div>
+            <span class="account-tag">PRIMARY</span>
+          </div>
+
+          <div class="account-row secondary-account">
+            <div class="account-circle"></div>
+            <div class="account-info">
+              <span class="account-handle">@carlsdelifindlaymarket</span>
+              <span class="account-meta">newer, smaller</span>
+            </div>
+            <span class="account-tag secondary">SECONDARY</span>
+          </div>
+
+          <div class="merge-arrow-down">↓</div>
+
+          <div class="account-row result">
+            <div class="account-circle"></div>
+            <div class="account-info">
+              <span class="account-handle">@carlsdeli</span>
+              <span class="account-meta">one unified account</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="consolidation-right">
+          <div class="why-consolidation">
+            <h4>Why it matters</h4>
+            <ul>
+              <li>One audience compounds. Two accounts split the same post's reach in half.</li>
+              <li>Catering buyers search once. They should land in one place.</li>
+              <li>One brand signal is easier to grow and easier to report against.</li>
+            </ul>
+          </div>
+
+          <div class="approach-block">
+            <h4>How we'd execute (Month 2)</h4>
+            <ol>
+              <li>Rebrand @carlsdelihydepark to @carlsdeli, or the nearest available handle you approve.</li>
+              <li>Run 2 to 3 weeks of warm transition content on @carlsdelifindlaymarket, directing followers to the primary account.</li>
+              <li>Deactivate @carlsdelifindlaymarket once the audience has migrated.</li>
+            </ol>
+          </div>
+
+          <div class="consolidation-question">
+            Question for you: does <strong>@carlsdeli</strong> work, or do you have a handle in mind?
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 9 — NEXT STEPS ═══════════ -->
+  <section class="slide" data-slide="9">
+    <div class="slide-header">
+      <div class="logo-scroll">scroll media</div>
+      <div class="slide-counter-mark">09 · 09</div>
+      <div class="logo-client">Carl's Deli</div>
+    </div>
+    <div class="eyebrow">Next steps</div>
+    <h1 class="tight">What happens next.</h1>
+    <p class="subhead">Three action blocks this week. One milestone on May 14. First post live May 25.</p>
+
+    <div class="body-content">
+      <div class="next-grid">
+        <div class="next-card">
+          <div class="next-card-tag">THIS WEEK · SCROLL MEDIA OWNS</div>
+          <h4>Plan + access setup</h4>
+          <ul>
+            <li>Rachel sends Sydney a Plan invite to her email</li>
+            <li>Sydney accepts and sets up her Plan login</li>
+            <li>2FA access on both Instagram profiles</li>
+            <li>Rachel + Chase added as IG admins</li>
+          </ul>
+        </div>
+        <div class="next-card">
+          <div class="next-card-tag">THIS WEEK · CARL'S DELI SENDS</div>
+          <h4>Brand assets</h4>
+          <ul>
+            <li>Logo files</li>
+            <li>Historical photos, archive materials, press, awards</li>
+            <li>Anything that makes Carl's feel like Carl's</li>
+          </ul>
+        </div>
+        <div class="next-card">
+          <div class="next-card-tag">ALREADY IN MOTION · RACHEL OWNS</div>
+          <h4>Content bank</h4>
+          <ul>
+            <li>20+ concepts mapped across content types and goals</li>
+            <li>Full calendar revealed at the strategy review</li>
+            <li>Includes legacy angle, #23 deep dives, catering builds</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="strategy-preview">
+        <h4>May 14 — Strategy review</h4>
+        <p>At the strategy review, you walk through:</p>
+        <ul>
+          <li>Both audience profiles fully built out</li>
+          <li>Final content types</li>
+          <li>90-day content calendar, every post mapped</li>
+          <li>Social SEO keyword bank</li>
+          <li>Account consolidation plan, signed off</li>
+          <li>KPI targets and monthly report structure</li>
+          <li>Account handle, locked</li>
+        </ul>
+      </div>
+
+      <div class="dates-row">
+        <span class="dates-label">Confirm today</span>
+        <span class="date-pill"><span class="date">May 14</span> Strategy review</span>
+        <span class="date-pill"><span class="date">May 15</span> First shoot (AM)</span>
+        <span class="date-pill"><span class="date">May 25</span> First post live</span>
+        <span class="date-pill">Biweekly check-in day + time</span>
+      </div>
+
+      <p class="closing">
+        Glad you picked us. Looking forward to building it.
+      </p>
+      <p class="sig">— Chase</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- NAV -->
+<div class="nav-controls">
+  <button class="nav-btn" id="prevBtn">← Prev</button>
+  <span class="slide-counter"><span id="current">1</span> / <span id="total">9</span></span>
+  <button class="nav-btn" id="nextBtn">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const currentEl = document.getElementById('current');
+  const totalEl = document.getElementById('total');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let current = 1;
+  totalEl.textContent = total;
+
+  function show(n) {
+    if (n < 1) n = 1;
+    if (n > total) n = total;
+    slides.forEach(s => s.classList.remove('active'));
+    document.querySelector(`[data-slide="${n}"]`).classList.add('active');
+    current = n;
+    currentEl.textContent = n;
+    prevBtn.disabled = n === 1;
+    nextBtn.disabled = n === total;
+  }
+
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      show(current + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      show(current - 1);
+    }
+    if (e.key === 'Home') show(1);
+    if (e.key === 'End') show(total);
+    if (/^[1-9]$/.test(e.key)) show(parseInt(e.key));
+  });
+
+  show(1);
+</script>
+
+</body>
+</html>

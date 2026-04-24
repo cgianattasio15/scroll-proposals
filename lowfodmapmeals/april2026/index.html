@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Low FODMAP Meals × Scroll Media — Signature Package Proposal</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.14);
+      --lucid:     #cbe9ff;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --green:     #2a7a3a;
+      --green-lt:  rgba(42,122,58,0.08);
+      --radius:    12px;
+      --card-shadow: 0 2px 14px rgba(12,51,135,0.07);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--azure),var(--hi)); z-index:1001; transition:width .1s linear; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:rgba(250,253,255,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    .nav-logo img { height:26px; display:block; }
+    .nav-links { list-style:none; display:flex; gap:3px; }
+    .nav-links a {
+      display:block; padding:5px 10px; font-size:12px; font-weight:600;
+      color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
+    @media(max-width:1020px){ .nav-links{display:none;} nav{padding:0 20px;} }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:600px; margin-bottom:28px; line-height:1.65; }
+
+    /* ── CARDS ── */
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .card-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+
+    /* ── LISTS ── */
+    .tick-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tick-list li { font-size:14px; color:var(--ink-mid); padding-left:22px; position:relative; line-height:1.5; }
+    .tick-list li::before { content:'✓'; color:var(--azure); position:absolute; left:0; font-weight:700; font-size:12px; top:2px; }
+
+    .arrow-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .arrow-list li { font-size:14px; color:var(--ink-mid); padding-left:18px; position:relative; line-height:1.5; }
+    .arrow-list li::before { content:'→'; color:var(--azure); font-weight:700; position:absolute; left:0; }
+
+    /* ── GRIDS ── */
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .g2,.g3{grid-template-columns:1fr;} }
+
+    /* ── UTILS ── */
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    .insight { background:rgba(226,237,122,.1); border:1px solid rgba(200,214,0,.3); border-left:4px solid #c8d600; border-radius:var(--radius); padding:16px 20px; }
+    .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .insight p strong { color:var(--shadow); }
+
+    .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .assumption p strong { color:var(--azure); }
+
+    /* ══ HERO ══ */
+    .hero { padding:150px 32px 72px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:540px; line-height:1.65; margin-bottom:28px; }
+    .hero-meta { display:flex; gap:10px; flex-wrap:wrap; }
+    .hero-meta span { background:var(--porcelain); border:1px solid var(--border); border-radius:100px; padding:6px 16px; font-size:13px; color:var(--ink-mid); }
+    .hero-meta span strong { color:var(--shadow); }
+
+    /* ══ GOALS ══ */
+    .goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:640px){ .goals-grid{grid-template-columns:1fr;} }
+    .goal-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; display:flex; flex-direction:column; gap:10px; }
+    .goal-num { width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0; }
+    .goal-card h4 { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .goal-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; flex:1; }
+    .goal-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; align-self:flex-start; }
+    .tag-tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .tag-mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .tag-bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* ══ IVP TABS ══ */
+    .ivp-tabs { display:flex; gap:8px; margin-bottom:0; }
+    .ivp-tab { padding:8px 18px; border-radius:8px 8px 0 0; font-size:13px; font-weight:700; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--porcelain); color:var(--ink-soft); transition:background .15s,color .15s; user-select:none; }
+    .ivp-tab.active { background:#fff; color:var(--azure); }
+    .ivp-panels { border:1px solid var(--border); border-radius:0 var(--radius) var(--radius) var(--radius); background:#fff; box-shadow:var(--card-shadow); }
+    .ivp-panel { display:none; padding:26px; }
+    .ivp-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:640px){ .ivp-panel.active{grid-template-columns:1fr;} }
+    .ivp-col h4 { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+    .ivp-col p  { font-size:14px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px; }
+
+    /* ══ ACCOUNT PHASES ══ */
+    .phase-flow { display:flex; flex-direction:column; }
+    .phase-item { display:grid; grid-template-columns:28px 1fr; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); }
+    .phase-item:last-child { border-bottom:none; }
+    .phase-dot { width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; margin-top:2px; }
+    .phase-dot.muted { background:var(--porcelain); color:var(--ink-soft); border:1px solid var(--border); }
+    .phase-body h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .phase-body p  { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ══ SOCIAL SEO ══ */
+    .seo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    @media(max-width:640px){ .seo-grid{grid-template-columns:1fr;} }
+    .seo-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; }
+    .seo-card h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .seo-card p  { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+
+    .keyword-bank { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .kw {
+      font-size:12px; font-weight:600; padding:5px 12px;
+      border-radius:100px; border:1px solid var(--azure-bd);
+      background:var(--azure-lt); color:var(--azure);
+    }
+    .kw.tier2 { background:rgba(226,237,122,.3); border-color:rgba(200,214,0,.3); color:#4d5e00; }
+    .kw.tier3 { background:var(--porcelain); border-color:var(--border); color:var(--ink-mid); }
+    .kw.tier4 { background:rgba(12,51,135,.05); border-color:rgba(12,51,135,.12); color:var(--azure); font-weight:700; }
+
+    /* ══ CONTENT IDEATION ACCORDION ══ */
+    .accordion { display:flex; flex-direction:column; gap:10px; }
+    .acc-item { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .acc-header {
+      padding:16px 22px; display:flex; align-items:center; justify-content:space-between;
+      cursor:pointer; user-select:none; transition:background .15s;
+    }
+    .acc-header:hover { background:var(--porcelain); }
+    .acc-header-left { display:flex; align-items:center; gap:14px; }
+    .acc-icon { font-size:20px; flex-shrink:0; }
+    .acc-title { font-size:15px; font-weight:700; color:var(--shadow); }
+    .acc-sub   { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+    .acc-tags  { display:flex; gap:6px; flex-wrap:wrap; }
+    .acc-tag   { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:4px; }
+    .tag-reel     { background:rgba(12,51,135,.1); color:var(--azure); }
+    .tag-carousel { background:rgba(226,237,122,.4); color:#4d5e00; }
+    .tag-stories  { background:rgba(255,190,80,.22); color:#7a4800; }
+    .acc-chevron { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; margin-left:12px; }
+    .acc-item.open .acc-chevron { transform:rotate(180deg); }
+    .acc-body { display:none; padding:0 22px 20px; border-top:1px solid var(--border); }
+    .acc-item.open .acc-body { display:block; }
+    .acc-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:14px; }
+    .acc-body-hooks { margin-top:14px; display:flex; flex-direction:column; gap:10px; }
+    .hook-item { background:var(--porcelain); border-radius:8px; padding:12px 16px; }
+    .hook-item .hook { font-size:14px; font-weight:700; color:var(--shadow); font-style:italic; margin-bottom:4px; }
+    .hook-item .hook-detail { font-size:13px; color:var(--ink-mid); line-height:1.5; }
+    .acc-metrics { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .metric-tag { font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; background:rgba(12,51,135,.08); color:var(--azure); border:1px solid var(--azure-bd); }
+
+    /* ══ SCOPE TABLE ══ */
+    .scope-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
+    .scope-table th:last-child { text-align:center; }
+    .scope-table td { padding:11px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:36%; padding-right:16px; }
+    .scope-table td:last-child { text-align:center; width:80px; }
+    .scope-table tr:last-child td { border-bottom:none; }
+    .scope-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:var(--azure-lt); color:var(--azure); }
+    .check { color:var(--azure); font-weight:700; font-size:16px; }
+
+    /* ══ TIMELINE ══ */
+    .tl-cta { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:#fff; line-height:1.55; opacity:.9; }
+    .tl-cta p strong { opacity:1; }
+
+    /* ══ INVESTMENT ══ */
+    .inv-hero { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
+    .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+    .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; }
+    .inv-hero-row { display:flex; gap:32px; flex-wrap:wrap; }
+    .inv-hero-stat .amount { font-size:32px; font-weight:800; line-height:1; }
+    .inv-hero-stat .lbl { font-size:12px; opacity:.7; margin-top:3px; }
+    @media(max-width:640px){ .inv-hero{padding:24px 20px;} }
+    .inv-breakdown { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inv-row { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); font-size:14px; gap:16px; }
+    .inv-row:last-child { border-bottom:none; }
+    .inv-row.total { background:var(--azure-lt); font-weight:700; }
+    .inv-row .item { color:var(--ink-mid); flex:1; }
+    .inv-row .item strong { color:var(--shadow); display:block; font-size:15px; margin-bottom:2px; }
+    .inv-row .item small { font-size:12px; color:var(--ink-soft); }
+    .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
+    .inv-row.total .amt { color:var(--azure); font-size:17px; }
+    .credit-note { font-size:13px; color:var(--green); font-weight:600; background:var(--green-lt); border:1px solid rgba(42,122,58,.2); border-radius:8px; padding:12px 16px; margin-top:14px; }
+
+    /* ══ STEPS ══ */
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:860px){ #next-steps .steps-grid{grid-template-columns:repeat(2,1fr) !important;} }
+    @media(max-width:640px){ .steps-grid{grid-template-columns:1fr;} }
+    @media(max-width:480px){ #next-steps .steps-grid{grid-template-columns:1fr !important;} }
+    .step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .step-n { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .step h3 { font-size:16px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ CTA ══ */
+    .cta-block { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.5); margin-top:14px; }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ══ LANE LABELS ══ */
+    .lane-labels { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+    @media(max-width:640px){ .lane-labels{grid-template-columns:1fr;} }
+    .lane-label { display:flex; gap:12px; align-items:flex-start; padding:14px 18px; border-radius:var(--radius); border:1px solid; }
+    .lane1-label { background:rgba(203,233,255,.2); border-color:rgba(12,51,135,.15); }
+    .lane2-label { background:rgba(226,237,122,.15); border-color:rgba(200,214,0,.25); }
+    .lane-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .lane1-dot { background:var(--azure); }
+    .lane2-dot { background:#8a9e00; }
+    .lane-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:3px; }
+    .lane-desc { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .lane-badge { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px; }
+    .lane1-badge { background:rgba(12,51,135,.1); color:var(--azure); }
+    .lane2-badge { background:rgba(138,158,0,.2); color:#4d5e00; }
+
+    /* ══ FOOTER ══ */
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+
+    /* ══ MILESTONE TIMELINE ══ */
+    .milestone-wrap { width:100%; }
+    .milestone-track {
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:0;
+      position:relative;
+      padding-top:20px;
+    }
+    @media(max-width:760px){
+      .milestone-track { grid-template-columns:1fr 1fr; gap:16px; }
+      .ms-line { display:none; }
+    }
+    .milestone-col { display:flex; flex-direction:column; align-items:center; position:relative; }
+    .ms-dot {
+      width:16px; height:16px; border-radius:50%; flex-shrink:0; z-index:2;
+      border:3px solid #fff; box-shadow:0 0 0 2px currentColor;
+    }
+    .ms-blue { background:var(--azure); color:var(--azure); }
+    .ms-green { background:var(--green); color:var(--green); }
+    .ms-highlight { background:#8a9e00; color:#8a9e00; }
+    .ms-line {
+      position:absolute; top:8px; left:50%; right:-50%;
+      height:2px; background:var(--border); z-index:1;
+    }
+    .ms-line-fade { background:linear-gradient(90deg,var(--border),transparent); }
+    .ms-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%;
+      font-size:13px;
+    }
+    .ms-card-featured {
+      border-color:var(--azure);
+      box-shadow:0 0 0 2px rgba(12,51,135,.12), var(--card-shadow);
+    }
+    .ms-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .ms-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .ms-items { display:flex; flex-direction:column; gap:4px; }
+    .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
+
+    /* Recurring rhythm */
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:16px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+
+    /* Milestone banner */
+    .milestone-banner {
+      background:rgba(203,233,255,.25); border:1px solid rgba(12,51,135,.15);
+      border-left:4px solid var(--azure); border-radius:var(--radius);
+      padding:16px 22px; display:flex; gap:14px; align-items:flex-start;
+    }
+    .milestone-banner-icon { font-size:22px; flex-shrink:0; }
+    .milestone-banner-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .milestone-banner-desc { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* Content calendar */
+    .cal-wrap { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .cal-header { padding:18px 22px; border-bottom:1px solid var(--border); }
+    .cal-header-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .cal-header-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .cal-grid {
+      display:grid; grid-template-columns:repeat(5,1fr);
+      border-bottom:1px solid var(--border);
+    }
+    .cal-day-header {
+      padding:10px; text-align:center; font-size:11px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+      background:var(--porcelain); border-right:1px solid var(--border);
+    }
+    .cal-day-header:last-child { border-right:none; }
+    .cal-cell {
+      padding:12px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+      min-height:90px;
+    }
+    .cal-cell:nth-child(5n) { border-right:none; }
+    .cal-cell.feed.tofu  { background:rgba(203,233,255,.15); }
+    .cal-cell.feed.mofu  { background:rgba(226,237,122,.12); }
+    .cal-cell.feed.bofu  { background:rgba(12,51,135,.05); }
+    .cal-cell.story      { background:rgba(255,190,80,.1); }
+    .cal-type  { font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .cal-name  { font-size:12px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .cal-funnel { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .tofu-tag { background:rgba(203,233,255,.5); color:var(--azure); }
+    .mofu-tag { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .bofu-tag { background:rgba(12,51,135,.09); color:var(--azure); }
+    .cal-goal  { font-size:10px; color:var(--ink-soft); }
+    .cal-legend { display:flex; gap:12px; flex-wrap:wrap; padding:12px 18px; background:var(--porcelain); border-top:1px solid var(--border); }
+    .leg { font-size:11px; font-weight:600; }
+    .tofu-leg { color:var(--azure); }
+    .mofu-leg { color:#4d5e00; }
+    .bofu-leg { color:var(--azure); }
+    /* ══ MOBILE FIXES ══ */
+    .scope-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:600px){
+      .scope-table { font-size:13px; min-width:520px; }
+      .scope-table td:first-child { width:42%; }
+      .scope-table td:last-child { width:60px; }
+    }
+    .cal-funnel { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .cal-wrap-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:640px){ .cal-cell{ min-height:80px; padding:8px; } .cal-name{ font-size:11px; } }
+    @media(max-width:480px){ .milestone-track{ grid-template-columns:1fr; } }
+    @media(max-width:480px){
+      .acc-header { flex-wrap:wrap; gap:8px; }
+      .acc-header > div:last-child { width:100%; display:flex; justify-content:space-between; align-items:center; }
+    }
+    .story-leg { color:#7a4800; }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+    </a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#heard"       data-section="heard">What We Heard</a></li>
+    <li><a href="#strategy"    data-section="strategy">Strategy</a></li>
+    <li><a href="#proof"       data-section="proof">Why Scroll</a></li>
+    <li><a href="#seo"         data-section="seo">Social SEO</a></li>
+    <li><a href="#ideation"    data-section="ideation">Content Ideas</a></li>
+    <li><a href="#scope"       data-section="scope">Scope</a></li>
+    <li><a href="#approval"    data-section="approval">Approvals</a></li>
+    <li><a href="#timeline"    data-section="timeline">Timeline</a></li>
+    <li><a href="#what-we-need" data-section="what-we-need">What We Need</a></li>
+    <li><a href="#investment"  data-section="investment">Investment</a></li>
+    <li><a href="#next-steps"  data-section="next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero" id="top">
+  <div class="hero-chip">Scroll Media × Low FODMAP Meals — Signature Package Proposal</div>
+  <h1>Built around<br/><em>what you actually need.</em></h1>
+  <p class="hero-sub">We listened. Here's what we heard, how we'd approach it, what we'd build, and what it costs.</p>
+  <div class="hero-meta">
+    <span><strong>Client</strong> Low FODMAP Meals</span>
+    <span><strong>Package</strong> Signature — Growth</span>
+    <span><strong>Prepared</strong> April 2026</span>
+    <span><strong>Strategist</strong> Chase Gianattasio</span>
+    <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--azure);font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(12,51,135,0.15)'" onmouseout="this.style.background='var(--azure-lt)'">📖 How We Work →</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ WHAT WE HEARD ══════════ -->
+<div class="wrap" id="heard">
+  <div class="eyebrow">What We Heard</div>
+  <h2 class="section-title">Three goals. <em>One system.</em></h2>
+  <p class="section-sub">Everything in this proposal maps directly to what Dr. Lambros shared with us. These three goals shape every strategic decision.</p>
+
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <h4>Build the brand from the ground up</h4>
+      <p>Pre-launch means no existing audience, no content archive, no brand presence. The Strategy phase is the foundation. Everything is built to last.</p>
+      <span class="goal-tag tag-tofu">TOFU · Brand Launch</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <h4>Establish Dr. Lambros as the authority in gut health nutrition</h4>
+      <p>The physician-founder credential is the most powerful differentiator in this niche. Build content authority before competitors realize what's being built.</p>
+      <span class="goal-tag tag-mofu">MOFU · Authority</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <h4>Drive subscription growth and B2B leads</h4>
+      <p>Two revenue streams, two audiences, one content system. B2C subscription conversions and B2B institutional inquiries both flow from the same organic strategy.</p>
+      <span class="goal-tag tag-bofu">BOFU · Revenue</span>
+    </div>
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>The pattern that wins in this category:</strong> Factor, AG1, and Hims proved that authority-led content plus a strong founder story is the formula that builds lasting DTC health brands. Low FODMAP Meals starts with a stronger credibility anchor than any of them: an MD at the helm, in a category where physician authority is the buying trigger. Every post maps to one of the three goals above. Nothing goes live without a strategic purpose.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ STRATEGY ══════════ -->
+<div class="wrap" id="strategy">
+  <div class="eyebrow">Strategic Approach</div>
+  <h2 class="section-title">Who we're talking to. <em>How we'll reach them.</em></h2>
+  <p class="section-sub">Low FODMAP Meals serves two distinct audiences. The strategy is built around both, and every piece of content knows which one it's for.</p>
+
+  <div class="ivp-tabs">
+    <div class="ivp-tab active" onclick="switchTab(0)">IVP 1 — B2C Gut Health Subscriber</div>
+    <div class="ivp-tab" onclick="switchTab(1)">IVP 2 — B2B Institutional Buyer</div>
+  </div>
+  <div class="ivp-panels">
+    <div class="ivp-panel active" id="ivp-0">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Adults 28 to 55 managing IBS, SIBO, IBD, celiac, or general digestive sensitivity. Health-conscious, frustrated by generic advice, looking for a solution they can trust. Already aware of FODMAP but overwhelmed by the complexity of following it.</p>
+        <h4 style="margin-top:16px;">What Drives Them</h4>
+        <p>Relief. Simplicity. A brand that understands their condition, not just sells them food. Proof the product is clinically sound. A reason to trust it before trying it.</p>
+        <h4 style="margin-top:16px;">Primary CTA</h4>
+        <p>Subscribe to a meal plan · Visit the site · Share with someone struggling</p>
+      </div>
+      <div class="ivp-col">
+        <h4>Content That Moves Them</h4>
+        <ul class="arrow-list">
+          <li>Dr. Lambros talking-head Reels explaining the science in plain language</li>
+          <li>"What I eat in a day" silent B-roll showing the diet is achievable</li>
+          <li>Educational carousels on IBS, SIBO, and FODMAP protocol basics</li>
+          <li>Before-and-after gut health symptom stories</li>
+          <li>Patient empathy content that names what sufferers actually feel</li>
+          <li>Myth-busting content that corrects common FODMAP misinformation</li>
+          <li>Founder origin content: why an MD built this</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ivp-panel" id="ivp-1">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Corporate wellness managers, HR directors, healthcare administrators, and clinical nutrition program directors. Responsible for vendor decisions that affect employee or patient health outcomes. They need credibility they can defend internally.</p>
+        <h4 style="margin-top:16px;">What Drives Them</h4>
+        <p>A vendor they can justify to leadership. Clinical validity. Reliability at volume. An MD-founded brand is an easy internal sell compared to a generic meal service.</p>
+        <h4 style="margin-top:16px;">Primary CTA</h4>
+        <p>Volume inquiry · Partnership discussion · DM to book a call</p>
+      </div>
+      <div class="ivp-col">
+        <h4>Content That Moves Them</h4>
+        <ul class="arrow-list">
+          <li>Founder-on-camera content establishing Dr. Lambros as the face of the brand</li>
+          <li>Clinical credibility signals: protocol references, patient outcomes framing</li>
+          <li>Carousels on workplace digestive health and productivity</li>
+          <li>Partnership-oriented content: how institutions work with the brand</li>
+          <li>Case-style posts showing how the product fits real wellness programs</li>
+          <li>Founder-to-founder and leadership-oriented authority content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE STRATEGIC PILLARS -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">Strategic Pillars</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Three pillars. <em style="font-style:italic;color:var(--azure);">One engine.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Every piece of content the account publishes sits on one of these three pillars. This is how we turn a pre-launch brand into a category authority inside 90 days.</p>
+    <div class="card">
+      <div class="phase-flow">
+        <div class="phase-item">
+          <div class="phase-dot">1</div>
+          <div class="phase-body">
+            <h4>The MD credential is the content engine</h4>
+            <p>No competitor in the low FODMAP space has a physician-founder creating content about why the protocol works. That's a moat. Founder-led authority content (education, clinical insight, patient empathy) builds the pre-trust that converts browsers into subscribers and institutions into clients. This pillar carries MOFU and the top of BOFU.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot">2</div>
+          <div class="phase-body">
+            <h4>Build for both audiences from day one</h4>
+            <p>B2C dominates TOFU and MOFU. B2B owns BOFU. Same content system, two audience lenses. Individual IBS sufferers see empathy and relief. Institutional buyers see clinical authority and scale. The MD content layer works on both at once, which is why it anchors the entire strategy.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot">3</div>
+          <div class="phase-body">
+            <h4>Organic first. Earn the audience before amplifying it</h4>
+            <p>Our recommendation is to hold paid ads until organic has run long enough to produce proven formats, audience data, and brand signal. Launching paid with zero organic foundation is expensive and inefficient. Running it after 60 to 90 days of organic makes every ad dollar work harder because the creative, hooks, and targeting are informed by real performance data.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot muted">✓</div>
+          <div class="phase-body">
+            <h4>Ongoing — One system, compounding</h4>
+            <p>Three pillars, two audiences, one founder at the center. Every month the authority base grows, the content library deepens, and the case for paid amplification gets stronger. This is how you build toward Factor-level scale without burning cash to get there.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="assumption mt-md">
+      <p><strong>Paid ads recommendation:</strong> Held out of this proposal intentionally. Revisit at the 90-day mark once organic has produced proven formats and audience data. At that point we can either scope paid internally or hand off to a trusted paid specialist. Either way, the organic foundation built here is what makes paid efficient later.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SOCIAL PROOF ══════════ -->
+<div class="wrap" id="proof" style="padding-top:56px;padding-bottom:56px;">
+  <div class="eyebrow">Why Scroll Media</div>
+  <h2 class="section-title">The playbook is <em>proven.</em></h2>
+  <p class="section-sub">Low FODMAP Meals is a new brand. Scroll Media is not. The framework that runs this proposal has been built, stress-tested, and refined across dozens of engagements.</p>
+
+  <div class="card">
+    <div class="g3" style="gap:24px;">
+      <div>
+        <div style="font-size:32px;font-weight:800;color:var(--azure);line-height:1;margin-bottom:6px;">30+</div>
+        <div style="font-size:13px;font-weight:700;color:var(--shadow);margin-bottom:4px;">Clients served</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5;">Product-based and service-based businesses across health, commerce, hospitality, and professional services.</div>
+      </div>
+      <div>
+        <div style="font-size:32px;font-weight:800;color:var(--azure);line-height:1;margin-bottom:6px;">2+</div>
+        <div style="font-size:13px;font-weight:700;color:var(--shadow);margin-bottom:4px;">Years refining the system</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5;">The Signal Method and every framework in this proposal is the result of real client work, not theory.</div>
+      </div>
+      <div>
+        <div style="font-size:32px;font-weight:800;color:var(--azure);line-height:1;margin-bottom:6px;">1</div>
+        <div style="font-size:13px;font-weight:700;color:var(--shadow);margin-bottom:4px;">Specialty: Instagram organic</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5;">Every strategy, every script, every hook, every post is built for Instagram. Focused specialization is the moat.</div>
+      </div>
+    </div>
+    <div class="insight mt-md">
+      <p><strong>Why this matters for Low FODMAP Meals:</strong> Social media fundamentals don't change by industry. The IVP, the content angle, and the hook strategy are what change. That's exactly what we specialize in building. We've done this 30+ times; we know what to do on day one.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ══════════ SOCIAL SEO ══════════ -->
+<div class="wrap" id="seo">
+  <div class="eyebrow">Social SEO</div>
+  <h2 class="section-title">How we get Low FODMAP Meals <em>found.</em></h2>
+  <p class="section-sub">Instagram is a search engine. Most brands don't treat it like one. We do, and it's how we make sure the right people find you before they even follow you.</p>
+
+  <div class="seo-grid">
+    <div class="seo-card">
+      <h4>🔑 Keyword Architecture</h4>
+      <p>We build a 4-tier keyword bank that maps search intent from broad discovery all the way to high-intent buyer phrases. Keywords are embedded in your bio, captions, on-screen text, and alt text. Every placement the algorithm reads.</p>
+    </div>
+    <div class="seo-card">
+      <h4>📐 Format Signals</h4>
+      <p>The algorithm rewards content that earns the right engagement signals. Reels optimized for watch time and shares. Carousels optimized for saves. Stories optimized for completion and link taps. Every format has a specific performance job.</p>
+    </div>
+    <div class="seo-card">
+      <h4>🎣 Hook Strategy</h4>
+      <p>The first 1 to 3 seconds decide whether a Reel gets distributed or dies. Every piece of content is engineered with a layered hook (verbal, visual, and on-screen text) to maximize retention rate, the algorithm's highest-weighted signal.</p>
+    </div>
+    <div class="seo-card">
+      <h4>📊 Signal Optimization</h4>
+      <p>We track two Tier 1 metrics above all others: <strong>retention % on Reels</strong> (watch time signals quality) and <strong>saves on carousels</strong> (bookmark behavior signals utility). Shares are the third priority. They trigger exponential organic reach. Every monthly adjustment is data-driven against these signals.</p>
+    </div>
+  </div>
+
+  <div class="card mt-lg">
+    <div class="card-label">Social SEO Keyword Bank — Low FODMAP Meals Sample</div>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px;">Built across 4 tiers from broad discovery to high-intent buyer. Full keyword bank delivered as part of the Phase 1 Strategy.</p>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 1 — Broad Discovery</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw">gut health</span>
+      <span class="kw">IBS relief</span>
+      <span class="kw">digestive health</span>
+      <span class="kw">low FODMAP diet</span>
+      <span class="kw">healthy meal delivery</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 2 — Niche Specific</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw tier2">low FODMAP meals</span>
+      <span class="kw tier2">FODMAP meal delivery</span>
+      <span class="kw tier2">IBS-friendly food</span>
+      <span class="kw tier2">gut health meal plan</span>
+      <span class="kw tier2">FODMAP subscription</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 3 — Symptom and Condition</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw tier3">IBS bloating relief</span>
+      <span class="kw tier3">digestive disorder meals</span>
+      <span class="kw tier3">SIBO meal plan</span>
+      <span class="kw tier3">IBD diet</span>
+      <span class="kw tier3">celiac meal delivery</span>
+      <span class="kw tier3">food sensitivity subscription</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 4 — High-Intent Buyer</p>
+    <div class="keyword-bank" style="margin-top:0;">
+      <span class="kw tier4">Low FODMAP Meals</span>
+      <span class="kw tier4">Dr. Lambros</span>
+      <span class="kw tier4">physician nutrition</span>
+      <span class="kw tier4">low FODMAP subscription delivery</span>
+      <span class="kw tier4">gut health doctor meals</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ CONTENT IDEATION ══════════ -->
+<div class="wrap" id="ideation">
+  <div class="eyebrow">Content Ideation</div>
+  <h2 class="section-title">What Low FODMAP Meals looks like <em>when it's working.</em></h2>
+  <p class="section-sub">Our ideation runs two lanes simultaneously. Lane 1 adapts proven high-performing formats from the health and DTC niches. Lane 2 invents formats unique to Low FODMAP Meals, built around the physician-founder credential and the gut health patient experience. Both lanes feed the Signal Method testing phase.</p>
+
+  <!-- LANE LABELS -->
+  <div class="lane-labels">
+    <div class="lane-label lane1-label">
+      <div class="lane-dot lane1-dot"></div>
+      <div>
+        <div class="lane-name">Lane 1 — Proven &amp; Adapted</div>
+        <div class="lane-desc">Formats already working in health, DTC, and founder-brand niches. We copy the structure, apply it to Dr. Lambros and the gut health story.</div>
+      </div>
+    </div>
+    <div class="lane-label lane2-label">
+      <div class="lane-dot lane2-dot"></div>
+      <div>
+        <div class="lane-name">Lane 2 — Original &amp; Invented</div>
+        <div class="lane-desc">Formats built from scratch using the brand's unique assets: the MD credential, the clinical frame, and the patient empathy no competitor can match.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion" id="accordion">
+
+    <!-- IDEA 1: THE DOCTOR EXPLAINS SERIES -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">👨‍⚕️</div>
+          <div>
+            <div class="acc-title">The Doctor Explains Series</div>
+            <div class="acc-sub">Founder Talking Head · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>The highest-trust format in the health niche. Dr. Lambros to camera, no script, one FODMAP concept explained in plain language. AG1 and Levels Health built their entire organic presence on founder-led education. Dr. Lambros has the credential to do this better than anyone currently publishing in the low FODMAP space.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">💾 Saves 40+</span>
+          <span class="metric-tag">👀 Profile Visits spike</span>
+          <span class="metric-tag">📱 20–35s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"I'm a physician. Here's why the low FODMAP diet actually works, and why most people do it wrong."</div>
+            <div class="hook-detail">Dr. Lambros to camera, 25 seconds. Clinical authority with plain-language delivery. Hook promises a correction, which is the highest-retention pattern in educational content.</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"Your IBS isn't in your head. Here's what's actually happening in your gut."</div>
+            <div class="hook-detail">Empathy-first opener that names the patient experience out loud. High share rate because sufferers send this to people who have dismissed their symptoms.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Saves 40+ · profile visits spike · comments from IBS sufferers sharing their own story
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2: WHAT I EAT IN A DAY -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🥗</div>
+          <div>
+            <div class="acc-title">What I Eat in a Day</div>
+            <div class="acc-sub">Silent B-Roll Reel · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>The top-performing awareness format across health and food niches. One full day of low FODMAP meals (breakfast, lunch, dinner, snack) shot clean. The job of this format is to make the diet look achievable and delicious, not restrictive. Factor runs this format consistently as their highest-reach organic content. Same playbook applies here with a physician frame.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🔁 Shares 40+</span>
+          <span class="metric-tag">🎯 Retention 55%+</span>
+          <span class="metric-tag">📱 15–20s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"What a full day of low FODMAP actually looks like."</div>
+            <div class="hook-detail">Silent B-roll of four meals shot clean. On-screen text labels each meal. The visual does the selling. No voiceover, no gimmick, just proof the diet is livable.</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"You don't have to suffer to follow the low FODMAP diet. Proof:"</div>
+            <div class="hook-detail">Same format, different hook lens. Reframes the diet as a relief, not a punishment. High share rate from IBS sufferers who send it to family members who don't understand the condition.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Shares 40+ · retention 55%+ · non-follower reach spike
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 3: THE IBS TRUTH CAROUSEL -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">📋</div>
+          <div>
+            <div class="acc-title">The IBS Truth Carousel</div>
+            <div class="acc-sub">Authority Builder (Clinical Tips) · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>The save-driving format for health brands. Clinical-insight carousels earn saves from sufferers who want to reference them later and shares from people who know someone with IBS. This is MOFU at its best: positions Low FODMAP Meals as the gut health authority, not just another meal service.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">💾 Saves 60+</span>
+          <span class="metric-tag">✅ Completion 65%+</span>
+          <span class="metric-tag">📱 7-slide Carousel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"5 things I wish every IBS patient knew before starting the low FODMAP diet."</div>
+            <div class="hook-detail">Slide 1: bold hook. Slides 2 through 6: one clinical insight per slide. Slide 7: subscribe to the meal plan. Reference content people save and return to, which is why saves compound over time.</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"Low FODMAP isn't a diet. It's a diagnostic protocol. Here's how it actually works."</div>
+            <div class="hook-detail">Clinical framing that corrects the most common misunderstanding in the category. Positions the brand as medically credible before anyone sees a product.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Saves 60+ · carousel completion 65%+ · comments requesting more information
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 4: THE PRESCRIPTION REFRAME (ORIGINAL) -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">💊</div>
+          <div>
+            <div class="acc-title">The Prescription Reframe</div>
+            <div class="acc-sub">Original Format — invented for Low FODMAP Meals · Lane 2</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>An original format built from Dr. Lambros's medical background. Frame a meal plan the same way a doctor frames a prescription: a specific protocol designed for a specific condition. No other brand in this space has the credibility to run this format. That's the entire point. It's a content moat that only works because of who's delivering it.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🔁 Shares 50+</span>
+          <span class="metric-tag">💬 Patient comments</span>
+          <span class="metric-tag">📱 20–30s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"As a physician, if I could prescribe food for IBS, this is exactly what I'd write."</div>
+            <div class="hook-detail">Dr. Lambros to camera. Pulls out a prescription pad, writes something simple (example: "one week of low FODMAP meals") and holds it up. Quietly powerful visual that compresses the entire value proposition into 20 seconds.</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"Here's what I'd tell a patient with IBS on day one, if I only had 30 seconds."</div>
+            <div class="hook-detail">Variant: doctor's note energy without the prop. Delivered as direct advice. Gives sufferers something actionable in the scroll, which is what gets them to follow.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Shares 50+ · comments from patients · non-follower reach spike
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 5: BEFORE & AFTER GUT HEALTH (ORIGINAL) -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">✨</div>
+          <div>
+            <div class="acc-title">The Before &amp; After Gut Health Series</div>
+            <div class="acc-sub">Original Format — symptom-relief storytelling · Lane 2</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Symptom-relief transformation storytelling. Not weight loss. Gut health. Before the diet: bloating, anxiety around eating, lifestyle limitations, social withdrawal. After: what changed, in the patient's own words. Most shareable format in the health niche because sufferers send it to friends and family who have the same symptoms. This is how the brand earns reach from people who didn't know Low FODMAP Meals existed 20 seconds ago.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🔁 Shares 80+</span>
+          <span class="metric-tag">💾 Saves 50+</span>
+          <span class="metric-tag">💬 DM inquiries</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"What life looks like before and after finding a diet that actually works for IBS."</div>
+            <div class="hook-detail">Split-screen Reel or carousel. Left side: the patient experience before (bloating, social anxiety, missed events). Right side: the patient experience after. No miracle claims. Honest, specific, emotional.</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"She was about to cancel her wedding because of her gut. Then her doctor wrote her a meal plan."</div>
+            <div class="hook-detail">Narrative-led variant. Tells one patient's story in 30 seconds. Ends on the resolution. The specificity is the point, because that's what gets people to tag someone they know in the comments.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Shares 80+ · saves 50+ · DM inquiries from new audiences
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>Want to understand the thinking behind these ideas?</strong> The <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="color:var(--azure);font-weight:700;text-decoration:underline;">Scroll Media Framework →</a> walks through our full ideation approach: the two-lane system, how we align formats to algorithm signals, and how every content decision maps to your specific goals.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SCOPE ══════════ -->
+<div class="wrap" id="scope">
+  <div class="eyebrow">Scope of Work</div>
+  <h2 class="section-title">One engagement. <em>Two phases.</em></h2>
+  <p class="section-sub">The engagement runs in two phases. Phase 1 builds the strategy. Phase 2 executes it. Everything below is what's covered.</p>
+
+  <!-- PHASE 1 -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+    <div style="padding:22px 26px 16px;border-bottom:1px solid var(--border);background:var(--azure-lt);">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <div style="background:var(--azure);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:6px;">Phase 1</div>
+        <div>
+          <div style="font-size:17px;font-weight:800;color:var(--shadow);line-height:1.3;">Strategy Build</div>
+          <div style="font-size:13px;color:var(--ink-mid);margin-top:2px;">3 weeks · Fixed fee, invoiced at strategy presentation</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-top:14px;">Phase 1 produces a single deliverable: the Low FODMAP Meals Strategy. This is the document that anchors every post, every caption, and every creative decision for the life of the engagement. It's built in three weeks, presented in a working session, and becomes the operating system for Phase 2.</p>
+    </div>
+    <div style="padding:22px 26px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;">What the Strategy includes</div>
+      <div class="g2" style="gap:12px 20px;">
+        <ul class="tick-list">
+          <li><strong>Dual IVP development</strong> — B2C gut health subscriber and B2B institutional buyer, with psychographics, pain points, decision triggers, and CTAs</li>
+          <li><strong>Three strategic content pillars</strong> mapped to the business model</li>
+          <li><strong>Goal and KPI framework</strong> — business goals translated into trackable Instagram metrics, with target ranges defined for each</li>
+          <li><strong>Content mix architecture</strong> — 40% TOFU / 35% MOFU / 25% BOFU allocation rationale</li>
+          <li><strong>Social SEO keyword bank</strong> across 4 tiers, from broad discovery to high-intent buyer</li>
+          <li><strong>30-day content calendar</strong> at the post level — hook, format, funnel stage, and success signal for every slot</li>
+        </ul>
+        <ul class="tick-list">
+          <li><strong>Profile optimization plan</strong> — bio, name field, category, highlights structure, and link-in-bio architecture</li>
+          <li><strong>Brand voice direction</strong> — the tone, language, and narrative rules the account will run on</li>
+          <li><strong>Founder authority content plan</strong> — how Dr. Lambros shows up on camera, how often, and in what formats</li>
+          <li><strong>Hook library starter set</strong> — opening lines pre-built against the content pillars</li>
+          <li><strong>Format testing plan</strong> for early execution — which formats run, what signals we're reading, what gets scaled</li>
+          <li><strong>Strategy presentation session</strong> — 60-minute working call to walk through the full document with Dr. Lambros</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:22px 26px 16px;border-bottom:1px solid var(--border);background:rgba(226,237,122,.15);">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <div style="background:#8a9e00;color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:6px;">Phase 2</div>
+        <div>
+          <div style="font-size:17px;font-weight:800;color:var(--shadow);line-height:1.3;">Execution</div>
+          <div style="font-size:13px;color:var(--ink-mid);margin-top:2px;">Monthly retainer · Invoiced every 15 days</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-top:14px;">Phase 2 is the ongoing operating engagement. The strategy moves from document to practice. Content goes live, signals get read, and the plan evolves based on what's working.</p>
+    </div>
+    <div class="scope-table-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding:22px 26px;">
+    <table class="scope-table">
+      <thead><tr><th>Deliverable</th><th>Details</th><th>Incl.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Feed Posts</td>
+          <td>3 feed posts per week, published <strong>Monday, Wednesday, Friday</strong>. Reels, carousels, and statics, scripted, created, and scheduled by Scroll Media. Every post mapped to a content pillar and funnel stage. Optimized for retention, saves, and shares.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Story Strategy</td>
+          <td><strong>Tuesday and Thursday</strong> are dedicated story days, optimized for social media success with purpose-built story content (founder voice, education, community, CTAs). <strong>Monday, Wednesday, and Friday</strong>, the feed post also reshares to stories for reach amplification. Five days of brand touchpoints per week.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Content Shoots</td>
+          <td>Content shoots scheduled every 3 weeks with Dr. Lambros. Scroll Media provides the shot list, scripts, and on-camera direction. Shoots optimized for founder-led authority content and product photography.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Copywriting &amp; Hooks</td>
+          <td>Every caption written with keyword optimization. Every Reel hook engineered for first-3-second retention. Founder scripts built for on-camera delivery.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Social SEO Execution</td>
+          <td>Keywords embedded in bio, captions, on-screen text, and alt text on every post. Algorithm-signal optimization applied to every format.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management</td>
+          <td>Comment responses and DM handling. Proactive outreach to gut health, IBS, and wellness accounts. B2B partnership inquiries flagged and routed directly to Dr. Lambros.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Monthly Performance Report</td>
+          <td>13 core metrics tracked across reach, engagement, and conversion. Delivered the first week of each month. Tier 1 signals (retention, saves, shares) reviewed first. Strategic adjustments documented and actioned.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Biweekly Check-ins</td>
+          <td>30-minute calls every two weeks. Content approvals, performance review, upcoming priorities, B2B opportunity review.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Dedicated Account Strategist</td>
+          <td>Single point of contact on the Scroll Media side. Owns the account, runs the cadence, coordinates production, and represents the brand internally.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>TikTok Cross-Post</td>
+          <td>Every Instagram feed post (Mon/Wed/Fri) cross-posted to Dr. Lambros's TikTok account as an exposure amplifier. Included at no additional cost. <strong>Not optimized for TikTok specifically.</strong> Hooks, formats, captions, and creative direction are all built for Instagram performance. TikTok is a secondary distribution channel for additional reach.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div><!-- /scope-table-wrap -->
+  </div><!-- /card -->
+
+  <div class="insight mt-md">
+    <p><strong>Why Instagram-first:</strong> The gut health consumer and the B2B institutional buyer both live on Instagram, not TikTok. Instagram has the audience quality, the search behavior, and the buyer intent that converts subscribers and earns institutional credibility. TikTok is an amplification channel for Low FODMAP Meals, not a conversion channel. Every creative decision is optimized for Instagram performance because that's where the growth compounds.</p>
+  </div>
+</div>
+
+<!-- ══════════ CONTENT APPROVAL POLICY ══════════ -->
+<div class="wrap" id="approval" style="padding-top:28px;padding-bottom:56px;">
+  <div class="eyebrow">Content Approval Policy</div>
+  <h2 class="section-title">How content gets <em>approved.</em></h2>
+  <p class="section-sub">A clean approval process is the difference between a plan that compounds and a plan that breaks. These are the standards we run on every engagement.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-label">The 5-Business-Day Rule</div>
+      <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;">Final client approval is required <strong style="color:var(--shadow);">5 business days before publish date.</strong> By the approval deadline, all revisions are complete and content is locked, scheduled, and ready to go live. This is non-negotiable because last-minute edits break the content calendar, compromise quality, and force late-night rework.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">The 2-Revision Limit</div>
+      <p style="font-size:14px;color:var(--ink-mid);line-height:1.65;">Each content batch gets a <strong style="color:var(--shadow);">maximum of 2 rounds of revisions.</strong> This keeps feedback focused, protects the strategy from over-correction, and forces decisions instead of endless iteration. Two rounds is enough to get it right. More than two is a sign something upstream needs addressing.</p>
+    </div>
+  </div>
+
+  <div class="assumption mt-md">
+    <p><strong>Why these standards exist:</strong> Consistency beats perfection in social media. Content that goes live on schedule compounds. Content that gets delayed or endlessly tweaked doesn't. Both of these standards protect the result we're hired to deliver.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ TIMELINE ══════════ -->
+<div class="wrap" id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2 class="section-title">First posts live <em>within 30 days of kickoff.</em></h2>
+  <p class="section-sub">Strategy before execution. Three weeks to build it, one week to produce and post. A clean, predictable path from kickoff to first post.</p>
+
+  <div class="tl-cta">
+    <div style="font-size:24px;">⚡</div>
+    <p><strong>How it runs.</strong> Kickoff call on the agreed start date. Three weeks later, strategy presentation. Content shoot scheduled immediately after (often the next day, agreed on the kickoff call itself). One week of editing, then posting begins. Every date is locked at kickoff so nothing slips.</p>
+  </div>
+
+  <!-- VISUAL MILESTONE TIMELINE -->
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-track">
+
+      <!-- M1: Contract Signed -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Pre-engagement</div>
+          <div class="ms-title">Contract Signed</div>
+          <div class="ms-items">
+            <span>✓ Proposal reviewed</span>
+            <span>✓ Start date agreed</span>
+            <span>✓ Contract signed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M2: Kickoff Call -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Day 1 · Start Date</div>
+          <div class="ms-title">Kickoff Call</div>
+          <div class="ms-items">
+            <span>✓ Engagement overview</span>
+            <span>✓ Goals &amp; expectations</span>
+            <span>✓ Brand ideation exercise</span>
+            <span>✓ Strategy &amp; shoot dates locked</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M3: Strategy Build (Phase 1) -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Weeks 1–3</div>
+          <div class="ms-title">Strategy Build</div>
+          <div class="ms-items">
+            <span>✓ IVPs &amp; pillars</span>
+            <span>✓ SEO keyword bank</span>
+            <span>✓ 30-day calendar</span>
+            <span>✓ Shot list pre-approved</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M4: Strategy Presentation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">End of Week 3</div>
+          <div class="ms-title">🎯 Strategy Presentation</div>
+          <div class="ms-items">
+            <span>✓ Strategy walkthrough</span>
+            <span>✓ Calendar approved</span>
+            <span>✓ Phase 2 begins</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M5: Content Shoot -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Immediately After</div>
+          <div class="ms-title">🎬 Content Shoot</div>
+          <div class="ms-items">
+            <span>✓ Dr. Lambros on camera</span>
+            <span>✓ Shot list executed</span>
+            <span>✓ Product photography</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M6: First Posts Live -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-highlight"></div>
+        <div class="ms-line ms-line-fade"></div>
+        <div class="ms-card ms-card-featured">
+          <div class="ms-week">1 Week Post-Shoot</div>
+          <div class="ms-title">🚀 First Posts Live</div>
+          <div class="ms-items">
+            <span>✓ 3 feed posts/week</span>
+            <span>✓ 5 days of touchpoints</span>
+            <span>✓ Brand launched</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RECURRING RHYTHM -->
+    <div class="rhythm-row mt-lg">
+      <div class="rhythm-label">Week 5 onwards — Execution Mode</div>
+      <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once the first posts are live, the engagement moves into a consistent weekly rhythm: <strong>3 feed posts every week</strong> on Mon/Wed/Fri and <strong>2 dedicated story days every week</strong> on Tue/Thu. Every 3 weeks, a content shoot with Dr. Lambros keeps the asset pipeline full.</div>
+      <div class="rhythm-steps">
+        <div class="rhythm-step">
+          <div class="rhythm-icon">📸</div>
+          <div class="rhythm-name">Content Shoot</div>
+          <div class="rhythm-detail">Every 3 weeks · Dr. Lambros on camera · Shot list from Scroll · ~2 hrs total</div>
+        </div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step">
+          <div class="rhythm-icon">✂️</div>
+          <div class="rhythm-name">Edit &amp; Approve</div>
+          <div class="rhythm-detail">Scroll edits · Client approves 5 business days before publish</div>
+        </div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step">
+          <div class="rhythm-icon">📅</div>
+          <div class="rhythm-name">Weekly Posting</div>
+          <div class="rhythm-detail">Mon · Wed · Fri = 3 feed posts<br/>Tue · Thu = 2 story days<br/>Every week, no exceptions</div>
+        </div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step">
+          <div class="rhythm-icon">📊</div>
+          <div class="rhythm-name">Read Signals</div>
+          <div class="rhythm-detail">Retention · Saves · Shares → adjust next cycle</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE TRANSITION BANNER -->
+    <div class="milestone-banner mt-md">
+      <div class="milestone-banner-icon">🔄</div>
+      <div>
+        <div class="milestone-banner-title">Phase 1 → Phase 2 Transition</div>
+        <div class="milestone-banner-desc">The strategy presentation is the handoff moment. Phase 1 ends; Phase 2 begins. Execution work starts immediately (shot list pre-approved, shoot scheduled the next day). The retainer invoicing starts the first day of Phase 2.</div>
+      </div>
+    </div>
+
+    <!-- SAMPLE CONTENT CALENDAR -->
+    <div class="cal-wrap-outer">
+    <div class="cal-wrap mt-lg" style="min-width:480px;">
+      <div class="cal-header">
+        <div class="cal-header-title">Sample Execution Week</div>
+        <div class="cal-header-sub">Illustrative view of a standard week in Phase 2. Mon/Wed/Fri are feed-post days (also reshared to stories for reach). Tue/Thu are dedicated story days. Format names, content mix (40% TOFU / 35% MOFU / 25% BOFU), and exact hooks are finalized in the Strategy.</div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day-header">Mon</div>
+        <div class="cal-day-header">Tue</div>
+        <div class="cal-day-header">Wed</div>
+        <div class="cal-day-header">Thu</div>
+        <div class="cal-day-header">Fri</div>
+
+        <!-- Week 1 -->
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">What I Eat in a Day</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach · Shares</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day · Optimized</div>
+          <div class="cal-name">Founder Voice</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Retention · DMs</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">IBS Truth Carousel</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Completion</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day · Optimized</div>
+          <div class="cal-name">Patient Q&amp;A</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Engagement · DMs</div>
+        </div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Product Feature</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">CTR · Link Taps</div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Doctor Explains Series</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Profile Visits</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day · Optimized</div>
+          <div class="cal-name">Clinical Insight Poll</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Engagement · DMs</div>
+        </div>
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Symptom-Relief Story</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Shares · Reach</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day · Optimized</div>
+          <div class="cal-name">Behind-the-Scenes Kitchen</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Views · Replies</div>
+        </div>
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">FODMAP 101</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Saves · Shares</div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Prescription Reframe</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Shares · Saves</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day · Optimized</div>
+          <div class="cal-name">Myth-Busting Mini</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach · Shares</div>
+        </div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Before &amp; After Story</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">CTR · DMs</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day · Optimized</div>
+          <div class="cal-name">Subscription CTA</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Link Taps · DMs</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">Condition Deep Dive</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Profile Visits</div>
+        </div>
+
+      </div>
+      <div class="cal-legend">
+        <span class="leg tofu-leg">TOFU — Reach &amp; Discovery</span>
+        <span class="leg mofu-leg">MOFU — Trust &amp; Authority</span>
+        <span class="leg bofu-leg">BOFU — Subscription &amp; B2B Leads</span>
+        <span class="leg story-leg">Tue &amp; Thu — Optimized Story Days</span>
+      </div>
+    </div><!-- /cal-wrap -->
+    </div><!-- /cal-wrap-outer -->
+  </div><!-- /milestone-wrap -->
+</div>
+
+<!-- ══════════ WHAT WE NEED ══════════ -->
+<div class="wrap" id="what-we-need">
+  <div class="eyebrow">What We Need From You</div>
+  <h2 class="section-title">Your side of <em>the equation.</em></h2>
+  <p class="section-sub">We handle the heavy lifting. Here's what makes it run smoothly on your end.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-label">The Non-Negotiables</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>Instagram account access</strong> with 2FA set up for the Scroll Media team. Foundation for every deliverable.</li>
+        <li><strong>Dr. Lambros available for content shoots every 3 weeks.</strong> Founder content is the single highest-performing format in this niche, and the physician credential is the content moat.</li>
+        <li><strong>Brand assets delivered</strong> before kickoff: logo files, any existing product photography, brand colors, and any marketing assets already produced.</li>
+        <li><strong>Content approvals 5 business days before publish.</strong> Final sign-off with all revisions complete, per the Content Approval Policy above.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">What Slows Things Down (And How We Prevent It)</div>
+      <ul class="arrow-list mt-sm">
+        <li><strong>Product not available for photography</strong> at the first shoot. Product needs to be ready to shoot, prepared, and styled on day one.</li>
+        <li><strong>Limited founder on-camera access.</strong> Dr. Lambros is the face of the brand. If he's not on camera, the most differentiated content lane is closed.</li>
+        <li><strong>Multiple approvers.</strong> If more than one person signs off on content, build that into your internal process before it hits the 5-business-day deadline.</li>
+        <li><strong>Delayed shoot scheduling.</strong> The first shoot happens immediately after the strategy presentation. That date is locked at kickoff. Hold it.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ INVESTMENT ══════════ -->
+<div class="wrap" id="investment">
+  <div class="eyebrow">Investment</div>
+  <h2 class="section-title">What it <em>costs.</em></h2>
+  <p class="section-sub">Two phases, two invoicing cadences. Phase 1 is a fixed fee, invoiced once. Phase 2 is a monthly retainer, invoiced every 15 days.</p>
+
+  <div class="inv-hero">
+    <div class="inv-hero-label">Signature Package — Growth Tier · 3-Month Initial Engagement</div>
+    <h3>Low FODMAP Meals</h3>
+    <div class="inv-hero-sub">Phase 1 builds the strategy. Phase 2 executes it. After the initial 3 months, the engagement continues on the monthly retainer at the same rate.</div>
+    <div class="inv-hero-row">
+      <div class="inv-hero-stat">
+        <div class="amount">$3,250</div>
+        <div class="lbl">Monthly retainer (Phase 2)</div>
+      </div>
+      <div class="inv-hero-stat">
+        <div class="amount">$8,417</div>
+        <div class="lbl">Total 3-month engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-breakdown">
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 1 — Strategy Build</strong>
+        <small>3 weeks · Fixed fee · Single invoice sent at strategy presentation</small>
+      </div>
+      <div class="amt">$1,917</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 2 — Execution (Month 2)</strong>
+        <small>Monthly retainer · Invoiced every 15 days at $1,625 per invoice</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 2 — Execution (Month 3)</strong>
+        <small>Monthly retainer · Invoiced every 15 days at $1,625 per invoice</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row total">
+      <div class="item"><strong>3-Month Total</strong><small>One fixed invoice + four retainer invoices</small></div>
+      <div class="amt">$8,417</div>
+    </div>
+  </div>
+
+  <div class="credit-note mt-md">
+    ★ After the initial 3-month engagement, Low FODMAP Meals continues on the Phase 2 monthly retainer at $3,250/month. No additional strategy fees, no resets. Extension options at 6 or 12 months available at the same monthly rate.
+  </div>
+
+  <div class="g2 mt-lg">
+    <div class="card">
+      <div class="card-label">Phase 1 — What the Strategy Covers</div>
+      <ul class="tick-list mt-sm">
+        <li>Dual IVP (B2C subscriber + B2B institutional buyer)</li>
+        <li>Three strategic content pillars</li>
+        <li>Goal-to-KPI framework with target ranges</li>
+        <li>Social SEO keyword bank (4 tiers)</li>
+        <li>30-day content calendar at the post level</li>
+        <li>Profile optimization plan</li>
+        <li>Brand voice direction</li>
+        <li>Founder authority content plan</li>
+        <li>Hook library starter set</li>
+        <li>Strategy presentation working session</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Phase 2 — What Runs Every Month</div>
+      <ul class="tick-list mt-sm">
+        <li>3 feed posts per week (Mon/Wed/Fri)</li>
+        <li>2 optimized story days per week (Tue/Thu)</li>
+        <li>Feed-to-story reshare on Mon/Wed/Fri for reach</li>
+        <li>TikTok cross-post on every feed post (no added cost)</li>
+        <li>Content shoots every 3 weeks with Dr. Lambros</li>
+        <li>All copywriting, hooks, and Social SEO execution</li>
+        <li>Community management + proactive outreach</li>
+        <li>Monthly performance report (13 metrics)</li>
+        <li>Biweekly 30-min check-in calls</li>
+        <li>Dedicated account strategist</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ NEXT STEPS ══════════ -->
+<div class="wrap" id="next-steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2 class="section-title">From this proposal to <em>the first post.</em></h2>
+  <p class="section-sub">Four steps from here to kickoff, then the Timeline above takes over. Questions at any point? Chase is available over email or on a quick call.</p>
+
+  <div class="steps-grid" style="grid-template-columns:repeat(4,1fr);gap:14px;">
+    <div class="step">
+      <div class="step-n">Step 01</div>
+      <h3>Review &amp; Respond</h3>
+      <p>Dr. Lambros reviews the proposal, sends back any interview questions, and gives the thumbs up when ready to move forward.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 02</div>
+      <h3>Align on Start Date</h3>
+      <p>Chase sends the contract for review. The start date is agreed and written into the contract, along with all terms.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 03</div>
+      <h3>Sign the Contract</h3>
+      <p>E-sign takes under 5 minutes. Signing is the trigger for the kickoff call to be locked on the agreed start date.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 04</div>
+      <h3>Kickoff Call</h3>
+      <p>Held on the start date itself. Overview of the engagement, alignment on goals, a brand ideation exercise, and lock-in of the strategy presentation and content shoot dates.</p>
+    </div>
+  </div>
+
+  <div class="cta-block mt-lg">
+    <h2>Ready to move?</h2>
+    <p>Reply to this proposal or reach Chase directly. Happy to walk through any of this on a call before contract review.</p>
+    <a href="mailto:chase@getscrollmedia.com" class="cta-btn">chase@getscrollmedia.com</a>
+    <div class="cta-sub">Cheers, Chase.</div>
+  </div>
+</div>
+
+<footer>
+  <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
+
+  // Scroll-spy
+  const sections = ['heard','strategy','proof','seo','ideation','scope','approval','timeline','what-we-need','investment','next-steps'];
+  const links = document.querySelectorAll('.nav-links a[data-section]');
+  function onScroll() {
+    const y = window.scrollY + 80;
+    let active = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) active = id; });
+    links.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // IVP tabs
+  function switchTab(idx) {
+    document.querySelectorAll('.ivp-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.ivp-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
+
+  // Accordion
+  function toggleAcc(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

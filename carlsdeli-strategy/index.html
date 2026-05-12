@@ -283,17 +283,98 @@
       font-size: 16px; font-weight: 600; color: var(--azure);
     }
 
-    /* SLIDE 02 · TIMELINE */
+    /* SLIDE 02 · AGENDA
+       4 horizontal time-blocked sections for today's 60 minutes */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .agenda-block {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure);
+      transition: all 240ms var(--ease);
+      display: flex; flex-direction: column;
+    }
+    .agenda-block:hover {
+      border-color: var(--azure-400);
+      transform: translateY(-2px);
+      box-shadow: var(--sh-md);
+    }
+    .agenda-time {
+      font-size: 11px; font-weight: 700;
+      color: var(--azure);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .agenda-presenter {
+      font-size: 11px; font-weight: 600;
+      color: var(--fg-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .agenda-title {
+      font-size: 17px; font-weight: 700;
+      color: var(--azure);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      margin-bottom: var(--sp-3);
+    }
+    .agenda-list {
+      list-style: none; padding: 0;
+      margin-bottom: var(--sp-4);
+      display: flex; flex-direction: column; gap: 6px;
+      flex-grow: 1;
+    }
+    .agenda-list li {
+      font-size: 13px;
+      color: var(--shadow);
+      padding-left: var(--sp-4);
+      position: relative;
+      line-height: 1.5;
+    }
+    .agenda-list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 9px;
+      width: 6px; height: 1px;
+      background: var(--azure-400);
+    }
+    .agenda-why {
+      padding-top: var(--sp-3);
+      border-top: 1px solid var(--rule-faint);
+      font-size: 12px;
+      color: var(--fg-muted);
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .agenda-why em {
+      font-style: normal;
+      color: var(--azure-600);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-right: 6px;
+    }
+
+    /* SLIDE 03 · TIMELINE
+       5 canonical phases + 2 decision-gate diamonds per Scroll System v2.0 */
     .timeline-strip {
       position: relative;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: var(--sp-4);
+      grid-template-columns: 1.1fr 1.1fr 0.78fr 1.1fr 1.1fr 1.1fr 0.78fr;
+      gap: var(--sp-3);
       margin-top: var(--sp-5);
     }
     .timeline-strip::before {
       content: ""; position: absolute;
-      left: 6%; right: 6%; top: 36px;
+      left: 4%; right: 4%; top: 36px;
       height: 2px;
       background: linear-gradient(90deg, var(--azure) 0%, var(--azure-400) 100%);
       z-index: 0;
@@ -302,7 +383,7 @@
       position: relative; z-index: 1;
       display: flex; flex-direction: column; align-items: center;
       text-align: center;
-      padding: 0 var(--sp-2);
+      padding: 0 var(--sp-1);
     }
     .timeline-dot {
       width: 28px; height: 28px;
@@ -319,10 +400,20 @@
       transform: scale(1.15);
       box-shadow: 0 0 0 6px rgba(12, 51, 135, 0.12);
     }
-    .timeline-cell.is-gate .timeline-dot {
-      border-color: var(--highlighter-dark);
+    .timeline-diamond {
+      width: 30px; height: 30px;
       background: var(--highlighter);
-      color: var(--shadow);
+      border: 2px solid var(--highlighter-dark);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: var(--shadow);
+      margin-bottom: var(--sp-2);
+      transform: rotate(45deg);
+      transition: all 240ms var(--ease);
+      box-shadow: 0 0 0 4px rgba(226, 237, 122, 0.18);
+    }
+    .timeline-diamond > span {
+      display: inline-block;
+      transform: rotate(-45deg);
     }
     .timeline-cell-window {
       font-size: 11px; font-weight: 700; color: var(--azure);
@@ -340,11 +431,16 @@
     }
     .timeline-gate-tag {
       display: inline-block;
-      margin-top: 4px;
-      font-size: 10px; font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 9px; font-weight: 700;
       color: var(--shadow); background: var(--highlighter);
       padding: 2px 6px; letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+    .timeline-gate-q {
+      font-size: 12px; color: var(--shadow);
+      font-style: italic;
+      line-height: 1.35;
     }
 
     /* SLIDE 03 · SPRINT */
@@ -1128,7 +1224,107 @@
       text-align: center;
     }
 
-    /* SLIDE 16 · KPI */
+    /* SLIDE 17 · KPI Framework (expanded: 5 framework elements) */
+    .kpi-map-eyebrow {
+      font-size: 11px; font-weight: 700;
+      color: var(--azure);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: var(--sp-3);
+      margin-bottom: var(--sp-3);
+    }
+    .kpi-funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-6);
+    }
+    .kpi-funnel-col {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 4px solid var(--tofu-accent);
+      transition: all 240ms var(--ease);
+    }
+    .kpi-funnel-col.mofu { border-top-color: var(--mofu-accent); }
+    .kpi-funnel-col.bofu { border-top-color: var(--bofu-accent); }
+    .kpi-funnel-col:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+    .kpi-funnel-stage {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .kpi-funnel-col.tofu .kpi-funnel-stage { color: var(--tofu-accent); }
+    .kpi-funnel-col.mofu .kpi-funnel-stage { color: var(--mofu-accent); }
+    .kpi-funnel-col.bofu .kpi-funnel-stage { color: var(--bofu-accent); }
+    .kpi-funnel-goal {
+      font-size: 15px; font-weight: 700;
+      color: var(--azure);
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+      margin-bottom: var(--sp-4);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--rule-faint);
+    }
+    .kpi-funnel-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .kpi-funnel-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule-faint);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13.5px;
+      color: var(--shadow);
+      font-weight: 600;
+    }
+    .kpi-funnel-list li:last-child { border-bottom: none; }
+    .kpi-funnel-name { display: inline-flex; align-items: center; gap: var(--sp-2); }
+    .kpi-funnel-mult {
+      font-size: 11px; font-weight: 700;
+      color: var(--azure);
+      padding: 2px 6px;
+      background: var(--lucid-soft);
+    }
+    .kpi-funnel-mult.priority {
+      background: var(--highlighter);
+      color: var(--shadow);
+    }
+
+    .kpi-framework-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-5);
+    }
+    .kpi-framework-card {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-left: 2px solid var(--azure-400);
+      transition: all 240ms var(--ease);
+    }
+    .kpi-framework-card:hover { border-left-color: var(--azure); border-color: var(--azure-400); }
+    .kpi-framework-num {
+      font-size: 10px; font-weight: 700;
+      color: var(--azure-600);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .kpi-framework-title {
+      font-size: 15px; font-weight: 700;
+      color: var(--azure);
+      letter-spacing: -0.005em;
+      margin-bottom: var(--sp-2);
+      line-height: 1.3;
+    }
+    .kpi-framework-body {
+      font-size: 13px; color: var(--fg);
+      line-height: 1.55;
+    }
+
+    /* SLIDE 16 · KPI (legacy tier-card styles, retained for backward compatibility) */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1423,12 +1619,23 @@
     @media (max-width: 768px) {
       .slide { padding: var(--sp-7) var(--sp-5) var(--sp-7); }
 
-      .timeline-strip { grid-template-columns: repeat(5, 1fr); gap: var(--sp-2); }
-      .timeline-strip::before { left: 8%; right: 8%; top: 30px; }
-      .timeline-dot { width: 24px; height: 24px; font-size: 10px; }
+      .agenda-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .kpi-funnel-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
+      .kpi-framework-grid { grid-template-columns: 1fr; }
+
+      .timeline-strip {
+        grid-template-columns: 1.1fr 1.1fr 0.85fr 1.1fr 1.1fr 1.1fr 0.85fr;
+        gap: var(--sp-2);
+      }
+      .timeline-strip::before { left: 5%; right: 5%; top: 32px; }
+      .timeline-dot { width: 24px; height: 24px; font-size: 9px; }
+      .timeline-diamond { width: 26px; height: 26px; font-size: 9px; }
       .timeline-cell-window { font-size: 10px; }
       .timeline-cell-name { font-size: 12px; }
       .timeline-cell-note { font-size: 11px; }
+      .timeline-gate-tag { font-size: 8px; padding: 2px 4px; }
+      .timeline-gate-q { font-size: 11px; line-height: 1.3; }
 
       .sprint-grid { grid-template-columns: 1fr; }
 
@@ -1487,7 +1694,55 @@
       .engine-detail-step-body,
       .ivp-demo,
       .trends-q-list li,
-      .filter-q { font-size: 14px; line-height: 1.55; }
+      .filter-q,
+      .agenda-list li,
+      .agenda-why,
+      .kpi-framework-body,
+      .kpi-funnel-list li { font-size: 14px; line-height: 1.55; }
+
+      /* Agenda: vertical stack with time-stamp as left label */
+      .agenda-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
+      .agenda-block {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: var(--sp-2) var(--sp-4);
+        padding: var(--sp-4);
+        border-top: none;
+        border-left: 3px solid var(--azure);
+      }
+      .agenda-time {
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 0;
+        align-self: start;
+        padding-top: 2px;
+        font-size: 11px;
+      }
+      .agenda-presenter {
+        grid-column: 2;
+        grid-row: 1;
+        margin-bottom: 0;
+        text-align: right;
+        font-size: 10px;
+      }
+      .agenda-title {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-bottom: 0;
+        font-size: 16px;
+      }
+      .agenda-list {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        margin-bottom: 0;
+      }
+      .agenda-why {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        margin-top: var(--sp-2);
+      }
+
+      .kpi-funnel-goal { font-size: 14px; }
 
       .slide { padding: var(--sp-6) var(--sp-4) var(--sp-6); }
       .slide-cover { padding-top: var(--sp-6); padding-bottom: var(--sp-6); }
@@ -1510,9 +1765,19 @@
         padding: var(--sp-3);
         background: var(--bg-panel);
         border: 1px solid var(--rule-faint);
+        border-left: 3px solid var(--azure);
       }
-      .timeline-cell .timeline-dot { margin-bottom: 0; flex-shrink: 0; }
+      .timeline-cell.is-current { border-left-color: var(--azure); background: rgba(12, 51, 135, 0.04); }
+      .timeline-cell.is-gate {
+        border-left-color: var(--highlighter-dark);
+        background: rgba(226, 237, 122, 0.10);
+      }
+      .timeline-cell .timeline-dot,
+      .timeline-cell .timeline-diamond { margin-bottom: 0; flex-shrink: 0; }
       .timeline-cell-body { flex: 1; display: flex; flex-direction: column; }
+      .timeline-cell-name { font-size: 15px; }
+      .timeline-cell-note { font-size: 13px; }
+      .timeline-gate-q { font-size: 14px; }
 
       .engine-loop { max-width: 280px; }
       .engine-step-name { font-size: 11px; }
@@ -1571,26 +1836,27 @@
 
   <nav class="slide-nav" aria-label="Slide navigation">
     <a href="#s01" data-slide="01"><span>Cover</span></a>
-    <a href="#s02" data-slide="02"><span>12-month journey</span></a>
-    <a href="#s03" data-slide="03"><span>Strategy sprint</span></a>
-    <a href="#s04" data-slide="04"><span>Content Engine</span></a>
-    <a href="#s05" data-slide="05"><span>Maturity stage</span></a>
-    <a href="#s06" data-slide="06"><span>Three goals</span></a>
-    <a href="#s07" data-slide="07"><span>IVP 01 · B2C</span></a>
-    <a href="#s08" data-slide="08"><span>IVP 02 · B2B</span></a>
-    <a href="#s09" data-slide="09"><span>Strategic direction</span></a>
-    <a href="#s10" data-slide="10"><span>Pillars + formats</span></a>
-    <a href="#s11" data-slide="11"><span>Feed strategy</span></a>
-    <a href="#s12" data-slide="12"><span>Stories</span></a>
-    <a href="#s13" data-slide="13"><span>Trends</span></a>
-    <a href="#s14" data-slide="14"><span>SEO ladder</span></a>
-    <a href="#s15" data-slide="15"><span>Profile</span></a>
-    <a href="#s16" data-slide="16"><span>KPI framework</span></a>
-    <a href="#s17" data-slide="17"><span>Conversion</span></a>
-    <a href="#s18" data-slide="18"><span>Operating rhythm</span></a>
-    <a href="#s19" data-slide="19"><span>Worth considering</span></a>
-    <a href="#s20" data-slide="20"><span>Next steps</span></a>
-    <a href="#s21" data-slide="21"><span>Close</span></a>
+    <a href="#s02" data-slide="02"><span>Agenda</span></a>
+    <a href="#s03" data-slide="03"><span>12-month journey</span></a>
+    <a href="#s04" data-slide="04"><span>Strategy sprint</span></a>
+    <a href="#s05" data-slide="05"><span>Content Engine</span></a>
+    <a href="#s06" data-slide="06"><span>Maturity stage</span></a>
+    <a href="#s07" data-slide="07"><span>Three goals</span></a>
+    <a href="#s08" data-slide="08"><span>IVP 01 · B2C</span></a>
+    <a href="#s09" data-slide="09"><span>IVP 02 · B2B</span></a>
+    <a href="#s10" data-slide="10"><span>Strategic direction</span></a>
+    <a href="#s11" data-slide="11"><span>Pillars + formats</span></a>
+    <a href="#s12" data-slide="12"><span>Feed strategy</span></a>
+    <a href="#s13" data-slide="13"><span>Stories</span></a>
+    <a href="#s14" data-slide="14"><span>Trends</span></a>
+    <a href="#s15" data-slide="15"><span>SEO ladder</span></a>
+    <a href="#s16" data-slide="16"><span>Profile</span></a>
+    <a href="#s17" data-slide="17"><span>Performance tracking</span></a>
+    <a href="#s18" data-slide="18"><span>Conversion</span></a>
+    <a href="#s19" data-slide="19"><span>Operating rhythm</span></a>
+    <a href="#s20" data-slide="20"><span>Worth considering</span></a>
+    <a href="#s21" data-slide="21"><span>Next steps</span></a>
+    <a href="#s22" data-slide="22"><span>Close</span></a>
   </nav>
 
   <main>
@@ -1623,26 +1889,85 @@
       </div>
     </section>
 
-    <!-- SLIDE 02 · TIMELINE -->
+    <!-- SLIDE 02 · AGENDA -->
     <section class="slide" id="s02" aria-labelledby="s02-title">
       <div class="slide-eyebrow reveal">
         <span class="slide-eyebrow-num">02</span>
+        <span class="slide-eyebrow-text">Agenda</span>
+      </div>
+      <h2 id="s02-title" class="slide-title reveal">Today's 60 minutes.</h2>
+      <p class="slide-subtitle reveal">The hour mapped end to end. Strategy walk-through leads. Rachel anchors the content plan and shoot prep. We close on next steps and your first shoot date.</p>
+
+      <div class="agenda-grid">
+        <div class="agenda-block reveal">
+          <div class="agenda-time">0 &ndash; 5 min</div>
+          <div class="agenda-presenter">Chase</div>
+          <div class="agenda-title">Welcome + today's goal</div>
+          <ul class="agenda-list">
+            <li>The 60 minutes you've blocked and what you'll walk away with</li>
+            <li>Our goal: leave with a clear picture of your year and your first shoot scheduled</li>
+          </ul>
+          <div class="agenda-why"><em>Why</em>anchors what success looks like before we dive in.</div>
+        </div>
+
+        <div class="agenda-block reveal">
+          <div class="agenda-time">5 &ndash; 40 min</div>
+          <div class="agenda-presenter">Chase</div>
+          <div class="agenda-title">Strategy walk-through</div>
+          <ul class="agenda-list">
+            <li>Where Carl's is, your three goals, your audience</li>
+            <li>The Scroll System framework that delivers</li>
+            <li>Your content strategy and how we'll measure success</li>
+          </ul>
+          <div class="agenda-why"><em>Why</em>this is the full strategy you're paying for, mapped to growth.</div>
+        </div>
+
+        <div class="agenda-block reveal">
+          <div class="agenda-time">40 &ndash; 55 min</div>
+          <div class="agenda-presenter">Rachel</div>
+          <div class="agenda-title">Content plan + shoot prep + mock-ups</div>
+          <ul class="agenda-list">
+            <li>Your first 30 days of content</li>
+            <li>Shot list for your first content shoot</li>
+            <li>Design mock-ups and brand visuals</li>
+          </ul>
+          <div class="agenda-why"><em>Why</em>tactical execution starts immediately. This is week 1 work.</div>
+        </div>
+
+        <div class="agenda-block reveal">
+          <div class="agenda-time">55 &ndash; 60 min</div>
+          <div class="agenda-presenter">Together</div>
+          <div class="agenda-title">Q&amp;A + next steps</div>
+          <ul class="agenda-list">
+            <li>Anything you want to dig into</li>
+            <li>Confirming first shoot date and bi-weekly check-in cadence</li>
+            <li>What happens between today and your first post going live</li>
+          </ul>
+          <div class="agenda-why"><em>Why</em>clear handoff into Phase 2 execution.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 03 · TIMELINE -->
+    <section class="slide" id="s03" aria-labelledby="s03-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">03</span>
         <span class="slide-eyebrow-text">Scroll System &middot; v2.0</span>
       </div>
-      <h2 id="s02-title" class="slide-title reveal">Your 12-month journey.</h2>
-      <p class="slide-subtitle reveal">Strategy is locked in Month 1. Months 2 to 3 test formats and validate signal. Months 4 to 9 execute and refine on the proven rotation. Month 12 is the annual positioning review.</p>
+      <h2 id="s03-title" class="slide-title reveal">Your 12-month journey.</h2>
+      <p class="slide-subtitle reveal">Strategy locks in Month 1. Months 2 to 3 test formats and validate signal. Months 4 to 6 execute on the proven rotation. Months 7 to 9 refine. Months 10 to 12 close with an annual positioning review. Two formal decision gates anchor the engagement.</p>
 
       <div class="timeline-strip reveal">
         <div class="timeline-cell is-current">
-          <div class="timeline-dot">M1</div>
+          <div class="timeline-dot"><span>M1</span></div>
           <div class="timeline-cell-body">
             <div class="timeline-cell-window">Month 1</div>
-            <div class="timeline-cell-name">Strategy</div>
-            <div class="timeline-cell-note">Done.</div>
+            <div class="timeline-cell-name">Strategy Build</div>
+            <div class="timeline-cell-note">&check; Complete</div>
           </div>
         </div>
         <div class="timeline-cell">
-          <div class="timeline-dot">M2&ndash;3</div>
+          <div class="timeline-dot"><span>M2&ndash;3</span></div>
           <div class="timeline-cell-body">
             <div class="timeline-cell-window">Months 2 &ndash; 3</div>
             <div class="timeline-cell-name">Testing</div>
@@ -1650,29 +1975,41 @@
           </div>
         </div>
         <div class="timeline-cell is-gate">
-          <div class="timeline-dot">M3</div>
+          <div class="timeline-diamond" aria-hidden="true"><span>M3</span></div>
           <div class="timeline-cell-body">
-            <div class="timeline-cell-window">Month 3 gate</div>
-            <div class="timeline-cell-name">Strategic Refresh</div>
-            <div class="timeline-cell-note">Lock winners. Phase 2 begins.</div>
             <span class="timeline-gate-tag">Decision gate</span>
+            <div class="timeline-gate-q">Extend to 9-month retainer?</div>
           </div>
         </div>
         <div class="timeline-cell">
-          <div class="timeline-dot">M4&ndash;9</div>
+          <div class="timeline-dot"><span>M4&ndash;6</span></div>
           <div class="timeline-cell-body">
-            <div class="timeline-cell-window">Months 4 &ndash; 9</div>
-            <div class="timeline-cell-name">Executing &amp; Refining</div>
+            <div class="timeline-cell-window">Months 4 &ndash; 6</div>
+            <div class="timeline-cell-name">Executing</div>
+            <div class="timeline-cell-note">Production rotation locked.</div>
+          </div>
+        </div>
+        <div class="timeline-cell">
+          <div class="timeline-dot"><span>M7&ndash;9</span></div>
+          <div class="timeline-cell-body">
+            <div class="timeline-cell-window">Months 7 &ndash; 9</div>
+            <div class="timeline-cell-name">Refining</div>
             <div class="timeline-cell-note">Compounding growth.</div>
           </div>
         </div>
-        <div class="timeline-cell is-gate">
-          <div class="timeline-dot">M12</div>
+        <div class="timeline-cell">
+          <div class="timeline-dot"><span>M10&ndash;12</span></div>
           <div class="timeline-cell-body">
-            <div class="timeline-cell-window">Month 12 gate</div>
-            <div class="timeline-cell-name">Annual Review</div>
+            <div class="timeline-cell-window">Months 10 &ndash; 12</div>
+            <div class="timeline-cell-name">Refining + Annual Review</div>
             <div class="timeline-cell-note">Positioning revisited.</div>
+          </div>
+        </div>
+        <div class="timeline-cell is-gate">
+          <div class="timeline-diamond" aria-hidden="true"><span>M12</span></div>
+          <div class="timeline-cell-body">
             <span class="timeline-gate-tag">Decision gate</span>
+            <div class="timeline-gate-q">Renew with refresh or close?</div>
           </div>
         </div>
       </div>
@@ -1682,14 +2019,14 @@
       </div>
     </section>
 
-    <!-- SLIDE 03 · SPRINT -->
-    <section class="slide" id="s03" aria-labelledby="s03-title">
+    <!-- SLIDE 04 · SPRINT -->
+    <section class="slide" id="s04" aria-labelledby="s04-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">03</span>
+        <span class="slide-eyebrow-num">04</span>
         <span class="slide-eyebrow-text">The Strategy Sprint</span>
       </div>
-      <h2 id="s03-title" class="slide-title reveal">How we built your strategy.</h2>
-      <p class="slide-subtitle reveal">Three weeks. Research to architecture to delivery. The Homebase you have open is the artifact this sprint produced.</p>
+      <h2 id="s04-title" class="slide-title reveal">How we built your strategy.</h2>
+      <p class="slide-subtitle reveal">Three weeks. Research to architecture to delivery. What you're seeing now is the artifact this sprint produced.</p>
 
       <div class="sprint-grid">
         <div class="sprint-card reveal">
@@ -1716,7 +2053,7 @@
           <div class="sprint-card-num">Week 03</div>
           <div class="sprint-card-title">Build &amp; Deliver</div>
           <ul class="sprint-card-list">
-            <li>Homebase deployed (your strategy document)</li>
+            <li>Strategy locked and ready to execute</li>
             <li>Conversion tracking spec written</li>
             <li>First-month content seeds drafted</li>
             <li>Walkthrough scheduled (you are here)</li>
@@ -1725,13 +2062,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 04 · CONTENT ENGINE -->
-    <section class="slide" id="s04" aria-labelledby="s04-title">
+    <!-- SLIDE 05 · CONTENT ENGINE -->
+    <section class="slide" id="s05" aria-labelledby="s05-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">04</span>
+        <span class="slide-eyebrow-num">05</span>
         <span class="slide-eyebrow-text">The Content Engine</span>
       </div>
-      <h2 id="s04-title" class="slide-title reveal">How we create content every month.</h2>
+      <h2 id="s05-title" class="slide-title reveal">How we create content every month.</h2>
       <p class="slide-subtitle reveal">One loop. Four steps. The engine runs on a continuous cycle so the strategy keeps learning what works.</p>
 
       <div class="engine-wrap">
@@ -1791,13 +2128,13 @@
       <p class="engine-footer reveal"><strong>The loop never stops.</strong> Data informs ideation. Ideation informs format selection. Format selection informs hook design. Hook performance shows up in data. That is the strategic asset under every Scroll engagement.</p>
     </section>
 
-    <!-- SLIDE 05 · MATURITY -->
-    <section class="slide" id="s05" aria-labelledby="s05-title">
+    <!-- SLIDE 06 · MATURITY -->
+    <section class="slide" id="s06" aria-labelledby="s06-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">05</span>
+        <span class="slide-eyebrow-num">06</span>
         <span class="slide-eyebrow-text">Where Carl's is today</span>
       </div>
-      <h2 id="s05-title" class="slide-title reveal">Maturity stage: Lift. Next is Rise.</h2>
+      <h2 id="s06-title" class="slide-title reveal">Maturity stage: Lift. Next is Rise.</h2>
       <p class="slide-subtitle reveal">Four stages. Each one is a performance target range. Stage tells us what success looks like at your current scale, not what content to make.</p>
 
       <div class="maturity-grid">
@@ -1834,13 +2171,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 06 · GOALS -->
-    <section class="slide" id="s06" aria-labelledby="s06-title">
+    <!-- SLIDE 07 · GOALS -->
+    <section class="slide" id="s07" aria-labelledby="s07-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">06</span>
+        <span class="slide-eyebrow-num">07</span>
         <span class="slide-eyebrow-text">Three goals. One system.</span>
       </div>
-      <h2 id="s06-title" class="slide-title reveal">One overarching goal. Three jobs Instagram does for Carl's.</h2>
+      <h2 id="s07-title" class="slide-title reveal">One overarching goal. Three jobs Instagram does for Carl's.</h2>
 
       <div class="goals-lede reveal">
         The overarching goal: <strong>more qualified lead generation for Carl's, regardless of where the lead comes from.</strong> Underneath that, three sub-goals split the work across the funnel so every post has a defined role. <strong>Each goal carries equal weight.</strong> The mix below is how we allocate content volume, not how we rank goal importance.
@@ -1868,16 +2205,16 @@
       </div>
     </section>
 
-    <!-- SLIDE 07 · IVP 01 · B2C -->
-    <section class="slide" id="s07" aria-labelledby="s07-title">
+    <!-- SLIDE 08 · IVP 01 · B2C -->
+    <section class="slide" id="s08" aria-labelledby="s08-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">07</span>
+        <span class="slide-eyebrow-num">08</span>
         <span class="slide-eyebrow-text">Ideal Viewer Profile 01</span>
       </div>
       <div class="ivp-header reveal">
         <span class="ivp-tag b2c">IVP 01 &middot; B2C primary</span>
       </div>
-      <h2 id="s07-title" class="slide-title reveal">The Cincinnati deli customer.</h2>
+      <h2 id="s08-title" class="slide-title reveal">The Cincinnati deli customer.</h2>
       <p class="ivp-demo reveal">Bimodal age. <strong>Acquisition priority 22 to 40</strong> (Cincinnati transplants, young professionals, IG-discovery cohort) plus retention base 40 to 65 (multigenerational regulars). Hyde Park, Oakley, OTR, Findlay Market neighborhoods. Slight female skew.</p>
 
       <div class="contrast-grid">
@@ -1967,16 +2304,16 @@
       </div>
     </section>
 
-    <!-- SLIDE 08 · IVP 02 · B2B -->
-    <section class="slide" id="s08" aria-labelledby="s08-title">
+    <!-- SLIDE 09 · IVP 02 · B2B -->
+    <section class="slide" id="s09" aria-labelledby="s09-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">08</span>
+        <span class="slide-eyebrow-num">09</span>
         <span class="slide-eyebrow-text">Ideal Viewer Profile 02</span>
       </div>
       <div class="ivp-header reveal">
         <span class="ivp-tag b2b">IVP 02 &middot; B2B + personal event conversion</span>
       </div>
-      <h2 id="s08-title" class="slide-title reveal">The catering buyer.</h2>
+      <h2 id="s09-title" class="slide-title reveal">The catering buyer.</h2>
       <p class="ivp-demo reveal">Office managers, EAs, HR coordinators, marketing managers, event planners (B2B corporate). Plus brides, baptism hosts, milestone planners (personal events). 28 to 50 age range. Cincinnati metro: Downtown, Blue Ash, Kenwood, Rookwood, OTR. Companies 15 to 250 employees.</p>
 
       <div class="contrast-grid">
@@ -2073,13 +2410,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 09 · STRATEGIC DIRECTION -->
-    <section class="slide" id="s09" aria-labelledby="s09-title">
+    <!-- SLIDE 10 · STRATEGIC DIRECTION -->
+    <section class="slide" id="s10" aria-labelledby="s10-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">09</span>
+        <span class="slide-eyebrow-num">10</span>
         <span class="slide-eyebrow-text">Strategic Direction</span>
       </div>
-      <h2 id="s09-title" class="slide-title reveal">The narrative under every piece of content.</h2>
+      <h2 id="s10-title" class="slide-title reveal">The narrative under every piece of content.</h2>
 
       <div class="strategy-anchor reveal">
         <div class="strategy-anchor-eyebrow">The positioning</div>
@@ -2102,13 +2439,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 10 · PILLARS + FORMATS -->
-    <section class="slide" id="s10" aria-labelledby="s10-title">
+    <!-- SLIDE 11 · PILLARS + FORMATS -->
+    <section class="slide" id="s11" aria-labelledby="s11-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">10</span>
+        <span class="slide-eyebrow-num">11</span>
         <span class="slide-eyebrow-text">Content Pillars + Format Library</span>
       </div>
-      <h2 id="s10-title" class="slide-title reveal">Four pillars. The content territory.</h2>
+      <h2 id="s11-title" class="slide-title reveal">Four pillars. The content territory.</h2>
       <p class="slide-subtitle reveal">Each pillar maps to a specific motivator inside your audience. Each pillar carries proven formats plus original formats invented around Carl's uncopyable assets.</p>
 
       <div class="pillars-grid">
@@ -2178,13 +2515,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 11 · FEED STRATEGY -->
-    <section class="slide" id="s11" aria-labelledby="s11-title">
+    <!-- SLIDE 12 · FEED STRATEGY -->
+    <section class="slide" id="s12" aria-labelledby="s12-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">11</span>
+        <span class="slide-eyebrow-num">12</span>
         <span class="slide-eyebrow-text">Feed Strategy</span>
       </div>
-      <h2 id="s11-title" class="slide-title reveal">Mon, Wed, Fri. Three posts. One funnel mix.</h2>
+      <h2 id="s12-title" class="slide-title reveal">Mon, Wed, Fri. Three posts. One funnel mix.</h2>
       <p class="slide-subtitle reveal">Every feed post has a defined role. 40% discovery to grow the audience. 35% trust to deepen it. 25% catering to convert it.</p>
 
       <div class="mix-row">
@@ -2239,13 +2576,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 12 · STORIES -->
-    <section class="slide" id="s12" aria-labelledby="s12-title">
+    <!-- SLIDE 13 · STORIES -->
+    <section class="slide" id="s13" aria-labelledby="s13-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">12</span>
+        <span class="slide-eyebrow-num">13</span>
         <span class="slide-eyebrow-text">Stories Strategy</span>
       </div>
-      <h2 id="s12-title" class="slide-title reveal">Stories are the conversion surface.</h2>
+      <h2 id="s13-title" class="slide-title reveal">Stories are the conversion surface.</h2>
       <p class="slide-subtitle reveal">Tue and Thu primary story days. Mon, Wed, Fri carry feed reshares. Every link sticker routes through a measurement layer so link taps break out by surface.</p>
 
       <div class="stories-summary reveal">
@@ -2279,13 +2616,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 13 · TRENDS -->
-    <section class="slide" id="s13" aria-labelledby="s13-title">
+    <!-- SLIDE 14 · TRENDS -->
+    <section class="slide" id="s14" aria-labelledby="s14-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">13</span>
+        <span class="slide-eyebrow-num">14</span>
         <span class="slide-eyebrow-text">Trends + Cultural Moments</span>
       </div>
-      <h2 id="s13-title" class="slide-title reveal">The reactive lane. Played selectively, never chased.</h2>
+      <h2 id="s14-title" class="slide-title reveal">The reactive lane. Played selectively, never chased.</h2>
       <p class="slide-subtitle reveal">Carl's earns attention through specificity. Three filters decide whether a trend gets a post. Anchored Cincinnati moments are pre-scoped on the calendar.</p>
 
       <div class="trends-quarters">
@@ -2343,13 +2680,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 14 · SEO -->
-    <section class="slide" id="s14" aria-labelledby="s14-title">
+    <!-- SLIDE 15 · SEO -->
+    <section class="slide" id="s15" aria-labelledby="s15-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">14</span>
+        <span class="slide-eyebrow-num">15</span>
         <span class="slide-eyebrow-text">SEO Keyword Bank</span>
       </div>
-      <h2 id="s14-title" class="slide-title reveal">The TAM ladder. Climb broad to narrow.</h2>
+      <h2 id="s15-title" class="slide-title reveal">The TAM ladder. Climb broad to narrow.</h2>
       <p class="slide-subtitle reveal">Tier 1 spikes algorithmic distribution at the widest funnel point. Each tier down condenses the audience and lifts conversion intent. The mix evolves: lean broad in Phase 1 to teach the algorithm the cohort, narrow toward Hyde Park and Findlay as conversion data validates.</p>
 
       <div class="tam-ladder">
@@ -2424,13 +2761,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 15 · PROFILE -->
-    <section class="slide" id="s15" aria-labelledby="s15-title">
+    <!-- SLIDE 16 · PROFILE -->
+    <section class="slide" id="s16" aria-labelledby="s16-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">15</span>
+        <span class="slide-eyebrow-num">16</span>
         <span class="slide-eyebrow-text">Profile Optimization</span>
       </div>
-      <h2 id="s15-title" class="slide-title reveal">Bio, pinned posts, highlights. The conversion shelf.</h2>
+      <h2 id="s16-title" class="slide-title reveal">Bio, pinned posts, highlights. The conversion shelf.</h2>
       <p class="slide-subtitle reveal">Every new visitor lands on your profile within 30 seconds of discovering you. The profile decides whether they tap follow, tap the link, or scroll away.</p>
 
       <div class="profile-grid">
@@ -2472,58 +2809,82 @@
       </div>
     </section>
 
-    <!-- SLIDE 16 · KPI -->
-    <section class="slide" id="s16" aria-labelledby="s16-title">
+    <!-- SLIDE 17 · KPI -->
+    <section class="slide" id="s17" aria-labelledby="s17-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">16</span>
-        <span class="slide-eyebrow-text">KPI Framework</span>
+        <span class="slide-eyebrow-num">17</span>
+        <span class="slide-eyebrow-text">Performance Tracking</span>
       </div>
-      <h2 id="s16-title" class="slide-title reveal">What we measure. Weighted by buyer intent.</h2>
-      <p class="slide-subtitle reveal">Saves and CTR carry the highest weight. Each metric maps to the funnel stage it predicts. The monthly report rolls everything into a single Final Score on a 10-point scale with a 6.0 baseline.</p>
+      <h2 id="s17-title" class="slide-title reveal">How we track + iterate.</h2>
+      <p class="slide-subtitle reveal">Every metric ties to a goal. Every goal ties back to lead generation. Monthly scoring keeps the work honest. Strategic adjustments compound the gains.</p>
 
-      <div class="kpi-grid">
-        <div class="kpi-card t1 reveal">
-          <div class="kpi-tier-name">Tier 01</div>
-          <div class="kpi-tier-role">Quality &amp; Conversion</div>
-          <ul class="kpi-list">
-            <li><span class="kpi-name">Saves</span><span class="kpi-meta"><span class="kpi-mult priority">2.0x</span></span></li>
-            <li><span class="kpi-name">CTR</span><span class="kpi-meta"><span class="kpi-mult priority">2.0x</span></span></li>
-            <li><span class="kpi-name">Retention %</span><span class="kpi-meta"><span class="kpi-mult">1.5x</span></span></li>
-            <li><span class="kpi-name">Profile Conversion</span><span class="kpi-meta"><span class="kpi-mult">1.5x</span></span></li>
-            <li><span class="kpi-name">Link Taps</span><span class="kpi-meta"><span class="kpi-mult">1.5x</span></span></li>
+      <div class="kpi-map-eyebrow reveal">01 &middot; Goals &rarr; KPIs per funnel stage</div>
+      <div class="kpi-funnel-grid">
+        <div class="kpi-funnel-col tofu reveal">
+          <div class="kpi-funnel-stage">Top of funnel &middot; Discovery</div>
+          <div class="kpi-funnel-goal">Goal 01 &middot; Brand awareness in Cincinnati</div>
+          <ul class="kpi-funnel-list">
+            <li><span class="kpi-funnel-name">Total Views</span><span class="kpi-funnel-mult">1.0x</span></li>
+            <li><span class="kpi-funnel-name">New Followers</span><span class="kpi-funnel-mult">1.0x</span></li>
+            <li><span class="kpi-funnel-name">Shares</span><span class="kpi-funnel-mult">0.75x</span></li>
           </ul>
         </div>
-        <div class="kpi-card t2 reveal">
-          <div class="kpi-tier-name">Tier 02</div>
-          <div class="kpi-tier-role">Volume &amp; Community</div>
-          <ul class="kpi-list">
-            <li><span class="kpi-name">Total Views</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
-            <li><span class="kpi-name">New Followers</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
-            <li><span class="kpi-name">Profile Visits</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
-            <li><span class="kpi-name">Comments</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
+        <div class="kpi-funnel-col mofu reveal">
+          <div class="kpi-funnel-stage">Middle of funnel &middot; Consideration</div>
+          <div class="kpi-funnel-goal">Goal 02 &middot; Engage the current community</div>
+          <ul class="kpi-funnel-list">
+            <li><span class="kpi-funnel-name">Saves</span><span class="kpi-funnel-mult priority">2.0x</span></li>
+            <li><span class="kpi-funnel-name">Retention %</span><span class="kpi-funnel-mult">1.5x</span></li>
+            <li><span class="kpi-funnel-name">Profile Visits</span><span class="kpi-funnel-mult">1.0x</span></li>
+            <li><span class="kpi-funnel-name">Comments</span><span class="kpi-funnel-mult">1.0x</span></li>
           </ul>
         </div>
-        <div class="kpi-card t3 reveal">
-          <div class="kpi-tier-name">Tier 03</div>
-          <div class="kpi-tier-role">Awareness Amplification</div>
-          <ul class="kpi-list">
-            <li><span class="kpi-name">Shares</span><span class="kpi-meta"><span class="kpi-mult">0.75x</span></span></li>
+        <div class="kpi-funnel-col bofu reveal">
+          <div class="kpi-funnel-stage">Bottom of funnel &middot; Conversion</div>
+          <div class="kpi-funnel-goal">Goal 03 &middot; Grow catering revenue</div>
+          <ul class="kpi-funnel-list">
+            <li><span class="kpi-funnel-name">CTR</span><span class="kpi-funnel-mult priority">2.0x</span></li>
+            <li><span class="kpi-funnel-name">Link Taps</span><span class="kpi-funnel-mult">1.5x</span></li>
+            <li><span class="kpi-funnel-name">Profile Conversion Rate</span><span class="kpi-funnel-mult">1.5x</span></li>
           </ul>
+        </div>
+      </div>
+
+      <div class="kpi-framework-grid">
+        <div class="kpi-framework-card reveal">
+          <div class="kpi-framework-num">02 &middot; Monthly Score</div>
+          <div class="kpi-framework-title">Performance scored against a 6.0 baseline.</div>
+          <div class="kpi-framework-body">Every month, performance gets scored on a 10-point scale with a 6.0 baseline. The score captures how we're moving against the three goals across all funnel stages.</div>
+        </div>
+        <div class="kpi-framework-card reveal">
+          <div class="kpi-framework-num">03 &middot; Adjustments</div>
+          <div class="kpi-framework-title">Top 2-3 priority adjustments documented monthly.</div>
+          <div class="kpi-framework-body">Each month we document the 2 to 3 priority adjustments going into next month. We don't react to noise. We react to signal, patterns that hold across multiple data points.</div>
+        </div>
+        <div class="kpi-framework-card reveal">
+          <div class="kpi-framework-num">04 &middot; Why These Metrics</div>
+          <div class="kpi-framework-title">Saves and CTR carry 2.0x weight.</div>
+          <div class="kpi-framework-body">Instagram weights saves and click-through highest for organic distribution. Optimizing for them compounds reach and quality together. Buyer-intent metrics outrank vanity volume every time.</div>
+        </div>
+        <div class="kpi-framework-card reveal">
+          <div class="kpi-framework-num">05 &middot; Maps Back to Goals</div>
+          <div class="kpi-framework-title">Every metric ladders up.</div>
+          <div class="kpi-framework-body">Every metric ties to a goal. Every goal ties to lead generation. Every adjustment serves the loop. The system stays accountable to one outcome: more qualified leads for Carl's.</div>
         </div>
       </div>
 
       <div class="score-footer reveal">
-        <strong>Monthly report</strong> delivered first week of every month at reports.scrollmedia.co/carlsdeli. Final Score plus top 3 and bottom 3 posts plus goal-specific tracking plus format performance plus strategic adjustments for the next month. Targets: 7.0+ early cycle, 8.0+ at maturity.
+        <strong>Monthly performance report.</strong> Delivered the first week of every month. Final Score plus top 3 and bottom 3 posts plus goal-specific tracking plus format performance plus strategic adjustments for the next month. Targets: 7.0+ early cycle, 8.0+ at maturity.
       </div>
     </section>
 
-    <!-- SLIDE 17 · CONVERSION -->
-    <section class="slide" id="s17" aria-labelledby="s17-title">
+    <!-- SLIDE 18 · CONVERSION -->
+    <section class="slide" id="s18" aria-labelledby="s18-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">17</span>
+        <span class="slide-eyebrow-num">18</span>
         <span class="slide-eyebrow-text">Conversion Strategy</span>
       </div>
-      <h2 id="s17-title" class="slide-title reveal">How we turn Instagram traffic into Carl's customers.</h2>
+      <h2 id="s18-title" class="slide-title reveal">How we turn Instagram traffic into Carl's customers.</h2>
 
       <div class="conv-priority reveal">
         <div class="conv-priority-eyebrow">The conversion priority</div>
@@ -2575,13 +2936,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 18 · OPERATING RHYTHM -->
-    <section class="slide" id="s18" aria-labelledby="s18-title">
+    <!-- SLIDE 19 · OPERATING RHYTHM -->
+    <section class="slide" id="s19" aria-labelledby="s19-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">18</span>
+        <span class="slide-eyebrow-num">19</span>
         <span class="slide-eyebrow-text">Operating Rhythm</span>
       </div>
-      <h2 id="s18-title" class="slide-title reveal">How we work together.</h2>
+      <h2 id="s19-title" class="slide-title reveal">How we work together.</h2>
       <p class="slide-subtitle reveal">Six overlapping cadences. Every touchpoint has a defined output and a defined owner. You are not in this 24/7. The system protects your time.</p>
 
       <div class="rhythm-grid">
@@ -2603,7 +2964,7 @@
         <div class="rhythm-cell reveal">
           <div class="rhythm-cell-cadence">Monthly</div>
           <div class="rhythm-cell-title">Performance report</div>
-          <div class="rhythm-cell-body">First week of every month. Full HTML report at reports.scrollmedia.co/carlsdeli. Headline numbers flow into the Homebase snapshot.</div>
+          <div class="rhythm-cell-body">First week of every month. Full HTML report at reports.scrollmedia.co/carlsdeli. Results inform the next strategy iteration.</div>
         </div>
         <div class="rhythm-cell reveal">
           <div class="rhythm-cell-cadence">Quarterly</div>
@@ -2622,13 +2983,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 19 · WORTH CONSIDERING -->
-    <section class="slide" id="s19" aria-labelledby="s19-title">
+    <!-- SLIDE 20 · WORTH CONSIDERING -->
+    <section class="slide" id="s20" aria-labelledby="s20-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">19</span>
+        <span class="slide-eyebrow-num">20</span>
         <span class="slide-eyebrow-text">Worth Considering</span>
       </div>
-      <h2 id="s19-title" class="slide-title reveal">Forward-looking ideas. Not in current scope.</h2>
+      <h2 id="s20-title" class="slide-title reveal">Forward-looking ideas. Not in current scope.</h2>
       <p class="slide-subtitle reveal">Three decisions for Carl's about your business. One tool we have ready to deploy at your call. We talk through any of these at the bi-weekly when you're ready.</p>
 
       <div class="considering-grid">
@@ -2655,13 +3016,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 20 · NEXT STEPS -->
-    <section class="slide" id="s20" aria-labelledby="s20-title">
+    <!-- SLIDE 21 · NEXT STEPS -->
+    <section class="slide" id="s21" aria-labelledby="s21-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">20</span>
+        <span class="slide-eyebrow-num">21</span>
         <span class="slide-eyebrow-text">What happens next</span>
       </div>
-      <h2 id="s20-title" class="slide-title reveal">From walkthrough to first post.</h2>
+      <h2 id="s21-title" class="slide-title reveal">From walkthrough to first post.</h2>
 
       <div class="next-steps">
         <div class="next-step reveal">
@@ -2682,17 +3043,17 @@
       </div>
 
       <div class="approval-callout reveal" style="margin-top: var(--sp-6);">
-        The Homebase is yours. It updates monthly. Anything we discuss at the bi-weeklies that's strategic enough to live there gets added. Treat it as the ongoing record of how we're building this.
+        This strategy is yours. It evolves monthly. Anything we discuss at the bi-weeklies that's strategic enough gets folded in. Treat it as the ongoing record of how we're building this.
       </div>
     </section>
 
-    <!-- SLIDE 21 · CLOSE -->
-    <section class="slide slide-close" id="s21" aria-labelledby="s21-title">
+    <!-- SLIDE 22 · CLOSE -->
+    <section class="slide slide-close" id="s22" aria-labelledby="s22-title">
       <div class="close-mark reveal">
         <span class="cover-mark-line"></span>
         <span>Scroll Media &middot; Cincinnati's Instagram agency</span>
       </div>
-      <h2 id="s21-title" class="close-title reveal">We're building something special.</h2>
+      <h2 id="s22-title" class="close-title reveal">We're building something special.</h2>
       <p class="close-body reveal">Questions, pushback, instincts you want to push back on, content ideas as they surface. All of it belongs in the room. The strategy gets sharper when you bring it.</p>
       <div class="close-sign reveal">
         <div>

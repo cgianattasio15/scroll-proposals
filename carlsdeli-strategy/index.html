@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carl's Deli &middot; Phase 1 Strategy | Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="../scroll-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       SCROLL MEDIA DESIGN SYSTEM · Carl's Deli Strategy Deck
+       Per brand_system.md §5 + Carl's palette
+       ========================================================= */
+
+    :root {
+      /* Brand tokens */
+      --ghost: #FAFDFF;
+      --azure: #0C3387;
+      --azure-900: #071d4f;
+      --azure-800: #0c3387;
+      --azure-600: #254fb0;
+      --azure-400: #7a9ad8;
+      --azure-200: #b9cdee;
+      --lucid: #CBE9FF;
+      --lucid-deep: #9ecee8;
+      --lucid-soft: #e4f3ff;
+      --highlighter: #E2ED7A;
+      --highlighter-dark: #c8d94a;
+      --shadow: #151516;
+      --white: #ffffff;
+
+      /* Semantic */
+      --bg: var(--ghost);
+      --bg-alt: #f4f7fb;
+      --bg-panel: var(--white);
+      --fg: var(--shadow);
+      --fg-heading: var(--azure);
+      --fg-muted: #5a6070;
+      --fg-subtle: #9097a6;
+      --fg-on-azure: var(--white);
+      --rule: rgba(12, 51, 135, 0.20);
+      --rule-strong: rgba(12, 51, 135, 0.40);
+      --rule-faint: rgba(12, 51, 135, 0.08);
+
+      /* Funnel semantic */
+      --tofu-bg: #eff6ff;
+      --tofu-accent: #2563eb;
+      --mofu-bg: #f0fdf4;
+      --mofu-accent: #16a34a;
+      --bofu-bg: #fdf4ff;
+      --bofu-accent: #9333ea;
+
+      /* Type scale */
+      --fs-xs: 11px;
+      --fs-sm: 13px;
+      --fs-base: 15px;
+      --fs-md: 17px;
+      --fs-lg: 20px;
+      --fs-xl: 24px;
+      --fs-2xl: 32px;
+      --fs-3xl: 44px;
+      --fs-4xl: 64px;
+
+      /* Spacing */
+      --sp-1: 4px;
+      --sp-2: 8px;
+      --sp-3: 12px;
+      --sp-4: 16px;
+      --sp-5: 24px;
+      --sp-6: 32px;
+      --sp-7: 40px;
+      --sp-8: 56px;
+      --sp-9: 80px;
+
+      /* Layout */
+      --header-h: 60px;
+      --content-max: 1120px;
+      --slide-max: 1080px;
+
+      /* Radii */
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 16px;
+
+      /* Shadows */
+      --sh-sm: 0 1px 2px rgba(12, 51, 135, .06);
+      --sh-md: 0 6px 24px rgba(12, 51, 135, .08);
+
+      /* Motion */
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3, h4 { font-family: inherit; font-weight: 700; color: var(--fg-heading); letter-spacing: -0.01em; }
+    a { color: var(--azure-600); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; }
+
+    /* HEADER */
+    .deck-header {
+      position: sticky; top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: rgba(250, 253, 255, 0.92);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid var(--rule-faint);
+      z-index: 100;
+      display: flex; align-items: center;
+    }
+    .deck-header-inner {
+      width: 100%; max-width: var(--content-max);
+      margin: 0 auto; padding: 0 var(--sp-5);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--sp-4);
+    }
+    .header-logo {
+      display: flex; align-items: center; gap: var(--sp-3);
+      min-height: 44px; padding: 4px 0;
+    }
+    .header-logo-mark {
+      width: 32px; height: 32px;
+      background: var(--azure); color: var(--ghost);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; letter-spacing: -0.02em;
+    }
+    .header-logo-text {
+      font-weight: 700; font-size: 14px; color: var(--azure);
+      letter-spacing: -0.005em;
+    }
+    .header-meta {
+      font-size: 12px; color: var(--fg-muted);
+      display: flex; align-items: center; gap: var(--sp-3);
+    }
+    .header-meta-dot { width: 4px; height: 4px; background: var(--azure-400); border-radius: 50%; }
+
+    /* Slide nav (desktop only) */
+    .slide-nav {
+      display: none;
+      position: fixed;
+      top: 50%; right: var(--sp-5);
+      transform: translateY(-50%);
+      z-index: 50;
+      flex-direction: column; gap: 6px;
+    }
+    .slide-nav a {
+      width: 8px; height: 8px;
+      background: var(--azure-200);
+      border-radius: 50%;
+      transition: all 200ms var(--ease);
+      position: relative;
+    }
+    .slide-nav a:hover { background: var(--azure-600); transform: scale(1.4); }
+    .slide-nav a.active { background: var(--azure); transform: scale(1.5); }
+    .slide-nav a span {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      background: var(--azure); color: var(--ghost);
+      padding: 4px 10px; font-size: 11px; white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 180ms var(--ease);
+    }
+    .slide-nav a:hover span { opacity: 1; }
+    @media (min-width: 1280px) { .slide-nav { display: flex; } }
+
+    /* SLIDES */
+    main { padding-top: 0; }
+
+    .slide {
+      width: 100%;
+      max-width: var(--slide-max);
+      margin: 0 auto;
+      padding: var(--sp-9) var(--sp-6) var(--sp-9);
+      position: relative;
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+    .slide + .slide { border-top: 1px solid var(--rule-faint); }
+
+    .slide-eyebrow {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 12px; font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: var(--sp-5);
+    }
+    .slide-eyebrow-num {
+      width: 28px; height: 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--azure); color: var(--ghost);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0;
+    }
+    .slide-eyebrow-text { color: var(--fg-muted); }
+
+    .slide-title {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--azure);
+      letter-spacing: -0.015em;
+      margin-bottom: var(--sp-4);
+      max-width: 900px;
+    }
+    .slide-subtitle {
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.5;
+      color: var(--fg-muted);
+      max-width: 740px;
+      margin-bottom: var(--sp-7);
+    }
+
+    /* Fade-in reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* SLIDE 01 · COVER */
+    .slide-cover {
+      min-height: calc(100vh - var(--header-h));
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: var(--sp-7); padding-bottom: var(--sp-7);
+    }
+    .cover-mark {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 13px; font-weight: 600; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-7);
+    }
+    .cover-mark-line {
+      flex: 0 0 40px; height: 1px; background: var(--azure-400);
+    }
+    .cover-title {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 800;
+      color: var(--azure);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--sp-5);
+      max-width: 900px;
+    }
+    .cover-title em {
+      font-style: normal;
+      color: var(--shadow);
+      font-weight: 800;
+    }
+    .cover-lede {
+      font-size: clamp(18px, 2.2vw, 22px);
+      color: var(--fg-muted);
+      line-height: 1.5;
+      max-width: 680px;
+      margin-bottom: var(--sp-7);
+    }
+    .cover-meta-row {
+      display: flex; flex-wrap: wrap; gap: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--rule-faint);
+    }
+    .cover-meta-cell {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .cover-meta-label {
+      font-size: 11px; font-weight: 600; color: var(--fg-subtle);
+      text-transform: uppercase; letter-spacing: 0.14em;
+    }
+    .cover-meta-value {
+      font-size: 16px; font-weight: 600; color: var(--azure);
+    }
+
+    /* SLIDE 02 · TIMELINE */
+    .timeline-strip {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .timeline-strip::before {
+      content: ""; position: absolute;
+      left: 6%; right: 6%; top: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--azure) 0%, var(--azure-400) 100%);
+      z-index: 0;
+    }
+    .timeline-cell {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      padding: 0 var(--sp-2);
+    }
+    .timeline-dot {
+      width: 28px; height: 28px;
+      background: var(--ghost);
+      border: 2px solid var(--azure);
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-2);
+      transition: all 240ms var(--ease);
+    }
+    .timeline-cell.is-current .timeline-dot {
+      background: var(--azure); color: var(--ghost);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 6px rgba(12, 51, 135, 0.12);
+    }
+    .timeline-cell.is-gate .timeline-dot {
+      border-color: var(--highlighter-dark);
+      background: var(--highlighter);
+      color: var(--shadow);
+    }
+    .timeline-cell-window {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .timeline-cell-name {
+      font-size: 14px; font-weight: 600; color: var(--shadow);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .timeline-cell-note {
+      font-size: 12px; color: var(--fg-muted);
+      line-height: 1.4;
+    }
+    .timeline-gate-tag {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 10px; font-weight: 700;
+      color: var(--shadow); background: var(--highlighter);
+      padding: 2px 6px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* SLIDE 03 · SPRINT */
+    .sprint-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .sprint-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      padding: var(--sp-5);
+      transition: all 240ms var(--ease);
+      position: relative;
+    }
+    .sprint-card:hover {
+      border-color: var(--azure-400);
+      transform: translateY(-2px);
+    }
+    .sprint-card-num {
+      font-size: 11px; font-weight: 700;
+      color: var(--azure); letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-2);
+    }
+    .sprint-card-title {
+      font-size: 19px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-3);
+      letter-spacing: -0.01em;
+    }
+    .sprint-card-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .sprint-card-list li {
+      font-size: 14px; color: var(--fg);
+      padding-left: var(--sp-4);
+      position: relative;
+      line-height: 1.5;
+    }
+    .sprint-card-list li::before {
+      content: ""; position: absolute;
+      left: 0; top: 9px;
+      width: 6px; height: 1px;
+      background: var(--azure-400);
+    }
+
+    /* SLIDE 04 · CONTENT ENGINE */
+    .engine-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-8);
+      align-items: center;
+      margin-top: var(--sp-5);
+    }
+    .engine-loop {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      max-width: 460px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .engine-loop-ring {
+      position: absolute; inset: 0;
+      border: 2px dashed var(--azure-200);
+      border-radius: 50%;
+      animation: engineRotate 40s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .engine-loop-ring { animation: none; }
+    }
+    @keyframes engineRotate {
+      to { transform: rotate(360deg); }
+    }
+    .engine-step {
+      position: absolute;
+      width: 30%;
+      aspect-ratio: 1 / 1;
+      background: var(--bg-panel);
+      border: 1.5px solid var(--azure);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: var(--sp-2);
+      transition: all 280ms var(--ease);
+      min-height: 44px; min-width: 44px;
+    }
+    .engine-step:hover, .engine-step.is-active {
+      background: var(--lucid);
+      transform: scale(1.06);
+      z-index: 2;
+    }
+    .engine-step-num {
+      font-size: 10px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.14em;
+      margin-bottom: 2px;
+    }
+    .engine-step-name {
+      font-size: 14px; font-weight: 700; color: var(--azure);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .engine-step.s1 { top: 0; left: 35%; }
+    .engine-step.s2 { right: 0; top: 35%; }
+    .engine-step.s3 { bottom: 0; left: 35%; }
+    .engine-step.s4 { left: 0; top: 35%; }
+
+    .engine-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: var(--azure);
+      color: var(--ghost);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: var(--sp-2);
+    }
+
+    .engine-detail {
+      display: flex; flex-direction: column;
+      gap: var(--sp-4);
+    }
+    .engine-detail-step {
+      padding: var(--sp-4);
+      border-left: 2px solid var(--azure-200);
+      transition: border-color 240ms var(--ease), background 240ms var(--ease);
+      cursor: pointer;
+    }
+    .engine-detail-step.is-active {
+      border-left-color: var(--azure);
+      background: var(--lucid-soft);
+    }
+    .engine-detail-step-head {
+      display: flex; align-items: center; gap: var(--sp-3);
+      margin-bottom: 6px;
+    }
+    .engine-detail-step-num {
+      width: 24px; height: 24px;
+      background: var(--azure); color: var(--ghost);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .engine-detail-step-name {
+      font-size: 16px; font-weight: 700; color: var(--azure);
+    }
+    .engine-detail-step-body {
+      font-size: 14px; color: var(--fg-muted);
+      line-height: 1.55;
+    }
+    .engine-footer {
+      margin-top: var(--sp-7);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--rule-faint);
+      font-size: 14px; color: var(--fg-muted);
+      line-height: 1.6;
+      max-width: 720px;
+    }
+    .engine-footer strong { color: var(--azure); }
+
+    /* SLIDE 05 · MATURITY */
+    .maturity-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .maturity-card {
+      padding: var(--sp-5);
+      border: 1px solid var(--rule-faint);
+      background: var(--bg-panel);
+      position: relative;
+      transition: all 240ms var(--ease);
+    }
+    .maturity-card.past { opacity: 0.55; }
+    .maturity-card.current {
+      border-color: var(--azure);
+      background: var(--lucid-soft);
+      border-width: 2px;
+    }
+    .maturity-card.next { border-color: var(--azure-400); }
+    .maturity-card-num {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.14em;
+      margin-bottom: var(--sp-2);
+    }
+    .maturity-card-name {
+      font-size: 22px; font-weight: 800; color: var(--azure);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .maturity-card-range {
+      font-size: 12px; font-weight: 600; color: var(--fg-muted);
+      margin-bottom: var(--sp-3);
+    }
+    .maturity-card-desc {
+      font-size: 13px; line-height: 1.5; color: var(--fg);
+    }
+    .maturity-card-marker {
+      display: inline-block;
+      margin-top: var(--sp-3);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 8px;
+      background: var(--azure); color: var(--ghost);
+    }
+    .maturity-card.next .maturity-card-marker {
+      background: var(--lucid); color: var(--azure);
+    }
+    .maturity-footer {
+      margin-top: var(--sp-6);
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--bg-alt);
+      border-left: 2px solid var(--azure);
+      font-size: 14px; color: var(--fg);
+      line-height: 1.6;
+    }
+
+    /* SLIDE 06 · GOALS */
+    .goals-lede {
+      padding: var(--sp-5);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+      margin-bottom: var(--sp-6);
+      font-size: 16px; color: var(--fg);
+      line-height: 1.6;
+      max-width: 800px;
+    }
+    .goals-lede strong { color: var(--azure); }
+    .goals-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+    }
+    .goal-col {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 4px solid var(--tofu-accent);
+      transition: all 240ms var(--ease);
+    }
+    .goal-col:nth-child(2) { border-top-color: var(--mofu-accent); }
+    .goal-col:nth-child(3) { border-top-color: var(--bofu-accent); }
+    .goal-col:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+    .goal-stage {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .goal-col:nth-child(1) .goal-stage { color: var(--tofu-accent); }
+    .goal-col:nth-child(2) .goal-stage { color: var(--mofu-accent); }
+    .goal-col:nth-child(3) .goal-stage { color: var(--bofu-accent); }
+    .goal-title {
+      font-size: 19px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-3);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .goal-focus {
+      font-size: 13.5px; color: var(--fg-muted);
+      line-height: 1.55;
+      margin-bottom: var(--sp-3);
+    }
+    .goal-mix-bar {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--rule-faint);
+      font-size: 12px; color: var(--fg-muted);
+    }
+    .goal-mix-pct {
+      font-size: 22px; font-weight: 800;
+      color: var(--azure);
+      letter-spacing: -0.01em;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* SLIDES 07, 08 · IVP */
+    .ivp-header {
+      display: flex; flex-wrap: wrap; align-items: baseline;
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-3);
+    }
+    .ivp-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .ivp-tag.b2c { background: var(--lucid); color: var(--azure); }
+    .ivp-tag.b2b { background: var(--azure); color: var(--ghost); }
+    .ivp-name {
+      font-size: 24px; font-weight: 800; color: var(--azure);
+      letter-spacing: -0.015em;
+    }
+    .ivp-demo {
+      font-size: 14px; color: var(--fg-muted);
+      line-height: 1.55;
+      margin-bottom: var(--sp-6);
+      max-width: 820px;
+    }
+    .ivp-demo strong { color: var(--azure); }
+
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+    .contrast-block {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+    }
+    .contrast-block.pain-block {
+      border-left: 2px solid var(--azure-200);
+    }
+    .contrast-block.dream-block {
+      border-left: 2px solid var(--lucid-deep);
+    }
+    .contrast-block-header {
+      display: flex; align-items: center; gap: var(--sp-2);
+      margin-bottom: var(--sp-4);
+    }
+    .contrast-block-icon {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      fill: none; stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .pain-block .contrast-block-icon { stroke: var(--azure); }
+    .dream-block .contrast-block-icon { stroke: var(--lucid-deep); }
+    .contrast-block-title {
+      font-size: 11px; font-weight: 700;
+      color: var(--shadow);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .contrast-block-signal {
+      font-size: 11px; color: var(--fg-subtle);
+      margin-left: auto;
+      letter-spacing: 0.04em;
+      font-style: italic;
+    }
+    .contrast-item {
+      display: flex; align-items: flex-start; gap: var(--sp-3);
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--rule-faint);
+      transition: background 200ms var(--ease);
+    }
+    .contrast-item:last-child { border-bottom: none; }
+    .contrast-item:hover { background: var(--bg-alt); }
+    .contrast-item.is-priority-pain {
+      background: rgba(226, 237, 122, 0.15);
+      padding-left: var(--sp-3);
+      padding-right: var(--sp-3);
+      margin: 0 calc(-1 * var(--sp-3));
+    }
+    .contrast-num-chip {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border: 1px solid var(--azure-200);
+      background: var(--ghost);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0;
+    }
+    .contrast-item-body { flex: 1; min-width: 0; }
+    .contrast-item-label {
+      font-size: 13px; font-weight: 600;
+      color: var(--shadow);
+      margin-bottom: 4px;
+      line-height: 1.4;
+      display: flex; align-items: center; flex-wrap: wrap; gap: var(--sp-2);
+    }
+    .contrast-priority-tag {
+      font-size: 9px; font-weight: 700;
+      background: var(--highlighter);
+      color: var(--shadow);
+      padding: 2px 6px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .contrast-item-text {
+      font-size: 13px; color: var(--fg-muted);
+      line-height: 1.5;
+    }
+
+    .ivp-cta-row {
+      margin-top: var(--sp-5);
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--azure);
+      color: var(--ghost);
+      min-height: 44px;
+    }
+    .ivp-cta-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--azure-200);
+    }
+    .ivp-cta-value {
+      font-size: 15px; font-weight: 700;
+    }
+
+    /* SLIDE 09 · Strategic Direction */
+    .strategy-anchor {
+      padding: var(--sp-6);
+      background: var(--lucid-soft);
+      border-left: 4px solid var(--azure);
+      margin-bottom: var(--sp-6);
+    }
+    .strategy-anchor-eyebrow {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .strategy-anchor-headline {
+      font-size: 22px; font-weight: 800; color: var(--azure);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      margin-bottom: var(--sp-3);
+    }
+    .strategy-anchor-body {
+      font-size: 15px; color: var(--fg);
+      line-height: 1.65;
+    }
+    .strategy-anchor-body strong { color: var(--azure); }
+    .strategy-anchor-body em.signal {
+      font-style: normal;
+      background: var(--highlighter);
+      padding: 2px 6px;
+      font-weight: 600;
+      color: var(--shadow);
+    }
+
+    .pillars-7-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-3);
+    }
+    .pillar-7-item {
+      display: flex; align-items: flex-start; gap: var(--sp-3);
+      padding: var(--sp-3);
+      border: 1px solid var(--rule-faint);
+      background: var(--bg-panel);
+      transition: all 200ms var(--ease);
+    }
+    .pillar-7-item:hover { border-color: var(--azure-400); }
+    .pillar-7-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--azure); color: var(--ghost);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .pillar-7-text {
+      font-size: 13.5px; color: var(--fg);
+      line-height: 1.5;
+    }
+
+    /* SLIDE 10 · Pillars */
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .pillar-card {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      transition: all 240ms var(--ease);
+    }
+    .pillar-card:hover {
+      border-color: var(--azure-400);
+      box-shadow: var(--sh-md);
+    }
+    .pillar-num {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .pillar-name {
+      font-size: 22px; font-weight: 800; color: var(--azure);
+      letter-spacing: -0.015em;
+      margin-bottom: 4px;
+    }
+    .pillar-intent {
+      font-size: 12px; color: var(--fg-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: var(--sp-3);
+    }
+    .pillar-desc {
+      font-size: 14px; color: var(--fg);
+      line-height: 1.55;
+      margin-bottom: var(--sp-3);
+    }
+    .pillar-formats {
+      padding-top: var(--sp-3);
+      border-top: 1px solid var(--rule-faint);
+    }
+    .pillar-formats-label {
+      font-size: 10px; font-weight: 700; color: var(--fg-subtle);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-2);
+    }
+    .format-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .format-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 8px;
+      background: var(--bg-alt);
+      color: var(--azure);
+      border: 1px solid var(--rule-faint);
+    }
+    .format-tag.path2 {
+      background: var(--lucid);
+      border-color: var(--lucid-deep);
+    }
+
+    /* SLIDE 11 · Feed */
+    .mix-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-6);
+      margin-top: var(--sp-5);
+      margin-bottom: var(--sp-6);
+    }
+    .mix-bar-wrap { padding: var(--sp-5); background: var(--bg-panel); border: 1px solid var(--rule-faint); }
+    .mix-bar-eyebrow {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .mix-bar-title {
+      font-size: 18px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-3);
+    }
+    .mix-bar-track {
+      display: flex; height: 38px;
+      border: 1px solid var(--rule-faint);
+      overflow: hidden;
+    }
+    .mix-bar-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      color: var(--ghost);
+      letter-spacing: 0.04em;
+    }
+    .mix-bar-seg.tofu { background: var(--tofu-accent); flex: 40; }
+    .mix-bar-seg.mofu { background: var(--mofu-accent); flex: 35; }
+    .mix-bar-seg.bofu { background: var(--bofu-accent); flex: 25; }
+    .mix-bar-note {
+      font-size: 12.5px; color: var(--fg-muted);
+      line-height: 1.55; margin-top: var(--sp-3);
+    }
+
+    .cadence-callout { padding: var(--sp-5); background: var(--lucid-soft); border-left: 2px solid var(--azure); }
+    .cadence-callout-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 6px;
+      margin-top: var(--sp-3);
+    }
+    .cadence-callout-list li {
+      font-size: 14px; color: var(--fg);
+      padding: 4px 0;
+      line-height: 1.5;
+    }
+    .cadence-callout-list strong { color: var(--azure); display: inline-block; min-width: 60px; }
+
+    .day-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-2);
+    }
+    .day-card {
+      padding: var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--tofu-accent);
+      text-align: center;
+    }
+    .day-card.day-trust { border-top-color: var(--mofu-accent); }
+    .day-card.day-catering { border-top-color: var(--bofu-accent); }
+    .day-card.day-story { border-top-color: var(--azure-400); background: var(--bg-alt); }
+    .day-card-day {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .day-card-type {
+      font-size: 14px; font-weight: 700; color: var(--shadow);
+      margin-bottom: var(--sp-2);
+      line-height: 1.25;
+    }
+    .day-card-fmt {
+      font-size: 11.5px; color: var(--fg-muted);
+      line-height: 1.45;
+    }
+
+    /* SLIDE 12 · Stories */
+    .stories-summary {
+      margin-top: var(--sp-5);
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-left: 2px solid var(--azure);
+    }
+    .stories-summary-title { font-size: 18px; font-weight: 700; color: var(--azure); margin-bottom: var(--sp-3); }
+    .stories-fmt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-3);
+    }
+    .stories-fmt-item {
+      padding: var(--sp-3);
+      border: 1px solid var(--rule-faint);
+      background: var(--bg-alt);
+    }
+    .stories-fmt-name { font-size: 13px; font-weight: 700; color: var(--azure); margin-bottom: 4px; }
+    .stories-fmt-cadence { font-size: 11.5px; color: var(--fg-muted); line-height: 1.45; }
+
+    /* SLIDE 13 · Trends */
+    .trends-quarters {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .trends-q {
+      padding: var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+    }
+    .trends-q-label {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .trends-q-window { font-size: 11px; color: var(--fg-muted); margin-bottom: var(--sp-3); }
+    .trends-q-list { list-style: none; padding: 0; }
+    .trends-q-list li {
+      font-size: 12.5px; color: var(--fg);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--rule-faint);
+      line-height: 1.45;
+    }
+    .trends-q-list li:last-child { border-bottom: none; }
+    .trends-q-list li.anchor { font-weight: 600; }
+    .trends-q-list li .name { display: block; font-weight: 700; color: var(--azure); }
+
+    .filter-bar {
+      margin-top: var(--sp-6);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-3);
+    }
+    .filter-cell {
+      padding: var(--sp-4);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+    }
+    .filter-num {
+      font-size: 10px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .filter-q {
+      font-size: 14px; font-weight: 700; color: var(--azure);
+      line-height: 1.3;
+    }
+
+    /* SLIDE 14 · SEO TAM */
+    .tam-ladder {
+      display: flex; flex-direction: column;
+      gap: 2px;
+      margin-top: var(--sp-5);
+    }
+    .tam-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      padding: var(--sp-4) var(--sp-5);
+      transition: background 200ms var(--ease);
+    }
+    .tam-row:hover { background: var(--bg-alt); }
+    .tam-label-name {
+      font-size: 16px; font-weight: 800; color: var(--azure);
+      letter-spacing: -0.005em;
+      margin-bottom: 4px;
+    }
+    .tam-label-purpose {
+      font-size: 12px; color: var(--fg-muted);
+      line-height: 1.45;
+    }
+    .tam-hashtags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      align-items: flex-start;
+    }
+    .tam-hashtag {
+      display: inline-block;
+      font-size: 12px; font-weight: 500;
+      padding: 4px 8px;
+      background: var(--bg-alt);
+      color: var(--azure);
+      border: 1px solid var(--rule-faint);
+    }
+    .tam-brand-note {
+      margin-top: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--lucid-soft);
+      font-size: 12px; color: var(--fg-muted);
+      line-height: 1.55;
+      border-left: 2px solid var(--azure-400);
+    }
+    .tam-brand-note strong { color: var(--azure); }
+
+    /* SLIDE 15 · Profile */
+    .profile-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .profile-card {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+    }
+    .profile-card.full { grid-column: 1 / -1; }
+    .profile-card-title {
+      font-size: 14px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.04em;
+      margin-bottom: var(--sp-3);
+    }
+    .bio-preview {
+      padding: var(--sp-4);
+      background: var(--bg-alt);
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--fg);
+      margin-bottom: var(--sp-3);
+    }
+    .bio-handle {
+      display: block; font-weight: 700; color: var(--azure);
+      margin-bottom: 6px;
+    }
+    .profile-list { list-style: none; padding: 0; }
+    .profile-list li {
+      padding: var(--sp-2) 0;
+      border-bottom: 1px solid var(--rule-faint);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .profile-list li:last-child { border-bottom: none; }
+    .profile-list li strong { color: var(--azure); display: block; margin-bottom: 2px; }
+    .highlights-row {
+      display: flex; flex-wrap: wrap; gap: var(--sp-3);
+      margin-top: var(--sp-2);
+    }
+    .highlight-bubble {
+      width: 64px;
+      display: flex; flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .highlight-bubble-circle {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--lucid-soft);
+      border: 1.5px solid var(--azure-200);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--azure);
+    }
+    .highlight-bubble-name {
+      font-size: 11px; color: var(--fg); font-weight: 600;
+      text-align: center;
+    }
+
+    /* SLIDE 16 · KPI */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .kpi-card {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure);
+      transition: all 240ms var(--ease);
+    }
+    .kpi-card:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+    .kpi-card.t1 { border-top-color: var(--azure); }
+    .kpi-card.t2 { border-top-color: var(--azure-400); }
+    .kpi-card.t3 { border-top-color: var(--azure-200); }
+    .kpi-tier-name {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .kpi-tier-role {
+      font-size: 17px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-3);
+    }
+    .kpi-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .kpi-list li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule-faint);
+      font-size: 13px;
+    }
+    .kpi-list li:last-child { border-bottom: none; }
+    .kpi-name { font-weight: 600; color: var(--shadow); }
+    .kpi-meta { display: flex; gap: 6px; align-items: center; }
+    .kpi-mult {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      padding: 2px 6px; background: var(--lucid-soft);
+    }
+    .kpi-mult.priority { background: var(--highlighter); color: var(--shadow); }
+
+    .score-footer {
+      margin-top: var(--sp-5);
+      padding: var(--sp-4);
+      background: var(--bg-alt);
+      border-left: 2px solid var(--azure);
+      font-size: 14px; color: var(--fg);
+      line-height: 1.6;
+    }
+    .score-footer strong { color: var(--azure); }
+
+    /* SLIDE 17 · Conversion */
+    .conv-priority {
+      padding: var(--sp-6);
+      background: var(--lucid-soft);
+      border-left: 4px solid var(--azure);
+      margin-bottom: var(--sp-6);
+    }
+    .conv-priority-eyebrow {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .conv-priority-headline {
+      font-size: 22px; font-weight: 800; color: var(--azure);
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin-bottom: var(--sp-3);
+      max-width: 760px;
+    }
+    .conv-priority-body {
+      font-size: 14.5px; color: var(--fg);
+      line-height: 1.65;
+      max-width: 800px;
+    }
+    .conv-priority-body em.quote {
+      font-style: italic;
+      color: var(--fg-muted);
+    }
+
+    .conv-metrics {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-6);
+    }
+    .conv-metric {
+      padding: var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      transition: all 240ms var(--ease);
+    }
+    .conv-metric:hover { border-color: var(--azure-400); }
+    .conv-metric.is-priority {
+      background: var(--highlighter);
+      border-color: var(--highlighter-dark);
+    }
+    .conv-metric-priority-tag {
+      display: inline-block;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--shadow);
+      margin-bottom: 6px;
+    }
+    .conv-metric-name {
+      font-size: 14px; font-weight: 700; color: var(--azure);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+    .conv-metric.is-priority .conv-metric-name { color: var(--shadow); }
+    .conv-metric-signal {
+      font-size: 12px; color: var(--fg-muted);
+      line-height: 1.5;
+    }
+    .conv-metric.is-priority .conv-metric-signal { color: var(--shadow); }
+
+    .conv-upgrades {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+    .conv-upgrade {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+    }
+    .conv-upgrade-eyebrow {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.1em;
+      margin-bottom: var(--sp-2);
+    }
+    .conv-upgrade-question {
+      font-size: 16px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-2);
+      line-height: 1.35;
+    }
+    .conv-upgrade-body {
+      font-size: 13px; color: var(--fg);
+      line-height: 1.55;
+    }
+
+    /* SLIDE 18 · Rhythm */
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .rhythm-cell {
+      padding: var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+    }
+    .rhythm-cell-cadence {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .rhythm-cell-title {
+      font-size: 15px; font-weight: 700; color: var(--shadow);
+      margin-bottom: var(--sp-2);
+      line-height: 1.25;
+    }
+    .rhythm-cell-body {
+      font-size: 12.5px; color: var(--fg-muted);
+      line-height: 1.5;
+    }
+    .approval-callout {
+      margin-top: var(--sp-5);
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+      font-size: 14px; color: var(--fg);
+      line-height: 1.6;
+    }
+    .approval-callout strong { color: var(--azure); }
+
+    /* SLIDE 19 · Considering */
+    .considering-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .considering-card {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      transition: all 240ms var(--ease);
+    }
+    .considering-card:hover { border-color: var(--azure-400); }
+    .considering-card.is-active {
+      background: rgba(226, 237, 122, 0.18);
+      border-color: var(--highlighter-dark);
+      border-left: 3px solid var(--highlighter-dark);
+    }
+    .considering-num {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+    .considering-card.is-active .considering-num { color: var(--shadow); }
+    .considering-title {
+      font-size: 17px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-3);
+      letter-spacing: -0.005em;
+      line-height: 1.25;
+    }
+    .considering-body {
+      font-size: 13px; color: var(--fg);
+      line-height: 1.55;
+    }
+
+    /* SLIDE 20 · Next Steps */
+    .next-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .next-step {
+      padding: var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure);
+    }
+    .next-step-num {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em;
+      margin-bottom: var(--sp-2);
+    }
+    .next-step-title {
+      font-size: 17px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-2);
+      letter-spacing: -0.005em;
+    }
+    .next-step-body {
+      font-size: 13.5px; color: var(--fg);
+      line-height: 1.55;
+    }
+
+    /* SLIDE 21 · Close */
+    .slide-close {
+      min-height: calc(100vh - var(--header-h));
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .close-mark {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 13px; font-weight: 600; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-6);
+    }
+    .close-title {
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 800; color: var(--azure);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: var(--sp-5);
+      max-width: 880px;
+    }
+    .close-body {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--fg-muted);
+      line-height: 1.55;
+      max-width: 680px;
+      margin-bottom: var(--sp-7);
+    }
+    .close-sign {
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--rule-faint);
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-5);
+    }
+    .close-sign-name {
+      font-size: 16px; font-weight: 700; color: var(--azure);
+    }
+    .close-sign-title {
+      font-size: 13px; color: var(--fg-muted);
+    }
+
+    /* RESPONSIVE
+       1440 / 1100 / 768 / 414 / 375 */
+
+    @media (max-width: 1100px) {
+      :root {
+        --content-max: 100%;
+        --slide-max: 100%;
+      }
+      .slide-nav { display: none !important; }
+      .engine-wrap { gap: var(--sp-6); }
+    }
+
+    @media (max-width: 768px) {
+      .slide { padding: var(--sp-7) var(--sp-5) var(--sp-7); }
+
+      .timeline-strip { grid-template-columns: repeat(5, 1fr); gap: var(--sp-2); }
+      .timeline-strip::before { left: 8%; right: 8%; top: 30px; }
+      .timeline-dot { width: 24px; height: 24px; font-size: 10px; }
+      .timeline-cell-window { font-size: 10px; }
+      .timeline-cell-name { font-size: 12px; }
+      .timeline-cell-note { font-size: 11px; }
+
+      .sprint-grid { grid-template-columns: 1fr; }
+
+      .engine-wrap { grid-template-columns: 1fr; gap: var(--sp-7); }
+      .engine-loop { max-width: 360px; }
+
+      .maturity-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .goals-grid { grid-template-columns: 1fr; }
+
+      .contrast-grid { grid-template-columns: 1fr; }
+
+      .pillars-7-grid { grid-template-columns: 1fr; }
+
+      .pillars-grid { grid-template-columns: 1fr; }
+
+      .mix-row { grid-template-columns: 1fr; gap: var(--sp-4); }
+
+      .day-grid { grid-template-columns: repeat(2, 1fr); }
+      .day-card { padding: var(--sp-3); }
+
+      .stories-fmt-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .trends-quarters { grid-template-columns: repeat(2, 1fr); }
+      .filter-bar { grid-template-columns: 1fr; }
+
+      .tam-row { grid-template-columns: 1fr; gap: var(--sp-3); }
+      .tam-label-name { font-size: 15px; }
+
+      .profile-grid { grid-template-columns: 1fr; }
+
+      .kpi-grid { grid-template-columns: 1fr; }
+
+      .conv-metrics { grid-template-columns: repeat(2, 1fr); }
+      .conv-metric.is-priority { grid-column: 1 / -1; }
+      .conv-upgrades { grid-template-columns: 1fr; }
+
+      .rhythm-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .considering-grid { grid-template-columns: 1fr; }
+      .next-steps { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 414px) {
+      :root { --fs-base: 14px; }
+
+      /* Body text floor. Locked Principle 3.12: 14px minimum on mobile */
+      .contrast-item-text,
+      .considering-body,
+      .pillar-desc,
+      .pillar-7-text,
+      .next-step-body,
+      .rhythm-cell-body,
+      .tam-label-purpose,
+      .stories-fmt-cadence,
+      .engine-detail-step-body,
+      .ivp-demo,
+      .trends-q-list li,
+      .filter-q { font-size: 14px; line-height: 1.55; }
+
+      .slide { padding: var(--sp-6) var(--sp-4) var(--sp-6); }
+      .slide-cover { padding-top: var(--sp-6); padding-bottom: var(--sp-6); }
+
+      .deck-header-inner { padding: 0 var(--sp-4); }
+      .header-meta { display: none; }
+
+      .cover-title { font-size: 36px; }
+      .cover-lede { font-size: 16px; }
+      .cover-meta-row { gap: var(--sp-4); flex-direction: column; }
+
+      .slide-title { font-size: 26px; }
+      .slide-subtitle { font-size: 15px; }
+
+      .timeline-strip { grid-template-columns: 1fr; gap: var(--sp-3); }
+      .timeline-strip::before { display: none; }
+      .timeline-cell {
+        flex-direction: row; align-items: center;
+        gap: var(--sp-3); text-align: left;
+        padding: var(--sp-3);
+        background: var(--bg-panel);
+        border: 1px solid var(--rule-faint);
+      }
+      .timeline-cell .timeline-dot { margin-bottom: 0; flex-shrink: 0; }
+      .timeline-cell-body { flex: 1; display: flex; flex-direction: column; }
+
+      .engine-loop { max-width: 280px; }
+      .engine-step-name { font-size: 11px; }
+      .engine-center { font-size: 10px; }
+
+      .maturity-grid { grid-template-columns: 1fr; }
+
+      .conv-metrics { grid-template-columns: 1fr; }
+      .conv-metric.is-priority { grid-column: 1; }
+
+      .rhythm-grid { grid-template-columns: 1fr; }
+
+      .tam-hashtag { font-size: 11px; }
+      .format-tag { font-size: 10px; }
+
+      .close-title { font-size: 32px; }
+
+      .ivp-name { font-size: 20px; }
+
+      .strategy-anchor-headline { font-size: 19px; }
+      .conv-priority-headline { font-size: 19px; }
+    }
+
+    @media (max-width: 375px) {
+      .slide { padding: var(--sp-5) var(--sp-4) var(--sp-6); }
+      .cover-title { font-size: 30px; }
+      .slide-title { font-size: 24px; }
+      .engine-loop { max-width: 260px; }
+    }
+
+    @media print {
+      .deck-header, .slide-nav { display: none; }
+      .reveal { opacity: 1; transform: none; }
+      .slide { page-break-after: always; padding: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="deck-header">
+    <div class="deck-header-inner">
+      <a href="https://decks.scrollmedia.co/pitch/" target="_blank" rel="noopener" class="header-logo" aria-label="Scroll Media">
+        <span class="header-logo-mark">SM</span>
+        <span class="header-logo-text">Scroll Media</span>
+      </a>
+      <div class="header-meta" aria-hidden="true">
+        <span>Carl's Deli</span>
+        <span class="header-meta-dot"></span>
+        <span>Phase 1 Strategy</span>
+        <span class="header-meta-dot"></span>
+        <span>May 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="slide-nav" aria-label="Slide navigation">
+    <a href="#s01" data-slide="01"><span>Cover</span></a>
+    <a href="#s02" data-slide="02"><span>12-month journey</span></a>
+    <a href="#s03" data-slide="03"><span>Strategy sprint</span></a>
+    <a href="#s04" data-slide="04"><span>Content Engine</span></a>
+    <a href="#s05" data-slide="05"><span>Maturity stage</span></a>
+    <a href="#s06" data-slide="06"><span>Three goals</span></a>
+    <a href="#s07" data-slide="07"><span>IVP 01 · B2C</span></a>
+    <a href="#s08" data-slide="08"><span>IVP 02 · B2B</span></a>
+    <a href="#s09" data-slide="09"><span>Strategic direction</span></a>
+    <a href="#s10" data-slide="10"><span>Pillars + formats</span></a>
+    <a href="#s11" data-slide="11"><span>Feed strategy</span></a>
+    <a href="#s12" data-slide="12"><span>Stories</span></a>
+    <a href="#s13" data-slide="13"><span>Trends</span></a>
+    <a href="#s14" data-slide="14"><span>SEO ladder</span></a>
+    <a href="#s15" data-slide="15"><span>Profile</span></a>
+    <a href="#s16" data-slide="16"><span>KPI framework</span></a>
+    <a href="#s17" data-slide="17"><span>Conversion</span></a>
+    <a href="#s18" data-slide="18"><span>Operating rhythm</span></a>
+    <a href="#s19" data-slide="19"><span>Worth considering</span></a>
+    <a href="#s20" data-slide="20"><span>Next steps</span></a>
+    <a href="#s21" data-slide="21"><span>Close</span></a>
+  </nav>
+
+  <main>
+
+    <!-- SLIDE 01 · COVER -->
+    <section class="slide slide-cover" id="s01" aria-labelledby="s01-title">
+      <div class="cover-mark reveal">
+        <span class="cover-mark-line"></span>
+        <span>Scroll System &middot; Phase 1 Strategy</span>
+      </div>
+      <h1 id="s01-title" class="cover-title reveal">Carl's Deli<br/><em>&times; Scroll Media</em></h1>
+      <p class="cover-lede reveal">A 90-day strategy sprint built around catering conversion, sister-led authenticity, and Cincinnati's 22 to 40 transplant cohort. The work starts here.</p>
+      <div class="cover-meta-row reveal">
+        <div class="cover-meta-cell">
+          <span class="cover-meta-label">Engagement</span>
+          <span class="cover-meta-value">Signature Growth</span>
+        </div>
+        <div class="cover-meta-cell">
+          <span class="cover-meta-label">Stage</span>
+          <span class="cover-meta-value">Lift. Next is Rise.</span>
+        </div>
+        <div class="cover-meta-cell">
+          <span class="cover-meta-label">Account Manager</span>
+          <span class="cover-meta-value">Rachel</span>
+        </div>
+        <div class="cover-meta-cell">
+          <span class="cover-meta-label">Walkthrough</span>
+          <span class="cover-meta-value">May 14, 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 02 · TIMELINE -->
+    <section class="slide" id="s02" aria-labelledby="s02-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">02</span>
+        <span class="slide-eyebrow-text">Scroll System &middot; v2.0</span>
+      </div>
+      <h2 id="s02-title" class="slide-title reveal">Your 12-month journey.</h2>
+      <p class="slide-subtitle reveal">Strategy is locked in Month 1. Months 2 to 3 test formats and validate signal. Months 4 to 9 execute and refine on the proven rotation. Month 12 is the annual positioning review.</p>
+
+      <div class="timeline-strip reveal">
+        <div class="timeline-cell is-current">
+          <div class="timeline-dot">M1</div>
+          <div class="timeline-cell-body">
+            <div class="timeline-cell-window">Month 1</div>
+            <div class="timeline-cell-name">Strategy</div>
+            <div class="timeline-cell-note">Done.</div>
+          </div>
+        </div>
+        <div class="timeline-cell">
+          <div class="timeline-dot">M2&ndash;3</div>
+          <div class="timeline-cell-body">
+            <div class="timeline-cell-window">Months 2 &ndash; 3</div>
+            <div class="timeline-cell-name">Testing</div>
+            <div class="timeline-cell-note">Format discovery.</div>
+          </div>
+        </div>
+        <div class="timeline-cell is-gate">
+          <div class="timeline-dot">M3</div>
+          <div class="timeline-cell-body">
+            <div class="timeline-cell-window">Month 3 gate</div>
+            <div class="timeline-cell-name">Strategic Refresh</div>
+            <div class="timeline-cell-note">Lock winners. Phase 2 begins.</div>
+            <span class="timeline-gate-tag">Decision gate</span>
+          </div>
+        </div>
+        <div class="timeline-cell">
+          <div class="timeline-dot">M4&ndash;9</div>
+          <div class="timeline-cell-body">
+            <div class="timeline-cell-window">Months 4 &ndash; 9</div>
+            <div class="timeline-cell-name">Executing &amp; Refining</div>
+            <div class="timeline-cell-note">Compounding growth.</div>
+          </div>
+        </div>
+        <div class="timeline-cell is-gate">
+          <div class="timeline-dot">M12</div>
+          <div class="timeline-cell-body">
+            <div class="timeline-cell-window">Month 12 gate</div>
+            <div class="timeline-cell-name">Annual Review</div>
+            <div class="timeline-cell-note">Positioning revisited.</div>
+            <span class="timeline-gate-tag">Decision gate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="engine-footer reveal" style="margin-top: var(--sp-7);">
+        We work on a quarterly rhythm. The strategy stays locked. Format choices evolve based on what your audience actually responds to. <strong>Month 3 and Month 12 are the two formal decision gates.</strong> Everything in between is execution.
+      </div>
+    </section>
+
+    <!-- SLIDE 03 · SPRINT -->
+    <section class="slide" id="s03" aria-labelledby="s03-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">03</span>
+        <span class="slide-eyebrow-text">The Strategy Sprint</span>
+      </div>
+      <h2 id="s03-title" class="slide-title reveal">How we built your strategy.</h2>
+      <p class="slide-subtitle reveal">Three weeks. Research to architecture to delivery. The Homebase you have open is the artifact this sprint produced.</p>
+
+      <div class="sprint-grid">
+        <div class="sprint-card reveal">
+          <div class="sprint-card-num">Week 01</div>
+          <div class="sprint-card-title">Research &amp; IVP</div>
+          <ul class="sprint-card-list">
+            <li>Kickoff interview mined for verbatim phrases</li>
+            <li>Competitive review (national chains, local sandwich shops)</li>
+            <li>Ideal Viewer Profiles built (B2C deli, B2B catering)</li>
+            <li>Pain points and dream outcomes anchored</li>
+          </ul>
+        </div>
+        <div class="sprint-card reveal">
+          <div class="sprint-card-num">Week 02</div>
+          <div class="sprint-card-title">Strategy Architecture</div>
+          <ul class="sprint-card-list">
+            <li>Three goals locked across the funnel</li>
+            <li>Four content pillars mapped to motivators</li>
+            <li>Format library curated, originals invented</li>
+            <li>KPI framework calibrated to your stage</li>
+          </ul>
+        </div>
+        <div class="sprint-card reveal">
+          <div class="sprint-card-num">Week 03</div>
+          <div class="sprint-card-title">Build &amp; Deliver</div>
+          <ul class="sprint-card-list">
+            <li>Homebase deployed (your strategy document)</li>
+            <li>Conversion tracking spec written</li>
+            <li>First-month content seeds drafted</li>
+            <li>Walkthrough scheduled (you are here)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 04 · CONTENT ENGINE -->
+    <section class="slide" id="s04" aria-labelledby="s04-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">04</span>
+        <span class="slide-eyebrow-text">The Content Engine</span>
+      </div>
+      <h2 id="s04-title" class="slide-title reveal">How we create content every month.</h2>
+      <p class="slide-subtitle reveal">One loop. Four steps. The engine runs on a continuous cycle so the strategy keeps learning what works.</p>
+
+      <div class="engine-wrap">
+        <div class="engine-loop reveal" aria-hidden="true">
+          <div class="engine-loop-ring"></div>
+          <button class="engine-step s1" data-step="1" type="button">
+            <span class="engine-step-num">01</span>
+            <span class="engine-step-name">Idea</span>
+          </button>
+          <button class="engine-step s2" data-step="2" type="button">
+            <span class="engine-step-num">02</span>
+            <span class="engine-step-name">Format</span>
+          </button>
+          <button class="engine-step s3" data-step="3" type="button">
+            <span class="engine-step-num">03</span>
+            <span class="engine-step-name">Hook</span>
+          </button>
+          <button class="engine-step s4" data-step="4" type="button">
+            <span class="engine-step-num">04</span>
+            <span class="engine-step-name">Data</span>
+          </button>
+          <div class="engine-center">Content<br/>Engine</div>
+        </div>
+
+        <div class="engine-detail">
+          <div class="engine-detail-step is-active reveal" data-detail="1">
+            <div class="engine-detail-step-head">
+              <span class="engine-detail-step-num">01</span>
+              <span class="engine-detail-step-name">Idea</span>
+            </div>
+            <div class="engine-detail-step-body">Every concept starts with the customer. We pull from your audience profiles, your differentiation pillars, and the verbatim phrases Sydney brings into kickoff. Strong idea is the upstream variable.</div>
+          </div>
+          <div class="engine-detail-step reveal" data-detail="2">
+            <div class="engine-detail-step-head">
+              <span class="engine-detail-step-num">02</span>
+              <span class="engine-detail-step-name">Format</span>
+            </div>
+            <div class="engine-detail-step-body">Strong idea, wrong format equals weak post. We maintain a dynamic library of high-performing formats and select against what's winning right now. Old formats retire when they cool.</div>
+          </div>
+          <div class="engine-detail-step reveal" data-detail="3">
+            <div class="engine-detail-step-head">
+              <span class="engine-detail-step-num">03</span>
+              <span class="engine-detail-step-name">Hook</span>
+            </div>
+            <div class="engine-detail-step-body">The first three seconds carry the post. We engineer hooks against proven techniques. Generic openers like "Have you ever..." or "Today I want to talk about..." are explicit failure conditions.</div>
+          </div>
+          <div class="engine-detail-step reveal" data-detail="4">
+            <div class="engine-detail-step-head">
+              <span class="engine-detail-step-num">04</span>
+              <span class="engine-detail-step-name">Data</span>
+            </div>
+            <div class="engine-detail-step-body">Every two weeks we look at what shipped. Outliers (2 to 5x above average) get doubled down on. Underperformers retire. Insights feed back into the next round of ideas. The loop closes.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="engine-footer reveal"><strong>The loop never stops.</strong> Data informs ideation. Ideation informs format selection. Format selection informs hook design. Hook performance shows up in data. That is the strategic asset under every Scroll engagement.</p>
+    </section>
+
+    <!-- SLIDE 05 · MATURITY -->
+    <section class="slide" id="s05" aria-labelledby="s05-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">05</span>
+        <span class="slide-eyebrow-text">Where Carl's is today</span>
+      </div>
+      <h2 id="s05-title" class="slide-title reveal">Maturity stage: Lift. Next is Rise.</h2>
+      <p class="slide-subtitle reveal">Four stages. Each one is a performance target range. Stage tells us what success looks like at your current scale, not what content to make.</p>
+
+      <div class="maturity-grid">
+        <div class="maturity-card past reveal">
+          <div class="maturity-card-num">01</div>
+          <div class="maturity-card-name">Spark</div>
+          <div class="maturity-card-range">1K to 5K followers</div>
+          <div class="maturity-card-desc">Foundation building. Account fundamentals plus first signal.</div>
+        </div>
+        <div class="maturity-card current reveal">
+          <div class="maturity-card-num">02</div>
+          <div class="maturity-card-name">Lift</div>
+          <div class="maturity-card-range">5K to 25K followers</div>
+          <div class="maturity-card-desc">Growth and audience expansion. Carl's lives here today.</div>
+          <span class="maturity-card-marker">Carl's is here</span>
+        </div>
+        <div class="maturity-card next reveal">
+          <div class="maturity-card-num">03</div>
+          <div class="maturity-card-name">Rise</div>
+          <div class="maturity-card-range">10K to 100K followers</div>
+          <div class="maturity-card-desc">Mature growth. Multiple performance targets cleared consistently.</div>
+          <span class="maturity-card-marker">Next stage</span>
+        </div>
+        <div class="maturity-card future reveal">
+          <div class="maturity-card-num">04</div>
+          <div class="maturity-card-name">Thrive</div>
+          <div class="maturity-card-range">100K+ followers</div>
+          <div class="maturity-card-desc">Sustained performance. Brand authority at scale.</div>
+        </div>
+      </div>
+
+      <div class="maturity-footer reveal">
+        Stages tell us what good performance looks like at your scale. Your account score targets, your reasonable reach expectations, and the metric ceilings we calibrate against. The work to get from Lift to Rise is what the next 90 days build toward.
+      </div>
+    </section>
+
+    <!-- SLIDE 06 · GOALS -->
+    <section class="slide" id="s06" aria-labelledby="s06-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">06</span>
+        <span class="slide-eyebrow-text">Three goals. One system.</span>
+      </div>
+      <h2 id="s06-title" class="slide-title reveal">One overarching goal. Three jobs Instagram does for Carl's.</h2>
+
+      <div class="goals-lede reveal">
+        The overarching goal: <strong>more qualified lead generation for Carl's, regardless of where the lead comes from.</strong> Underneath that, three sub-goals split the work across the funnel so every post has a defined role. <strong>Each goal carries equal weight.</strong> The mix below is how we allocate content volume, not how we rank goal importance.
+      </div>
+
+      <div class="goals-grid">
+        <div class="goal-col reveal">
+          <div class="goal-stage">Top of funnel &middot; Discovery</div>
+          <div class="goal-title">Brand awareness in Cincinnati</div>
+          <div class="goal-focus">The right local audience knows who Carl's is. Acquisition priority is the 22 to 40 cohort.</div>
+          <div class="goal-mix-bar">Content volume<span class="goal-mix-pct">40%</span></div>
+        </div>
+        <div class="goal-col reveal">
+          <div class="goal-stage">Middle of funnel &middot; Consideration</div>
+          <div class="goal-title">Engage the current community</div>
+          <div class="goal-focus">Education and engagement that builds trust and authority with the existing audience.</div>
+          <div class="goal-mix-bar">Content volume<span class="goal-mix-pct">35%</span></div>
+        </div>
+        <div class="goal-col reveal">
+          <div class="goal-stage">Bottom of funnel &middot; Catering conversion</div>
+          <div class="goal-title">Grow catering revenue</div>
+          <div class="goal-focus">Catering is the priority revenue lever. Corporate, schools, personal events, bridal.</div>
+          <div class="goal-mix-bar">Content volume<span class="goal-mix-pct">25%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 07 · IVP 01 · B2C -->
+    <section class="slide" id="s07" aria-labelledby="s07-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">07</span>
+        <span class="slide-eyebrow-text">Ideal Viewer Profile 01</span>
+      </div>
+      <div class="ivp-header reveal">
+        <span class="ivp-tag b2c">IVP 01 &middot; B2C primary</span>
+      </div>
+      <h2 id="s07-title" class="slide-title reveal">The Cincinnati deli customer.</h2>
+      <p class="ivp-demo reveal">Bimodal age. <strong>Acquisition priority 22 to 40</strong> (Cincinnati transplants, young professionals, IG-discovery cohort) plus retention base 40 to 65 (multigenerational regulars). Hyde Park, Oakley, OTR, Findlay Market neighborhoods. Slight female skew.</p>
+
+      <div class="contrast-grid">
+        <div class="contrast-block pain-block reveal">
+          <div class="contrast-block-header">
+            <svg class="contrast-block-icon" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <span class="contrast-block-title">Top pain points</span>
+            <span class="contrast-block-signal">friction we remove</span>
+          </div>
+          <div class="contrast-item is-priority-pain">
+            <span class="contrast-num-chip">01</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">They don't know Carl's exists yet<span class="contrast-priority-tag">Priority</span></div>
+              <div class="contrast-item-text">Cincinnati transplants and young professionals discover food on Instagram. If Carl's doesn't surface in the feed, they default to the national chain on the corner. The single largest acquisition gap.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">02</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">The 50-sandwich menu is paralyzing for first-timers</div>
+              <div class="contrast-item-text">Sydney's verbatim: "overwhelmed by the amount of sandwich options, not sure how to narrow down." The most common conversion-blocking moment at the counter and in the DMs.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">03</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">The line reads as a barrier, not a signal</div>
+              <div class="contrast-item-text">Sydney's verbatim: "if you're not used to the line, someone new comes in and stands there, like, this line is so long." Regulars love it. First-timers walk past.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">04</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">The unpolished texture gets misread without context</div>
+              <div class="contrast-item-text">Wonky wood floors and chipping paint are the brand. Without the 80-year history, a first-timer can mistake authenticity for "not sure if this is any good."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contrast-block dream-block reveal">
+          <div class="contrast-block-header">
+            <svg class="contrast-block-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="contrast-block-title">Top dream outcomes</span>
+            <span class="contrast-block-signal">wins we showcase</span>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">01</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">A go-to sandwich that becomes theirs</div>
+              <div class="contrast-item-text">Walk in, order without thinking, eat something that hits exactly right. The reliable lunch they don't have to research.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">02</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">The "I know the good spots" badge</div>
+              <div class="contrast-item-text">The quiet satisfaction of being the person who knows where Cincinnati actually eats. Carl's becomes a credential, not just a meal.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">03</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">A place they bring people to</div>
+              <div class="contrast-item-text">Out-of-town guests, parents, new dates, transplant coworkers. Carl's becomes their proof point that they get Cincinnati.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">04</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Earned-share posts</div>
+              <div class="contrast-item-text">They post the #23 to their story without prompting because the sandwich earns it. It reflects their taste, not the brand's ask.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">05</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Becoming a regular</div>
+              <div class="contrast-item-text">First-timer to "every Friday for 12 years." The slow conversion from "place I tried" to "place that's mine."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ivp-cta-row reveal">
+        <span class="ivp-cta-label">Primary CTA</span>
+        <span class="ivp-cta-value">Order a sandwich / View menu</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 08 · IVP 02 · B2B -->
+    <section class="slide" id="s08" aria-labelledby="s08-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">08</span>
+        <span class="slide-eyebrow-text">Ideal Viewer Profile 02</span>
+      </div>
+      <div class="ivp-header reveal">
+        <span class="ivp-tag b2b">IVP 02 &middot; B2B + personal event conversion</span>
+      </div>
+      <h2 id="s08-title" class="slide-title reveal">The catering buyer.</h2>
+      <p class="ivp-demo reveal">Office managers, EAs, HR coordinators, marketing managers, event planners (B2B corporate). Plus brides, baptism hosts, milestone planners (personal events). 28 to 50 age range. Cincinnati metro: Downtown, Blue Ash, Kenwood, Rookwood, OTR. Companies 15 to 250 employees.</p>
+
+      <div class="contrast-grid">
+        <div class="contrast-block pain-block reveal">
+          <div class="contrast-block-header">
+            <svg class="contrast-block-icon" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <span class="contrast-block-title">Top pain points</span>
+            <span class="contrast-block-signal">friction we remove</span>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">01</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">The deli menu is the wrong tool for catering</div>
+              <div class="contrast-item-text">50+ sandwich options is overwhelming when they're ordering for 30. They want a curated catering package they can screenshot and forward to their boss in 30 seconds.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">02</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Capacity is a question mark</div>
+              <div class="contrast-item-text">"Can they actually handle 75 people? Will it show up on time, in the right quantities?" Without proof of volume, they default to the safe national chain.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">03</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">The process is invisible</div>
+              <div class="contrast-item-text">Lead time, delivery vs. pickup, minimum order, dietary options. They need answers without three rounds of email back-and-forth before they'll commit.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">04</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Their reputation is on the line</div>
+              <div class="contrast-item-text">A bad caterer becomes a story that gets told inside the org or family. They need reliability signals, not just quality signals, before they'll put their name on the order.</div>
+            </div>
+          </div>
+          <div class="contrast-item is-priority-pain">
+            <span class="contrast-num-chip">05</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">They can't tell if Carl's is a real catering operation<span class="contrast-priority-tag">Priority</span></div>
+              <div class="contrast-item-text">"Are they a real catering operation, or a deli that sometimes does trays?" Without proof of corporate work and personal events, they don't know which version they're getting.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contrast-block dream-block reveal">
+          <div class="contrast-block-header">
+            <svg class="contrast-block-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="contrast-block-title">Top dream outcomes</span>
+            <span class="contrast-block-signal">wins we showcase</span>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">01</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">A catering decision that runs itself</div>
+              <div class="contrast-item-text">Inquire, get a clear quote fast, order, food shows up. No chasing, no surprises, no last-minute scrambling.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">02</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Food that lands at the table</div>
+              <div class="contrast-item-text">People at the event say something. "Where is this from?" or "this is actually really good." The food earns conversation, not just consumption.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">03</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Credit for the call</div>
+              <div class="contrast-item-text">Inside their org or family, they're the person who knew where to order. Their name lands on a decision that worked, and gets remembered.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">04</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">A go-to contact, not a fresh start</div>
+              <div class="contrast-item-text">Once Carl's is on their list, the next event is a one-text reorder. No vendor research, no requoting, no starting over.</div>
+            </div>
+          </div>
+          <div class="contrast-item">
+            <span class="contrast-num-chip">05</span>
+            <div class="contrast-item-body">
+              <div class="contrast-item-label">Capacity proof in writing</div>
+              <div class="contrast-item-text">"Carl's did Sam Adams 300+ and the school 60-box-lunch days. They can do mine." A reference that signals "we've handled bigger than what you're asking for."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ivp-cta-row reveal">
+        <span class="ivp-cta-label">Primary CTA</span>
+        <span class="ivp-cta-value">Inquire about catering</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 09 · STRATEGIC DIRECTION -->
+    <section class="slide" id="s09" aria-labelledby="s09-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">09</span>
+        <span class="slide-eyebrow-text">Strategic Direction</span>
+      </div>
+      <h2 id="s09-title" class="slide-title reveal">The narrative under every piece of content.</h2>
+
+      <div class="strategy-anchor reveal">
+        <div class="strategy-anchor-eyebrow">The positioning</div>
+        <div class="strategy-anchor-headline">Carl's Deli is a Cincinnati institution. 80 years on the same Hyde Park corner. Sister-owned by Sydney and Cameron Turnbull. Best Deli in Cincinnati 2026. Now expanding through Findlay Market with real catering capacity.</div>
+        <div class="strategy-anchor-body">Instagram's role is to <strong>drive new customer acquisition (the 22 to 40 transplant cohort), build the Findlay audience, and grow catering revenue</strong>. <em class="signal">Catering is the priority lever.</em> Content positions Carl's as the Cincinnati deli with sister-led authenticity, uncopyable craft (28 to 32 pieces of meat sliced in-house every Friday), and the catering operation Cincinnati companies trust at scale (Sam Adams 300+ sandwiches).</div>
+      </div>
+
+      <div class="slide-eyebrow reveal" style="margin-bottom: var(--sp-4);">
+        <span class="slide-eyebrow-text">7 Differentiation pillars Carl's owns</span>
+      </div>
+
+      <div class="pillars-7-grid">
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">01</span><span class="pillar-7-text">Sister-owner narrative (Sydney + Cameron, Honey-Baked Ham grandmother lineage)</span></div>
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">02</span><span class="pillar-7-text">80-year institutional legacy + Best Deli 2026 + 3rd Best Sandwiches award</span></div>
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">03</span><span class="pillar-7-text">Cincinnati vendor stack of 8 named partners (Triple R Cookies, 16 Bricks, Mom and 'Em, plus 5)</span></div>
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">04</span><span class="pillar-7-text">Findlay Market expansion + walk-in cooler that unlocked the catering operation</span></div>
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">05</span><span class="pillar-7-text">FC Cincinnati players eat at Carl's organically (uncopyable earned media)</span></div>
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">06</span><span class="pillar-7-text">The Country Club (#23) ritual. 13,000 sold in one year</span></div>
+        <div class="pillar-7-item reveal"><span class="pillar-7-num">07</span><span class="pillar-7-text">Sydney's personal voice and owner-led DM relationships (verbatim phrases plus DM thank-yous to story-share customers)</span></div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 · PILLARS + FORMATS -->
+    <section class="slide" id="s10" aria-labelledby="s10-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">10</span>
+        <span class="slide-eyebrow-text">Content Pillars + Format Library</span>
+      </div>
+      <h2 id="s10-title" class="slide-title reveal">Four pillars. The content territory.</h2>
+      <p class="slide-subtitle reveal">Each pillar maps to a specific motivator inside your audience. Each pillar carries proven formats plus original formats invented around Carl's uncopyable assets.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card reveal">
+          <div class="pillar-num">Pillar 01</div>
+          <div class="pillar-name">Carl's Craft</div>
+          <div class="pillar-intent">Authority &middot; Education &middot; Trust</div>
+          <div class="pillar-desc">80-year institution plus in-house slicing (28 to 32 pieces of meat / 7 to 8 lbs each every Friday) plus Country Club ritual plus Best Deli 2026. The pillar that owns the craft and heritage moat.</div>
+          <div class="pillar-formats">
+            <div class="pillar-formats-label">Format anchors</div>
+            <div class="format-tags">
+              <span class="format-tag">Top Down</span>
+              <span class="format-tag">Authority Builder Carousel</span>
+              <span class="format-tag">Quick-Shot B-Roll</span>
+              <span class="format-tag path2">80-Year Archive Series</span>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-num">Pillar 02</div>
+          <div class="pillar-name">The Sisters Behind the Counter</div>
+          <div class="pillar-intent">Connection &middot; Trust &middot; Authority</div>
+          <div class="pillar-desc">Sydney plus Cameron founder narrative. Honey-Baked Ham grandmother lineage. Working-mom and entrepreneur authenticity. Sydney's verbatim voice. The personality differentiator.</div>
+          <div class="pillar-formats">
+            <div class="pillar-formats-label">Format anchors</div>
+            <div class="format-tags">
+              <span class="format-tag">Notes App Green Screen</span>
+              <span class="format-tag">Founder POV Reel</span>
+              <span class="format-tag">Split Screen</span>
+              <span class="format-tag">Lesson-Learned Story</span>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-num">Pillar 03</div>
+          <div class="pillar-name">Sandwiches at Scale</div>
+          <div class="pillar-intent">Conversion &middot; Authority</div>
+          <div class="pillar-desc">Catering operation plus capacity proof plus Sam Adams 300+ case plus Findlay walk-in unlock. The pillar that owns catering conversion and the priority revenue lever.</div>
+          <div class="pillar-formats">
+            <div class="pillar-formats-label">Format anchors</div>
+            <div class="format-tags">
+              <span class="format-tag">Educational Carousel</span>
+              <span class="format-tag">Catering Feature Reel</span>
+              <span class="format-tag">Direct Response Story</span>
+              <span class="format-tag path2">Sam Adams Case Study</span>
+              <span class="format-tag path2">Personal Event Spotlight</span>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-num">Pillar 04</div>
+          <div class="pillar-name">Cincinnati at the Counter</div>
+          <div class="pillar-intent">Connection &middot; Community &middot; Awareness</div>
+          <div class="pillar-desc">Vendor stack plus Findlay Market neighborhood plus Hyde Park dog culture plus FC Cincinnati earned media plus Pride and Queen City Charities. The differentiation pillar. Carries evergreen originals and the reactive cultural lane.</div>
+          <div class="pillar-formats">
+            <div class="pillar-formats-label">Format anchors</div>
+            <div class="format-tags">
+              <span class="format-tag path2">Sandwich x Dog Breed Pattern Break</span>
+              <span class="format-tag path2">Vendor Spotlight Series</span>
+              <span class="format-tag path2">Findlay Neighbor Series</span>
+              <span class="format-tag path2">The Aesthetic Truth Series</span>
+              <span class="format-tag">Reaction + Commentary</span>
+              <span class="format-tag">Ranking / Tier-List</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 · FEED STRATEGY -->
+    <section class="slide" id="s11" aria-labelledby="s11-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">11</span>
+        <span class="slide-eyebrow-text">Feed Strategy</span>
+      </div>
+      <h2 id="s11-title" class="slide-title reveal">Mon, Wed, Fri. Three posts. One funnel mix.</h2>
+      <p class="slide-subtitle reveal">Every feed post has a defined role. 40% discovery to grow the audience. 35% trust to deepen it. 25% catering to convert it.</p>
+
+      <div class="mix-row">
+        <div class="mix-bar-wrap reveal">
+          <div class="mix-bar-eyebrow">Funnel mix</div>
+          <div class="mix-bar-title">40% discovery &middot; 35% trust &middot; 25% catering</div>
+          <div class="mix-bar-track" role="img" aria-label="40 percent top of funnel, 35 percent middle, 25 percent bottom">
+            <div class="mix-bar-seg tofu">40%</div>
+            <div class="mix-bar-seg mofu">35%</div>
+            <div class="mix-bar-seg bofu">25%</div>
+          </div>
+          <div class="mix-bar-note">This is content volume allocation. All three goals carry equal strategic weight in service of more qualified lead generation for Carl's.</div>
+        </div>
+        <div class="cadence-callout reveal">
+          <div class="mix-bar-eyebrow">Cadence</div>
+          <div class="mix-bar-title">Three feed posts a week.</div>
+          <ul class="cadence-callout-list">
+            <li><strong>Mon</strong> Discovery lead. Reach formats.</li>
+            <li><strong>Wed</strong> Trust lead. Authority formats.</li>
+            <li><strong>Fri</strong> Catering lead. Conversion formats.</li>
+            <li><strong>Tue / Thu</strong> Story days. Feed reshares on Mon, Wed, Fri.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div class="day-card reveal">
+          <div class="day-card-day">MON</div>
+          <div class="day-card-type">Discovery lead</div>
+          <div class="day-card-fmt">Pattern Break + Notes App Green Screen + Founder POV. Reach play.</div>
+        </div>
+        <div class="day-card day-story reveal">
+          <div class="day-card-day">TUE</div>
+          <div class="day-card-type">Story day</div>
+          <div class="day-card-fmt">Daily Special + Direct Response + Tip card. Mon feed reshare.</div>
+        </div>
+        <div class="day-card day-trust reveal">
+          <div class="day-card-day">WED</div>
+          <div class="day-card-type">Trust lead</div>
+          <div class="day-card-fmt">Top Down + Authority Builder + Educational Carousel.</div>
+        </div>
+        <div class="day-card day-story reveal">
+          <div class="day-card-day">THU</div>
+          <div class="day-card-type">Story day</div>
+          <div class="day-card-fmt">BTS + Catering Inquiry Reminder + Poll. Wed feed reshare.</div>
+        </div>
+        <div class="day-card day-catering reveal">
+          <div class="day-card-day">FRI</div>
+          <div class="day-card-type">Catering lead</div>
+          <div class="day-card-fmt">Catering Feature Reel + Sam Adams + Educational Carousel.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 · STORIES -->
+    <section class="slide" id="s12" aria-labelledby="s12-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">12</span>
+        <span class="slide-eyebrow-text">Stories Strategy</span>
+      </div>
+      <h2 id="s12-title" class="slide-title reveal">Stories are the conversion surface.</h2>
+      <p class="slide-subtitle reveal">Tue and Thu primary story days. Mon, Wed, Fri carry feed reshares. Every link sticker routes through a measurement layer so link taps break out by surface.</p>
+
+      <div class="stories-summary reveal">
+        <div class="stories-summary-title">Core story formats running every week</div>
+        <div class="stories-fmt-grid">
+          <div class="stories-fmt-item">
+            <div class="stories-fmt-name">Behind-the-Counter</div>
+            <div class="stories-fmt-cadence">1 to 2x weekly. Thursday primary. Sydney POV plus slicing plus neighborhood texture.</div>
+          </div>
+          <div class="stories-fmt-item">
+            <div class="stories-fmt-name">Direct Response</div>
+            <div class="stories-fmt-cadence">Tue plus Fri minimum. Catering conversion link. Tracked end-to-end.</div>
+          </div>
+          <div class="stories-fmt-item">
+            <div class="stories-fmt-name">Catering Inquiry Reminder</div>
+            <div class="stories-fmt-cadence">Weekly recurring. Thursday. The catering conversion heartbeat with specific URL plus proof point.</div>
+          </div>
+          <div class="stories-fmt-item">
+            <div class="stories-fmt-name">Daily Special</div>
+            <div class="stories-fmt-cadence">Tuesday primary. Recurring signature arc. Sandwich plus price plus menu link.</div>
+          </div>
+          <div class="stories-fmt-item">
+            <div class="stories-fmt-name">Poll / This or That</div>
+            <div class="stories-fmt-cadence">1 to 2x weekly. Highest-engagement story format. Algorithm-priming.</div>
+          </div>
+          <div class="stories-fmt-item">
+            <div class="stories-fmt-name">Feed Reshare</div>
+            <div class="stories-fmt-cadence">Mon, Wed, Fri. Leading frame plus post plus closing CTA with link sticker.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 · TRENDS -->
+    <section class="slide" id="s13" aria-labelledby="s13-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">13</span>
+        <span class="slide-eyebrow-text">Trends + Cultural Moments</span>
+      </div>
+      <h2 id="s13-title" class="slide-title reveal">The reactive lane. Played selectively, never chased.</h2>
+      <p class="slide-subtitle reveal">Carl's earns attention through specificity. Three filters decide whether a trend gets a post. Anchored Cincinnati moments are pre-scoped on the calendar.</p>
+
+      <div class="trends-quarters">
+        <div class="trends-q reveal">
+          <div class="trends-q-label">Q1</div>
+          <div class="trends-q-window">January &middot; February &middot; March</div>
+          <ul class="trends-q-list">
+            <li><span class="name">Bengals playoff run</span>Game-day catering plus Sunday lunch reactivation.</li>
+            <li><span class="name">Findlay winter rhythm</span>Counter-positioning to "everyone goes in summer."</li>
+            <li><span class="name">Bockfest (OTR)</span>First weekend of March. Findlay vendor cohort adjacency.</li>
+          </ul>
+        </div>
+        <div class="trends-q reveal">
+          <div class="trends-q-label">Q2</div>
+          <div class="trends-q-window">April &middot; May &middot; June</div>
+          <ul class="trends-q-list">
+            <li class="anchor"><span class="name">Reds Opening Day + Findlay Parade</span>Single largest Cincinnati moment of the year.</li>
+            <li class="anchor"><span class="name">FC Cincinnati home matches</span>Recurring moments March through October.</li>
+            <li class="anchor"><span class="name">Pride + Queen City Charities</span>June. Annual donation already in motion.</li>
+          </ul>
+        </div>
+        <div class="trends-q reveal">
+          <div class="trends-q-label">Q3</div>
+          <div class="trends-q-window">July &middot; August &middot; September</div>
+          <ul class="trends-q-list">
+            <li><span class="name">ATP Cincinnati Open</span>Mid-August. Press-box catering angle if booked.</li>
+            <li class="anchor"><span class="name">Oktoberfest Zinzinnati</span>Mid to late September. Adjacent food cohort.</li>
+            <li><span class="name">Bengals season opener</span>Late August / early September.</li>
+          </ul>
+        </div>
+        <div class="trends-q reveal">
+          <div class="trends-q-label">Q4</div>
+          <div class="trends-q-window">October &middot; November &middot; December</div>
+          <ul class="trends-q-list">
+            <li class="anchor"><span class="name">Holiday catering season</span>Priority revenue lever. Calendar-wide motion.</li>
+            <li class="anchor"><span class="name">Thanksgiving + Christmas waves</span>Highest-pressure catering windows.</li>
+            <li><span class="name">Findlay Holiday Market</span>Late Nov through Dec. Vendor Spotlight rotation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-cell reveal">
+          <div class="filter-num">Filter 01</div>
+          <div class="filter-q">Does it pass the Sydney filter?</div>
+        </div>
+        <div class="filter-cell reveal">
+          <div class="filter-num">Filter 02</div>
+          <div class="filter-q">Does it have a Cincinnati anchor?</div>
+        </div>
+        <div class="filter-cell reveal">
+          <div class="filter-num">Filter 03</div>
+          <div class="filter-q">Can Carl's ship inside the trend window?</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 · SEO -->
+    <section class="slide" id="s14" aria-labelledby="s14-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">14</span>
+        <span class="slide-eyebrow-text">SEO Keyword Bank</span>
+      </div>
+      <h2 id="s14-title" class="slide-title reveal">The TAM ladder. Climb broad to narrow.</h2>
+      <p class="slide-subtitle reveal">Tier 1 spikes algorithmic distribution at the widest funnel point. Each tier down condenses the audience and lifts conversion intent. The mix evolves: lean broad in Phase 1 to teach the algorithm the cohort, narrow toward Hyde Park and Findlay as conversion data validates.</p>
+
+      <div class="tam-ladder">
+        <div class="tam-row reveal">
+          <div class="tam-label">
+            <div class="tam-label-name">Tier 01</div>
+            <div class="tam-label-purpose">Industry-wide. Broadest audience. Pulls into algorithmic distribution at the widest funnel point.</div>
+          </div>
+          <div class="tam-hashtags">
+            <span class="tam-hashtag">#food</span>
+            <span class="tam-hashtag">#sandwich</span>
+            <span class="tam-hashtag">#deli</span>
+            <span class="tam-hashtag">#lunch</span>
+            <span class="tam-hashtag">#foodie</span>
+            <span class="tam-hashtag">#foodporn</span>
+            <span class="tam-hashtag">#comfortfood</span>
+            <span class="tam-hashtag">#foodlovers</span>
+          </div>
+        </div>
+        <div class="tam-row reveal">
+          <div class="tam-label">
+            <div class="tam-label-name">Tier 02</div>
+            <div class="tam-label-purpose">Category-level reach. National market within the industry. Brand identity and craft signals.</div>
+          </div>
+          <div class="tam-hashtags">
+            <span class="tam-hashtag">#womenowned</span>
+            <span class="tam-hashtag">#sisterowned</span>
+            <span class="tam-hashtag">#familybusiness</span>
+            <span class="tam-hashtag">#supportlocal</span>
+            <span class="tam-hashtag">#shoplocal</span>
+            <span class="tam-hashtag">#handsliced</span>
+            <span class="tam-hashtag">#deliartisan</span>
+            <span class="tam-hashtag">#cateringservice</span>
+          </div>
+        </div>
+        <div class="tam-row reveal">
+          <div class="tam-label">
+            <div class="tam-label-name">Tier 03</div>
+            <div class="tam-label-purpose">Regional. Cincinnati and Ohio anchor. Metro searchers who could realistically eat at Carl's.</div>
+          </div>
+          <div class="tam-hashtags">
+            <span class="tam-hashtag">#cincinnatifood</span>
+            <span class="tam-hashtag">#cincinnatieats</span>
+            <span class="tam-hashtag">#cincinnati</span>
+            <span class="tam-hashtag">#cincyfoodie</span>
+            <span class="tam-hashtag">#cincinnatilunch</span>
+            <span class="tam-hashtag">#cincinnatideli</span>
+            <span class="tam-hashtag">#cincinnatisandwich</span>
+            <span class="tam-hashtag">#cincinnaticatering</span>
+            <span class="tam-hashtag">#ohiofoodie</span>
+          </div>
+        </div>
+        <div class="tam-row reveal">
+          <div class="tam-label">
+            <div class="tam-label-name">Tier 04</div>
+            <div class="tam-label-purpose">Hyper-local. Highest conversion intent. Hyde Park and Findlay Market specific.</div>
+          </div>
+          <div class="tam-hashtags">
+            <span class="tam-hashtag">#hydeparkcincinnati</span>
+            <span class="tam-hashtag">#hydeparkcincy</span>
+            <span class="tam-hashtag">#findlaymarket</span>
+            <span class="tam-hashtag">#findlaymarketcincy</span>
+            <span class="tam-hashtag">#hydeparkcatering</span>
+            <span class="tam-hashtag">#carlsdeli</span>
+            <span class="tam-hashtag">#cincinnatibestdeli</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tam-brand-note reveal">
+        <strong>Brand-search anchors</strong> live alongside the ladder, not on it. Used in captions and on-screen text for conversion content: "Best deli Cincinnati" &middot; "Best catering in Cincinnati" &middot; "Last-minute catering Cincinnati" &middot; "Cincinnati Best Deli 2026."
+      </div>
+    </section>
+
+    <!-- SLIDE 15 · PROFILE -->
+    <section class="slide" id="s15" aria-labelledby="s15-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">15</span>
+        <span class="slide-eyebrow-text">Profile Optimization</span>
+      </div>
+      <h2 id="s15-title" class="slide-title reveal">Bio, pinned posts, highlights. The conversion shelf.</h2>
+      <p class="slide-subtitle reveal">Every new visitor lands on your profile within 30 seconds of discovering you. The profile decides whether they tap follow, tap the link, or scroll away.</p>
+
+      <div class="profile-grid">
+        <div class="profile-card full reveal">
+          <div class="profile-card-title">Bio &middot; Locked recommendation</div>
+          <div class="bio-preview">
+            <span class="bio-handle">@carls_deli</span>
+            Cincinnati's Best Deli 2026<br/>
+            80 years &middot; Sister-owned<br/>
+            Hyde Park &middot; Findlay Market<br/>
+            50+ sandwiches + catering<br/>
+            Order + inquire
+          </div>
+          <div style="font-size: 12.5px; color: var(--fg-muted); line-height: 1.6;">
+            <strong style="color: var(--azure);">Bio link:</strong> Metricool smart-links page routes by audience. "Order a sandwich" path for B2C. "Inquire about catering" path for B2B. Both layered with UTMs for surface attribution.
+          </div>
+        </div>
+
+        <div class="profile-card reveal">
+          <div class="profile-card-title">Pinned posts &middot; Top 3 grid slots</div>
+          <ul class="profile-list">
+            <li><strong>Pin 01 &middot; The Founder Story</strong>Founder POV Reel or Notes App Green Screen. Sister narrative + Honey-Baked Ham lineage.</li>
+            <li><strong>Pin 02 &middot; How to Carl's</strong>Educational Carousel. Action menu with every customer path.</li>
+            <li><strong>Pin 03 &middot; Reserved for viral standout</strong>Rotating slot. Earned by hitting top-weighted breakout signals.</li>
+          </ul>
+        </div>
+
+        <div class="profile-card reveal">
+          <div class="profile-card-title">Highlights &middot; 6 buckets</div>
+          <div class="highlights-row">
+            <div class="highlight-bubble"><div class="highlight-bubble-circle">01</div><div class="highlight-bubble-name">Catering</div></div>
+            <div class="highlight-bubble"><div class="highlight-bubble-circle">02</div><div class="highlight-bubble-name">Sandwiches</div></div>
+            <div class="highlight-bubble"><div class="highlight-bubble-circle">03</div><div class="highlight-bubble-name">Findlay</div></div>
+            <div class="highlight-bubble"><div class="highlight-bubble-circle">04</div><div class="highlight-bubble-name">Hyde Park</div></div>
+            <div class="highlight-bubble"><div class="highlight-bubble-circle">05</div><div class="highlight-bubble-name">Vendors</div></div>
+            <div class="highlight-bubble"><div class="highlight-bubble-circle">06</div><div class="highlight-bubble-name">Press</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 16 · KPI -->
+    <section class="slide" id="s16" aria-labelledby="s16-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">16</span>
+        <span class="slide-eyebrow-text">KPI Framework</span>
+      </div>
+      <h2 id="s16-title" class="slide-title reveal">What we measure. Weighted by buyer intent.</h2>
+      <p class="slide-subtitle reveal">Saves and CTR carry the highest weight. Each metric maps to the funnel stage it predicts. The monthly report rolls everything into a single Final Score on a 10-point scale with a 6.0 baseline.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card t1 reveal">
+          <div class="kpi-tier-name">Tier 01</div>
+          <div class="kpi-tier-role">Quality &amp; Conversion</div>
+          <ul class="kpi-list">
+            <li><span class="kpi-name">Saves</span><span class="kpi-meta"><span class="kpi-mult priority">2.0x</span></span></li>
+            <li><span class="kpi-name">CTR</span><span class="kpi-meta"><span class="kpi-mult priority">2.0x</span></span></li>
+            <li><span class="kpi-name">Retention %</span><span class="kpi-meta"><span class="kpi-mult">1.5x</span></span></li>
+            <li><span class="kpi-name">Profile Conversion</span><span class="kpi-meta"><span class="kpi-mult">1.5x</span></span></li>
+            <li><span class="kpi-name">Link Taps</span><span class="kpi-meta"><span class="kpi-mult">1.5x</span></span></li>
+          </ul>
+        </div>
+        <div class="kpi-card t2 reveal">
+          <div class="kpi-tier-name">Tier 02</div>
+          <div class="kpi-tier-role">Volume &amp; Community</div>
+          <ul class="kpi-list">
+            <li><span class="kpi-name">Total Views</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
+            <li><span class="kpi-name">New Followers</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
+            <li><span class="kpi-name">Profile Visits</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
+            <li><span class="kpi-name">Comments</span><span class="kpi-meta"><span class="kpi-mult">1.0x</span></span></li>
+          </ul>
+        </div>
+        <div class="kpi-card t3 reveal">
+          <div class="kpi-tier-name">Tier 03</div>
+          <div class="kpi-tier-role">Awareness Amplification</div>
+          <ul class="kpi-list">
+            <li><span class="kpi-name">Shares</span><span class="kpi-meta"><span class="kpi-mult">0.75x</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="score-footer reveal">
+        <strong>Monthly report</strong> delivered first week of every month at reports.scrollmedia.co/carlsdeli. Final Score plus top 3 and bottom 3 posts plus goal-specific tracking plus format performance plus strategic adjustments for the next month. Targets: 7.0+ early cycle, 8.0+ at maturity.
+      </div>
+    </section>
+
+    <!-- SLIDE 17 · CONVERSION -->
+    <section class="slide" id="s17" aria-labelledby="s17-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">17</span>
+        <span class="slide-eyebrow-text">Conversion Strategy</span>
+      </div>
+      <h2 id="s17-title" class="slide-title reveal">How we turn Instagram traffic into Carl's customers.</h2>
+
+      <div class="conv-priority reveal">
+        <div class="conv-priority-eyebrow">The conversion priority</div>
+        <div class="conv-priority-headline">Catering leads the strategy. The deli, online orders, and merch grow alongside it.</div>
+        <div class="conv-priority-body">Catering is the largest near-term revenue lever, the longest sales cycle (corporate buyers don't decide on the spot), and the only revenue path with a measurement gap you surfaced at kickoff. <em class="quote">"I haven't tracked it. I think most of it is regulars."</em> That's the gap we're closing.</div>
+      </div>
+
+      <div class="slide-eyebrow reveal" style="margin-bottom: var(--sp-3);">
+        <span class="slide-eyebrow-text">Metrics that predict customers</span>
+      </div>
+      <div class="conv-metrics">
+        <div class="conv-metric reveal">
+          <div class="conv-metric-name">Link Taps</div>
+          <div class="conv-metric-signal">Direct intent. Saw your content, wanted to know more.</div>
+        </div>
+        <div class="conv-metric reveal">
+          <div class="conv-metric-name">Profile Conversion</div>
+          <div class="conv-metric-signal">New viewers tapping through to profile. The bridge.</div>
+        </div>
+        <div class="conv-metric reveal">
+          <div class="conv-metric-name">Saves</div>
+          <div class="conv-metric-signal">"I'll come back to this." Strongest predictor of return behavior.</div>
+        </div>
+        <div class="conv-metric reveal">
+          <div class="conv-metric-name">Shares</div>
+          <div class="conv-metric-signal">Customers sending content to a friend. Organic growth signal.</div>
+        </div>
+        <div class="conv-metric is-priority reveal">
+          <span class="conv-metric-priority-tag">Priority lever</span>
+          <div class="conv-metric-name">Catering Inquiries</div>
+          <div class="conv-metric-signal">Direct interest converted to action. The clearest signal that content is producing real catering business.</div>
+        </div>
+      </div>
+
+      <div class="slide-eyebrow reveal" style="margin-bottom: var(--sp-3);">
+        <span class="slide-eyebrow-text">Phase 1 measurement upgrades &middot; Ship launch week</span>
+      </div>
+      <div class="conv-upgrades">
+        <div class="conv-upgrade reveal">
+          <div class="conv-upgrade-eyebrow">Upgrade 01</div>
+          <div class="conv-upgrade-question">"How did you hear about Carl's catering?"</div>
+          <div class="conv-upgrade-body">Five options: Instagram, Google, word of mouth, walked in, other. Required field on every catering inquiry. The monthly report gets a "where catering inquiries came from" line.</div>
+        </div>
+        <div class="conv-upgrade reveal">
+          <div class="conv-upgrade-eyebrow">Upgrade 02</div>
+          <div class="conv-upgrade-question">UTM-tracked links across bio and stories.</div>
+          <div class="conv-upgrade-body">Metricool routes the bio link page and story stickers. Bitly with UTM parameters layers on top to capture which surface drove each tap. Link taps stop being a single number.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 18 · OPERATING RHYTHM -->
+    <section class="slide" id="s18" aria-labelledby="s18-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">18</span>
+        <span class="slide-eyebrow-text">Operating Rhythm</span>
+      </div>
+      <h2 id="s18-title" class="slide-title reveal">How we work together.</h2>
+      <p class="slide-subtitle reveal">Six overlapping cadences. Every touchpoint has a defined output and a defined owner. You are not in this 24/7. The system protects your time.</p>
+
+      <div class="rhythm-grid">
+        <div class="rhythm-cell reveal">
+          <div class="rhythm-cell-cadence">Daily</div>
+          <div class="rhythm-cell-title">Content production &amp; publishing</div>
+          <div class="rhythm-cell-body">Rachel manages drafts, scheduling, and publishing through Plann. Sydney approves content as it lands.</div>
+        </div>
+        <div class="rhythm-cell reveal">
+          <div class="rhythm-cell-cadence">Weekly</div>
+          <div class="rhythm-cell-title">Mon / Wed / Fri feed cadence</div>
+          <div class="rhythm-cell-body">Three feed posts (Mon discovery, Wed authority, Fri catering). Two story days (Tue, Thu). Reshares Mon, Wed, Fri.</div>
+        </div>
+        <div class="rhythm-cell reveal">
+          <div class="rhythm-cell-cadence">Bi-weekly</div>
+          <div class="rhythm-cell-title">30-min check-in with Sydney &amp; Rachel</div>
+          <div class="rhythm-cell-body">Approvals batched. Performance signals reviewed. Catering pipeline discussed. Cultural moments scoped.</div>
+        </div>
+        <div class="rhythm-cell reveal">
+          <div class="rhythm-cell-cadence">Monthly</div>
+          <div class="rhythm-cell-title">Performance report</div>
+          <div class="rhythm-cell-body">First week of every month. Full HTML report at reports.scrollmedia.co/carlsdeli. Headline numbers flow into the Homebase snapshot.</div>
+        </div>
+        <div class="rhythm-cell reveal">
+          <div class="rhythm-cell-cadence">Quarterly</div>
+          <div class="rhythm-cell-title">Strategic Refresh + phase transition</div>
+          <div class="rhythm-cell-body">Format Test Log reviewed. Winning formats promoted. Underperformers retired. Next quarter scope locked.</div>
+        </div>
+        <div class="rhythm-cell reveal">
+          <div class="rhythm-cell-cadence">Annual</div>
+          <div class="rhythm-cell-title">Positioning review</div>
+          <div class="rhythm-cell-body">Does the audience profile still map to who's actually driving catering revenue? Major refinements live here.</div>
+        </div>
+      </div>
+
+      <div class="approval-callout reveal">
+        <strong>Approval discipline.</strong> Content lands in Plann five business days before publish. Maximum two rounds of edits per cycle. All approvals batched at the bi-weekly check-in.
+      </div>
+    </section>
+
+    <!-- SLIDE 19 · WORTH CONSIDERING -->
+    <section class="slide" id="s19" aria-labelledby="s19-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">19</span>
+        <span class="slide-eyebrow-text">Worth Considering</span>
+      </div>
+      <h2 id="s19-title" class="slide-title reveal">Forward-looking ideas. Not in current scope.</h2>
+      <p class="slide-subtitle reveal">Three decisions for Carl's about your business. One tool we have ready to deploy at your call. We talk through any of these at the bi-weekly when you're ready.</p>
+
+      <div class="considering-grid">
+        <div class="considering-card reveal">
+          <div class="considering-num">01 &middot; Carl's-side</div>
+          <div class="considering-title">Merch e-commerce on the website</div>
+          <div class="considering-body">Demand already shows up in your DMs. An online store creates a direct path from Instagram to merch revenue. You own the infrastructure and the customer relationship.</div>
+        </div>
+        <div class="considering-card reveal">
+          <div class="considering-num">02 &middot; Carl's-side</div>
+          <div class="considering-title">Lean into online ordering and DoorDash in social</div>
+          <div class="considering-body">Your website takes online sandwich orders. DoorDash partnership exists. Today neither path gets pushed in content. Friday lunch reminders and weekend menu features capture intent that's leaking.</div>
+        </div>
+        <div class="considering-card reveal">
+          <div class="considering-num">03 &middot; Carl's-side</div>
+          <div class="considering-title">A simple customer email list for retention</div>
+          <div class="considering-body">Your most engaged followers are repeat customers. A low-frequency newsletter (weekly specials, holiday catering, behind-the-counter notes from Sydney) gives Carl's a channel that compounds independently of the algorithm.</div>
+        </div>
+        <div class="considering-card is-active reveal">
+          <div class="considering-num">04 &middot; Active Scroll capability</div>
+          <div class="considering-title">ManyChat DM automation with a catering lead magnet</div>
+          <div class="considering-body">A viewer comments "CATERING" on a catering reel. ManyChat auto-DMs them a lead magnet (catering menu PDF or catering planning guide). The inquiry link rides inside the DM. Captures intent at the peak moment. Scroll has this ready. Available to deploy at your call.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 20 · NEXT STEPS -->
+    <section class="slide" id="s20" aria-labelledby="s20-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">20</span>
+        <span class="slide-eyebrow-text">What happens next</span>
+      </div>
+      <h2 id="s20-title" class="slide-title reveal">From walkthrough to first post.</h2>
+
+      <div class="next-steps">
+        <div class="next-step reveal">
+          <div class="next-step-num">Step 01 &middot; This week</div>
+          <div class="next-step-title">Operational pieces lock</div>
+          <div class="next-step-body">Catering inquiry question goes live on the form, in DMs, on the phone. Bitly plus Metricool routes configured. Shoot scheduling for first Catering Feature Reel.</div>
+        </div>
+        <div class="next-step reveal">
+          <div class="next-step-num">Step 02 &middot; Launch week</div>
+          <div class="next-step-title">First feed posts ship</div>
+          <div class="next-step-body">Mon, Wed, Fri rhythm starts. Tue, Thu story days operational. Approvals through Plann at the five-business-day cadence.</div>
+        </div>
+        <div class="next-step reveal">
+          <div class="next-step-num">Step 03 &middot; First month</div>
+          <div class="next-step-title">First performance report</div>
+          <div class="next-step-body">Delivered first week of the following month. Account score baselined. Format performance signal. Catering inquiry attribution running end-to-end.</div>
+        </div>
+      </div>
+
+      <div class="approval-callout reveal" style="margin-top: var(--sp-6);">
+        The Homebase is yours. It updates monthly. Anything we discuss at the bi-weeklies that's strategic enough to live there gets added. Treat it as the ongoing record of how we're building this.
+      </div>
+    </section>
+
+    <!-- SLIDE 21 · CLOSE -->
+    <section class="slide slide-close" id="s21" aria-labelledby="s21-title">
+      <div class="close-mark reveal">
+        <span class="cover-mark-line"></span>
+        <span>Scroll Media &middot; Cincinnati's Instagram agency</span>
+      </div>
+      <h2 id="s21-title" class="close-title reveal">We're building something special.</h2>
+      <p class="close-body reveal">Questions, pushback, instincts you want to push back on, content ideas as they surface. All of it belongs in the room. The strategy gets sharper when you bring it.</p>
+      <div class="close-sign reveal">
+        <div>
+          <div class="close-sign-name">Chase Gianattasio</div>
+          <div class="close-sign-title">Co-Founder &amp; COO &middot; Scroll Media</div>
+        </div>
+        <div>
+          <div class="close-sign-name">Rachel</div>
+          <div class="close-sign-title">Account Manager &middot; Carl's Deli</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Fade-in reveal */
+    (function() {
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+    })();
+
+    /* Slide nav active state */
+    (function() {
+      var navLinks = document.querySelectorAll('.slide-nav a');
+      if (!navLinks.length) return;
+      var slides = document.querySelectorAll('.slide');
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            navLinks.forEach(function(link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+      slides.forEach(function(s) { io.observe(s); });
+    })();
+
+    /* Content Engine interactive */
+    (function() {
+      var steps = document.querySelectorAll('.engine-step');
+      var details = document.querySelectorAll('.engine-detail-step');
+      if (!steps.length) return;
+
+      function activate(idx) {
+        steps.forEach(function(s, i) { s.classList.toggle('is-active', i === idx); });
+        details.forEach(function(d, i) { d.classList.toggle('is-active', i === idx); });
+      }
+
+      var paused = false;
+      var pauseTimer = null;
+      function userTriggered() {
+        paused = true;
+        clearTimeout(pauseTimer);
+        pauseTimer = setTimeout(function() { paused = false; }, 9000);
+      }
+
+      steps.forEach(function(step, i) {
+        step.addEventListener('click', function() { activate(i); userTriggered(); });
+        step.addEventListener('mouseenter', function() { activate(i); userTriggered(); });
+      });
+      details.forEach(function(d, i) {
+        d.addEventListener('click', function() { activate(i); userTriggered(); });
+        d.addEventListener('mouseenter', function() { activate(i); userTriggered(); });
+      });
+
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) return;
+
+      var current = 0;
+      var visible = false;
+      var engineEl = document.querySelector('.engine-loop');
+      if (!engineEl) return;
+
+      var vIO = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { visible = e.isIntersecting; });
+      }, { threshold: 0.3 });
+      vIO.observe(engineEl);
+
+      setInterval(function() {
+        if (paused || !visible) return;
+        current = (current + 1) % steps.length;
+        activate(current);
+      }, 3200);
+    })();
+  </script>
+
+</body>
+</html>

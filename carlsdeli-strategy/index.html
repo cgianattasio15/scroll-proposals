@@ -804,6 +804,18 @@
     .engine-detail-list li strong {
       color: var(--azure); font-weight: 700;
     }
+    /* v1.4 · compact 2-col grid modifier for dense bullet lists (Step 03 Hook 7 techniques) */
+    .engine-detail-list.is-compact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px var(--sp-4);
+    }
+    @media (max-width: 768px) {
+      .engine-detail-list.is-compact-grid {
+        display: flex;
+        flex-direction: column;
+      }
+    }
     .engine-footer {
       margin-top: var(--sp-7);
       padding-top: var(--sp-5);
@@ -2719,13 +2731,12 @@
               <span class="engine-detail-step-num">01</span>
               <span class="engine-detail-step-name">Idea</span>
             </div>
-            <p class="engine-detail-step-intro">Every concept starts with the customer. Five input streams feed every idea:</p>
             <ul class="engine-detail-list">
-              <li><strong>IVP alignment first.</strong> Which audience does this idea serve.</li>
-              <li><strong>Cultural relevance.</strong> Cincinnati moment or cultural hook to plug into.</li>
-              <li><strong>Niche leader inspiration.</strong> What other creators in adjacent niches are doing well.</li>
-              <li><strong>Historical anchors.</strong> Figures, references, or moments that map back to the brand.</li>
-              <li><strong>Everyday universals.</strong> Human-relatable activities or routines tied to the brand.</li>
+              <li><strong>IVP alignment first</strong> &middot; which audience this serves</li>
+              <li><strong>Cultural relevance</strong> &middot; Cincinnati moments and cultural hooks</li>
+              <li><strong>Niche leader inspiration</strong> &middot; what adjacent creators are doing well</li>
+              <li><strong>Historical anchors</strong> &middot; figures and references tied to the brand</li>
+              <li><strong>Everyday universals</strong> &middot; human-relatable routines tied to the brand</li>
             </ul>
           </div>
           <div class="engine-detail-step reveal" data-detail="2">
@@ -2733,11 +2744,10 @@
               <span class="engine-detail-step-num">02</span>
               <span class="engine-detail-step-name">Format</span>
             </div>
-            <p class="engine-detail-step-intro">Strong idea, wrong format equals weak post. Every format choice runs across three lanes:</p>
             <ul class="engine-detail-list">
-              <li><strong>Production.</strong> High-production polished content, or founder-led lo-fi shot on a phone.</li>
-              <li><strong>Creative direction.</strong> Inventing something new, or adapting what's already proven.</li>
-              <li><strong>Distribution.</strong> Reels-led vs carousel-led, mapped to weekly cadence (60 to 70% Reels, 30% carousels).</li>
+              <li><strong>Production</strong> &middot; high-prod polished, or founder-led lo-fi on a phone</li>
+              <li><strong>Creative direction</strong> &middot; invent new, or adapt what's already proven</li>
+              <li><strong>Distribution</strong> &middot; Reels-led vs carousel-led (60-70% / 30% mix)</li>
             </ul>
           </div>
           <div class="engine-detail-step reveal" data-detail="3">
@@ -2745,15 +2755,14 @@
               <span class="engine-detail-step-num">03</span>
               <span class="engine-detail-step-name">Hook</span>
             </div>
-            <p class="engine-detail-step-intro">The first three seconds carry the post. We engineer hooks against seven proven techniques:</p>
-            <ul class="engine-detail-list">
-              <li><strong>Curiosity loops.</strong> Open a question early, pay it off late.</li>
-              <li><strong>Pattern interrupts.</strong> Break the scroll expectation in the first second.</li>
-              <li><strong>Brand associations.</strong> Anchor to brands the audience already trusts.</li>
-              <li><strong>Contrarian takes.</strong> Challenge what most people assume.</li>
-              <li><strong>Specific result claims.</strong> Anchor to concrete outcomes, not vague promises.</li>
-              <li><strong>Direct address.</strong> Speak to the viewer as if you know them.</li>
-              <li><strong>Stakes hook.</strong> Make clear what they'll miss if they keep scrolling.</li>
+            <ul class="engine-detail-list is-compact-grid">
+              <li><strong>Curiosity loops</strong> &middot; open early, pay off late</li>
+              <li><strong>Pattern interrupts</strong> &middot; break the scroll in the first second</li>
+              <li><strong>Brand associations</strong> &middot; anchor to brands the audience trusts</li>
+              <li><strong>Contrarian takes</strong> &middot; challenge what most people assume</li>
+              <li><strong>Specific result claims</strong> &middot; concrete outcomes, not vague promises</li>
+              <li><strong>Direct address</strong> &middot; speak to the viewer like you know them</li>
+              <li><strong>Stakes hook</strong> &middot; what they'll miss if they keep scrolling</li>
             </ul>
           </div>
           <div class="engine-detail-step reveal" data-detail="4">
@@ -2761,17 +2770,16 @@
               <span class="engine-detail-step-num">04</span>
               <span class="engine-detail-step-name">Data</span>
             </div>
-            <p class="engine-detail-step-intro">Performance feeds back into the next round of ideas. The loop closes:</p>
             <ul class="engine-detail-list">
-              <li><strong>Performance review every 2 to 4 weeks.</strong> Looking for signal, not making knee-jerk calls.</li>
-              <li><strong>Adjustments quarterly.</strong> Real decisions need real testing windows.</li>
-              <li><strong>Strategy stays locked.</strong> Format and execution iterate against the signal.</li>
+              <li><strong>Performance review every 2 to 4 weeks</strong> &middot; looking for signal, not knee-jerk calls</li>
+              <li><strong>Adjustments quarterly</strong> &middot; real decisions need real testing windows</li>
+              <li><strong>Strategy stays locked</strong> &middot; format and execution iterate against the signal</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <p class="engine-footer reveal"><strong>The loop never stops.</strong> Data informs ideation. Ideation informs format selection. Format selection informs hook design. Hook performance shows up in data. That is the strategic asset under every Scroll engagement.</p>
+      <p class="engine-footer reveal"><strong>The loop never stops.</strong> That's the strategic asset under every Scroll engagement.</p>
     </section>
 
     <!-- SLIDE 06 · GOALS (v1.3: absorbs the maturity-stage callout that previously lived on its own slide) -->

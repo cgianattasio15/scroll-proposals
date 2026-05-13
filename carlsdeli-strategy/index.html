@@ -386,14 +386,17 @@
       padding: 0 var(--sp-1);
     }
     .timeline-dot {
-      width: 28px; height: 28px;
+      min-width: 28px; height: 28px;
+      padding: 0 9px;
       background: var(--ghost);
       border: 2px solid var(--azure);
-      border-radius: 50%;
+      border-radius: 14px;
       display: inline-flex; align-items: center; justify-content: center;
       font-size: 10px; font-weight: 700; color: var(--azure);
       margin-bottom: var(--sp-2);
       transition: all 240ms var(--ease);
+      white-space: nowrap;
+      letter-spacing: 0.02em;
     }
     .timeline-cell.is-current .timeline-dot {
       background: var(--azure); color: var(--ghost);
@@ -1604,6 +1607,114 @@
       font-size: 13px; color: var(--fg-muted);
     }
 
+    /* SLIDE 11 · Reactive-lane consolidation note (folded from s14 Trends) */
+    .reactive-lane-note {
+      margin-top: var(--sp-5);
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--bg-alt);
+      border-left: 2px solid var(--azure-400);
+      font-size: 13.5px; color: var(--fg);
+      line-height: 1.6;
+    }
+    .reactive-lane-note strong { color: var(--azure); }
+
+    /* SLIDE 12 · Monthly-view caveat (folded into Feed Strategy) */
+    .monthly-view-caveat {
+      margin-top: var(--sp-5);
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+      font-size: 14px; color: var(--fg);
+      line-height: 1.6;
+    }
+    .monthly-view-caveat strong { color: var(--azure); }
+
+    /* SLIDE 18 · Engagement Timeline + What's to come */
+    .engagement-strip {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      margin-bottom: var(--sp-7);
+    }
+    .engagement-strip::before {
+      content: ""; position: absolute;
+      left: 8%; right: 8%; top: 9px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--azure) 0%, var(--azure-400) 100%);
+      z-index: 0;
+    }
+    .engagement-step {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 0 var(--sp-2);
+    }
+    .engagement-dot {
+      width: 20px; height: 20px;
+      background: var(--ghost);
+      border: 2px solid var(--azure);
+      border-radius: 50%;
+      margin-bottom: var(--sp-3);
+      transition: all 240ms var(--ease);
+      position: relative; z-index: 2;
+      flex-shrink: 0;
+    }
+    .engagement-step.past .engagement-dot { background: var(--azure); }
+    .engagement-step.current .engagement-dot {
+      background: var(--azure);
+      transform: scale(1.25);
+      box-shadow: 0 0 0 6px rgba(12, 51, 135, 0.12);
+    }
+    .engagement-step.past { opacity: 0.7; }
+    .engagement-step-body { display: flex; flex-direction: column; align-items: center; }
+    .engagement-date {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .engagement-name {
+      font-size: 14px; font-weight: 600; color: var(--shadow);
+      line-height: 1.3;
+    }
+    .engagement-today-tag {
+      display: inline-block;
+      margin-top: var(--sp-2);
+      font-size: 9px; font-weight: 700;
+      background: var(--highlighter); color: var(--shadow);
+      padding: 2px 6px; letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .whats-next {
+      padding: var(--sp-6);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+    }
+    .whats-next-eyebrow {
+      font-size: 11px; font-weight: 700; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-4);
+    }
+    .whats-next-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .whats-next-list li {
+      font-size: 14.5px; color: var(--fg);
+      padding-left: var(--sp-4);
+      position: relative;
+      line-height: 1.55;
+    }
+    .whats-next-list li::before {
+      content: ""; position: absolute;
+      left: 0; top: 11px;
+      width: 6px; height: 1px;
+      background: var(--azure-400);
+    }
+    .whats-next-list strong { color: var(--azure); font-weight: 700; }
+
     /* RESPONSIVE
        1440 / 1100 / 768 / 414 / 375 */
 
@@ -1629,7 +1740,7 @@
         gap: var(--sp-2);
       }
       .timeline-strip::before { left: 5%; right: 5%; top: 32px; }
-      .timeline-dot { width: 24px; height: 24px; font-size: 9px; }
+      .timeline-dot { min-width: 24px; height: 24px; padding: 0 7px; font-size: 9px; }
       .timeline-diamond { width: 26px; height: 26px; font-size: 9px; }
       .timeline-cell-window { font-size: 10px; }
       .timeline-cell-name { font-size: 12px; }
@@ -1677,6 +1788,13 @@
 
       .considering-grid { grid-template-columns: 1fr; }
       .next-steps { grid-template-columns: 1fr; }
+
+      .engagement-strip { gap: var(--sp-2); }
+      .engagement-dot { width: 16px; height: 16px; }
+      .engagement-strip::before { top: 7px; }
+      .engagement-date { font-size: 10px; letter-spacing: 0.08em; }
+      .engagement-name { font-size: 12.5px; }
+      .whats-next { padding: var(--sp-5); }
     }
 
     @media (max-width: 414px) {
@@ -1698,7 +1816,9 @@
       .agenda-list li,
       .agenda-why,
       .kpi-framework-body,
-      .kpi-funnel-list li { font-size: 14px; line-height: 1.55; }
+      .kpi-funnel-list li,
+      .day-card-fmt,
+      .mix-bar-note { font-size: 14px; line-height: 1.55; }
 
       /* Agenda: vertical stack with time-stamp as left label */
       .agenda-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
@@ -1776,7 +1896,7 @@
       .timeline-cell .timeline-diamond { margin-bottom: 0; flex-shrink: 0; }
       .timeline-cell-body { flex: 1; display: flex; flex-direction: column; }
       .timeline-cell-name { font-size: 15px; }
-      .timeline-cell-note { font-size: 13px; }
+      .timeline-cell-note { font-size: 14px; line-height: 1.5; }
       .timeline-gate-q { font-size: 14px; }
 
       .engine-loop { max-width: 280px; }
@@ -1799,6 +1919,39 @@
 
       .strategy-anchor-headline { font-size: 19px; }
       .conv-priority-headline { font-size: 19px; }
+
+      .engagement-strip {
+        grid-template-columns: 1fr;
+        gap: var(--sp-2);
+      }
+      .engagement-strip::before { display: none; }
+      .engagement-step {
+        flex-direction: row; align-items: center;
+        gap: var(--sp-3); text-align: left;
+        padding: var(--sp-3);
+        background: var(--bg-panel);
+        border: 1px solid var(--rule-faint);
+        border-left: 3px solid var(--azure);
+      }
+      .engagement-step.past { border-left-color: var(--azure-200); opacity: 0.85; }
+      .engagement-step.current {
+        border-left-color: var(--azure);
+        background: rgba(12, 51, 135, 0.04);
+      }
+      .engagement-step.current .engagement-dot { transform: scale(1); box-shadow: none; }
+      .engagement-dot {
+        margin-bottom: 0; flex-shrink: 0;
+        width: 14px; height: 14px;
+      }
+      .engagement-step-body {
+        flex: 1; align-items: flex-start;
+        gap: 2px;
+      }
+      .engagement-date { margin-bottom: 2px; }
+      .engagement-name { font-size: 14px; }
+      .engagement-today-tag { margin-top: var(--sp-2); }
+      .whats-next { padding: var(--sp-4); }
+      .whats-next-list li { font-size: 14px; }
     }
 
     @media (max-width: 375px) {
@@ -1848,15 +2001,12 @@
     <a href="#s11" data-slide="11"><span>Pillars + formats</span></a>
     <a href="#s12" data-slide="12"><span>Feed strategy</span></a>
     <a href="#s13" data-slide="13"><span>Stories</span></a>
-    <a href="#s14" data-slide="14"><span>Trends</span></a>
-    <a href="#s15" data-slide="15"><span>SEO ladder</span></a>
-    <a href="#s16" data-slide="16"><span>Profile</span></a>
-    <a href="#s17" data-slide="17"><span>Performance tracking</span></a>
-    <a href="#s18" data-slide="18"><span>Conversion</span></a>
-    <a href="#s19" data-slide="19"><span>Operating rhythm</span></a>
-    <a href="#s20" data-slide="20"><span>Worth considering</span></a>
-    <a href="#s21" data-slide="21"><span>Next steps</span></a>
-    <a href="#s22" data-slide="22"><span>Close</span></a>
+    <a href="#s14" data-slide="14"><span>SEO ladder</span></a>
+    <a href="#s15" data-slide="15"><span>Profile</span></a>
+    <a href="#s16" data-slide="16"><span>Performance tracking</span></a>
+    <a href="#s17" data-slide="17"><span>Operating rhythm</span></a>
+    <a href="#s18" data-slide="18"><span>What's to come</span></a>
+    <a href="#s19" data-slide="19"><span>Close</span></a>
   </nav>
 
   <main>
@@ -1884,7 +2034,7 @@
         </div>
         <div class="cover-meta-cell">
           <span class="cover-meta-label">Walkthrough</span>
-          <span class="cover-meta-value">May 14, 2026</span>
+          <span class="cover-meta-value">May 13, 2026</span>
         </div>
       </div>
     </section>
@@ -2026,17 +2176,17 @@
         <span class="slide-eyebrow-text">The Strategy Sprint</span>
       </div>
       <h2 id="s04-title" class="slide-title reveal">How we built your strategy.</h2>
-      <p class="slide-subtitle reveal">Three weeks. Research to architecture to delivery. What you're seeing now is the artifact this sprint produced.</p>
+      <p class="slide-subtitle reveal">Three weeks. Immersion to architecture to delivery. What you're seeing now is the artifact this sprint produced.</p>
 
       <div class="sprint-grid">
         <div class="sprint-card reveal">
           <div class="sprint-card-num">Week 01</div>
-          <div class="sprint-card-title">Research &amp; IVP</div>
+          <div class="sprint-card-title">Brand Immersion</div>
           <ul class="sprint-card-list">
-            <li>Kickoff interview mined for verbatim phrases</li>
-            <li>Competitive review (national chains, local sandwich shops)</li>
+            <li>Kickoff interview and ideation exercise mined for verbatim voice</li>
+            <li>Deep dive into your brand, your industry, and the competitive landscape</li>
             <li>Ideal Viewer Profiles built (B2C deli, B2B catering)</li>
-            <li>Pain points and dream outcomes anchored</li>
+            <li>Pain points and dream outcomes anchored to your customers</li>
           </ul>
         </div>
         <div class="sprint-card reveal">
@@ -2513,6 +2663,10 @@
           </div>
         </div>
       </div>
+
+      <div class="reactive-lane-note reveal">
+        <strong>Pillar 04 also carries the reactive lane.</strong> Cincinnati moments and cultural hooks weave into middle-of-funnel community growth. Rachel surfaces. Sydney decides direction.
+      </div>
     </section>
 
     <!-- SLIDE 12 · FEED STRATEGY -->
@@ -2521,8 +2675,8 @@
         <span class="slide-eyebrow-num">12</span>
         <span class="slide-eyebrow-text">Feed Strategy</span>
       </div>
-      <h2 id="s12-title" class="slide-title reveal">Mon, Wed, Fri. Three posts. One funnel mix.</h2>
-      <p class="slide-subtitle reveal">Every feed post has a defined role. 40% discovery to grow the audience. 35% trust to deepen it. 25% catering to convert it.</p>
+      <h2 id="s12-title" class="slide-title reveal">Mon, Wed, Fri. Three posts. Each day owns a funnel stage.</h2>
+      <p class="slide-subtitle reveal">Monday opens the funnel with top-of-funnel discovery. Wednesday deepens middle-of-funnel engagement. Friday converts at the bottom of the funnel. The 40/35/25 mix lands across the month, not every week.</p>
 
       <div class="mix-row">
         <div class="mix-bar-wrap reveal">
@@ -2539,9 +2693,9 @@
           <div class="mix-bar-eyebrow">Cadence</div>
           <div class="mix-bar-title">Three feed posts a week.</div>
           <ul class="cadence-callout-list">
-            <li><strong>Mon</strong> Discovery lead. Reach formats.</li>
-            <li><strong>Wed</strong> Trust lead. Authority formats.</li>
-            <li><strong>Fri</strong> Catering lead. Conversion formats.</li>
+            <li><strong>Mon</strong> Top of funnel. Discovery and reach.</li>
+            <li><strong>Wed</strong> Middle of funnel. Trust and authority.</li>
+            <li><strong>Fri</strong> Bottom of funnel. Catering conversion.</li>
             <li><strong>Tue / Thu</strong> Story days. Feed reshares on Mon, Wed, Fri.</li>
           </ul>
         </div>
@@ -2551,28 +2705,32 @@
         <div class="day-card reveal">
           <div class="day-card-day">MON</div>
           <div class="day-card-type">Discovery lead</div>
-          <div class="day-card-fmt">Pattern Break + Notes App Green Screen + Founder POV. Reach play.</div>
+          <div class="day-card-fmt">Top of funnel. Brand awareness and reach. Pattern Break, Notes App Green Screen, Founder POV.</div>
         </div>
         <div class="day-card day-story reveal">
           <div class="day-card-day">TUE</div>
           <div class="day-card-type">Story day</div>
-          <div class="day-card-fmt">Daily Special + Direct Response + Tip card. Mon feed reshare.</div>
+          <div class="day-card-fmt">Daily Special, Direct Response, Tip card. Mon feed reshare.</div>
         </div>
         <div class="day-card day-trust reveal">
           <div class="day-card-day">WED</div>
           <div class="day-card-type">Trust lead</div>
-          <div class="day-card-fmt">Top Down + Authority Builder + Educational Carousel.</div>
+          <div class="day-card-fmt">Middle of funnel. Authority and community engagement. Top Down, Authority Builder, Educational Carousel.</div>
         </div>
         <div class="day-card day-story reveal">
           <div class="day-card-day">THU</div>
           <div class="day-card-type">Story day</div>
-          <div class="day-card-fmt">BTS + Catering Inquiry Reminder + Poll. Wed feed reshare.</div>
+          <div class="day-card-fmt">BTS, Catering Inquiry Reminder, Poll. Wed feed reshare.</div>
         </div>
         <div class="day-card day-catering reveal">
           <div class="day-card-day">FRI</div>
           <div class="day-card-type">Catering lead</div>
-          <div class="day-card-fmt">Catering Feature Reel + Sam Adams + Educational Carousel.</div>
+          <div class="day-card-fmt">Bottom of funnel. Catering conversion. Feature Reel, Sam Adams case, Educational Carousel.</div>
         </div>
+      </div>
+
+      <div class="monthly-view-caveat reveal">
+        <strong>Read on a monthly view, not week by week.</strong> The Mon/Wed/Fri rhythm is the cadence. The 40/35/25 funnel mix is the lever that gets pulled across the month. Running 33/33/33 every week would flatten the mix and miss the discipline.
       </div>
     </section>
 
@@ -2616,78 +2774,14 @@
       </div>
     </section>
 
-    <!-- SLIDE 14 · TRENDS -->
+    <!-- SLIDE 14 · SEO -->
     <section class="slide" id="s14" aria-labelledby="s14-title">
       <div class="slide-eyebrow reveal">
         <span class="slide-eyebrow-num">14</span>
-        <span class="slide-eyebrow-text">Trends + Cultural Moments</span>
-      </div>
-      <h2 id="s14-title" class="slide-title reveal">The reactive lane. Played selectively, never chased.</h2>
-      <p class="slide-subtitle reveal">Carl's earns attention through specificity. Three filters decide whether a trend gets a post. Anchored Cincinnati moments are pre-scoped on the calendar.</p>
-
-      <div class="trends-quarters">
-        <div class="trends-q reveal">
-          <div class="trends-q-label">Q1</div>
-          <div class="trends-q-window">January &middot; February &middot; March</div>
-          <ul class="trends-q-list">
-            <li><span class="name">Bengals playoff run</span>Game-day catering plus Sunday lunch reactivation.</li>
-            <li><span class="name">Findlay winter rhythm</span>Counter-positioning to "everyone goes in summer."</li>
-            <li><span class="name">Bockfest (OTR)</span>First weekend of March. Findlay vendor cohort adjacency.</li>
-          </ul>
-        </div>
-        <div class="trends-q reveal">
-          <div class="trends-q-label">Q2</div>
-          <div class="trends-q-window">April &middot; May &middot; June</div>
-          <ul class="trends-q-list">
-            <li class="anchor"><span class="name">Reds Opening Day + Findlay Parade</span>Single largest Cincinnati moment of the year.</li>
-            <li class="anchor"><span class="name">FC Cincinnati home matches</span>Recurring moments March through October.</li>
-            <li class="anchor"><span class="name">Pride + Queen City Charities</span>June. Annual donation already in motion.</li>
-          </ul>
-        </div>
-        <div class="trends-q reveal">
-          <div class="trends-q-label">Q3</div>
-          <div class="trends-q-window">July &middot; August &middot; September</div>
-          <ul class="trends-q-list">
-            <li><span class="name">ATP Cincinnati Open</span>Mid-August. Press-box catering angle if booked.</li>
-            <li class="anchor"><span class="name">Oktoberfest Zinzinnati</span>Mid to late September. Adjacent food cohort.</li>
-            <li><span class="name">Bengals season opener</span>Late August / early September.</li>
-          </ul>
-        </div>
-        <div class="trends-q reveal">
-          <div class="trends-q-label">Q4</div>
-          <div class="trends-q-window">October &middot; November &middot; December</div>
-          <ul class="trends-q-list">
-            <li class="anchor"><span class="name">Holiday catering season</span>Priority revenue lever. Calendar-wide motion.</li>
-            <li class="anchor"><span class="name">Thanksgiving + Christmas waves</span>Highest-pressure catering windows.</li>
-            <li><span class="name">Findlay Holiday Market</span>Late Nov through Dec. Vendor Spotlight rotation.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="filter-bar">
-        <div class="filter-cell reveal">
-          <div class="filter-num">Filter 01</div>
-          <div class="filter-q">Does it pass the Sydney filter?</div>
-        </div>
-        <div class="filter-cell reveal">
-          <div class="filter-num">Filter 02</div>
-          <div class="filter-q">Does it have a Cincinnati anchor?</div>
-        </div>
-        <div class="filter-cell reveal">
-          <div class="filter-num">Filter 03</div>
-          <div class="filter-q">Can Carl's ship inside the trend window?</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 15 · SEO -->
-    <section class="slide" id="s15" aria-labelledby="s15-title">
-      <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">15</span>
         <span class="slide-eyebrow-text">SEO Keyword Bank</span>
       </div>
-      <h2 id="s15-title" class="slide-title reveal">The TAM ladder. Climb broad to narrow.</h2>
-      <p class="slide-subtitle reveal">Tier 1 spikes algorithmic distribution at the widest funnel point. Each tier down condenses the audience and lifts conversion intent. The mix evolves: lean broad in Phase 1 to teach the algorithm the cohort, narrow toward Hyde Park and Findlay as conversion data validates.</p>
+      <h2 id="s14-title" class="slide-title reveal">The TAM ladder. Climb broad to narrow.</h2>
+      <p class="slide-subtitle reveal">The broadest tier spikes algorithmic distribution at the widest funnel point. Each tier down condenses the audience and lifts conversion intent. The mix evolves: lean broad in Phase 1 to teach the algorithm the cohort, narrow toward Hyde Park and Findlay as conversion data validates.</p>
 
       <div class="tam-ladder">
         <div class="tam-row reveal">
@@ -2701,7 +2795,6 @@
             <span class="tam-hashtag">#deli</span>
             <span class="tam-hashtag">#lunch</span>
             <span class="tam-hashtag">#foodie</span>
-            <span class="tam-hashtag">#foodporn</span>
             <span class="tam-hashtag">#comfortfood</span>
             <span class="tam-hashtag">#foodlovers</span>
           </div>
@@ -2761,13 +2854,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 16 · PROFILE -->
-    <section class="slide" id="s16" aria-labelledby="s16-title">
+    <!-- SLIDE 15 · PROFILE -->
+    <section class="slide" id="s15" aria-labelledby="s15-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">16</span>
+        <span class="slide-eyebrow-num">15</span>
         <span class="slide-eyebrow-text">Profile Optimization</span>
       </div>
-      <h2 id="s16-title" class="slide-title reveal">Bio, pinned posts, highlights. The conversion shelf.</h2>
+      <h2 id="s15-title" class="slide-title reveal">Bio, pinned posts, highlights. The conversion shelf.</h2>
       <p class="slide-subtitle reveal">Every new visitor lands on your profile within 30 seconds of discovering you. The profile decides whether they tap follow, tap the link, or scroll away.</p>
 
       <div class="profile-grid">
@@ -2809,13 +2902,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 17 · KPI -->
-    <section class="slide" id="s17" aria-labelledby="s17-title">
+    <!-- SLIDE 16 · KPI -->
+    <section class="slide" id="s16" aria-labelledby="s16-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">17</span>
+        <span class="slide-eyebrow-num">16</span>
         <span class="slide-eyebrow-text">Performance Tracking</span>
       </div>
-      <h2 id="s17-title" class="slide-title reveal">How we track + iterate.</h2>
+      <h2 id="s16-title" class="slide-title reveal">How we track + iterate.</h2>
       <p class="slide-subtitle reveal">Every metric ties to a goal. Every goal ties back to lead generation. Monthly scoring keeps the work honest. Strategic adjustments compound the gains.</p>
 
       <div class="kpi-map-eyebrow reveal">01 &middot; Goals &rarr; KPIs per funnel stage</div>
@@ -2871,6 +2964,11 @@
           <div class="kpi-framework-title">Every metric ladders up.</div>
           <div class="kpi-framework-body">Every metric ties to a goal. Every goal ties to lead generation. Every adjustment serves the loop. The system stays accountable to one outcome: more qualified leads for Carl's.</div>
         </div>
+        <div class="kpi-framework-card reveal">
+          <div class="kpi-framework-num">06 &middot; Conversion lens</div>
+          <div class="kpi-framework-title">Right audience. Clear path. The right metrics.</div>
+          <div class="kpi-framework-body">Get Carl's in front of the right audience. Walk them through a clear purchasing journey. Track the metrics aligned to that journey. With those three working, high-quality lead generation follows. Hard last-mile attribution (UTM parameters plus multi-stage framework) isn't running yet. We track signal first, attribution-grade second.</div>
+        </div>
       </div>
 
       <div class="score-footer reveal">
@@ -2878,71 +2976,13 @@
       </div>
     </section>
 
-    <!-- SLIDE 18 · CONVERSION -->
-    <section class="slide" id="s18" aria-labelledby="s18-title">
+    <!-- SLIDE 17 · OPERATING RHYTHM -->
+    <section class="slide" id="s17" aria-labelledby="s17-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">18</span>
-        <span class="slide-eyebrow-text">Conversion Strategy</span>
-      </div>
-      <h2 id="s18-title" class="slide-title reveal">How we turn Instagram traffic into Carl's customers.</h2>
-
-      <div class="conv-priority reveal">
-        <div class="conv-priority-eyebrow">The conversion priority</div>
-        <div class="conv-priority-headline">Catering leads the strategy. The deli, online orders, and merch grow alongside it.</div>
-        <div class="conv-priority-body">Catering is the largest near-term revenue lever, the longest sales cycle (corporate buyers don't decide on the spot), and the only revenue path with a measurement gap you surfaced at kickoff. <em class="quote">"I haven't tracked it. I think most of it is regulars."</em> That's the gap we're closing.</div>
-      </div>
-
-      <div class="slide-eyebrow reveal" style="margin-bottom: var(--sp-3);">
-        <span class="slide-eyebrow-text">Metrics that predict customers</span>
-      </div>
-      <div class="conv-metrics">
-        <div class="conv-metric reveal">
-          <div class="conv-metric-name">Link Taps</div>
-          <div class="conv-metric-signal">Direct intent. Saw your content, wanted to know more.</div>
-        </div>
-        <div class="conv-metric reveal">
-          <div class="conv-metric-name">Profile Conversion</div>
-          <div class="conv-metric-signal">New viewers tapping through to profile. The bridge.</div>
-        </div>
-        <div class="conv-metric reveal">
-          <div class="conv-metric-name">Saves</div>
-          <div class="conv-metric-signal">"I'll come back to this." Strongest predictor of return behavior.</div>
-        </div>
-        <div class="conv-metric reveal">
-          <div class="conv-metric-name">Shares</div>
-          <div class="conv-metric-signal">Customers sending content to a friend. Organic growth signal.</div>
-        </div>
-        <div class="conv-metric is-priority reveal">
-          <span class="conv-metric-priority-tag">Priority lever</span>
-          <div class="conv-metric-name">Catering Inquiries</div>
-          <div class="conv-metric-signal">Direct interest converted to action. The clearest signal that content is producing real catering business.</div>
-        </div>
-      </div>
-
-      <div class="slide-eyebrow reveal" style="margin-bottom: var(--sp-3);">
-        <span class="slide-eyebrow-text">Phase 1 measurement upgrades &middot; Ship launch week</span>
-      </div>
-      <div class="conv-upgrades">
-        <div class="conv-upgrade reveal">
-          <div class="conv-upgrade-eyebrow">Upgrade 01</div>
-          <div class="conv-upgrade-question">"How did you hear about Carl's catering?"</div>
-          <div class="conv-upgrade-body">Five options: Instagram, Google, word of mouth, walked in, other. Required field on every catering inquiry. The monthly report gets a "where catering inquiries came from" line.</div>
-        </div>
-        <div class="conv-upgrade reveal">
-          <div class="conv-upgrade-eyebrow">Upgrade 02</div>
-          <div class="conv-upgrade-question">UTM-tracked links across bio and stories.</div>
-          <div class="conv-upgrade-body">Metricool routes the bio link page and story stickers. Bitly with UTM parameters layers on top to capture which surface drove each tap. Link taps stop being a single number.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 19 · OPERATING RHYTHM -->
-    <section class="slide" id="s19" aria-labelledby="s19-title">
-      <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">19</span>
+        <span class="slide-eyebrow-num">17</span>
         <span class="slide-eyebrow-text">Operating Rhythm</span>
       </div>
-      <h2 id="s19-title" class="slide-title reveal">How we work together.</h2>
+      <h2 id="s17-title" class="slide-title reveal">How we work together.</h2>
       <p class="slide-subtitle reveal">Six overlapping cadences. Every touchpoint has a defined output and a defined owner. You are not in this 24/7. The system protects your time.</p>
 
       <div class="rhythm-grid">
@@ -2983,77 +3023,73 @@
       </div>
     </section>
 
-    <!-- SLIDE 20 · WORTH CONSIDERING -->
-    <section class="slide" id="s20" aria-labelledby="s20-title">
+    <!-- SLIDE 18 · ENGAGEMENT TIMELINE + WHAT'S TO COME -->
+    <section class="slide" id="s18" aria-labelledby="s18-title">
       <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">20</span>
-        <span class="slide-eyebrow-text">Worth Considering</span>
+        <span class="slide-eyebrow-num">18</span>
+        <span class="slide-eyebrow-text">What's to come</span>
       </div>
-      <h2 id="s20-title" class="slide-title reveal">Forward-looking ideas. Not in current scope.</h2>
-      <p class="slide-subtitle reveal">Three decisions for Carl's about your business. One tool we have ready to deploy at your call. We talk through any of these at the bi-weekly when you're ready.</p>
+      <h2 id="s18-title" class="slide-title reveal">From here to your first month.</h2>
+      <p class="slide-subtitle reveal">Five milestones carry us from kickoff to your first post live. After that, the bi-weekly rhythm runs the engagement forward.</p>
 
-      <div class="considering-grid">
-        <div class="considering-card reveal">
-          <div class="considering-num">01 &middot; Carl's-side</div>
-          <div class="considering-title">Merch e-commerce on the website</div>
-          <div class="considering-body">Demand already shows up in your DMs. An online store creates a direct path from Instagram to merch revenue. You own the infrastructure and the customer relationship.</div>
+      <div class="engagement-strip reveal">
+        <div class="engagement-step past">
+          <span class="engagement-dot" aria-hidden="true"></span>
+          <div class="engagement-step-body">
+            <div class="engagement-date">Apr 23</div>
+            <div class="engagement-name">Official start date</div>
+          </div>
         </div>
-        <div class="considering-card reveal">
-          <div class="considering-num">02 &middot; Carl's-side</div>
-          <div class="considering-title">Lean into online ordering and DoorDash in social</div>
-          <div class="considering-body">Your website takes online sandwich orders. DoorDash partnership exists. Today neither path gets pushed in content. Friday lunch reminders and weekend menu features capture intent that's leaking.</div>
+        <div class="engagement-step past">
+          <span class="engagement-dot" aria-hidden="true"></span>
+          <div class="engagement-step-body">
+            <div class="engagement-date">Apr 24</div>
+            <div class="engagement-name">Kickoff meeting</div>
+          </div>
         </div>
-        <div class="considering-card reveal">
-          <div class="considering-num">03 &middot; Carl's-side</div>
-          <div class="considering-title">A simple customer email list for retention</div>
-          <div class="considering-body">Your most engaged followers are repeat customers. A low-frequency newsletter (weekly specials, holiday catering, behind-the-counter notes from Sydney) gives Carl's a channel that compounds independently of the algorithm.</div>
+        <div class="engagement-step current">
+          <span class="engagement-dot" aria-hidden="true"></span>
+          <div class="engagement-step-body">
+            <div class="engagement-date">May 13</div>
+            <div class="engagement-name">Strategy presentation</div>
+            <span class="engagement-today-tag">Today</span>
+          </div>
         </div>
-        <div class="considering-card is-active reveal">
-          <div class="considering-num">04 &middot; Active Scroll capability</div>
-          <div class="considering-title">ManyChat DM automation with a catering lead magnet</div>
-          <div class="considering-body">A viewer comments "CATERING" on a catering reel. ManyChat auto-DMs them a lead magnet (catering menu PDF or catering planning guide). The inquiry link rides inside the DM. Captures intent at the peak moment. Scroll has this ready. Available to deploy at your call.</div>
+        <div class="engagement-step">
+          <span class="engagement-dot" aria-hidden="true"></span>
+          <div class="engagement-step-body">
+            <div class="engagement-date">May 15</div>
+            <div class="engagement-name">First content shoot</div>
+          </div>
         </div>
+        <div class="engagement-step">
+          <span class="engagement-dot" aria-hidden="true"></span>
+          <div class="engagement-step-body">
+            <div class="engagement-date">May 25</div>
+            <div class="engagement-name">First post goes live</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="whats-next reveal">
+        <div class="whats-next-eyebrow">What's next</div>
+        <ul class="whats-next-list">
+          <li><strong>Today.</strong> Rachel sent the shot list. Review it and send feedback before Friday.</li>
+          <li><strong>Friday, May 15.</strong> The team runs your first content shoot.</li>
+          <li><strong>Monday, May 25.</strong> Posting cadence begins. Mon, Wed, Fri feed posts plus Tue and Thu story days.</li>
+          <li><strong>From there.</strong> Bi-weekly 30-minute check-ins on the cadence we lock today.</li>
+          <li><strong>First week of July.</strong> Your first monthly performance report lands, covering June posting.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- SLIDE 21 · NEXT STEPS -->
-    <section class="slide" id="s21" aria-labelledby="s21-title">
-      <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">21</span>
-        <span class="slide-eyebrow-text">What happens next</span>
-      </div>
-      <h2 id="s21-title" class="slide-title reveal">From walkthrough to first post.</h2>
-
-      <div class="next-steps">
-        <div class="next-step reveal">
-          <div class="next-step-num">Step 01 &middot; This week</div>
-          <div class="next-step-title">Operational pieces lock</div>
-          <div class="next-step-body">Catering inquiry question goes live on the form, in DMs, on the phone. Bitly plus Metricool routes configured. Shoot scheduling for first Catering Feature Reel.</div>
-        </div>
-        <div class="next-step reveal">
-          <div class="next-step-num">Step 02 &middot; Launch week</div>
-          <div class="next-step-title">First feed posts ship</div>
-          <div class="next-step-body">Mon, Wed, Fri rhythm starts. Tue, Thu story days operational. Approvals through Plann at the five-business-day cadence.</div>
-        </div>
-        <div class="next-step reveal">
-          <div class="next-step-num">Step 03 &middot; First month</div>
-          <div class="next-step-title">First performance report</div>
-          <div class="next-step-body">Delivered first week of the following month. Account score baselined. Format performance signal. Catering inquiry attribution running end-to-end.</div>
-        </div>
-      </div>
-
-      <div class="approval-callout reveal" style="margin-top: var(--sp-6);">
-        This strategy is yours. It evolves monthly. Anything we discuss at the bi-weeklies that's strategic enough gets folded in. Treat it as the ongoing record of how we're building this.
-      </div>
-    </section>
-
-    <!-- SLIDE 22 · CLOSE -->
-    <section class="slide slide-close" id="s22" aria-labelledby="s22-title">
+    <!-- SLIDE 19 · CLOSE -->
+    <section class="slide slide-close" id="s19" aria-labelledby="s19-title">
       <div class="close-mark reveal">
         <span class="cover-mark-line"></span>
         <span>Scroll Media &middot; Cincinnati's Instagram agency</span>
       </div>
-      <h2 id="s22-title" class="close-title reveal">We're building something special.</h2>
+      <h2 id="s19-title" class="close-title reveal">We're building something special.</h2>
       <p class="close-body reveal">Questions, pushback, instincts you want to push back on, content ideas as they surface. All of it belongs in the room. The strategy gets sharper when you bring it.</p>
       <div class="close-sign reveal">
         <div>

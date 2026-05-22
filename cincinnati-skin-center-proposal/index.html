@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FAFDFF" />
+<title>Cincinnati Skin Center × Scroll Media · Signature Proposal · May 2026</title>
+<meta name="description" content="A Signature proposal for Cincinnati Skin Center. A 3-week strategy build plus an ongoing execution engine. Designed to grow Kenwood today and open Mason to a packed audience." />
+
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Cincinnati Skin Center × Scroll Media · Signature Proposal" />
+<meta property="og:description" content="A 3-week strategy build plus an ongoing execution engine. Designed to grow Kenwood today and open Mason to a packed audience." />
+<meta property="og:url" content="https://decks.scrollmedia.co/cincinnati-skin-center-proposal/" />
+<meta property="og:site_name" content="Scroll Media" />
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cincinnati Skin Center × Scroll Media · Signature Proposal" />
+<meta name="twitter:description" content="A 3-week strategy build plus an ongoing execution engine. Designed for the highest-leverage six months your social will ever have." />
+
+<link rel="canonical" href="https://decks.scrollmedia.co/cincinnati-skin-center-proposal/" />
+<link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/assets/scroll-favicon.svg" />
+
+<!-- Source Sans 3 (working face per brand_system.md §5.2) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* =========================================================
+     TOKENS — Web Design v2 (extends brand_system.md §5)
+     Light theme. Ghost default. Lucid for emphasis.
+     Hard corners. No shadows by default.
+     ========================================================= */
+  :root {
+    --ghost: #FAFDFF;
+    --azure: #0C3387;
+    --lucid: #CBE9FF;
+    --highlighter: #E2ED7A;
+    --shadow: #151516;
+
+    --azure-900: #071d4f;
+    --azure-800: #0c3387;
+    --azure-700: #1a44a0;
+    --azure-600: #254fb0;
+    --azure-500: #4070cc;
+    --azure-400: #7a9ad8;
+    --azure-300: #9cb5e3;
+    --azure-200: #b9cdee;
+    --azure-100: #d4e0f5;
+
+    --lucid-deep: #9ecee8;
+    --lucid-soft: #e4f3ff;
+
+    --bg: var(--ghost);
+    --bg-alt: #f5f8fb;
+    --bg-panel: var(--lucid-soft);
+    --fg: var(--shadow);
+    --fg-heading: var(--azure);
+    --fg-muted: #5a6070;
+    --fg-subtle: #9097a6;
+    --fg-on-azure: var(--ghost);
+    --accent: var(--lucid);
+    --signal: var(--highlighter);
+
+    --rule: rgba(12, 51, 135, 0.20);
+    --rule-strong: rgba(12, 51, 135, 0.40);
+    --rule-faint: rgba(12, 51, 135, 0.08);
+
+    --fs-xs: 11px;
+    --fs-sm: 13px;
+    --fs-base: 16px;
+    --fs-md: 18px;
+    --fs-lg: 22px;
+    --fs-xl: 26px;
+    --fs-2xl: 34px;
+    --fs-3xl: 46px;
+    --fs-4xl: 64px;
+
+    --tracking-tight: -0.01em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.08em;
+    --tracking-wider: 0.14em;
+
+    --lh-tight: 1.08;
+    --lh-snug: 1.22;
+    --lh-normal: 1.5;
+    --lh-relaxed: 1.65;
+
+    --sp-1: 4px;
+    --sp-2: 8px;
+    --sp-3: 12px;
+    --sp-4: 16px;
+    --sp-5: 24px;
+    --sp-6: 32px;
+    --sp-7: 40px;
+    --sp-8: 56px;
+    --sp-9: 80px;
+    --sp-10: 120px;
+
+    --maxw: 1080px;
+    --maxw-prose: 720px;
+    --nav-h: 56px;
+
+    --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  /* =========================================================
+     BASE
+     ========================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    font-size: var(--fs-base);
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: var(--fs-base);
+    line-height: var(--lh-relaxed);
+    font-feature-settings: 'tnum' 1, 'cv11' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  :focus-visible {
+    outline: 2px solid var(--azure);
+    outline-offset: 2px;
+  }
+  section { scroll-margin-top: 80px; }
+  h1, h2, h3 { scroll-margin-top: 80px; }
+  a {
+    color: var(--azure);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 120ms ease, color 120ms ease;
+  }
+  a:hover { border-bottom-color: var(--azure); }
+  a.plain { border-bottom: 0; }
+  a.plain:hover { color: var(--azure-600); }
+  ::selection { background: var(--highlighter); color: var(--shadow); }
+
+  /* =========================================================
+     LAYOUT
+     ========================================================= */
+  .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--sp-5);
+  }
+  .prose {
+    max-width: var(--maxw-prose);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================================================
+     METADATA STRIP
+     ========================================================= */
+  .meta-strip {
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    color: var(--fg-muted);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+  }
+  .meta-strip-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 8px var(--sp-5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+  }
+  .meta-strip strong { color: var(--azure); font-weight: 600; }
+
+  /* =========================================================
+     TOPBAR — v2 full variant
+     brand-left / nav-center / meta-right + persistent CTA
+     ========================================================= */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 253, 255, 0.94);
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 10px var(--sp-5);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--sp-5);
+  }
+  .topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .topbar .brand-logo {
+    height: 26px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+  .topbar .brand-fallback {
+    font-weight: 700;
+    color: var(--azure);
+    font-size: var(--fs-md);
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    display: none;
+    line-height: 1;
+  }
+  .topbar .brand .tag {
+    color: var(--fg-muted);
+    font-weight: 500;
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    padding-left: 12px;
+    border-left: 1px solid var(--rule);
+  }
+  .topbar .nav-links {
+    display: flex;
+    gap: var(--sp-5);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .topbar .nav-links a {
+    flex: 0 0 auto;
+    color: var(--fg-muted);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-bottom: 0;
+    padding: 6px 0;
+    position: relative;
+    background: transparent;
+    white-space: nowrap;
+    transition: color 150ms var(--ease);
+  }
+  .topbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--azure);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 200ms var(--ease);
+  }
+  .topbar .nav-links a:hover { color: var(--azure); }
+  .topbar .nav-links a:hover::after { transform: scaleX(1); }
+  .topbar .nav-links a.active { color: var(--azure); }
+  .topbar .nav-links a.active::after { transform: scaleX(1); }
+
+  .topbar-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    flex-shrink: 0;
+  }
+  .topbar-meta .date-stamp {
+    font-size: var(--fs-xs);
+    color: var(--fg-muted);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .topbar-meta .date-stamp strong { color: var(--azure); font-weight: 700; }
+
+  .topbar-cta {
+    background: var(--azure);
+    color: var(--ghost);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 8px 14px;
+    border: 1px solid var(--azure);
+    border-bottom: 0;
+    white-space: nowrap;
+    transition: background 150ms var(--ease), border-color 150ms var(--ease);
+  }
+  .topbar-cta:hover {
+    background: var(--azure-900);
+    border-color: var(--azure-900);
+    color: var(--ghost);
+  }
+
+  @media (max-width: 1100px) {
+    .topbar .nav-links { gap: 18px; }
+    .topbar .nav-links a { font-size: 11px; }
+    .topbar-meta .date-stamp { display: none; }
+  }
+  @media (max-width: 920px) {
+    .topbar-inner { grid-template-columns: 1fr auto; gap: var(--sp-4); }
+    .topbar .nav-links { display: none; }
+  }
+  @media (max-width: 767px) {
+    .topbar-inner { padding: 8px var(--sp-4); }
+    .topbar .brand { gap: 8px; }
+    .topbar .brand-logo { height: 22px; }
+    .topbar .brand-fallback { font-size: 13px; }
+    .topbar .brand .tag { display: none; }
+    .topbar-cta { padding: 6px 10px; font-size: 10px; }
+  }
+
+  /* =========================================================
+     HERO
+     ========================================================= */
+  .hero {
+    padding: var(--sp-9) 0 var(--sp-8);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .container { max-width: var(--maxw-prose); }
+  .hero .label {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: var(--sp-3);
+    font-weight: 600;
+  }
+  h1.title {
+    font-family: var(--sans);
+    font-size: clamp(36px, 5.6vw, 60px);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--tracking-tight);
+    margin: 0 0 var(--sp-4);
+    font-weight: 700;
+    color: var(--azure);
+  }
+  .hero .subtitle {
+    font-size: var(--fs-md);
+    color: var(--fg-muted);
+    margin: 0 0 var(--sp-5);
+    font-weight: 500;
+    line-height: var(--lh-relaxed);
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-5);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--rule);
+    margin-top: var(--sp-6);
+    font-size: var(--fs-sm);
+    color: var(--fg-muted);
+  }
+  .hero-meta span strong {
+    color: var(--shadow);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  /* =========================================================
+     SECTIONS
+     ========================================================= */
+  section.block {
+    padding: var(--sp-9) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section.block:last-of-type { border-bottom: 0; }
+  section.block .container { max-width: var(--maxw-prose); }
+
+  .section-num {
+    color: var(--fg-muted);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: var(--sp-2);
+    display: block;
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: var(--lh-snug);
+    margin: 0 0 var(--sp-5);
+    color: var(--azure);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+  }
+  h3 {
+    font-family: var(--sans);
+    font-size: var(--fs-xl);
+    margin: var(--sp-7) 0 var(--sp-3);
+    color: var(--shadow);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--lh-snug);
+  }
+  h4 {
+    font-size: var(--fs-md);
+    margin: var(--sp-5) 0 var(--sp-2);
+    color: var(--shadow);
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 var(--sp-4);
+    line-height: var(--lh-relaxed);
+  }
+  ul, ol {
+    margin: 0 0 var(--sp-5);
+    padding-left: 24px;
+  }
+  li {
+    margin: var(--sp-2) 0;
+    line-height: var(--lh-relaxed);
+  }
+  li::marker { color: var(--fg-subtle); }
+
+  strong { color: var(--shadow); font-weight: 700; }
+  em { font-style: italic; color: var(--shadow); }
+
+  /* =========================================================
+     STANDOUT — Section 02 (Why now) treatment
+     Full-width Lucid soft band. Carries the convincer thesis.
+     ========================================================= */
+  section.standout {
+    background: var(--lucid-soft);
+    border-bottom: 1px solid var(--rule);
+    padding: var(--sp-9) 0;
+  }
+  section.standout .container { max-width: var(--maxw-prose); }
+  section.standout .if-pair {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+    margin: var(--sp-6) 0;
+  }
+  section.standout .if-block {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--azure);
+    padding: var(--sp-5) var(--sp-6);
+  }
+  section.standout .if-block .if-kicker {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--azure);
+    font-weight: 700;
+    margin-bottom: var(--sp-2);
+  }
+  section.standout .if-block p:last-child { margin-bottom: 0; }
+  section.standout .closer {
+    font-size: var(--fs-md);
+    color: var(--shadow);
+    font-weight: 600;
+    margin-top: var(--sp-5);
+  }
+
+  /* =========================================================
+     CALLOUT — for scope notes and approval-cadence sub-blocks
+     ========================================================= */
+  .callout {
+    background: var(--lucid-soft);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--azure);
+    padding: var(--sp-4) var(--sp-5);
+    margin: var(--sp-5) 0;
+    font-size: var(--fs-base);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .callout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 var(--azure-100);
+  }
+  .callout .kicker {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--azure);
+    font-weight: 700;
+    margin-bottom: var(--sp-2);
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* =========================================================
+     PRICING LINE — Phase 1 + Phase 2 headers
+     ========================================================= */
+  .pricing-line {
+    background: var(--bg-alt);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--azure);
+    padding: var(--sp-4) var(--sp-5);
+    margin: 0 0 var(--sp-6);
+    font-size: var(--fs-md);
+    color: var(--shadow);
+    font-weight: 600;
+  }
+  .pricing-line strong { color: var(--azure); font-weight: 700; }
+
+  /* =========================================================
+     MASON OPTION CARDS — Section 04 sub-component
+     Side-by-side. Visual parity. Stack below 768.
+     ========================================================= */
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-5);
+    margin: var(--sp-6) 0 var(--sp-3);
+  }
+  .option-card {
+    background: var(--bg);
+    border: 1px solid var(--rule-strong);
+    padding: var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .option-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 var(--azure-100);
+  }
+  .option-card .option-eyebrow {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--azure);
+    font-weight: 700;
+  }
+  .option-card h4 {
+    font-size: var(--fs-lg);
+    color: var(--azure);
+    margin: 0;
+    line-height: var(--lh-snug);
+    font-weight: 700;
+  }
+  .option-card p {
+    margin: 0;
+    font-size: var(--fs-base);
+    color: var(--fg);
+    line-height: var(--lh-relaxed);
+  }
+  @media (max-width: 768px) {
+    .options-grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+    .option-card { padding: var(--sp-5); }
+  }
+
+  /* =========================================================
+     TABLES — Timeline + Investment
+     ========================================================= */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: var(--sp-5) 0;
+    border: 1px solid var(--rule);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-base);
+    background: var(--bg);
+  }
+  thead {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--rule);
+  }
+  th {
+    text-align: left;
+    padding: var(--sp-4) var(--sp-5);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    font-weight: 700;
+  }
+  td {
+    padding: var(--sp-4) var(--sp-5);
+    border-top: 1px solid var(--rule-faint);
+    line-height: var(--lh-snug);
+    vertical-align: top;
+  }
+  tbody tr:first-child td { border-top: 0; }
+  td.cost { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--shadow); }
+  td.when { color: var(--fg-muted); }
+  tr.total td {
+    background: var(--lucid-soft);
+    border-top: 1px solid var(--rule);
+    font-weight: 700;
+    color: var(--shadow);
+  }
+  tr.total td strong { color: var(--azure); }
+
+  /* =========================================================
+     COMPRESSED BULLETS — Section 08 (How we work)
+     Interpunct separator pattern per CLAUDE.md §5
+     ========================================================= */
+  ul.compressed {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-5) 0;
+    border-top: 1px solid var(--rule);
+  }
+  ul.compressed li {
+    margin: 0;
+    padding: var(--sp-4) 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: var(--lh-snug);
+  }
+  ul.compressed li strong {
+    color: var(--azure);
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  /* =========================================================
+     NEXT-STEPS GATE — Section 10
+     Three CTA paths. Path 1 (Walkthrough) emphasized.
+     ========================================================= */
+  .gate {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    margin: var(--sp-6) 0 var(--sp-5);
+  }
+  .path {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: var(--sp-5) var(--sp-6);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--sp-5);
+    align-items: center;
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease), border-color 200ms var(--ease);
+  }
+  .path:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 var(--azure-100);
+    border-color: var(--rule-strong);
+  }
+  .path-num {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    min-width: 30px;
+  }
+  .path-body h4 {
+    margin: 0 0 4px;
+    font-size: var(--fs-md);
+    color: var(--shadow);
+    font-weight: 700;
+  }
+  .path-body p {
+    margin: 0;
+    font-size: var(--fs-sm);
+    color: var(--fg-muted);
+    line-height: var(--lh-normal);
+  }
+  .path-cta {
+    display: inline-block;
+    background: var(--bg);
+    color: var(--azure);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    padding: 12px 20px;
+    border: 1px solid var(--azure);
+    border-bottom: 0;
+    white-space: nowrap;
+    transition: background 150ms var(--ease), color 150ms var(--ease);
+  }
+  .path-cta:hover {
+    background: var(--azure);
+    color: var(--ghost);
+  }
+  .path.is-recommended {
+    background: var(--lucid-soft);
+    border-color: var(--azure);
+    border-left: 3px solid var(--azure);
+  }
+  .path.is-recommended .path-num {
+    color: var(--azure);
+  }
+  .path.is-recommended .path-cta {
+    background: var(--azure);
+    color: var(--ghost);
+    border-color: var(--azure);
+    position: relative;
+  }
+  .path.is-recommended .path-cta:hover {
+    background: var(--azure-900);
+    border-color: var(--azure-900);
+  }
+  .path.is-recommended .recommended-flag {
+    display: inline-block;
+    background: var(--highlighter);
+    color: var(--shadow);
+    font-size: 10px;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+  }
+  @media (max-width: 640px) {
+    .path {
+      grid-template-columns: 1fr;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+    }
+    .path-cta {
+      width: 100%;
+      text-align: center;
+      padding: 14px 20px;
+    }
+  }
+
+  .gate-close {
+    font-size: var(--fs-md);
+    color: var(--shadow);
+    font-weight: 600;
+    margin-top: var(--sp-5);
+  }
+
+  /* =========================================================
+     SCROLL-REVEAL (v2 §2)
+     ========================================================= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+    will-change: opacity, transform;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--rule);
+    padding: var(--sp-8) 0 var(--sp-9);
+    color: var(--fg-muted);
+  }
+  footer .container { max-width: var(--maxw-prose); }
+  footer h3 {
+    margin: 0 0 var(--sp-3);
+    color: var(--azure);
+    font-size: var(--fs-lg);
+  }
+  footer p {
+    color: var(--fg);
+    font-size: var(--fs-base);
+    margin-bottom: var(--sp-3);
+  }
+  footer .footer-meta {
+    margin-top: var(--sp-7);
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+  }
+  footer .footer-meta a {
+    color: var(--fg-muted);
+    border-bottom: 0;
+  }
+  footer .footer-meta a:hover { color: var(--azure); }
+
+  /* =========================================================
+     MOBILE FLOOR — body text ≥14px per Locked Principle 3.12
+     ========================================================= */
+  @media (max-width: 414px) {
+    :root { --fs-base: 16px; }
+    .section-num,
+    .meta-strip-inner,
+    .topbar-meta .date-stamp,
+    .topbar .nav-links a,
+    .topbar-cta,
+    .hero .label,
+    .topbar .brand .tag {
+      font-size: 11px;
+    }
+    .hero-meta { font-size: 14px; }
+    td, th { padding: 14px 16px; font-size: 14px; }
+    .path-body p { font-size: 14px; }
+    .path-cta { font-size: 14px; }
+    ul.compressed li { font-size: 14px; }
+    .footer-meta { font-size: 11px; }
+  }
+
+  /* =========================================================
+     PRINT — protect content; flatten the reveal
+     ========================================================= */
+  @media print {
+    .topbar, .meta-strip, .topbar-cta { display: none; }
+    body { background: white; color: black; }
+    .callout, .standout, .path.is-recommended { background: white; border-color: #ccc; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .path { page-break-inside: avoid; }
+    .option-card { page-break-inside: avoid; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================
+     METADATA STRIP
+     ==================================================================== -->
+<div class="meta-strip">
+  <div class="meta-strip-inner">
+    <span><strong>Prepared for</strong> Mona Mislankar, MD, FAAD</span>
+    <span class="nowrap">May 2026</span>
+  </div>
+</div>
+
+<!-- ====================================================================
+     TOPBAR · sticky glass-blurred, v2 full variant
+     ==================================================================== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="https://decks.scrollmedia.co/pitch/" class="brand" aria-label="Scroll Media · Signature proposal">
+      <img src="https://tools.scrollmedia.co/assets/scroll-media-logo.svg" alt="Scroll Media" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+      <span class="brand-fallback">Scroll Media</span>
+      <span class="tag">Signature proposal</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Section navigation">
+      <a href="#now">Where you are</a>
+      <a href="#why">Why now</a>
+      <a href="#build">What we build</a>
+      <a href="#phase1">Phase 1</a>
+      <a href="#phase2">Phase 2</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#investment">Investment</a>
+      <a href="#next">Next steps</a>
+    </nav>
+    <div class="topbar-meta">
+      <span class="date-stamp">Prepared <strong>May 2026</strong></span>
+      <a href="https://calendly.com/scrollmedia/discovery" class="topbar-cta" target="_blank" rel="noopener">Book a walkthrough</a>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================================
+     HERO
+     ==================================================================== -->
+<section class="hero" id="top">
+  <div class="container">
+    <span class="label">Scroll Media · Signature proposal</span>
+    <h1 class="title">The next six months is the highest-leverage window your social will ever have.</h1>
+    <p class="subtitle">A 3-week strategy build plus an ongoing execution engine. Designed to grow Kenwood today and open Mason to a packed audience.</p>
+
+    <div class="hero-meta">
+      <span><strong>Prepared for</strong> Mona Mislankar, MD, FAAD</span>
+      <span><strong>Prepared by</strong> Chase Gianattasio</span>
+      <span><strong>Date</strong> May 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     01 · WHERE YOU ARE RIGHT NOW
+     ==================================================================== -->
+<section class="block reveal" id="now">
+  <div class="container">
+    <span class="section-num">Section 01</span>
+    <h2>Where you are right now.</h2>
+
+    <p>You're Cincinnati's Top Doc four years running. Vogue. People. Marie Claire. Board-certified MD, FAAD. Marie Claire Beauty Awards 2026 judge.</p>
+
+    <p>Your Instagram audience is 1,184 people.</p>
+
+    <p>That gap is not a content problem. It's a positioning gap. The credential ceiling you've earned is roughly ten times the size of the audience that currently knows about it. The opportunity is not to invent a new format. It's to organize and scale what you've already shown you can do (the at-home chemical peel reel, the microneedling POV, the Marie Claire announcement) and surround it with the authority content the credential actually unlocks.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     02 · WHY NOW · standout treatment
+     ==================================================================== -->
+<section class="standout reveal" id="why">
+  <div class="container">
+    <span class="section-num">Section 02</span>
+    <h2>Why now.</h2>
+
+    <p>The most common reservation founders have when a major build is coming: should I wait until the new space is ready before investing in social?</p>
+
+    <p>It's a reasonable question. It's also the most expensive answer to get wrong.</p>
+
+    <div class="if-pair">
+      <div class="if-block">
+        <span class="if-kicker">If you wait</span>
+        <p>Mason opens to the audience you have today. You spend the first six months after opening trying to do social media catch-up while running a brand new location. The single most valuable content arc available to you (a real building going up in real time) is gone.</p>
+      </div>
+      <div class="if-block">
+        <span class="if-kicker">If you start now</span>
+        <p>Two things compound. Kenwood keeps converting. And every week of construction is a week of anticipation content. Groundbreaking. Framing. Finishes. Walk-throughs. Reveal. Build-in-public is one of the highest-performing organic formats on Instagram. By the time Mason opens, you're opening to an audience that's been watching you build and decided weeks ago they're booking.</p>
+      </div>
+    </div>
+
+    <p class="closer">Same dollars, very different outcome. That's the thesis. The rest of this document is how we execute against it.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     03 · WHAT WE WOULD BUILD
+     ==================================================================== -->
+<section class="block reveal" id="build">
+  <div class="container">
+    <span class="section-num">Section 03</span>
+    <h2>What we would build.</h2>
+
+    <p>Two phases. One continuous narrative.</p>
+
+    <p><strong>Phase 1 · Signature Strategy Build (3 weeks)</strong> locks the strategic foundation. Includes a working kickoff session where your goals, patient priorities, and Mason direction get unpacked and locked in.</p>
+
+    <p><strong>Phase 2 · Growth Retainer (ongoing)</strong> is the execution engine. Weekly production, performance tracking, continuous refinement.</p>
+
+    <div class="callout">
+      <span class="kicker">Scope note</span>
+      <p>This engagement focuses on @cincinnatiskincenter (the practice account). We recognize @drmislankar runs as its own creator brand (Digital Dept lane) and Oathology is its own entity. We stay in our lane. If scope expands, we discuss it openly and price it transparently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     04 · PHASE 1 · SIGNATURE STRATEGY BUILD
+     ==================================================================== -->
+<section class="block reveal" id="phase1">
+  <div class="container">
+    <span class="section-num">Section 04</span>
+    <h2>Phase 1 · Signature Strategy Build.</h2>
+
+    <div class="pricing-line">
+      <strong>3 weeks · $1,917 flat</strong> · Invoiced at the Strategy Presentation, end of Week 3
+    </div>
+
+    <p>What you get:</p>
+
+    <ul>
+      <li><strong>Kickoff ideation session.</strong> A working meeting where we go three layers deep on what matters personally, in the business, and for the brand. Your goals and patient priorities get locked here.</li>
+      <li><strong>Three Ideal Viewer Profiles.</strong> One per service line (medical, cosmetic, surgical). Psychological depth, decision triggers, content format mapping.</li>
+      <li><strong>Five content pillars + format mix.</strong> Authority. Education. Outcomes. Build-in-public. Cincinnati collaborations.</li>
+      <li><strong>Positioning + voice locks.</strong> The credentialed-MD positioning that separates you from nurse-led med spas.</li>
+      <li><strong>Mason narrative selection.</strong> Two pre-built options. You pick the direction; we build the 6-month arc against it.</li>
+      <li><strong>Mason build-in-public roadmap.</strong> The dedicated content arc mapping anticipation content to your actual construction milestones. Groundbreaking through grand open.</li>
+      <li><strong>KPI + performance tracking framework.</strong> Calibrated against your real baseline at the kickoff.</li>
+      <li><strong>Strategy Presentation Deck.</strong> Customer-facing deck delivered at the end of Week 3. Yours to reference forever.</li>
+    </ul>
+
+    <h3>The two Mason narratives</h3>
+    <p>One narrative anchors every piece of Mason content for the next six months. You pick. We build.</p>
+
+    <div class="options-grid">
+      <div class="option-card">
+        <span class="option-eyebrow">Option A</span>
+        <h4>Same Mona. Same care. Bigger home.</h4>
+        <p>Continuity-led. The audience that loves Kenwood follows you to Mason because the care doesn't change. The space gets bigger; the relationship deepens. Reassuring for existing patients, inviting for new ones who've heard of you.</p>
+      </div>
+      <div class="option-card">
+        <span class="option-eyebrow">Option B</span>
+        <h4>New chapter, elevated experience.</h4>
+        <p>Reveal-led. Mason is a moment. A bigger studio, an expanded service set, a step change in what's possible inside Cincinnati Skin Center. The build-in-public arc carries weight because something genuinely new is being unveiled at the end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     05 · PHASE 2 · GROWTH RETAINER
+     ==================================================================== -->
+<section class="block reveal" id="phase2">
+  <div class="container">
+    <span class="section-num">Section 05</span>
+    <h2>Phase 2 · Growth Retainer.</h2>
+
+    <div class="pricing-line">
+      <strong>$3,250/mo</strong> · 3-month minimum, then month-to-month
+    </div>
+
+    <h3>Monthly output (Growth tier)</h3>
+    <ul>
+      <li>3 feed posts per week</li>
+      <li>2 optimized story days per week</li>
+      <li>3 reshares per week</li>
+    </ul>
+
+    <h3>Ongoing work</h3>
+    <ul>
+      <li>Biweekly 30-min strategy check-ins</li>
+      <li>Monthly performance report at reports.scrollmedia.co</li>
+      <li>Continuous strategy refinement against signal data</li>
+      <li>Mason milestone content production triggered against your construction timeline</li>
+      <li>1-2 Cincinnati collaboration opportunities sourced per quarter</li>
+    </ul>
+
+    <div class="callout">
+      <span class="kicker">Approvals</span>
+      <p>Content drafted 5 business days before publish. Max 2 rounds of edits per cycle. Batched at biweekly check-ins. Tracked in Plann.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     06 · TIMELINE
+     ==================================================================== -->
+<section class="block reveal" id="timeline">
+  <div class="container">
+    <span class="section-num">Section 06</span>
+    <h2>Timeline.</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Proposal review</td><td class="when">Late May 2026</td></tr>
+          <tr><td>Phase 1 kickoff</td><td class="when">Early June 2026</td></tr>
+          <tr><td>Strategy presentation</td><td class="when">Late June 2026</td></tr>
+          <tr><td>Phase 2 begins</td><td class="when">Late June 2026</td></tr>
+          <tr><td>First content live</td><td class="when">Early July 2026</td></tr>
+          <tr><td>Mason anticipation runway</td><td class="when">July - December 2026</td></tr>
+          <tr><td>Mason open (estimated)</td><td class="when">Late 2026 / Early 2027</td></tr>
+          <tr><td>Pre-launch waitlist push</td><td class="when">4-6 weeks before open</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Timeline anchors to your actual construction milestones. If Mason slips, we slip with it.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     07 · INVESTMENT
+     ==================================================================== -->
+<section class="block reveal" id="investment">
+  <div class="container">
+    <span class="section-num">Section 07</span>
+    <h2>Investment.</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Cost</th>
+            <th>When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Phase 1 · Strategy Build (3 weeks)</td>
+            <td class="cost">$1,917 flat</td>
+            <td class="when">At Strategy Presentation</td>
+          </tr>
+          <tr>
+            <td>Phase 2 · Growth Retainer (per month)</td>
+            <td class="cost">$3,250/mo</td>
+            <td class="when">Monthly, starting at retainer activation</td>
+          </tr>
+          <tr class="total">
+            <td><strong>Initial 3-month commitment</strong></td>
+            <td class="cost"><strong>$11,667 total</strong></td>
+            <td class="when">Phase 1 + 3 months Phase 2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>After the 3-month minimum, retainer moves to month-to-month. No re-up paperwork.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     08 · HOW WE WORK
+     ==================================================================== -->
+<section class="block reveal" id="how">
+  <div class="container">
+    <span class="section-num">Section 08</span>
+    <h2>How we work.</h2>
+
+    <ul class="compressed">
+      <li><strong>Communication</strong> · Slack for day-to-day. Email for formal approvals. Biweekly 30-min video for strategy.</li>
+      <li><strong>Approvals</strong> · Drafted in Plann 5 business days before publish. Max 2 rounds of edits per cycle.</li>
+      <li><strong>Performance reporting</strong> · Live HTML report at reports.scrollmedia.co, end of every month.</li>
+      <li><strong>Strategic check-ins</strong> · Deeper review every six months. The strategy is a living document.</li>
+      <li><strong>Two-way honesty</strong> · If something isn't landing, you tell us. If we see something working, we tell you.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================================================================
+     09 · WHY SCROLL
+     ==================================================================== -->
+<section class="block reveal" id="why-scroll">
+  <div class="container">
+    <span class="section-num">Section 09</span>
+    <h2>Why Scroll.</h2>
+
+    <p>We're Cincinnati's Instagram agency for local brands. One platform, deeply. No paid ads, no TikTok, no websites. Organic Instagram strategy for a small portfolio of Cincinnati businesses.</p>
+
+    <p>Allison runs strategy and delivery. Chase runs operations and growth. Between us we've built the Signal Method, Scroll's framework for converting organic content into qualified lead signal.</p>
+
+    <p>You get the team that built the system, not a junior account manager and a template.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     10 · NEXT STEPS · gate
+     ==================================================================== -->
+<section class="block reveal" id="next">
+  <div class="container">
+    <span class="section-num">Section 10</span>
+    <h2>Next steps.</h2>
+
+    <p>Three ways to move forward.</p>
+
+    <div class="gate">
+      <div class="path is-recommended">
+        <span class="path-num">01</span>
+        <div class="path-body">
+          <span class="recommended-flag">Recommended</span>
+          <h4>Walkthrough.</h4>
+          <p>30 min on Zoom, live walk-through of this proposal together.</p>
+        </div>
+        <a href="https://calendly.com/scrollmedia/discovery" class="path-cta" target="_blank" rel="noopener">Book a walkthrough</a>
+      </div>
+
+      <div class="path">
+        <span class="path-num">02</span>
+        <div class="path-body">
+          <h4>Async.</h4>
+          <p>Reply to the email with questions. Same-day response.</p>
+        </div>
+        <a href="mailto:chase@getscrollmedia.com?subject=Cincinnati%20Skin%20Center%20%C2%B7%20Proposal%20questions" class="path-cta">Reply by email</a>
+      </div>
+
+      <div class="path">
+        <span class="path-num">03</span>
+        <div class="path-body">
+          <h4>Sign and start.</h4>
+          <p>Reply yes. We'll send the Services Agreement and Phase 1 invoice.</p>
+        </div>
+        <a href="mailto:chase@getscrollmedia.com?subject=Cincinnati%20Skin%20Center%20%C2%B7%20Yes%2C%20let%27s%20start" class="path-cta">Send the paperwork</a>
+      </div>
+    </div>
+
+    <p class="gate-close">Target start is early June. The earlier Phase 1 locks, the more Mason runway we keep.</p>
+
+    <p>Looking forward to building this with you.</p>
+  </div>
+</section>
+
+<!-- ====================================================================
+     FOOTER
+     ==================================================================== -->
+<footer id="about">
+  <div class="container">
+    <h3>About Scroll Media</h3>
+    <p>Scroll Media is Cincinnati's Instagram agency for local brands. Boutique. Strategy-first. Organic only. We work with a small roster of founder-led brands across the Tri-State on long-term Instagram strategy and execution.</p>
+    <p>Prepared by Chase Gianattasio, Co-Founder. Reach me at <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a>.</p>
+
+    <div class="footer-meta">
+      <span>Cincinnati Skin Center · Signature Proposal · May 2026</span>
+      <span>Cincinnati's Instagram agency for local brands.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================================================================
+     SCRIPT — scroll-spy + scroll-reveal
+     ==================================================================== -->
+<script>
+  // Scroll-spy: highlight the topbar nav link for the section in view.
+  (function () {
+    var sections = Array.prototype.slice.call(
+      document.querySelectorAll('section[id]')
+    );
+    var navLinks = Array.prototype.slice.call(
+      document.querySelectorAll('#navLinks a')
+    );
+    function setActive() {
+      var top = window.scrollY + 100;
+      var current = null;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop <= top) current = sections[i].id;
+      }
+      navLinks.forEach(function (link) {
+        var href = link.getAttribute('href').replace('#', '');
+        if (href === current) link.classList.add('active');
+        else link.classList.remove('active');
+      });
+    }
+    window.addEventListener('scroll', setActive, { passive: true });
+    window.addEventListener('load', setActive);
+  })();
+
+  // Scroll-reveal: one-shot fade-in via IntersectionObserver.
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(els, function (el) { el.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>

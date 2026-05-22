@@ -1,1260 +1,1626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#FAFDFF" />
-<title>Cincinnati Skin Center × Scroll Media · Signature Proposal · May 2026</title>
-<meta name="description" content="A Signature proposal for Cincinnati Skin Center. A 3-week strategy build plus an ongoing execution engine. Designed to grow Kenwood today and open Mason to a packed audience." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cincinnati Skin Center × Scroll Media — Signature Package Proposal</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
 
-<!-- Open Graph / social sharing -->
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Cincinnati Skin Center × Scroll Media · Signature Proposal" />
-<meta property="og:description" content="A 3-week strategy build plus an ongoing execution engine. Designed to grow Kenwood today and open Mason to a packed audience." />
-<meta property="og:url" content="https://decks.scrollmedia.co/cincinnati-skin-center-proposal/" />
-<meta property="og:site_name" content="Scroll Media" />
-
-<!-- Twitter card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Cincinnati Skin Center × Scroll Media · Signature Proposal" />
-<meta name="twitter:description" content="A 3-week strategy build plus an ongoing execution engine. Designed for the highest-leverage six months your social will ever have." />
-
-<link rel="canonical" href="https://decks.scrollmedia.co/cincinnati-skin-center-proposal/" />
-<link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/assets/scroll-favicon.svg" />
-
-<!-- Source Sans 3 (working face per brand_system.md §5.2) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-<style>
-  /* =========================================================
-     TOKENS — Web Design v2 (extends brand_system.md §5)
-     Light theme. Ghost default. Lucid for emphasis.
-     Hard corners. No shadows by default.
-     ========================================================= */
-  :root {
-    --ghost: #FAFDFF;
-    --azure: #0C3387;
-    --lucid: #CBE9FF;
-    --highlighter: #E2ED7A;
-    --shadow: #151516;
-
-    --azure-900: #071d4f;
-    --azure-800: #0c3387;
-    --azure-700: #1a44a0;
-    --azure-600: #254fb0;
-    --azure-500: #4070cc;
-    --azure-400: #7a9ad8;
-    --azure-300: #9cb5e3;
-    --azure-200: #b9cdee;
-    --azure-100: #d4e0f5;
-
-    --lucid-deep: #9ecee8;
-    --lucid-soft: #e4f3ff;
-
-    --bg: var(--ghost);
-    --bg-alt: #f5f8fb;
-    --bg-panel: var(--lucid-soft);
-    --fg: var(--shadow);
-    --fg-heading: var(--azure);
-    --fg-muted: #5a6070;
-    --fg-subtle: #9097a6;
-    --fg-on-azure: var(--ghost);
-    --accent: var(--lucid);
-    --signal: var(--highlighter);
-
-    --rule: rgba(12, 51, 135, 0.20);
-    --rule-strong: rgba(12, 51, 135, 0.40);
-    --rule-faint: rgba(12, 51, 135, 0.08);
-
-    --fs-xs: 11px;
-    --fs-sm: 13px;
-    --fs-base: 16px;
-    --fs-md: 18px;
-    --fs-lg: 22px;
-    --fs-xl: 26px;
-    --fs-2xl: 34px;
-    --fs-3xl: 46px;
-    --fs-4xl: 64px;
-
-    --tracking-tight: -0.01em;
-    --tracking-normal: 0;
-    --tracking-wide: 0.08em;
-    --tracking-wider: 0.14em;
-
-    --lh-tight: 1.08;
-    --lh-snug: 1.22;
-    --lh-normal: 1.5;
-    --lh-relaxed: 1.65;
-
-    --sp-1: 4px;
-    --sp-2: 8px;
-    --sp-3: 12px;
-    --sp-4: 16px;
-    --sp-5: 24px;
-    --sp-6: 32px;
-    --sp-7: 40px;
-    --sp-8: 56px;
-    --sp-9: 80px;
-    --sp-10: 120px;
-
-    --maxw: 1080px;
-    --maxw-prose: 720px;
-    --nav-h: 56px;
-
-    --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  }
-
-  /* =========================================================
-     BASE
-     ========================================================= */
-  *, *::before, *::after { box-sizing: border-box; }
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-    font-size: var(--fs-base);
-  }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--sans);
-    font-size: var(--fs-base);
-    line-height: var(--lh-relaxed);
-    font-feature-settings: 'tnum' 1, 'cv11' 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  :focus-visible {
-    outline: 2px solid var(--azure);
-    outline-offset: 2px;
-  }
-  section { scroll-margin-top: 80px; }
-  h1, h2, h3 { scroll-margin-top: 80px; }
-  a {
-    color: var(--azure);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule);
-    transition: border-color 120ms ease, color 120ms ease;
-  }
-  a:hover { border-bottom-color: var(--azure); }
-  a.plain { border-bottom: 0; }
-  a.plain:hover { color: var(--azure-600); }
-  ::selection { background: var(--highlighter); color: var(--shadow); }
-
-  /* =========================================================
-     LAYOUT
-     ========================================================= */
-  .container {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 var(--sp-5);
-  }
-  .prose {
-    max-width: var(--maxw-prose);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* =========================================================
-     METADATA STRIP
-     ========================================================= */
-  .meta-strip {
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
-    color: var(--fg-muted);
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-  }
-  .meta-strip-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 8px var(--sp-5);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--sp-4);
-  }
-  .meta-strip strong { color: var(--azure); font-weight: 600; }
-
-  /* =========================================================
-     TOPBAR — v2 full variant
-     brand-left / nav-center / meta-right + persistent CTA
-     ========================================================= */
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(250, 253, 255, 0.94);
-    backdrop-filter: saturate(150%) blur(10px);
-    -webkit-backdrop-filter: saturate(150%) blur(10px);
-    border-bottom: 1px solid var(--rule);
-  }
-  .topbar-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 10px var(--sp-5);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: var(--sp-5);
-  }
-  .topbar .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 0;
-    white-space: nowrap;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .topbar .brand-logo {
-    height: 26px;
-    width: auto;
-    display: block;
-    flex-shrink: 0;
-  }
-  .topbar .brand-fallback {
-    font-weight: 700;
-    color: var(--azure);
-    font-size: var(--fs-md);
-    letter-spacing: -0.02em;
-    text-transform: lowercase;
-    display: none;
-    line-height: 1;
-  }
-  .topbar .brand .tag {
-    color: var(--fg-muted);
-    font-weight: 500;
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    padding-left: 12px;
-    border-left: 1px solid var(--rule);
-  }
-  .topbar .nav-links {
-    display: flex;
-    gap: var(--sp-5);
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .topbar .nav-links a {
-    flex: 0 0 auto;
-    color: var(--fg-muted);
-    font-size: var(--fs-xs);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    border-bottom: 0;
-    padding: 6px 0;
-    position: relative;
-    background: transparent;
-    white-space: nowrap;
-    transition: color 150ms var(--ease);
-  }
-  .topbar .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--azure);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 200ms var(--ease);
-  }
-  .topbar .nav-links a:hover { color: var(--azure); }
-  .topbar .nav-links a:hover::after { transform: scaleX(1); }
-  .topbar .nav-links a.active { color: var(--azure); }
-  .topbar .nav-links a.active::after { transform: scaleX(1); }
-
-  .topbar-meta {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-4);
-    flex-shrink: 0;
-  }
-  .topbar-meta .date-stamp {
-    font-size: var(--fs-xs);
-    color: var(--fg-muted);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .topbar-meta .date-stamp strong { color: var(--azure); font-weight: 700; }
-
-  .topbar-cta {
-    background: var(--azure);
-    color: var(--ghost);
-    font-size: var(--fs-xs);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 8px 14px;
-    border: 1px solid var(--azure);
-    border-bottom: 0;
-    white-space: nowrap;
-    transition: background 150ms var(--ease), border-color 150ms var(--ease);
-  }
-  .topbar-cta:hover {
-    background: var(--azure-900);
-    border-color: var(--azure-900);
-    color: var(--ghost);
-  }
-
-  @media (max-width: 1100px) {
-    .topbar .nav-links { gap: 18px; }
-    .topbar .nav-links a { font-size: 11px; }
-    .topbar-meta .date-stamp { display: none; }
-  }
-  @media (max-width: 920px) {
-    .topbar-inner { grid-template-columns: 1fr auto; gap: var(--sp-4); }
-    .topbar .nav-links { display: none; }
-  }
-  @media (max-width: 767px) {
-    .topbar-inner { padding: 8px var(--sp-4); }
-    .topbar .brand { gap: 8px; }
-    .topbar .brand-logo { height: 22px; }
-    .topbar .brand-fallback { font-size: 13px; }
-    .topbar .brand .tag { display: none; }
-    .topbar-cta { padding: 6px 10px; font-size: 10px; }
-  }
-
-  /* =========================================================
-     HERO
-     ========================================================= */
-  .hero {
-    padding: var(--sp-9) 0 var(--sp-8);
-    border-bottom: 1px solid var(--rule);
-  }
-  .hero .container { max-width: var(--maxw-prose); }
-  .hero .label {
-    display: inline-block;
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    margin-bottom: var(--sp-3);
-    font-weight: 600;
-  }
-  h1.title {
-    font-family: var(--sans);
-    font-size: clamp(36px, 5.6vw, 60px);
-    line-height: var(--lh-tight);
-    letter-spacing: var(--tracking-tight);
-    margin: 0 0 var(--sp-4);
-    font-weight: 700;
-    color: var(--azure);
-  }
-  .hero .subtitle {
-    font-size: var(--fs-md);
-    color: var(--fg-muted);
-    margin: 0 0 var(--sp-5);
-    font-weight: 500;
-    line-height: var(--lh-relaxed);
-  }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-5);
-    padding-top: var(--sp-5);
-    border-top: 1px solid var(--rule);
-    margin-top: var(--sp-6);
-    font-size: var(--fs-sm);
-    color: var(--fg-muted);
-  }
-  .hero-meta span strong {
-    color: var(--shadow);
-    font-weight: 600;
-    margin-right: 4px;
-  }
-
-  /* =========================================================
-     SECTIONS
-     ========================================================= */
-  section.block {
-    padding: var(--sp-9) 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  section.block:last-of-type { border-bottom: 0; }
-  section.block .container { max-width: var(--maxw-prose); }
-
-  .section-num {
-    color: var(--fg-muted);
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: var(--sp-2);
-    display: block;
-  }
-
-  h2 {
-    font-family: var(--sans);
-    font-size: clamp(28px, 3.4vw, 40px);
-    line-height: var(--lh-snug);
-    margin: 0 0 var(--sp-5);
-    color: var(--azure);
-    font-weight: 700;
-    letter-spacing: var(--tracking-tight);
-  }
-  h3 {
-    font-family: var(--sans);
-    font-size: var(--fs-xl);
-    margin: var(--sp-7) 0 var(--sp-3);
-    color: var(--shadow);
-    font-weight: 700;
-    letter-spacing: var(--tracking-tight);
-    line-height: var(--lh-snug);
-  }
-  h4 {
-    font-size: var(--fs-md);
-    margin: var(--sp-5) 0 var(--sp-2);
-    color: var(--shadow);
-    font-weight: 700;
-  }
-
-  p {
-    margin: 0 0 var(--sp-4);
-    line-height: var(--lh-relaxed);
-  }
-  ul, ol {
-    margin: 0 0 var(--sp-5);
-    padding-left: 24px;
-  }
-  li {
-    margin: var(--sp-2) 0;
-    line-height: var(--lh-relaxed);
-  }
-  li::marker { color: var(--fg-subtle); }
-
-  strong { color: var(--shadow); font-weight: 700; }
-  em { font-style: italic; color: var(--shadow); }
-
-  /* =========================================================
-     STANDOUT — Section 02 (Why now) treatment
-     Full-width Lucid soft band. Carries the convincer thesis.
-     ========================================================= */
-  section.standout {
-    background: var(--lucid-soft);
-    border-bottom: 1px solid var(--rule);
-    padding: var(--sp-9) 0;
-  }
-  section.standout .container { max-width: var(--maxw-prose); }
-  section.standout .if-pair {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--sp-5);
-    margin: var(--sp-6) 0;
-  }
-  section.standout .if-block {
-    background: var(--bg);
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--azure);
-    padding: var(--sp-5) var(--sp-6);
-  }
-  section.standout .if-block .if-kicker {
-    display: inline-block;
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--azure);
-    font-weight: 700;
-    margin-bottom: var(--sp-2);
-  }
-  section.standout .if-block p:last-child { margin-bottom: 0; }
-  section.standout .closer {
-    font-size: var(--fs-md);
-    color: var(--shadow);
-    font-weight: 600;
-    margin-top: var(--sp-5);
-  }
-
-  /* =========================================================
-     CALLOUT — for scope notes and approval-cadence sub-blocks
-     ========================================================= */
-  .callout {
-    background: var(--lucid-soft);
-    border: 1px solid var(--rule);
-    border-left: 2px solid var(--azure);
-    padding: var(--sp-4) var(--sp-5);
-    margin: var(--sp-5) 0;
-    font-size: var(--fs-base);
-    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
-  }
-  .callout:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 var(--azure-100);
-  }
-  .callout .kicker {
-    display: inline-block;
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--azure);
-    font-weight: 700;
-    margin-bottom: var(--sp-2);
-  }
-  .callout p:last-child { margin-bottom: 0; }
-
-  /* =========================================================
-     PRICING LINE — Phase 1 + Phase 2 headers
-     ========================================================= */
-  .pricing-line {
-    background: var(--bg-alt);
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--azure);
-    padding: var(--sp-4) var(--sp-5);
-    margin: 0 0 var(--sp-6);
-    font-size: var(--fs-md);
-    color: var(--shadow);
-    font-weight: 600;
-  }
-  .pricing-line strong { color: var(--azure); font-weight: 700; }
-
-  /* =========================================================
-     MASON OPTION CARDS — Section 04 sub-component
-     Side-by-side. Visual parity. Stack below 768.
-     ========================================================= */
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-5);
-    margin: var(--sp-6) 0 var(--sp-3);
-  }
-  .option-card {
-    background: var(--bg);
-    border: 1px solid var(--rule-strong);
-    padding: var(--sp-6);
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-3);
-    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
-  }
-  .option-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 var(--azure-100);
-  }
-  .option-card .option-eyebrow {
-    display: inline-block;
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--azure);
-    font-weight: 700;
-  }
-  .option-card h4 {
-    font-size: var(--fs-lg);
-    color: var(--azure);
-    margin: 0;
-    line-height: var(--lh-snug);
-    font-weight: 700;
-  }
-  .option-card p {
-    margin: 0;
-    font-size: var(--fs-base);
-    color: var(--fg);
-    line-height: var(--lh-relaxed);
-  }
-  @media (max-width: 768px) {
-    .options-grid {
-      grid-template-columns: 1fr;
-      gap: var(--sp-4);
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.14);
+      --lucid:     #cbe9ff;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --green:     #2a7a3a;
+      --green-lt:  rgba(42,122,58,0.08);
+      --radius:    12px;
+      --card-shadow: 0 2px 14px rgba(12,51,135,0.07);
     }
-    .option-card { padding: var(--sp-5); }
-  }
 
-  /* =========================================================
-     TABLES — Timeline + Investment
-     ========================================================= */
-  .table-wrap {
-    width: 100%;
-    overflow-x: auto;
-    margin: var(--sp-5) 0;
-    border: 1px solid var(--rule);
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: var(--fs-base);
-    background: var(--bg);
-  }
-  thead {
-    background: var(--bg-alt);
-    border-bottom: 1px solid var(--rule);
-  }
-  th {
-    text-align: left;
-    padding: var(--sp-4) var(--sp-5);
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    font-weight: 700;
-  }
-  td {
-    padding: var(--sp-4) var(--sp-5);
-    border-top: 1px solid var(--rule-faint);
-    line-height: var(--lh-snug);
-    vertical-align: top;
-  }
-  tbody tr:first-child td { border-top: 0; }
-  td.cost { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--shadow); }
-  td.when { color: var(--fg-muted); }
-  tr.total td {
-    background: var(--lucid-soft);
-    border-top: 1px solid var(--rule);
-    font-weight: 700;
-    color: var(--shadow);
-  }
-  tr.total td strong { color: var(--azure); }
-
-  /* =========================================================
-     COMPRESSED BULLETS — Section 08 (How we work)
-     Interpunct separator pattern per CLAUDE.md §5
-     ========================================================= */
-  ul.compressed {
-    list-style: none;
-    padding: 0;
-    margin: var(--sp-5) 0;
-    border-top: 1px solid var(--rule);
-  }
-  ul.compressed li {
-    margin: 0;
-    padding: var(--sp-4) 0;
-    border-bottom: 1px solid var(--rule);
-    line-height: var(--lh-snug);
-  }
-  ul.compressed li strong {
-    color: var(--azure);
-    font-weight: 700;
-    margin-right: 6px;
-  }
-
-  /* =========================================================
-     NEXT-STEPS GATE — Section 10
-     Three CTA paths. Path 1 (Walkthrough) emphasized.
-     ========================================================= */
-  .gate {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-4);
-    margin: var(--sp-6) 0 var(--sp-5);
-  }
-  .path {
-    background: var(--bg);
-    border: 1px solid var(--rule);
-    padding: var(--sp-5) var(--sp-6);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: var(--sp-5);
-    align-items: center;
-    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease), border-color 200ms var(--ease);
-  }
-  .path:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 var(--azure-100);
-    border-color: var(--rule-strong);
-  }
-  .path-num {
-    font-size: var(--fs-sm);
-    font-weight: 700;
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    min-width: 30px;
-  }
-  .path-body h4 {
-    margin: 0 0 4px;
-    font-size: var(--fs-md);
-    color: var(--shadow);
-    font-weight: 700;
-  }
-  .path-body p {
-    margin: 0;
-    font-size: var(--fs-sm);
-    color: var(--fg-muted);
-    line-height: var(--lh-normal);
-  }
-  .path-cta {
-    display: inline-block;
-    background: var(--bg);
-    color: var(--azure);
-    font-size: var(--fs-sm);
-    font-weight: 700;
-    padding: 12px 20px;
-    border: 1px solid var(--azure);
-    border-bottom: 0;
-    white-space: nowrap;
-    transition: background 150ms var(--ease), color 150ms var(--ease);
-  }
-  .path-cta:hover {
-    background: var(--azure);
-    color: var(--ghost);
-  }
-  .path.is-recommended {
-    background: var(--lucid-soft);
-    border-color: var(--azure);
-    border-left: 3px solid var(--azure);
-  }
-  .path.is-recommended .path-num {
-    color: var(--azure);
-  }
-  .path.is-recommended .path-cta {
-    background: var(--azure);
-    color: var(--ghost);
-    border-color: var(--azure);
-    position: relative;
-  }
-  .path.is-recommended .path-cta:hover {
-    background: var(--azure-900);
-    border-color: var(--azure-900);
-  }
-  .path.is-recommended .recommended-flag {
-    display: inline-block;
-    background: var(--highlighter);
-    color: var(--shadow);
-    font-size: 10px;
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 2px 8px;
-    margin-bottom: 6px;
-  }
-  @media (max-width: 640px) {
-    .path {
-      grid-template-columns: 1fr;
-      gap: var(--sp-3);
-      padding: var(--sp-5);
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
     }
-    .path-cta {
-      width: 100%;
-      text-align: center;
-      padding: 14px 20px;
+
+    /* ── PROGRESS BAR ── */
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--azure),var(--hi)); z-index:1001; transition:width .1s linear; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:rgba(250,253,255,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
     }
-  }
-
-  .gate-close {
-    font-size: var(--fs-md);
-    color: var(--shadow);
-    font-weight: 600;
-    margin-top: var(--sp-5);
-  }
-
-  /* =========================================================
-     SCROLL-REVEAL (v2 §2)
-     ========================================================= */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 600ms var(--ease), transform 600ms var(--ease);
-    will-change: opacity, transform;
-  }
-  .reveal.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-  }
-
-  /* =========================================================
-     FOOTER
-     ========================================================= */
-  footer {
-    background: var(--bg);
-    border-top: 1px solid var(--rule);
-    padding: var(--sp-8) 0 var(--sp-9);
-    color: var(--fg-muted);
-  }
-  footer .container { max-width: var(--maxw-prose); }
-  footer h3 {
-    margin: 0 0 var(--sp-3);
-    color: var(--azure);
-    font-size: var(--fs-lg);
-  }
-  footer p {
-    color: var(--fg);
-    font-size: var(--fs-base);
-    margin-bottom: var(--sp-3);
-  }
-  footer .footer-meta {
-    margin-top: var(--sp-7);
-    padding-top: var(--sp-4);
-    border-top: 1px solid var(--rule);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--sp-3);
-    font-size: var(--fs-xs);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-  }
-  footer .footer-meta a {
-    color: var(--fg-muted);
-    border-bottom: 0;
-  }
-  footer .footer-meta a:hover { color: var(--azure); }
-
-  /* =========================================================
-     MOBILE FLOOR — body text ≥14px per Locked Principle 3.12
-     ========================================================= */
-  @media (max-width: 414px) {
-    :root { --fs-base: 16px; }
-    .section-num,
-    .meta-strip-inner,
-    .topbar-meta .date-stamp,
-    .topbar .nav-links a,
-    .topbar-cta,
-    .hero .label,
-    .topbar .brand .tag {
-      font-size: 11px;
+    .nav-logo img { height:26px; display:block; }
+    .nav-links { list-style:none; display:flex; gap:3px; }
+    .nav-links a {
+      display:block; padding:5px 10px; font-size:12px; font-weight:600;
+      color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s;
     }
-    .hero-meta { font-size: 14px; }
-    td, th { padding: 14px 16px; font-size: 14px; }
-    .path-body p { font-size: 14px; }
-    .path-cta { font-size: 14px; }
-    ul.compressed li { font-size: 14px; }
-    .footer-meta { font-size: 11px; }
-  }
+    .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
+    @media(max-width:900px){ .nav-links{display:none;} nav{padding:0 20px;} }
 
-  /* =========================================================
-     PRINT — protect content; flatten the reveal
-     ========================================================= */
-  @media print {
-    .topbar, .meta-strip, .topbar-cta { display: none; }
-    body { background: white; color: black; }
-    .callout, .standout, .path.is-recommended { background: white; border-color: #ccc; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .path { page-break-inside: avoid; }
-    .option-card { page-break-inside: avoid; }
-    table { page-break-inside: auto; }
-    tr { page-break-inside: avoid; }
-  }
-</style>
+    /* ── LAYOUT ── */
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:600px; margin-bottom:28px; line-height:1.65; }
+
+    /* ── CARDS ── */
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .card-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+
+    /* ── LISTS ── */
+    .tick-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tick-list li { font-size:14px; color:var(--ink-mid); padding-left:22px; position:relative; line-height:1.5; }
+    .tick-list li::before { content:'✓'; color:var(--azure); position:absolute; left:0; font-weight:700; font-size:12px; top:2px; }
+
+    .arrow-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .arrow-list li { font-size:14px; color:var(--ink-mid); padding-left:18px; position:relative; line-height:1.5; }
+    .arrow-list li::before { content:'→'; color:var(--azure); font-weight:700; position:absolute; left:0; }
+
+    /* ── GRIDS ── */
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .g2,.g3{grid-template-columns:1fr;} }
+
+    /* ── UTILS ── */
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    .insight { background:rgba(226,237,122,.1); border:1px solid rgba(200,214,0,.3); border-left:4px solid #c8d600; border-radius:var(--radius); padding:16px 20px; }
+    .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .insight p strong { color:var(--shadow); }
+
+    .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .assumption p strong { color:var(--azure); }
+
+    /* ══ HERO ══ */
+    .hero { padding:150px 32px 72px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:540px; line-height:1.65; margin-bottom:28px; }
+    .hero-meta { display:flex; gap:10px; flex-wrap:wrap; }
+    .hero-meta span { background:var(--porcelain); border:1px solid var(--border); border-radius:100px; padding:6px 16px; font-size:13px; color:var(--ink-mid); }
+    .hero-meta span strong { color:var(--shadow); }
+
+    /* ══ GOALS ══ */
+    .goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:640px){ .goals-grid{grid-template-columns:1fr;} }
+    .goal-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; display:flex; flex-direction:column; gap:10px; }
+    .goal-num { width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0; }
+    .goal-card h4 { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .goal-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; flex:1; }
+    .goal-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; align-self:flex-start; }
+    .tag-tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .tag-mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .tag-bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* ══ IVP TABS ══ */
+    .ivp-tabs { display:flex; gap:8px; margin-bottom:0; }
+    .ivp-tab { padding:8px 18px; border-radius:8px 8px 0 0; font-size:13px; font-weight:700; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--porcelain); color:var(--ink-soft); transition:background .15s,color .15s; user-select:none; }
+    .ivp-tab.active { background:#fff; color:var(--azure); }
+    .ivp-panels { border:1px solid var(--border); border-radius:0 var(--radius) var(--radius) var(--radius); background:#fff; box-shadow:var(--card-shadow); }
+    .ivp-panel { display:none; padding:26px; }
+    .ivp-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:640px){ .ivp-panel.active{grid-template-columns:1fr;} }
+    .ivp-col h4 { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+    .ivp-col p  { font-size:14px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px; }
+
+    /* ══ SOCIAL SEO ══ */
+    .seo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    @media(max-width:640px){ .seo-grid{grid-template-columns:1fr;} }
+    .seo-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; }
+    .seo-card h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .seo-card p  { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+
+    .keyword-bank { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .kw {
+      font-size:12px; font-weight:600; padding:5px 12px;
+      border-radius:100px; border:1px solid var(--azure-bd);
+      background:var(--azure-lt); color:var(--azure);
+    }
+    .kw.tier2 { background:rgba(226,237,122,.3); border-color:rgba(200,214,0,.3); color:#4d5e00; }
+    .kw.tier3 { background:var(--porcelain); border-color:var(--border); color:var(--ink-mid); }
+    .kw.tier4 { background:rgba(12,51,135,.05); border-color:rgba(12,51,135,.12); color:var(--azure); font-weight:700; }
+
+    /* ══ CONTENT IDEATION ACCORDION ══ */
+    .accordion { display:flex; flex-direction:column; gap:10px; }
+    .acc-item { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .acc-header {
+      padding:16px 22px; display:flex; align-items:center; justify-content:space-between;
+      cursor:pointer; user-select:none; transition:background .15s;
+    }
+    .acc-header:hover { background:var(--porcelain); }
+    .acc-header-left { display:flex; align-items:center; gap:14px; }
+    .acc-icon { font-size:20px; flex-shrink:0; }
+    .acc-title { font-size:15px; font-weight:700; color:var(--shadow); }
+    .acc-sub   { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+    .acc-tags  { display:flex; gap:6px; flex-wrap:wrap; }
+    .acc-tag   { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:4px; }
+    .tag-reel     { background:rgba(12,51,135,.1); color:var(--azure); }
+    .tag-carousel { background:rgba(226,237,122,.4); color:#4d5e00; }
+    .tag-stories  { background:rgba(255,190,80,.22); color:#7a4800; }
+    .tag-static   { background:rgba(122,122,148,.18); color:#3d3d52; }
+    .acc-chevron { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; margin-left:12px; }
+    .acc-item.open .acc-chevron { transform:rotate(180deg); }
+    .acc-body { display:none; padding:0 22px 20px; border-top:1px solid var(--border); }
+    .acc-item.open .acc-body { display:block; }
+    .acc-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:14px; }
+    .acc-body-hooks { margin-top:14px; display:flex; flex-direction:column; gap:10px; }
+    .hook-item { background:var(--porcelain); border-radius:8px; padding:12px 16px; }
+    .hook-item .hook { font-size:14px; font-weight:700; color:var(--shadow); font-style:italic; margin-bottom:4px; }
+    .hook-item .hook-detail { font-size:13px; color:var(--ink-mid); line-height:1.5; }
+    .acc-metrics { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .metric-tag { font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; background:rgba(12,51,135,.08); color:var(--azure); border:1px solid var(--azure-bd); }
+
+    /* ══ INSPIRATION ══ */
+    .inspo-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .inspo-grid{grid-template-columns:1fr;} }
+    .inspo-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inspo-header { padding:16px 20px; border-bottom:1px solid var(--border); }
+    .inspo-handle { font-size:15px; font-weight:700; color:var(--azure); margin-bottom:2px; }
+    .inspo-meta { font-size:12px; color:var(--ink-soft); }
+    .inspo-desc { font-size:13px; color:var(--ink-mid); line-height:1.55; margin-top:8px; }
+    .inspo-posts { padding:16px 20px; display:flex; flex-direction:column; gap:10px; }
+    .inspo-post { border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+    .inspo-post-type { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .inspo-post-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .inspo-post-why { font-size:12px; color:var(--ink-mid); line-height:1.5; }
+    .inspo-lesson { padding:12px 20px 16px; background:var(--azure-lt); border-top:1px solid var(--border); }
+    .inspo-lesson p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .inspo-lesson strong { color:var(--azure); }
+
+    /* ══ SCOPE TABLE ══ */
+    .scope-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
+    .scope-table th:last-child { text-align:center; }
+    .scope-table td { padding:11px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:36%; padding-right:16px; }
+    .scope-table td:last-child { text-align:center; width:80px; }
+    .scope-table tr:last-child td { border-bottom:none; }
+    .scope-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:var(--azure-lt); color:var(--azure); }
+    .check { color:var(--azure); font-weight:700; font-size:16px; }
+
+    /* ══ TIMELINE ══ */
+    .tl-cta { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:#fff; line-height:1.55; opacity:.9; }
+    .tl-cta p strong { opacity:1; }
+
+    /* ══ INVESTMENT ══ */
+    .inv-hero { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
+    .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+    .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; }
+    .inv-hero-row { display:flex; gap:32px; flex-wrap:wrap; }
+    .inv-hero-stat .amount { font-size:32px; font-weight:800; line-height:1; }
+    .inv-hero-stat .lbl { font-size:12px; opacity:.7; margin-top:3px; }
+    @media(max-width:640px){ .inv-hero{padding:24px 20px;} }
+    .inv-breakdown { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inv-row { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); font-size:14px; gap:16px; }
+    .inv-row:last-child { border-bottom:none; }
+    .inv-row.total { background:var(--azure-lt); font-weight:700; }
+    .inv-row .item { color:var(--ink-mid); flex:1; }
+    .inv-row .item strong { color:var(--shadow); display:block; font-size:15px; margin-bottom:2px; }
+    .inv-row .item small { font-size:12px; color:var(--ink-soft); }
+    .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
+    .inv-row.total .amt { color:var(--azure); font-size:17px; }
+    .credit-note { font-size:13px; color:var(--green); font-weight:600; background:var(--green-lt); border:1px solid rgba(42,122,58,.2); border-radius:8px; padding:12px 16px; margin-top:14px; }
+
+    /* ══ STEPS ══ */
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .steps-grid{grid-template-columns:1fr;} }
+    .step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .step-n { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .step h3 { font-size:16px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ CTA ══ */
+    .cta-block { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.5); margin-top:14px; }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ══ LANE LABELS ══ */
+    .lane-labels { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+    @media(max-width:640px){ .lane-labels{grid-template-columns:1fr;} }
+    .lane-label { display:flex; gap:12px; align-items:flex-start; padding:14px 18px; border-radius:var(--radius); border:1px solid; }
+    .lane1-label { background:rgba(203,233,255,.2); border-color:rgba(12,51,135,.15); }
+    .lane2-label { background:rgba(226,237,122,.15); border-color:rgba(200,214,0,.25); }
+    .lane-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .lane1-dot { background:var(--azure); }
+    .lane2-dot { background:#8a9e00; }
+    .lane-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:3px; }
+    .lane-desc { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .lane-badge { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px; }
+    .lane1-badge { background:rgba(12,51,135,.1); color:var(--azure); }
+    .lane2-badge { background:rgba(138,158,0,.2); color:#4d5e00; }
+
+    /* ══ FOOTER ══ */
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+
+    /* ══ MILESTONE TIMELINE ══ */
+    .milestone-wrap { width:100%; }
+    .milestone-track {
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:0;
+      position:relative;
+      padding-top:20px;
+    }
+    @media(max-width:760px){
+      .milestone-track { grid-template-columns:1fr 1fr; gap:16px; }
+      .ms-line { display:none; }
+    }
+    .milestone-col { display:flex; flex-direction:column; align-items:center; position:relative; }
+    .ms-dot {
+      width:16px; height:16px; border-radius:50%; flex-shrink:0; z-index:2;
+      border:3px solid #fff; box-shadow:0 0 0 2px currentColor;
+    }
+    .ms-blue { background:var(--azure); color:var(--azure); }
+    .ms-green { background:var(--green); color:var(--green); }
+    .ms-highlight { background:#8a9e00; color:#8a9e00; }
+    .ms-line {
+      position:absolute; top:8px; left:50%; right:-50%;
+      height:2px; background:var(--border); z-index:1;
+    }
+    .ms-line-fade { background:linear-gradient(90deg,var(--border),transparent); }
+    .ms-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%;
+      font-size:13px;
+    }
+    .ms-card-featured {
+      border-color:var(--azure);
+      box-shadow:0 0 0 2px rgba(12,51,135,.12), var(--card-shadow);
+    }
+    .ms-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .ms-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .ms-items { display:flex; flex-direction:column; gap:4px; }
+    .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
+
+    /* Recurring rhythm */
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:16px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+
+    /* Milestone banner */
+    .milestone-banner {
+      background:rgba(203,233,255,.25); border:1px solid rgba(12,51,135,.15);
+      border-left:4px solid var(--azure); border-radius:var(--radius);
+      padding:16px 22px; display:flex; gap:14px; align-items:flex-start;
+    }
+    .milestone-banner-icon { font-size:22px; flex-shrink:0; }
+    .milestone-banner-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .milestone-banner-desc { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* Content calendar */
+    .cal-wrap { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .cal-header { padding:18px 22px; border-bottom:1px solid var(--border); }
+    .cal-header-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .cal-header-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .cal-grid {
+      display:grid; grid-template-columns:repeat(5,1fr);
+      border-bottom:1px solid var(--border);
+    }
+    .cal-day-header {
+      padding:10px; text-align:center; font-size:11px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+      background:var(--porcelain); border-right:1px solid var(--border);
+    }
+    .cal-day-header:last-child { border-right:none; }
+    .cal-cell {
+      padding:12px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+      min-height:90px;
+    }
+    .cal-cell:nth-child(5n) { border-right:none; }
+    .cal-cell.feed.tofu  { background:rgba(203,233,255,.15); }
+    .cal-cell.feed.mofu  { background:rgba(226,237,122,.12); }
+    .cal-cell.feed.bofu  { background:rgba(12,51,135,.05); }
+    .cal-cell.story      { background:rgba(255,190,80,.1); }
+    .cal-type  { font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .cal-name  { font-size:12px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .cal-funnel { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .tofu-tag { background:rgba(203,233,255,.5); color:var(--azure); }
+    .mofu-tag { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .bofu-tag { background:rgba(12,51,135,.09); color:var(--azure); }
+    .cal-goal  { font-size:10px; color:var(--ink-soft); }
+    .cal-legend { display:flex; gap:12px; flex-wrap:wrap; padding:12px 18px; background:var(--porcelain); border-top:1px solid var(--border); }
+    .leg { font-size:11px; font-weight:600; }
+    .tofu-leg { color:var(--azure); }
+    .mofu-leg { color:#4d5e00; }
+    .bofu-leg { color:var(--azure); }
+    /* ══ MOBILE FIXES ══ */
+    /* Scope table — horizontal scroll on small screens */
+    .scope-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:600px){
+      .scope-table { font-size:13px; min-width:520px; }
+      .scope-table td:first-child { width:42%; }
+      .scope-table td:last-child { width:60px; }
+    }
+    /* Content calendar — scroll on mobile, larger funnel tags */
+    .cal-funnel { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .cal-wrap-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:640px){ .cal-cell{ min-height:80px; padding:8px; } .cal-name{ font-size:11px; } }
+    /* Milestone track — 1 col on small phones */
+    @media(max-width:480px){ .milestone-track{ grid-template-columns:1fr; } }
+    /* Accordion header — prevent right-side overflow on narrow screens */
+    @media(max-width:480px){
+      .acc-header { flex-wrap:wrap; gap:8px; }
+      .acc-header > div:last-child { width:100%; display:flex; justify-content:space-between; align-items:center; }
+    }
+    /* Story-leg color fix */
+    .story-leg { color:#7a4800; }
+  </style>
 </head>
 <body>
 
-<!-- ====================================================================
-     METADATA STRIP
-     ==================================================================== -->
-<div class="meta-strip">
-  <div class="meta-strip-inner">
-    <span><strong>Prepared for</strong> Mona Mislankar, MD, FAAD</span>
-    <span class="nowrap">May 2026</span>
-  </div>
-</div>
+<div id="prog"></div>
 
-<!-- ====================================================================
-     TOPBAR · sticky glass-blurred, v2 full variant
-     ==================================================================== -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <a href="https://decks.scrollmedia.co/pitch/" class="brand" aria-label="Scroll Media · Signature proposal">
-      <img src="https://tools.scrollmedia.co/assets/scroll-media-logo.svg" alt="Scroll Media" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
-      <span class="brand-fallback">Scroll Media</span>
-      <span class="tag">Signature proposal</span>
+<nav>
+  <div class="nav-logo">
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
     </a>
-    <nav class="nav-links" id="navLinks" aria-label="Section navigation">
-      <a href="#now">Where you are</a>
-      <a href="#why">Why now</a>
-      <a href="#build">What we build</a>
-      <a href="#phase1">Phase 1</a>
-      <a href="#phase2">Phase 2</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#investment">Investment</a>
-      <a href="#next">Next steps</a>
-    </nav>
-    <div class="topbar-meta">
-      <span class="date-stamp">Prepared <strong>May 2026</strong></span>
-      <a href="https://calendly.com/scrollmedia/discovery" class="topbar-cta" target="_blank" rel="noopener">Book a walkthrough</a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#heard"       data-section="heard">What We Heard</a></li>
+    <li><a href="#strategy"    data-section="strategy">Strategy</a></li>
+    <li><a href="#seo"         data-section="seo">Social SEO</a></li>
+    <li><a href="#ideation"    data-section="ideation">Content Ideas</a></li>
+    <li><a href="#scope"       data-section="scope">Scope</a></li>
+    <li><a href="#timeline"    data-section="timeline">Timeline</a></li>
+    <li><a href="#what-we-need" data-section="what-we-need">What We Need</a></li>
+    <li><a href="#investment"  data-section="investment">Investment</a></li>
+    <li><a href="#next-steps"  data-section="next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero" id="top">
+  <div class="hero-chip">Scroll Media × Cincinnati Skin Center — Signature Package Proposal</div>
+  <h1>Built around<br/><em>what you're building toward.</em></h1>
+  <p class="hero-sub">Six months between now and Mason open. We laid out the strategy, the work, and what it costs.</p>
+  <div class="hero-meta">
+    <span><strong>Client</strong> Cincinnati Skin Center</span>
+    <span><strong>Package</strong> Signature — Growth</span>
+    <span><strong>Prepared</strong> May 2026</span>
+    <span><strong>Strategist</strong> Chase Gianattasio</span>
+    <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--azure);font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(12,51,135,0.15)'" onmouseout="this.style.background='var(--azure-lt)'">📖 How We Work →</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ WHAT WE HEARD ══════════ -->
+<div class="wrap" id="heard">
+  <div class="eyebrow">What We Heard</div>
+  <h2 class="section-title">Three priorities. <em>One system.</em></h2>
+  <p class="section-sub">Everything in this proposal maps to what you and Allison discussed and what we observed across your account and credentials. These three priorities shape every strategic decision.</p>
+
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <h4>Use the Mason Runway</h4>
+      <p>Build the audience now that fills Mason at open. Behind-the-scenes content during construction is the highest-leverage social moment your brand will ever have. Waiting forfeits six months of compounding.</p>
+      <span class="goal-tag tag-tofu">TOFU · Audience Build</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <h4>Keep Kenwood Compounding</h4>
+      <p>The current practice keeps booking, keeps serving, keeps growing. Content drives bookings that fund the build. Mason doesn't replace Kenwood. It expands it.</p>
+      <span class="goal-tag tag-bofu">BOFU · Booking Revenue</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <h4>Match Audience to Credentials</h4>
+      <p>Top Doc four years running. Vogue. People. Marie Claire. Marie Claire Beauty Awards 2026 judge. Board-certified MD. The audience that knows about it is 1,184 people. The audience that should know about it is much larger.</p>
+      <span class="goal-tag tag-mofu">MOFU · Authority</span>
+    </div>
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>How this maps to our framework:</strong> Priority 1 (Mason runway) = pre-launch content arc tied to construction milestones. Priority 2 (Kenwood) = recurring service content and community presence. Priority 3 (credential match) = authority pillar at the center of every content cycle. Every post is mapped to one of these three. Nothing goes live without a strategic purpose.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ STRATEGY ══════════ -->
+<div class="wrap" id="strategy">
+  <div class="eyebrow">Strategic Approach</div>
+  <h2 class="section-title">Who we're reaching. <em>How we'll reach them.</em></h2>
+  <p class="section-sub">Cincinnati Skin Center serves two distinct audiences with different decision triggers. The strategy is built around both, and every piece of content knows which one it's for. Surgical-derm referral cases live alongside but draw on the same authority engine.</p>
+
+  <div class="ivp-tabs">
+    <div class="ivp-tab active" onclick="switchTab(0)">IVP 1 — Cosmetic Patients</div>
+    <div class="ivp-tab" onclick="switchTab(1)">IVP 2 — Medical &amp; Pediatric</div>
+  </div>
+  <div class="ivp-panels">
+    <div class="ivp-panel active" id="ivp-0">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Cincinnati women 30 to 55, household income $100K+, value medical-grade credentials over med-spa marketing. Already pay for aesthetic services (laser, injectables, peels, microneedling) and are skeptical of nurse-led clinics. Want results plus reassurance that a board-certified MD is running the room.</p>
+        <h4 style="margin-top:16px;">What Drives Them</h4>
+        <p>Trust and outcome. They convert when authority signals (Top Doc, board-certified, press features) compound with visible results (treatment walkthroughs, founder demos, before/afters where consent allows). They share when content feels educational, not promotional.</p>
+        <h4 style="margin-top:16px;">Primary CTA</h4>
+        <p>Book a consultation · Join the Mason waitlist · DM a treatment question</p>
+      </div>
+      <div class="ivp-col">
+        <h4>Content That Moves Them</h4>
+        <ul class="arrow-list">
+          <li>Founder-led demo Reels (at-home chemical peel, microneedling POV. Formats Mona has already proven work.)</li>
+          <li>Authority content (Top Doc graphics, press features, Marie Claire judge moments)</li>
+          <li>Education Reels (what a peel does, when filler is right, why MD-led matters)</li>
+          <li>Treatment walkthroughs with Rosie as co-content asset</li>
+          <li>Mason build-in-public arc (design choices, finishes, reveal)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ivp-panel" id="ivp-1">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Cincinnati families with skin, hair, or nail conditions needing real medical attention. Adult patients managing chronic conditions (acne, eczema, psoriasis, hair loss). Parents seeking a dermatologist who treats pediatric patients with care and competence.</p>
+        <h4 style="margin-top:16px;">What Drives Them</h4>
+        <p>Credibility and clarity. They convert when content makes complex conditions feel approachable and the doctor feels both expert and human. Recurring follow-up care drives strong LTV. Long-term loyalty.</p>
+        <h4 style="margin-top:16px;">Primary CTA</h4>
+        <p>Book an appointment · Call or text 513-201-7387 · DM a skin question</p>
+      </div>
+      <div class="ivp-col">
+        <h4>Content That Moves Them</h4>
+        <ul class="arrow-list">
+          <li>Education carousels on common conditions (acne, eczema, melasma, hair loss)</li>
+          <li>"Should I be worried about this mole?" type evergreen Reels</li>
+          <li>Pediatric care content that reassures parents</li>
+          <li>Surgical-derm cases (skin cancer awareness, what to look for)</li>
+          <li>Founder POV (why Mona chose dermatology, how she approaches patients)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="assumption mt-md">
+    <p><strong>Assumption:</strong> Engagement scope is @cincinnatiskincenter (the practice account). @drmislankar runs as its own creator brand (Digital Dept lane) and Oathology operates separately. Both stay out of scope unless explicitly added at the kickoff.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SOCIAL SEO ══════════ -->
+<div class="wrap" id="seo">
+  <div class="eyebrow">Social SEO</div>
+  <h2 class="section-title">Cincinnati search intent. <em>Where you should land.</em></h2>
+  <p class="section-sub">Instagram is increasingly a search engine. The accounts that show up for "Cincinnati dermatologist" and adjacent terms get the patients ready to book. We build that keyword position into every layer of the account.</p>
+
+  <div class="seo-grid">
+    <div class="seo-card">
+      <h4>🔑 Keyword Architecture</h4>
+      <p>We build a 4-tier keyword bank that maps search intent from broad discovery all the way to high-intent buyer phrases. Keywords are embedded in your bio, captions, on-screen text, and alt text. Every placement the algorithm reads.</p>
+    </div>
+    <div class="seo-card">
+      <h4>📐 Format Signals</h4>
+      <p>The algorithm rewards content that earns the right engagement signals. Reels optimized for watch time and shares. Carousels optimized for saves. Stories optimized for completion and link taps. Every format has a specific performance job.</p>
+    </div>
+    <div class="seo-card">
+      <h4>🎣 Hook Strategy</h4>
+      <p>The first 1 to 3 seconds determine whether a Reel gets distributed or dies. Every piece of content is engineered with a layered hook (verbal, visual, and on-screen text) to maximize retention rate, the algorithm's highest-weighted signal.</p>
+    </div>
+    <div class="seo-card">
+      <h4>📊 Signal Optimization</h4>
+      <p>We track two Tier 1 metrics above all others: <strong>retention % on Reels</strong> (watch time signals quality) and <strong>saves on carousels</strong> (bookmark behavior signals utility). Shares are the third priority. They trigger exponential organic reach. Every monthly adjustment is data-driven against these signals.</p>
+    </div>
+  </div>
+
+  <div class="card mt-lg">
+    <div class="card-label">Social SEO Keyword Bank — Cincinnati Skin Center Sample</div>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px;">Built across 4 tiers from broad discovery to high-intent authority position. Full keyword bank delivered in Phase 1 strategy document.</p>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 1 — Broad Discovery</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw">Cincinnati dermatologist</span>
+      <span class="kw">Cincinnati medical spa</span>
+      <span class="kw">Cincinnati skin care</span>
+      <span class="kw">Cincinnati esthetics</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 2 — Niche &amp; Geo Specific</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw tier2">Mason dermatologist</span>
+      <span class="kw tier2">Kenwood dermatologist</span>
+      <span class="kw tier2">Board-certified dermatologist Cincinnati</span>
+      <span class="kw tier2">MD-led dermatology Cincinnati</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 3 — Service + Location</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
+      <span class="kw tier3">Cincinnati Botox</span>
+      <span class="kw tier3">Cincinnati dysport</span>
+      <span class="kw tier3">Cincinnati chemical peel</span>
+      <span class="kw tier3">Cincinnati VI peel</span>
+      <span class="kw tier3">Cincinnati microneedling</span>
+      <span class="kw tier3">Cincinnati laser dermatology</span>
+      <span class="kw tier3">Cincinnati skin cancer screening</span>
+      <span class="kw tier3">Cincinnati pediatric dermatologist</span>
+      <span class="kw tier3">Cincinnati acne treatment</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 4 — High-Intent Authority</p>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier4">Top Doc Cincinnati dermatology</span>
+      <span class="kw tier4">Female-owned dermatology Cincinnati</span>
+      <span class="kw tier4">Cincinnati MD-led aesthetics</span>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;">Where these land</p>
+    <ul class="arrow-list">
+      <li>Profile name field (max 30-char window, high SEO weight)</li>
+      <li>Bio (descriptive copy, primary terms front-loaded)</li>
+      <li>Highlight covers and titles (geo and service anchors as permanent navigation)</li>
+      <li>Caption opening lines (Instagram weights first sentence heavily)</li>
+      <li>Alt text on every static post</li>
+      <li>Geo-tag every post that's location-relevant</li>
+    </ul>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Why this matters:</strong> Cincinnati Skin Center currently ranks below larger med spa accounts despite being the credentialed option. Search-intent optimization is unsexy but compounds. It's the difference between a high-trust account and a high-trust account that prospects can find.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ CONTENT IDEATION ══════════ -->
+<div class="wrap" id="ideation">
+  <div class="eyebrow">Content Ideation</div>
+  <h2 class="section-title">What's working now. <em>What we'll build next.</em></h2>
+  <p class="section-sub">We run two lanes simultaneously. Lane 1 takes the formats you've already proven work and scales them with system. Lane 2 builds new pillars on top: credentialed-MD authority, Mason build-in-public, Cincinnati collaborations. Both feed the Signal Method testing phase.</p>
+
+  <!-- LANE LABELS -->
+  <div class="lane-labels">
+    <div class="lane-label lane1-label">
+      <div class="lane-dot lane1-dot"></div>
+      <div>
+        <div class="lane-name">Lane 1 — Proven &amp; Scaled</div>
+        <div class="lane-desc">Formats Mona has already shown work on her own account. We copy the structure, apply the system, scale the cadence.</div>
+      </div>
+    </div>
+    <div class="lane-label lane2-label">
+      <div class="lane-dot lane2-dot"></div>
+      <div>
+        <div class="lane-name">Lane 2 — Original &amp; Authority-Forward</div>
+        <div class="lane-desc">Content built from scratch using Cincinnati Skin Center's unique credential mix: Top Doc status, press features, MD-led positioning no nurse-led clinic can replicate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion" id="accordion">
+
+    <!-- IDEA 1 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">💆‍♀️</div>
+          <div>
+            <div class="acc-title">At-Home Treatment Demo Reel</div>
+            <div class="acc-sub">Founder POV · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Mona has already proven this format on her own account. A board-certified MD walking through a treatment she does on herself reads completely differently than a med spa influencer doing the same thing. The authority is the differentiator. We take the structure she's running on @drmislankar and scale it on @cincinnatiskincenter at a consistent cadence.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🎯 Retention 55%+</span>
+          <span class="metric-tag">💾 Saves 30+</span>
+          <span class="metric-tag">📱 30–45s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"This is the at-home peel I actually do on myself."</div>
+            <div class="hook-detail">Mona to camera, walking through application step by step. No script. The MD credential makes a familiar format land harder. Ends with a one-line CTA: "Want the in-office version? Book through the link."</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> 50%+ retention · saves 30+ · DMs asking treatment-specific follow-ups
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🔬</div>
+          <div>
+            <div class="acc-title">Microneedling Session POV</div>
+            <div class="acc-sub">Treatment walkthrough · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Treatment walkthrough Reels consistently outperform branded promo in medical aesthetics. People research before they book. They want to see the room, the equipment, the doctor's hands, the actual sequence. A short POV-style walkthrough of a microneedling session (consent-permitting) educates and de-risks the booking in 30 seconds. Rosie is a strong co-content asset for this format.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">💾 Saves 40+</span>
+          <span class="metric-tag">🔗 Link Taps 30+</span>
+          <span class="metric-tag">📱 30s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"What a microneedling session actually looks like at our office."</div>
+            <div class="hook-detail">Quick cuts: walk into room, prep, session, post-care. No voiceover. On-screen captions only. Ends with "Book through the link." High save rate from prospects deciding between providers.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> 40+ saves · link taps spike · consultation DMs in 24 hours post-publish
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 3 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🎁</div>
+          <div>
+            <div class="acc-title">Holiday &amp; Seasonal Promo</div>
+            <div class="acc-sub">Service push · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-static">Static</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Mother's Day, holiday gift cards, end-of-year FSA reminders, summer skin-prep windows. Static promo posts tied to natural seasonal demand windows. The format itself is unsexy but the timing is everything. We map a recurring seasonal promo calendar so the BOFU pulse fires every 4 to 6 weeks without overcrowding the feed.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🔗 Link Taps 25+</span>
+          <span class="metric-tag">💬 DM Bookings</span>
+          <span class="metric-tag">🖼️ Single Static</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"Mother's Day. The gift she'll actually use."</div>
+            <div class="hook-detail">Clean static layout. Gift card visual. Service highlights. One-line CTA. Designed to be saved and sent to a partner.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Link taps in seasonal window · gift card sales · DMs referencing the post
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 4 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🤝</div>
+          <div>
+            <div class="acc-title">Local Event Partnership</div>
+            <div class="acc-sub">Community signal · Lane 1 — Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="acc-tag tag-static">Static</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Cincinnati Skin Center already participates in select community events. The content around these is currently sporadic. We build a recurring system: every partnered event gets pre-event teaser, on-day capture, and post-event recap content. Each event becomes a 3-post sequence on the feed plus a story arc. Compounds local awareness over time.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">👥 Reach via tags</span>
+          <span class="metric-tag">👤 New Followers</span>
+          <span class="metric-tag">📱 Mixed format</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"We're at [event] this Saturday. Come say hi."</div>
+            <div class="hook-detail">Pre-event teaser with event tag, partner tag, location pin. On-day Reel of the booth or activation. Post-event recap carousel with attendees and key moments. Tag everyone.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Tag-driven reach · new followers from partner audiences · DMs from event attendees
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 5 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🏆</div>
+          <div>
+            <div class="acc-title">Top Doc Authority Carousel</div>
+            <div class="acc-sub">Credential builder · Lane 2 — Original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Top Doc four years running is a credential most Cincinnati dermatologists don't have. It rarely shows up on @cincinnatiskincenter. A recurring "Top Doc" carousel format makes the credential a permanent part of the feed: what Top Doc means, how doctors are selected, what it signals to patients. Builds the authority pillar that supports every BOFU post in its orbit.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">💾 Saves 50+</span>
+          <span class="metric-tag">👀 Profile Visits 200+</span>
+          <span class="metric-tag">📱 5–7 slide Carousel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"Top Doc Cincinnati. Four years running. Here's what that actually means."</div>
+            <div class="hook-detail">Slide 1: bold hook. Slides 2–6: what Top Doc is, how doctors get nominated, what it signals about the practice. Slide 7: book through the link. High save rate from prospects researching providers.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> 50+ saves · profile-visit spike · carousel completion rate above 60%
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 6 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🩺</div>
+          <div>
+            <div class="acc-title">"Why MD-Led Matters" Education Reel</div>
+            <div class="acc-sub">Differentiation · Lane 2 — Original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>The Cincinnati aesthetics market is crowded with nurse-led clinics and influencer-marketed med spas. The MD-led differentiation matters to the cosmetic patient segment but the practice doesn't articulate it consistently. A recurring "Why MD-Led" Reel format makes the case directly, without disparaging competitors. Educational tone, authority frame.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🔁 Shares 25+</span>
+          <span class="metric-tag">💾 Saves 35+</span>
+          <span class="metric-tag">📱 30–45s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"Three questions to ask before you book any aesthetic treatment."</div>
+            <div class="hook-detail">Mona to camera. Three clear questions. Each one frames why MD oversight matters: training, diagnostic capability, complication management. No competitor mentions. Educational tone. Earns shares from women planning treatments.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> 25+ shares to DMs · saves above 35 · comments asking follow-up MD-vs-nurse questions
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 7 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🏗️</div>
+          <div>
+            <div class="acc-title">Mason Build-In-Public Series</div>
+            <div class="acc-sub">Construction-arc content · Lane 2 — Original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="acc-tag tag-static">Static</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>The highest-leverage social moment your brand will ever have. Six months of construction means six months of compounding behind-the-scenes content: groundbreaking, framing, finishes, signage, equipment installs, walk-throughs, reveal. Each milestone gets a Reel plus a static photo update. Builds a Mason-specific audience before the doors open. By open day, the waitlist already exists.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">👥 Reach Spikes</span>
+          <span class="metric-tag">👤 New Followers from Mason</span>
+          <span class="metric-tag">📱 Mixed format · Recurring</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"Mason update. Here's what week 12 looks like."</div>
+            <div class="hook-detail">Recurring format. Same opening line every time. Quick walkthrough of construction progress. Mona narrates one or two design decisions per update. Pin the series to a Mason highlight. By Mason open, the highlight is the visual receipt of six months of build.</div>
+          </div>
+          <div class="hook-item">
+            <div class="hook">"Pre-launch waitlist. Open now. First 50 patients get priority booking at Mason."</div>
+            <div class="hook-detail">Carousel teaser 4 to 6 weeks before Mason open. Drives waitlist signups. Soft-launch CTA that converts the audience built across the construction arc.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Mason highlight saves · waitlist signups · DMs asking opening-date questions
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 8 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">📰</div>
+          <div>
+            <div class="acc-title">Press Feature Repurpose</div>
+            <div class="acc-sub">Vogue · People · Marie Claire · Lane 2 — Original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Mona has been featured in Vogue, People, Marie Claire, PopSugar, and RealSelf, plus serves as a Marie Claire Beauty Awards 2026 judge. Most of these features have never appeared on @cincinnatiskincenter. Each feature is a save-driving carousel waiting to be built: the publication logo, the headline, the relevant quote or insight, the practice tie-in. Repurpose one press feature per month.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">💾 Saves 60+</span>
+          <span class="metric-tag">👀 Profile Visits</span>
+          <span class="metric-tag">📱 4–6 slide Carousel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"Mona was just named a Marie Claire Beauty Awards 2026 judge. Here's what she's looking for."</div>
+            <div class="hook-detail">Slide 1: announcement. Slides 2–5: the judging criteria, what they mean for skin care, what Mona personally weighs. Slide 6: the practice and how to book. Authority compounds with every feature.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Saves above 60 · profile visits spike · comments referencing the publication
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 9 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🌆</div>
+          <div>
+            <div class="acc-title">Cincinnati Collaboration Series</div>
+            <div class="acc-sub">Cross-brand local content · Lane 2 — Original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Cincinnati fitness studios, wellness brands, salons, and lifestyle accounts share the same target audience as Cincinnati Skin Center. Most have engaged Instagram followings and underused collab opportunities. We build a recurring collab cadence: one cross-brand Reel per month with a strategic local partner. Each collab unlocks cross-audience reach that no paid ad can match.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">🔁 Shares 35+</span>
+          <span class="metric-tag">👤 New Followers from Partner</span>
+          <span class="metric-tag">📱 15–25s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"A dermatologist and a yoga instructor walk into a clinic."</div>
+            <div class="hook-detail">Conversational collab Reel with a Cincinnati wellness partner. One question each on skin, stress, and recovery. Tag the partner. Their followers find the practice. Format is recurring, the partner rotates.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> Partner repost · 35+ shares · new followers from partner audience · DMs from partner's community
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 10 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🔍</div>
+          <div>
+            <div class="acc-title">"Should I Be Worried About…" Reel</div>
+            <div class="acc-sub">Question-driven authority · Lane 2 — Original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Search-intent driven content built around the questions Cincinnati patients are already typing into Google. "Should I be worried about this mole?" "What's the difference between melasma and sunspots?" "Is this acne or rosacea?" Mona to camera, 20 to 30 seconds, evergreen. Each Reel earns saves from anyone with that specific concern and builds the medical-derm pillar that surgical-derm referrals draw on.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">💾 Saves 45+</span>
+          <span class="metric-tag">🎯 Retention 60%+</span>
+          <span class="metric-tag">📱 20–30s Reel</span>
+        </div>
+        <div class="acc-body-hooks">
+          <div class="hook-item">
+            <div class="hook">"Should you be worried about this mole? Three questions to ask first."</div>
+            <div class="hook-detail">Mona to camera. Three clinical criteria to self-check. Clear, calm tone. Ends with "Anything you're unsure about, book a skin check." Drives both saves and bookings.</div>
+          </div>
+        </div>
+        <div style="background:var(--porcelain);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--ink-soft);">
+          <strong style="color:var(--shadow);">Success signals:</strong> 45+ saves · skin-check booking DMs · retention above 60%
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>Want to understand the thinking behind these ideas?</strong> The <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="color:var(--azure);font-weight:700;text-decoration:underline;">Scroll Media Framework →</a> walks through our full ideation approach. The two-lane system, how we align formats to algorithm signals, and how every content decision maps to your specific priorities.</p>
+  </div>
+
+  <!-- LESSONS — folded into ideation -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">Lessons for Cincinnati Skin Center</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Two patterns we already see <em style="font-style:italic;color:var(--azure);">in your account and credentials.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">These aren't theoretical. Both are pulled directly from what's already on Mona's accounts and from the credential set Cincinnati Skin Center has earned but underused. Here's what they tell us about the content plan.</p>
+    <div class="inspo-grid">
+      <div class="inspo-card">
+        <div class="inspo-header">
+          <div class="inspo-handle">Lesson 01 · Founder content beats template promo</div>
+          <div class="inspo-meta">Source: @cincinnatiskincenter top posts · @drmislankar founder Reels</div>
+          <div class="inspo-desc">A Cincinnati MD with Mona's credentials running founder-led Reels at consistent cadence will outperform any number of branded promo cards. Three of the strongest existing posts on @cincinnatiskincenter are first-person founder content. That's the cue.</div>
+        </div>
+        <div class="inspo-posts">
+          <div class="inspo-post">
+            <div class="inspo-post-type">Reel · At-home treatment</div>
+            <div class="inspo-post-title">Mona walking through an at-home peel</div>
+            <div class="inspo-post-why">Already-proven format on @drmislankar. The MD on camera doing the thing reads completely differently than a branded explainer. We scale this format on @cincinnatiskincenter at a consistent cadence.</div>
+          </div>
+          <div class="inspo-post">
+            <div class="inspo-post-type">Reel · Microneedling POV</div>
+            <div class="inspo-post-title">Treatment-room walkthrough with Rosie</div>
+            <div class="inspo-post-why">Treatment walkthrough Reels consistently outperform branded promo in aesthetics. The room, the equipment, the doctor's hands. Educates and de-risks the booking in 30 seconds.</div>
+          </div>
+          <div class="inspo-post">
+            <div class="inspo-post-type">Reel · Founder POV</div>
+            <div class="inspo-post-title">"Why I chose dermatology"</div>
+            <div class="inspo-post-why">The human-behind-the-credentials post. People convert when the doctor feels both expert and human. This format is underused and high-leverage.</div>
+          </div>
+        </div>
+        <div class="inspo-lesson">
+          <p><strong>What this means for the plan:</strong> Founder-led Reels make up at least one feed post per week from Phase 2 Month 1. Mona is the differentiator. The content plan treats her as the primary on-camera asset.</p>
+        </div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-header">
+          <div class="inspo-handle">Lesson 02 · Credentials compound when surfaced</div>
+          <div class="inspo-meta">Sources: Top Doc · Vogue · People · Marie Claire · PopSugar · RealSelf</div>
+          <div class="inspo-desc">Mona is featured in Vogue, People, Marie Claire, PopSugar, RealSelf. Marie Claire Beauty Awards 2026 judge. Top Doc 22 to 25. Most of these never appear on @cincinnatiskincenter. Consistently surfacing them turns dormant authority into active conversion.</div>
+        </div>
+        <div class="inspo-posts">
+          <div class="inspo-post">
+            <div class="inspo-post-type">Carousel · Top Doc</div>
+            <div class="inspo-post-title">Top Doc four years running</div>
+            <div class="inspo-post-why">A credential most Cincinnati dermatologists don't have. A recurring Top Doc carousel makes it a permanent feed pillar instead of a one-time announcement.</div>
+          </div>
+          <div class="inspo-post">
+            <div class="inspo-post-type">Carousel · Press feature</div>
+            <div class="inspo-post-title">Marie Claire Beauty Awards 2026 judge</div>
+            <div class="inspo-post-why">Press features get repurposed monthly. One feature, one carousel: the publication logo, the headline, the relevant insight, the practice tie-in. Authority compounds with each one.</div>
+          </div>
+          <div class="inspo-post">
+            <div class="inspo-post-type">Reel · MD differentiation</div>
+            <div class="inspo-post-title">"Three questions before any aesthetic treatment"</div>
+            <div class="inspo-post-why">The MD-led credential isn't disparaging the competition. It's giving prospects a framework to evaluate any provider. Authority that educates earns shares.</div>
+          </div>
+        </div>
+        <div class="inspo-lesson">
+          <p><strong>What this means for the plan:</strong> One credential-anchored post per week in Phase 2. Press features repurposed monthly. Top Doc and MD-led positioning surface across feed, stories, and highlights so prospects encounter them at every account touchpoint.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ====================================================================
-     HERO
-     ==================================================================== -->
-<section class="hero" id="top">
-  <div class="container">
-    <span class="label">Scroll Media · Signature proposal</span>
-    <h1 class="title">The next six months is the highest-leverage window your social will ever have.</h1>
-    <p class="subtitle">A 3-week strategy build plus an ongoing execution engine. Designed to grow Kenwood today and open Mason to a packed audience.</p>
+<div class="divider"></div>
 
-    <div class="hero-meta">
-      <span><strong>Prepared for</strong> Mona Mislankar, MD, FAAD</span>
-      <span><strong>Prepared by</strong> Chase Gianattasio</span>
-      <span><strong>Date</strong> May 2026</span>
-    </div>
+<!-- ══════════ SCOPE ══════════ -->
+<div class="wrap" id="scope">
+  <div class="eyebrow">Scope of Work</div>
+  <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
+  <p class="section-sub">Everything below is included in the monthly retainer. You run the practice. We run the Instagram.</p>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div class="scope-table-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding:24px 26px;">
+    <table class="scope-table">
+      <thead><tr><th>Deliverable</th><th>Details</th><th>Incl.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Content Strategy <span class="scope-badge">Phase 1</span></td>
+          <td>Two IVPs, 5-pillar content system, format mix, Mason narrative selection, positioning and voice locks. Locked at Phase 1 strategy presentation, refined continuously.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Feed Content Production</td>
+          <td>3 feed posts per week (Reels, carousels, statics), produced and scheduled in Plann. Every post mapped to a content pillar and funnel stage.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Stories Content</td>
+          <td>2 optimized story days per week. Service highlights, behind-the-scenes, founder POV. Story-only Tuesday and Thursday.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Reshares + Engagement</td>
+          <td>3 reshares per week from collaborations, press, and patient stories where consent allows. Active community presence inside the Cincinnati wellness orbit.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Profile Optimization</td>
+          <td>Bio, link-in-bio, story highlights covers and titles, alt text on every post, geo-tag discipline. Refreshed at quarterly review.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Social SEO</td>
+          <td>Cincinnati keyword bank applied to profile, captions, highlights. Quarterly keyword review tied to current Cincinnati search trends.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Mason Build-In-Public Arc</td>
+          <td>Dedicated content roadmap mapped to construction milestones. Groundbreaking through grand open. Pre-launch waitlist campaign 4 to 6 weeks before Mason open.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management</td>
+          <td>Comment responses, DM handling, proactive outreach to local Cincinnati accounts (wellness brands, salons, fitness studios). Patient inquiries flagged and routed to the practice.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Monthly Report</td>
+          <td>Core metrics tracked across reach, engagement, and conversion. Report delivered first week of each month. Strategic adjustments documented and actioned.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Biweekly Check-ins</td>
+          <td>30-minute calls every two weeks. Content approvals, performance review, Mason milestones, upcoming priorities.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Quarterly Strategy Review</td>
+          <td>Deep-dive at end of each quarter. Roadmap updated based on data. What's working gets scaled. What isn't gets replaced.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div><!-- /scope-table-wrap -->
+  </div><!-- /card -->
+
+  <div class="insight mt-md">
+    <p><strong>Content approvals:</strong> All content submitted for approval 5 business days before publish date. Max 2 rounds of revisions per cycle, batched and discussed on biweekly calls.</p>
   </div>
-</section>
+</div>
 
-<!-- ====================================================================
-     01 · WHERE YOU ARE RIGHT NOW
-     ==================================================================== -->
-<section class="block reveal" id="now">
-  <div class="container">
-    <span class="section-num">Section 01</span>
-    <h2>Where you are right now.</h2>
+<div class="divider"></div>
 
-    <p>You're Cincinnati's Top Doc four years running. Vogue. People. Marie Claire. Board-certified MD, FAAD. Marie Claire Beauty Awards 2026 judge.</p>
+<!-- ══════════ TIMELINE ══════════ -->
+<div class="wrap" id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2 class="section-title">Strategy first. <em>First post in week 4.</em></h2>
+  <p class="section-sub">Strategy before execution, always. Sign this week and the first post goes live before the end of June.</p>
 
-    <p>Your Instagram audience is 1,184 people.</p>
-
-    <p>That gap is not a content problem. It's a positioning gap. The credential ceiling you've earned is roughly ten times the size of the audience that currently knows about it. The opportunity is not to invent a new format. It's to organize and scale what you've already shown you can do (the at-home chemical peel reel, the microneedling POV, the Marie Claire announcement) and surround it with the authority content the credential actually unlocks.</p>
+  <div class="tl-cta">
+    <div style="font-size:24px;">⚡</div>
+    <p><strong>Ready to move fast.</strong> Contract signed this week → kickoff call within 48 hours → strategy built in 3 weeks → first post live by week 4. The Mason runway gets shorter every week we wait.</p>
   </div>
-</section>
 
-<!-- ====================================================================
-     02 · WHY NOW · standout treatment
-     ==================================================================== -->
-<section class="standout reveal" id="why">
-  <div class="container">
-    <span class="section-num">Section 02</span>
-    <h2>Why now.</h2>
+  <!-- VISUAL MILESTONE TIMELINE -->
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-track">
 
-    <p>The most common reservation founders have when a major build is coming: should I wait until the new space is ready before investing in social?</p>
-
-    <p>It's a reasonable question. It's also the most expensive answer to get wrong.</p>
-
-    <div class="if-pair">
-      <div class="if-block">
-        <span class="if-kicker">If you wait</span>
-        <p>Mason opens to the audience you have today. You spend the first six months after opening trying to do social media catch-up while running a brand new location. The single most valuable content arc available to you (a real building going up in real time) is gone.</p>
-      </div>
-      <div class="if-block">
-        <span class="if-kicker">If you start now</span>
-        <p>Two things compound. Kenwood keeps converting. And every week of construction is a week of anticipation content. Groundbreaking. Framing. Finishes. Walk-throughs. Reveal. Build-in-public is one of the highest-performing organic formats on Instagram. By the time Mason opens, you're opening to an audience that's been watching you build and decided weeks ago they're booking.</p>
-      </div>
-    </div>
-
-    <p class="closer">Same dollars, very different outcome. That's the thesis. The rest of this document is how we execute against it.</p>
-  </div>
-</section>
-
-<!-- ====================================================================
-     03 · WHAT WE WOULD BUILD
-     ==================================================================== -->
-<section class="block reveal" id="build">
-  <div class="container">
-    <span class="section-num">Section 03</span>
-    <h2>What we would build.</h2>
-
-    <p>Two phases. One continuous narrative.</p>
-
-    <p><strong>Phase 1 · Signature Strategy Build (3 weeks)</strong> locks the strategic foundation. Includes a working kickoff session where your goals, patient priorities, and Mason direction get unpacked and locked in.</p>
-
-    <p><strong>Phase 2 · Growth Retainer (ongoing)</strong> is the execution engine. Weekly production, performance tracking, continuous refinement.</p>
-
-    <div class="callout">
-      <span class="kicker">Scope note</span>
-      <p>This engagement focuses on @cincinnatiskincenter (the practice account). We recognize @drmislankar runs as its own creator brand (Digital Dept lane) and Oathology is its own entity. We stay in our lane. If scope expands, we discuss it openly and price it transparently.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================================================
-     04 · PHASE 1 · SIGNATURE STRATEGY BUILD
-     ==================================================================== -->
-<section class="block reveal" id="phase1">
-  <div class="container">
-    <span class="section-num">Section 04</span>
-    <h2>Phase 1 · Signature Strategy Build.</h2>
-
-    <div class="pricing-line">
-      <strong>3 weeks · $1,917 flat</strong> · Invoiced at the Strategy Presentation, end of Week 3
-    </div>
-
-    <p>What you get:</p>
-
-    <ul>
-      <li><strong>Kickoff ideation session.</strong> A working meeting where we go three layers deep on what matters personally, in the business, and for the brand. Your goals and patient priorities get locked here.</li>
-      <li><strong>Three Ideal Viewer Profiles.</strong> One per service line (medical, cosmetic, surgical). Psychological depth, decision triggers, content format mapping.</li>
-      <li><strong>Five content pillars + format mix.</strong> Authority. Education. Outcomes. Build-in-public. Cincinnati collaborations.</li>
-      <li><strong>Positioning + voice locks.</strong> The credentialed-MD positioning that separates you from nurse-led med spas.</li>
-      <li><strong>Mason narrative selection.</strong> Two pre-built options. You pick the direction; we build the 6-month arc against it.</li>
-      <li><strong>Mason build-in-public roadmap.</strong> The dedicated content arc mapping anticipation content to your actual construction milestones. Groundbreaking through grand open.</li>
-      <li><strong>KPI + performance tracking framework.</strong> Calibrated against your real baseline at the kickoff.</li>
-      <li><strong>Strategy Presentation Deck.</strong> Customer-facing deck delivered at the end of Week 3. Yours to reference forever.</li>
-    </ul>
-
-    <h3>The two Mason narratives</h3>
-    <p>One narrative anchors every piece of Mason content for the next six months. You pick. We build.</p>
-
-    <div class="options-grid">
-      <div class="option-card">
-        <span class="option-eyebrow">Option A</span>
-        <h4>Same Mona. Same care. Bigger home.</h4>
-        <p>Continuity-led. The audience that loves Kenwood follows you to Mason because the care doesn't change. The space gets bigger; the relationship deepens. Reassuring for existing patients, inviting for new ones who've heard of you.</p>
-      </div>
-      <div class="option-card">
-        <span class="option-eyebrow">Option B</span>
-        <h4>New chapter, elevated experience.</h4>
-        <p>Reveal-led. Mason is a moment. A bigger studio, an expanded service set, a step change in what's possible inside Cincinnati Skin Center. The build-in-public arc carries weight because something genuinely new is being unveiled at the end.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================================================
-     05 · PHASE 2 · GROWTH RETAINER
-     ==================================================================== -->
-<section class="block reveal" id="phase2">
-  <div class="container">
-    <span class="section-num">Section 05</span>
-    <h2>Phase 2 · Growth Retainer.</h2>
-
-    <div class="pricing-line">
-      <strong>$3,250/mo</strong> · 3-month minimum, then month-to-month
-    </div>
-
-    <h3>Monthly output (Growth tier)</h3>
-    <ul>
-      <li>3 feed posts per week</li>
-      <li>2 optimized story days per week</li>
-      <li>3 reshares per week</li>
-    </ul>
-
-    <h3>Ongoing work</h3>
-    <ul>
-      <li>Biweekly 30-min strategy check-ins</li>
-      <li>Monthly performance report at reports.scrollmedia.co</li>
-      <li>Continuous strategy refinement against signal data</li>
-      <li>Mason milestone content production triggered against your construction timeline</li>
-      <li>1-2 Cincinnati collaboration opportunities sourced per quarter</li>
-    </ul>
-
-    <div class="callout">
-      <span class="kicker">Approvals</span>
-      <p>Content drafted 5 business days before publish. Max 2 rounds of edits per cycle. Batched at biweekly check-ins. Tracked in Plann.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================================================
-     06 · TIMELINE
-     ==================================================================== -->
-<section class="block reveal" id="timeline">
-  <div class="container">
-    <span class="section-num">Section 06</span>
-    <h2>Timeline.</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Phase</th>
-            <th>Timing</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Proposal review</td><td class="when">Late May 2026</td></tr>
-          <tr><td>Phase 1 kickoff</td><td class="when">Early June 2026</td></tr>
-          <tr><td>Strategy presentation</td><td class="when">Late June 2026</td></tr>
-          <tr><td>Phase 2 begins</td><td class="when">Late June 2026</td></tr>
-          <tr><td>First content live</td><td class="when">Early July 2026</td></tr>
-          <tr><td>Mason anticipation runway</td><td class="when">July - December 2026</td></tr>
-          <tr><td>Mason open (estimated)</td><td class="when">Late 2026 / Early 2027</td></tr>
-          <tr><td>Pre-launch waitlist push</td><td class="when">4-6 weeks before open</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>Timeline anchors to your actual construction milestones. If Mason slips, we slip with it.</p>
-  </div>
-</section>
-
-<!-- ====================================================================
-     07 · INVESTMENT
-     ==================================================================== -->
-<section class="block reveal" id="investment">
-  <div class="container">
-    <span class="section-num">Section 07</span>
-    <h2>Investment.</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Cost</th>
-            <th>When</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Phase 1 · Strategy Build (3 weeks)</td>
-            <td class="cost">$1,917 flat</td>
-            <td class="when">At Strategy Presentation</td>
-          </tr>
-          <tr>
-            <td>Phase 2 · Growth Retainer (per month)</td>
-            <td class="cost">$3,250/mo</td>
-            <td class="when">Monthly, starting at retainer activation</td>
-          </tr>
-          <tr class="total">
-            <td><strong>Initial 3-month commitment</strong></td>
-            <td class="cost"><strong>$11,667 total</strong></td>
-            <td class="when">Phase 1 + 3 months Phase 2</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>After the 3-month minimum, retainer moves to month-to-month. No re-up paperwork.</p>
-  </div>
-</section>
-
-<!-- ====================================================================
-     08 · HOW WE WORK
-     ==================================================================== -->
-<section class="block reveal" id="how">
-  <div class="container">
-    <span class="section-num">Section 08</span>
-    <h2>How we work.</h2>
-
-    <ul class="compressed">
-      <li><strong>Communication</strong> · Slack for day-to-day. Email for formal approvals. Biweekly 30-min video for strategy.</li>
-      <li><strong>Approvals</strong> · Drafted in Plann 5 business days before publish. Max 2 rounds of edits per cycle.</li>
-      <li><strong>Performance reporting</strong> · Live HTML report at reports.scrollmedia.co, end of every month.</li>
-      <li><strong>Strategic check-ins</strong> · Deeper review every six months. The strategy is a living document.</li>
-      <li><strong>Two-way honesty</strong> · If something isn't landing, you tell us. If we see something working, we tell you.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ====================================================================
-     09 · WHY SCROLL
-     ==================================================================== -->
-<section class="block reveal" id="why-scroll">
-  <div class="container">
-    <span class="section-num">Section 09</span>
-    <h2>Why Scroll.</h2>
-
-    <p>We're Cincinnati's Instagram agency for local brands. One platform, deeply. No paid ads, no TikTok, no websites. Organic Instagram strategy for a small portfolio of Cincinnati businesses.</p>
-
-    <p>Allison runs strategy and delivery. Chase runs operations and growth. Between us we've built the Signal Method, Scroll's framework for converting organic content into qualified lead signal.</p>
-
-    <p>You get the team that built the system, not a junior account manager and a template.</p>
-  </div>
-</section>
-
-<!-- ====================================================================
-     10 · NEXT STEPS · gate
-     ==================================================================== -->
-<section class="block reveal" id="next">
-  <div class="container">
-    <span class="section-num">Section 10</span>
-    <h2>Next steps.</h2>
-
-    <p>Three ways to move forward.</p>
-
-    <div class="gate">
-      <div class="path is-recommended">
-        <span class="path-num">01</span>
-        <div class="path-body">
-          <span class="recommended-flag">Recommended</span>
-          <h4>Walkthrough.</h4>
-          <p>30 min on Zoom, live walk-through of this proposal together.</p>
+      <!-- M1: Contract -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Contract Signed</div>
+          <div class="ms-items">
+            <span>✓ Onboarding form sent</span>
+            <span>✓ Kickoff call booked</span>
+          </div>
         </div>
-        <a href="https://calendly.com/scrollmedia/discovery" class="path-cta" target="_blank" rel="noopener">Book a walkthrough</a>
       </div>
 
-      <div class="path">
-        <span class="path-num">02</span>
-        <div class="path-body">
-          <h4>Async.</h4>
-          <p>Reply to the email with questions. Same-day response.</p>
+      <!-- M2: Kickoff -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Kickoff Ideation</div>
+          <div class="ms-items">
+            <span>✓ Priorities deepened</span>
+            <span>✓ Mason direction</span>
+            <span>✓ Asset access</span>
+          </div>
         </div>
-        <a href="mailto:chase@getscrollmedia.com?subject=Cincinnati%20Skin%20Center%20%C2%B7%20Proposal%20questions" class="path-cta">Reply by email</a>
       </div>
 
-      <div class="path">
-        <span class="path-num">03</span>
-        <div class="path-body">
-          <h4>Sign and start.</h4>
-          <p>Reply yes. We'll send the Services Agreement and Phase 1 invoice.</p>
+      <!-- M3: Strategy build -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Weeks 2–3</div>
+          <div class="ms-title">Strategy Build</div>
+          <div class="ms-items">
+            <span>✓ Both IVPs built</span>
+            <span>✓ Content pillars</span>
+            <span>✓ Mason arc roadmap</span>
+            <span>✓ KPI framework</span>
+          </div>
         </div>
-        <a href="mailto:chase@getscrollmedia.com?subject=Cincinnati%20Skin%20Center%20%C2%B7%20Yes%2C%20let%27s%20start" class="path-cta">Send the paperwork</a>
+      </div>
+
+      <!-- M4: Strategy presentation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">End of Week 3</div>
+          <div class="ms-title">Strategy Presentation</div>
+          <div class="ms-items">
+            <span>✓ Strategy presented</span>
+            <span>✓ Calendar approved</span>
+            <span>✓ Deck delivered</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M5: First content cycle -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 4</div>
+          <div class="ms-title">🎬 First Content Cycle</div>
+          <div class="ms-items">
+            <span>✓ First cycle drafted</span>
+            <span>✓ Routed for approval</span>
+            <span>✓ Assets ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M6: First post -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-highlight"></div>
+        <div class="ms-line ms-line-fade"></div>
+        <div class="ms-card ms-card-featured">
+          <div class="ms-week">Week 5</div>
+          <div class="ms-title">🚀 First Post Live</div>
+          <div class="ms-items">
+            <span>✓ 3 posts/week begins</span>
+            <span>✓ 2 story days/week</span>
+            <span>✓ Mason arc launches</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RECURRING RHYTHM -->
+    <div class="rhythm-row mt-lg">
+      <div class="rhythm-label">Week 5 onwards — Execution Mode</div>
+      <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once the first post is live, we move into a consistent weekly rhythm: <strong>3 feed posts every week</strong>, <strong>2 dedicated story days every week</strong> (Tue and Thu), and <strong>3 reshares every week</strong>. Mason arc content layers on top, tied to construction milestones as they hit.</div>
+      <div class="rhythm-steps">
+        <div class="rhythm-step">
+          <div class="rhythm-icon">📸</div>
+          <div class="rhythm-name">Content Capture</div>
+          <div class="rhythm-detail">Batch shoots · founder-led Reels · treatment walkthroughs</div>
+        </div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step">
+          <div class="rhythm-icon">✂️</div>
+          <div class="rhythm-name">Edit &amp; Approve</div>
+          <div class="rhythm-detail">Scroll edits · client approves · 5 business days</div>
+        </div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step">
+          <div class="rhythm-icon">📅</div>
+          <div class="rhythm-name">Weekly Posting</div>
+          <div class="rhythm-detail">3 feed posts/week<br/>2 story days (Tue · Thu)<br/>3 reshares/week</div>
+        </div>
+        <div class="rhythm-arrow">→</div>
+        <div class="rhythm-step">
+          <div class="rhythm-icon">📊</div>
+          <div class="rhythm-name">Read Signals</div>
+          <div class="rhythm-detail">Retention · Saves · Shares → adjust next cycle</div>
+        </div>
       </div>
     </div>
 
-    <p class="gate-close">Target start is early June. The earlier Phase 1 locks, the more Mason runway we keep.</p>
+    <!-- MASON OPEN MILESTONE -->
+    <div class="milestone-banner mt-md">
+      <div class="milestone-banner-icon">🏗️</div>
+      <div>
+        <div class="milestone-banner-title">Mason Open Milestone — Estimated Late 2026 / Early 2027</div>
+        <div class="milestone-banner-desc">Anticipation content runs continuously between Phase 1 lock and Mason open. We coordinate against your actual construction calendar: groundbreaking, framing, finishes, walk-throughs, reveal. If Mason slips, we slip with it. The engagement is designed to flex.</div>
+      </div>
+    </div>
 
-    <p>Looking forward to building this with you.</p>
-  </div>
-</section>
+    <!-- SAMPLE CONTENT CALENDAR -->
+    <div class="cal-wrap-outer">
+    <div class="cal-wrap mt-lg" style="min-width:480px;">
+      <div class="cal-header">
+        <div class="cal-header-title">Sample Content Calendar — Phase 2 Month 2</div>
+        <div class="cal-header-sub">Illustrative view of a standard execution week. Format names, content mix (40% TOFU / 35% MOFU / 25% BOFU), and exact hooks finalized in Phase 1 strategy.</div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day-header">Mon</div>
+        <div class="cal-day-header">Tue</div>
+        <div class="cal-day-header">Wed</div>
+        <div class="cal-day-header">Thu</div>
+        <div class="cal-day-header">Fri</div>
 
-<!-- ====================================================================
-     FOOTER
-     ==================================================================== -->
-<footer id="about">
-  <div class="container">
-    <h3>About Scroll Media</h3>
-    <p>Scroll Media is Cincinnati's Instagram agency for local brands. Boutique. Strategy-first. Organic only. We work with a small roster of founder-led brands across the Tri-State on long-term Instagram strategy and execution.</p>
-    <p>Prepared by Chase Gianattasio, Co-Founder. Reach me at <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a>.</p>
+        <!-- Week 1 -->
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Founder POV</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach · New Followers</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Patient Education</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Retention · DMs</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">Top Doc Authority</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Profile Visits</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Mason Build Update</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Shares · Reach</div>
+        </div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Treatment Demo</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Link Taps · DMs</div>
+        </div>
 
-    <div class="footer-meta">
-      <span>Cincinnati Skin Center · Signature Proposal · May 2026</span>
-      <span>Cincinnati's Instagram agency for local brands.</span>
+        <!-- Week 2 -->
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Press Feature Repurpose</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach · Shares</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Behind-the-Scenes</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Views · Replies</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">"Should I Be Worried"</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Watch Time</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Community Poll</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Engagement · DMs</div>
+        </div>
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">Service Education</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Saves · Shares</div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Mason Construction</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach · Awareness</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Founder Q&amp;A</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies · Saves</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">Collaboration Spotlight</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Profile Visits</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Treatment Spotlight</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Link Taps · DMs</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Patient Story</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Shares</div>
+        </div>
+
+      </div>
+      <div class="cal-legend">
+        <span class="leg tofu-leg">TOFU — Reach &amp; Discovery</span>
+        <span class="leg mofu-leg">MOFU — Trust &amp; Education</span>
+        <span class="leg bofu-leg">BOFU — Booking &amp; Conversion</span>
+        <span class="leg story-leg">Story Days — Tue &amp; Thu</span>
+      </div>
+    </div><!-- /cal-wrap -->
+    </div><!-- /cal-wrap-outer -->
+  </div><!-- /milestone-wrap -->
+</div>
+
+<!-- ══════════ WHAT WE NEED ══════════ -->
+<div class="wrap" id="what-we-need">
+  <div class="eyebrow">What We Need From You</div>
+  <h2 class="section-title">Your side <em>of the equation.</em></h2>
+  <p class="section-sub">This works when both sides show up. Here's what we need from Cincinnati Skin Center to hit the ground running in Week 1.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-label">At Phase 1 Kickoff</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>60 minutes of your time</strong> for the kickoff ideation session (in person or live video).</li>
+        <li><strong>Access to your existing brand assets</strong> (logo files, brand guidelines if documented, headshot library, past content).</li>
+        <li><strong>Voice samples.</strong> Recent emails, captions, voicemails, anything that captures how you sound when you're being yourself.</li>
+        <li><strong>Press tear sheets and mention links</strong> (Vogue, People, Marie Claire, PopSugar, RealSelf). We'll repurpose these.</li>
+        <li><strong>Patient consent posture.</strong> What we can show (before/afters, treatment shots, patient quotes) and what stays off-camera.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Ongoing (Phase 2)</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>30 minutes every two weeks</strong> for the biweekly check-in.</li>
+        <li><strong>Content approval turnaround</strong> within 5 business days.</li>
+        <li><strong>Access to your Plann account</strong> (we'll set this up).</li>
+        <li><strong>Construction milestone updates</strong> so Mason content stays in sync with the real build.</li>
+        <li><strong>Heads-up on press wins, awards, partnerships, or major service launches</strong> as they happen.</li>
+      </ul>
     </div>
   </div>
+
+  <div class="insight mt-md">
+    <p><strong>Your time commitment:</strong> Roughly 60 minutes at Phase 1 kickoff, 30 minutes every two weeks ongoing, and occasional 15-minute shoot windows for founder-led Reels (we batch shoot to minimize disruption). That's it. Total founder time is designed to be a few hours per month, not a few hours per week.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ INVESTMENT ══════════ -->
+<div class="wrap" id="investment">
+  <div class="eyebrow">Investment</div>
+  <h2 class="section-title">What it <em>costs.</em></h2>
+  <p class="section-sub">Straightforward pricing. No hidden fees. Billed month-by-month after the 3-month minimum.</p>
+
+  <div class="inv-hero">
+    <div class="inv-hero-label">Signature Package — Growth Tier · 3-Month Initial Engagement</div>
+    <h3>Cincinnati Skin Center</h3>
+    <div class="inv-hero-sub">Phase 1 locks the strategy. Phase 2 executes against it. The Mason runway is the highest-leverage social window your brand will ever have, and the engagement is built to capture it.</div>
+    <div class="inv-hero-row">
+      <div class="inv-hero-stat">
+        <div class="amount">$3,250</div>
+        <div class="lbl">Monthly retainer (Phase 2)</div>
+      </div>
+      <div class="inv-hero-stat">
+        <div class="amount">$11,667</div>
+        <div class="lbl">Total 3-month engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-breakdown">
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 1 — Strategy Build (Weeks 1–3)</strong>
+        <small>Kickoff ideation · two IVPs · 5-pillar content system · Mason narrative selection · Mason build-in-public roadmap · KPI framework · Strategy Presentation Deck</small>
+      </div>
+      <div class="amt">$1,917</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 2 — Month 1 Execution</strong>
+        <small>3 posts/week · 2 story days · 3 reshares · biweekly check-in · monthly report · profile optimization · Social SEO</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 2 — Month 2 Execution</strong>
+        <small>3 posts/week · 2 story days · 3 reshares · biweekly check-in · monthly report · Mason milestone content · community management</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Phase 2 — Month 3 Execution</strong>
+        <small>3 posts/week · 2 story days · 3 reshares · biweekly check-in · monthly report · quarterly strategy review · Mason milestone content</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row total">
+      <div class="item"><strong>3-Month Total</strong><small>Billed monthly</small></div>
+      <div class="amt">$11,667</div>
+    </div>
+  </div>
+
+  <div class="credit-note mt-md">
+    ★ After the initial 3-month engagement, Cincinnati Skin Center rolls into a monthly retainer at $3,250/month. No additional strategy fees, no resets. Month-to-month from there.
+  </div>
+
+  <div class="g2 mt-lg">
+    <div class="card">
+      <div class="card-label">Included every month</div>
+      <ul class="tick-list mt-sm">
+        <li>3 feed posts per week (Reels, carousels, statics)</li>
+        <li>2 dedicated story days per week (Tue and Thu)</li>
+        <li>3 reshares per week from collabs, press, and patient stories</li>
+        <li>All copywriting, hooks, and Social SEO</li>
+        <li>Profile optimization and quarterly keyword review</li>
+        <li>Mason build-in-public content tied to construction milestones</li>
+        <li>Community management and proactive outreach</li>
+        <li>Monthly performance report</li>
+        <li>Biweekly 30-min check-in calls</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Phase 1 strategy deliverables</div>
+      <ul class="tick-list mt-sm">
+        <li>Cosmetic Patient IVP</li>
+        <li>Medical &amp; Pediatric Patient IVP</li>
+        <li>5-pillar content framework (TOFU / MOFU / BOFU)</li>
+        <li>Social SEO keyword bank (4 tiers)</li>
+        <li>Mason build-in-public arc roadmap</li>
+        <li>Profile and bio optimization</li>
+        <li>Format mix and content cadence</li>
+        <li>Brand voice direction</li>
+        <li>Strategy Presentation Deck</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ NEXT STEPS ══════════ -->
+<div class="wrap" id="next-steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2 class="section-title">How we <em>move forward.</em></h2>
+  <p class="section-sub">Questions before signing? Chase is available to answer over email or jump on a quick call.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-n">Step 01</div>
+      <h3>Sign the Contract</h3>
+      <p>Chase sends the Signature Package contract within 24 hours of approval. E-sign takes under 5 minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 02</div>
+      <h3>Complete Onboarding Form</h3>
+      <p>Sent immediately after signing. Covers brand story, service priorities, audience details, and Mason construction calendar access. Takes about 20 minutes. Forms the foundation of the kickoff.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 03</div>
+      <h3>Kickoff Call</h3>
+      <p>Scheduling unlocks after the onboarding form is submitted. Phase 1 starts immediately. First post live before the end of June.</p>
+    </div>
+  </div>
+
+  <div class="cta-block mt-lg">
+    <h2>Ready to move?</h2>
+    <p>Reply to this proposal or reach Chase directly. A contract can be sent today.</p>
+    <a href="mailto:chase@getscrollmedia.com" class="cta-btn">chase@getscrollmedia.com</a>
+    <div class="cta-sub">Prefer a quick call first? Just reply, happy to connect before anything moves forward.</div>
+  </div>
+</div>
+
+<footer>
+  <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
 </footer>
 
-<!-- ====================================================================
-     SCRIPT — scroll-spy + scroll-reveal
-     ==================================================================== -->
 <script>
-  // Scroll-spy: highlight the topbar nav link for the section in view.
-  (function () {
-    var sections = Array.prototype.slice.call(
-      document.querySelectorAll('section[id]')
-    );
-    var navLinks = Array.prototype.slice.call(
-      document.querySelectorAll('#navLinks a')
-    );
-    function setActive() {
-      var top = window.scrollY + 100;
-      var current = null;
-      for (var i = 0; i < sections.length; i++) {
-        if (sections[i].offsetTop <= top) current = sections[i].id;
-      }
-      navLinks.forEach(function (link) {
-        var href = link.getAttribute('href').replace('#', '');
-        if (href === current) link.classList.add('active');
-        else link.classList.remove('active');
-      });
-    }
-    window.addEventListener('scroll', setActive, { passive: true });
-    window.addEventListener('load', setActive);
-  })();
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
 
-  // Scroll-reveal: one-shot fade-in via IntersectionObserver.
-  (function () {
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var els = document.querySelectorAll('.reveal');
-    if (reduce || !('IntersectionObserver' in window)) {
-      Array.prototype.forEach.call(els, function (el) { el.classList.add('in-view'); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-  })();
+  // Scroll-spy
+  const sections = ['heard','strategy','seo','ideation','scope','timeline','what-we-need','investment','next-steps'];
+  const links = document.querySelectorAll('.nav-links a[data-section]');
+  function onScroll() {
+    const y = window.scrollY + 80;
+    let active = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) active = id; });
+    links.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // IVP tabs
+  function switchTab(idx) {
+    document.querySelectorAll('.ivp-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.ivp-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
+
+  // Accordion
+  function toggleAcc(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  }
 </script>
-
 </body>
 </html>

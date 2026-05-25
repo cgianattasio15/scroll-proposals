@@ -508,7 +508,182 @@
       .proof-card-footer p { font-size:14px; }
       .proof-quote p { font-size:16px; }
       .diff-card p { font-size:14px; }
+      .goal-headline { font-size:14px; }
+      .goal-card p { font-size:14px; }
+      .mason-summary-tease { font-size:14px; }
+      .mason-body p { font-size:14px; }
+      .tier-explainer { font-size:14px; }
+      .rhythm-detail { font-size:14px; }
     }
+
+    /* ══ V6 ADDITIONS ══ */
+
+    /* Goal card v6: two-tier headline + concise application */
+    .goal-headline {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.4;
+    }
+    .goal-application {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+    }
+
+    /* Proof card v6 funnel pill (top-right) */
+    .proof-card-head {
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:14px; margin-bottom:0;
+    }
+    .proof-card-head > div { flex:1; min-width:0; }
+    .funnel-pill {
+      display:inline-block; font-size:10px; font-weight:700;
+      letter-spacing:.07em; text-transform:uppercase;
+      padding:4px 10px; border-radius:4px; white-space:nowrap; flex-shrink:0;
+    }
+    .funnel-pill.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .funnel-pill.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .funnel-pill.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* BOFU conversion-led metrics grid (replaces dashboard-body for Card 3) */
+    .bofu-conv-metrics {
+      display:grid; grid-template-columns:1fr 1fr; gap:14px;
+      padding:8px 0 16px;
+    }
+    @media(max-width:640px){ .bofu-conv-metrics{ grid-template-columns:1fr; } }
+    .bofu-conv-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px; background:var(--porcelain); border-radius:8px;
+      gap:12px;
+    }
+    .bofu-conv-label {
+      font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .bofu-conv-value {
+      font-size:22px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1;
+    }
+    .bofu-conv-delta {
+      display:inline-flex; align-items:center; gap:3px;
+      font-size:11px; font-weight:700; color:var(--ig-up);
+      background:rgba(0,186,124,.1); padding:3px 8px; border-radius:4px;
+      white-space:nowrap; margin-top:4px;
+    }
+    .bofu-conv-meta { display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
+    .bofu-reach-callout {
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-radius:8px; padding:12px 16px; margin-bottom:14px;
+    }
+    .bofu-reach-callout p {
+      font-size:13px; color:var(--ink-mid); line-height:1.55;
+    }
+    .bofu-reach-callout p strong { color:var(--shadow); }
+
+    /* Mason runway native collapsibles */
+    .mason-collapsibles { display:flex; flex-direction:column; gap:0; }
+    details.mason-row {
+      border-bottom:1px solid var(--border);
+      background:#fff;
+    }
+    details.mason-row:last-child { border-bottom:none; }
+    details.mason-row > summary {
+      display:grid; grid-template-columns:32px 1fr 24px; gap:14px;
+      align-items:center; padding:18px 4px;
+      cursor:pointer; user-select:none; list-style:none;
+      min-height:44px; transition:background .15s;
+    }
+    details.mason-row > summary::-webkit-details-marker { display:none; }
+    details.mason-row > summary:hover { background:var(--porcelain); }
+    .mason-dot {
+      width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:800; flex-shrink:0;
+    }
+    .mason-summary-text {
+      display:flex; flex-direction:column; gap:3px; min-width:0;
+    }
+    .mason-summary-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3;
+    }
+    .mason-summary-tease {
+      font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+    .mason-chev {
+      font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0;
+      justify-self:end;
+    }
+    details.mason-row[open] .mason-chev { transform:rotate(180deg); }
+    .mason-body {
+      padding:0 4px 18px 46px;
+    }
+    .mason-body p {
+      font-size:14px; color:var(--ink-mid); line-height:1.65;
+    }
+    @media(max-width:640px){
+      details.mason-row > summary { padding:16px 4px; }
+      .mason-body { padding:0 4px 16px 4px; }
+    }
+
+    /* Social SEO v6: tier explainer + subtitles */
+    .tier-explainer {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+      margin-bottom:18px; padding:12px 16px;
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-radius:8px;
+    }
+    .tier-header {
+      display:flex; flex-direction:column; gap:2px; margin-bottom:10px;
+    }
+    .tier-label {
+      font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .tier-subtitle {
+      font-size:12px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+
+    /* Timeline v6: weekly block grids + transition strip */
+    .week-blocks {
+      display:grid; gap:14px;
+    }
+    .week-blocks.cols-3 { grid-template-columns:repeat(3,1fr); }
+    .week-blocks.cols-2 { grid-template-columns:repeat(2,1fr); }
+    @media(max-width:760px){
+      .week-blocks.cols-3, .week-blocks.cols-2 { grid-template-columns:1fr; }
+    }
+    .week-block {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:22px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .week-num {
+      width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; font-weight:800; flex-shrink:0;
+    }
+    .week-block.execution .week-num { background:var(--green); }
+    .week-label {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .week-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3;
+    }
+    .week-desc {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+    }
+    .phase-eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--azure); margin-bottom:12px;
+    }
+    .phase-eyebrow.execution { color:var(--green); }
+    .transition-strip {
+      background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.32);
+      border-left:4px solid #c8d600; border-radius:var(--radius);
+      padding:18px 22px; margin:18px 0;
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .transition-strip-icon { font-size:22px; flex-shrink:0; }
+    .transition-strip-body p {
+      font-size:14px; color:var(--ink-mid); line-height:1.6;
+    }
+    .transition-strip-body p strong { color:var(--shadow); }
   </style>
 </head>
 <body>
@@ -565,63 +740,69 @@
 <!-- ══════════ 01 · WHAT WE KNOW ══════════ -->
 <div class="wrap" id="know">
   <div class="eyebrow">What We Know</div>
-  <h2 class="section-title">Three priorities. <em>One system.</em></h2>
-  <p class="section-sub">Everything in this proposal maps to what you and Allison discussed and what we observed across your account and credentials. Three priorities — top, middle, and bottom of the funnel — shape every strategic decision.</p>
+  <h2 class="section-title">Three goals. <em>One system.</em></h2>
+  <p class="section-sub">Every dollar in this engagement maps to one of three goals — top, middle, and bottom of the funnel. Here's what we commit to and how we measure it.</p>
 
   <div class="goals-grid">
     <div class="goal-card">
       <div class="goal-num">01</div>
-      <h4>Further establish your brand awareness</h4>
-      <p><strong>The agency lens.</strong> Top-of-funnel awareness is about getting your brand in front of the audience that should already know about it. Reach is the wedge. We use organic content to expand the audience you can talk to before any conversion conversation happens.</p>
-      <p><strong>Applied here.</strong> You've built a credentialed practice with real authority — Top Doc four years running, Vogue, People, Marie Claire, MD-led aesthetics. The audience that knows about it is 1,184 people. The audience that should know about it is much larger. We get you in front of the Cincinnati audience that's currently scrolling past nurse-led med spas because nobody has shown them the alternative.</p>
+      <h4>Build brand awareness</h4>
+      <p class="goal-headline">Get your name in front of the right Cincinnati audience.</p>
+      <p class="goal-application">Most people who would book Cincinnati Skin Center don't know it exists. We expand the audience that sees your work, with content built for the people most likely to walk through your door.</p>
       <span class="goal-tag tag-tofu">TOFU · Awareness</span>
     </div>
     <div class="goal-card">
       <div class="goal-num">02</div>
-      <h4>Build authority and engagement that earns trust</h4>
-      <p><strong>The agency lens.</strong> Middle-of-funnel is about earning the consideration. Education, expertise, and engagement turn awareness into trust. The audience starts to see you as the credible choice, not just a familiar name.</p>
-      <p><strong>Applied here.</strong> Cincinnati has plenty of med spas. What it doesn't have is a clear story of why MD-led, board-certified dermatology delivers a different outcome. Education content, treatment walkthroughs, founder-led demos (the at-home chemical peel and microneedling formats you've already proven work) — these are what make Cincinnati Skin Center the obvious choice when someone is comparing options.</p>
+      <h4>Earn trust and authority</h4>
+      <p class="goal-headline">Turn that awareness into trust.</p>
+      <p class="goal-application">Cincinnati has plenty of med spas. It doesn't have a clear story of why MD-led, board-certified dermatology delivers a different outcome. Education, treatment walkthroughs, and credentialed founder content make Cincinnati Skin Center the obvious choice when prospects are comparing options.</p>
       <span class="goal-tag tag-mofu">MOFU · Authority</span>
     </div>
     <div class="goal-card">
       <div class="goal-num">03</div>
-      <h4>Convert awareness into booked patients and a Mason waitlist</h4>
-      <p><strong>The agency lens.</strong> Bottom-of-funnel is where attention becomes action. Calls-to-action, lead capture, and conversion infrastructure turn engaged followers into booked customers.</p>
-      <p><strong>Applied here.</strong> Every piece of content needs a job. The highest-priority conversion targets are Kenwood bookings (today's revenue) and the Mason waitlist (tomorrow's revenue). Content drives both, with CTAs and lead-capture mechanics that match the audience and the moment.</p>
+      <h4>Convert into booked patients</h4>
+      <p class="goal-headline">Convert that trust into bookings and a Mason waitlist.</p>
+      <p class="goal-application">The audience is ready. We give them the calls-to-action, lead-capture mechanics, and conversion infrastructure to take the next step — both for Kenwood today and the Mason waitlist for tomorrow.</p>
       <span class="goal-tag tag-bofu">BOFU · Conversion</span>
     </div>
   </div>
 
   <div class="insight mt-lg">
-    <p><strong>How this maps to our framework.</strong> Priority 1 (Awareness) = TOFU content arc, weighted toward reach and discovery. Priority 2 (Authority + Engagement) = MOFU content arc, weighted toward saves, education depth, and DM activity. Priority 3 (Conversion) = BOFU content arc, weighted toward link taps, booking inquiries, and waitlist signups. Every post is mapped to one of these three. Nothing goes live without a strategic purpose.</p>
+    <p><strong>How we measure success.</strong> Each goal has its own performance metrics, calibrated to the psychological stage the audience is in.</p>
+    <ul class="arrow-list mt-sm" style="margin-top:12px;">
+      <li><strong>Top of funnel — Awareness.</strong> Reach, non-follower views, accounts reached, profile visits. We're getting your brand in front of new eyes who fit your ideal viewer profile.</li>
+      <li><strong>Middle of funnel — Trust + authority.</strong> Saves, shares, comments, story replies, watch time. The audience is paying attention, building familiarity, and starting to see you as the credible choice.</li>
+      <li><strong>Bottom of funnel — Conversion.</strong> Link taps, business address taps, DMs, waitlist signups, booking inquiries. Attention becomes action.</li>
+    </ul>
+    <p style="margin-top:12px;">The strategy walks your audience through a complete purchasing journey — awareness, trust, conversion. Every piece of content has a job inside that journey. Nothing goes live without a strategic purpose.</p>
   </div>
 
   <!-- DIFFERENTIATORS BLOCK -->
   <div class="mt-lg">
     <div class="eyebrow" style="margin-top:0;">What Sets You Apart</div>
     <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Four differentiators <em style="font-style:italic;color:var(--azure);">no Cincinnati med spa can replicate.</em></h3>
-    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Cincinnati Skin Center carries credentials most local practices will never have. Each one becomes a recurring authority pillar in the content system.</p>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Cincinnati Skin Center carries credentials and capabilities most local practices will never have. Each one becomes a recurring authority pillar in the content system.</p>
 
     <div class="diff-grid">
       <div class="diff-card">
         <div class="diff-num">Differentiator 01</div>
-        <h4>Board-certified MD-led, not nurse-led</h4>
-        <p>Cincinnati's med spa landscape is dominated by nurse-led and aesthetician-led practices. Cincinnati Skin Center is MD-led, board-certified, and fellowship-trained. That's a hard-to-replicate credential ceiling and the foundation of every authority content angle.</p>
+        <h4>From newborn skin to adult dermatology — one MD, all ages</h4>
+        <p>Mona treats patients from infancy through adulthood. That's rare in Cincinnati dermatology — most practices specialize in either pediatric or adult care, not both. For families, that means one trusted provider for everyone. For content, that means a much wider audience to speak to.</p>
       </div>
       <div class="diff-card">
         <div class="diff-num">Differentiator 02</div>
-        <h4>Top Doc four years running</h4>
-        <p>Cincinnati Top Doc 2022, 2023, 2024, 2025. That's not a one-time award. It's a sustained peer-recognized signal of clinical excellence. Surfacing this consistently turns dormant authority into active distinction.</p>
+        <h4>Full medical scope under a single fellowship-trained MD</h4>
+        <p>Most Cincinnati med spas can't treat skin cancer, eczema, psoriasis, or pediatric atopic dermatitis. Most pediatric dermatologists can't deliver high-end cosmetic outcomes. Cincinnati Skin Center does all of it — medical, surgical, and cosmetic — because Mona is fellowship-trained across the full scope.</p>
       </div>
       <div class="diff-card">
         <div class="diff-num">Differentiator 03</div>
-        <h4>Press credentials most Cincinnati practices will never have</h4>
-        <p>Vogue. People. Marie Claire. PopSugar. RealSelf. Marie Claire Beauty Awards 2026 judge. National press is rare for a Cincinnati medical practice. We repurpose it into a recurring authority pillar instead of letting it sit dormant.</p>
+        <h4>Sustained Top Doc recognition + national press authority</h4>
+        <p>Cincinnati Top Doc 2022, 2023, 2024, 2025. Vogue. People. Marie Claire. PopSugar. RealSelf. Marie Claire Beauty Awards 2026 judge. National-level recognition that has built and held for four straight years. Most local practices don't get one of these signals. You have all of them.</p>
       </div>
       <div class="diff-card">
         <div class="diff-num">Differentiator 04</div>
-        <h4>Full-spectrum: medical, surgical, cosmetic, pediatric</h4>
-        <p>Many Cincinnati providers offer one or two service lines. Cincinnati Skin Center offers all four. That breadth is a marketing asset, not a brand confusion problem — it lets us run multiple audience-matched content streams from a single account.</p>
+        <h4>MD-led, not nurse-led</h4>
+        <p>Cincinnati's med spa landscape is dominated by nurse-led and aesthetician-led practices. Cincinnati Skin Center is MD-led, board-certified, fellowship-trained. Patients aren't guessing whether the person providing their care is qualified.</p>
       </div>
     </div>
   </div>
@@ -632,15 +813,20 @@
 <!-- ══════════ 02 · PROOF ══════════ -->
 <div class="wrap" id="proof">
   <div class="eyebrow">What the Work Does</div>
-  <h2 class="section-title">Performance. <em>Not promises.</em></h2>
-  <p class="section-sub">The strategy we're proposing is the same system we run for every Signature client. Here's what it produces.</p>
+  <h2 class="section-title">Performance. <em>Across the funnel.</em></h2>
+  <p class="section-sub">The strategy we're proposing is the same system we run for every Signature client. Here's what it produces — one piece of proof per funnel stage.</p>
 
   <div class="proof-stack">
 
-    <!-- PROOF CARD 1 · Reel detail (skincare practice) -->
+    <!-- PROOF CARD 1 · TOFU REACH PROOF · Cincinnati skincare practice -->
     <div class="proof-card">
-      <div class="proof-card-eyebrow">A Cincinnati skincare practice we work with</div>
-      <div class="proof-card-pill">Reel · Feb 2026</div>
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati skincare practice we work with</div>
+          <div class="proof-card-pill">Reel · Feb 2026</div>
+        </div>
+        <span class="funnel-pill tofu">TOFU · Reach Proof</span>
+      </div>
 
       <div class="proof-metrics-grid">
         <div class="proof-metric">
@@ -648,8 +834,16 @@
           <div class="proof-metric-label">Views</div>
         </div>
         <div class="proof-metric">
-          <div class="proof-metric-value pct">7.73%</div>
-          <div class="proof-metric-label">Engagement rate</div>
+          <div class="proof-metric-value">1,177</div>
+          <div class="proof-metric-label">Starting reach</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">21×</div>
+          <div class="proof-metric-label">Algorithmic multiple</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">97%</div>
+          <div class="proof-metric-label">Non-follower reach</div>
         </div>
         <div class="proof-metric">
           <div class="proof-metric-value">59</div>
@@ -659,127 +853,110 @@
           <div class="proof-metric-value">18</div>
           <div class="proof-metric-label">Shares</div>
         </div>
-        <div class="proof-metric">
-          <div class="proof-metric-value">1,177</div>
-          <div class="proof-metric-label">Starting reach</div>
-        </div>
-        <div class="proof-metric">
-          <div class="proof-metric-value">21×</div>
-          <div class="proof-metric-label">Reach multiple</div>
-        </div>
       </div>
 
       <div class="proof-card-footer">
-        <p><strong>Why this matters.</strong> Reel pushed to 21× its starting reach by the algorithm. 59 saves on 1,177 reach equals a 5% save rate — exceptional Tier 1 signal. This is med-aesthetics content compounding outside the existing audience.</p>
+        <p><strong>Why this matters.</strong> A reel that started with 1,177 of follower-reach exposure got pushed by the algorithm to 25,432 views — a 21× multiple, with 97% of those views from people outside the existing follower base. This is what brand awareness in your category looks like when content is built for reach.</p>
       </div>
     </div>
 
-    <!-- PROOF CARD 2 · Account dashboard (fitness studio) -->
+    <!-- PROOF CARD 2 · MOFU ENGAGEMENT PROOF · Cincinnati lifestyle brand -->
     <div class="proof-card">
-      <div class="proof-card-eyebrow">An Oakley boutique fitness studio we work with</div>
-      <div class="proof-card-pill">Last 30 days</div>
-
-      <div class="proof-dashboard-body">
+      <div class="proof-card-head">
         <div>
-          <div class="proof-donut">
-            <svg class="proof-donut-svg" viewBox="0 0 120 120">
-              <circle class="proof-donut-track" cx="60" cy="60" r="50"/>
-              <circle class="proof-donut-fill" cx="60" cy="60" r="50"
-                stroke-dasharray="278.4 35.7"/>
-            </svg>
-            <div class="proof-donut-center">
-              <div class="proof-donut-label">Views</div>
-              <div class="proof-donut-value">503,843</div>
-            </div>
-          </div>
-          <div class="proof-donut-legend">
-            <div class="proof-donut-legend-row">
-              <div class="proof-donut-dot nonfollowers"></div>
-              <span><strong style="color:var(--shadow);">88.6%</strong> Non-followers</span>
-            </div>
-            <div class="proof-donut-legend-row">
-              <div class="proof-donut-dot followers"></div>
-              <span><strong style="color:var(--shadow);">11.4%</strong> Followers</span>
-            </div>
-          </div>
+          <div class="proof-card-eyebrow">A Cincinnati lifestyle brand we work with</div>
+          <div class="proof-card-pill">Reel · Nov 2025</div>
         </div>
-
-        <div class="proof-dashboard-metrics">
-          <div class="proof-dash-row">
-            <div class="proof-dash-label">Accounts reached</div>
-            <div style="display:flex;align-items:center;gap:10px;">
-              <div class="proof-dash-value">355,689</div>
-              <div class="proof-dash-delta">↑ 4,290.7%</div>
-            </div>
-          </div>
-          <div class="proof-dash-row">
-            <div class="proof-dash-label">Profile activity</div>
-            <div style="display:flex;align-items:center;gap:10px;">
-              <div class="proof-dash-value">1,580</div>
-              <div class="proof-dash-delta">↑ 152.0%</div>
-            </div>
-          </div>
-          <div class="proof-dash-row">
-            <div class="proof-dash-label">External link taps</div>
-            <div style="display:flex;align-items:center;gap:10px;">
-              <div class="proof-dash-value">94</div>
-              <div class="proof-dash-delta">↑ 213.3%</div>
-            </div>
-          </div>
-          <div class="proof-dash-row">
-            <div class="proof-dash-label">Business address taps</div>
-            <div style="display:flex;align-items:center;gap:10px;">
-              <div class="proof-dash-value">9</div>
-              <div class="proof-dash-delta">↑ 350%</div>
-            </div>
-          </div>
-        </div>
+        <span class="funnel-pill mofu">MOFU · Engagement Proof</span>
       </div>
-
-      <div class="proof-hero-reel">
-        <div class="proof-hero-reel-label">Hero reel from this period</div>
-        <p><strong>457,213 views in 7 days</strong> · 17K likes · 14K shares · 831 saves · 32,683 interactions (97.4% non-followers)</p>
-      </div>
-
-      <div class="proof-card-footer">
-        <p><strong>Why this matters.</strong> This is what happens when content lands. Algorithmic distribution, non-follower reach, and measurable profile-to-conversion lift. The link-tap and address-tap deltas are exactly the metrics that translate to booking a service.</p>
-      </div>
-    </div>
-
-    <!-- PROOF CARD 3 · Reel detail (boutique retail) -->
-    <div class="proof-card">
-      <div class="proof-card-eyebrow">A Cincinnati boutique retail brand we work with</div>
-      <div class="proof-card-pill">Founder-credential reel · Sep 2025</div>
 
       <div class="proof-metrics-grid">
         <div class="proof-metric">
-          <div class="proof-metric-value">13,063</div>
+          <div class="proof-metric-value">15,265</div>
           <div class="proof-metric-label">Views</div>
         </div>
         <div class="proof-metric">
-          <div class="proof-metric-value">8,851</div>
-          <div class="proof-metric-label">Reach</div>
+          <div class="proof-metric-value pct">78.9%</div>
+          <div class="proof-metric-label">View rate</div>
         </div>
         <div class="proof-metric">
-          <div class="proof-metric-value">317</div>
-          <div class="proof-metric-label">Likes</div>
-        </div>
-        <div class="proof-metric">
-          <div class="proof-metric-value">45</div>
+          <div class="proof-metric-value">246</div>
           <div class="proof-metric-label">Comments</div>
         </div>
         <div class="proof-metric">
-          <div class="proof-metric-value pct">4.33%</div>
-          <div class="proof-metric-label">Engagement rate</div>
+          <div class="proof-metric-value">97</div>
+          <div class="proof-metric-label">Shares</div>
         </div>
         <div class="proof-metric">
-          <div class="proof-metric-value pct">43.1%</div>
-          <div class="proof-metric-label">View rate</div>
+          <div class="proof-metric-value">10</div>
+          <div class="proof-metric-label">Reposts</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">4.95%</div>
+          <div class="proof-metric-label">Engagement rate</div>
         </div>
       </div>
 
       <div class="proof-card-footer">
-        <p><strong>Why this matters.</strong> Founder-led "15+ year professional" credential framing applied to a single educational tip. This is the format pattern we'd build for Mona — credentialed expert authority delivered in a tight, repeatable reel structure. Comments and reposts demonstrate the format earns active engagement, not just passive views.</p>
+        <p><strong>Why this matters.</strong> Reach without engagement is just attention. The middle of the funnel is where attention becomes trust. This reel held 78.9% view-through, sparked 246 active conversations in comments, and got reposted 10 times. That's the audience starting to talk back, share with friends, and pull the brand into their own social orbit.</p>
+      </div>
+    </div>
+
+    <!-- PROOF CARD 3 · BOFU CONVERSION PROOF · Cincinnati boutique fitness studio -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati boutique fitness studio we work with</div>
+          <div class="proof-card-pill">Account-level performance · Last 30 days</div>
+        </div>
+        <span class="funnel-pill bofu">BOFU · Conversion Proof</span>
+      </div>
+
+      <div class="bofu-conv-metrics">
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">External link taps</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">94</div>
+            <div class="bofu-conv-delta">↑ 213.3%</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Business address taps</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">9</div>
+            <div class="bofu-conv-delta">↑ 350%</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Profile activity</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">1,580</div>
+            <div class="bofu-conv-delta">↑ 152.0%</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Profile visits</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">1,477</div>
+            <div class="bofu-conv-delta">↑ 148.2%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bofu-reach-callout">
+        <p><strong>Account-level reach in the same period:</strong> 355,689 accounts reached (↑ 4,290.7%). The reach gave us the audience. The conversion metrics show what that audience did with their attention.</p>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> This is the bottom of the funnel doing its job. People tapping the link to book. People tapping the address to navigate to the studio. People visiting the profile to learn more. Reach is a means to an end — these are the metrics that translate to actual revenue.</p>
       </div>
     </div>
 
@@ -817,8 +994,8 @@
   <p class="section-sub">Two audiences. One credentialed-MD position. Every piece of content knows which audience it's talking to and where it's meeting them in their journey.</p>
 
   <div class="ivp-tabs">
-    <div class="ivp-tab active" onclick="switchTab(0)">Core Audience — Inside the House</div>
-    <div class="ivp-tab" onclick="switchTab(1)">Conversion Audience — Outside the House</div>
+    <div class="ivp-tab active" onclick="switchTab(0)">The Cincinnati Skin Family · Core Audience — Inside the House</div>
+    <div class="ivp-tab" onclick="switchTab(1)">The Credential-Curious · Conversion Audience — Outside the House</div>
   </div>
   <div class="ivp-panels">
     <div class="ivp-panel active" id="ivp-0">
@@ -890,57 +1067,93 @@
   <div class="mt-lg">
     <div class="eyebrow" style="margin-top:0;">Unique to Your Engagement</div>
     <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The Mason runway. <em style="font-style:italic;color:var(--azure);">A 6-month anticipation arc.</em></h3>
-    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">You're not just opening a new office. You're building a public anticipation arc that turns construction itself into content. This is the strategic feature of the engagement and the single biggest leverage point we have between now and Mason open.</p>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Six months between now and Mason open is the highest-leverage social media window your brand will ever have. We treat construction itself as content — every milestone becomes audience-building.</p>
 
-    <div class="card">
-      <div class="phase-flow">
-        <div class="phase-item">
-          <div class="phase-dot">1</div>
-          <div class="phase-body">
-            <h4>Pre-build · Months 0–1 — Foundation &amp; Tease</h4>
+    <div class="card" style="padding:8px 22px;">
+      <div class="mason-collapsibles">
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">1</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Pre-build · Months 0–1 · Foundation &amp; Tease</div>
+              <div class="mason-summary-tease">The announcement that Mason is coming. Audience kickoff. CTA: join the Mason waitlist.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
             <p>Audience build kicks off with the announcement that Mason is coming. Voice: confident, intentional, brand-consistent. Content: founder-led explanation of why a new location, what Mason patients will get, when to expect it. CTA: join the Mason waitlist (we build a simple capture mechanic via link-in-bio).</p>
           </div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">2</div>
-          <div class="phase-body">
-            <h4>Groundbreaking &amp; Framing · Months 1–3 — Build Reveal</h4>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">2</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Groundbreaking &amp; Framing · Months 1–3 · Build Reveal</div>
+              <div class="mason-summary-tease">Construction milestones become content. Time-lapse, founder walk-throughs, behind-the-scenes intimacy.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
             <p>Major construction milestones become content moments. Groundbreaking event reel. First-walls-up reel. Time-lapse content. Founder walk-throughs showing the space coming together. Voice: behind-the-scenes intimacy, build-in-public authenticity. Tier 1 metric: reach plus shares plus saves (waitlist conversion follows).</p>
           </div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">3</div>
-          <div class="phase-body">
-            <h4>Finishes &amp; Design · Months 3–5 — Curation &amp; Story</h4>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">3</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Finishes &amp; Design · Months 3–5 · Curation &amp; Story</div>
+              <div class="mason-summary-tease">Interior design, equipment, treatment room reveals. Brand identity question plays out visually. Waitlist push intensifies.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
             <p>Interior design choices, equipment additions, treatment-room reveals. Voice: aspirational, design-forward. This is where the Mason brand identity question (same-brand vs. evolved-brand, locked at kickoff) plays out visually. Content gets richer as the space gets closer to ready. Waitlist push intensifies in Month 5.</p>
           </div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">4</div>
-          <div class="phase-body">
-            <h4>Pre-launch · 4–6 weeks before open — Waitlist Sprint</h4>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">4</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Pre-launch · 4–6 weeks before open · Waitlist Sprint</div>
+              <div class="mason-summary-tease">Concentrated waitlist conversion push. Founder POV teases. Mason booking-window announcements.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
             <p>Concentrated waitlist conversion push. Founder POV: "Here's what's about to be possible at Mason." Treatment menu teases. Booking-window announcements for Mason patients first. CTA: claim a Mason booking slot.</p>
           </div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">5</div>
-          <div class="phase-body">
-            <h4>Open · Mason grand-open moment — Celebration &amp; Conversion</h4>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">5</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Open · Mason grand-open moment · Celebration &amp; Conversion</div>
+              <div class="mason-summary-tease">Grand-open content event. Walk-through reveal. Waitlist patients booked first.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
             <p>Grand-open content event. Walk-through reveal. Founder welcome. Waitlist patients booked first. Visual celebration moment that becomes the Mason highlight on the account permanently.</p>
           </div>
-        </div>
-        <div class="phase-item">
-          <div class="phase-dot">6</div>
-          <div class="phase-body">
-            <h4>Post-open · Ongoing — Two Locations, One Brand</h4>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">6</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Post-open · Ongoing · Two Locations, One Brand</div>
+              <div class="mason-summary-tease">Content serves both Kenwood and Mason. Location-tagged. Mason arc becomes a permanent reference point.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
             <p>Content continues to serve both Kenwood and Mason patients. Location-tagged content. Patient stories at both locations. The Mason arc becomes a permanent reference point in the account's narrative.</p>
           </div>
-        </div>
+        </details>
       </div>
     </div>
 
     <div class="insight mt-md">
-      <p><strong>Why this matters.</strong> Build-in-public is one of the highest-performing organic formats on Instagram. Most practices opening new locations miss this leverage entirely because they wait to "have something to show." You don't need a finished space to start. The build itself is the story. By the time Mason opens, you're not opening to a quiet launch — you're opening to an audience that has watched the space go up and decided weeks ago they're booking.</p>
+      <p><strong>Why this matters.</strong> Build-in-public is one of the highest-performing organic formats on Instagram. Most practices opening new locations miss this leverage entirely because they wait to "have something to show." You don't need a finished space to start. The build itself is the story. By the time Mason opens, you're opening to an audience that has watched the space go up and decided weeks ago they're booking.</p>
     </div>
   </div>
 </div>
@@ -950,43 +1163,70 @@
 <!-- ══════════ 04 · SOCIAL SEO ══════════ -->
 <div class="wrap" id="seo">
   <div class="eyebrow">Social SEO</div>
-  <h2 class="section-title">Cincinnati search intent. <em>Where you should land.</em></h2>
-  <p class="section-sub">Instagram is increasingly a search engine. The accounts that show up for "Cincinnati dermatologist" and adjacent terms get the patients ready to book. We build that keyword position into every layer of the account.</p>
+  <h2 class="section-title">Cast wide. <em>Compress to quality.</em></h2>
+  <p class="section-sub">Instagram is increasingly a search engine. The accounts that show up for the right searches get the patients ready to book. We build the keyword ladder strategically — start wide enough to spike the algorithm, narrow to the audience that converts.</p>
 
   <div class="card">
-    <div class="card-label">Cincinnati Skin Center — 4-Tier Keyword Bank</div>
-    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px;">Built across 4 tiers from broad discovery to high-intent authority. Full keyword bank refined in Month 1 strategy.</p>
+    <div class="card-label">Cincinnati Skin Center — 4-Tier TAM Compression Keyword Bank</div>
+    <p class="tier-explainer">Each tier compresses the total addressable market down. Tier 1 is broad enough to spike algorithmic distribution. Tier 4 is hyper-local + authority-anchored. Together, the four tiers cover the full search-intent journey.</p>
 
-    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 1 — Broad Discovery</p>
-    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
-      <span class="kw">Cincinnati dermatologist</span>
-      <span class="kw">Cincinnati medical spa</span>
-      <span class="kw">Cincinnati skin care</span>
-      <span class="kw">Cincinnati esthetics</span>
+    <div class="tier-header">
+      <span class="tier-label">Tier 1 — Niche-Broad (no geo) · Broad Algorithmic Spike</span>
+      <span class="tier-subtitle">Cast the widest net inside your niche. Spike the algorithm with broad relevance signal.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw">dermatologist</span>
+      <span class="kw">skincare</span>
+      <span class="kw">skin health</span>
+      <span class="kw">medical spa</span>
+      <span class="kw">injectables</span>
+      <span class="kw">botox</span>
+      <span class="kw">skincare routine</span>
+      <span class="kw">acne</span>
+      <span class="kw">skin cancer awareness</span>
+      <span class="kw">chemical peel</span>
     </div>
 
-    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 2 — Niche &amp; Geo-Specific</p>
-    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
-      <span class="kw tier2">Mason dermatologist</span>
-      <span class="kw tier2">Kenwood dermatologist</span>
-      <span class="kw tier2">board-certified dermatologist Cincinnati</span>
-      <span class="kw tier2">MD-led dermatology Cincinnati</span>
+    <div class="tier-header">
+      <span class="tier-label">Tier 2 — Niche + Demographic Anchor · Qualified Category</span>
+      <span class="tier-subtitle">Narrow by professional credential and audience demographic. Still pre-geo.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier2">board-certified dermatologist</span>
+      <span class="kw tier2">MD-led dermatology</span>
+      <span class="kw tier2">MD-led aesthetics</span>
+      <span class="kw tier2">women's skincare</span>
+      <span class="kw tier2">pediatric dermatology</span>
+      <span class="kw tier2">cosmetic dermatology</span>
+      <span class="kw tier2">medical dermatology</span>
+      <span class="kw tier2">skin cancer dermatology</span>
     </div>
 
-    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 3 — Service + Location</p>
-    <div class="keyword-bank" style="margin-top:0;margin-bottom:16px;">
-      <span class="kw tier3">Cincinnati Botox / dysport</span>
-      <span class="kw tier3">Cincinnati chemical peel / VI peel</span>
+    <div class="tier-header">
+      <span class="tier-label">Tier 3 — Metro · Cincinnati-Anchored</span>
+      <span class="tier-subtitle">Add geographic specificity. Cincinnati and Ohio anchoring.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier3">Cincinnati dermatologist</span>
+      <span class="kw tier3">Cincinnati medical spa</span>
+      <span class="kw tier3">Cincinnati skincare</span>
+      <span class="kw tier3">Ohio dermatologist</span>
+      <span class="kw tier3">Cincinnati skin care</span>
+      <span class="kw tier3">Cincinnati Botox</span>
+      <span class="kw tier3">Cincinnati chemical peel</span>
       <span class="kw tier3">Cincinnati microneedling</span>
-      <span class="kw tier3">Cincinnati laser dermatology</span>
-      <span class="kw tier3">Cincinnati skin cancer screening</span>
-      <span class="kw tier3">Cincinnati pediatric dermatologist</span>
-      <span class="kw tier3">Cincinnati acne treatment</span>
     </div>
 
-    <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Tier 4 — High-Intent Authority</p>
+    <div class="tier-header">
+      <span class="tier-label">Tier 4 — Hyper-local + Authority · Max-Intent Capture</span>
+      <span class="tier-subtitle">Neighborhood + credential specifics. These are the highest-intent search terms.</span>
+    </div>
     <div class="keyword-bank" style="margin-top:0;">
+      <span class="kw tier4">Mason dermatologist</span>
+      <span class="kw tier4">Kenwood dermatologist</span>
       <span class="kw tier4">Top Doc Cincinnati dermatology</span>
+      <span class="kw tier4">board-certified dermatologist Cincinnati</span>
+      <span class="kw tier4">Cincinnati pediatric dermatologist</span>
       <span class="kw tier4">female-owned dermatology Cincinnati</span>
       <span class="kw tier4">Cincinnati MD-led aesthetics</span>
     </div>
@@ -1005,7 +1245,7 @@
   </div>
 
   <div class="insight mt-md">
-    <p><strong>Why this matters.</strong> Cincinnati Skin Center currently ranks below larger med spa accounts despite being the credentialed option. Search-intent optimization is unsexy but compounds. It's the difference between a high-trust account and a high-trust account that prospects can actually find.</p>
+    <p><strong>The TAM compression logic.</strong> We start broad enough to get algorithmic distribution in the dermatology + skincare category. As content compounds, we narrow the keyword targeting toward the audience that actually converts — Cincinnati-area patients ready to book. Tier 1 builds reach. Tier 4 captures intent. The middle tiers are the bridge.</p>
   </div>
 </div>
 
@@ -1402,101 +1642,98 @@
 <div class="wrap" id="timeline">
   <div class="eyebrow">Timeline</div>
   <h2 class="section-title">Strategy first. <em>First post in week 4.</em></h2>
-  <p class="section-sub">Strategy before execution, always. Sign this week and the first post goes live before the end of June.</p>
+  <p class="section-sub">Strategy before execution, always. Here's exactly what to expect, week by week, then the ongoing rhythm.</p>
 
   <div class="tl-cta">
     <div style="font-size:24px;">⚡</div>
     <p><strong>Ready to move fast.</strong> Contract signed this week → kickoff call within 48 hours → strategy built in 3 weeks → first post live by week 4. No reason to wait.</p>
   </div>
 
-  <div class="milestone-wrap mt-lg">
-    <div class="milestone-track">
-
-      <div class="milestone-col">
-        <div class="ms-dot ms-blue"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 1</div>
-          <div class="ms-title">Kickoff Ideation</div>
-          <div class="ms-items">
-            <span>✓ Goals + patient priorities</span>
-            <span>✓ Mason narrative direction</span>
-            <span>✓ Access + assets</span>
-          </div>
-        </div>
+  <!-- PHASE 1 · STRATEGY BUILD -->
+  <div class="mt-lg">
+    <div class="phase-eyebrow">Phase 1 · Strategy Build (Weeks 1–3)</div>
+    <div class="week-blocks cols-3">
+      <div class="week-block">
+        <div class="week-num">1</div>
+        <div class="week-label">Week 1</div>
+        <div class="week-title">Kickoff + Ideation</div>
+        <div class="week-desc">60-minute working session. Goals, audience priorities, Mason direction, brand voice. The deep discovery that locks the strategy.</div>
       </div>
-
-      <div class="milestone-col">
-        <div class="ms-dot ms-blue"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 2</div>
-          <div class="ms-title">Strategy Development</div>
-          <div class="ms-items">
-            <span>✓ Audiences locked</span>
-            <span>✓ Content pillars</span>
-            <span>✓ Mason arc roadmap</span>
-            <span>✓ KPI framework</span>
-          </div>
-        </div>
+      <div class="week-block">
+        <div class="week-num">2</div>
+        <div class="week-label">Week 2</div>
+        <div class="week-title">Strategy Development</div>
+        <div class="week-desc">Two audience profiles, content pillars, format mix, Mason arc roadmap, KPI framework. Built in parallel with you reviewing as it forms.</div>
       </div>
-
-      <div class="milestone-col">
-        <div class="ms-dot ms-blue"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 3</div>
-          <div class="ms-title">Strategy Presentation</div>
-          <div class="ms-items">
-            <span>✓ Deck delivered</span>
-            <span>✓ Strategy locked</span>
-          </div>
-        </div>
+      <div class="week-block">
+        <div class="week-num">3</div>
+        <div class="week-label">Week 3</div>
+        <div class="week-title">Strategy Presentation</div>
+        <div class="week-desc">The full strategy delivered as a customer-facing presentation deck. Locked, signed off, yours forever.</div>
       </div>
-
-      <div class="milestone-col">
-        <div class="ms-dot ms-green"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 4</div>
-          <div class="ms-title">🎬 First Content Cycle</div>
-          <div class="ms-items">
-            <span>✓ Drafted + routed</span>
-            <span>✓ Approval window opens</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="milestone-col">
-        <div class="ms-dot ms-green"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 5</div>
-          <div class="ms-title">🚀 First Publish Wave</div>
-          <div class="ms-items">
-            <span>✓ Live on the account</span>
-            <span>✓ Biweekly cadence begins</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="milestone-col">
-        <div class="ms-dot ms-highlight"></div>
-        <div class="ms-line ms-line-fade"></div>
-        <div class="ms-card ms-card-featured">
-          <div class="ms-week">Late 2026 / Early 2027</div>
-          <div class="ms-title">🏁 Mason Open</div>
-          <div class="ms-items">
-            <span>✓ Grand-open content moment</span>
-            <span>✓ Waitlist booked first</span>
-            <span>✓ Two locations, one brand</span>
-          </div>
-        </div>
-      </div>
-
     </div>
+  </div>
 
-    <div class="milestone-banner mt-lg">
+  <!-- TRANSITION STRIP -->
+  <div class="transition-strip">
+    <div class="transition-strip-icon">⚡</div>
+    <div class="transition-strip-body">
+      <p><strong>Strategy locked. Execution begins.</strong> The end of Week 3 is the transition point — from strategic planning to weekly content production.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 2 · EXECUTION -->
+  <div>
+    <div class="phase-eyebrow execution">Phase 2 · Execution (Week 4 onward)</div>
+    <div class="week-blocks cols-2">
+      <div class="week-block execution">
+        <div class="week-num">4</div>
+        <div class="week-label">Week 4</div>
+        <div class="week-title">First Content Cycle</div>
+        <div class="week-desc">First batch of content drafted, designed, and routed for approval per the locked strategy. You review, approve, request edits.</div>
+      </div>
+      <div class="week-block execution">
+        <div class="week-num">5</div>
+        <div class="week-label">Week 5</div>
+        <div class="week-title">First Publish + Cadence Begins</div>
+        <div class="week-desc">First wave of approved content goes live. Biweekly publishing rhythm starts.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONGOING OPERATING RHYTHM -->
+  <div class="rhythm-row mt-lg">
+    <div class="rhythm-label">Ongoing operating rhythm</div>
+    <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once execution is live, four cadences run in parallel. They're the heartbeat of the engagement.</div>
+    <div class="rhythm-steps">
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📸</div>
+        <div class="rhythm-name">Content Shoot</div>
+        <div class="rhythm-detail">Every 3 weeks · Batch shoots designed to minimize founder time · ~15-minute talent windows</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">🤝</div>
+        <div class="rhythm-name">Status Meeting</div>
+        <div class="rhythm-detail">Every other week · 30-minute check-in · Approvals batched, performance reviewed, Mason milestones surfaced</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📅</div>
+        <div class="rhythm-name">Story Days</div>
+        <div class="rhythm-detail">Every Tuesday &amp; Thursday · Service highlights, behind-the-scenes, founder POV</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📊</div>
+        <div class="rhythm-name">Performance Report</div>
+        <div class="rhythm-detail">End of every month · Live HTML report · Reach, engagement, conversion · Strategic adjustments documented</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-banner">
       <div class="milestone-banner-icon">🏗️</div>
       <div>
         <div class="milestone-banner-title">Mason Open Milestone — Estimated Late 2026 / Early 2027</div>

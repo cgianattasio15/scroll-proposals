@@ -436,6 +436,17 @@
     .ms-items { display:flex; flex-direction:column; gap:4px; }
     .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
 
+    /* Recurring rhythm */
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:16px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+
     /* Milestone banner */
     .milestone-banner {
       background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.32);
@@ -1649,55 +1660,114 @@
     <p><strong>Ready to move fast.</strong> Contract signed this week → kickoff call within 48 hours → strategy built in 3 weeks → first post live by week 4. No reason to wait.</p>
   </div>
 
-  <!-- PHASE 1 · STRATEGY BUILD -->
-  <div class="mt-lg">
-    <div class="phase-eyebrow">Phase 1 · Strategy Build (Weeks 1–3)</div>
-    <div class="week-blocks cols-3">
-      <div class="week-block">
-        <div class="week-num">1</div>
-        <div class="week-label">Week 1</div>
-        <div class="week-title">Kickoff + Ideation</div>
-        <div class="week-desc">60-minute working session. Goals, audience priorities, Mason direction, brand voice. The deep discovery that locks the strategy.</div>
+  <!-- VISUAL MILESTONE TIMELINE -->
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-track">
+
+      <!-- M1 · Week 1 · Kickoff + Ideation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Kickoff + Ideation</div>
+          <div class="ms-items">
+            <span>✓ Onboarding form sent</span>
+            <span>✓ Kickoff call held</span>
+            <span>✓ Goals + Mason direction surfaced</span>
+            <span>✓ Brand voice + asset access locked</span>
+          </div>
+        </div>
       </div>
-      <div class="week-block">
-        <div class="week-num">2</div>
-        <div class="week-label">Week 2</div>
-        <div class="week-title">Strategy Development</div>
-        <div class="week-desc">Two audience profiles, content pillars, format mix, Mason arc roadmap, KPI framework. Built in parallel with you reviewing as it forms.</div>
+
+      <!-- M2 · Week 2 · Strategy Development -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 2</div>
+          <div class="ms-title">Strategy Development</div>
+          <div class="ms-items">
+            <span>✓ Core + Conversion audiences built</span>
+            <span>✓ Content pillars + format mix set</span>
+            <span>✓ Mason arc roadmap drafted</span>
+            <span>✓ KPI framework defined</span>
+          </div>
+        </div>
       </div>
-      <div class="week-block">
-        <div class="week-num">3</div>
-        <div class="week-label">Week 3</div>
-        <div class="week-title">Strategy Presentation</div>
-        <div class="week-desc">The full strategy delivered as a customer-facing presentation deck. Locked, signed off, yours forever.</div>
+
+      <!-- M3 · Week 3 · Strategy Presentation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 3</div>
+          <div class="ms-title">Strategy Presentation</div>
+          <div class="ms-items">
+            <span>✓ Strategy deck presented</span>
+            <span>✓ Calendar approved</span>
+            <span>✓ Deck delivered</span>
+            <span>✓ Strategy locked</span>
+          </div>
+        </div>
       </div>
+
+      <!-- M4 · Week 4 · First Content Cycle -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 4</div>
+          <div class="ms-title">First Content Cycle</div>
+          <div class="ms-items">
+            <span>✓ First cycle drafted</span>
+            <span>✓ Routed for approval</span>
+            <span>✓ Assets prepped</span>
+            <span>✓ Edits batched</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M5 · Week 5 · First Publish -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 5</div>
+          <div class="ms-title">🚀 First Publish</div>
+          <div class="ms-items">
+            <span>✓ First wave goes live</span>
+            <span>✓ Biweekly cadence begins</span>
+            <span>✓ Performance tracking starts</span>
+            <span>✓ Engagement loop active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M6 · Ongoing · Execution Mode -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line ms-line-fade"></div>
+        <div class="ms-card ms-card-featured">
+          <div class="ms-week">Ongoing</div>
+          <div class="ms-title">Execution Mode</div>
+          <div class="ms-items">
+            <span>✓ 3 feed posts/week</span>
+            <span>✓ 2 story days/week (Tue + Thu)</span>
+            <span>✓ Mason arc layered in continuously</span>
+            <span>✓ Monthly reports + biweekly check-ins</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- TRANSITION STRIP -->
-  <div class="transition-strip">
+  <div class="transition-strip mt-lg">
     <div class="transition-strip-icon">⚡</div>
     <div class="transition-strip-body">
-      <p><strong>Strategy locked. Execution begins.</strong> The end of Week 3 is the transition point — from strategic planning to weekly content production.</p>
-    </div>
-  </div>
-
-  <!-- PHASE 2 · EXECUTION -->
-  <div>
-    <div class="phase-eyebrow execution">Phase 2 · Execution (Week 4 onward)</div>
-    <div class="week-blocks cols-2">
-      <div class="week-block execution">
-        <div class="week-num">4</div>
-        <div class="week-label">Week 4</div>
-        <div class="week-title">First Content Cycle</div>
-        <div class="week-desc">First batch of content drafted, designed, and routed for approval per the locked strategy. You review, approve, request edits.</div>
-      </div>
-      <div class="week-block execution">
-        <div class="week-num">5</div>
-        <div class="week-label">Week 5</div>
-        <div class="week-title">First Publish + Cadence Begins</div>
-        <div class="week-desc">First wave of approved content goes live. Biweekly publishing rhythm starts.</div>
-      </div>
+      <p><strong>Strategy locked. Execution begins.</strong> The end of Week 3 is the transition point. From strategic planning to weekly content production.</p>
     </div>
   </div>
 
@@ -1709,25 +1779,25 @@
       <div class="rhythm-step">
         <div class="rhythm-icon">📸</div>
         <div class="rhythm-name">Content Shoot</div>
-        <div class="rhythm-detail">Every 3 weeks · Batch shoots designed to minimize founder time · ~15-minute talent windows</div>
+        <div class="rhythm-detail">Every 3 weeks · Batch shoots designed to minimize founder time · ~15-minute talent windows.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
-        <div class="rhythm-icon">🤝</div>
+        <div class="rhythm-icon">💬</div>
         <div class="rhythm-name">Status Meeting</div>
-        <div class="rhythm-detail">Every other week · 30-minute check-in · Approvals batched, performance reviewed, Mason milestones surfaced</div>
+        <div class="rhythm-detail">Every other week · 30-minute check-in · Approvals batched, performance reviewed, Mason milestones surfaced.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">📅</div>
         <div class="rhythm-name">Story Days</div>
-        <div class="rhythm-detail">Every Tuesday &amp; Thursday · Service highlights, behind-the-scenes, founder POV</div>
+        <div class="rhythm-detail">Tuesdays + Thursdays · Service highlights, behind-the-scenes, founder POV.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">📊</div>
         <div class="rhythm-name">Performance Report</div>
-        <div class="rhythm-detail">End of every month · Live HTML report · Reach, engagement, conversion · Strategic adjustments documented</div>
+        <div class="rhythm-detail">End of every month · Live HTML report · Reach, engagement, conversion · Strategic adjustments documented.</div>
       </div>
     </div>
   </div>

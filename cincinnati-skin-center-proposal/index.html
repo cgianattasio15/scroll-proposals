@@ -51,14 +51,51 @@
       border-bottom:1px solid var(--border); z-index:1000;
       display:flex; align-items:center; justify-content:space-between; padding:0 36px;
     }
-    .nav-logo img { height:26px; display:block; }
+    .nav-logo img { height:26px; width:auto; display:block; image-rendering:auto; }
     .nav-links { list-style:none; display:flex; gap:3px; }
     .nav-links a {
       display:block; padding:5px 10px; font-size:12px; font-weight:600;
       color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s;
     }
     .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
-    @media(max-width:900px){ .nav-links{display:none;} nav{padding:0 20px;} }
+
+    /* Mobile nav toggle (hamburger) — hidden on desktop */
+    .nav-toggle {
+      display:none; align-items:center; justify-content:center;
+      width:44px; height:44px; padding:0; margin-right:-10px;
+      background:transparent; border:0; cursor:pointer;
+      position:relative; z-index:1002;
+    }
+    .nav-toggle-box { display:flex; flex-direction:column; gap:5px; }
+    .nav-toggle-box span {
+      display:block; width:22px; height:2px; background:var(--shadow); border-radius:2px;
+      transition:transform .25s ease, opacity .15s ease;
+    }
+    body.nav-open .nav-toggle-box span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    body.nav-open .nav-toggle-box span:nth-child(2) { opacity:0; }
+    body.nav-open .nav-toggle-box span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    @media(max-width:900px){
+      nav{padding:0 20px;}
+      .nav-toggle{display:flex;}
+      .nav-links{
+        position:fixed; top:63px; left:0; right:0; bottom:0;
+        flex-direction:column; gap:0; padding:12px 24px 40px;
+        background:rgba(250,253,255,.98);
+        backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+        transform:translateX(100%); transition:transform .3s ease;
+        z-index:999; overflow-y:auto;
+      }
+      body.nav-open .nav-links{transform:translateX(0);}
+      body.nav-open{overflow:hidden;}
+      .nav-links li{border-bottom:1px solid var(--border);}
+      .nav-links li:last-child{border-bottom:0;}
+      .nav-links a{
+        display:flex; align-items:center; min-height:52px; padding:14px 4px;
+        font-size:17px; font-weight:600; color:var(--shadow); border-radius:0;
+      }
+      .nav-links a:hover, .nav-links a.active{color:var(--azure); background:transparent;}
+    }
 
     /* ── LAYOUT ── */
     .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
@@ -822,9 +859,12 @@
 <nav>
   <div class="nav-logo">
     <a href="https://decks.scrollmedia.co/pitch/">
-      <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+      <img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="56" height="26" />
     </a>
   </div>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open section navigation" aria-controls="nav-links" aria-expanded="false">
+    <span class="nav-toggle-box"><span></span><span></span><span></span></span>
+  </button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#know"         data-section="know">What We Know</a></li>
     <li><a href="#proof"        data-section="proof">Proof</a></li>
@@ -2316,7 +2356,7 @@
 </div>
 
 <footer>
-  <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+  <img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="48" height="22" />
   <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
   <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
 </footer>
@@ -2351,6 +2391,22 @@
     const item = header.parentElement;
     item.classList.toggle('open');
   }
+
+  // Mobile nav toggle
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const list   = document.getElementById('nav-links');
+    if (!toggle || !list) return;
+    function setOpen(open) {
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close section navigation' : 'Open section navigation');
+    }
+    toggle.addEventListener('click', () => setOpen(!document.body.classList.contains('nav-open')));
+    list.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
+  })();
 </script>
 </body>
 </html>

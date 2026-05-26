@@ -47,9 +47,16 @@
     /* ── NAV ── */
     nav {
       position:fixed; top:3px; left:0; right:0; height:60px;
-      background:rgba(250,253,255,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      background:transparent;
       border-bottom:1px solid var(--border); z-index:1000;
       display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    /* Frosted-glass topbar via pseudo-element so nav doesn't become the
+       containing block for its position:fixed descendants (the mobile nav overlay). */
+    nav::before {
+      content:''; position:absolute; inset:0; z-index:-1;
+      background:rgba(250,253,255,.94);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
     }
     .nav-logo img { height:26px; width:auto; display:block; image-rendering:auto; }
     .nav-links { list-style:none; display:flex; gap:3px; }

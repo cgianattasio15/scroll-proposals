@@ -687,12 +687,12 @@
 
   .offer-card {
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--azure);
     border-radius: var(--radius-xl);
     overflow: hidden;
     max-width: 900px;
     margin: 0 auto;
-    box-shadow: 0 4px 40px rgba(12,51,135,0.08);
+    box-shadow: 0 12px 64px rgba(12,51,135,0.18), 0 2px 8px rgba(12,51,135,0.08);
   }
 
   .offer-card-header {
@@ -1622,7 +1622,7 @@
   }
 
   .team-avatar {
-    width: 56px; height: 56px;
+    width: 72px; height: 72px;
     border-radius: 14px;
     background: var(--azure);
     display: flex;
@@ -1633,6 +1633,15 @@
     color: var(--white);
     margin-bottom: 20px;
     letter-spacing: -0.5px;
+    overflow: hidden;
+  }
+
+  .team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .team-name {
@@ -2221,7 +2230,7 @@
 <section id="home" class="hero">
   <div class="hero-badge">Cincinnati's Instagram Agency for Local Brands</div>
   <h1>Where <span class="accent">simplicity</span><br>meets data-driven results.</h1>
-  <p class="hero-sub">Most businesses post and hope. We build systems that compound, turning your Instagram into a trust engine that compounds attention into business results.</p>
+  <p class="hero-sub">Most businesses post and hope. We build systems that compound. Your Instagram becomes a trust engine that turns attention into qualified leads.</p>
   <div class="hero-actions">
     <a href="https://calendly.com/scrollmedia/discovery" class="btn-primary" target="_blank" rel="noopener">Book a Discovery Call →</a>
     <a href="#results" class="btn-secondary">See Client Results</a>
@@ -2355,7 +2364,7 @@
         <div class="why-num">02</div>
         <div class="why-content">
           <h3>We Master One Channel · Instagram-First Philosophy</h3>
-          <p>We specialize on Instagram and that's intentional. We believe in mastering attention on the channel with the highest opportunity for your business. Instagram is where your ideal buyer discovers brands, researches services, and makes decisions. We go deep where it matters most and build a compounding presence that drives qualified lead signal, not a scattered multi-platform approach that delivers nothing everywhere.</p>
+          <p>We specialize on Instagram and that's intentional. We believe in mastering attention on the channel with the highest opportunity for your business. Instagram is where your ideal buyer discovers brands, researches services, and makes decisions. We go deep where it matters most and build a specialized presence that drives qualified lead signal, not a scattered multi-platform approach that delivers nothing everywhere.</p>
         </div>
       </div>
       <div class="why-item fade-in-up">
@@ -2389,7 +2398,7 @@
 <section id="process" class="process">
   <div class="container">
     <div class="section-label">How We Work</div>
-    <h2 class="section-title">Two phases. One clear path<br><span class="accent">to compounding business results.</span></h2>
+    <h2 class="section-title">Two phases. One clear path<br><span class="accent">to durable business results.</span></h2>
     <p class="section-body">We don't just manage your social media. We build a growth engine. Every engagement starts with a dedicated strategy month to build the foundation right, then moves into execution. No guessing, no wasted spend.</p>
 
     <div class="process-phases">
@@ -2463,13 +2472,13 @@
   <div class="container">
     <div class="section-label">The Offer</div>
     <h2 class="section-title">Multiple ways to start.<br><span class="accent">One destination.</span></h2>
-    <p class="section-body">Whether you're ready to hand off everything or just need a strategy to start, there's a path for you. Every engagement is designed to move toward the same outcome: a compounding Instagram presence that drives qualified lead signal.</p>
+    <p class="section-body">Whether you're ready to hand off everything or just need a strategy to start, there's a path for you. Every engagement is designed to move toward the same outcome: an Instagram presence that grows over time and earns qualified attention.</p>
 
     <div class="offer-card fade-in-up">
       <div class="offer-card-header">
-        <div class="offer-badge">Signature Package</div>
+        <div class="offer-badge">★ Flagship Engagement · Signature Package</div>
         <h3>Done-For-You Instagram Management</h3>
-        <p>Strategy → Content → Performance. All handled. Strategy month builds the foundation. Execution retainer compounds the results.</p>
+        <p>Strategy → Content → Performance. All handled. Strategy month builds the foundation. Execution retainer builds on it month over month.</p>
       </div>
       <div class="offer-phases">
         <div class="offer-phase">
@@ -2500,19 +2509,16 @@
       <div class="offer-pricing">
         <div class="offer-price-block">
           <div class="offer-price-label">Phase 1 · Strategy Build</div>
-          <div class="offer-price">$1,917<span> flat</span></div>
-          <div class="offer-price-note">Invoiced at Strategy Presentation</div>
+          <div class="offer-price-note">Flat fee. Invoiced at Strategy Presentation.</div>
 
           <div class="offer-price-label" style="margin-top:20px;">Phase 2 · Essential</div>
-          <div class="offer-price">$2,975<span> / mo</span></div>
           <div class="offer-price-note">2 feed posts per week. 3 story days per week.</div>
 
           <div class="offer-price-label" style="margin-top:20px;">Phase 2 · Growth</div>
-          <div class="offer-price">$3,250<span> / mo</span></div>
           <div class="offer-price-note">3 feed posts per week. 2 optimized story days. 3 reshares.</div>
 
           <div class="offer-price-note" style="margin-top:16px;">3-month initial engagement, then month-to-month.</div>
-          <div class="offer-price-note">Combined 3-month commitment: $8,142 (Essential) or $8,417 (Growth).</div>
+          <div class="offer-price-note" style="margin-top:8px;">Pricing scoped on the discovery call.</div>
         </div>
         <div class="offer-who">
           <div class="offer-who-label">Who This Is For</div>
@@ -2523,7 +2529,7 @@
     </div>
 
     <!-- Entry-Point Offerings -->
-    <div class="entry-offers-label">Other Ways to Start</div>
+    <div class="entry-offers-label">Lower-Commitment Entry Points</div>
     <div class="entry-offers-grid">
 
       <!-- A2A Digital Playbook -->
@@ -2580,11 +2586,10 @@
         </div>
         <div class="entry-offer-footer">
           <div class="entry-offer-price-block">
-            <div class="entry-offer-price-label">Investment</div>
-            <div class="entry-offer-price">$997</div>
-            <div class="entry-offer-price-note">One-time engagement</div>
+            <div class="entry-offer-price-label">Pricing</div>
+            <div class="entry-offer-price-note">Email for pricing and scope.</div>
           </div>
-          <a href="https://calendly.com/scrollmedia/discovery" class="btn-entry" target="_blank" rel="noopener">Book a Discovery Call →</a>
+          <a href="mailto:chase@scrollmedia.co?subject=Strategy%20Blueprint%20inquiry" class="btn-entry">Email for Pricing →</a>
         </div>
       </div>
 
@@ -2611,11 +2616,10 @@
         </div>
         <div class="entry-offer-footer">
           <div class="entry-offer-price-block">
-            <div class="entry-offer-price-label">Investment</div>
-            <div class="entry-offer-price">$1,450</div>
-            <div class="entry-offer-price-note">One-time engagement</div>
+            <div class="entry-offer-price-label">Pricing</div>
+            <div class="entry-offer-price-note">Email for pricing and scope.</div>
           </div>
-          <a href="https://calendly.com/scrollmedia/discovery" class="btn-entry" target="_blank" rel="noopener">Book a Discovery Call →</a>
+          <a href="mailto:chase@scrollmedia.co?subject=Content%20Day%20inquiry" class="btn-entry">Email for Pricing →</a>
         </div>
       </div>
 
@@ -3075,7 +3079,7 @@
 <section id="work" class="work-section">
   <div class="container">
     <div class="section-label">Our Work</div>
-    <h2 class="section-title">Real content. Real clients.<br><span class="accent">Real results.</span></h2>
+    <h2 class="section-title">The work behind<br><span class="accent">the numbers.</span></h2>
     <p class="section-body">Every reel below was strategically planned, shot-directed, edited, and published by Scroll Media. This is what your brand looks like when strategy meets execution.</p>
 
     <div class="work-filters" id="workFilters">
@@ -3484,7 +3488,7 @@
   <div class="container">
     <div class="section-label">Who We Work With</div>
     <h2 class="section-title">Built for founder-led,<br><span class="accent">service-based businesses.</span></h2>
-    <p class="section-body">We specialize in niches where trust, credibility, and expertise drive buying decisions. If your business is built on relationships and reputation. Instagram is your highest-leverage growth channel.</p>
+    <p class="section-body">We specialize in niches where trust, credibility, and expertise drive buying decisions. If your business is built on relationships and reputation, Instagram is your highest-leverage growth channel.</p>
 
     <div class="niches-grid">
       <div class="niche-card">Med Spas &amp; Aesthetics</div>
@@ -3513,16 +3517,16 @@
 
     <div class="team-grid">
       <div class="team-card fade-in-up">
-        <div class="team-avatar">CG</div>
+        <div class="team-avatar"><img src="team/chase-headshot.jpg" alt="Chase Gianattasio"></div>
         <div class="team-name">Chase Gianattasio</div>
-        <div class="team-role">Founder &amp; Chief Strategist</div>
-        <p class="team-bio">Chase built Scroll Media on the belief that most businesses are one clear strategy away from turning Instagram into a true growth channel. He leads client strategy, business development, and the systems that keep Scroll Media operating at a boutique level, without sacrificing results. His background spans brand strategy, content systems, and performance analysis across 30+ client accounts.</p>
+        <div class="team-role">Co-Founder · Chief Operations &amp; Growth Officer</div>
+        <p class="team-bio">Chase leads growth, operations, and brand for Scroll Media. He owns business development, new client acquisition, the initial strategy build for every Signature client, and the systems and reporting infrastructure that keep Scroll Media operating at a boutique level. His background spans brand strategy, content systems, and performance analysis across 30+ client accounts.</p>
       </div>
       <div class="team-card fade-in-up">
-        <div class="team-avatar">AG</div>
+        <div class="team-avatar"><img src="team/allison-headshot.png" alt="Allison Gianattasio"></div>
         <div class="team-name">Allison Gianattasio</div>
-        <div class="team-role">Head of Content &amp; Account Management</div>
-        <p class="team-bio">Allison leads content creation and day-to-day account management for Scroll Media's client roster. She's the person your audience sees, and the reason clients consistently describe their content as feeling authentically on-brand. Her eye for visual storytelling, combined with a deep understanding of Instagram's algorithm, is what drives the results you see in the portfolio above.</p>
+        <div class="team-role">Co-Founder · Chief Delivery &amp; Strategy Officer</div>
+        <p class="team-bio">Allison leads client delivery, team operations, and creative quality across the Scroll Media roster. She owns the account management team, sets the quality bar across every account, and tunes strategy month over month based on performance signals. Her eye for visual storytelling, combined with a deep understanding of Instagram's algorithm, is what drives the consistency you see in the portfolio above.</p>
       </div>
     </div>
   </div>
@@ -3535,7 +3539,7 @@
     <p>Book a 30-minute discovery call. No pressure, no pitch deck. Just a real conversation about your business and whether Scroll Media is the right fit.</p>
     <div class="final-cta-actions">
       <a href="https://calendly.com/scrollmedia/discovery" class="btn-cta-primary" target="_blank" rel="noopener">Book a Discovery Call →</a>
-      <a href="mailto:chase@getscrollmedia.com" class="btn-cta-secondary">Or email us directly</a>
+      <a href="mailto:chase@scrollmedia.co" class="btn-cta-secondary">Or email us directly</a>
     </div>
   </div>
 </section>
@@ -3545,7 +3549,7 @@
   <a href="https://scrollmedia.co" class="footer-logo" target="_blank" rel="noopener">
     <img src="scroll-media-logo.png" alt="Scroll Media" width="61" height="28" style="height:28px;width:auto;image-rendering:-webkit-optimize-contrast;" />
   </a>
-  <span class="footer-copy">© 2025 Scroll Media. All rights reserved.</span>
+  <span class="footer-copy">© 2026 Scroll Media. All rights reserved.</span>
   <a href="https://scrollmedia.co" class="footer-link" target="_blank" rel="noopener">scrollmedia.co →
   </a>
   <a href="https://decks.scrollmedia.co/how-we-work/" class="footer-link" target="_blank" rel="noopener">How We Work →

@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Systems × Scroll Media — Signature Package Proposal</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.14);
+      --lucid:     #cbe9ff;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --green:     #2a7a3a;
+      --green-lt:  rgba(42,122,58,0.08);
+      --radius:    12px;
+      --card-shadow: 0 2px 14px rgba(12,51,135,0.07);
+      /* IG Insights accent palette for Proof section */
+      --ig-grad-1: #f09433;
+      --ig-grad-2: #dc2743;
+      --ig-grad-3: #bc1888;
+      --ig-pink:   #e1306c;
+      --ig-purple: #833ab4;
+      --ig-up:     #00ba7c;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--azure),var(--hi)); z-index:1001; transition:width .1s linear; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:rgba(250,253,255,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    .nav-logo img { height:26px; display:block; }
+    .nav-links { list-style:none; display:flex; gap:3px; }
+    .nav-links a {
+      display:block; padding:5px 10px; font-size:12px; font-weight:600;
+      color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
+    @media(max-width:900px){ .nav-links{display:none;} nav{padding:0 20px;} }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:620px; margin-bottom:28px; line-height:1.65; }
+
+    /* ── CARDS ── */
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .card-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+
+    /* ── LISTS ── */
+    .tick-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tick-list li { font-size:14px; color:var(--ink-mid); padding-left:22px; position:relative; line-height:1.5; }
+    .tick-list li::before { content:'✓'; color:var(--azure); position:absolute; left:0; font-weight:700; font-size:12px; top:2px; }
+
+    .arrow-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .arrow-list li { font-size:14px; color:var(--ink-mid); padding-left:18px; position:relative; line-height:1.5; }
+    .arrow-list li::before { content:'→'; color:var(--azure); font-weight:700; position:absolute; left:0; }
+
+    /* ── GRIDS ── */
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .g2,.g3{grid-template-columns:1fr;} }
+
+    /* ── UTILS ── */
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    .insight { background:rgba(226,237,122,.1); border:1px solid rgba(200,214,0,.3); border-left:4px solid #c8d600; border-radius:var(--radius); padding:16px 20px; }
+    .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .insight p strong { color:var(--shadow); }
+
+    .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .assumption p strong { color:var(--azure); }
+
+    /* ══ HERO ══ */
+    .hero { padding:150px 32px 72px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:560px; line-height:1.65; margin-bottom:28px; }
+    .hero-meta { display:flex; gap:10px; flex-wrap:wrap; }
+    .hero-meta span { background:var(--porcelain); border:1px solid var(--border); border-radius:100px; padding:6px 16px; font-size:13px; color:var(--ink-mid); }
+    .hero-meta span strong { color:var(--shadow); }
+
+    /* ══ PRIORITY (WHAT WE KNOW) GRID ══ */
+    .goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:760px){ .goals-grid{grid-template-columns:1fr;} }
+    .goal-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; display:flex; flex-direction:column; gap:10px; }
+    .goal-num { width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0; }
+    .goal-card h4 { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .goal-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; flex:1; }
+    .goal-card p + p { margin-top:6px; }
+    .goal-card p strong { color:var(--shadow); }
+    .goal-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; align-self:flex-start; }
+    .tag-tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .tag-mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .tag-bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* ══ DIFFERENTIATOR BLOCK ══ */
+    .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:640px){ .diff-grid{grid-template-columns:1fr;} }
+    .diff-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px 24px; }
+    .diff-num { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:8px; }
+    .diff-card h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:10px; line-height:1.35; }
+    .diff-card p { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ PROOF SECTION (NEW) ══ */
+    .proof-stack { display:flex; flex-direction:column; gap:22px; }
+    .proof-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:26px 28px;
+    }
+    .proof-card-eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft); margin-bottom:8px;
+    }
+    .proof-card-pill {
+      display:inline-block; font-size:11px; font-weight:700;
+      padding:4px 12px; border-radius:100px;
+      background:var(--porcelain); border:1px solid var(--border); color:var(--ink-mid);
+      margin-bottom:18px;
+    }
+    .proof-metrics-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:16px 28px;
+      padding:6px 0 18px;
+    }
+    @media(max-width:480px){ .proof-metrics-grid{grid-template-columns:1fr 1fr; gap:14px 18px;} }
+    .proof-metric { display:flex; flex-direction:column; gap:2px; }
+    .proof-metric-value {
+      font-size:28px; font-weight:800; color:var(--azure);
+      letter-spacing:-.02em; line-height:1.05;
+    }
+    .proof-metric-value.pct {
+      background:linear-gradient(135deg, var(--ig-grad-1), var(--ig-grad-2), var(--ig-grad-3));
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--ig-grad-3);
+    }
+    .proof-metric-label {
+      font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft); margin-top:2px;
+    }
+    .proof-card-footer {
+      border-top:1px solid var(--border); padding-top:14px; margin-top:6px;
+    }
+    .proof-card-footer p {
+      font-size:13px; color:var(--ink-mid); line-height:1.6; font-style:italic;
+    }
+    .proof-card-footer p strong { color:var(--shadow); font-style:normal; }
+
+    /* Dashboard variant */
+    .proof-dashboard-body {
+      display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center;
+      padding:8px 0 20px;
+    }
+    @media(max-width:640px){
+      .proof-dashboard-body { grid-template-columns:1fr; gap:24px; justify-items:center; }
+    }
+    .proof-donut {
+      position:relative; width:160px; height:160px; flex-shrink:0;
+    }
+    .proof-donut-svg { width:100%; height:100%; transform:rotate(-90deg); }
+    .proof-donut-track { fill:none; stroke:rgba(0,0,0,0.06); stroke-width:10; }
+    .proof-donut-fill { fill:none; stroke:url(#ig-gradient); stroke-width:10; stroke-linecap:round; }
+    .proof-donut-center {
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:2px;
+    }
+    .proof-donut-label {
+      font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .proof-donut-value {
+      font-size:24px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1;
+    }
+    .proof-donut-legend {
+      display:flex; flex-direction:column; gap:6px; margin-top:14px;
+      align-items:flex-start;
+    }
+    .proof-donut-legend-row {
+      display:flex; align-items:center; gap:8px; font-size:11px; color:var(--ink-mid);
+    }
+    .proof-donut-dot {
+      width:8px; height:8px; border-radius:50%; flex-shrink:0;
+    }
+    .proof-donut-dot.followers { background:linear-gradient(135deg,var(--ig-grad-2),var(--ig-grad-3)); }
+    .proof-donut-dot.nonfollowers { background:linear-gradient(135deg,var(--ig-grad-1),var(--ig-grad-2)); }
+    .proof-dashboard-metrics {
+      display:flex; flex-direction:column; gap:10px; width:100%;
+    }
+    .proof-dash-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 14px; background:var(--porcelain); border-radius:8px;
+      gap:12px;
+    }
+    .proof-dash-label {
+      font-size:12px; color:var(--ink-mid); font-weight:600; flex:1;
+    }
+    .proof-dash-value {
+      font-size:16px; font-weight:800; color:var(--shadow); letter-spacing:-.01em;
+    }
+    .proof-dash-delta {
+      display:inline-flex; align-items:center; gap:3px;
+      font-size:11px; font-weight:700; color:var(--ig-up);
+      background:rgba(0,186,124,.1); padding:3px 8px; border-radius:4px;
+      white-space:nowrap;
+    }
+    .proof-hero-reel {
+      background:linear-gradient(135deg, rgba(240,148,51,.08), rgba(188,24,136,.08));
+      border:1px solid rgba(220,39,67,.18); border-radius:var(--radius);
+      padding:14px 18px; margin-bottom:18px;
+    }
+    .proof-hero-reel-label {
+      font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      background:linear-gradient(135deg, var(--ig-grad-2), var(--ig-grad-3));
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+      color:var(--ig-grad-3);
+      margin-bottom:4px;
+    }
+    .proof-hero-reel p {
+      font-size:13px; color:var(--ink-mid); line-height:1.55;
+    }
+    .proof-hero-reel p strong { color:var(--shadow); }
+
+    /* Quote block */
+    .proof-quotes { display:flex; flex-direction:column; gap:18px; }
+    .proof-quote {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:24px 28px;
+      border-left:4px solid var(--azure);
+    }
+    .proof-quote p {
+      font-size:17px; font-style:italic; color:var(--azure);
+      line-height:1.5; margin-bottom:12px; letter-spacing:-.005em;
+    }
+    .proof-quote-attr {
+      font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+
+    /* ══ IVP TABS ══ */
+    .ivp-tabs { display:flex; gap:8px; margin-bottom:0; flex-wrap:wrap; }
+    .ivp-tab { padding:8px 18px; border-radius:8px 8px 0 0; font-size:13px; font-weight:700; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--porcelain); color:var(--ink-soft); transition:background .15s,color .15s; user-select:none; }
+    .ivp-tab.active { background:#fff; color:var(--azure); }
+    .ivp-panels { border:1px solid var(--border); border-radius:0 var(--radius) var(--radius) var(--radius); background:#fff; box-shadow:var(--card-shadow); }
+    .ivp-panel { display:none; padding:26px; }
+    .ivp-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:640px){ .ivp-panel.active{grid-template-columns:1fr;} }
+    .ivp-col h4 { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+    .ivp-col p  { font-size:14px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px; }
+    .ivp-col h4 + h4 { margin-top:16px; }
+    .ivp-col ul.arrow-list { margin-bottom:6px; }
+
+    /* ══ PHASE FLOW (Mason arc) ══ */
+    .phase-flow { display:flex; flex-direction:column; }
+    .phase-item { display:grid; grid-template-columns:28px 1fr; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); }
+    .phase-item:last-child { border-bottom:none; }
+    .phase-dot { width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; margin-top:2px; }
+    .phase-dot.muted { background:var(--porcelain); color:var(--ink-soft); border:1px solid var(--border); }
+    .phase-body h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .phase-body p  { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ══ SOCIAL SEO ══ */
+    .keyword-bank { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .kw {
+      font-size:12px; font-weight:600; padding:5px 12px;
+      border-radius:100px; border:1px solid var(--azure-bd);
+      background:var(--azure-lt); color:var(--azure);
+    }
+    .kw.tier2 { background:rgba(226,237,122,.3); border-color:rgba(200,214,0,.3); color:#4d5e00; }
+    .kw.tier3 { background:var(--azure-lt); border-color:var(--azure-bd); color:var(--azure); }
+    .kw.tier4 { background:rgba(12,51,135,.05); border-color:rgba(12,51,135,.12); color:var(--azure); font-weight:700; }
+
+    /* ══ CONTENT IDEATION ACCORDION ══ */
+    .accordion { display:flex; flex-direction:column; gap:10px; }
+    .acc-item { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .acc-header {
+      padding:16px 22px; display:flex; align-items:center; justify-content:space-between;
+      cursor:pointer; user-select:none; transition:background .15s;
+    }
+    .acc-header:hover { background:var(--porcelain); }
+    .acc-header-left { display:flex; align-items:center; gap:14px; }
+    .acc-icon { font-size:20px; flex-shrink:0; }
+    .acc-title { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .acc-sub   { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+    .acc-tags  { display:flex; gap:6px; flex-wrap:wrap; }
+    .acc-tag   { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:4px; }
+    .tag-reel     { background:rgba(12,51,135,.1); color:var(--azure); }
+    .tag-carousel { background:rgba(226,237,122,.4); color:#4d5e00; }
+    .tag-static   { background:rgba(255,190,80,.22); color:#7a4800; }
+    .acc-chevron { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; margin-left:12px; }
+    .acc-item.open .acc-chevron { transform:rotate(180deg); }
+    .acc-body { display:none; padding:0 22px 20px; border-top:1px solid var(--border); }
+    .acc-item.open .acc-body { display:block; }
+    .acc-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:14px; }
+    .acc-metrics { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .metric-tag { font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; background:rgba(12,51,135,.08); color:var(--azure); border:1px solid var(--azure-bd); }
+    .metric-tag.method { background:rgba(226,237,122,.3); color:#4d5e00; border-color:rgba(200,214,0,.35); }
+
+    /* ══ SCOPE TABLE ══ */
+    .scope-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
+    .scope-table th:last-child { text-align:center; }
+    .scope-table td { padding:11px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:36%; padding-right:16px; }
+    .scope-table td:last-child { text-align:center; width:80px; }
+    .scope-table tr:last-child td { border-bottom:none; }
+    .scope-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:var(--azure-lt); color:var(--azure); margin-left:6px; }
+    .scope-badge.feat { background:rgba(226,237,122,.55); color:#4d5e00; }
+    .check { color:var(--azure); font-weight:700; font-size:16px; }
+
+    /* ══ TIMELINE ══ */
+    .tl-cta { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:#fff; line-height:1.55; opacity:.9; }
+    .tl-cta p strong { opacity:1; }
+
+    /* ══ INVESTMENT ══ */
+    .inv-hero { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
+    .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+    .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; max-width:560px; line-height:1.55; }
+    .inv-hero-row { display:flex; gap:32px; flex-wrap:wrap; }
+    .inv-hero-stat .amount { font-size:32px; font-weight:800; line-height:1; }
+    .inv-hero-stat .lbl { font-size:12px; opacity:.7; margin-top:3px; }
+    @media(max-width:640px){ .inv-hero{padding:24px 20px;} }
+    .inv-breakdown { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inv-row { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); font-size:14px; gap:16px; }
+    .inv-row:last-child { border-bottom:none; }
+    .inv-row.total { background:var(--azure-lt); font-weight:700; }
+    .inv-row .item { color:var(--ink-mid); flex:1; }
+    .inv-row .item strong { color:var(--shadow); display:block; font-size:15px; margin-bottom:2px; }
+    .inv-row .item small { font-size:12px; color:var(--ink-soft); }
+    .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
+    .inv-row.total .amt { color:var(--azure); font-size:17px; }
+    .credit-note { font-size:13px; color:#4d5e00; font-weight:600; background:rgba(226,237,122,.18); border:1px solid rgba(200,214,0,.35); border-left:4px solid #c8d600; border-radius:8px; padding:12px 16px; margin-top:14px; }
+
+    /* ══ STEPS ══ */
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .steps-grid{grid-template-columns:1fr;} }
+    .step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .step-n { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .step h3 { font-size:16px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ CTA ══ */
+    .cta-block { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; min-height:44px; line-height:18px; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.55); margin-top:14px; }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ══ LANE LABELS ══ */
+    .lane-labels { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+    @media(max-width:640px){ .lane-labels{grid-template-columns:1fr;} }
+    .lane-label { display:flex; gap:12px; align-items:flex-start; padding:14px 18px; border-radius:var(--radius); border:1px solid; }
+    .lane1-label { background:rgba(203,233,255,.2); border-color:rgba(12,51,135,.15); }
+    .lane2-label { background:rgba(226,237,122,.15); border-color:rgba(200,214,0,.25); }
+    .lane-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .lane1-dot { background:var(--azure); }
+    .lane2-dot { background:#8a9e00; }
+    .lane-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:3px; }
+    .lane-desc { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .lane-badge { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px; }
+    .lane1-badge { background:rgba(12,51,135,.1); color:var(--azure); }
+    .lane2-badge { background:rgba(138,158,0,.2); color:#4d5e00; }
+
+    /* ══ FOOTER ══ */
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+
+    /* ══ MILESTONE TIMELINE ══ */
+    .milestone-wrap { width:100%; }
+    .milestone-track {
+      display:grid; grid-template-columns:repeat(6,1fr); gap:0;
+      position:relative; padding-top:20px;
+    }
+    @media(max-width:760px){
+      .milestone-track { grid-template-columns:1fr 1fr; gap:16px; }
+      .ms-line { display:none; }
+    }
+    .milestone-col { display:flex; flex-direction:column; align-items:center; position:relative; }
+    .ms-dot {
+      width:16px; height:16px; border-radius:50%; flex-shrink:0; z-index:2;
+      border:3px solid #fff; box-shadow:0 0 0 2px currentColor;
+    }
+    .ms-blue { background:var(--azure); color:var(--azure); }
+    .ms-green { background:var(--green); color:var(--green); }
+    .ms-highlight { background:#8a9e00; color:#8a9e00; }
+    .ms-line {
+      position:absolute; top:8px; left:50%; right:-50%;
+      height:2px; background:var(--border); z-index:1;
+    }
+    .ms-line-fade { background:linear-gradient(90deg,var(--border),transparent); }
+    .ms-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%;
+      font-size:13px;
+    }
+    .ms-card-featured {
+      border-color:#8a9e00;
+      box-shadow:0 0 0 2px rgba(138,158,0,.18), var(--card-shadow);
+    }
+    .ms-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .ms-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .ms-items { display:flex; flex-direction:column; gap:4px; }
+    .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
+
+    /* Recurring rhythm */
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:16px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+
+    /* Milestone banner */
+    .milestone-banner {
+      background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.32);
+      border-left:4px solid #c8d600; border-radius:var(--radius);
+      padding:18px 22px; display:flex; gap:14px; align-items:flex-start;
+    }
+    .milestone-banner-icon { font-size:22px; flex-shrink:0; }
+    .milestone-banner-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .milestone-banner-desc { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* Content calendar */
+    .cal-wrap { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .cal-header { padding:18px 22px; border-bottom:1px solid var(--border); }
+    .cal-header-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .cal-header-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .cal-grid {
+      display:grid; grid-template-columns:repeat(5,1fr);
+      border-bottom:1px solid var(--border);
+    }
+    .cal-day-header {
+      padding:10px; text-align:center; font-size:11px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+      background:var(--porcelain); border-right:1px solid var(--border);
+    }
+    .cal-day-header:last-child { border-right:none; }
+    .cal-cell {
+      padding:12px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+      min-height:96px;
+    }
+    .cal-cell:nth-child(5n) { border-right:none; }
+    .cal-cell.feed.tofu  { background:rgba(203,233,255,.15); }
+    .cal-cell.feed.mofu  { background:rgba(226,237,122,.12); }
+    .cal-cell.feed.bofu  { background:rgba(12,51,135,.05); }
+    .cal-cell.story      { background:rgba(255,190,80,.1); }
+    .cal-type  { font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .cal-name  { font-size:12px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .cal-funnel { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .tofu-tag { background:rgba(203,233,255,.5); color:var(--azure); }
+    .mofu-tag { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .bofu-tag { background:rgba(12,51,135,.09); color:var(--azure); }
+    .cal-goal  { font-size:10px; color:var(--ink-soft); }
+    .cal-legend { display:flex; gap:12px; flex-wrap:wrap; padding:12px 18px; background:var(--porcelain); border-top:1px solid var(--border); }
+    .leg { font-size:11px; font-weight:600; }
+    .tofu-leg { color:var(--azure); }
+    .mofu-leg { color:#4d5e00; }
+    .bofu-leg { color:var(--azure); }
+    .story-leg { color:#7a4800; }
+
+    /* ══ MOBILE FIXES ══ */
+    .scope-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:600px){
+      .scope-table { font-size:13px; min-width:540px; }
+      .scope-table td:first-child { width:42%; }
+      .scope-table td:last-child { width:60px; }
+    }
+    .cal-wrap-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:640px){ .cal-cell{ min-height:80px; padding:8px; } .cal-name{ font-size:11px; } }
+    @media(max-width:480px){ .milestone-track{ grid-template-columns:1fr; } }
+    @media(max-width:480px){
+      .acc-header { flex-wrap:wrap; gap:8px; }
+      .acc-header > div:last-child { width:100%; display:flex; justify-content:space-between; align-items:center; }
+    }
+    /* Body-text floor on small screens — keeps minimum 14px on critical reading surfaces */
+    @media(max-width:414px){
+      .section-sub { font-size:14px; }
+      .acc-body p { font-size:14px; }
+      .ivp-col p { font-size:14px; }
+      .phase-body p { font-size:14px; }
+      .proof-card { padding:22px; }
+      .proof-card-footer p { font-size:14px; }
+      .proof-quote p { font-size:16px; }
+      .diff-card p { font-size:14px; }
+      .goal-headline { font-size:14px; }
+      .goal-card p { font-size:14px; }
+      .mason-summary-tease { font-size:14px; }
+      .mason-body p { font-size:14px; }
+      .tier-explainer { font-size:14px; }
+      .rhythm-detail { font-size:14px; }
+    }
+
+    /* ══ V6 ADDITIONS ══ */
+
+    /* Goal card v6: two-tier headline + concise application */
+    .goal-headline {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.4;
+    }
+    .goal-application {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+    }
+
+    /* Proof card v6 funnel pill (top-right) */
+    .proof-card-head {
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:14px; margin-bottom:0;
+    }
+    .proof-card-head > div { flex:1; min-width:0; }
+    .funnel-pill {
+      display:inline-block; font-size:10px; font-weight:700;
+      letter-spacing:.07em; text-transform:uppercase;
+      padding:4px 10px; border-radius:4px; white-space:nowrap; flex-shrink:0;
+    }
+    .funnel-pill.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .funnel-pill.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .funnel-pill.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* BOFU conversion-led metrics grid (replaces dashboard-body for Card 3) */
+    .bofu-conv-metrics {
+      display:grid; grid-template-columns:1fr 1fr; gap:14px;
+      padding:8px 0 16px;
+    }
+    @media(max-width:640px){ .bofu-conv-metrics{ grid-template-columns:1fr; } }
+    .bofu-conv-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px; background:var(--porcelain); border-radius:8px;
+      gap:12px;
+    }
+    .bofu-conv-label {
+      font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .bofu-conv-value {
+      font-size:22px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1;
+    }
+    .bofu-conv-delta {
+      display:inline-flex; align-items:center; gap:3px;
+      font-size:11px; font-weight:700; color:var(--ig-up);
+      background:rgba(0,186,124,.1); padding:3px 8px; border-radius:4px;
+      white-space:nowrap; margin-top:4px;
+    }
+    .bofu-conv-meta { display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
+    .bofu-reach-callout {
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-radius:8px; padding:12px 16px; margin-bottom:14px;
+    }
+    .bofu-reach-callout p {
+      font-size:13px; color:var(--ink-mid); line-height:1.55;
+    }
+    .bofu-reach-callout p strong { color:var(--shadow); }
+
+    /* Mason runway native collapsibles */
+    .mason-collapsibles { display:flex; flex-direction:column; gap:0; }
+    details.mason-row {
+      border-bottom:1px solid var(--border);
+      background:#fff;
+    }
+    details.mason-row:last-child { border-bottom:none; }
+    details.mason-row > summary {
+      display:grid; grid-template-columns:32px 1fr 24px; gap:14px;
+      align-items:center; padding:18px 4px;
+      cursor:pointer; user-select:none; list-style:none;
+      min-height:44px; transition:background .15s;
+    }
+    details.mason-row > summary::-webkit-details-marker { display:none; }
+    details.mason-row > summary:hover { background:var(--porcelain); }
+    .mason-dot {
+      width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:800; flex-shrink:0;
+    }
+    .mason-summary-text {
+      display:flex; flex-direction:column; gap:3px; min-width:0;
+    }
+    .mason-summary-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3;
+    }
+    .mason-summary-tease {
+      font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+    .mason-chev {
+      font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0;
+      justify-self:end;
+    }
+    details.mason-row[open] .mason-chev { transform:rotate(180deg); }
+    .mason-body {
+      padding:0 4px 18px 46px;
+    }
+    .mason-body p {
+      font-size:14px; color:var(--ink-mid); line-height:1.65;
+    }
+    @media(max-width:640px){
+      details.mason-row > summary { padding:16px 4px; }
+      .mason-body { padding:0 4px 16px 4px; }
+    }
+
+    /* Social SEO v6: tier explainer + subtitles */
+    .tier-explainer {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+      margin-bottom:18px; padding:12px 16px;
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-radius:8px;
+    }
+    .tier-header {
+      display:flex; flex-direction:column; gap:2px; margin-bottom:10px;
+    }
+    .tier-label {
+      font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .tier-subtitle {
+      font-size:12px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+
+    /* Timeline v6: weekly block grids + transition strip */
+    .week-blocks {
+      display:grid; gap:14px;
+    }
+    .week-blocks.cols-3 { grid-template-columns:repeat(3,1fr); }
+    .week-blocks.cols-2 { grid-template-columns:repeat(2,1fr); }
+    @media(max-width:760px){
+      .week-blocks.cols-3, .week-blocks.cols-2 { grid-template-columns:1fr; }
+    }
+    .week-block {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:22px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .week-num {
+      width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; font-weight:800; flex-shrink:0;
+    }
+    .week-block.execution .week-num { background:var(--green); }
+    .week-label {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .week-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3;
+    }
+    .week-desc {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+    }
+    .phase-eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--azure); margin-bottom:12px;
+    }
+    .phase-eyebrow.execution { color:var(--green); }
+    .transition-strip {
+      background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.32);
+      border-left:4px solid #c8d600; border-radius:var(--radius);
+      padding:18px 22px; margin:18px 0;
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .transition-strip-icon { font-size:22px; flex-shrink:0; }
+    .transition-strip-body p {
+      font-size:14px; color:var(--ink-mid); line-height:1.6;
+    }
+    .transition-strip-body p strong { color:var(--shadow); }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+    </a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#know"         data-section="know">What We Know</a></li>
+    <li><a href="#proof"        data-section="proof">Proof</a></li>
+    <li><a href="#strategy"     data-section="strategy">Strategy</a></li>
+    <li><a href="#seo"          data-section="seo">Social SEO</a></li>
+    <li><a href="#ideation"     data-section="ideation">Content Ideas</a></li>
+    <li><a href="#scope"        data-section="scope">Scope</a></li>
+    <li><a href="#timeline"     data-section="timeline">Timeline</a></li>
+    <li><a href="#what-we-need" data-section="what-we-need">What We Need</a></li>
+    <li><a href="#investment"   data-section="investment">Investment</a></li>
+    <li><a href="#next-steps"   data-section="next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<!-- Shared SVG defs for Proof donut gradient -->
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#f09433"/>
+      <stop offset="50%" stop-color="#dc2743"/>
+      <stop offset="100%" stop-color="#bc1888"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero" id="top">
+  <div class="hero-chip">Scroll Media × Atlas Systems — Signature Package Proposal</div>
+  <h1>Instagram strategy.<br/><em>Instagram execution.</em></h1>
+  <p class="hero-sub">A Signature Package proposal for Atlas Systems. Built around the next six months of compounding founder authority and regional inbound pipeline across Kentucky and Greater Cincinnati.</p>
+  <div class="hero-meta">
+    <span><strong>Client</strong> Atlas Systems</span>
+    <span><strong>Package</strong> Signature — Growth</span>
+    <span><strong>Prepared</strong> May 2026</span>
+    <span><strong>Strategist</strong> Chase Gianattasio</span>
+    <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--azure);font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(12,51,135,0.15)'" onmouseout="this.style.background='var(--azure-lt)'">📖 How We Work →</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 01 · WHAT WE KNOW ══════════ -->
+<div class="wrap" id="know">
+  <div class="eyebrow">What We Know</div>
+  <h2 class="section-title">Three goals. <em>One system.</em></h2>
+  <p class="section-sub">Every dollar in this engagement maps to one of three goals. Top, middle, and bottom of the funnel. Here is what we commit to and how we measure it.</p>
+
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <h4>Build brand awareness</h4>
+      <p class="goal-headline">Get Atlas in front of Kentucky and Greater Cincinnati owners.</p>
+      <p class="goal-application">Most owners who would benefit from Atlas have no idea it exists. We expand the audience of regional operators who see your work, with content built for the people most likely to send a message.</p>
+      <span class="goal-tag tag-tofu">TOFU · Awareness</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <h4>Earn trust and authority</h4>
+      <p class="goal-headline">Become the trusted no-hype tech voice in the regional feed.</p>
+      <p class="goal-application">The Cincinnati and Kentucky B2B feed is full of AI hype and thin substance. Your voice is plainspoken, specific, and senior. We make that voice loud and recognizable so when an owner needs CRM, automation, or honest AI guidance, you are who they remember.</p>
+      <span class="goal-tag tag-mofu">MOFU · Authority</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <h4>Convert into fit calls</h4>
+      <p class="goal-headline">Drive qualified inbound to atlasys.io.</p>
+      <p class="goal-application">The audience is ready. We give them the calls-to-action, link-in-bio infrastructure, and conversion mechanics to take the next step. They land on the Atlas contact form, fill it out, and end up on a 15-minute fit call.</p>
+      <span class="goal-tag tag-bofu">BOFU · Conversion</span>
+    </div>
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>How we measure success.</strong> Each goal has its own performance metrics, calibrated to the psychological stage the audience is in.</p>
+    <ul class="arrow-list mt-sm" style="margin-top:12px;">
+      <li><strong>Top of funnel — Awareness.</strong> Reach, non-follower views, accounts reached, profile visits. We are getting your brand in front of new eyes who fit your ideal buyer profile.</li>
+      <li><strong>Middle of funnel — Trust and authority.</strong> Saves, shares, comments, watch time, story replies. The audience is paying attention, building familiarity, and starting to see you as the credible regional voice on practical tech.</li>
+      <li><strong>Bottom of funnel — Conversion.</strong> External link taps to atlasys.io, profile activity, DMs, fit-call inquiries. Attention becomes action.</li>
+    </ul>
+    <p style="margin-top:12px;">The strategy walks your audience through a complete journey. From never having heard of Atlas, to recognizing you as the regional voice on practical systems, to filling out the contact form. Every piece of content has a job inside that journey. Nothing goes live without a strategic purpose.</p>
+  </div>
+
+  <!-- DIFFERENTIATORS BLOCK -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">What Sets You Apart</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Four differentiators <em style="font-style:italic;color:var(--azure);">no regional tech consultant can replicate.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Atlas carries posture and capability most local tech vendors will never have. Each one becomes a recurring authority pillar in the content system.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 01</div>
+        <h4>Enterprise rigor, local roots</h4>
+        <p>Ten-plus years designing and delivering systems in healthcare, fintech, and enterprise data, now applied to owner-led businesses in Northern Kentucky and Greater Cincinnati. Most regional tech consultants come from the freelancer or agency-junior track. You bring senior-level enterprise architecture judgment to the kind of businesses that usually cannot afford it.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 02</div>
+        <h4>Founder-executed delivery, no handoffs</h4>
+        <p>Most agencies sell senior expertise and deliver junior execution. Atlas is the same person from scoping through delivery. The person sizing the problem is the person solving it. Every time. That posture is rare and it is the reason buyers stay.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 03</div>
+        <h4>Written scope. Fixed price. No surprises.</h4>
+        <p>Most regional tech vendors quote loosely, change midstream, and surface surprises in the invoice. Atlas locks scope in writing and price upfront. The trust signal is on the home page for a reason. It is the most concrete way a buyer can tell the difference between a real practice and an agency that promises everything.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 04</div>
+        <h4>Grounded AI, not hype</h4>
+        <p>The market is loud with AI transformation talk. Atlas's posture is the opposite. Practical AI for businesses small enough to actually execute against. Intelligent Intake. CRM automation. AI governance. Concrete deliverables in production at AGS Therapy, Phil Smith Real Estate, and others. Not concept slides.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 02 · PROOF ══════════ -->
+<div class="wrap" id="proof">
+  <div class="eyebrow">What the Work Does</div>
+  <h2 class="section-title">Performance. <em>Across the funnel.</em></h2>
+  <p class="section-sub">The strategy we are proposing is the same system we run for every Signature client. Here is what it produces. One piece of proof per funnel stage.</p>
+
+  <div class="proof-stack">
+
+    <!-- PROOF CARD 1 · TOFU REACH PROOF · Cincinnati skincare practice -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati skincare practice we work with</div>
+          <div class="proof-card-pill">Reel · Feb 2026</div>
+        </div>
+        <span class="funnel-pill tofu">TOFU · Reach Proof</span>
+      </div>
+
+      <div class="proof-metrics-grid">
+        <div class="proof-metric">
+          <div class="proof-metric-value">25,432</div>
+          <div class="proof-metric-label">Views</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">1,177</div>
+          <div class="proof-metric-label">Starting reach</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">21×</div>
+          <div class="proof-metric-label">Algorithmic multiple</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">97%</div>
+          <div class="proof-metric-label">Non-follower reach</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">59</div>
+          <div class="proof-metric-label">Saves</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">18</div>
+          <div class="proof-metric-label">Shares</div>
+        </div>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> A reel that started with 1,177 of follower-reach exposure got pushed by the algorithm to 25,432 views. A 21× multiple, with 97% of those views from people outside the existing follower base. This is what brand awareness in your category looks like when content is built for reach.</p>
+      </div>
+    </div>
+
+    <!-- PROOF CARD 2 · MOFU ENGAGEMENT PROOF · Cincinnati lifestyle brand -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati lifestyle brand we work with</div>
+          <div class="proof-card-pill">Reel · Nov 2025</div>
+        </div>
+        <span class="funnel-pill mofu">MOFU · Engagement Proof</span>
+      </div>
+
+      <div class="proof-metrics-grid">
+        <div class="proof-metric">
+          <div class="proof-metric-value">15,265</div>
+          <div class="proof-metric-label">Views</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">78.9%</div>
+          <div class="proof-metric-label">View rate</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">246</div>
+          <div class="proof-metric-label">Comments</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">97</div>
+          <div class="proof-metric-label">Shares</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">10</div>
+          <div class="proof-metric-label">Reposts</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">4.95%</div>
+          <div class="proof-metric-label">Engagement rate</div>
+        </div>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> Reach without engagement is just attention. The middle of the funnel is where attention becomes trust. This reel held 78.9% view-through, sparked 246 active conversations in comments, and got reposted 10 times. That is the audience starting to talk back, share with peers, and pull the brand into their own social orbit.</p>
+      </div>
+    </div>
+
+    <!-- PROOF CARD 3 · BOFU CONVERSION PROOF · Cincinnati boutique fitness studio -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati boutique fitness studio we work with</div>
+          <div class="proof-card-pill">Account-level performance · Last 30 days</div>
+        </div>
+        <span class="funnel-pill bofu">BOFU · Conversion Proof</span>
+      </div>
+
+      <div class="bofu-conv-metrics">
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">External link taps</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">94</div>
+            <div class="bofu-conv-delta">↑ 213.3%</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Business address taps</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">9</div>
+            <div class="bofu-conv-delta">↑ 350%</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Profile activity</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">1,580</div>
+            <div class="bofu-conv-delta">↑ 152.0%</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Profile visits</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">1,477</div>
+            <div class="bofu-conv-delta">↑ 148.2%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bofu-reach-callout">
+        <p><strong>Account-level reach in the same period:</strong> 355,689 accounts reached (↑ 4,290.7%). The reach gave us the audience. The conversion metrics show what that audience did with their attention.</p>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> This is the bottom of the funnel doing its job. People tapping the link to visit the site. People taking action on the profile. People moving from passive viewer to active inbound. For Atlas, that link tap is the path from Instagram to the atlasys.io contact form. These are the metrics that translate to fit calls and signed scopes.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TESTIMONIAL QUOTES -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">What Clients Say</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">In their own <em style="font-style:italic;color:var(--azure);">words.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Three current clients on what it is like to work with us.</p>
+
+    <div class="proof-quotes">
+      <div class="proof-quote">
+        <p>"She helped us develop our social strategy, filmed engaging content, and grew our IG followers significantly. I highly recommend Scroll Media to other marketing executives."</p>
+        <div class="proof-quote-attr">— Founder, Cincinnati-area consulting practice</div>
+      </div>
+      <div class="proof-quote">
+        <p>"I've seen massive growth in my store's sales and Instagram following. Hiring her for my store's marketing has been the best decision I have made for my business."</p>
+        <div class="proof-quote-attr">— Owner, Cincinnati boutique retail brand</div>
+      </div>
+      <div class="proof-quote">
+        <p>"Might be the most direct and confident ROI I've ever seen on social media."</p>
+        <div class="proof-quote-attr">— Real-time message from a current client after a member-generated reel went viral referencing their studio</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 03 · STRATEGY ══════════ -->
+<div class="wrap" id="strategy">
+  <div class="eyebrow">Strategic Approach</div>
+  <h2 class="section-title">Who we're reaching. <em>How we'll reach them.</em></h2>
+  <p class="section-sub">Two audiences. One founder-led position. Every piece of content knows which audience it is talking to and where it is meeting them in their journey.</p>
+
+  <div class="ivp-tabs">
+    <div class="ivp-tab active" onclick="switchTab(0)">The Operator at the Wall · Core Audience — Inside the House</div>
+    <div class="ivp-tab" onclick="switchTab(1)">The AI-Curious Owner · Conversion Audience — Outside the House</div>
+  </div>
+  <div class="ivp-panels">
+    <div class="ivp-panel active" id="ivp-0">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Kentucky and Greater Cincinnati business owners running operator-led businesses, typically 10 to 50 employees, in trust-heavy verticals. Therapy, legal, real estate, professional services, regional service businesses. They are running on spreadsheets and workarounds that worked at half their current size. They know they need help. They have been burned by vendors. They want fixed pricing, written scope, and senior judgment without agency overhead. They are the audience you already speak to on atlasys.io.</p>
+        <h4>Motivators</h4>
+        <ul class="arrow-list">
+          <li>Fewer fires per week. Less rework on duct-taped systems.</li>
+          <li>A clear scope and a price they can plan around.</li>
+          <li>One trusted technical person they do not have to manage like a vendor.</li>
+          <li>Confidence the system will scale past their current ceiling.</li>
+        </ul>
+      </div>
+      <div class="ivp-col">
+        <h4>Current Challenges</h4>
+        <ul class="arrow-list">
+          <li>Spreadsheets and workarounds are breaking. They feel it daily.</li>
+          <li>No technical hire to lead the fix. A full-time CTO is overkill.</li>
+          <li>Burned before by agencies that promise everything and deliver mid.</li>
+          <li>Do not know where to start. CRM? Automation? Intake?</li>
+        </ul>
+        <h4>Dream Outcomes</h4>
+        <ul class="arrow-list">
+          <li>Less manual work. The team stops doing the machine's job.</li>
+          <li>One source of truth across CRM and operations.</li>
+          <li>Leads captured and qualified around the clock.</li>
+          <li>Infrastructure that grows with the business instead of fighting it.</li>
+        </ul>
+        <h4>How Content Adapts</h4>
+        <p>Founder-led explanations of real operational systems. Migration before-and-after content. Anonymized client transformations from Atlas's own portfolio. Technology Assessment teases. "What I would fix first" content with concrete examples. Direct-to-form CTAs.</p>
+      </div>
+    </div>
+    <div class="ivp-panel" id="ivp-1">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Kentucky and Greater Cincinnati owners who are not shopping for a tech partner today but feel the AI cycle is real and want a practical voice translating it. Mid-career operators who have watched LinkedIn fill with AI hype, are skeptical of the noise, and are looking for someone calm and credentialed to tell them what is actually useful for a business their size. They follow practical tech voices. They eventually become buyers when operational friction hits or when an AI question lands on their desk.</p>
+        <h4>Motivators</h4>
+        <ul class="arrow-list">
+          <li>Understanding what is real and what is hype in AI.</li>
+          <li>Knowing what is worth doing first and what to skip.</li>
+          <li>Hearing from someone who has actually shipped it, not just talked about it.</li>
+          <li>Trusting the source. They are exhausted by salesperson energy.</li>
+        </ul>
+      </div>
+      <div class="ivp-col">
+        <h4>Current Challenges</h4>
+        <ul class="arrow-list">
+          <li>Information overload. Every LinkedIn post is the next big thing.</li>
+          <li>Hard to tell who actually knows what they are talking about.</li>
+          <li>Worried about implementing something that wastes time or burns budget.</li>
+          <li>Skeptical of agency pitches by default.</li>
+        </ul>
+        <h4>Dream Outcomes</h4>
+        <ul class="arrow-list">
+          <li>A trusted regional voice on practical tech for SMBs.</li>
+          <li>Clear, no-hype POV on what to do (and not do) with AI.</li>
+          <li>Confidence to make the next move when the operational moment arrives.</li>
+          <li>A person they already trust by the time they actually need them.</li>
+        </ul>
+        <h4>How Content Adapts</h4>
+        <p>Contrarian takes that signal expertise ("Most SMBs do not need AI. They need a CRM that works"). Practical AI explainers grounded in real client work. Technology Assessment positioned as the gateway. Founder-POV content that builds personal familiarity with Chase before they ever need him. The audience you are inheriting later by being the calm voice in the feed today.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="assumption mt-md">
+    <p><strong>Assumption.</strong> This engagement focuses on Atlas's primary Instagram account. The account currently runs at @atlasysky, with @atlasadvisoryky also tied to the brand (still linked from the atlasys.io footer). Phase 1 profile optimization includes resolving the handle alignment. Chase's personal social presence and Atlas's affiliated builds (Sous, Crown Collectibles, Traverse Intermodal, Lauren Teepen Homes, Little Worlds, Raw to Grade) stay out of scope unless explicitly added at the kickoff call.</p>
+  </div>
+
+  <!-- ══ STRATEGY SUB-BLOCK · LINKEDIN CROSS-DISTRIBUTION ══ -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">Unique to Your Engagement</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Instagram primary. <em style="font-style:italic;color:var(--azure);">LinkedIn lift.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Atlas's buyers live on both Instagram and LinkedIn. The engagement primary is Instagram. That is where we strategize, produce, and measure. LinkedIn is a cross-distribution add-on we run in parallel so the same authority signal compounds in front of the audience on the platform B2B buyers actually check.</p>
+
+    <div class="card" style="padding:8px 22px;">
+      <div class="mason-collapsibles">
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">1</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Production · Built once on the Instagram side</div>
+              <div class="mason-summary-tease">Reels, carousels, and statics produced for Instagram inside the standard Signature workflow.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>All primary content is produced for Instagram inside the standard Signature production cadence. Shot every 3 weeks, scripted from the locked content strategy, designed for Instagram-native distribution. No separate LinkedIn production track, no separate creative, no duplicate shoots.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">2</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Adaptation · Lightweight LinkedIn-specific edits</div>
+              <div class="mason-summary-tease">Captions reformatted, video natively-uploaded, posture adjusted for the LinkedIn feed.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>Each Instagram post gets a lightweight LinkedIn-ready version. Captions get reformatted for the LinkedIn feed (longer-form acceptable, professional framing, hashtag posture adjusted). Reels get adapted for native LinkedIn upload (not cross-linked reshares, which the LinkedIn algorithm suppresses). Static and carousel content gets re-cropped where needed.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">3</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Distribution · You post to LinkedIn yourself</div>
+              <div class="mason-summary-tease">Scroll hands you the ready-to-post LinkedIn version. You post it on your cadence.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>Scroll delivers the LinkedIn-ready version alongside the Instagram-approved version. You post it from your personal LinkedIn account (or the Atlas company page, depending on the post type and what we lock in at Phase 1 kickoff). Production overhead stays on the Instagram side. You get the LinkedIn distribution benefit without the duplicate management cost.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">4</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Measurement · Instagram-tracked only</div>
+              <div class="mason-summary-tease">Performance metrics report against Instagram. LinkedIn is leverage, not scope.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>Monthly performance reporting tracks Instagram only. LinkedIn cross-distribution is a strategic value-add, not a measured channel. We do not track or report LinkedIn performance, and we do not optimize against LinkedIn signals. The benefit is real and the leverage is meaningful, but the measurement complexity stays out of the engagement.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="insight mt-md">
+      <p><strong>Why this matters.</strong> B2B buyers live on LinkedIn. Founder authority compounds when the same content shows up across the platforms your buyer actually checks. We do not track or report LinkedIn performance, but you get the distribution benefit without the production overhead. This is leverage, not scope creep.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 04 · SOCIAL SEO ══════════ -->
+<div class="wrap" id="seo">
+  <div class="eyebrow">Social SEO</div>
+  <h2 class="section-title">Cast wide. <em>Compress to quality.</em></h2>
+  <p class="section-sub">Instagram is increasingly a search engine. The accounts that show up for the right searches get the buyers who are ready to send a message. We build the keyword ladder strategically. Start wide enough to spike the algorithm. Narrow to the audience that converts.</p>
+
+  <div class="card">
+    <div class="card-label">Atlas Systems — 4-Tier TAM Compression Keyword Bank</div>
+    <p class="tier-explainer">Each tier compresses the total addressable market down. Tier 1 is broad enough to spike algorithmic distribution. Tier 4 is hyper-local and authority-anchored. Together, the four tiers cover the full search-intent journey.</p>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 1 — Niche-Broad (no geo) · Broad Algorithmic Spike</span>
+      <span class="tier-subtitle">Cast the widest net inside your niche. Spike the algorithm with broad relevance signal.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw">business automation</span>
+      <span class="kw">CRM setup</span>
+      <span class="kw">AI automation</span>
+      <span class="kw">small business technology</span>
+      <span class="kw">HubSpot</span>
+      <span class="kw">Salesforce</span>
+      <span class="kw">technology consulting</span>
+      <span class="kw">system integrations</span>
+      <span class="kw">AI for small business</span>
+      <span class="kw">intelligent intake</span>
+    </div>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 2 — Niche + Demographic Anchor · Qualified Category</span>
+      <span class="tier-subtitle">Narrow by professional credential and audience demographic. Still pre-geo.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier2">founder-led tech consulting</span>
+      <span class="kw tier2">fractional CTO</span>
+      <span class="kw tier2">fractional technology leadership</span>
+      <span class="kw tier2">technology assessment</span>
+      <span class="kw tier2">AI governance</span>
+      <span class="kw tier2">enterprise architect consulting</span>
+      <span class="kw tier2">CRM consulting SMB</span>
+      <span class="kw tier2">custom website builds</span>
+      <span class="kw tier2">web development for SMB</span>
+      <span class="kw tier2">Google Ads for SMB</span>
+    </div>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 3 — Metro · Kentucky + Cincinnati-Anchored</span>
+      <span class="tier-subtitle">Add geographic specificity. Greater Cincinnati and Kentucky anchoring.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier3">Cincinnati technology consulting</span>
+      <span class="kw tier3">Northern Kentucky tech consultant</span>
+      <span class="kw tier3">Cincinnati CRM consultant</span>
+      <span class="kw tier3">Kentucky business automation</span>
+      <span class="kw tier3">Cincinnati AI consultant</span>
+      <span class="kw tier3">Ohio technology consulting</span>
+      <span class="kw tier3">Cincinnati HubSpot consultant</span>
+      <span class="kw tier3">Cincinnati Salesforce consultant</span>
+      <span class="kw tier3">Cincinnati web development</span>
+      <span class="kw tier3">Kentucky fractional CTO</span>
+    </div>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 4 — Hyper-local + Authority · Max-Intent Capture</span>
+      <span class="tier-subtitle">Neighborhood plus credential specifics. The highest-intent search terms.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;">
+      <span class="kw tier4">Northern Kentucky enterprise architect</span>
+      <span class="kw tier4">NKY fractional CTO</span>
+      <span class="kw tier4">Cincinnati AI strategist</span>
+      <span class="kw tier4">founder-led tech consulting Cincinnati</span>
+      <span class="kw tier4">Cincinnati business systems consultant</span>
+      <span class="kw tier4">Cincinnati technology advisory</span>
+      <span class="kw tier4">Kentucky AI for small business</span>
+      <span class="kw tier4">Northern Kentucky CRM consulting</span>
+    </div>
+  </div>
+
+  <div class="card mt-lg">
+    <div class="card-label">Where These Land</div>
+    <ul class="arrow-list mt-sm">
+      <li>Profile name field (max 30-char window, high SEO weight)</li>
+      <li>Bio (descriptive copy, primary terms front-loaded)</li>
+      <li>Highlight covers and titles (service anchors as permanent navigation)</li>
+      <li>Caption opening lines (Instagram weights first sentence heavily)</li>
+      <li>Alt text on every static post</li>
+      <li>Geo-tag every post that is location-relevant (NKY, Cincinnati, Lexington, regional)</li>
+    </ul>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>The TAM compression logic.</strong> We start broad enough to get algorithmic distribution in the small-business tech and AI categories. As content compounds, we narrow the keyword targeting toward the audience that actually converts: Kentucky and Greater Cincinnati operators ready to send a message. Tier 1 builds reach. Tier 4 captures intent. The middle tiers are the bridge.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 05 · CONTENT IDEAS ══════════ -->
+<div class="wrap" id="ideation">
+  <div class="eyebrow">Content Ideation</div>
+  <h2 class="section-title">Built around your scope. <em>Designed to perform.</em></h2>
+  <p class="section-sub">Two lanes running at once. Lane 1 scales founder-led formats that have a track record of performing in your category. Lane 2 builds on top with Atlas-original authority pillars. Every idea below comes from the Scroll ideation system applied to your scope, your audience, and your goals.</p>
+
+  <div class="lane-labels">
+    <div class="lane-label lane1-label">
+      <div class="lane-dot lane1-dot"></div>
+      <div>
+        <div class="lane-name">Lane 1 — Proven founder-led formats</div>
+        <div class="lane-desc">Founder talking-head content. Migration before / after. Behind-the-scenes from real client work. Listicle carousels. Formats with a track record in your category. Cadence, hooks, and captions get refined; the format stays.</div>
+      </div>
+    </div>
+    <div class="lane-label lane2-label">
+      <div class="lane-dot lane2-dot"></div>
+      <div>
+        <div class="lane-name">Lane 2 — Atlas-original authority pillars</div>
+        <div class="lane-desc">Anti-hype AI takes. Practical AI tool reviews. Intelligent Intake demos. Fractional-CTO Q&amp;A. Built from scratch using Atlas's posture, portfolio, and senior judgment. No other regional tech consultant can match this lane.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion" id="accordion">
+
+    <!-- IDEA 1 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🔧</div>
+          <div>
+            <div class="acc-title">"What I'd fix first" series</div>
+            <div class="acc-sub">Object Lesson · Lane 1 — Founder-led</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Walk through a real operational mess (spreadsheet chaos, duplicate entry, lead-routing failure) and the actual first step to fix it. No abstract advice. Specific. Founder POV, concrete examples drawn from the kind of operator-led businesses Atlas serves. Earns saves from the operator-at-the-wall audience that recognizes their own situation.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">MOFU</span>
+          <span class="metric-tag method">Object Lesson</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">⚖️</div>
+          <div>
+            <div class="acc-title">"Why I won't recommend AI for [X]" series</div>
+            <div class="acc-sub">Contrarian Take · Lane 2 — Atlas-original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Contrarian takes aligned with Atlas's anti-hype voice. "Most realtors should not be paying for AI lead gen. Here is what to do instead." "Why I would not put an AI chatbot on your homepage yet." Authority compounds by saying no. Earns saves and shares from the AI-curious audience tired of being upsold.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">MOFU</span>
+          <span class="metric-tag method">Contrarian Take</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 3 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">📋</div>
+          <div>
+            <div class="acc-title">Technology Assessment walk-through</div>
+            <div class="acc-sub">Object Lesson · Lane 1 — Founder-led</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Founder POV from a real Technology Assessment (anonymized). What we look at, what we surface, what the 30/60/90 plan actually contains. Show the work. Positions the Assessment as the qualified gateway into a full engagement. Demystifies what Atlas actually delivers.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">MOFU</span>
+          <span class="metric-tag method">Object Lesson</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 4 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🔄</div>
+          <div>
+            <div class="acc-title">Migration before / after carousels</div>
+            <div class="acc-sub">Authority Builder · Lane 1 — Founder-led</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>AGS Therapy Squarespace → custom. ZRS Law Wix → modern stack. Phil Smith real estate site build. Visual story plus the operational unlock behind each. Repurposes Atlas's published portfolio into recurring authority content. Slide 1 hook. Slides 2–5 the before/after plus what changed under the hood. Final slide CTA.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">MOFU</span>
+          <span class="metric-tag method">Authority Builder</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 5 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">📞</div>
+          <div>
+            <div class="acc-title">Intelligent Intake demo</div>
+            <div class="acc-sub">Object Lesson + Open Loop · Lane 2 — Atlas-original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Chase calls his own AI phone agent, plays back the qualification, shows the lead routing into HubSpot. The product demo Atlas should have on the site too. Hook: "I called my own AI receptionist and here is what happened." The most concrete way to show what Atlas means by practical AI.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">BOFU</span>
+          <span class="metric-tag method">Object Lesson</span>
+          <span class="metric-tag method">Open Loop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 6 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">📊</div>
+          <div>
+            <div class="acc-title">"5 signs your spreadsheet stack is breaking"</div>
+            <div class="acc-sub">List / Top 5 · Lane 1 — Founder-led</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Classic listicle hook, Atlas-grounded specifics. Built directly for the operator-at-the-wall audience. High save and share rate, broad reach signal. Each slide a single sign with one specific real-world example. Final slide the operational fix and a CTA to the contact form.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">TOFU</span>
+          <span class="metric-tag method">List / Top 5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 7 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">💼</div>
+          <div>
+            <div class="acc-title">Fractional CTO Q&amp;A</div>
+            <div class="acc-sub">Object Lesson · Lane 2 — Atlas-original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Founder POV answering specific owner questions. "Do I need a CTO yet?" "When does it make sense to bring this in-house?" "What does a fractional CTO actually do?" Direct answers to the questions Atlas's audience is already asking other voices. Positions Chase as the calm, credentialed regional answer.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">MOFU</span>
+          <span class="metric-tag method">Object Lesson</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 8 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">💰</div>
+          <div>
+            <div class="acc-title">"How fixed pricing actually works"</div>
+            <div class="acc-sub">Trust Signal · Lane 1 — Founder-led</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Demystify Atlas's pricing posture. Trust signal that sets up the fit call. Direct response to the buyer's most common unstated objection. "Most consultants quote loosely. Here is how I quote and why it works that way." The home-page trust signal turned into recurring social proof.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">BOFU</span>
+          <span class="metric-tag method">Trust Signal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 9 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🛠️</div>
+          <div>
+            <div class="acc-title">AI tool reviews (no hype)</div>
+            <div class="acc-sub">Contrarian Take · Lane 2 — Atlas-original</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Chase reviews a tool everyone is hyping. Practical assessment: does it deliver, who is it for, who should skip it. The anti-hype voice as a recurring authority pillar. Saves heavily because viewers actually need the verdict. Shares well because nobody else is being this direct in the regional feed.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">TOFU</span>
+          <span class="metric-tag method">Contrarian Take</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 10 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🏆</div>
+          <div>
+            <div class="acc-title">Client wins (anonymized)</div>
+            <div class="acc-sub">Authority Builder · Lane 1 — Founder-led</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>"How a Kentucky law firm cut after-hours lead loss to near zero." Narrative-driven outcomes from Atlas's portfolio. Aligns to the trust-heavy verticals the audience comes from. Anonymized when needed, named when consent is in place. Each carousel a single outcome story plus the operational mechanism behind it.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">BOFU</span>
+          <span class="metric-tag method">Authority Builder</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>These are the ideas we'd test in Phase 2.</strong> Each gets a hook variant plus caption framework plus validation signal (which Tier 1 metric confirms it worked). The ones that hit get scaled. The ones that don't get cut.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 06 · SCOPE ══════════ -->
+<div class="wrap" id="scope">
+  <div class="eyebrow">Scope of Work</div>
+  <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
+  <p class="section-sub">Everything below is included in the monthly engagement. Strategic feature for Atlas: LinkedIn cross-distribution.</p>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div class="scope-table-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding:24px 26px;">
+    <table class="scope-table">
+      <thead><tr><th>Deliverable</th><th>Details</th><th>Incl.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Content Strategy <span class="scope-badge">Month 1</span></td>
+          <td>Two-audience IVP, content pillars, format mix, KPI framework. Locked in Phase 1, refined at quarterly reviews.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Feed Production</td>
+          <td>Reels, carousels, and statics produced on a weekly cadence. Founder-led shoots every 3 weeks. Every post mapped to a pillar and funnel stage.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Stories</td>
+          <td>Optimized story days running Tuesdays and Thursdays. Service highlights, BTS, founder POV.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Reshares</td>
+          <td>Strategic resharing of client posts, user-generated content, and earned mentions to compound reach.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Profile Optimization</td>
+          <td>Profile photo, username alignment (resolve @atlasysky vs @atlasadvisoryky), name field, bio, link-in-bio, three pinned posts.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Social SEO</td>
+          <td>Four-tier TAM compression keyword ladder applied across profile and content. Quarterly keyword review.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>LinkedIn Cross-Distribution <span class="scope-badge feat">Strategic Feature</span></td>
+          <td>Lightweight LinkedIn-ready adaptations of Instagram content. You post to LinkedIn yourself. Performance tracking remains Instagram-only.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management</td>
+          <td>Engagement on Atlas's content, monitored response to comments and DMs, inbox triage for fit-call routing.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Monthly Report</td>
+          <td>Live HTML performance report. Reach, engagement, conversion metrics, strategic adjustments documented.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Biweekly Check-ins</td>
+          <td>30-minute strategic syncs. Approvals batched, performance reviewed, upcoming priorities scoped.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Quarterly Strategy Review</td>
+          <td>Strategy recalibration based on 90 days of performance data. Pillars and pillars-mix adjustments. What is working gets scaled. What is not gets replaced.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Content approvals.</strong> 5 business days before publish. Maximum 2 rounds of edits per cycle. All approvals batched at biweekly check-ins. The cadence keeps your time commitment predictable and the content cycle moving.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 07 · TIMELINE ══════════ -->
+<div class="wrap" id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2 class="section-title">Strategy first. <em>First post in week 4.</em></h2>
+  <p class="section-sub">Strategy before execution, always. Here's exactly what to expect, week by week, then the ongoing rhythm.</p>
+
+  <div class="tl-cta">
+    <div style="font-size:24px;">⚡</div>
+    <p><strong>Ready to move fast.</strong> Contract signed this week → kickoff call within 48 hours → strategy built in 3 weeks → first post live by week 4. First-week-of-June kickoff is the target.</p>
+  </div>
+
+  <!-- VISUAL MILESTONE TIMELINE -->
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-track">
+
+      <!-- M1 · Week 1 · Kickoff + Ideation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Kickoff + Ideation</div>
+          <div class="ms-items">
+            <span>✓ 60-min working session</span>
+            <span>✓ Goals + buyer priorities</span>
+            <span>✓ Profile optimization plan</span>
+            <span>✓ Handle resolution decision</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M2 · Week 2 · Strategy Development -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 2</div>
+          <div class="ms-title">Strategy Development</div>
+          <div class="ms-items">
+            <span>✓ Two-audience IVP</span>
+            <span>✓ Content pillars + format mix</span>
+            <span>✓ KPI framework</span>
+            <span>✓ LinkedIn adaptation framework</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M3 · Week 3 · Strategy Presentation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 3</div>
+          <div class="ms-title">Strategy Presentation</div>
+          <div class="ms-items">
+            <span>✓ Full strategy deck delivered</span>
+            <span>✓ Customer-facing format</span>
+            <span>✓ Locked, signed off</span>
+            <span>✓ Production schedule</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M4 · Week 4 · First Content Cycle -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 4</div>
+          <div class="ms-title">First Content Cycle</div>
+          <div class="ms-items">
+            <span>✓ First batch produced</span>
+            <span>✓ Routed for approval</span>
+            <span>✓ Locked content calendar</span>
+            <span>✓ Edits resolved</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M5 · Week 5 · First Publish -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 5</div>
+          <div class="ms-title">🚀 First Publish</div>
+          <div class="ms-items">
+            <span>✓ First wave goes live</span>
+            <span>✓ Biweekly publish rhythm</span>
+            <span>✓ Story days active</span>
+            <span>✓ Performance tracking starts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M6 · Ongoing · Execution Mode -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line ms-line-fade"></div>
+        <div class="ms-card ms-card-featured">
+          <div class="ms-week">Ongoing</div>
+          <div class="ms-title">Execution Mode</div>
+          <div class="ms-items">
+            <span>✓ Every-3-week shoots</span>
+            <span>✓ Biweekly status meetings</span>
+            <span>✓ Monthly performance reports</span>
+            <span>✓ Quarterly strategy review</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TRANSITION STRIP -->
+  <div class="transition-strip mt-lg">
+    <div class="transition-strip-icon">⚡</div>
+    <div class="transition-strip-body">
+      <p><strong>Strategy locked. Execution begins.</strong> The end of Week 3 is the transition point. From strategic planning to weekly content production.</p>
+    </div>
+  </div>
+
+  <!-- ONGOING OPERATING RHYTHM -->
+  <div class="rhythm-row mt-lg">
+    <div class="rhythm-label">Ongoing operating rhythm</div>
+    <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once execution is live, four cadences run in parallel. They are the heartbeat of the engagement.</div>
+    <div class="rhythm-steps">
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📸</div>
+        <div class="rhythm-name">Content Shoot</div>
+        <div class="rhythm-detail">Every 3 weeks · Batch shoots designed to minimize founder time · 2-3 hour windows · All assets in single sessions.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">💬</div>
+        <div class="rhythm-name">Status Meeting</div>
+        <div class="rhythm-detail">Every other week · 30-minute check-in · Approvals batched, performance reviewed, upcoming priorities scoped.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📅</div>
+        <div class="rhythm-name">Story Days</div>
+        <div class="rhythm-detail">Tuesdays + Thursdays · Service highlights, behind-the-scenes, founder POV.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📊</div>
+        <div class="rhythm-name">Performance Report</div>
+        <div class="rhythm-detail">End of every month · Live HTML report · Reach, engagement, conversion · Strategic adjustments documented.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-banner">
+      <div class="milestone-banner-icon">📈</div>
+      <div>
+        <div class="milestone-banner-title">B2B inbound benchmark — Month 2-3</div>
+        <div class="milestone-banner-desc">Atlas is a B2B service business with longer consideration cycles than retail. Early inbound (fit-call inquiries attributable to Instagram) typically lands Month 2-3 of execution as the audience builds and content compounds. We track signal monthly from Day One. We do not promise breakthrough inbound in Month 1, and we do not chase vanity metrics in the meantime.</div>
+      </div>
+    </div>
+
+    <div class="cal-wrap-outer mt-lg">
+    <div class="cal-wrap" style="min-width:520px;">
+      <div class="cal-header">
+        <div class="cal-header-title">Sample Content Calendar — Phase 2 Month 2</div>
+        <div class="cal-header-sub">Illustrative view of a standard execution week. Three lanes running in parallel: feed posts, story days, LinkedIn cross-distribution. Format names and exact hooks finalized in Phase 1 strategy.</div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day-header">Mon</div>
+        <div class="cal-day-header">Tue</div>
+        <div class="cal-day-header">Wed</div>
+        <div class="cal-day-header">Thu</div>
+        <div class="cal-day-header">Fri</div>
+      </div>
+
+      <!-- LANE 1 · AM FEED POST -->
+      <div style="padding:10px 18px;background:var(--porcelain);border-bottom:1px solid var(--border);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">AM Feed Post</div>
+      <div class="cal-grid">
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">"5 signs your spreadsheet stack is breaking"</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach · Saves</div>
+        </div>
+        <div class="cal-cell"></div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">AGS Therapy migration before/after</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Saves · Profile visits</div>
+        </div>
+        <div class="cal-cell"></div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">"How fixed pricing actually works"</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Link taps · DMs</div>
+        </div>
+      </div>
+
+      <!-- LANE 2 · STORIES -->
+      <div style="padding:10px 18px;background:var(--porcelain);border-bottom:1px solid var(--border);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">Stories</div>
+      <div class="cal-grid">
+        <div class="cal-cell"></div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Service highlights + poll</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies · Retention</div>
+        </div>
+        <div class="cal-cell"></div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">BTS shoot moments + Q-box</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies · DMs</div>
+        </div>
+        <div class="cal-cell"></div>
+      </div>
+
+      <!-- LANE 3 · LINKEDIN CROSS-POST -->
+      <div style="padding:10px 18px;background:var(--porcelain);border-bottom:1px solid var(--border);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">LinkedIn Cross-Post · Strategic feature · Not tracked in monthly report</div>
+      <div class="cal-grid">
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">LinkedIn</div>
+          <div class="cal-name">Adapted from Mon reel</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Founder authority lift</div>
+        </div>
+        <div class="cal-cell"></div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">LinkedIn</div>
+          <div class="cal-name">Adapted from Wed carousel</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Founder authority lift</div>
+        </div>
+        <div class="cal-cell"></div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">LinkedIn</div>
+          <div class="cal-name">Adapted from Fri reel</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Founder authority lift</div>
+        </div>
+      </div>
+
+      <div class="cal-legend">
+        <span class="leg tofu-leg">TOFU — Reach &amp; Discovery</span>
+        <span class="leg mofu-leg">MOFU — Trust &amp; Authority</span>
+        <span class="leg bofu-leg">BOFU — Inbound &amp; Conversion</span>
+        <span class="leg story-leg">Story Days — Tue &amp; Thu</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 08 · WHAT WE NEED ══════════ -->
+<div class="wrap" id="what-we-need">
+  <div class="eyebrow">What We Need From You</div>
+  <h2 class="section-title">Your side <em>of the equation.</em></h2>
+  <p class="section-sub">Atlas runs lean. So does this engagement. Here is what we need to keep the strategy and production moving.</p>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-label">At Phase 1 Kickoff</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>60-minute working session</strong> (your most concentrated time commitment of the entire engagement).</li>
+        <li><strong>Brand assets</strong> already delivered (Atlas brand guidelines + logo + wordmark set complete).</li>
+        <li><strong>Voice samples</strong> via atlasys.io and existing LinkedIn posts (no additional prep needed).</li>
+        <li><strong>Client list with permission posture</strong> (which client wins can we reference by name, which need anonymizing).</li>
+        <li><strong>Decision on @atlasysky vs @atlasadvisoryky</strong> handle alignment.</li>
+        <li><strong>HubSpot attribution review</strong> (confirm site contact form is tagged by traffic source so we can attribute IG-driven fit calls).</li>
+        <li><strong>Consent posture confirmation</strong> (use of your image, voice, and likeness in produced content).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Ongoing (Phase 2)</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>30 minutes biweekly</strong> for status meetings.</li>
+        <li><strong>2-3 hour shoot window every 3 weeks</strong> (founder-led talking-head plus B-roll).</li>
+        <li><strong>Content approvals</strong> turned around inside the 5-business-day window.</li>
+        <li><strong>Plann access</strong> (we will provision).</li>
+        <li><strong>Heads-up on new client wins, milestone moments, or press</strong> (so we can plug them into the content calendar).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Total founder time.</strong> Roughly 60 minutes at Phase 1 kickoff. Then ~3-4 hours per month ongoing (one biweekly call, one shoot block per 3 weeks, content approvals). Designed to fit around a founder-executed practice, not consume it.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 09 · INVESTMENT ══════════ -->
+<div class="wrap" id="investment">
+  <div class="eyebrow">Investment</div>
+  <h2 class="section-title">What it <em>costs.</em></h2>
+  <p class="section-sub">Straightforward pricing. No hidden fees. Billed month by month after the initial engagement.</p>
+
+  <div class="inv-hero">
+    <div class="inv-hero-label">Signature Package — Growth Tier · 3-Month Initial Engagement</div>
+    <h3>Atlas Systems</h3>
+    <div class="inv-hero-sub">Three-month initial engagement. Month 1 is the strategy build. Months 2 and 3 are full execution. After the initial three months, Atlas rolls into a month-to-month retainer at the same execution rate.</div>
+    <div class="inv-hero-row">
+      <div class="inv-hero-stat">
+        <div class="amount">$2,953</div>
+        <div class="lbl">Monthly retainer (Months 2–3)</div>
+      </div>
+      <div class="inv-hero-stat">
+        <div class="amount">$7,823</div>
+        <div class="lbl">Total 3-month engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-breakdown">
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 1 — Strategy Build</strong>
+        <small>3-week strategy build · two-audience IVP · content pillars · format mix · Social SEO ladder · LinkedIn adaptation framework · KPI framework · sample calendar · Strategy Presentation Deck. Invoiced at Strategy Presentation (end of Week 3).</small>
+      </div>
+      <div class="amt">$1,917</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 2 — Full Execution</strong>
+        <small>Full production cadence active · feed · stories · profile optimization · LinkedIn cross-distribution · community management · biweekly check-ins · monthly performance report.</small>
+      </div>
+      <div class="amt">$2,953</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 3 — Full Execution</strong>
+        <small>Same as Month 2. Strategy refined based on Month 2 performance signal.</small>
+      </div>
+      <div class="amt">$2,953</div>
+    </div>
+    <div class="inv-row total">
+      <div class="item"><strong>3-Month Total</strong><small>Billed monthly</small></div>
+      <div class="amt">$7,823</div>
+    </div>
+  </div>
+
+  <div class="credit-note mt-md">
+    ★ After the initial 3-month engagement, Atlas rolls into a monthly retainer at $2,953/month. No additional strategy fees. No resets. Month-to-month from there.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 10 · NEXT STEPS ══════════ -->
+<div class="wrap" id="next-steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2 class="section-title">How we <em>move forward.</em></h2>
+  <p class="section-sub">Three steps. Target start: first week of June.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-n">Step 01</div>
+      <h3>Sign the Contract</h3>
+      <p>We send the Services Agreement. Same-day signature is fine. Standard contract structure: 3-month minimum on Phase 2, month-to-month from there.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 02</div>
+      <h3>Complete Onboarding Form</h3>
+      <p>A short structured intake form that surfaces the specifics Phase 1 kickoff will use. Goals, client priorities, voice posture, content references.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 03</div>
+      <h3>Kickoff Call</h3>
+      <p>60 minutes. Working session. Strategy build officially begins. First-week-of-June target.</p>
+    </div>
+  </div>
+
+  <div class="cta-block mt-lg">
+    <h2>Ready to move?</h2>
+    <p>First-week-of-June kickoff is the target. The earlier we lock Phase 1, the more runway we keep on the Q3 inbound build.</p>
+    <a href="mailto:chase@getscrollmedia.com" class="cta-btn">chase@getscrollmedia.com</a>
+    <div class="cta-sub">Or reply to the delivery email with a yes and we move from there.</div>
+  </div>
+</div>
+
+<footer>
+  <img src="https://tools.scrollmedia.co/scroll-media-logo.svg" alt="Scroll Media" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
+
+  // Scroll-spy
+  const sections = ['know','proof','strategy','seo','ideation','scope','timeline','what-we-need','investment','next-steps'];
+  const links = document.querySelectorAll('.nav-links a[data-section]');
+  function onScroll() {
+    const y = window.scrollY + 80;
+    let active = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) active = id; });
+    links.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // IVP tabs
+  function switchTab(idx) {
+    document.querySelectorAll('.ivp-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.ivp-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
+
+  // Accordion
+  function toggleAcc(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

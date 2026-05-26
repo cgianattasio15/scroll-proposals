@@ -586,6 +586,120 @@
     }
     .bofu-reach-callout p strong { color:var(--shadow); }
 
+    /* ══ PROOF LAYER 2 · BREADTH CHIP GRID (v2) ══ */
+    .proof-sub-head { margin-top:36px; margin-bottom:18px; }
+    .proof-sub-head .eyebrow { margin-top:0; }
+    .proof-sub-head h3 {
+      font-size:22px; font-weight:800; color:var(--shadow);
+      letter-spacing:-.02em; margin-bottom:8px; line-height:1.25;
+    }
+    .proof-sub-head h3 em { font-style:italic; color:var(--azure); }
+    .proof-sub-head p {
+      font-size:15px; color:var(--ink-mid); max-width:640px;
+      line-height:1.65;
+    }
+    .breadth-grid {
+      display:grid; grid-template-columns:repeat(5, 1fr); gap:14px;
+    }
+    @media(max-width:1100px){
+      .breadth-grid { grid-template-columns:repeat(3, 1fr); }
+    }
+    @media(max-width:640px){
+      .breadth-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
+    }
+    .breadth-chip {
+      position:relative; background:#fff; border:1px solid var(--border);
+      border-radius:10px; padding:14px 14px 12px; min-height:120px;
+      box-shadow:0 1px 2px rgba(12,51,135,.04);
+      display:flex; flex-direction:column; gap:6px;
+      transition:transform .15s, box-shadow .15s;
+    }
+    .breadth-chip:hover {
+      transform:translateY(-1px);
+      box-shadow:0 3px 8px rgba(12,51,135,.07);
+    }
+    .breadth-chip-format {
+      position:absolute; top:10px; right:10px;
+      font-size:9px; font-weight:700; letter-spacing:.08em;
+      padding:3px 7px; border-radius:3px;
+      background:var(--porcelain); border:1px solid var(--border);
+      color:var(--ink-soft); text-transform:uppercase;
+    }
+    .breadth-chip-num {
+      font-size:10px; font-weight:700; letter-spacing:.1em;
+      color:var(--ink-soft); text-transform:uppercase;
+    }
+    .breadth-chip-metric {
+      font-size:24px; font-weight:800; color:var(--azure);
+      letter-spacing:-.02em; line-height:1.05; margin-top:2px;
+    }
+    .breadth-chip-context {
+      font-size:11px; color:var(--ink-mid); line-height:1.45;
+      flex:1; margin-top:2px;
+    }
+    .breadth-chip-funnel {
+      align-self:flex-start;
+      font-size:9px; font-weight:700; letter-spacing:.08em;
+      padding:3px 7px; border-radius:3px;
+      text-transform:uppercase;
+    }
+    .breadth-chip-funnel.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .breadth-chip-funnel.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .breadth-chip-funnel.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+    .breadth-footer {
+      margin-top:14px; font-size:13px; color:var(--ink-soft);
+      font-style:italic; text-align:center; line-height:1.55;
+    }
+
+    /* ══ PROOF LAYER 3 · CASE STUDY COLLAPSIBLES (v2) ══ */
+    .case-stack { display:flex; flex-direction:column; gap:14px; }
+    details.case-row {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+    }
+    details.case-row > summary {
+      display:grid; grid-template-columns:36px 1fr 24px; gap:14px;
+      align-items:center; padding:20px 22px;
+      cursor:pointer; user-select:none; list-style:none;
+      min-height:44px; transition:background .15s;
+    }
+    details.case-row > summary::-webkit-details-marker { display:none; }
+    details.case-row > summary:hover { background:var(--porcelain); }
+    .case-dot {
+      width:32px; height:32px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:13px; font-weight:800; flex-shrink:0;
+    }
+    .case-summary-text { display:flex; flex-direction:column; gap:4px; min-width:0; }
+    .case-summary-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.35;
+    }
+    .case-summary-tease {
+      font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+    .case-chev {
+      font-size:12px; color:var(--ink-soft); transition:transform .2s;
+      justify-self:end;
+    }
+    details.case-row[open] .case-chev { transform:rotate(180deg); }
+    .case-body { padding:0 22px 22px 22px; }
+    .case-body ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+    .case-body li {
+      font-size:14px; color:var(--ink-mid); line-height:1.65;
+      padding-left:18px; position:relative;
+    }
+    .case-body li::before {
+      content:""; position:absolute; left:0; top:9px;
+      width:6px; height:6px; border-radius:50%; background:var(--azure);
+    }
+    .case-body li strong { color:var(--shadow); }
+    @media(max-width:640px){
+      details.case-row > summary { padding:18px 16px; grid-template-columns:32px 1fr 20px; gap:12px; }
+      .case-body { padding:0 16px 18px 16px; }
+      .case-summary-title { font-size:14px; }
+      .case-summary-tease { font-size:12px; }
+    }
+
     /* Mason runway native collapsibles */
     .mason-collapsibles { display:flex; flex-direction:column; gap:0; }
     details.mason-row {
@@ -825,15 +939,15 @@
 <div class="wrap" id="proof">
   <div class="eyebrow">What the Work Does</div>
   <h2 class="section-title">Performance. <em>Across the funnel.</em></h2>
-  <p class="section-sub">The strategy we are proposing is the same system we run for every Signature client. Here is what it produces. One piece of proof per funnel stage.</p>
+  <p class="section-sub">The strategy we are proposing is the same system we run for every Signature client. Four layers of proof. One piece of hero data per funnel stage, ten more wins beneath, two sustained-growth client arcs, and what current clients say in their own words.</p>
 
   <div class="proof-stack">
 
-    <!-- PROOF CARD 1 · TOFU REACH PROOF · Cincinnati skincare practice -->
+    <!-- PROOF CARD 1 · TOFU REACH PROOF · Cincinnati Client A -->
     <div class="proof-card">
       <div class="proof-card-head">
         <div>
-          <div class="proof-card-eyebrow">A Cincinnati skincare practice we work with</div>
+          <div class="proof-card-eyebrow">Cincinnati Client A · Local brand we work with</div>
           <div class="proof-card-pill">Reel · Feb 2026</div>
         </div>
         <span class="funnel-pill tofu">TOFU · Reach Proof</span>
@@ -871,11 +985,11 @@
       </div>
     </div>
 
-    <!-- PROOF CARD 2 · MOFU ENGAGEMENT PROOF · Cincinnati lifestyle brand -->
+    <!-- PROOF CARD 2 · MOFU ENGAGEMENT PROOF · Cincinnati Client B -->
     <div class="proof-card">
       <div class="proof-card-head">
         <div>
-          <div class="proof-card-eyebrow">A Cincinnati lifestyle brand we work with</div>
+          <div class="proof-card-eyebrow">Cincinnati Client B · Local brand we work with</div>
           <div class="proof-card-pill">Reel · Nov 2025</div>
         </div>
         <span class="funnel-pill mofu">MOFU · Engagement Proof</span>
@@ -913,11 +1027,11 @@
       </div>
     </div>
 
-    <!-- PROOF CARD 3 · BOFU CONVERSION PROOF · Cincinnati boutique fitness studio -->
+    <!-- PROOF CARD 3 · BOFU CONVERSION PROOF · Cincinnati Client C -->
     <div class="proof-card">
       <div class="proof-card-head">
         <div>
-          <div class="proof-card-eyebrow">A Cincinnati boutique fitness studio we work with</div>
+          <div class="proof-card-eyebrow">Cincinnati Client C · Local brand we work with</div>
           <div class="proof-card-pill">Account-level performance · Last 30 days</div>
         </div>
         <span class="funnel-pill bofu">BOFU · Conversion Proof</span>
@@ -973,6 +1087,139 @@
 
   </div>
 
+  <!-- ══ PROOF LAYER 2 · BREADTH CHIP GRID (v2) ══ -->
+  <div class="proof-sub-head">
+    <div class="eyebrow">And More Where That Came From</div>
+    <h3>Ten more wins. <em>Across the funnel.</em></h3>
+    <p>Three hero cards above are the deep dives. Below is the breadth. A snapshot of the kind of performance the system produces, across formats, funnel stages, and account types.</p>
+  </div>
+
+  <div class="breadth-grid">
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">01</div>
+      <div class="breadth-chip-metric">457K views</div>
+      <div class="breadth-chip-context">Single reel · 7 days post-publish</div>
+      <span class="breadth-chip-funnel tofu">TOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">02</div>
+      <div class="breadth-chip-metric">+4,290%</div>
+      <div class="breadth-chip-context">Reach lift · 30-day account-level vs prior 30 days</div>
+      <span class="breadth-chip-funnel tofu">TOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">03</div>
+      <div class="breadth-chip-metric">22,420 shares</div>
+      <div class="breadth-chip-context">1 month of content for a Lift-stage account</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">04</div>
+      <div class="breadth-chip-metric">1,447 saves</div>
+      <div class="breadth-chip-context">1 month of content for a Lift-stage account</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">05</div>
+      <div class="breadth-chip-metric">321 comments</div>
+      <div class="breadth-chip-context">Holiday collaboration reel</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Static</span>
+      <div class="breadth-chip-num">06</div>
+      <div class="breadth-chip-metric">10.45%</div>
+      <div class="breadth-chip-context">Engagement · static post · atypical for the format</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Carousel</span>
+      <div class="breadth-chip-num">07</div>
+      <div class="breadth-chip-metric">82 saves</div>
+      <div class="breadth-chip-context">High-ticket retail save-driven carousel</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">08</div>
+      <div class="breadth-chip-metric">26.3%</div>
+      <div class="breadth-chip-context">Post conversion rate · 1 month · Rise-stage service business</div>
+      <span class="breadth-chip-funnel bofu">BOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">09</div>
+      <div class="breadth-chip-metric">22.3%</div>
+      <div class="breadth-chip-context">Click-through rate · 1 month · Lift-stage e-commerce</div>
+      <span class="breadth-chip-funnel bofu">BOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">10</div>
+      <div class="breadth-chip-metric">+213%</div>
+      <div class="breadth-chip-context">External link taps · 30-day account-level vs prior 30 days</div>
+      <span class="breadth-chip-funnel bofu">BOFU</span>
+    </div>
+  </div>
+
+  <p class="breadth-footer">Different clients. Different formats. Different funnel stages. Same strategic system underneath every win.</p>
+
+  <!-- ══ PROOF LAYER 3 · SUSTAINED-GROWTH CASE STUDIES (v2) ══ -->
+  <div class="proof-sub-head">
+    <div class="eyebrow">Sustained Growth Over Time</div>
+    <h3>What compounding looks like. <em>Two arcs.</em></h3>
+    <p>Single posts get headlines. Sustained months are where the system actually shows up. Two real client trajectories below, in their own data.</p>
+  </div>
+
+  <div class="case-stack">
+    <details class="case-row">
+      <summary>
+        <div class="case-dot">A</div>
+        <div class="case-summary-text">
+          <div class="case-summary-title">Case Study A · Cincinnati Client C · The breakthrough arc · 40× views lift in 7 months</div>
+          <div class="case-summary-tease">Service brand · Lift stage. Oct 2025 baseline: 19,168 monthly views. Apr 2026: 779,664 monthly views.</div>
+        </div>
+        <div class="case-chev">▼</div>
+      </summary>
+      <div class="case-body">
+        <ul>
+          <li><strong>The starting line (Oct 2025).</strong> Monthly views: 19,168. Daily reach: 245. New followers: 7. Performance score: 7.0. The account was healthy but contained. Reach was follower-bound; the algorithm wasn't pushing content outside the existing audience yet.</li>
+          <li><strong>The build (Nov 2025 — Mar 2026).</strong> Five months of disciplined founder-led content production. Format experimentation. Hook iteration. Save and comment infrastructure compounding month over month. No shortcuts, no viral hits, just sustained execution. By March 2026, monthly views had reached 26,654 and the score had climbed to 8.2.</li>
+          <li><strong>The breakthrough (April 2026).</strong> Monthly views: 779,664. Daily reach: 19,449. New followers: 136. Performance score: 9.0. A single reel went viral and anchored the month, but the share infrastructure (22,420 shares), save infrastructure (1,447 saves), and comment infrastructure (310 comments) that made the algorithm care had been built across the prior six months. The April hit landed because the foundation was already there.</li>
+          <li><strong>The full arc, in one line.</strong> Views 19K → 780K (40× lift). Reach/day 245 → 19,449 (80× lift). Score 7.0 → 9.0. Seven months of compounding execution.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="case-row">
+      <summary>
+        <div class="case-dot">D</div>
+        <div class="case-summary-text">
+          <div class="case-summary-title">Case Study D · Cincinnati Client D · The Lift-stage compounding arc · founder-led retail · 5 months</div>
+          <div class="case-summary-tease">Owner-operated regional brand · Lift stage. Sustained MoM growth from Dec 2025 to Apr 2026.</div>
+        </div>
+        <div class="case-chev">▼</div>
+      </summary>
+      <div class="case-body">
+        <ul>
+          <li><strong>The starting line (Dec 2025).</strong> Followers: 5,325. Monthly profile visits: 1,272. Monthly link taps: 159. A small, established owner-operated brand entering Lift-stage execution with Scroll.</li>
+          <li><strong>The compounding (Jan — Apr 2026).</strong> Comments grew month over month across the engagement: 118 (Jan) → 94 → 145 → 174 (Apr). That is +47% comment lift across the engagement period and the strongest community-conversation signal in the active portfolio. Saves climbed Q1 to Q2: 45 (Mar) → 72 (Apr), a 60% MoM lift. New followers compounded across the period (82 → 69 → 66 → 111), with April delivering the strongest single-month follower gain since the engagement began.</li>
+          <li><strong>The April moment.</strong> 174 comments on the month. 72 saves. 30 reposts. The audience was talking back, sharing with friends, and pulling the brand into their own social orbit organically. No viral hit. Just sustained Lift-stage rhythm.</li>
+          <li><strong>The full arc, in one line.</strong> Five months of compounding community engagement. Comments +47%. Saves +60% MoM into peak. Followers gaining. The system working on a founder-led owner-operated brand without a single algorithmic anomaly carrying the trajectory.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>What both arcs share.</strong> Disciplined content cadence. Founder in frame. Format-led production. Strategic patience. The breakthrough month and the compounding month look different from the outside, same engine producing both.</p>
+  </div>
+
   <!-- TESTIMONIAL QUOTES -->
   <div class="mt-lg">
     <div class="eyebrow" style="margin-top:0;">What Clients Say</div>
@@ -982,15 +1229,15 @@
     <div class="proof-quotes">
       <div class="proof-quote">
         <p>"She helped us develop our social strategy, filmed engaging content, and grew our IG followers significantly. I highly recommend Scroll Media to other marketing executives."</p>
-        <div class="proof-quote-attr">— Founder, Cincinnati-area consulting practice</div>
+        <div class="proof-quote-attr">— Founder, Cincinnati-area local brand</div>
       </div>
       <div class="proof-quote">
         <p>"I've seen massive growth in my store's sales and Instagram following. Hiring her for my store's marketing has been the best decision I have made for my business."</p>
-        <div class="proof-quote-attr">— Owner, Cincinnati boutique retail brand</div>
+        <div class="proof-quote-attr">— Owner, Cincinnati-area local brand</div>
       </div>
       <div class="proof-quote">
         <p>"Might be the most direct and confident ROI I've ever seen on social media."</p>
-        <div class="proof-quote-attr">— Real-time message from a current client after a member-generated reel went viral referencing their studio</div>
+        <div class="proof-quote-attr">— Real-time message from a current client after a member-generated reel went viral referencing their account</div>
       </div>
     </div>
   </div>

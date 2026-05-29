@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Onboarding — Atlas Systems | Scroll Media</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/scroll-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /*
+    Scroll Media — Client Onboarding Form (v3 canonical structure)
+    Modern Atelier Service Manual, Scheme B. Warm, collaborative client intake.
+    Mobile-first. Editorial spacing, soft document layering, precise operational structure.
+  */
+
+  :root {
+    --shadow: #151516;
+    --azure: #0c3387;
+    --azure-mid: #1541a1;
+    --azure-light: #2a5fd4;
+    --lucid: #cbe9ff;
+    --highlighter: #e2ed7a;
+    --porcelain: #f2f3f4;
+    --ghost: #fafdff;
+    --surface-1: #ffffff;
+    --surface-2: #f6f8fb;
+    --surface-3: #eef2f7;
+    --surface-4: #edf1f6;
+    --border-subtle: rgba(21,21,22,0.08);
+    --border-mid: rgba(21,21,22,0.14);
+    --border-focus: rgba(12,51,135,0.32);
+    --text-primary: #151516;
+    --text-secondary: rgba(21,21,22,0.74);
+    --text-muted: rgba(21,21,22,0.52);
+    --text-dim: rgba(21,21,22,0.34);
+    --input-bg: rgba(242,243,244,0.92);
+    --input-bg-hover: rgba(235,239,244,1);
+    --input-border: rgba(21,21,22,0.12);
+    --success-bg: rgba(12,51,135,0.08);
+    --success-border: rgba(12,51,135,0.18);
+    --danger: #c84545;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --max-width: 760px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: linear-gradient(180deg, rgba(250,253,255,0.96) 0%, rgba(246,248,251,1) 100%);
+    color: var(--text-primary);
+    font-family: 'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, .section-title, .hero-eyebrow, .nav-tag, .field-num, .submit-btn {
+    font-family: 'Visby CF', 'Avenir Next', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--azure) 0%, var(--lucid) 100%);
+    z-index: 1000;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 68px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(21,21,22,0.08);
+    box-shadow: 0 1px 12px rgba(21,21,22,0.06);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .nav-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: rgba(21,21,22,0.46);
+    padding: 5px 12px;
+    border: 1px solid rgba(21,21,22,0.12);
+    border-radius: 100px;
+    background: rgba(250,253,255,0.92);
+  }
+
+  .hero {
+    padding: 72px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 780px;
+    height: 440px;
+    background: radial-gradient(ellipse at center, rgba(12,51,135,0.09) 0%, rgba(203,233,255,0.04) 44%, transparent 74%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(250,253,255,0) 0%, rgba(250,253,255,0.58) 82%, rgba(250,253,255,1) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(226,237,122,0.18);
+    border: 1px solid rgba(226,237,122,0.42);
+    color: var(--shadow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--azure);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.35rem, 6vw, 3.9rem);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -2.2px;
+    color: var(--shadow);
+    margin-bottom: 20px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto 34px;
+  }
+
+  .hero-note {
+    max-width: 640px;
+    margin: 0 auto 22px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.76);
+    border: 1px solid rgba(21,21,22,0.09);
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    box-shadow: 0 16px 40px rgba(21,21,22,0.05);
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(21,21,22,0.08);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    box-shadow: 0 10px 24px rgba(21,21,22,0.05);
+  }
+
+  .hero-pill-icon { font-size: 0.85rem; }
+
+  .form-wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px 100px;
+  }
+
+  .form-card {
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(21,21,22,0.08);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 28px 90px rgba(21,21,22,0.08);
+    position: relative;
+  }
+
+  .form-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(203,233,255,0.08) 0%, rgba(255,255,255,0) 24%);
+  }
+
+  .form-progress {
+    height: 3px;
+    background: var(--surface-3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--azure) 0%, var(--lucid) 100%);
+    transition: width 0.35s ease;
+  }
+
+  .form-inner {
+    padding: 48px 48px 52px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-section { margin-bottom: 44px; }
+  .form-section:last-of-type { margin-bottom: 0; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: rgba(12,51,135,0.08);
+    border: 1px solid rgba(12,51,135,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--azure);
+  }
+
+  .section-step {
+    margin-left: auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .section-note {
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(226,237,122,0.14);
+    border: 1px solid rgba(226,237,122,0.4);
+    color: rgba(21,21,22,0.78);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .section-note strong {
+    font-style: normal;
+    color: var(--shadow);
+  }
+
+  .audience-block {
+    margin-bottom: 28px;
+    padding: 18px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(242,243,244,0.92) 100%);
+    border: 1px solid rgba(21,21,22,0.07);
+  }
+
+  .audience-block:last-child { margin-bottom: 0; }
+
+  .audience-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 8px 12px;
+    border-radius: 100px;
+    background: rgba(12,51,135,0.08);
+    border: 1px solid rgba(12,51,135,0.14);
+    color: var(--azure);
+    font-size: 0.77rem;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+  }
+
+  .field-group { margin-bottom: 24px; }
+  .field-group:last-child { margin-bottom: 0; }
+
+  .field-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .field-num {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .field-question {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+
+  .field-required {
+    color: rgba(12,51,135,0.74);
+    font-size: 0.75rem;
+    margin-left: 2px;
+  }
+
+  .field-hint {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    margin-top: -4px;
+    padding-left: 26px;
+    line-height: 1.5;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-md);
+    padding: 13px 16px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="tel"]::placeholder,
+  input[type="url"]::placeholder,
+  textarea::placeholder {
+    color: var(--text-dim);
+  }
+
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  input[type="tel"]:hover,
+  input[type="url"]:hover,
+  textarea:hover,
+  select:hover {
+    background: var(--input-bg-hover);
+    border-color: rgba(21,21,22,0.18);
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: rgba(12,51,135,0.42);
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 0 0 3px rgba(12,51,135,0.10);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 104px;
+  }
+
+  textarea[data-maxlength] { min-height: 124px; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(21,21,22,0.4)' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill-opt {
+    position: relative;
+  }
+
+  .pill-opt input[type="radio"],
+  .pill-opt input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .pill-opt label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1px solid var(--input-border);
+    border-radius: 100px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    line-height: 1.2;
+    background: rgba(255,255,255,0.78);
+  }
+
+  .pill-opt label:hover {
+    border-color: rgba(12,51,135,0.38);
+    background: rgba(12,51,135,0.06);
+    color: var(--text-primary);
+  }
+
+  .pill-opt input:checked + label {
+    background: rgba(12,51,135,0.12);
+    border-color: rgba(12,51,135,0.6);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 1px rgba(12,51,135,0.12);
+  }
+
+  .inline-fields-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .inline-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.18s, background 0.18s;
+    cursor: pointer;
+  }
+
+  .inline-field:hover {
+    background: var(--input-bg-hover);
+    border-color: rgba(21,21,22,0.18);
+  }
+
+  .inline-field input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--azure-mid);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .inline-field-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    flex: 1;
+    cursor: pointer;
+    line-height: 1.35;
+  }
+
+  .inline-field input[type="radio"]:checked ~ .inline-field-label {
+    color: var(--text-primary);
+  }
+
+  /* Tone-pair picker (Q13) */
+  .tone-pair {
+    margin-bottom: 18px;
+  }
+  .tone-pair:last-child { margin-bottom: 0; }
+
+  .tone-pair-label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--azure);
+    margin-bottom: 8px;
+    padding-left: 2px;
+  }
+
+  .field-error {
+    font-size: 0.76rem;
+    color: var(--danger);
+    margin-top: 6px;
+    padding-left: 26px;
+    display: none;
+  }
+
+  .field-group.has-error input,
+  .field-group.has-error textarea,
+  .field-group.has-error select,
+  .field-group.has-error .inline-field,
+  .field-group.has-error .pill-opt label {
+    border-color: rgba(200,69,69,0.42);
+    box-shadow: 0 0 0 3px rgba(200,69,69,0.08);
+  }
+
+  .field-group.has-error .field-error { display: block; }
+
+  .submit-section {
+    padding: 36px 48px 48px;
+    background: linear-gradient(180deg, rgba(246,248,251,0.92) 0%, rgba(242,243,244,0.98) 100%);
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+    z-index: 1;
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--azure);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 17px 32px;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .submit-btn:hover {
+    background: var(--azure-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(12,51,135,0.28);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  .submit-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .submit-btn:hover svg { transform: translateX(3px); }
+
+  .submit-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .submit-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+  }
+
+  .submit-meta-item svg {
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+  }
+
+  #success-state {
+    display: none;
+    text-align: center;
+    padding: 76px 48px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #success-state h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    color: var(--shadow);
+  }
+
+  #success-state p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  footer {
+    background: #ffffff;
+    padding: 28px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(21,21,22,0.08);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  footer img {
+    height: 18px;
+    width: auto;
+    display: block;
+    opacity: 0.55;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(21,21,22,0.35);
+  }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .hero { padding: 52px 20px 44px; text-align: center; }
+    .hero-sub { font-size: 1rem; }
+    .hero-note {
+      margin-bottom: 18px;
+      padding: 14px 15px;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    .form-wrap { padding: 0 12px 80px; }
+    .form-inner { padding: 32px 24px 36px; }
+    .submit-section { padding: 28px 24px 36px; }
+    .field-row { grid-template-columns: 1fr; }
+    #success-state { padding: 56px 24px 64px; }
+    footer { padding: 24px 20px; }
+  }
+
+  @media (max-width: 420px) {
+    .hero h1 { letter-spacing: -1.3px; }
+    .nav-tag { display: none; }
+    .field-question { font-size: 0.95rem; }
+    .pill-opt label { font-size: 0.875rem; padding: 9px 14px; }
+    .field-hint { font-size: 0.875rem; }
+    .inline-field-label { font-size: 0.88rem; }
+    .submit-meta { gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <a href="https://decks.scrollmedia.co/pitch/" class="nav-logo">
+    <img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="60" height="28">
+  </a>
+  <div class="nav-right">
+    <span class="nav-tag">Client Onboarding</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-dot"></span>
+    Welcome to Scroll Media
+  </div>
+  <h1>Let's build something great.</h1>
+  <p class="hero-sub">Takes about 15-18 minutes. The more specific your answers are, the easier it is for us to make this process smooth from day one.</p>
+  <div class="hero-note">Your answers give us the foundation. We layer our own research on top — competitor analysis, audience behavior, and niche performance data — to build a strategy that goes beyond what any form alone could produce. The more specific you are here, the sharper we can make it.</div>
+  <div class="hero-pills">
+    <div class="hero-pill"><span class="hero-pill-icon">🧾</span> 6 sections</div>
+    <div class="hero-pill"><span class="hero-pill-icon">⏱</span> ~15-18 minutes</div>
+    <div class="hero-pill"><span class="hero-pill-icon">🔒</span> Sent directly to Chase</div>
+  </div>
+</section>
+
+<div class="form-wrap">
+  <div class="form-card">
+    <div class="form-progress">
+      <div class="form-progress-fill" id="form-progress-fill"></div>
+    </div>
+
+    <div id="success-state">
+      <h2>You're all set.</h2>
+      <p>We've received everything. We'll review your answers before the kickoff call and come prepared to build — not catch up.</p>
+    </div>
+
+    <form id="onboarding-form" action="https://formspree.io/f/mzdyzeng" method="POST" novalidate>
+      <div class="form-inner">
+
+        <!-- ===================== SECTION 1 — THE BASICS ===================== -->
+        <div class="form-section" data-section="1">
+          <div class="section-header">
+            <div class="section-icon">🏢</div>
+            <span class="section-title">The Basics</span>
+            <span class="section-step">1 of 6</span>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group" id="fg-primary-contact-name">
+              <div class="field-header">
+                <span class="field-num">01</span>
+                <span class="field-question">Primary contact name <span class="field-required">*</span></span>
+              </div>
+              <input type="text" id="primary-contact-name" name="primaryContactName" placeholder="First Last" autocomplete="name" required>
+              <div class="field-error">This field is required.</div>
+            </div>
+            <div class="field-group" id="fg-business-name">
+              <div class="field-header">
+                <span class="field-num">02</span>
+                <span class="field-question">Business name <span class="field-required">*</span></span>
+              </div>
+              <input type="text" id="business-name" name="businessName" value="Atlas Systems" required>
+              <div class="field-error">This field is required.</div>
+            </div>
+          </div>
+
+          <div class="field-row" style="margin-top:16px;">
+            <div class="field-group" id="fg-primary-contact-email">
+              <div class="field-header">
+                <span class="field-num">03</span>
+                <span class="field-question">Primary contact email <span class="field-required">*</span></span>
+              </div>
+              <input type="email" id="primary-contact-email" name="primaryContactEmail" placeholder="you@yourbusiness.com" autocomplete="email" required>
+              <div class="field-error">A valid email is required.</div>
+            </div>
+            <div class="field-group" id="fg-primary-contact-phone">
+              <div class="field-header">
+                <span class="field-num">04</span>
+                <span class="field-question">Primary contact phone <span class="field-required">*</span></span>
+              </div>
+              <input type="tel" id="primary-contact-phone" name="primaryContactPhone" placeholder="(555) 555-5555" autocomplete="tel" required>
+              <div class="field-error">This field is required.</div>
+            </div>
+          </div>
+
+          <div class="field-group" id="fg-service-territory" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">05</span>
+              <span class="field-question">Service territory <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Where do you actively serve clients geographically? Cincinnati metro only, Greater Cincinnati + Northern Kentucky, multi-state Kentucky + Ohio + Indiana, regional, national, etc.</div>
+            <input type="text" id="service-territory" name="serviceTerritory" required>
+            <div class="field-error">This field is required.</div>
+          </div>
+        </div>
+
+        <!-- ===================== SECTION 2 — AUDIENCE & BRAND ===================== -->
+        <div class="form-section" data-section="2">
+          <div class="section-header">
+            <div class="section-icon">🎯</div>
+            <span class="section-title">Your Audience &amp; Brand</span>
+            <span class="section-step">2 of 6</span>
+          </div>
+
+          <div class="field-group" id="fg-client-company-size">
+            <div class="field-header">
+              <span class="field-num">06</span>
+              <span class="field-question">Your typical client — company size <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="clientCompanySize">
+              <div class="pill-opt"><input type="checkbox" id="size-solo" name="clientCompanySize" value="Solo founder / 1-5 employees"><label for="size-solo">Solo founder / 1-5 employees</label></div>
+              <div class="pill-opt"><input type="checkbox" id="size-5-25" name="clientCompanySize" value="5-25 employees"><label for="size-5-25">5-25 employees</label></div>
+              <div class="pill-opt"><input type="checkbox" id="size-25-100" name="clientCompanySize" value="25-100 employees"><label for="size-25-100">25-100 employees</label></div>
+              <div class="pill-opt"><input type="checkbox" id="size-100-500" name="clientCompanySize" value="100-500 employees"><label for="size-100-500">100-500 employees</label></div>
+              <div class="pill-opt"><input type="checkbox" id="size-500plus" name="clientCompanySize" value="500+ employees"><label for="size-500plus">500+ employees</label></div>
+              <div class="pill-opt"><input type="checkbox" id="size-mixed" name="clientCompanySize" value="Mixed (varies by engagement)"><label for="size-mixed">Mixed (varies by engagement)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="size-b2c" name="clientCompanySize" value="Doesn't apply (B2C / consumer)"><label for="size-b2c">Doesn't apply (B2C / consumer)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-client-priorities" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">07</span>
+              <span class="field-question">What do they care about most when they decide to hire you? <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="clientPriorities">
+              <div class="pill-opt"><input type="checkbox" id="pri-fixed" name="clientPriorities" value="Fixed scope and predictable pricing"><label for="pri-fixed">Fixed scope and predictable pricing</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-senior" name="clientPriorities" value="Senior-level judgment without a full-time hire"><label for="pri-senior">Senior-level judgment without a full-time hire</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-samehands" name="clientPriorities" value="Same-hands delivery (no junior handoffs)"><label for="pri-samehands">Same-hands delivery (no junior handoffs)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-ai" name="clientPriorities" value="Practical AI guidance, not hype"><label for="pri-ai">Practical AI guidance, not hype</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-speed" name="clientPriorities" value="Speed of execution"><label for="pri-speed">Speed of execution</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-partnership" name="clientPriorities" value="Long-term technical partnership"><label for="pri-partnership">Long-term technical partnership</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-industry" name="clientPriorities" value="Specific industry expertise"><label for="pri-industry">Specific industry expertise</label></div>
+              <div class="pill-opt"><input type="checkbox" id="pri-other" name="clientPriorities" value="Other (tell us below)"><label for="pri-other">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-second-audience" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">08</span>
+              <span class="field-question">Is there a second audience that follows you but isn't buying today? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">The audience that consumes your content, builds familiarity with you, and eventually becomes a buyer when their operational moment arrives. For Atlas: this is the "AI-curious owner" track in the proposal.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="secondAudience">
+              <div class="pill-opt"><input type="radio" id="second-yes" name="secondAudience" value="Yes — tell us about them below"><label for="second-yes">Yes — tell us about them below</label></div>
+              <div class="pill-opt"><input type="radio" id="second-no" name="secondAudience" value="No — single-audience focus"><label for="second-no">No — single-audience focus</label></div>
+              <div class="pill-opt"><input type="radio" id="second-kickoff" name="secondAudience" value="Discuss at kickoff"><label for="second-kickoff">Discuss at kickoff</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+            <textarea id="second-audience-describe" name="secondAudienceDescribe" placeholder="If yes — describe them in 1-2 sentences. Who are they, what are they consuming, where are they hanging out?" style="min-height:88px; margin-top:10px;"></textarea>
+          </div>
+
+          <div class="field-group" id="fg-exists-to" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">09</span>
+              <span class="field-question">Complete this sentence: "Atlas Systems exists to ____." <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">The hardest question on this form — and the most important. Don't overthink it. Your gut answer is the right one.</div>
+            <textarea id="exists-to" name="existsTo" placeholder="Atlas Systems exists to ___" required></textarea>
+            <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" id="fg-uncopyable-assets" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">10</span>
+              <span class="field-question">What has Atlas built, earned, or delivered that no other regional tech consultant could claim? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">The uncopyable assets. Specific portfolio wins, credentials, history, milestones. List 3-5 examples — this is the content gold no competitor can match. Worth surfacing: AGS Therapy, ZRS Law, Phil Smith Real Estate, Traverse Intermodal, Thrive, enterprise architecture background, etc.</div>
+            <textarea id="uncopyable-assets" name="uncopyableAssets" required></textarea>
+            <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" id="fg-desired-feelings" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">11</span>
+              <span class="field-question">How do you want operators to feel when they interact with Atlas on Instagram? <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="desiredFeelings">
+              <div class="pill-opt"><input type="checkbox" id="feel-calm" name="desiredFeelings" value="Calm and in control"><label for="feel-calm">Calm and in control</label></div>
+              <div class="pill-opt"><input type="checkbox" id="feel-smart" name="desiredFeelings" value="Smart enough to handle the technical decision"><label for="feel-smart">Smart enough to handle the technical decision</label></div>
+              <div class="pill-opt"><input type="checkbox" id="feel-hopeful" name="desiredFeelings" value="Hopeful — there's a real path forward"><label for="feel-hopeful">Hopeful — there's a real path forward</label></div>
+              <div class="pill-opt"><input type="checkbox" id="feel-curious" name="desiredFeelings" value="Skeptical-but-curious about practical AI"><label for="feel-curious">Skeptical-but-curious about practical AI</label></div>
+              <div class="pill-opt"><input type="checkbox" id="feel-senior" name="desiredFeelings" value="Confident the work is in senior hands"><label for="feel-senior">Confident the work is in senior hands</label></div>
+              <div class="pill-opt"><input type="checkbox" id="feel-relieved" name="desiredFeelings" value="Relieved by fixed pricing and written scope"><label for="feel-relieved">Relieved by fixed pricing and written scope</label></div>
+              <div class="pill-opt"><input type="checkbox" id="feel-other" name="desiredFeelings" value="Other (tell us below)"><label for="feel-other">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-biggest-hesitation" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">12</span>
+              <span class="field-question">What's the #1 hesitation a buyer has before signing with Atlas? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">The unstated worry in the room before the contract gets signed. We write content directly to it. Don't filter — the more honest, the more useful. 1-2 sentences.</div>
+            <textarea id="biggest-hesitation" name="biggestHesitation" style="min-height:88px;" required></textarea>
+            <div class="field-error">This field is required.</div>
+          </div>
+        </div>
+
+        <!-- ===================== SECTION 3 — VOICE CALIBRATION ===================== -->
+        <div class="form-section" data-section="3">
+          <div class="section-header">
+            <div class="section-icon">🎙️</div>
+            <span class="section-title">Voice Calibration</span>
+            <span class="section-step">3 of 6</span>
+          </div>
+
+          <div class="section-note">
+            <strong>Quick gut-check, not a deep dive.</strong> Your captions, on-screen text, DMs, and comments need to sound like <em>you</em> — not an agency template. We do the deep voice work at your kickoff meeting in a focused 35-40 minute segment. This section gives us directional signal so the AM walks into kickoff with calibrated hypotheses to validate, not a blank page.
+          </div>
+
+          <div class="field-group" id="fg-tone-pairs">
+            <div class="field-header">
+              <span class="field-num">13</span>
+              <span class="field-question">Tone calibration — pick the closer match in each pair <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Quick gut reactions. No right answer.</div>
+
+            <div class="tone-pair">
+              <span class="tone-pair-label">Pair A</span>
+              <div class="inline-fields-stack">
+                <label class="inline-field"><input type="radio" name="tonePairA" value="A. We help small businesses grow."><span class="inline-field-label">"We help small businesses grow."</span></label>
+                <label class="inline-field"><input type="radio" name="tonePairA" value="B. We help small businesses stop losing money."><span class="inline-field-label">"We help small businesses stop losing money."</span></label>
+              </div>
+            </div>
+
+            <div class="tone-pair">
+              <span class="tone-pair-label">Pair B</span>
+              <div class="inline-fields-stack">
+                <label class="inline-field"><input type="radio" name="tonePairB" value="A. Here's how to think about your tech stack."><span class="inline-field-label">"Here's how to think about your tech stack."</span></label>
+                <label class="inline-field"><input type="radio" name="tonePairB" value="B. Most SMB tech stacks are broken. Here's why."><span class="inline-field-label">"Most SMB tech stacks are broken. Here's why."</span></label>
+              </div>
+            </div>
+
+            <div class="tone-pair">
+              <span class="tone-pair-label">Pair C</span>
+              <div class="inline-fields-stack">
+                <label class="inline-field"><input type="radio" name="tonePairC" value="A. Considering an upgrade? Let's talk."><span class="inline-field-label">"Considering an upgrade? Let's talk."</span></label>
+                <label class="inline-field"><input type="radio" name="tonePairC" value="B. If your spreadsheet is breaking, we should talk."><span class="inline-field-label">"If your spreadsheet is breaking, we should talk."</span></label>
+              </div>
+            </div>
+            <div class="field-error">Please pick one option in each pair.</div>
+          </div>
+
+          <div class="field-group" id="fg-anti-examples" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">14</span>
+              <span class="field-question">1-2 Instagram accounts whose voice is the OPPOSITE of what you want</span>
+            </div>
+            <div class="field-hint">Anti-examples are often clearer than examples. Accounts where you read a caption and think "oh no, never that."</div>
+            <input type="text" id="anti-examples" name="antiExampleAccounts" placeholder="@handle, @handle">
+          </div>
+
+          <div class="field-group" id="fg-formatting-rules" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">15</span>
+              <span class="field-question">Formatting and punctuation rules — pick all that fit</span>
+            </div>
+            <div class="pill-group" data-group-type="checkbox" data-group-name="formattingRules">
+              <div class="pill-opt"><input type="checkbox" id="fmt-emdash-yes" name="formattingRules" value="Em-dashes — yes, sometimes"><label for="fmt-emdash-yes">Em-dashes — yes, sometimes</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-emdash-no" name="formattingRules" value="Em-dashes — never"><label for="fmt-emdash-no">Em-dashes — never</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-excl-spare" name="formattingRules" value="Exclamation points — sparingly only"><label for="fmt-excl-spare">Exclamation points — sparingly only</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-excl-freq" name="formattingRules" value="Exclamation points — frequently for energy"><label for="fmt-excl-freq">Exclamation points — frequently for energy</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-emoji-yes" name="formattingRules" value="Emoji in posts — yes, naturally"><label for="fmt-emoji-yes">Emoji in posts — yes, naturally</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-emoji-no" name="formattingRules" value="Emoji in posts — never"><label for="fmt-emoji-no">Emoji in posts — never</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-hash-yes" name="formattingRules" value="Hashtags — yes, on-strategy"><label for="fmt-hash-yes">Hashtags — yes, on-strategy</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-hash-min" name="formattingRules" value="Hashtags — minimal, only when needed"><label for="fmt-hash-min">Hashtags — minimal, only when needed</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-caps-yes" name="formattingRules" value="ALL CAPS for emphasis — yes, sparingly"><label for="fmt-caps-yes">ALL CAPS for emphasis — yes, sparingly</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-caps-no" name="formattingRules" value="ALL CAPS for emphasis — never"><label for="fmt-caps-no">ALL CAPS for emphasis — never</label></div>
+              <div class="pill-opt"><input type="checkbox" id="fmt-other" name="formattingRules" value="Other (tell us below)"><label for="fmt-other">Other (tell us below)</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================== SECTION 4 — YOUR INSTAGRAM ===================== -->
+        <div class="form-section" data-section="4">
+          <div class="section-header">
+            <div class="section-icon">📱</div>
+            <span class="section-title">Your Instagram</span>
+            <span class="section-step">4 of 6</span>
+          </div>
+
+          <div class="field-group" id="fg-instagram-handles">
+            <div class="field-header">
+              <span class="field-num">16</span>
+              <span class="field-question">Current Instagram handles <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">List all active handles. Atlas currently shows two: @atlasysky and @atlasadvisoryky (the second still linked from the atlasys.io footer).</div>
+            <input type="text" id="instagram-handles" name="instagramHandles" required>
+            <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" id="fg-handle-resolution" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">17</span>
+              <span class="field-question">Handle resolution decision <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Phase 1 includes resolving the dual-handle situation. Which direction?</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="handleResolution">
+              <div class="pill-opt"><input type="radio" id="handle-atlasysky" name="handleResolution" value="Consolidate to @atlasysky (rebrand @atlasadvisoryky's audience over)"><label for="handle-atlasysky">Consolidate to @atlasysky</label></div>
+              <div class="pill-opt"><input type="radio" id="handle-advisory" name="handleResolution" value="Consolidate to @atlasadvisoryky (rebrand @atlasysky's audience over)"><label for="handle-advisory">Consolidate to @atlasadvisoryky</label></div>
+              <div class="pill-opt"><input type="radio" id="handle-both" name="handleResolution" value="Run both with distinct purposes — discuss at kickoff"><label for="handle-both">Run both with distinct purposes — discuss at kickoff</label></div>
+              <div class="pill-opt"><input type="radio" id="handle-rec" name="handleResolution" value="Open to recommendation — discuss at kickoff"><label for="handle-rec">Open to recommendation — discuss at kickoff</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-instagram-presence" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">18</span>
+              <span class="field-question">How would you describe your current Instagram presence? <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="instagramPresence">
+              <div class="pill-opt"><input type="radio" id="presence-inconsistent" name="instagramPresence" value="Not posting consistently"><label for="presence-inconsistent">Not posting consistently</label></div>
+              <div class="pill-opt"><input type="radio" id="presence-regular" name="instagramPresence" value="Posting regularly but not seeing results"><label for="presence-regular">Posting regularly but not seeing results</label></div>
+              <div class="pill-opt"><input type="radio" id="presence-traction" name="instagramPresence" value="Getting some traction — need to scale it"><label for="presence-traction">Getting some traction — need to scale it</label></div>
+              <div class="pill-opt"><input type="radio" id="presence-fresh" name="instagramPresence" value="Starting fresh"><label for="presence-fresh">Starting fresh</label></div>
+              <div class="pill-opt"><input type="radio" id="presence-strong" name="instagramPresence" value="Strong presence — ready for the next step"><label for="presence-strong">Strong presence — ready for the next step</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-on-camera" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">19</span>
+              <span class="field-question">On-camera comfort level — Chase Smith <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">The proposal is built around founder-led talking-head content. A clear answer helps us calibrate the right shoot structure.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="onCameraChaseSmith">
+              <div class="pill-opt"><input type="radio" id="camera-fully" name="onCameraChaseSmith" value="Fully comfortable — let's do it"><label for="camera-fully">Fully comfortable — let's do it</label></div>
+              <div class="pill-opt"><input type="radio" id="camera-open" name="onCameraChaseSmith" value="Open to it with some direction"><label for="camera-open">Open to it with some direction</label></div>
+              <div class="pill-opt"><input type="radio" id="camera-slow" name="onCameraChaseSmith" value="Prefer to ease in slowly"><label for="camera-slow">Prefer to ease in slowly</label></div>
+              <div class="pill-opt"><input type="radio" id="camera-no" name="onCameraChaseSmith" value="Not comfortable on camera (we'll redesign the content mix)"><label for="camera-no">Not comfortable on camera</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-linkedin-source" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">20</span>
+              <span class="field-question">LinkedIn cross-distribution — posting source <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">The proposal includes lightweight LinkedIn-ready adaptations of every Instagram post. You'll publish them on your end. Which surface fits best?</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="linkedinPostingSource">
+              <div class="pill-opt"><input type="radio" id="li-personal" name="linkedinPostingSource" value="Chase Smith personal LinkedIn (founder authority play)"><label for="li-personal">Chase Smith personal LinkedIn (founder authority play)</label></div>
+              <div class="pill-opt"><input type="radio" id="li-company" name="linkedinPostingSource" value="Atlas Systems company page"><label for="li-company">Atlas Systems company page</label></div>
+              <div class="pill-opt"><input type="radio" id="li-both" name="linkedinPostingSource" value="Both, depending on post type"><label for="li-both">Both, depending on post type</label></div>
+              <div class="pill-opt"><input type="radio" id="li-kickoff" name="linkedinPostingSource" value="Discuss at kickoff"><label for="li-kickoff">Discuss at kickoff</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+        </div>
+
+        <!-- ===================== SECTION 5 — BUSINESS MODEL & ROI ===================== -->
+        <div class="form-section" data-section="5">
+          <div class="section-header">
+            <div class="section-icon">🛠️</div>
+            <span class="section-title">Business Model &amp; ROI</span>
+            <span class="section-step">5 of 6</span>
+          </div>
+
+          <div class="section-note">
+            <strong>What this section does.</strong> This calibrates the KPI framework, conversion strategy, and reporting targets we build for Atlas in Phase 1. It is NOT a commitment to hard last-mile attribution (post → click → form → revenue). The numbers below help us model realistic targets and tell the ROI story accurately in monthly reports. Best estimates are fine — we keep assumptions conservative.
+          </div>
+
+          <div class="field-group" id="fg-business-model" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">21</span>
+              <span class="field-question">What type of business is Atlas, conversion-wise? <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="businessModelType">
+              <div class="pill-opt"><input type="checkbox" id="bm-b2b" name="businessModelType" value="Service business (B2B)"><label for="bm-b2b">Service business (B2B)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-b2c" name="businessModelType" value="Service business (B2C)"><label for="bm-b2c">Service business (B2C)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-ecom" name="businessModelType" value="Product business (e-commerce)"><label for="bm-ecom">Product business (e-commerce)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-retail" name="businessModelType" value="Product business (retail / brick-and-mortar)"><label for="bm-retail">Product business (retail / brick-and-mortar)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-fnb" name="businessModelType" value="Food and beverage"><label for="bm-fnb">Food and beverage</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-saas" name="businessModelType" value="SaaS / subscription"><label for="bm-saas">SaaS / subscription</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-marketplace" name="businessModelType" value="Marketplace / two-sided"><label for="bm-marketplace">Marketplace / two-sided</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-practice" name="businessModelType" value="Professional practice (legal, medical, therapy, etc.)"><label for="bm-practice">Professional practice (legal, medical, therapy, etc.)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="bm-other" name="businessModelType" value="Other (tell us below)"><label for="bm-other">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-primary-cta" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">22</span>
+              <span class="field-question">What's the PRIMARY action you want a viewer to take? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Mapped to Scroll's 11 canonical CTA types from the CTA Framework &amp; Library.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="primaryCTA">
+              <div class="pill-opt"><input type="radio" id="cta-landing" name="primaryCTA" value="Click the link in bio to a landing page"><label for="cta-landing">Click the link in bio to a landing page</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-contact" name="primaryCTA" value="Click the link in bio to a contact form"><label for="cta-contact">Click the link in bio to a contact form</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-dm" name="primaryCTA" value="DM us to start the conversation"><label for="cta-dm">DM us to start the conversation</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-book" name="primaryCTA" value="Book a meeting / fit call via Calendly or similar"><label for="cta-book">Book a meeting / fit call</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-quiz" name="primaryCTA" value="Take a quiz or assessment"><label for="cta-quiz">Take a quiz or assessment</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-visit" name="primaryCTA" value="Visit our physical location"><label for="cta-visit">Visit our physical location</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-purchase" name="primaryCTA" value="Purchase a product directly (DM-to-purchase or link-out to checkout)"><label for="cta-purchase">Purchase a product directly</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-email" name="primaryCTA" value="Sign up for an email list / newsletter"><label for="cta-email">Sign up for an email list / newsletter</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-follow" name="primaryCTA" value="Follow for ongoing content (soft action — authority play)"><label for="cta-follow">Follow for ongoing content (authority play)</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-save" name="primaryCTA" value="Save the post for later reference"><label for="cta-save">Save the post for later reference</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-share" name="primaryCTA" value="Share with a specific person (referral CTA)"><label for="cta-share">Share with a specific person (referral CTA)</label></div>
+              <div class="pill-opt"><input type="radio" id="cta-other" name="primaryCTA" value="Other (tell us below)"><label for="cta-other">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-services-inbound" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">23</span>
+              <span class="field-question">Services Instagram should drive inbound for <span class="field-required">*</span></span>
+            </div>
+            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="servicesToDriveInbound">
+              <div class="pill-opt"><input type="checkbox" id="svc-assessment" name="servicesToDriveInbound" value="Technology Assessment (gateway product)"><label for="svc-assessment">Technology Assessment (gateway product)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="svc-intake" name="servicesToDriveInbound" value="Intelligent Intake builds"><label for="svc-intake">Intelligent Intake builds</label></div>
+              <div class="pill-opt"><input type="checkbox" id="svc-crm" name="servicesToDriveInbound" value="CRM setup and automation (HubSpot, Salesforce, other)"><label for="svc-crm">CRM setup and automation</label></div>
+              <div class="pill-opt"><input type="checkbox" id="svc-ai" name="servicesToDriveInbound" value="AI automation and governance"><label for="svc-ai">AI automation and governance</label></div>
+              <div class="pill-opt"><input type="checkbox" id="svc-web" name="servicesToDriveInbound" value="Custom website builds"><label for="svc-web">Custom website builds</label></div>
+              <div class="pill-opt"><input type="checkbox" id="svc-cto" name="servicesToDriveInbound" value="Fractional CTO / technology advisory engagements"><label for="svc-cto">Fractional CTO / technology advisory</label></div>
+              <div class="pill-opt"><input type="checkbox" id="svc-other" name="servicesToDriveInbound" value="Other (tell us below)"><label for="svc-other">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-avg-ltv" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">24</span>
+              <span class="field-question">Average lifetime value of a client <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Total expected revenue from a single client across the lifetime of the relationship — initial engagement + renewals + adjacent service. Best estimate is fine.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="avgLTV">
+              <div class="pill-opt"><input type="radio" id="ltv-u5" name="avgLTV" value="Under $5K"><label for="ltv-u5">Under $5K</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-5-15" name="avgLTV" value="$5K–$15K"><label for="ltv-5-15">$5K–$15K</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-15-50" name="avgLTV" value="$15K–$50K"><label for="ltv-15-50">$15K–$50K</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-50-150" name="avgLTV" value="$50K–$150K"><label for="ltv-50-150">$50K–$150K</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-150-500" name="avgLTV" value="$150K–$500K"><label for="ltv-150-500">$150K–$500K</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-500plus" name="avgLTV" value="$500K+"><label for="ltv-500plus">$500K+</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-varies" name="avgLTV" value="Varies dramatically — discuss at kickoff"><label for="ltv-varies">Varies dramatically — discuss at kickoff</label></div>
+              <div class="pill-opt"><input type="radio" id="ltv-unsure" name="avgLTV" value="Not tracked / unsure"><label for="ltv-unsure">Not tracked / unsure</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-lead-close" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">25</span>
+              <span class="field-question">When you get an inbound lead, how often does it become a paying client? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Your rough lead → close conversion rate. Best estimate is fine.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="leadCloseRate">
+              <div class="pill-opt"><input type="radio" id="close-u10" name="leadCloseRate" value="Less than 10%"><label for="close-u10">Less than 10%</label></div>
+              <div class="pill-opt"><input type="radio" id="close-10-25" name="leadCloseRate" value="10–25%"><label for="close-10-25">10–25%</label></div>
+              <div class="pill-opt"><input type="radio" id="close-25-50" name="leadCloseRate" value="25–50%"><label for="close-25-50">25–50%</label></div>
+              <div class="pill-opt"><input type="radio" id="close-50-75" name="leadCloseRate" value="50–75%"><label for="close-50-75">50–75%</label></div>
+              <div class="pill-opt"><input type="radio" id="close-75plus" name="leadCloseRate" value="More than 75%"><label for="close-75plus">More than 75%</label></div>
+              <div class="pill-opt"><input type="radio" id="close-unsure" name="leadCloseRate" value="Not tracked / unsure"><label for="close-unsure">Not tracked / unsure</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-qualified-lead" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">26</span>
+              <span class="field-question">What does "qualified lead" mean to Atlas? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">What we count as a "real" lead in your monthly performance reports.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="qualifiedLeadDef">
+              <div class="pill-opt"><input type="checkbox" id="ql-form" name="qualifiedLeadDef" value="Filled out the contact form on atlasys.io"><label for="ql-form">Filled out the contact form on atlasys.io</label></div>
+              <div class="pill-opt"><input type="checkbox" id="ql-call" name="qualifiedLeadDef" value="Booked a fit call directly"><label for="ql-call">Booked a fit call directly</label></div>
+              <div class="pill-opt"><input type="checkbox" id="ql-dm" name="qualifiedLeadDef" value="Asked a substantive question via DM (not generic inquiry)"><label for="ql-dm">Asked a substantive question via DM</label></div>
+              <div class="pill-opt"><input type="checkbox" id="ql-budget" name="qualifiedLeadDef" value="Came in with a defined budget / scope"><label for="ql-budget">Came in with a defined budget / scope</label></div>
+              <div class="pill-opt"><input type="checkbox" id="ql-authority" name="qualifiedLeadDef" value="Came in with executive authority to sign"><label for="ql-authority">Came in with executive authority to sign</label></div>
+              <div class="pill-opt"><input type="checkbox" id="ql-icp" name="qualifiedLeadDef" value="Matched the ideal client profile (industry, size, etc.)"><label for="ql-icp">Matched the ideal client profile</label></div>
+              <div class="pill-opt"><input type="checkbox" id="ql-other" name="qualifiedLeadDef" value="Other (tell us below)"><label for="ql-other">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+        </div>
+
+        <!-- ===================== SECTION 6 — LOGISTICS ===================== -->
+        <div class="form-section" data-section="6">
+          <div class="section-header">
+            <div class="section-icon">🗓️</div>
+            <span class="section-title">Logistics</span>
+            <span class="section-step">6 of 6</span>
+          </div>
+
+          <div class="field-group" id="fg-shoot-availability">
+            <div class="field-header">
+              <span class="field-num">27</span>
+              <span class="field-question">Best days and times for content shoots <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Shoots run every 3 weeks, ~2-3 hour windows, founder-led talking-head + B-roll. Give us your general availability and any standing conflicts. Include preferred shoot location (office, home office, neutral location, mix) in your answer.</div>
+            <textarea id="shoot-availability" name="shootAvailability" required></textarea>
+            <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" id="fg-brand-assets-folder" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">28</span>
+              <span class="field-question">Brand assets — folder link</span>
+            </div>
+            <div class="field-hint">The proposal confirmed your brand guidelines + logo + wordmark set are complete. Drop the folder link (Drive, Dropbox, Notion).</div>
+            <input type="url" id="brand-assets-folder" name="brandAssetsFolder" placeholder="https://">
+            <div class="field-error">Please enter a valid URL.</div>
+          </div>
+
+          <div class="field-group" id="fg-image-consent" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">29</span>
+              <span class="field-question">Image, voice, and likeness consent <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Confirms we can use your image, voice, and likeness in produced content for Atlas's Instagram, LinkedIn cross-distribution, and Scroll Media's portfolio/case study use.</div>
+            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="imageConsent">
+              <div class="pill-opt"><input type="radio" id="consent-full" name="imageConsent" value="Confirmed — full use including Scroll portfolio"><label for="consent-full">Confirmed — full use including Scroll portfolio</label></div>
+              <div class="pill-opt"><input type="radio" id="consent-atlas" name="imageConsent" value="Confirmed for Atlas channels only — opt out of Scroll portfolio use"><label for="consent-atlas">Atlas channels only — opt out of Scroll portfolio</label></div>
+              <div class="pill-opt"><input type="radio" id="consent-discuss" name="imageConsent" value="Need to discuss specifics at kickoff"><label for="consent-discuss">Need to discuss specifics at kickoff</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+
+          <div class="field-group" id="fg-approvals-contact" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">30</span>
+              <span class="field-question">Who should we contact for content approvals? <span class="field-required">*</span></span>
+            </div>
+            <div class="field-hint">Name and best contact method. Defaults to Chase Smith if not specified.</div>
+            <input type="text" id="approvals-contact" name="approvalsContact" placeholder="Name — email or phone" required>
+            <div class="field-error">This field is required.</div>
+          </div>
+
+          <div class="field-group" id="fg-open-notes" style="margin-top:16px;">
+            <div class="field-header">
+              <span class="field-num">31</span>
+              <span class="field-question">Anything else you want us to know before we get started?</span>
+            </div>
+            <textarea id="open-notes" name="openNotes" placeholder="Open floor. Anything that helps us hit the ground running." data-maxlength="900" maxlength="900"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span>Submit &amp; Let's Get Started</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="submit-meta">
+          <div class="submit-meta-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l3.5 2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span>~15-18 minutes</span>
+          </div>
+          <div class="submit-meta-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1112 0v2M5 10h14v9H5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Responses go directly to Chase &amp; Allison</span>
+          </div>
+          <div class="submit-meta-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 4h10v16H7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>No spam, ever</span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="40" height="18">
+    <p>Scroll Media — Simplifying Social Media</p>
+  </div>
+</footer>
+
+<script>
+  const STORAGE_KEY = 'scroll-onboarding-atlas-systems';
+  const progressBar = document.getElementById('progress-bar');
+  const form = document.getElementById('onboarding-form');
+  const formCard = document.querySelector('.form-card');
+  const formProgressFill = document.getElementById('form-progress-fill');
+  const successState = document.getElementById('success-state');
+  const submitBtn = document.getElementById('submit-btn');
+
+  const requiredTextFields = [
+    'primary-contact-name',
+    'business-name',
+    'primary-contact-email',
+    'primary-contact-phone',
+    'service-territory',
+    'exists-to',
+    'uncopyable-assets',
+    'biggest-hesitation',
+    'instagram-handles',
+    'shoot-availability',
+    'approvals-contact'
+  ].map(id => document.getElementById(id));
+
+  const requiredGroups = [
+    { container: document.getElementById('fg-client-company-size'), name: 'clientCompanySize', type: 'checkbox' },
+    { container: document.getElementById('fg-client-priorities'), name: 'clientPriorities', type: 'checkbox' },
+    { container: document.getElementById('fg-second-audience'), name: 'secondAudience', type: 'radio' },
+    { container: document.getElementById('fg-desired-feelings'), name: 'desiredFeelings', type: 'checkbox' },
+    { container: document.getElementById('fg-tone-pairs'), name: 'tonePairA', type: 'radio' },
+    { container: document.getElementById('fg-tone-pairs'), name: 'tonePairB', type: 'radio' },
+    { container: document.getElementById('fg-tone-pairs'), name: 'tonePairC', type: 'radio' },
+    { container: document.getElementById('fg-handle-resolution'), name: 'handleResolution', type: 'radio' },
+    { container: document.getElementById('fg-instagram-presence'), name: 'instagramPresence', type: 'radio' },
+    { container: document.getElementById('fg-on-camera'), name: 'onCameraChaseSmith', type: 'radio' },
+    { container: document.getElementById('fg-linkedin-source'), name: 'linkedinPostingSource', type: 'radio' },
+    { container: document.getElementById('fg-business-model'), name: 'businessModelType', type: 'checkbox' },
+    { container: document.getElementById('fg-primary-cta'), name: 'primaryCTA', type: 'radio' },
+    { container: document.getElementById('fg-services-inbound'), name: 'servicesToDriveInbound', type: 'checkbox' },
+    { container: document.getElementById('fg-avg-ltv'), name: 'avgLTV', type: 'radio' },
+    { container: document.getElementById('fg-lead-close'), name: 'leadCloseRate', type: 'radio' },
+    { container: document.getElementById('fg-qualified-lead'), name: 'qualifiedLeadDef', type: 'checkbox' },
+    { container: document.getElementById('fg-image-consent'), name: 'imageConsent', type: 'radio' }
+  ];
+
+  // Tone-pair group requires all three sub-pairs answered.
+  const tonePairNames = ['tonePairA', 'tonePairB', 'tonePairC'];
+
+  function getCheckedValues(name) {
+    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+  }
+
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+
+  function updateFormProgress() {
+    // Count tone pairs as a single completion unit to avoid double-counting fg-tone-pairs.
+    const uniqueGroupNames = [...new Set(requiredGroups.map(g => g.name).filter(n => !tonePairNames.includes(n)))];
+    const totalChecks = requiredTextFields.length + uniqueGroupNames.length + 1; // +1 for tone-pairs unit
+    let complete = 0;
+
+    requiredTextFields.forEach(field => {
+      if (field && field.value.trim()) complete += 1;
+    });
+
+    uniqueGroupNames.forEach(name => {
+      if (getCheckedValues(name).length > 0) complete += 1;
+    });
+
+    if (tonePairNames.every(n => getCheckedValues(n).length > 0)) complete += 1;
+
+    const percent = totalChecks > 0 ? (complete / totalChecks) * 100 : 0;
+    formProgressFill.style.width = percent + '%';
+  }
+
+  function setFieldError(container, hasError) {
+    if (!container) return;
+    container.classList.toggle('has-error', hasError);
+  }
+
+  function validateField(field) {
+    const container = field.closest('.field-group');
+    let valid = true;
+
+    if (field.type === 'email' && field.value.trim()) {
+      valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+    } else if (field.type === 'url' && field.value.trim()) {
+      try {
+        new URL(field.value.trim());
+      } catch (error) {
+        valid = false;
+      }
+    } else {
+      valid = Boolean(field.value.trim());
+    }
+
+    setFieldError(container, !valid);
+    return valid;
+  }
+
+  function validateTonePairs() {
+    const container = document.getElementById('fg-tone-pairs');
+    const isValid = tonePairNames.every(n => getCheckedValues(n).length > 0);
+    setFieldError(container, !isValid);
+    return isValid;
+  }
+
+  function validateRequiredGroup(group) {
+    if (tonePairNames.includes(group.name)) return validateTonePairs();
+    const values = getCheckedValues(group.name);
+    const isValid = values.length > 0;
+    setFieldError(group.container, !isValid);
+    return isValid;
+  }
+
+  /* ---------- localStorage persistence ---------- */
+  function saveState() {
+    try {
+      const state = { text: {}, checked: [] };
+      form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select').forEach(el => {
+        if (el.id) state.text[el.id] = el.value;
+      });
+      form.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').forEach(el => {
+        state.checked.push({ name: el.name, value: el.value });
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* storage unavailable — fail silently */ }
+  }
+
+  function restoreState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const state = JSON.parse(raw);
+      if (state.text) {
+        Object.entries(state.text).forEach(([id, value]) => {
+          const el = document.getElementById(id);
+          if (el && value) el.value = value;
+        });
+      }
+      if (Array.isArray(state.checked)) {
+        state.checked.forEach(({ name, value }) => {
+          const el = form.querySelector(`input[name="${CSS.escape(name)}"][value="${CSS.escape(value)}"]`);
+          if (el) el.checked = true;
+        });
+      }
+    } catch (e) { /* corrupt state — ignore */ }
+  }
+
+  function clearState() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  }
+
+  /* ---------- event wiring ---------- */
+  requiredTextFields.forEach(field => {
+    field.addEventListener('input', () => {
+      if (field.closest('.field-group').classList.contains('has-error')) validateField(field);
+      updateFormProgress();
+      saveState();
+    });
+    field.addEventListener('blur', () => validateField(field));
+  });
+
+  Array.from(document.querySelectorAll('input[type="email"], input[type="url"]')).forEach(field => {
+    if (!requiredTextFields.includes(field)) {
+      field.addEventListener('blur', () => {
+        const container = field.closest('.field-group');
+        if (!field.value.trim()) {
+          setFieldError(container, false);
+          return;
+        }
+        validateField(field);
+      });
+    }
+  });
+
+  requiredGroups.forEach(group => {
+    Array.from(document.querySelectorAll(`input[name="${group.name}"]`)).forEach(input => {
+      input.addEventListener('change', () => {
+        validateRequiredGroup(group);
+        updateFormProgress();
+        saveState();
+      });
+    });
+  });
+
+  Array.from(document.querySelectorAll('textarea, input[type="text"], input[type="tel"], input[type="url"], select, input[type="checkbox"], input[type="radio"]')).forEach(field => {
+    if (!requiredTextFields.includes(field)) {
+      field.addEventListener('input', () => { updateFormProgress(); saveState(); });
+      field.addEventListener('change', () => { updateFormProgress(); saveState(); });
+    }
+  });
+
+  restoreState();
+  updateScrollProgress();
+  updateFormProgress();
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    let isValid = true;
+
+    requiredTextFields.forEach(field => {
+      if (!validateField(field)) isValid = false;
+    });
+
+    // Validate each unique required group once.
+    const seenGroups = new Set();
+    requiredGroups.forEach(group => {
+      if (seenGroups.has(group.name)) return;
+      seenGroups.add(group.name);
+      if (!validateRequiredGroup(group)) isValid = false;
+    });
+
+    if (!isValid) {
+      const firstError = document.querySelector('.field-group.has-error');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.querySelector('span').textContent = 'Submitting...';
+
+    const val = id => (document.getElementById(id) ? document.getElementById(id).value.trim() : '');
+
+    const payload = {
+      _subject: 'Client Onboarding — Atlas Systems',
+      _replyto: val('primary-contact-email'),
+      'Primary Contact Name': val('primary-contact-name'),
+      'Business Name': val('business-name'),
+      'Primary Contact Email': val('primary-contact-email'),
+      'Primary Contact Phone': val('primary-contact-phone'),
+      'Service Territory': val('service-territory'),
+      'Typical Client — Company Size': getCheckedValues('clientCompanySize').join(', '),
+      'What Clients Care About Most': getCheckedValues('clientPriorities').join(', '),
+      'Second Audience?': getCheckedValues('secondAudience')[0] || '',
+      'Second Audience — Description': val('second-audience-describe'),
+      'Atlas Systems Exists To': val('exists-to'),
+      'Uncopyable Assets': val('uncopyable-assets'),
+      'Desired Operator Feelings': getCheckedValues('desiredFeelings').join(', '),
+      'Biggest Buyer Hesitation': val('biggest-hesitation'),
+      'Tone Pair A': getCheckedValues('tonePairA')[0] || '',
+      'Tone Pair B': getCheckedValues('tonePairB')[0] || '',
+      'Tone Pair C': getCheckedValues('tonePairC')[0] || '',
+      'Anti-Example Accounts': val('anti-examples'),
+      'Formatting / Punctuation Rules': getCheckedValues('formattingRules').join(', '),
+      'Current Instagram Handles': val('instagram-handles'),
+      'Handle Resolution Decision': getCheckedValues('handleResolution')[0] || '',
+      'Current Instagram Presence': getCheckedValues('instagramPresence')[0] || '',
+      'On-Camera Comfort — Chase Smith': getCheckedValues('onCameraChaseSmith')[0] || '',
+      'LinkedIn Posting Source': getCheckedValues('linkedinPostingSource')[0] || '',
+      'Business Model Type': getCheckedValues('businessModelType').join(', '),
+      'Primary CTA': getCheckedValues('primaryCTA')[0] || '',
+      'Services to Drive Inbound For': getCheckedValues('servicesToDriveInbound').join(', '),
+      'Average Client LTV': getCheckedValues('avgLTV')[0] || '',
+      'Lead → Close Conversion Rate': getCheckedValues('leadCloseRate')[0] || '',
+      'Qualified Lead Definition': getCheckedValues('qualifiedLeadDef').join(', '),
+      'Best Days / Times for Shoots': val('shoot-availability'),
+      'Brand Assets Folder Link': val('brand-assets-folder'),
+      'Image / Voice / Likeness Consent': getCheckedValues('imageConsent')[0] || '',
+      'Content Approvals Contact': val('approvals-contact'),
+      'Anything Else Before Kickoff': val('open-notes'),
+      'Submitted At': new Date().toLocaleString()
+    };
+
+    try {
+      const formData = new FormData();
+      Object.entries(payload).forEach(([key, value]) => {
+        formData.append(key, value || '—');
+      });
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+
+      clearState();
+      form.classList.add('hidden');
+      successState.style.display = 'block';
+      formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (error) {
+      submitBtn.disabled = false;
+      submitBtn.querySelector('span').textContent = 'Submit & Let\'s Get Started';
+      alert('Something went wrong while submitting. Please try again or email chase@getscrollmedia.com directly.');
+      return;
+    }
+  });
+</script>
+</body>
+</html>

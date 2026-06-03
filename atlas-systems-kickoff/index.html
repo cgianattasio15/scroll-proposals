@@ -173,6 +173,11 @@
       scroll-margin-top: calc(var(--header-h) + 12px);
     }
     .slide + .slide { border-top: 1px solid var(--rule-faint); }
+    /* tighter vertical rhythm for dense working slides (S5) to hold single-screen fit */
+    .slide.is-tight { padding-top: var(--sp-6); padding-bottom: var(--sp-6); }
+    .slide.is-tight .slide-eyebrow { margin-bottom: var(--sp-3); }
+    .slide.is-tight .slide-title { margin-bottom: var(--sp-3); }
+    .slide.is-tight .slide-subtitle { margin-bottom: var(--sp-4); }
 
     .slide-eyebrow {
       display: inline-flex; align-items: center; gap: var(--sp-3);
@@ -482,8 +487,8 @@
     .prompt-col {
       background: var(--bg-panel);
       border: 1px dashed var(--rule);
-      padding: var(--sp-5);
-      min-height: 150px;
+      padding: var(--sp-4);
+      min-height: 108px;
       display: flex; flex-direction: column; gap: var(--sp-3);
     }
     .prompt-label {
@@ -491,18 +496,18 @@
       text-transform: uppercase; letter-spacing: 0.12em;
     }
     .prompt-q { font-size: 14px; color: var(--fg-muted); line-height: 1.5; }
-    .prompt-lines { margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-3); }
+    .prompt-lines { margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-2); padding-top: var(--sp-2); }
     .prompt-line { height: 1px; background: var(--rule-faint); }
 
     .pullquote {
-      margin-top: var(--sp-6);
-      padding: var(--sp-5) var(--sp-6);
+      margin-top: var(--sp-5);
+      padding: var(--sp-4) var(--sp-5);
       background: var(--azure);
       color: var(--ghost);
       border-radius: var(--r-md);
     }
     .pullquote p {
-      font-size: clamp(18px, 2.3vw, 24px);
+      font-size: clamp(17px, 2.1vw, 22px);
       font-weight: 700; line-height: 1.3; letter-spacing: -0.01em;
     }
     .pullquote .pq-attr {
@@ -512,49 +517,50 @@
     }
 
     .pillar-block {
-      display: grid;
-      grid-template-columns: 2.4fr 1fr;
-      gap: var(--sp-6);
-      margin-top: var(--sp-6);
-      align-items: start;
+      display: flex; flex-direction: column;
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
     }
     .pillar-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--sp-3);
     }
     .pillar-card {
       background: var(--bg-panel);
       border: 1px solid var(--rule-faint);
       border-top: 3px solid var(--azure);
-      padding: var(--sp-4);
-      display: flex; flex-direction: column; gap: 4px;
+      padding: var(--sp-3);
+      display: flex; flex-direction: column; gap: 3px;
     }
-    .pillar-num { font-size: 11px; font-weight: 700; color: var(--azure); letter-spacing: 0.12em; }
-    .pillar-name { font-size: 15px; font-weight: 700; color: var(--azure); line-height: 1.2; }
-    .pillar-desc { font-size: 12.5px; color: var(--fg-muted); line-height: 1.45; }
+    .pillar-num { font-size: 10px; font-weight: 700; color: var(--azure); letter-spacing: 0.12em; }
+    .pillar-name { font-size: 14px; font-weight: 700; color: var(--azure); line-height: 1.2; }
+    .pillar-desc { font-size: 12.5px; color: var(--fg-muted); line-height: 1.4; }
+    /* sparks · compact inline pill band */
     .sparks {
       background: var(--bg-alt);
       border-radius: var(--r-md);
-      padding: var(--sp-4) var(--sp-5);
+      padding: var(--sp-3) var(--sp-4);
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: var(--sp-2) var(--sp-3);
     }
     .sparks-label {
       font-size: 10px; font-weight: 800; color: var(--azure);
-      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-3);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-right: var(--sp-1);
     }
-    .sparks-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .sparks-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-2); }
     .sparks-list li {
-      font-size: 12.5px; color: var(--shadow); line-height: 1.4;
-      padding-left: var(--sp-4); position: relative;
-    }
-    .sparks-list li::before {
-      content: ""; position: absolute; left: 0; top: 8px;
-      width: 6px; height: 6px; background: var(--highlighter-dark);
-      transform: rotate(45deg);
+      font-size: 12px; color: var(--shadow); line-height: 1.3;
+      background: var(--ghost);
+      border: 1px solid var(--rule-faint);
+      border-left: 2px solid var(--highlighter-dark);
+      padding: 4px 10px;
+      border-radius: var(--r-sm);
     }
     .pillar-hyp-label {
       font-size: 10px; font-weight: 800; color: var(--azure);
-      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-3);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-2);
     }
 
     /* SLIDE 06 · VOICE */
@@ -762,7 +768,6 @@
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1100px) {
-      .pillar-block { grid-template-columns: 1fr; }
       .scope-wrap { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
@@ -1044,7 +1049,7 @@
     </section>
 
     <!-- SLIDE 05 · WHAT ATLAS STANDS FOR (live exercise) -->
-    <section class="slide" id="s05" aria-labelledby="s05-title">
+    <section class="slide is-tight" id="s05" aria-labelledby="s05-title">
       <div class="slide-eyebrow reveal">
         <span class="slide-eyebrow-num">05</span>
         <span class="slide-eyebrow-text">Live exercise &middot; What Atlas stands for</span>
@@ -1082,39 +1087,43 @@
             <div class="pillar-card">
               <span class="pillar-num">Pillar 1</span>
               <span class="pillar-name">Practical AI, Not Hype</span>
-              <span class="pillar-desc">Anti-hype AI takes, real tool reviews, why I won't recommend AI for X. From your practical-AI answer and your AI-curious audience.</span>
+              <span class="pillar-desc">Anti-hype takes, real tool reviews, when AI isn't the answer.</span>
             </div>
             <div class="pillar-card">
               <span class="pillar-num">Pillar 2</span>
               <span class="pillar-name">Enterprise Rigor, Local Roots</span>
-              <span class="pillar-desc">Founder POV on real operational systems, what I'd fix first, Technology Assessment walkthroughs. From your 10 years in regulated environments.</span>
+              <span class="pillar-desc">Founder POV on real systems. What I'd fix first. Assessment walkthroughs.</span>
             </div>
             <div class="pillar-card">
               <span class="pillar-num">Pillar 3</span>
               <span class="pillar-name">The Founder Behind the Work</span>
-              <span class="pillar-desc">Same hands from scope to delivery. Migration before and after, behind the scenes. The direct answer to your buyers' biggest hesitation.</span>
+              <span class="pillar-desc">Same hands, scope to delivery. The answer to the continuity worry.</span>
             </div>
             <div class="pillar-card">
               <span class="pillar-num">Pillar 4</span>
               <span class="pillar-name">Written Scope, Fixed Price</span>
-              <span class="pillar-desc">Demystifying how Atlas prices and scopes. Trust-signal content. From your senior-judgment-without-a-full-time-hire positioning.</span>
+              <span class="pillar-desc">How Atlas prices and scopes. Trust-signal content.</span>
             </div>
           </div>
         </div>
         <div class="sparks reveal">
-          <div class="sparks-label">Sparks &middot; uncopyable assets we already see</div>
+          <span class="sparks-label">Sparks &middot; uncopyable assets</span>
           <ul class="sparks-list">
-            <li>10+ years enterprise architecture in healthcare, fintech, regulated environments</li>
-            <li>Phil Smith Real Estate: full stack plus AI phone agent plus monthly scorecards, all shipped</li>
-            <li>Restaurant-group iOS/web platform unifying POS, reservations, accounting</li>
-            <li>The person who scopes the work can actually build it</li>
-            <li>Anti-AI-hype voice in a market drowning in AI noise</li>
+            <li>10+ yrs enterprise architecture</li>
+            <li>Phil Smith RE: full stack + AI phone agent + scorecards</li>
+            <li>Restaurant-group POS + reservations + accounting platform</li>
+            <li>Scopes the work, builds it himself</li>
+            <li>Anti-AI-hype voice in an AI-noise market</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 06 · HOW ATLAS SOUNDS (voice deep dive) -->
+    <!-- SLIDE 06 · HOW ATLAS SOUNDS (voice deep dive)
+         GATE 8 DEVIATION (intentional): this section runs taller than one viewport at
+         1440/1100. It is a sequential 12-min working slide (5-step voice flow + three
+         VERBATIM sample captions for live calibration). Caption readability and verbatim
+         fidelity win over single-screen fit here. Do not compress the captions to force fit. -->
     <section class="slide" id="s06" aria-labelledby="s06-title">
       <div class="slide-eyebrow reveal">
         <span class="slide-eyebrow-num">06</span>

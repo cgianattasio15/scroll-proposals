@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Atlas Systems &middot; Kickoff | Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="../scroll-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       SCROLL MEDIA DESIGN SYSTEM · Atlas Systems Kickoff Deck
+       Clone of Carl's strategy-deck design system (light client palette)
+       Per brand_system.md §5 + scroll-web-design v2.1
+       ========================================================= */
+
+    :root {
+      /* Brand tokens */
+      --ghost: #FAFDFF;
+      --azure: #0C3387;
+      --azure-900: #071d4f;
+      --azure-800: #0c3387;
+      --azure-600: #254fb0;
+      --azure-400: #7a9ad8;
+      --azure-200: #b9cdee;
+      --lucid: #CBE9FF;
+      --lucid-deep: #9ecee8;
+      --lucid-soft: #e4f3ff;
+      --highlighter: #E2ED7A;
+      --highlighter-dark: #c8d94a;
+      --shadow: #151516;
+      --white: #ffffff;
+
+      /* Semantic */
+      --bg: var(--ghost);
+      --bg-alt: #f4f7fb;
+      --bg-panel: var(--white);
+      --fg: var(--shadow);
+      --fg-heading: var(--azure);
+      --fg-muted: #5a6070;
+      --fg-subtle: #9097a6;
+      --fg-on-azure: var(--white);
+      --rule: rgba(12, 51, 135, 0.20);
+      --rule-strong: rgba(12, 51, 135, 0.40);
+      --rule-faint: rgba(12, 51, 135, 0.08);
+
+      /* Type scale */
+      --fs-xs: 11px;
+      --fs-sm: 13px;
+      --fs-base: 15px;
+      --fs-md: 17px;
+      --fs-lg: 20px;
+      --fs-xl: 24px;
+      --fs-2xl: 32px;
+      --fs-3xl: 44px;
+      --fs-4xl: 64px;
+
+      /* Spacing */
+      --sp-1: 4px;
+      --sp-2: 8px;
+      --sp-3: 12px;
+      --sp-4: 16px;
+      --sp-5: 24px;
+      --sp-6: 32px;
+      --sp-7: 40px;
+      --sp-8: 56px;
+      --sp-9: 80px;
+
+      /* Layout */
+      --header-h: 60px;
+      --content-max: 1120px;
+      --slide-max: 1080px;
+
+      /* Radii */
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 16px;
+
+      /* Shadows */
+      --sh-sm: 0 1px 2px rgba(12, 51, 135, .06);
+      --sh-md: 0 6px 24px rgba(12, 51, 135, .08);
+
+      /* Motion */
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3, h4 { font-family: inherit; font-weight: 700; color: var(--fg-heading); letter-spacing: -0.01em; }
+    a { color: var(--azure-600); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; }
+
+    /* HEADER · co-branded (Scroll left, Atlas right) */
+    .deck-header {
+      position: sticky; top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: rgba(250, 253, 255, 0.92);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid var(--rule-faint);
+      z-index: 100;
+      display: flex; align-items: center;
+    }
+    .deck-header-inner {
+      width: 100%; max-width: var(--content-max);
+      margin: 0 auto; padding: 0 var(--sp-5);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--sp-4);
+    }
+    .header-logo {
+      display: flex; align-items: center; gap: var(--sp-3);
+      min-height: 44px; padding: 4px 0;
+      text-decoration: none;
+    }
+    .header-logo-img { height: 24px; width: auto; display: block; }
+    .header-co {
+      display: flex; align-items: center; gap: var(--sp-4);
+      min-height: 44px;
+    }
+    .header-x {
+      font-size: 13px; color: var(--fg-subtle); font-weight: 600;
+    }
+    .header-atlas-img { height: 26px; width: auto; display: block; }
+
+    /* Slide nav (desktop only) */
+    .slide-nav {
+      display: none;
+      position: fixed;
+      top: 50%; right: var(--sp-5);
+      transform: translateY(-50%);
+      z-index: 50;
+      flex-direction: column; gap: 6px;
+    }
+    .slide-nav a {
+      width: 8px; height: 8px;
+      background: var(--azure-200);
+      border-radius: 50%;
+      transition: all 200ms var(--ease);
+      position: relative;
+    }
+    .slide-nav a:hover { background: var(--azure-600); transform: scale(1.4); }
+    .slide-nav a.active { background: var(--azure); transform: scale(1.5); }
+    .slide-nav a span {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      background: var(--azure); color: var(--ghost);
+      padding: 4px 10px; font-size: 11px; white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 180ms var(--ease);
+    }
+    .slide-nav a:hover span { opacity: 1; }
+    @media (min-width: 1280px) { .slide-nav { display: flex; } }
+
+    /* SLIDES */
+    main { padding-top: 0; }
+    .slide {
+      width: 100%;
+      max-width: var(--slide-max);
+      margin: 0 auto;
+      padding: var(--sp-9) var(--sp-6) var(--sp-9);
+      position: relative;
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+    .slide + .slide { border-top: 1px solid var(--rule-faint); }
+
+    .slide-eyebrow {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 12px; font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: var(--sp-5);
+    }
+    .slide-eyebrow-num {
+      width: 28px; height: 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--azure); color: var(--ghost);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0;
+    }
+    .slide-eyebrow-text { color: var(--fg-muted); }
+
+    .slide-title {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--azure);
+      letter-spacing: -0.015em;
+      margin-bottom: var(--sp-4);
+      max-width: 940px;
+    }
+    .slide-subtitle {
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.5;
+      color: var(--fg-muted);
+      max-width: 760px;
+      margin-bottom: var(--sp-7);
+    }
+
+    /* Fade-in reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Generic callout */
+    .callout {
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+      max-width: 920px;
+    }
+    .callout.is-lime {
+      background: rgba(226, 237, 122, 0.16);
+      border-left-color: var(--highlighter-dark);
+    }
+    .callout-label {
+      display: block;
+      font-size: 10px; font-weight: 800;
+      color: var(--azure); text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--sp-2);
+    }
+    .callout-body {
+      font-size: 14px; color: var(--shadow);
+      line-height: 1.6;
+    }
+    .callout-body strong { color: var(--azure); font-weight: 700; }
+    .framing-line {
+      margin-top: var(--sp-5);
+      font-size: 15px; color: var(--fg-muted);
+      line-height: 1.55; max-width: 820px;
+      font-style: italic;
+    }
+    .framing-line strong { color: var(--azure); font-style: normal; }
+
+    /* SLIDE 01 · COVER + homework recap */
+    .slide-cover {
+      min-height: calc(100vh - var(--header-h));
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: var(--sp-7); padding-bottom: var(--sp-7);
+    }
+    .cover-mark {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 13px; font-weight: 600; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-6);
+    }
+    .cover-mark-line { flex: 0 0 40px; height: 1px; background: var(--azure-400); }
+    .cover-title {
+      font-size: clamp(38px, 6.4vw, 64px);
+      font-weight: 800;
+      color: var(--azure);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--sp-4);
+      max-width: 960px;
+    }
+    .cover-lede {
+      font-size: clamp(17px, 2vw, 21px);
+      color: var(--fg-muted);
+      line-height: 1.5;
+      max-width: 680px;
+      margin-bottom: var(--sp-6);
+    }
+    .homework-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-4);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--rule-faint);
+    }
+    .homework-card {
+      display: flex; flex-direction: column; gap: 6px;
+      padding-left: var(--sp-4);
+      border-left: 2px solid var(--azure-400);
+    }
+    .homework-label {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .homework-text {
+      font-size: 14px; color: var(--shadow); line-height: 1.5;
+    }
+    .homework-text strong { color: var(--azure); font-weight: 700; }
+
+    /* SLIDE 02 · SCOPE + timeline */
+    .scope-wrap {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--sp-6);
+      margin-top: var(--sp-5);
+    }
+    .scope-group { margin-bottom: var(--sp-5); }
+    .scope-group:last-child { margin-bottom: 0; }
+    .scope-group-label {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: var(--sp-3);
+    }
+    .scope-list, .needs-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .scope-list li, .needs-list li {
+      font-size: 14px; color: var(--shadow);
+      padding-left: var(--sp-4); position: relative; line-height: 1.5;
+    }
+    .scope-list li::before, .needs-list li::before {
+      content: ""; position: absolute; left: 0; top: 9px;
+      width: 6px; height: 1px; background: var(--azure-400);
+    }
+    .scope-list li strong, .needs-list li strong { color: var(--azure); font-weight: 700; }
+    .needs-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure);
+      padding: var(--sp-5);
+    }
+
+    /* milestone strip (5 cells) */
+    .mstrip {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-7);
+    }
+    .mstrip::before {
+      content: ""; position: absolute;
+      left: 6%; right: 6%; top: 13px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--azure) 0%, var(--azure-400) 100%);
+      z-index: 0;
+    }
+    .mcell {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 6px;
+    }
+    .mcell-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--ghost); border: 2px solid var(--azure);
+    }
+    .mcell.is-current .mcell-dot {
+      background: var(--azure);
+      box-shadow: 0 0 0 5px rgba(12, 51, 135, 0.12);
+    }
+    .mcell.is-launch .mcell-dot {
+      background: var(--highlighter); border-color: var(--highlighter-dark);
+      box-shadow: 0 0 0 5px rgba(226, 237, 122, 0.25);
+    }
+    .mcell-date {
+      font-size: 12px; font-weight: 700; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px;
+    }
+    .mcell-name { font-size: 12px; color: var(--shadow); line-height: 1.3; }
+    .mcell-tag {
+      display: inline-block; margin-top: 2px;
+      font-size: 9px; font-weight: 800; color: var(--shadow);
+      background: var(--highlighter); padding: 2px 7px;
+      letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px;
+    }
+
+    /* SLIDE 03 · GOALS funnel */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+      align-items: stretch;
+    }
+    .goal-col {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure-400);
+      padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+      position: relative;
+    }
+    .goal-col.is-priority {
+      border-color: var(--highlighter-dark);
+      border-top: 3px solid var(--highlighter-dark);
+      background: rgba(226, 237, 122, 0.07);
+      box-shadow: 0 0 0 1px var(--highlighter-dark);
+    }
+    .goal-stage {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .goal-priority-flag {
+      display: inline-block; margin-bottom: var(--sp-1);
+      font-size: 10px; font-weight: 800; color: var(--shadow);
+      background: var(--highlighter); padding: 3px 9px;
+      letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px;
+      box-shadow: 0 0 0 4px rgba(226, 237, 122, 0.25);
+      width: fit-content;
+    }
+    .goal-headline {
+      font-size: 17px; font-weight: 700; color: var(--azure);
+      line-height: 1.25; letter-spacing: -0.01em;
+    }
+    .goal-body {
+      font-size: 13.5px; color: var(--fg-muted); line-height: 1.55;
+    }
+    .goal-body strong { color: var(--shadow); font-weight: 700; }
+
+    /* SLIDE 04 · WORK rhythm + table */
+    .rhythm-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .rstep {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-left: 3px solid var(--azure);
+      padding: var(--sp-4);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .rstep-num {
+      font-size: 11px; font-weight: 700; color: var(--azure);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .rstep-lead { font-size: 18px; font-weight: 800; color: var(--azure); line-height: 1.1; }
+    .rstep-text { font-size: 13px; color: var(--fg-muted); line-height: 1.45; }
+
+    .work-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: var(--sp-6);
+      border: 1px solid var(--rule-faint);
+    }
+    .work-col-head {
+      padding: var(--sp-3) var(--sp-5);
+      font-size: 11px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      display: flex; align-items: center; gap: var(--sp-2);
+    }
+    .work-col-head.keeps { background: var(--lucid-soft); color: var(--azure); }
+    .work-col-head.friction { background: var(--bg-alt); color: var(--fg-muted); }
+    .work-cell {
+      padding: var(--sp-3) var(--sp-5);
+      font-size: 13.5px; line-height: 1.45;
+      border-top: 1px solid var(--rule-faint);
+      display: flex; align-items: flex-start; gap: var(--sp-3);
+    }
+    .work-cell.keeps { color: var(--shadow); }
+    .work-cell.friction { color: var(--fg-muted); border-left: 1px solid var(--rule-faint); }
+    .work-ico {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+      fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .work-cell.keeps .work-ico { stroke: var(--azure); }
+    .work-cell.friction .work-ico { stroke: var(--fg-subtle); }
+
+    /* SLIDE 05 · STANDS-FOR live exercise */
+    .prompt-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .prompt-col {
+      background: var(--bg-panel);
+      border: 1px dashed var(--rule);
+      padding: var(--sp-5);
+      min-height: 150px;
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .prompt-label {
+      font-size: 11px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .prompt-q { font-size: 14px; color: var(--fg-muted); line-height: 1.5; }
+    .prompt-lines { margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-3); }
+    .prompt-line { height: 1px; background: var(--rule-faint); }
+
+    .pullquote {
+      margin-top: var(--sp-6);
+      padding: var(--sp-5) var(--sp-6);
+      background: var(--azure);
+      color: var(--ghost);
+      border-radius: var(--r-md);
+    }
+    .pullquote p {
+      font-size: clamp(18px, 2.3vw, 24px);
+      font-weight: 700; line-height: 1.3; letter-spacing: -0.01em;
+    }
+    .pullquote .pq-attr {
+      margin-top: var(--sp-2);
+      font-size: 12px; font-weight: 600; color: var(--azure-200);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    .pillar-block {
+      display: grid;
+      grid-template-columns: 2.4fr 1fr;
+      gap: var(--sp-6);
+      margin-top: var(--sp-6);
+      align-items: start;
+    }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+    .pillar-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure);
+      padding: var(--sp-4);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .pillar-num { font-size: 11px; font-weight: 700; color: var(--azure); letter-spacing: 0.12em; }
+    .pillar-name { font-size: 15px; font-weight: 700; color: var(--azure); line-height: 1.2; }
+    .pillar-desc { font-size: 12.5px; color: var(--fg-muted); line-height: 1.45; }
+    .sparks {
+      background: var(--bg-alt);
+      border-radius: var(--r-md);
+      padding: var(--sp-4) var(--sp-5);
+    }
+    .sparks-label {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-3);
+    }
+    .sparks-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .sparks-list li {
+      font-size: 12.5px; color: var(--shadow); line-height: 1.4;
+      padding-left: var(--sp-4); position: relative;
+    }
+    .sparks-list li::before {
+      content: ""; position: absolute; left: 0; top: 8px;
+      width: 6px; height: 6px; background: var(--highlighter-dark);
+      transform: rotate(45deg);
+    }
+    .pillar-hyp-label {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-3);
+    }
+
+    /* SLIDE 06 · VOICE */
+    .voice-flow {
+      display: flex; flex-direction: column; gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .vseg {
+      display: flex; align-items: flex-start; gap: var(--sp-4);
+      padding: var(--sp-4) 0;
+      border-bottom: 1px solid var(--rule-faint);
+    }
+    .vseg:last-child { border-bottom: none; }
+    .vseg-num {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      background: var(--azure); color: var(--ghost);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .vseg-body { flex: 1; }
+    .vseg-head {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-3);
+      margin-bottom: 3px;
+    }
+    .vseg-name { font-size: 15px; font-weight: 700; color: var(--azure); }
+    .vseg-time { font-size: 11px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; }
+    .vseg-text { font-size: 13.5px; color: var(--fg-muted); line-height: 1.5; }
+    .vseg-text strong { color: var(--shadow); font-weight: 700; }
+
+    .emdash-callout {
+      margin: var(--sp-3) 0 0;
+      padding: var(--sp-3) var(--sp-4);
+      background: rgba(226, 237, 122, 0.16);
+      border-left: 2px solid var(--highlighter-dark);
+      font-size: 12.5px; color: var(--shadow); line-height: 1.5;
+    }
+    .emdash-callout strong { color: var(--azure); font-weight: 700; }
+
+    .caption-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-6);
+    }
+    .caption-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .caption-card.is-pick {
+      border: 1.5px solid var(--highlighter-dark);
+      box-shadow: 0 0 0 3px rgba(226, 237, 122, 0.20);
+    }
+    .caption-head {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2);
+    }
+    .caption-label {
+      font-size: 11px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .caption-pick-tag {
+      font-size: 9px; font-weight: 800; color: var(--shadow);
+      background: var(--highlighter); padding: 2px 7px;
+      letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px;
+    }
+    .caption-style { font-size: 12px; color: var(--fg-subtle); font-style: italic; }
+    .caption-text { font-size: 13px; color: var(--shadow); line-height: 1.55; }
+
+    /* SLIDE 07 · IVP two-col */
+    .ivp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .ivp-col {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .ivp-col.is-core { border-top: 3px solid var(--azure); }
+    .ivp-col.is-conv { border-top: 3px solid var(--lucid-deep); }
+    .ivp-eyebrow {
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2);
+    }
+    .ivp-tag {
+      font-size: 10px; font-weight: 800; padding: 3px 8px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .ivp-tag.core { background: var(--azure); color: var(--ghost); }
+    .ivp-tag.conv { background: var(--lucid); color: var(--azure); }
+    .ivp-when { font-size: 11px; color: var(--fg-subtle); font-style: italic; }
+    .ivp-name { font-size: 20px; font-weight: 800; color: var(--azure); letter-spacing: -0.015em; }
+    .ivp-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .ivp-list li {
+      font-size: 13px; color: var(--fg-muted); line-height: 1.5;
+      padding-left: var(--sp-4); position: relative;
+    }
+    .ivp-list li::before {
+      content: ""; position: absolute; left: 0; top: 9px;
+      width: 6px; height: 1px; background: var(--azure-400);
+    }
+    .ivp-list li strong { color: var(--shadow); font-weight: 700; }
+    .ivp-content-tag {
+      margin-top: auto;
+      font-size: 12px; color: var(--azure); font-weight: 700;
+      padding-top: var(--sp-3); border-top: 1px solid var(--rule-faint);
+      line-height: 1.45;
+    }
+    .ivp-content-tag span { color: var(--fg-muted); font-weight: 400; }
+
+    /* SLIDE 08 · DECISIONS */
+    .decisions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .decision-block {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .decision-top {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+    }
+    .decision-title { font-size: 16px; font-weight: 700; color: var(--azure); line-height: 1.2; }
+    .decision-chip {
+      flex-shrink: 0;
+      font-size: 10px; font-weight: 800; padding: 4px 10px;
+      letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px;
+    }
+    .decision-chip.confirm { background: var(--lucid); color: var(--azure); }
+    .decision-chip.lock { background: var(--highlighter); color: var(--shadow); }
+    .decision-row { font-size: 13px; line-height: 1.5; }
+    .decision-row .dlabel {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-right: 6px;
+    }
+    .decision-row.form { color: var(--fg-muted); }
+    .decision-row.rec { color: var(--shadow); }
+
+    /* SLIDE 09 · NEXT STEPS / close */
+    .buckets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    .bucket {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure);
+      padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .bucket-eyebrow {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .bucket-owner { font-size: 12px; color: var(--fg-subtle); }
+    .bucket-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .bucket-list li {
+      font-size: 13px; color: var(--shadow); line-height: 1.5;
+      padding-left: var(--sp-4); position: relative;
+    }
+    .bucket-list li::before {
+      content: ""; position: absolute; left: 0; top: 9px;
+      width: 6px; height: 1px; background: var(--azure-400);
+    }
+
+    .dates-strip {
+      display: flex; flex-wrap: wrap; gap: var(--sp-3);
+      margin-top: var(--sp-6);
+    }
+    .date-chip {
+      display: inline-flex; flex-direction: column; gap: 2px;
+      padding: var(--sp-3) var(--sp-4);
+      background: rgba(226, 237, 122, 0.16);
+      border: 1px solid var(--highlighter-dark);
+      border-radius: var(--r-sm);
+    }
+    .date-chip-when {
+      font-size: 11px; font-weight: 800; color: var(--shadow);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .date-chip-what { font-size: 12px; color: var(--fg-muted); }
+
+    .close-block { margin-top: var(--sp-7); }
+    .close-line {
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700; color: var(--azure); line-height: 1.35;
+      max-width: 820px; letter-spacing: -0.01em;
+    }
+    .close-sign {
+      margin-top: var(--sp-5); display: flex; flex-wrap: wrap; gap: var(--sp-7);
+      padding-top: var(--sp-4); border-top: 1px solid var(--rule-faint);
+    }
+    .close-sign-name { font-size: 15px; font-weight: 700; color: var(--azure); }
+    .close-sign-title { font-size: 12px; color: var(--fg-muted); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1100px) {
+      .pillar-block { grid-template-columns: 1fr; }
+      .scope-wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .homework-grid { grid-template-columns: 1fr 1fr; }
+      .goals-grid { grid-template-columns: 1fr; }
+      .rhythm-steps { grid-template-columns: 1fr 1fr; }
+      .caption-cards { grid-template-columns: 1fr; }
+      .ivp-grid { grid-template-columns: 1fr; }
+      .decisions { grid-template-columns: 1fr; }
+      .buckets { grid-template-columns: 1fr; }
+      .prompt-cols { grid-template-columns: 1fr; }
+      .pillar-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .slide { padding: var(--sp-7) var(--sp-4) var(--sp-7); }
+      .slide-cover { padding-top: var(--sp-6); padding-bottom: var(--sp-6); }
+      .mstrip { grid-template-columns: 1fr; gap: var(--sp-3); }
+      .mstrip::before { display: none; }
+      .mcell {
+        flex-direction: row; align-items: center; text-align: left;
+        gap: var(--sp-3); padding: var(--sp-3);
+        background: var(--bg-panel); border: 1px solid var(--rule-faint);
+        border-left: 3px solid var(--azure);
+      }
+      .mcell.is-launch { border-left-color: var(--highlighter-dark); background: rgba(226,237,122,0.08); }
+      .mcell-dot { flex-shrink: 0; }
+      .work-table { grid-template-columns: 1fr; }
+      .work-cell.friction { border-left: none; }
+    }
+
+    @media (max-width: 414px) {
+      .deck-header-inner { padding: 0 var(--sp-4); }
+      .header-x { display: none; }
+      .header-atlas-img { height: 22px; }
+      .header-logo-img { height: 21px; }
+      .slide { padding: var(--sp-6) var(--sp-4) var(--sp-6); }
+      .cover-title { font-size: 34px; }
+      .cover-lede { font-size: 16px; }
+      .slide-title { font-size: 26px; }
+      .slide-subtitle { font-size: 15px; }
+      .homework-grid { grid-template-columns: 1fr; }
+      .rhythm-steps { grid-template-columns: 1fr; }
+      .pillar-grid { grid-template-columns: 1fr; }
+      .homework-text, .goal-body, .scope-list li, .needs-list li,
+      .work-cell, .rstep-text, .pillar-desc, .sparks-list li, .vseg-text,
+      .caption-text, .ivp-list li, .decision-row, .bucket-list li,
+      .prompt-q, .callout-body, .framing-line, .emdash-callout, .date-chip-what {
+        font-size: 14px;
+      }
+      .mcell-name, .mcell-date { font-size: 14px; }
+    }
+
+    @media (max-width: 375px) {
+      .slide { padding: var(--sp-5) var(--sp-4) var(--sp-6); }
+      .cover-title { font-size: 30px; }
+      .slide-title { font-size: 24px; }
+    }
+
+    @media print {
+      .deck-header, .slide-nav { display: none; }
+      .reveal { opacity: 1; transform: none; }
+      .slide { page-break-after: always; padding: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER · co-branded -->
+  <header class="deck-header">
+    <div class="deck-header-inner">
+      <a href="https://decks.scrollmedia.co/pitch/" target="_blank" rel="noopener" class="header-logo" aria-label="Scroll Media">
+        <img src="scroll-media-logo.png" alt="Scroll Media" class="header-logo-img" />
+      </a>
+      <div class="header-co">
+        <span class="header-x" aria-hidden="true">&times;</span>
+        <img src="atlas-logo.png" alt="Atlas Systems" class="header-atlas-img" />
+      </div>
+    </div>
+  </header>
+
+  <nav class="slide-nav" aria-label="Slide navigation">
+    <a href="#s01" data-slide="01"><span>We did our homework</span></a>
+    <a href="#s02" data-slide="02"><span>What we're building</span></a>
+    <a href="#s03" data-slide="03"><span>Three goals</span></a>
+    <a href="#s04" data-slide="04"><span>How we work</span></a>
+    <a href="#s05" data-slide="05"><span>What Atlas stands for</span></a>
+    <a href="#s06" data-slide="06"><span>How Atlas sounds</span></a>
+    <a href="#s07" data-slide="07"><span>Two audiences</span></a>
+    <a href="#s08" data-slide="08"><span>Strategic decisions</span></a>
+    <a href="#s09" data-slide="09"><span>Next steps</span></a>
+  </nav>
+
+  <main>
+
+    <!-- SLIDE 01 · WE DID OUR HOMEWORK (cover) -->
+    <section class="slide slide-cover" id="s01" aria-labelledby="s01-title">
+      <div class="cover-mark reveal">
+        <span class="cover-mark-line"></span>
+        <span>Atlas Systems &times; Scroll Media &middot; Kickoff</span>
+      </div>
+      <h1 id="s01-title" class="cover-title reveal">Enterprise systems without the enterprise.</h1>
+      <p class="cover-lede reveal">Enterprise rigor. Local roots. Founder-executed. Before we build anything, here is what we heard from you.</p>
+      <div class="homework-grid reveal">
+        <div class="homework-card">
+          <span class="homework-label">What Atlas is</span>
+          <span class="homework-text">Ten years across healthcare, fintech, and regulated environments, now pointed at Cincinnati-metro and NKY businesses that could never afford an enterprise-caliber team.</span>
+        </div>
+        <div class="homework-card">
+          <span class="homework-label">The uncopyable asset</span>
+          <span class="homework-text">One accountable owner from strategy through execution. The person who scopes the work can build it. No generic playbooks, no anonymous handoff.</span>
+        </div>
+        <div class="homework-card">
+          <span class="homework-label">Proof in production</span>
+          <span class="homework-text">Phil Smith Real Estate: custom site, HubSpot CRM, 24/7 AI phone agent, monthly scorecards. A restaurant group platform unifying POS, reservations, and accounting.</span>
+        </div>
+        <div class="homework-card">
+          <span class="homework-label">The opportunity</span>
+          <span class="homework-text">Owner-led businesses on spreadsheet stacks that are breaking. They want senior judgment, fixed pricing, written scope. They don't know Atlas exists yet.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 02 · WHAT WE'RE BUILDING TOGETHER -->
+    <section class="slide" id="s02" aria-labelledby="s02-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">02</span>
+        <span class="slide-eyebrow-text">What we're building together</span>
+      </div>
+      <h2 id="s02-title" class="slide-title reveal">Signature Growth. Here's the scope.</h2>
+      <p class="slide-subtitle reveal">Month one is strategy only. No posting until July 13. That is by design. We use these three weeks to build the audience profiles, lock pillars, build the calendar, and bank the first content so the launch is deliberate, not rushed.</p>
+
+      <div class="scope-wrap">
+        <div class="reveal">
+          <div class="scope-group">
+            <div class="scope-group-label">Every week, once in execution</div>
+            <ul class="scope-list">
+              <li><strong>3 feed posts</strong> per week, Mon / Wed / Fri</li>
+              <li><strong>2 story strategy days</strong>, Tue / Thu</li>
+              <li>Feed posts auto-share to stories on M/W/F</li>
+              <li>Community management on every post</li>
+              <li><strong>Monthly performance report</strong>, first week of each month</li>
+            </ul>
+          </div>
+          <div class="scope-group">
+            <div class="scope-group-label">Every 3 weeks &amp; ongoing</div>
+            <ul class="scope-list">
+              <li><strong>One content shoot</strong>, founder-led talking-head plus B-roll</li>
+              <li><strong>Biweekly 30-min check-in</strong> with Riley</li>
+              <li><strong>LinkedIn cross-distribution.</strong> LinkedIn-ready adaptations alongside IG-approved assets. Performance tracking stays Instagram-only.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="needs-panel reveal">
+          <div class="scope-group-label">What we need from you</div>
+          <ul class="needs-list">
+            <li><strong>Account access.</strong> 2FA for @atlasysky this week</li>
+            <li><strong>Brand assets.</strong> Folder already shared, thank you. We will confirm we have everything</li>
+            <li><strong>Friday shoot availability</strong>, against your 9am to 2pm M/W/F window</li>
+            <li><strong>Content approvals in Plann.</strong> Riley walks you through it today</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mstrip reveal" role="list" aria-label="First five weeks">
+        <div class="mcell is-current" role="listitem">
+          <span class="mcell-dot"></span>
+          <span class="mcell-date">Jun 10</span>
+          <span class="mcell-name">Kickoff (today)</span>
+        </div>
+        <div class="mcell" role="listitem">
+          <span class="mcell-dot"></span>
+          <span class="mcell-date">Jul 1</span>
+          <span class="mcell-name">Strategy Presentation</span>
+        </div>
+        <div class="mcell" role="listitem">
+          <span class="mcell-dot"></span>
+          <span class="mcell-date">Jul 3</span>
+          <span class="mcell-name">First content shoot</span>
+        </div>
+        <div class="mcell" role="listitem">
+          <span class="mcell-dot"></span>
+          <span class="mcell-date">Jul 6&ndash;10</span>
+          <span class="mcell-name">Editing</span>
+        </div>
+        <div class="mcell is-launch" role="listitem">
+          <span class="mcell-dot"></span>
+          <span class="mcell-date">Jul 13</span>
+          <span class="mcell-name">First post live</span>
+          <span class="mcell-tag">Launch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 03 · THREE GOALS, ONE STRATEGY -->
+    <section class="slide" id="s03" aria-labelledby="s03-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">03</span>
+        <span class="slide-eyebrow-text">Three goals, one strategy</span>
+      </div>
+      <h2 id="s03-title" class="slide-title reveal">Every content decision comes back to these three.</h2>
+      <p class="slide-subtitle reveal">You told us your top priority. Let's confirm we read it right.</p>
+
+      <div class="goals-grid">
+        <div class="goal-col reveal">
+          <span class="goal-stage">Awareness &middot; Top of funnel</span>
+          <h3 class="goal-headline">Get Atlas in front of Cincinnati-metro and NKY owners.</h3>
+          <p class="goal-body">Most owners who would benefit from Atlas have no idea it exists. We expand the audience of regional operators who see your work.</p>
+        </div>
+        <div class="goal-col is-priority reveal">
+          <span class="goal-priority-flag">Your #1 priority</span>
+          <span class="goal-stage">Authority &middot; Middle of funnel</span>
+          <h3 class="goal-headline">Become the trusted no-hype tech voice in the regional feed.</h3>
+          <p class="goal-body">You said it directly. Success is a stronger local presence, trust with owners and referral partners, and real conversations from people who realize you can help. <strong>This is where we apply the most pressure.</strong></p>
+        </div>
+        <div class="goal-col reveal">
+          <span class="goal-stage">Conversion &middot; Bottom of funnel</span>
+          <h3 class="goal-headline">Drive qualified inbound. Book a fit call.</h3>
+          <p class="goal-body">The audience is ready. We give them the CTA and the link-in-bio path. A qualified lead booked a fit call, came in with budget and scope, and the authority to sign.</p>
+        </div>
+      </div>
+
+      <p class="framing-line reveal">These three shape every content decision we make, and every metric in your monthly report. <strong>You are not chasing viral reach. You want real local conversations.</strong> We build to that.</p>
+    </section>
+
+    <!-- SLIDE 04 · HOW WE WORK BEST TOGETHER -->
+    <section class="slide" id="s04" aria-labelledby="s04-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">04</span>
+        <span class="slide-eyebrow-text">How we work best together</span>
+      </div>
+      <h2 id="s04-title" class="slide-title reveal">The rhythm that protects the content.</h2>
+      <p class="slide-subtitle reveal">Everything routes through one approval path inside Plann. That is what keeps it clean.</p>
+
+      <div class="rhythm-steps">
+        <div class="rstep reveal">
+          <span class="rstep-num">Step 1</span>
+          <span class="rstep-lead">5 days</span>
+          <span class="rstep-text">Content delivered in Plann before publish</span>
+        </div>
+        <div class="rstep reveal">
+          <span class="rstep-num">Step 2</span>
+          <span class="rstep-lead">2 days</span>
+          <span class="rstep-text">You review within 2 business days of delivery</span>
+        </div>
+        <div class="rstep reveal">
+          <span class="rstep-num">Step 3</span>
+          <span class="rstep-lead">3 days</span>
+          <span class="rstep-text">Final approval before publish</span>
+        </div>
+        <div class="rstep reveal">
+          <span class="rstep-num">Step 4</span>
+          <span class="rstep-lead">2 rounds</span>
+          <span class="rstep-text">Of edits per batch, after the first 30 days</span>
+        </div>
+      </div>
+
+      <div class="callout reveal" style="margin-top:var(--sp-5);">
+        <span class="callout-label">A note on the first 30 days</span>
+        <span class="callout-body">The calibration period. Revisions are more flexible while we lock voice, visual direction, and rhythm. The signal we optimize against does not show up until month two, which is why we ask for trust in month one.</span>
+      </div>
+
+      <div class="work-table reveal">
+        <div class="work-col-head keeps">Keeps things moving</div>
+        <div class="work-col-head friction">Creates friction</div>
+
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals inside Plann, not text, not email</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Approvals the day before publish</div>
+
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Feedback consolidated into one round</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Conflicting edits from multiple people</div>
+
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One point of contact for sign-off</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback spread across channels</div>
+
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust month one, data comes in month two</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Pulling content mid-queue without context</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 05 · WHAT ATLAS STANDS FOR (live exercise) -->
+    <section class="slide" id="s05" aria-labelledby="s05-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">05</span>
+        <span class="slide-eyebrow-text">Live exercise &middot; What Atlas stands for</span>
+      </div>
+      <h2 id="s05-title" class="slide-title reveal">Before we build content, we need to hear it from you.</h2>
+      <p class="slide-subtitle reveal">Three prompts. 12 minutes. No wrong answers.</p>
+
+      <div class="prompt-cols">
+        <div class="prompt-col reveal">
+          <span class="prompt-label">Personal</span>
+          <span class="prompt-q">What 2 to 3 things matter to you outside of Atlas?</span>
+          <div class="prompt-lines"><span class="prompt-line"></span><span class="prompt-line"></span><span class="prompt-line"></span></div>
+        </div>
+        <div class="prompt-col reveal">
+          <span class="prompt-label">Professional</span>
+          <span class="prompt-q">What 2 to 3 things matter to you as the founder running Atlas?</span>
+          <div class="prompt-lines"><span class="prompt-line"></span><span class="prompt-line"></span><span class="prompt-line"></span></div>
+        </div>
+        <div class="prompt-col reveal">
+          <span class="prompt-label">Brand</span>
+          <span class="prompt-q">What 2 to 3 things does Atlas stand for, whether or not we ever post about them?</span>
+          <div class="prompt-lines"><span class="prompt-line"></span><span class="prompt-line"></span><span class="prompt-line"></span></div>
+        </div>
+      </div>
+
+      <div class="pullquote reveal">
+        <p>"Atlas Systems exists to give small businesses an unfair technical advantage. Enterprise systems without the enterprise."</p>
+        <span class="pq-attr">Your words, from the form</span>
+      </div>
+
+      <div class="pillar-block">
+        <div class="reveal">
+          <div class="pillar-hyp-label">Our starting hypothesis for content pillars</div>
+          <div class="pillar-grid">
+            <div class="pillar-card">
+              <span class="pillar-num">Pillar 1</span>
+              <span class="pillar-name">Practical AI, Not Hype</span>
+              <span class="pillar-desc">Anti-hype AI takes, real tool reviews, why I won't recommend AI for X. From your practical-AI answer and your AI-curious audience.</span>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-num">Pillar 2</span>
+              <span class="pillar-name">Enterprise Rigor, Local Roots</span>
+              <span class="pillar-desc">Founder POV on real operational systems, what I'd fix first, Technology Assessment walkthroughs. From your 10 years in regulated environments.</span>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-num">Pillar 3</span>
+              <span class="pillar-name">The Founder Behind the Work</span>
+              <span class="pillar-desc">Same hands from scope to delivery. Migration before and after, behind the scenes. The direct answer to your buyers' biggest hesitation.</span>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-num">Pillar 4</span>
+              <span class="pillar-name">Written Scope, Fixed Price</span>
+              <span class="pillar-desc">Demystifying how Atlas prices and scopes. Trust-signal content. From your senior-judgment-without-a-full-time-hire positioning.</span>
+            </div>
+          </div>
+        </div>
+        <div class="sparks reveal">
+          <div class="sparks-label">Sparks &middot; uncopyable assets we already see</div>
+          <ul class="sparks-list">
+            <li>10+ years enterprise architecture in healthcare, fintech, regulated environments</li>
+            <li>Phil Smith Real Estate: full stack plus AI phone agent plus monthly scorecards, all shipped</li>
+            <li>Restaurant-group iOS/web platform unifying POS, reservations, accounting</li>
+            <li>The person who scopes the work can actually build it</li>
+            <li>Anti-AI-hype voice in a market drowning in AI noise</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 06 · HOW ATLAS SOUNDS (voice deep dive) -->
+    <section class="slide" id="s06" aria-labelledby="s06-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">06</span>
+        <span class="slide-eyebrow-text">Voice &amp; tone deep dive &middot; How Atlas sounds</span>
+      </div>
+      <h2 id="s06-title" class="slide-title reveal">The difference between captions that sound like you and captions that sound like an agency template.</h2>
+      <p class="slide-subtitle reveal">Your captions, on-screen text, DMs, and comments need to sound like you. Your form pointed us in a direction. These 12 minutes are where we validate it, capture your actual phrases, and lock the hard lines.</p>
+
+      <div class="voice-flow">
+        <div class="vseg reveal">
+          <span class="vseg-num">1</span>
+          <div class="vseg-body">
+            <div class="vseg-head"><span class="vseg-name">Validate form hypotheses</span><span class="vseg-time">3 min</span></div>
+            <p class="vseg-text"><strong>Plainspoken, advisory, outcome-led.</strong> Your tone-pair picks point to direct, calm, benefit-anchored, zero hype. ALL CAPS for one-word emphasis only, exclamations rare. Confirming that is the lane.</p>
+            <div class="emdash-callout">
+              <strong>The em-dash hard line.</strong> Atlas's whole edge is being the no-hype, real-human voice in a feed full of AI noise. The em-dash is the single most recognizable AI-writing tell right now. Our default is to write you clean and human without it. We will settle this live.
+            </div>
+          </div>
+        </div>
+        <div class="vseg reveal">
+          <span class="vseg-num">2</span>
+          <div class="vseg-body">
+            <div class="vseg-head"><span class="vseg-name">DM read-aloud</span><span class="vseg-time">3 min</span></div>
+            <p class="vseg-text">Pull up the last meaningful DM or email you sent a prospect or client. Read it exactly as you wrote it, no editing on the fly. We listen for opening pattern, transitions, CTA language, and sign-off.</p>
+          </div>
+        </div>
+        <div class="vseg reveal">
+          <span class="vseg-num">3</span>
+          <div class="vseg-body">
+            <div class="vseg-head"><span class="vseg-name">Community response patterns</span><span class="vseg-time">3 min</span></div>
+            <p class="vseg-text">How do you respond when someone praises a build, when someone pushes back on your "most SMBs don't need AI" take, and when someone DMs a generic "how does your service work" question?</p>
+          </div>
+        </div>
+        <div class="vseg reveal">
+          <span class="vseg-num">4</span>
+          <div class="vseg-body">
+            <div class="vseg-head"><span class="vseg-name">Hard lines</span><span class="vseg-time">1.5 min</span></div>
+            <p class="vseg-text">You flagged client-confidential topics as off-limits. What can we never name, show, or reference? Anything you would refuse to say or do publicly even if it would perform?</p>
+          </div>
+        </div>
+        <div class="vseg reveal">
+          <span class="vseg-num">5</span>
+          <div class="vseg-body">
+            <div class="vseg-head"><span class="vseg-name">Sample caption live calibration</span><span class="vseg-time">1.5 min</span></div>
+            <p class="vseg-text">Three drafts below. Pick the closest, say why, edit inline. Our read from your tone-pair signal is you lean toward Draft B, but tell us.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="caption-cards">
+        <div class="caption-card reveal">
+          <div class="caption-head"><span class="caption-label">Draft A</span></div>
+          <span class="caption-style">Polished / Authoritative</span>
+          <p class="caption-text">"Enterprise systems without the enterprise. For ten years that meant building in healthcare and fintech, where security and reliability were never optional. Atlas brings that same standard to businesses that were told enterprise-grade was out of reach. Written scope. Fixed price. One accountable owner from strategy through build."</p>
+        </div>
+        <div class="caption-card is-pick reveal">
+          <div class="caption-head"><span class="caption-label">Draft B</span><span class="caption-pick-tag">Predicted pick</span></div>
+          <span class="caption-style">Conversational / Founder voice</span>
+          <p class="caption-text">"Most owners I meet have known their systems were breaking for months. The spreadsheet that ran the business at ten people is buckling at thirty. They don't fix it because they don't know who to trust with something this important. That's the whole reason I built Atlas. Same person who scopes the work builds it. No handoff. If your stack is breaking, that's worth a conversation."</p>
+        </div>
+        <div class="caption-card reveal">
+          <div class="caption-head"><span class="caption-label">Draft C</span></div>
+          <span class="caption-style">Contrarian / Sharp</span>
+          <p class="caption-text">"Most small businesses don't need AI. They need a CRM that actually works and a follow-up system that doesn't depend on someone remembering to call back. Foundation first. Then we talk about where AI actually earns its place. Most owners get the order backwards, and it costs them."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 07 · YOUR TWO AUDIENCES -->
+    <section class="slide" id="s07" aria-labelledby="s07-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">07</span>
+        <span class="slide-eyebrow-text">Your two audiences</span>
+      </div>
+      <h2 id="s07-title" class="slide-title reveal">The owner at the wall and the owner watching the AI cycle aren't the same person.</h2>
+      <p class="slide-subtitle reveal">Content serves both. They consume differently.</p>
+
+      <div class="ivp-grid">
+        <div class="ivp-col is-core reveal">
+          <div class="ivp-eyebrow">
+            <span class="ivp-tag core">Core buyer</span>
+            <span class="ivp-when">buying now</span>
+          </div>
+          <span class="ivp-name">Operator at the Wall</span>
+          <ul class="ivp-list">
+            <li>Cincinnati-metro and NKY operator-led businesses, 5 to 100 employees, mixed verticals</li>
+            <li>Running on spreadsheets and workarounds that worked at half their size</li>
+            <li>Want senior judgment without a full-time hire, fixed pricing, written scope, speed, a long-term technical partner</li>
+            <li>Want to feel <strong>hopeful there's a real path forward</strong> and <strong>confident the work is in senior hands</strong></li>
+          </ul>
+          <div class="ivp-content-tag">Direct-response content <span>&middot; Technology Assessment teases, what I'd fix first, migration before and after, direct-to-fit-call CTAs</span></div>
+        </div>
+        <div class="ivp-col is-conv reveal">
+          <div class="ivp-eyebrow">
+            <span class="ivp-tag conv">Conversion audience</span>
+            <span class="ivp-when">buying later</span>
+          </div>
+          <span class="ivp-name">AI-Curious Owner</span>
+          <ul class="ivp-list">
+            <li>Regional owners not shopping today but watching the AI cycle, exhausted by LinkedIn hype</li>
+            <li>Want a calm, credentialed voice telling them what's actually useful at their size</li>
+            <li>Skeptical of agency pitches by default</li>
+          </ul>
+          <div class="ivp-content-tag">Authority content <span>&middot; "Most SMBs don't need AI," practical AI explainers grounded in real client work, fractional-CTO Q&amp;A, founder POV</span></div>
+        </div>
+      </div>
+
+      <div class="callout is-lime reveal" style="margin-top:var(--sp-5);">
+        <span class="callout-label">Gaps to close live</span>
+        <span class="callout-body">Your form left the second audience as "discuss at kickoff," so we go deep here. Who specifically, referral partners or a vertical where Atlas has proof? The buyer's real hesitation is authority and continuity. Walk us through a specific moment a prospect voiced that, and the operational trigger that makes an owner finally reach out.</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 08 · STRATEGIC DECISIONS -->
+    <section class="slide" id="s08" aria-labelledby="s08-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">08</span>
+        <span class="slide-eyebrow-text">Strategic decisions</span>
+      </div>
+      <h2 id="s08-title" class="slide-title reveal">Four decisions. Two you've already made. Two we lock today.</h2>
+      <p class="slide-subtitle reveal">Locking these now removes friction in Week 2.</p>
+
+      <div class="decisions">
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">1 &middot; Handle consolidation</span>
+            <span class="decision-chip confirm">Confirm</span>
+          </div>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Consolidate to @atlasysky and rebrand @atlasadvisoryky's audience over.</p>
+          <p class="decision-row rec"><span class="dlabel">Our plan</span>2 to 3 weeks of warm transition content on @atlasadvisoryky pointing followers to @atlasysky, then deactivate the secondary after handoff. Confirming we run it that way.</p>
+        </div>
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">2 &middot; LinkedIn posting source</span>
+            <span class="decision-chip confirm">Confirm</span>
+          </div>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Both, Chase Smith personal and the Atlas company page, depending on post type.</p>
+          <p class="decision-row rec"><span class="dlabel">Our rec</span>Founder-authority posts go on your personal profile, where trust lives. The company page reshares. We define which post type goes where at the Strategy Presentation.</p>
+        </div>
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">3 &middot; AI-assisted visual pilot</span>
+            <span class="decision-chip lock">Lock</span>
+          </div>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Learn more before deciding. Comfortable with AI-generated visual experiments.</p>
+          <p class="decision-row rec"><span class="dlabel">Our rec</span>A 60-day pilot of AI-assisted carousels and graphics, defined success criteria, opt out anytime. For Atlas it doubles as a meta-demonstration of the tooling you advise on. Full walkthrough July 1.</p>
+        </div>
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">4 &middot; Conversion path + attribution</span>
+            <span class="decision-chip lock">Lock</span>
+          </div>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Primary CTA is "book a fit call via Calendly or similar."</p>
+          <p class="decision-row rec"><span class="dlabel">We need</span>The actual live booking link we point content to, and whether Atlas's own site is wired for source attribution so Instagram-driven calls show up in your report. If it needs setup, we advise or queue it as a July 1 deliverable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 09 · NEXT STEPS -->
+    <section class="slide" id="s09" aria-labelledby="s09-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">09</span>
+        <span class="slide-eyebrow-text">Next steps</span>
+      </div>
+      <h2 id="s09-title" class="slide-title reveal">Here's what happens next.</h2>
+      <p class="slide-subtitle reveal">Three buckets. Clear owners. Dates to confirm.</p>
+
+      <div class="buckets">
+        <div class="bucket reveal">
+          <span class="bucket-eyebrow">This week &middot; Access</span>
+          <span class="bucket-owner">Riley owns</span>
+          <ul class="bucket-list">
+            <li>2FA access for @atlasysky</li>
+            <li>Plann app walkthrough, Riley sends by EOD this week</li>
+            <li>Add Riley plus Chase as admins</li>
+          </ul>
+        </div>
+        <div class="bucket reveal">
+          <span class="bucket-eyebrow">This week &middot; Assets</span>
+          <span class="bucket-owner">You confirm</span>
+          <ul class="bucket-list">
+            <li>Brand assets folder already shared. Riley confirms we have logos, fonts, colors</li>
+            <li>Portfolio screenshots or case-study assets we can reference, pending your permission per client</li>
+          </ul>
+        </div>
+        <div class="bucket reveal">
+          <span class="bucket-eyebrow">Already in motion &middot; Strategy</span>
+          <span class="bucket-owner">Riley owns</span>
+          <ul class="bucket-list">
+            <li>3-week strategy sprint starts next week</li>
+            <li>Full reveal at the Strategy Presentation, Wednesday July 1</li>
+            <li>Dual IVP, 4 pillars, 90-day calendar, social SEO bank, KPI framework, Slide 8 outcomes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dates-strip reveal">
+        <div class="date-chip">
+          <span class="date-chip-when">Wed, Jul 1</span>
+          <span class="date-chip-what">Strategy Presentation</span>
+        </div>
+        <div class="date-chip">
+          <span class="date-chip-when">Fri, Jul 3</span>
+          <span class="date-chip-what">First content shoot &middot; your office</span>
+        </div>
+        <div class="date-chip">
+          <span class="date-chip-when">Mon, Jul 13</span>
+          <span class="date-chip-what">First post live</span>
+        </div>
+        <div class="date-chip">
+          <span class="date-chip-when">Biweekly</span>
+          <span class="date-chip-what">Check-in, lock a day + time after Jul 1</span>
+        </div>
+      </div>
+
+      <div class="close-block reveal">
+        <p class="close-line">You said you want Atlas to show up polished, credible, and true to how you actually want it to look. That's exactly what we're here to build. Let's make Atlas the regional voice on practical tech.</p>
+        <div class="close-sign">
+          <div>
+            <div class="close-sign-name">Chase Gianattasio</div>
+            <div class="close-sign-title">Co-Founder &amp; COO &middot; Scroll Media</div>
+          </div>
+          <div>
+            <div class="close-sign-name">Riley Walker</div>
+            <div class="close-sign-title">Account Manager &middot; your primary point of contact</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Fade-in reveal */
+    (function() {
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+    })();
+
+    /* Slide nav active state */
+    (function() {
+      var navLinks = document.querySelectorAll('.slide-nav a');
+      if (!navLinks.length) return;
+      var slides = document.querySelectorAll('.slide');
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            navLinks.forEach(function(link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+      slides.forEach(function(s) { io.observe(s); });
+    })();
+  </script>
+
+</body>
+</html>

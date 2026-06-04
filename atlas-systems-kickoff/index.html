@@ -247,6 +247,9 @@
       line-height: 1.6;
     }
     .callout-body strong { color: var(--azure); font-weight: 700; }
+    .callout-list { list-style: none; padding: 0; margin-top: var(--sp-2); display: flex; flex-direction: column; gap: 7px; }
+    .callout-list li { font-size: 14px; color: var(--shadow); line-height: 1.5; padding-left: var(--sp-4); position: relative; }
+    .callout-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--azure-400); }
     .framing-line {
       margin-top: var(--sp-5);
       font-size: 15px; color: var(--fg-muted);
@@ -304,6 +307,60 @@
       font-size: 14px; color: var(--shadow); line-height: 1.5;
     }
     .homework-text strong { color: var(--azure); font-weight: 700; }
+
+    /* AGENDA */
+    .agenda-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-3); margin-top: var(--sp-5);
+    }
+    .astop {
+      display: flex; align-items: center; gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-left: 3px solid var(--azure-400);
+    }
+    .astop.is-yours { border-left-color: var(--highlighter-dark); background: rgba(226, 237, 122, 0.08); }
+    .astop-num { font-size: 12px; font-weight: 800; color: var(--azure); letter-spacing: 0.04em; flex-shrink: 0; }
+    .astop-label { font-size: 14px; font-weight: 700; color: var(--shadow); line-height: 1.2; }
+    .astop-meta { font-size: 12px; color: var(--fg-muted); white-space: nowrap; }
+    .astop-yours {
+      margin-left: auto; flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 999px;
+      background: var(--highlighter); color: var(--shadow);
+      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .astop-yours svg { width: 12px; height: 12px; fill: none; stroke: var(--shadow); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .agenda-note {
+      margin-top: var(--sp-5); font-size: 15px; color: var(--azure);
+      font-weight: 700; line-height: 1.45; max-width: 760px;
+    }
+
+    /* clock chip on the two 12-min working slides */
+    .slide-head-row {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: var(--sp-4);
+    }
+    .slide-clock {
+      flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(226, 237, 122, 0.18); border: 1px solid var(--highlighter-dark);
+      font-size: 12px; font-weight: 800; color: var(--shadow);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .slide-clock svg { width: 14px; height: 14px; fill: none; stroke: var(--shadow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* open-question line */
+    .open-q {
+      margin-top: var(--sp-4); font-size: 13px; font-weight: 700; color: var(--azure);
+    }
+    .open-q span {
+      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--azure); margin-right: var(--sp-2);
+      padding: 2px 8px; background: var(--lucid); border-radius: 999px;
+    }
 
     /* SLIDE 02 · SCOPE + timeline */
     .scope-wrap {
@@ -767,11 +824,10 @@
     .close-sign-title { font-size: 12px; color: var(--fg-muted); }
 
     /* ============ RESPONSIVE ============ */
-    @media (max-width: 1100px) {
-      .scope-wrap { grid-template-columns: 1fr; }
-    }
     @media (max-width: 900px) {
       .homework-grid { grid-template-columns: 1fr 1fr; }
+      .agenda-strip { grid-template-columns: 1fr 1fr; }
+      .scope-wrap { grid-template-columns: 1fr; }
       .goals-grid { grid-template-columns: 1fr; }
       .rhythm-steps { grid-template-columns: 1fr 1fr; }
       .caption-cards { grid-template-columns: 1fr; }
@@ -797,6 +853,7 @@
       .mcell-dot { flex-shrink: 0; }
       .work-table { grid-template-columns: 1fr; }
       .work-cell.friction { border-left: none; }
+      .slide-head-row { flex-wrap: wrap; }
     }
 
     @media (max-width: 414px) {
@@ -812,10 +869,12 @@
       .homework-grid { grid-template-columns: 1fr; }
       .rhythm-steps { grid-template-columns: 1fr; }
       .pillar-grid { grid-template-columns: 1fr; }
+      .agenda-strip { grid-template-columns: 1fr; }
       .homework-text, .goal-body, .scope-list li, .needs-list li,
       .work-cell, .rstep-text, .pillar-desc, .sparks-list li, .vseg-text,
       .caption-text, .ivp-list li, .decision-row, .bucket-list li,
-      .prompt-q, .callout-body, .framing-line, .emdash-callout, .date-chip-what {
+      .prompt-q, .callout-body, .framing-line, .emdash-callout, .date-chip-what,
+      .astop-label, .astop-meta, .agenda-note, .open-q {
         font-size: 14px;
       }
       .mcell-name, .mcell-date { font-size: 14px; }
@@ -850,6 +909,8 @@
   </header>
 
   <nav class="slide-nav" aria-label="Slide navigation">
+    <a href="#hero" data-slide="hero"><span>Welcome</span></a>
+    <a href="#agenda" data-slide="agenda"><span>Agenda</span></a>
     <a href="#s01" data-slide="01"><span>We did our homework</span></a>
     <a href="#s02" data-slide="02"><span>What we're building</span></a>
     <a href="#s03" data-slide="03"><span>Three goals</span></a>
@@ -863,30 +924,62 @@
 
   <main>
 
-    <!-- SLIDE 01 · WE DID OUR HOMEWORK (cover) -->
-    <section class="slide slide-cover" id="s01" aria-labelledby="s01-title">
+    <!-- HERO -->
+    <section class="slide slide-cover" id="hero" aria-labelledby="hero-title">
       <div class="cover-mark reveal">
         <span class="cover-mark-line"></span>
         <span>Atlas Systems &times; Scroll Media &middot; Kickoff</span>
       </div>
-      <h1 id="s01-title" class="cover-title reveal">Enterprise systems without the enterprise.</h1>
-      <p class="cover-lede reveal">Enterprise rigor. Local roots. Founder-executed. Before we build anything, here is what we heard from you.</p>
+      <h1 id="hero-title" class="cover-title reveal">Enterprise systems without the enterprise.</h1>
+      <p class="cover-lede reveal">Enterprise rigor. Local roots. Founder-executed.</p>
+    </section>
+
+    <!-- AGENDA -->
+    <section class="slide" id="agenda" aria-labelledby="agenda-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-text">Agenda</span>
+      </div>
+      <h2 id="agenda-title" class="slide-title reveal">Today &middot; 60 minutes &middot; 9 stops.</h2>
+
+      <div class="agenda-strip">
+        <div class="astop reveal"><span class="astop-num">01</span><span class="astop-label">We did our homework</span><span class="astop-meta">&middot; 4 min</span></div>
+        <div class="astop reveal"><span class="astop-num">02</span><span class="astop-label">What we're building</span><span class="astop-meta">&middot; 4 min</span></div>
+        <div class="astop reveal"><span class="astop-num">03</span><span class="astop-label">Three goals</span><span class="astop-meta">&middot; 5 min</span></div>
+        <div class="astop reveal"><span class="astop-num">04</span><span class="astop-label">How we work</span><span class="astop-meta">&middot; 3 min</span></div>
+        <div class="astop is-yours reveal"><span class="astop-num">05</span><span class="astop-label">What Atlas stands for</span><span class="astop-meta">&middot; 12 min</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div>
+        <div class="astop is-yours reveal"><span class="astop-num">06</span><span class="astop-label">How Atlas sounds</span><span class="astop-meta">&middot; 12 min</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div>
+        <div class="astop reveal"><span class="astop-num">07</span><span class="astop-label">Two audiences</span><span class="astop-meta">&middot; 6 min</span></div>
+        <div class="astop reveal"><span class="astop-num">08</span><span class="astop-label">Strategic decisions</span><span class="astop-meta">&middot; 9 min</span></div>
+        <div class="astop reveal"><span class="astop-num">09</span><span class="astop-label">Next steps</span><span class="astop-meta">&middot; 5 min</span></div>
+      </div>
+
+      <p class="agenda-note reveal">This is a working session, not a presentation. The two longest stops belong to you.</p>
+    </section>
+
+    <!-- SLIDE 01 · WE DID OUR HOMEWORK -->
+    <section class="slide" id="s01" aria-labelledby="s01-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">01</span>
+        <span class="slide-eyebrow-text">We did our homework</span>
+      </div>
+      <h2 id="s01-title" class="slide-title reveal">We did our homework.</h2>
+      <p class="slide-subtitle reveal">Before we build anything, here's what we heard from you.</p>
       <div class="homework-grid reveal">
         <div class="homework-card">
           <span class="homework-label">What Atlas is</span>
-          <span class="homework-text">Ten years across healthcare, fintech, and regulated environments, now pointed at Cincinnati-metro and NKY businesses that could never afford an enterprise-caliber team.</span>
+          <span class="homework-text">Ten years in healthcare, fintech, and regulated environments, now pointed at Cincinnati-metro and NKY businesses.</span>
         </div>
         <div class="homework-card">
           <span class="homework-label">The uncopyable asset</span>
-          <span class="homework-text">One accountable owner from strategy through execution. The person who scopes the work can build it. No generic playbooks, no anonymous handoff.</span>
+          <span class="homework-text">One accountable owner from strategy through execution. No generic playbooks, no anonymous handoff.</span>
         </div>
         <div class="homework-card">
           <span class="homework-label">Proof in production</span>
-          <span class="homework-text">Phil Smith Real Estate: custom site, HubSpot CRM, 24/7 AI phone agent, monthly scorecards. A restaurant group platform unifying POS, reservations, and accounting.</span>
+          <span class="homework-text">Phil Smith Real Estate full stack. A restaurant-group operations platform.</span>
         </div>
         <div class="homework-card">
           <span class="homework-label">The opportunity</span>
-          <span class="homework-text">Owner-led businesses on spreadsheet stacks that are breaking. They want senior judgment, fixed pricing, written scope. They don't know Atlas exists yet.</span>
+          <span class="homework-text">Owner-led businesses on breaking spreadsheet stacks. They don't know Atlas exists yet.</span>
         </div>
       </div>
     </section>
@@ -898,7 +991,7 @@
         <span class="slide-eyebrow-text">What we're building together</span>
       </div>
       <h2 id="s02-title" class="slide-title reveal">Signature Growth. Here's the scope.</h2>
-      <p class="slide-subtitle reveal">Month one is strategy only. No posting until July 13. That is by design. We use these three weeks to build the audience profiles, lock pillars, build the calendar, and bank the first content so the launch is deliberate, not rushed.</p>
+      <p class="slide-subtitle reveal">Month one is strategy only. First post July 13, by design.</p>
 
       <div class="scope-wrap">
         <div class="reveal">
@@ -975,22 +1068,23 @@
         <div class="goal-col reveal">
           <span class="goal-stage">Awareness &middot; Top of funnel</span>
           <h3 class="goal-headline">Get Atlas in front of Cincinnati-metro and NKY owners.</h3>
-          <p class="goal-body">Most owners who would benefit from Atlas have no idea it exists. We expand the audience of regional operators who see your work.</p>
+          <p class="goal-body">Most owners who'd benefit have no idea Atlas exists.</p>
         </div>
         <div class="goal-col is-priority reveal">
           <span class="goal-priority-flag">Your #1 priority</span>
           <span class="goal-stage">Authority &middot; Middle of funnel</span>
           <h3 class="goal-headline">Become the trusted no-hype tech voice in the regional feed.</h3>
-          <p class="goal-body">You said it directly. Success is a stronger local presence, trust with owners and referral partners, and real conversations from people who realize you can help. <strong>This is where we apply the most pressure.</strong></p>
+          <p class="goal-body">Trust with owners and referral partners. Real conversations. <strong>This is where we apply the most pressure.</strong></p>
         </div>
         <div class="goal-col reveal">
           <span class="goal-stage">Conversion &middot; Bottom of funnel</span>
           <h3 class="goal-headline">Drive qualified inbound. Book a fit call.</h3>
-          <p class="goal-body">The audience is ready. We give them the CTA and the link-in-bio path. A qualified lead booked a fit call, came in with budget and scope, and the authority to sign.</p>
+          <p class="goal-body">A clear CTA and a link-in-bio path to a fit call.</p>
         </div>
       </div>
 
-      <p class="framing-line reveal">These three shape every content decision we make, and every metric in your monthly report. <strong>You are not chasing viral reach. You want real local conversations.</strong> We build to that.</p>
+      <p class="framing-line reveal">These three shape every content decision we make, and every metric in your monthly report. <strong>You're not chasing viral reach. We build for real local conversations.</strong></p>
+      <p class="open-q reveal"><span>Open question</span>Anything changed since the form?</p>
     </section>
 
     <!-- SLIDE 04 · HOW WE WORK BEST TOGETHER -->
@@ -1026,8 +1120,8 @@
       </div>
 
       <div class="callout reveal" style="margin-top:var(--sp-5);">
-        <span class="callout-label">A note on the first 30 days</span>
-        <span class="callout-body">The calibration period. Revisions are more flexible while we lock voice, visual direction, and rhythm. The signal we optimize against does not show up until month two, which is why we ask for trust in month one.</span>
+        <span class="callout-label">The first 30 days</span>
+        <span class="callout-body">First 30 days = calibration. Revisions run freer while we lock voice and rhythm.</span>
       </div>
 
       <div class="work-table reveal">
@@ -1050,9 +1144,12 @@
 
     <!-- SLIDE 05 · WHAT ATLAS STANDS FOR (live exercise) -->
     <section class="slide is-tight" id="s05" aria-labelledby="s05-title">
-      <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">05</span>
-        <span class="slide-eyebrow-text">Live exercise &middot; What Atlas stands for</span>
+      <div class="slide-head-row reveal">
+        <div class="slide-eyebrow">
+          <span class="slide-eyebrow-num">05</span>
+          <span class="slide-eyebrow-text">Live exercise &middot; What Atlas stands for</span>
+        </div>
+        <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>12 min</div>
       </div>
       <h2 id="s05-title" class="slide-title reveal">Before we build content, we need to hear it from you.</h2>
       <p class="slide-subtitle reveal">Three prompts. 12 minutes. No wrong answers.</p>
@@ -1125,9 +1222,12 @@
          VERBATIM sample captions for live calibration). Caption readability and verbatim
          fidelity win over single-screen fit here. Do not compress the captions to force fit. -->
     <section class="slide" id="s06" aria-labelledby="s06-title">
-      <div class="slide-eyebrow reveal">
-        <span class="slide-eyebrow-num">06</span>
-        <span class="slide-eyebrow-text">Voice &amp; tone deep dive &middot; How Atlas sounds</span>
+      <div class="slide-head-row reveal">
+        <div class="slide-eyebrow">
+          <span class="slide-eyebrow-num">06</span>
+          <span class="slide-eyebrow-text">Voice &amp; tone deep dive &middot; How Atlas sounds</span>
+        </div>
+        <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>12 min</div>
       </div>
       <h2 id="s06-title" class="slide-title reveal">The difference between captions that sound like you and captions that sound like an agency template.</h2>
       <p class="slide-subtitle reveal">Your captions, on-screen text, DMs, and comments need to sound like you. Your form pointed us in a direction. These 12 minutes are where we validate it, capture your actual phrases, and lock the hard lines.</p>
@@ -1137,9 +1237,9 @@
           <span class="vseg-num">1</span>
           <div class="vseg-body">
             <div class="vseg-head"><span class="vseg-name">Validate form hypotheses</span><span class="vseg-time">3 min</span></div>
-            <p class="vseg-text"><strong>Plainspoken, advisory, outcome-led.</strong> Your tone-pair picks point to direct, calm, benefit-anchored, zero hype. ALL CAPS for one-word emphasis only, exclamations rare. Confirming that is the lane.</p>
+            <p class="vseg-text"><strong>Plainspoken, advisory, outcome-led.</strong> Your tone-pair picks say direct, calm, zero hype. Confirming.</p>
             <div class="emdash-callout">
-              <strong>The em-dash hard line.</strong> Atlas's whole edge is being the no-hype, real-human voice in a feed full of AI noise. The em-dash is the single most recognizable AI-writing tell right now. Our default is to write you clean and human without it. We will settle this live.
+              <strong>The em-dash hard line</strong> &middot; the most recognizable AI-writing tell, and Atlas's edge is sounding human. Our default: we write without them. We settle this live.
             </div>
           </div>
         </div>
@@ -1147,28 +1247,28 @@
           <span class="vseg-num">2</span>
           <div class="vseg-body">
             <div class="vseg-head"><span class="vseg-name">DM read-aloud</span><span class="vseg-time">3 min</span></div>
-            <p class="vseg-text">Pull up the last meaningful DM or email you sent a prospect or client. Read it exactly as you wrote it, no editing on the fly. We listen for opening pattern, transitions, CTA language, and sign-off.</p>
+            <p class="vseg-text">Read us the last meaningful DM or email you sent a prospect. Exactly as written.</p>
           </div>
         </div>
         <div class="vseg reveal">
           <span class="vseg-num">3</span>
           <div class="vseg-body">
             <div class="vseg-head"><span class="vseg-name">Community response patterns</span><span class="vseg-time">3 min</span></div>
-            <p class="vseg-text">How do you respond when someone praises a build, when someone pushes back on your "most SMBs don't need AI" take, and when someone DMs a generic "how does your service work" question?</p>
+            <p class="vseg-text">Three scenarios: praise, pushback on an anti-hype take, a generic "how does this work" DM.</p>
           </div>
         </div>
         <div class="vseg reveal">
           <span class="vseg-num">4</span>
           <div class="vseg-body">
             <div class="vseg-head"><span class="vseg-name">Hard lines</span><span class="vseg-time">1.5 min</span></div>
-            <p class="vseg-text">You flagged client-confidential topics as off-limits. What can we never name, show, or reference? Anything you would refuse to say or do publicly even if it would perform?</p>
+            <p class="vseg-text">Client-confidential topics are off-limits. What else can we never name, show, or say?</p>
           </div>
         </div>
         <div class="vseg reveal">
           <span class="vseg-num">5</span>
           <div class="vseg-body">
             <div class="vseg-head"><span class="vseg-name">Sample caption live calibration</span><span class="vseg-time">1.5 min</span></div>
-            <p class="vseg-text">Three drafts below. Pick the closest, say why, edit inline. Our read from your tone-pair signal is you lean toward Draft B, but tell us.</p>
+            <p class="vseg-text">Three drafts. Pick the closest, tell us why, edit inline.</p>
           </div>
         </div>
       </div>
@@ -1233,7 +1333,11 @@
 
       <div class="callout is-lime reveal" style="margin-top:var(--sp-5);">
         <span class="callout-label">Gaps to close live</span>
-        <span class="callout-body">Your form left the second audience as "discuss at kickoff," so we go deep here. Who specifically, referral partners or a vertical where Atlas has proof? The buyer's real hesitation is authority and continuity. Walk us through a specific moment a prospect voiced that, and the operational trigger that makes an owner finally reach out.</span>
+        <ul class="callout-list">
+          <li>Who exactly is the second audience? Referral partners? A proof vertical?</li>
+          <li>Tell us about a prospect who voiced the authority-and-continuity worry.</li>
+          <li>What's the trigger moment that makes an owner finally reach out?</li>
+        </ul>
       </div>
     </section>
 
@@ -1252,32 +1356,32 @@
             <span class="decision-title">1 &middot; Handle consolidation</span>
             <span class="decision-chip confirm">Confirm</span>
           </div>
-          <p class="decision-row form"><span class="dlabel">Your form</span>Consolidate to @atlasysky and rebrand @atlasadvisoryky's audience over.</p>
-          <p class="decision-row rec"><span class="dlabel">Our plan</span>2 to 3 weeks of warm transition content on @atlasadvisoryky pointing followers to @atlasysky, then deactivate the secondary after handoff. Confirming we run it that way.</p>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Consolidate to @atlasysky.</p>
+          <p class="decision-row rec"><span class="dlabel">Our plan</span>2 to 3 weeks of warm transition content on the secondary, then deactivate. Confirm.</p>
         </div>
         <div class="decision-block reveal">
           <div class="decision-top">
             <span class="decision-title">2 &middot; LinkedIn posting source</span>
             <span class="decision-chip confirm">Confirm</span>
           </div>
-          <p class="decision-row form"><span class="dlabel">Your form</span>Both, Chase Smith personal and the Atlas company page, depending on post type.</p>
-          <p class="decision-row rec"><span class="dlabel">Our rec</span>Founder-authority posts go on your personal profile, where trust lives. The company page reshares. We define which post type goes where at the Strategy Presentation.</p>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Both, by post type.</p>
+          <p class="decision-row rec"><span class="dlabel">Our rec</span>Founder-authority posts on your personal profile, company page reshares. Split defined July 1.</p>
         </div>
         <div class="decision-block reveal">
           <div class="decision-top">
             <span class="decision-title">3 &middot; AI-assisted visual pilot</span>
             <span class="decision-chip lock">Lock</span>
           </div>
-          <p class="decision-row form"><span class="dlabel">Your form</span>Learn more before deciding. Comfortable with AI-generated visual experiments.</p>
-          <p class="decision-row rec"><span class="dlabel">Our rec</span>A 60-day pilot of AI-assisted carousels and graphics, defined success criteria, opt out anytime. For Atlas it doubles as a meta-demonstration of the tooling you advise on. Full walkthrough July 1.</p>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Learn more before deciding.</p>
+          <p class="decision-row rec"><span class="dlabel">Our rec</span>60-day pilot, defined success criteria, opt out anytime. Full walkthrough July 1.</p>
         </div>
         <div class="decision-block reveal">
           <div class="decision-top">
             <span class="decision-title">4 &middot; Conversion path + attribution</span>
             <span class="decision-chip lock">Lock</span>
           </div>
-          <p class="decision-row form"><span class="dlabel">Your form</span>Primary CTA is "book a fit call via Calendly or similar."</p>
-          <p class="decision-row rec"><span class="dlabel">We need</span>The actual live booking link we point content to, and whether Atlas's own site is wired for source attribution so Instagram-driven calls show up in your report. If it needs setup, we advise or queue it as a July 1 deliverable.</p>
+          <p class="decision-row rec"><span class="dlabel">We need</span>The live booking link, and whether your site tracks where a lead came from.</p>
+          <p class="decision-row form"><span class="dlabel">If not</span>We advise or queue it for July 1.</p>
         </div>
       </div>
     </section>

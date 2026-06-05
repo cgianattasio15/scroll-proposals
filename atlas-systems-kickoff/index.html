@@ -314,16 +314,18 @@
       gap: var(--sp-3); margin-top: var(--sp-5);
     }
     .astop {
-      display: flex; align-items: center; gap: var(--sp-2);
+      display: flex; flex-direction: column; gap: 4px;
       padding: var(--sp-3) var(--sp-4);
       background: var(--bg-panel);
       border: 1px solid var(--rule-faint);
       border-left: 3px solid var(--azure-400);
     }
     .astop.is-yours { border-left-color: var(--highlighter-dark); background: rgba(226, 237, 122, 0.08); }
+    .astop-top { display: flex; align-items: center; gap: var(--sp-2); }
     .astop-num { font-size: 12px; font-weight: 800; color: var(--azure); letter-spacing: 0.04em; flex-shrink: 0; }
     .astop-label { font-size: 14px; font-weight: 700; color: var(--shadow); line-height: 1.2; }
-    .astop-meta { font-size: 12px; color: var(--fg-muted); white-space: nowrap; }
+    .astop-desc { font-size: 12px; color: var(--fg-muted); line-height: 1.3; }
+    .astop-meta { font-size: 11px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
     .astop-yours {
       margin-left: auto; flex-shrink: 0;
       display: inline-flex; align-items: center; gap: 4px;
@@ -615,6 +617,28 @@
       padding: 4px 10px;
       border-radius: var(--r-sm);
     }
+
+    /* SLIDE 05 · differentiator hero (leads the slide) */
+    .diff-hero { margin-top: var(--sp-5); }
+    .diff-eyebrow {
+      font-size: 11px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .diff-subline {
+      font-size: 16px; font-weight: 600; color: var(--shadow);
+      line-height: 1.4; margin-top: 6px; margin-bottom: var(--sp-4); max-width: 680px;
+    }
+    .diff-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--sp-3); }
+    .diff-card {
+      background: rgba(226, 237, 122, 0.07);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--highlighter-dark);
+      padding: var(--sp-4);
+      display: flex; flex-direction: column; gap: var(--sp-2);
+    }
+    .diff-num { font-size: 26px; font-weight: 800; color: var(--highlighter-dark); line-height: 1; }
+    .diff-text { font-size: 14px; font-weight: 600; color: var(--shadow); line-height: 1.4; }
+
     .pillar-hyp-label {
       font-size: 10px; font-weight: 800; color: var(--azure);
       text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-2);
@@ -674,6 +698,32 @@
     }
     .caption-calib .caption-cards { margin-top: 0; }
 
+    /* SLIDE 06 · vocabulary picker (react-and-edit) */
+    .vq-picker { margin-top: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-3); }
+    .vp-row { display: grid; grid-template-columns: 120px 1fr; gap: var(--sp-3); align-items: start; }
+    .vp-rowlabel { font-size: 13px; font-weight: 700; color: var(--azure); padding-top: 7px; line-height: 1.3; }
+    .vp-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+    .vp-opt {
+      font-size: 13px; color: var(--shadow); line-height: 1.4;
+      background: var(--bg-panel); border: 1px solid var(--rule-faint);
+      padding: var(--sp-2) var(--sp-3); border-radius: var(--r-sm);
+    }
+
+    /* SLIDE 06 · comment scenarios (react-and-edit) */
+    .vq-scenarios { margin-top: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-4); }
+    .vscen-comment {
+      font-size: 13.5px; color: var(--shadow); font-style: italic; line-height: 1.45;
+      background: var(--bg-alt); border-left: 3px solid var(--azure-400);
+      padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm);
+    }
+    .vscen-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); margin-top: var(--sp-2); }
+    .vscen-opt {
+      font-size: 13px; color: var(--shadow); line-height: 1.4;
+      background: var(--ghost); border: 1px solid var(--rule-faint);
+      padding: var(--sp-2) var(--sp-3); border-radius: var(--r-sm);
+    }
+    .vscen-opt b { color: var(--azure); font-weight: 800; margin-right: 5px; }
+
     .emdash-callout {
       margin: var(--sp-3) 0 0;
       padding: var(--sp-3) var(--sp-4);
@@ -694,10 +744,6 @@
       border: 1px solid var(--rule-faint);
       padding: var(--sp-5);
       display: flex; flex-direction: column; gap: var(--sp-3);
-    }
-    .caption-card.is-pick {
-      border: 1.5px solid var(--highlighter-dark);
-      box-shadow: 0 0 0 3px rgba(226, 237, 122, 0.20);
     }
     .caption-head {
       display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2);
@@ -863,7 +909,6 @@
     .approw-step { flex-shrink: 0; width: 22px; height: 22px; background: var(--azure); color: var(--ghost); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
 
     .mstrip.is-six { grid-template-columns: repeat(6, 1fr); }
-    .mcell-tag.is-pick { background: var(--highlighter); }
 
     .dates-lock { margin-top: var(--sp-5); background: var(--bg-panel); border: 1px solid var(--rule-faint); border-top: 3px solid var(--highlighter-dark); padding: var(--sp-5); }
     .dates-lock-label { font-size: 10px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-3); }
@@ -911,9 +956,15 @@
       .work-table { grid-template-columns: 1fr; }
       .work-cell.friction { border-left: none; }
       .slide-head-row { flex-wrap: wrap; }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .vp-row { grid-template-columns: 1fr; gap: var(--sp-2); }
+      .vp-rowlabel { padding-top: 0; }
+      .vp-opts { grid-template-columns: 1fr; }
+      .vscen-opts { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 414px) {
+      .diff-grid { grid-template-columns: 1fr; }
       .deck-header-inner { padding: 0 var(--sp-4); }
       .header-x { display: none; }
       .header-atlas-img { height: 22px; }
@@ -930,9 +981,10 @@
       .homework-text, .goal-body, .scope-list li, .needs-list li,
       .work-cell, .rstep-text, .pillar-desc, .sparks-list li, .vseg-text,
       .vq-q, .vq-tag, .vq-title, .calib-intro,
+      .vp-rowlabel, .vp-opt, .vscen-comment, .vscen-opt, .diff-text,
       .caption-text, .ivp-list li, .decision-row, .bucket-list li,
       .prompt-q, .callout-body, .framing-line, .emdash-callout, .date-chip-what,
-      .astop-label, .astop-meta, .agenda-note, .open-q,
+      .astop-label, .astop-meta, .astop-desc, .agenda-note, .open-q,
       .scope-line, .linkedin-body, .approw, .dlock-when, .dlock-what, .callout-list li {
         font-size: 14px;
       }
@@ -989,13 +1041,13 @@
       <p class="cover-lede reveal">Enterprise systems without the enterprise. That's the brand we're building. Here's today's path.</p>
 
       <div class="agenda-strip">
-        <div class="astop reveal"><span class="astop-num">01</span><span class="astop-label">Welcome</span><span class="astop-meta">&middot; 3 min</span></div>
-        <div class="astop reveal"><span class="astop-num">02</span><span class="astop-label">The engagement</span><span class="astop-meta">&middot; 6 min</span></div>
-        <div class="astop reveal"><span class="astop-num">03</span><span class="astop-label">Timeline + dates</span><span class="astop-meta">&middot; 6 min</span></div>
-        <div class="astop reveal"><span class="astop-num">04</span><span class="astop-label">Goals + success</span><span class="astop-meta">&middot; 7 min</span></div>
-        <div class="astop is-yours reveal"><span class="astop-num">05</span><span class="astop-label">What Atlas stands for</span><span class="astop-meta">&middot; 14 min</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div>
-        <div class="astop is-yours reveal"><span class="astop-num">06</span><span class="astop-label">How Atlas sounds</span><span class="astop-meta">&middot; 12 min</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div>
-        <div class="astop reveal"><span class="astop-num">07</span><span class="astop-label">Decisions + next steps</span><span class="astop-meta">&middot; 9 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">01</span><span class="astop-label">Welcome</span></div><span class="astop-desc">Today's path</span><span class="astop-meta">3 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">02</span><span class="astop-label">The engagement</span></div><span class="astop-desc">What we're running</span><span class="astop-meta">6 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">03</span><span class="astop-label">Timeline + dates</span></div><span class="astop-desc">Locking the schedule</span><span class="astop-meta">6 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">04</span><span class="astop-label">Goals + success</span></div><span class="astop-desc">How we measure</span><span class="astop-meta">7 min</span></div>
+        <div class="astop is-yours reveal"><div class="astop-top"><span class="astop-num">05</span><span class="astop-label">What Atlas stands for</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div><span class="astop-desc">Differentiators + pillars</span><span class="astop-meta">14 min</span></div>
+        <div class="astop is-yours reveal"><div class="astop-top"><span class="astop-num">06</span><span class="astop-label">How Atlas sounds</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div><span class="astop-desc">Your voice, captured</span><span class="astop-meta">12 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">07</span><span class="astop-label">Decisions + next steps</span></div><span class="astop-desc">Confirm and go</span><span class="astop-meta">9 min</span></div>
       </div>
 
       <p class="agenda-note reveal">This is a working session, not a presentation. The two longest stops belong to you.</p>
@@ -1051,23 +1103,23 @@
       <div class="mstrip is-six reveal" role="list" aria-label="Path to launch">
         <div class="mcell is-current" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Jun 10</span><span class="mcell-name">Kickoff (today)</span></div>
         <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">3 weeks</span><span class="mcell-name">Strategy build</span></div>
-        <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Jul 1</span><span class="mcell-name">Strategy Presentation</span></div>
-        <div class="mcell is-launch" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Jul 2 or 6</span><span class="mcell-name">Shoot</span><span class="mcell-tag is-pick">your pick</span></div>
-        <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">~1 week</span><span class="mcell-name">Edits</span></div>
-        <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Jul 13 or 15</span><span class="mcell-name">First post</span></div>
+        <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Wed Jul 1</span><span class="mcell-name">Strategy Presentation</span></div>
+        <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Tue Jul 7</span><span class="mcell-name">First content shoot</span></div>
+        <div class="mcell" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Jul 8-10</span><span class="mcell-name">Edits</span></div>
+        <div class="mcell is-launch" role="listitem"><span class="mcell-dot"></span><span class="mcell-date">Mon Jul 13</span><span class="mcell-name">First post live</span></div>
       </div>
 
       <div class="callout is-lime reveal" style="margin-top:var(--sp-5);">
-        <span class="callout-label">July 4th</span>
-        <span class="callout-body">July 4th lands that Saturday. Shoot before the holiday (Jul 2) and we launch Jul 13. Shoot after (Jul 6, inside your Mon/Wed/Fri window) and we launch Jul 15. Your call.</span>
+        <span class="callout-label">The shoot date</span>
+        <span class="callout-body">We're proposing Tuesday, July 7 for the shoot. It clears the July 4th weekend, and it puts Allison, our Delivery Lead, on set with you for the first one. Does a Tuesday work?</span>
       </div>
 
       <div class="dates-lock reveal">
         <div class="dates-lock-label">Dates to lock today</div>
         <div class="dlock-grid">
           <div class="dlock-row"><span class="dlock-when">Strategy Presentation</span><span class="dlock-what">Wednesday, July 1</span></div>
-          <div class="dlock-row"><span class="dlock-when">Shoot day</span><span class="dlock-what">July 2 or July 6 &middot; your office</span></div>
-          <div class="dlock-row"><span class="dlock-when">First post</span><span class="dlock-what">July 13 or July 15</span></div>
+          <div class="dlock-row"><span class="dlock-when">First shoot</span><span class="dlock-what">Tuesday, July 7 &middot; your office</span></div>
+          <div class="dlock-row"><span class="dlock-when">First post</span><span class="dlock-what">Monday, July 13</span></div>
           <div class="dlock-row"><span class="dlock-when">Biweekly check-in</span><span class="dlock-what">Lock a recurring slot after July 1</span></div>
         </div>
       </div>
@@ -1118,15 +1170,16 @@
       </div>
       <h2 id="s05-title" class="slide-title reveal">We did our homework. Now we need you.</h2>
 
-      <div class="sparks reveal">
-        <span class="sparks-label">Five things we'd lean into</span>
-        <ul class="sparks-list">
-          <li>Ten years of enterprise systems in regulated industries</li>
-          <li>One accountable owner, scope to delivery</li>
-          <li>Written scope, fixed price</li>
-          <li>Grounded AI, not hype</li>
-          <li>Proof in production: Phil Smith full stack, restaurant-group platform</li>
-        </ul>
+      <div class="diff-hero reveal">
+        <div class="diff-eyebrow">The Atlas differentiators</div>
+        <p class="diff-subline">What sets you apart. What we lean into. What the content gets built around.</p>
+        <div class="diff-grid">
+          <div class="diff-card"><span class="diff-num">01</span><p class="diff-text">Ten years of enterprise systems in regulated industries</p></div>
+          <div class="diff-card"><span class="diff-num">02</span><p class="diff-text">One accountable owner, scope to delivery</p></div>
+          <div class="diff-card"><span class="diff-num">03</span><p class="diff-text">Written scope, fixed price</p></div>
+          <div class="diff-card"><span class="diff-num">04</span><p class="diff-text">Grounded AI, not hype</p></div>
+          <div class="diff-card"><span class="diff-num">05</span><p class="diff-text">Proof in production: Phil Smith full stack, restaurant-group platform</p></div>
+        </div>
       </div>
 
       <div class="prompt-cols" style="margin-top:var(--sp-5);">
@@ -1192,9 +1245,10 @@
     </section>
 
     <!-- SLIDE 06 · WORKING SESSION: HOW ATLAS SOUNDS
-         GATE 8 DEVIATION (intentional): tall working slide. 12-min voice capture
-         across six numbered questions plus the caption-calibration closer with
-         three VERBATIM sample captions. Question legibility and verbatim caption
+         GATE 8 DEVIATION (intentional): tall working slide. 12-min blended voice
+         capture across six moments (open prompts, a 4-row vocabulary picker, two
+         comment scenarios, the hard line) plus the caption-calibration closer with
+         three VERBATIM sample captions. Capture legibility and verbatim caption
          fidelity win over single-screen fit. -->
     <section class="slide" id="s06" aria-labelledby="s06-title">
       <div class="slide-head-row reveal">
@@ -1212,40 +1266,87 @@
           <span class="vseg-num">1</span>
           <div class="vq-body">
             <div class="vq-title">The dinner-party pitch</div>
-            <p class="vq-q">"Someone at a dinner party asks what Atlas does. What do you actually say?"</p>
-            <span class="vq-tag">feeds captions + on-screen text</span>
+            <p class="vq-q">"Someone at a dinner party asks what Atlas does. Word for word, what do you actually say?"</p>
           </div>
         </div>
         <div class="vq reveal">
           <span class="vseg-num">2</span>
           <div class="vq-body">
-            <div class="vq-title">Always say / never say</div>
-            <p class="vq-q">"What are 3 to 5 phrases you catch yourself saying about Atlas all the time? And a few you'd never say?"</p>
-            <span class="vq-tag">feeds every surface</span>
+            <div class="vq-title">Which sounds like you?</div>
+            <p class="vq-q">Pick one per row, or none. Then give us yours.</p>
+            <div class="vq-picker">
+              <div class="vp-row">
+                <span class="vp-rowlabel">What Atlas does</span>
+                <div class="vp-opts">
+                  <span class="vp-opt">"We modernize your tech stack"</span>
+                  <span class="vp-opt">"We give small businesses an unfair technical advantage"</span>
+                  <span class="vp-opt">"We build custom systems for growing companies"</span>
+                </div>
+              </div>
+              <div class="vp-row">
+                <span class="vp-rowlabel">The problem</span>
+                <div class="vp-opts">
+                  <span class="vp-opt">"We streamline your operations"</span>
+                  <span class="vp-opt">"We stop you losing money to broken systems"</span>
+                  <span class="vp-opt">"We clean up the spreadsheet mess"</span>
+                </div>
+              </div>
+              <div class="vp-row">
+                <span class="vp-rowlabel">The AI line</span>
+                <div class="vp-opts">
+                  <span class="vp-opt">"AI-powered solutions"</span>
+                  <span class="vp-opt">"Practical AI, no hype"</span>
+                  <span class="vp-opt">"AI where it actually earns its place"</span>
+                </div>
+              </div>
+              <div class="vp-row">
+                <span class="vp-rowlabel">The ask</span>
+                <div class="vp-opts">
+                  <span class="vp-opt">"Schedule a consultation"</span>
+                  <span class="vp-opt">"Book a fit call"</span>
+                  <span class="vp-opt">"Let's talk through it"</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="vq reveal">
           <span class="vseg-num">3</span>
           <div class="vq-body">
-            <div class="vq-title">The real-world ask</div>
-            <p class="vq-q">"A prospect says they're ready to get started. What's the actual sentence that comes out of your mouth?"</p>
-            <span class="vq-tag">feeds caption CTAs</span>
+            <div class="vq-title">The last yes</div>
+            <p class="vq-q">"Think of the most recent prospect who said 'let's do it.' What did you say right after? And how did you ask for the meeting that got them there?"</p>
           </div>
         </div>
         <div class="vq reveal">
           <span class="vseg-num">4</span>
           <div class="vq-body">
             <div class="vq-title">The DM read-aloud</div>
-            <p class="vq-q">"Pull up a recent prospect DM or email. Read us your reply, exactly as written."</p>
-            <span class="vq-tag">feeds DM voice</span>
+            <p class="vq-q">"Pull up your sent messages. Read us one reply to a prospect and one to a current client, exactly as written."</p>
           </div>
         </div>
         <div class="vq reveal">
           <span class="vseg-num">5</span>
           <div class="vq-body">
-            <div class="vq-title">The comment walk-through</div>
-            <p class="vq-q">"How do you respond to a great comment? A question? Someone pushing back on a 'most SMBs don't need AI' take?"</p>
-            <span class="vq-tag">feeds comment voice</span>
+            <div class="vq-title">Comment scenarios</div>
+            <p class="vq-q">Pick the closest, then say it your way.</p>
+            <div class="vq-scenarios">
+              <div class="vscen">
+                <div class="vscen-comment">"This is gold. Wish more tech people talked like this."</div>
+                <div class="vscen-opts">
+                  <span class="vscen-opt"><b>A</b> "Appreciate that. More where it came from."</span>
+                  <span class="vscen-opt"><b>B</b> "Thank you! Glad it was helpful."</span>
+                  <span class="vscen-opt"><b>C</b> "That's the goal. Too much noise out there. Somebody has to keep it practical."</span>
+                </div>
+              </div>
+              <div class="vscen">
+                <div class="vscen-comment">"AI is all hype. This stuff never works for small businesses."</div>
+                <div class="vscen-opts">
+                  <span class="vscen-opt"><b>A</b> "Half agree. Most of it is hype. The part that isn't is where we work."</span>
+                  <span class="vscen-opt"><b>B</b> "Respectfully disagree. Happy to share real examples."</span>
+                  <span class="vscen-opt"><b>C</b> "Don't engage at all."</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="vq reveal">
@@ -1253,7 +1354,6 @@
           <div class="vq-body">
             <div class="vq-title">The hard line</div>
             <p class="vq-q">"What should we never do in your captions, comments, or DMs, even if it would perform?"</p>
-            <span class="vq-tag">feeds boundaries</span>
             <div class="emdash-callout">
               <strong>The em-dash hard line</strong> &middot; the most recognizable AI-writing tell, and Atlas's edge is sounding human. Our default: we write without them. Settling it now.
             </div>

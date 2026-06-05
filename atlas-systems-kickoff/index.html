@@ -648,6 +648,32 @@
     .vseg-text { font-size: 13.5px; color: var(--fg-muted); line-height: 1.5; }
     .vseg-text strong { color: var(--shadow); font-weight: 700; }
 
+    /* SLIDE 06 · six-question voice capture */
+    .vq-list {
+      display: flex; flex-direction: column;
+      margin-top: var(--sp-5);
+    }
+    .vq {
+      display: flex; align-items: flex-start; gap: var(--sp-4);
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--rule-faint);
+    }
+    .vq:last-child { border-bottom: none; }
+    .vq-body { flex: 1; }
+    .vq-title { font-size: 15px; font-weight: 700; color: var(--azure); margin-bottom: 2px; }
+    .vq-q { font-size: 13.5px; color: var(--shadow); line-height: 1.5; }
+    .vq-tag {
+      display: inline-block; margin-top: 5px;
+      font-size: 11px; color: var(--fg-subtle);
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .caption-calib { margin-top: var(--sp-6); }
+    .calib-intro {
+      font-size: 14px; font-weight: 700; color: var(--azure);
+      margin-bottom: var(--sp-3);
+    }
+    .caption-calib .caption-cards { margin-top: 0; }
+
     .emdash-callout {
       margin: var(--sp-3) 0 0;
       padding: var(--sp-3) var(--sp-4);
@@ -903,6 +929,7 @@
       .agenda-strip { grid-template-columns: 1fr; }
       .homework-text, .goal-body, .scope-list li, .needs-list li,
       .work-cell, .rstep-text, .pillar-desc, .sparks-list li, .vseg-text,
+      .vq-q, .vq-tag, .vq-title, .calib-intro,
       .caption-text, .ivp-list li, .decision-row, .bucket-list li,
       .prompt-q, .callout-body, .framing-line, .emdash-callout, .date-chip-what,
       .astop-label, .astop-meta, .agenda-note, .open-q,
@@ -1166,8 +1193,9 @@
 
     <!-- SLIDE 06 · WORKING SESSION: HOW ATLAS SOUNDS
          GATE 8 DEVIATION (intentional): tall working slide. 12-min voice capture
-         across four use cases plus three VERBATIM sample captions. Caption
-         readability and verbatim fidelity win over single-screen fit. -->
+         across six numbered questions plus the caption-calibration closer with
+         three VERBATIM sample captions. Question legibility and verbatim caption
+         fidelity win over single-screen fit. -->
     <section class="slide" id="s06" aria-labelledby="s06-title">
       <div class="slide-head-row reveal">
         <div class="slide-eyebrow">
@@ -1177,55 +1205,79 @@
         <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>12 min</div>
       </div>
       <h2 id="s06-title" class="slide-title reveal">Your voice, on every surface we run.</h2>
-      <p class="slide-subtitle reveal">We'll be writing your captions, answering your comments, and replying to your DMs. This is where we capture how you sound in each.</p>
+      <p class="slide-subtitle reveal">We'll be writing your captions, answering your comments, and replying to your DMs. Six questions. Talk as long as you want. The more you talk, the better we get.</p>
 
-      <div class="voice-flow">
-        <div class="vseg reveal">
+      <div class="vq-list">
+        <div class="vq reveal">
           <span class="vseg-num">1</span>
-          <div class="vseg-body">
-            <div class="vseg-head"><span class="vseg-name">Captions</span></div>
-            <p class="vseg-text">Pick the closest, say why, edit inline.</p>
-            <div class="caption-cards">
-              <div class="caption-card">
-                <div class="caption-head"><span class="caption-label">Draft A</span></div>
-                <span class="caption-style">Polished / Authoritative</span>
-                <p class="caption-text">"Enterprise systems without the enterprise. For ten years that meant building in healthcare and fintech, where security and reliability were never optional. Atlas brings that same standard to businesses that were told enterprise-grade was out of reach. Written scope. Fixed price. One accountable owner from strategy through build."</p>
-              </div>
-              <div class="caption-card">
-                <div class="caption-head"><span class="caption-label">Draft B</span></div>
-                <span class="caption-style">Conversational / Founder voice</span>
-                <p class="caption-text">"Most owners I meet have known their systems were breaking for months. The spreadsheet that ran the business at ten people is buckling at thirty. They don't fix it because they don't know who to trust with something this important. That's the whole reason I built Atlas. Same person who scopes the work builds it. No handoff. If your stack is breaking, that's worth a conversation."</p>
-              </div>
-              <div class="caption-card">
-                <div class="caption-head"><span class="caption-label">Draft C</span></div>
-                <span class="caption-style">Contrarian / Sharp</span>
-                <p class="caption-text">"Most small businesses don't need AI. They need a CRM that actually works and a follow-up system that doesn't depend on someone remembering to call back. Foundation first. Then we talk about where AI actually earns its place. Most owners get the order backwards, and it costs them."</p>
-              </div>
-            </div>
+          <div class="vq-body">
+            <div class="vq-title">The dinner-party pitch</div>
+            <p class="vq-q">"Someone at a dinner party asks what Atlas does. What do you actually say?"</p>
+            <span class="vq-tag">feeds captions + on-screen text</span>
           </div>
         </div>
-        <div class="vseg reveal">
+        <div class="vq reveal">
           <span class="vseg-num">2</span>
-          <div class="vseg-body">
-            <div class="vseg-head"><span class="vseg-name">Comments</span></div>
-            <p class="vseg-text">How do you respond when someone praises a build? When someone pushes back on a "most SMBs don't need AI" take?</p>
+          <div class="vq-body">
+            <div class="vq-title">Always say / never say</div>
+            <p class="vq-q">"What are 3 to 5 phrases you catch yourself saying about Atlas all the time? And a few you'd never say?"</p>
+            <span class="vq-tag">feeds every surface</span>
           </div>
         </div>
-        <div class="vseg reveal">
+        <div class="vq reveal">
           <span class="vseg-num">3</span>
-          <div class="vseg-body">
-            <div class="vseg-head"><span class="vseg-name">DMs</span></div>
-            <p class="vseg-text">Read us the last meaningful DM you sent a prospect, exactly as written. And how do you answer the generic "how does your service work" DM?</p>
+          <div class="vq-body">
+            <div class="vq-title">The real-world ask</div>
+            <p class="vq-q">"A prospect says they're ready to get started. What's the actual sentence that comes out of your mouth?"</p>
+            <span class="vq-tag">feeds caption CTAs</span>
           </div>
         </div>
-        <div class="vseg reveal">
+        <div class="vq reveal">
           <span class="vseg-num">4</span>
-          <div class="vseg-body">
-            <div class="vseg-head"><span class="vseg-name">Hard lines</span></div>
-            <p class="vseg-text">Client-confidential topics are off-limits. What can we never name, show, or reference? Anything you'd never say publicly even if it performed?</p>
+          <div class="vq-body">
+            <div class="vq-title">The DM read-aloud</div>
+            <p class="vq-q">"Pull up a recent prospect DM or email. Read us your reply, exactly as written."</p>
+            <span class="vq-tag">feeds DM voice</span>
+          </div>
+        </div>
+        <div class="vq reveal">
+          <span class="vseg-num">5</span>
+          <div class="vq-body">
+            <div class="vq-title">The comment walk-through</div>
+            <p class="vq-q">"How do you respond to a great comment? A question? Someone pushing back on a 'most SMBs don't need AI' take?"</p>
+            <span class="vq-tag">feeds comment voice</span>
+          </div>
+        </div>
+        <div class="vq reveal">
+          <span class="vseg-num">6</span>
+          <div class="vq-body">
+            <div class="vq-title">The hard line</div>
+            <p class="vq-q">"What should we never do in your captions, comments, or DMs, even if it would perform?"</p>
+            <span class="vq-tag">feeds boundaries</span>
             <div class="emdash-callout">
               <strong>The em-dash hard line</strong> &middot; the most recognizable AI-writing tell, and Atlas's edge is sounding human. Our default: we write without them. Settling it now.
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="caption-calib reveal">
+        <p class="calib-intro">Three drafts. Pick the closest, say why, edit inline.</p>
+        <div class="caption-cards">
+          <div class="caption-card">
+            <div class="caption-head"><span class="caption-label">Draft A</span></div>
+            <span class="caption-style">Polished / Authoritative</span>
+            <p class="caption-text">"Enterprise systems without the enterprise. For ten years that meant building in healthcare and fintech, where security and reliability were never optional. Atlas brings that same standard to businesses that were told enterprise-grade was out of reach. Written scope. Fixed price. One accountable owner from strategy through build."</p>
+          </div>
+          <div class="caption-card">
+            <div class="caption-head"><span class="caption-label">Draft B</span></div>
+            <span class="caption-style">Conversational / Founder voice</span>
+            <p class="caption-text">"Most owners I meet have known their systems were breaking for months. The spreadsheet that ran the business at ten people is buckling at thirty. They don't fix it because they don't know who to trust with something this important. That's the whole reason I built Atlas. Same person who scopes the work builds it. No handoff. If your stack is breaking, that's worth a conversation."</p>
+          </div>
+          <div class="caption-card">
+            <div class="caption-head"><span class="caption-label">Draft C</span></div>
+            <span class="caption-style">Contrarian / Sharp</span>
+            <p class="caption-text">"Most small businesses don't need AI. They need a CRM that actually works and a follow-up system that doesn't depend on someone remembering to call back. Foundation first. Then we talk about where AI actually earns its place. Most owners get the order backwards, and it costs them."</p>
           </div>
         </div>
       </div>
@@ -1347,6 +1399,34 @@
         });
       }, { threshold: 0.4 });
       slides.forEach(function(s) { io.observe(s); });
+    })();
+
+    /* Arrow-key slide navigation (presenter-driven screen-share) */
+    (function() {
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      if (!slides.length) return;
+      var NEXT = { ArrowRight: 1, ArrowDown: 1, PageDown: 1 };
+      var PREV = { ArrowLeft: 1, ArrowUp: 1, PageUp: 1 };
+
+      function currentIndex() {
+        // The section whose top is at or just above the viewport top.
+        var marker = window.innerHeight * 0.35;
+        var idx = 0;
+        for (var i = 0; i < slides.length; i++) {
+          if (slides[i].getBoundingClientRect().top <= marker) { idx = i; }
+          else { break; }
+        }
+        return idx;
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+        var dir = NEXT[e.key] ? 1 : (PREV[e.key] ? -1 : 0);
+        if (!dir) return;
+        var target = Math.min(slides.length - 1, Math.max(0, currentIndex() + dir));
+        e.preventDefault();
+        slides[target].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     })();
   </script>
 

@@ -697,6 +697,34 @@
       margin-bottom: var(--sp-3);
     }
     .caption-calib .caption-cards { margin-top: 0; }
+    /* SLIDE 06 · facilitation layer (ground rules, conversation beats, example on-ramps) */
+    .vq-howto {
+      margin-top: var(--sp-4);
+      background: var(--lucid-soft);
+      border-left: 3px solid var(--azure-400);
+      padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-5);
+      border-radius: var(--r-sm);
+    }
+    .vq-howto-title {
+      font-size: 11px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--sp-2);
+    }
+    .vq-howto-rule { font-size: 13.5px; color: var(--shadow); line-height: 1.5; padding: 3px 0; }
+    .vq-howto-rule b { color: var(--azure); font-weight: 700; }
+    .vq-beat {
+      display: flex; align-items: center; gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      font-size: 11px; font-weight: 800; color: var(--azure-400);
+      text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap;
+    }
+    .vq-beat::after { content: ""; flex: 1; height: 1px; background: var(--rule-faint); }
+    .vq-list + .vq-beat { margin-top: var(--sp-4); }
+    .vq-eg {
+      margin-top: 7px;
+      font-size: 12.5px; color: var(--fg-muted); line-height: 1.5;
+      padding-left: var(--sp-3); border-left: 2px solid var(--lucid-deep);
+    }
+    .vq-eg b { color: var(--azure); font-weight: 700; font-style: normal; }
 
     /* SLIDE 06 · vocabulary picker (react-and-edit) */
     .vq-picker { margin-top: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-3); }
@@ -751,11 +779,6 @@
     .caption-label {
       font-size: 11px; font-weight: 800; color: var(--azure);
       text-transform: uppercase; letter-spacing: 0.1em;
-    }
-    .caption-pick-tag {
-      font-size: 9px; font-weight: 800; color: var(--shadow);
-      background: var(--highlighter); padding: 2px 7px;
-      letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px;
     }
     .caption-style { font-size: 12px; color: var(--fg-subtle); font-style: italic; }
     .caption-text { font-size: 13px; color: var(--shadow); line-height: 1.55; }
@@ -980,7 +1003,7 @@
       .agenda-strip { grid-template-columns: 1fr; }
       .homework-text, .goal-body, .scope-list li, .needs-list li,
       .work-cell, .rstep-text, .pillar-desc, .sparks-list li, .vseg-text,
-      .vq-q, .vq-tag, .vq-title, .calib-intro,
+      .vq-q, .vq-tag, .vq-title, .calib-intro, .vq-howto-rule, .vq-howto-title, .vq-eg,
       .vp-rowlabel, .vp-opt, .vscen-comment, .vscen-opt, .diff-text,
       .caption-text, .ivp-list li, .decision-row, .bucket-list li,
       .prompt-q, .callout-body, .framing-line, .emdash-callout, .date-chip-what,
@@ -1259,21 +1282,28 @@
         <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>12 min</div>
       </div>
       <h2 id="s06-title" class="slide-title reveal">Your voice, on every surface we run.</h2>
-      <p class="slide-subtitle reveal">We'll be writing your captions, answering your comments, and replying to your DMs. Six questions. Talk as long as you want. The more you talk, the better we get.</p>
-
+      <p class="slide-subtitle reveal">We write your captions, answer your comments, and reply to your DMs. This is where we capture how you sound. No prep needed. Just talk.</p>
+      <div class="vq-howto reveal">
+        <div class="vq-howto-title">How this works</div>
+        <div class="vq-howto-rule"><b>No wrong answers.</b> We want how you actually talk, not the polished website version.</div>
+        <div class="vq-howto-rule"><b>Think out loud.</b> Tangents, half-sentences, "no, not like that" are all signal.</div>
+        <div class="vq-howto-rule"><b>The more you say, the better.</b> It ends up sounding like you instead of like us.</div>
+      </div>
+      <div class="vq-beat reveal">Warm up &middot; how you talk</div>
       <div class="vq-list">
         <div class="vq reveal">
           <span class="vseg-num">1</span>
           <div class="vq-body">
             <div class="vq-title">The dinner-party pitch</div>
             <p class="vq-q">"Someone at a dinner party asks what Atlas does. Word for word, what do you actually say?"</p>
+            <p class="vq-eg">Not the website version. The version you'd say with a drink in your hand. <b>For instance:</b> "You know how a business outgrows its systems and everything starts breaking? I build the thing that fixes that." Now give us yours.</p>
           </div>
         </div>
         <div class="vq reveal">
           <span class="vseg-num">2</span>
           <div class="vq-body">
             <div class="vq-title">Which sounds like you?</div>
-            <p class="vq-q">Pick one per row, or none. Then give us yours.</p>
+            <p class="vq-q">Pick one per row, or say none and give us yours. Then tell us why the others feel wrong. The rejections tell us as much as the picks.</p>
             <div class="vq-picker">
               <div class="vp-row">
                 <span class="vp-rowlabel">What Atlas does</span>
@@ -1310,11 +1340,15 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="vq-beat reveal">The real thing &middot; how you already wrote it</div>
+      <div class="vq-list">
         <div class="vq reveal">
           <span class="vseg-num">3</span>
           <div class="vq-body">
             <div class="vq-title">The last yes</div>
             <p class="vq-q">"Think of the most recent prospect who said 'let's do it.' What did you say right after? And how did you ask for the meeting that got them there?"</p>
+            <p class="vq-eg">Walk us through the real moment. The words right before they said yes, and the exact line you used to ask for the call. <b>Something like:</b> "Want to grab 30 minutes and I'll show you?" counts.</p>
           </div>
         </div>
         <div class="vq reveal">
@@ -1322,13 +1356,17 @@
           <div class="vq-body">
             <div class="vq-title">The DM read-aloud</div>
             <p class="vq-q">"Pull up your sent messages. Read us one reply to a prospect and one to a current client, exactly as written."</p>
+            <p class="vq-eg">Don't clean them up. The lowercase, the "hey man" openers, the way you sign off are the whole point. Read them exactly as you typed them.</p>
           </div>
         </div>
+      </div>
+      <div class="vq-beat reveal">React live &middot; how you'd reply</div>
+      <div class="vq-list">
         <div class="vq reveal">
           <span class="vseg-num">5</span>
           <div class="vq-body">
             <div class="vq-title">Comment scenarios</div>
-            <p class="vq-q">Pick the closest, then say it your way.</p>
+            <p class="vq-q">Two comments land on a post. Pick the closest reply, then say it your way.</p>
             <div class="vq-scenarios">
               <div class="vscen">
                 <div class="vscen-comment">"This is gold. Wish more tech people talked like this."</div>
@@ -1349,20 +1387,24 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="vq-beat reveal">The lines we won't cross</div>
+      <div class="vq-list">
         <div class="vq reveal">
           <span class="vseg-num">6</span>
           <div class="vq-body">
             <div class="vq-title">The hard line</div>
             <p class="vq-q">"What should we never do in your captions, comments, or DMs, even if it would perform?"</p>
+            <p class="vq-eg">Topics, words, claims, a tone. Anything you'd never put your name to, even for 10x the reach. <b>For instance:</b> naming a client, trash-talking a competitor, overpromising on what AI can do.</p>
             <div class="emdash-callout">
               <strong>The em-dash hard line</strong> &middot; the most recognizable AI-writing tell, and Atlas's edge is sounding human. Our default: we write without them. Settling it now.
             </div>
           </div>
         </div>
       </div>
-
+      <div class="vq-beat reveal">Last one &middot; pick your sound</div>
       <div class="caption-calib reveal">
-        <p class="calib-intro">Three drafts. Pick the closest, say why, edit inline.</p>
+        <p class="calib-intro">Same brand, three different sounds. Pick the closest, tell us what's off, then fix a line right here.</p>
         <div class="caption-cards">
           <div class="caption-card">
             <div class="caption-head"><span class="caption-label">Draft A</span></div>

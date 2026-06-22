@@ -25,7 +25,8 @@
       --green:     #2a7a3a;
       --green-lt:  rgba(42,122,58,0.08);
       --radius:    12px;
-      --card-shadow: 0 2px 14px rgba(12,51,135,0.07);
+      --card-shadow: none;
+      --card-hover-shadow: 0 8px 24px rgba(12,51,135,0.10);
       /* IG Insights accent palette for Proof section */
       --ig-grad-1: #f09433;
       --ig-grad-2: #dc2743;
@@ -36,7 +37,7 @@
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
     body {
       font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       background:var(--ghost); color:var(--shadow);
@@ -44,7 +45,7 @@
     }
 
     /* ── PROGRESS BAR ── */
-    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--azure),var(--hi)); z-index:1001; transition:width .1s linear; }
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:var(--azure); z-index:1001; transition:width .1s linear; }
 
     /* ── NAV ── */
     nav {
@@ -138,9 +139,9 @@
     /* ── UTILS ── */
     .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
 
-    .insight { background:rgba(226,237,122,.1); border:1px solid rgba(200,214,0,.3); border-left:4px solid #c8d600; border-radius:var(--radius); padding:16px 20px; }
+    .insight { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
     .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
-    .insight p strong { color:var(--shadow); }
+    .insight p strong { color:var(--azure); }
 
     .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
     .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
@@ -205,8 +206,7 @@
       letter-spacing:-.02em; line-height:1.05;
     }
     .proof-metric-value.pct {
-      background:linear-gradient(135deg, var(--ig-grad-1), var(--ig-grad-2), var(--ig-grad-3));
-      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--ig-grad-3);
+      color:var(--azure);
     }
     .proof-metric-label {
       font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
@@ -233,7 +233,7 @@
     }
     .proof-donut-svg { width:100%; height:100%; transform:rotate(-90deg); }
     .proof-donut-track { fill:none; stroke:rgba(0,0,0,0.06); stroke-width:10; }
-    .proof-donut-fill { fill:none; stroke:url(#ig-gradient); stroke-width:10; stroke-linecap:round; }
+    .proof-donut-fill { fill:none; stroke:var(--azure); stroke-width:10; stroke-linecap:round; }
     .proof-donut-center {
       position:absolute; inset:0; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:2px;
@@ -255,8 +255,8 @@
     .proof-donut-dot {
       width:8px; height:8px; border-radius:50%; flex-shrink:0;
     }
-    .proof-donut-dot.followers { background:linear-gradient(135deg,var(--ig-grad-2),var(--ig-grad-3)); }
-    .proof-donut-dot.nonfollowers { background:linear-gradient(135deg,var(--ig-grad-1),var(--ig-grad-2)); }
+    .proof-donut-dot.followers { background:var(--azure); }
+    .proof-donut-dot.nonfollowers { background:var(--lucid-deep,#9ecee8); }
     .proof-dashboard-metrics {
       display:flex; flex-direction:column; gap:10px; width:100%;
     }
@@ -278,15 +278,13 @@
       white-space:nowrap;
     }
     .proof-hero-reel {
-      background:linear-gradient(135deg, rgba(240,148,51,.08), rgba(188,24,136,.08));
+      background:var(--azure-lt);
       border:1px solid rgba(220,39,67,.18); border-radius:var(--radius);
       padding:14px 18px; margin-bottom:18px;
     }
     .proof-hero-reel-label {
       font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-      background:linear-gradient(135deg, var(--ig-grad-2), var(--ig-grad-3));
-      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-      color:var(--ig-grad-3);
+      color:var(--azure);
       margin-bottom:4px;
     }
     .proof-hero-reel p {
@@ -382,12 +380,12 @@
     .check { color:var(--azure); font-weight:700; font-size:16px; }
 
     /* ══ TIMELINE ══ */
-    .tl-cta { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
-    .tl-cta p { font-size:14px; color:#fff; line-height:1.55; opacity:.9; }
-    .tl-cta p strong { opacity:1; }
+    .tl-cta { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+    .tl-cta p strong { color:var(--shadow); }
 
     /* ══ INVESTMENT ══ */
-    .inv-hero { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero { background:var(--azure); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
     .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
     .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
     .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; max-width:560px; line-height:1.55; }
@@ -404,7 +402,7 @@
     .inv-row .item small { font-size:12px; color:var(--ink-soft); }
     .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
     .inv-row.total .amt { color:var(--azure); font-size:17px; }
-    .credit-note { font-size:13px; color:#4d5e00; font-weight:600; background:rgba(226,237,122,.18); border:1px solid rgba(200,214,0,.35); border-left:4px solid #c8d600; border-radius:8px; padding:12px 16px; margin-top:14px; }
+    .credit-note { font-size:13px; color:var(--azure); font-weight:600; background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:8px; padding:12px 16px; margin-top:14px; }
 
     /* ══ STEPS ══ */
     .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
@@ -415,7 +413,7 @@
     .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
 
     /* ══ CTA ══ */
-    .cta-block { background:linear-gradient(135deg,var(--azure) 0%,#0a276a 100%); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block { background:var(--azure); border-radius:var(--radius); padding:48px 40px; text-align:center; }
     .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
     .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
     .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; min-height:44px; line-height:18px; }
@@ -467,7 +465,7 @@
       position:absolute; top:8px; left:50%; right:-50%;
       height:2px; background:var(--border); z-index:1;
     }
-    .ms-line-fade { background:linear-gradient(90deg,var(--border),transparent); }
+    .ms-line-fade { background:var(--border); opacity:.5; }
     .ms-card {
       background:#fff; border:1px solid var(--border); border-radius:var(--radius);
       box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%;
@@ -495,8 +493,8 @@
 
     /* Milestone banner */
     .milestone-banner {
-      background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.32);
-      border-left:4px solid #c8d600; border-radius:var(--radius);
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-left:4px solid var(--azure); border-radius:var(--radius);
       padding:18px 22px; display:flex; gap:14px; align-items:flex-start;
     }
     .milestone-banner-icon { font-size:22px; flex-shrink:0; }
@@ -571,6 +569,8 @@
       .mason-body p { font-size:14px; }
       .tier-explainer { font-size:14px; }
       .rhythm-detail { font-size:14px; }
+      .engine-step-desc { font-size:14px; }
+      .engine-head p { font-size:14px; }
     }
 
     /* ══ V6 ADDITIONS ══ */
@@ -849,8 +849,8 @@
     }
     .phase-eyebrow.execution { color:var(--green); }
     .transition-strip {
-      background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.32);
-      border-left:4px solid #c8d600; border-radius:var(--radius);
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-left:4px solid var(--azure); border-radius:var(--radius);
       padding:18px 22px; margin:18px 0;
       display:flex; gap:14px; align-items:flex-start;
     }
@@ -863,7 +863,7 @@
     /* ─── ACCESS-CODE GATE (Tier 3) ─── */
     #sm-gate { position:fixed; inset:0; background:var(--ghost); display:flex; align-items:center; justify-content:center; z-index:99999; padding:24px; }
     .sm-gate-card { background:#fff; border:1px solid var(--border); border-radius:20px; padding:48px 40px; width:100%; max-width:400px; text-align:center; box-shadow:0 4px 24px rgba(12,51,135,0.08); }
-    .sm-gate-logo { height:26px; width:auto; margin:0 auto 28px; display:block; }
+    .sm-gate-logo { height:34px; width:auto; margin:0 auto 28px; display:block; }
     .sm-gate-title { font-size:22px; font-weight:800; letter-spacing:-.03em; color:var(--shadow); margin-bottom:6px; }
     .sm-gate-sub { font-size:14px; color:var(--ink-soft); margin-bottom:28px; line-height:1.5; }
     .sm-gate-input-wrap { position:relative; margin-bottom:12px; }
@@ -877,6 +877,90 @@
     .sm-gate-error { font-size:13px; color:#dc2626; margin-top:10px; display:none; }
     .sm-gate-error.visible { display:block; }
     body.sm-locked { overflow:hidden; }
+
+    /* ─── MOTION: section scroll-reveal ─── */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity:1 !important; transform:none !important; transition:none; }
+    }
+
+    /* ─── MOTION: subtle card hover (no shadow at rest) ─── */
+    .card, .goal-card, .diff-card, .proof-card, .step {
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    @media (hover:hover) {
+      .card:hover, .goal-card:hover, .diff-card:hover, .proof-card:hover, .step:hover {
+        transform:translateY(-2px); box-shadow:var(--card-hover-shadow);
+      }
+    }
+
+    /* ─── NAV: animated underline on hover (desktop) ─── */
+    @media (min-width:901px) {
+      .nav-links a { position:relative; }
+      .nav-links a::after {
+        content:''; position:absolute; left:10px; right:10px; bottom:2px; height:2px;
+        background:var(--azure); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;
+      }
+      .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    }
+
+    /* ─── BRAND ACCENTS: squiggle + dogs ─── */
+    .squiggle-underline { display:block; width:108px; height:auto; margin:16px 0 0; }
+    .squiggle-divider { display:block; width:min(200px,42%); height:auto; margin:6px auto 0; opacity:.85; }
+    .dog-accent { width:clamp(128px,24%,176px); height:auto; flex-shrink:0; }
+    .need-head { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    @media (max-width:640px){ .dog-accent{ width:120px; margin:0 auto; } .need-head{ justify-content:center; } }
+
+    /* ══ CONTENT ENGINE · node-network motif ══ */
+    .engine { margin-top:28px; }
+    .engine-head { max-width:640px; margin-bottom:8px; }
+    .engine-stage {
+      position:relative; width:min(360px,86vw); aspect-ratio:1/1; margin:18px auto 6px;
+    }
+    .engine-links { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+    .engine-link { fill:none; stroke:var(--lucid-deep,#9ecee8); stroke-width:2.5; stroke-linecap:round; }
+    .engine-arrowhead { fill:var(--lucid-deep,#9ecee8); }
+    .engine-pulse { fill:var(--azure); }
+    .engine-center {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:34%; aspect-ratio:1/1; border-radius:50%; background:#fff;
+      border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:2px; text-align:center; padding:8px;
+    }
+    .engine-center img { width:46%; height:auto; display:block; }
+    .engine-center span { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
+    .engine-node {
+      position:absolute; transform:translate(-50%,-50%);
+      min-width:84px; padding:10px 6px; border-radius:10px; text-align:center; cursor:pointer;
+      background:var(--azure); color:#fff; border:2px solid transparent;
+      transition:transform .25s ease, box-shadow .25s ease; user-select:none;
+    }
+    .engine-node .en-step { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.7; }
+    .engine-node .en-name { font-size:14px; font-weight:800; letter-spacing:-.01em; }
+    .engine-node.signal { background:var(--hi); color:var(--shadow); }
+    .engine-node.active { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 8px 22px rgba(12,51,135,.22); border-color:#fff; z-index:3; }
+    .engine-node.signal.active { box-shadow:0 8px 22px rgba(200,214,0,.45); }
+    .engine-node[data-i="0"] { top:12%; left:50%; }
+    .engine-node[data-i="1"] { top:50%; left:88%; }
+    .engine-node[data-i="2"] { top:88%; left:50%; }
+    .engine-node[data-i="3"] { top:50%; left:12%; }
+    @media (max-width:560px){
+      .engine-stage { width:min(300px,82vw); }
+      .engine-node { min-width:66px; padding:8px 4px; }
+      .engine-node .en-name { font-size:13px; }
+      .engine-node .en-step { font-size:8px; }
+    }
+    .engine-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:26px; }
+    @media (max-width:640px){ .engine-steps{ grid-template-columns:1fr 1fr; } }
+    .engine-step {
+      border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; background:#fff;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .engine-step.active { border-color:var(--azure); background:var(--azure-lt); }
+    .engine-step-n { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .engine-step-name { font-size:14px; font-weight:800; color:var(--shadow); margin-bottom:4px; }
+    .engine-step-desc { font-size:13px; color:var(--ink-mid); line-height:1.5; }
   </style>
 </head>
 <body>
@@ -884,7 +968,7 @@
 <!-- ─── ACCESS-CODE GATE (Tier 3) ─── -->
 <div id="sm-gate">
   <div class="sm-gate-card">
-    <img class="sm-gate-logo" src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="56" height="26" />
+    <img class="sm-gate-logo" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="Scroll Media" width="60" height="30" />
     <div class="sm-gate-title">Private proposal</div>
     <div class="sm-gate-sub">This proposal is private. Enter your access code to continue.</div>
     <div class="sm-gate-input-wrap">
@@ -934,7 +1018,7 @@
 <nav>
   <div class="nav-logo">
     <a href="https://decks.scrollmedia.co/pitch/">
-      <img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="56" height="26" />
+      <img src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="56" height="26" />
     </a>
   </div>
   <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open section navigation" aria-controls="nav-links" aria-expanded="false">
@@ -966,10 +1050,11 @@
 </svg>
 
 <!-- ══════════ HERO ══════════ -->
-<div class="hero" id="top">
+<div class="hero reveal" id="top">
   <div class="hero-chip">Scroll Media × Pippi's · Signature Package Proposal</div>
   <h1>Built before you open.<br/><em>Booked when you do.</em></h1>
-  <p class="hero-sub">A Signature Package proposal for Pippi's. Built around the one window you only get once: the weeks before you open the doors in Over-the-Rhine.</p>
+  <img class="squiggle-underline" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="108" height="60" />
+  <p class="hero-sub" style="margin-top:18px;">A Signature Package proposal for Pippi's. Built around the one window you only get once: the weeks before you open the doors in Over-the-Rhine.</p>
   <div class="hero-meta">
     <span><strong>Client</strong> Pippi's</span>
     <span><strong>Package</strong> Signature · Growth</span>
@@ -982,10 +1067,10 @@
 <div class="divider"></div>
 
 <!-- ══════════ 01 · WHAT WE KNOW ══════════ -->
-<div class="wrap" id="know">
+<div class="wrap reveal" id="know">
   <div class="eyebrow">What We Know</div>
   <h2 class="section-title">Three goals. <em>One launch.</em></h2>
-  <p class="section-sub">Pippi's is opening to Over-the-Rhine this summer, and the weeks before you open are the highest-leverage moment your brand will ever have. Every dollar in this engagement maps to one of three goals, sequenced so we build momentum instead of spreading thin.</p>
+  <p class="section-sub">Pippi's is opening to Over-the-Rhine this summer. Every dollar in this engagement maps to one of three goals, sequenced so we build momentum instead of spreading thin.</p>
   <p class="section-sub">You are not starting from scratch on craft or taste. The brand world is built. The photography is handled. You have a loyal client base coming with you. What you do not have is the time to run a launch and the system to do it consistently while you are building a salon and a team. That is the work. We are the engine so you stay the artist and the owner.</p>
 
   <div class="goals-grid">
@@ -1060,7 +1145,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 02 · PROOF ══════════ -->
-<div class="wrap" id="proof">
+<div class="wrap reveal" id="proof">
   <div class="eyebrow">What the Work Does</div>
   <h2 class="section-title">Performance. <em>Across the funnel.</em></h2>
   <p class="section-sub">The same system we run for every Signature client, shown across beauty and boutique brands in Cincinnati. One piece of proof per funnel stage. White-labeled, real numbers.</p>
@@ -1291,7 +1376,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 03 · STRATEGY ══════════ -->
-<div class="wrap" id="strategy">
+<div class="wrap reveal" id="strategy">
   <div class="eyebrow">Strategic Approach</div>
   <h2 class="section-title">Who we're reaching. <em>How we'll reach them.</em></h2>
   <p class="section-sub">Two audiences, one launch engine. A salon launch has two jobs most agencies forget is two jobs: fill the chairs with clients, and fill the chairs with stylists. Every piece of content knows which one it is talking to.</p>
@@ -1451,7 +1536,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 04 · SOCIAL SEO ══════════ -->
-<div class="wrap" id="seo">
+<div class="wrap reveal" id="seo">
   <div class="eyebrow">Social SEO</div>
   <h2 class="section-title">Cast wide. <em>Compress to OTR.</em></h2>
   <p class="section-sub">Instagram is a search engine now, and a local salon is found in search before it is found on a feed. We build the keyword ladder so Pippi's shows up for the right searches from day one, and we set the Instagram search foundation (profile name field, location tags, geo-tags) that a neighborhood business lives on.</p>
@@ -1532,212 +1617,172 @@
 <div class="divider"></div>
 
 <!-- ══════════ 05 · CONTENT IDEAS ══════════ -->
-<div class="wrap" id="ideation">
+<div class="wrap reveal" id="ideation">
   <div class="eyebrow">Content Ideation</div>
   <h2 class="section-title">Built around your launch. <em>Designed to perform.</em></h2>
-  <p class="section-sub">Two lanes running at once. Lane 1 scales proven, high-performing formats. Lane 2 builds the original brand world only Pippi's can. Here are the concepts we would test in Phase 1 and through launch.</p>
-
-  <div class="lane-labels">
-    <div class="lane-label lane1-label">
-      <div class="lane-dot lane1-dot"></div>
-      <div>
-        <div class="lane-name">Lane 1 · Proven &amp; Scaled</div>
-        <div class="lane-desc">Color transformations, founder POV, behind-the-scenes, build-in-public. The formats that reliably perform, run with system.</div>
-      </div>
-    </div>
-    <div class="lane-label lane2-label">
-      <div class="lane-dot lane2-dot"></div>
-      <div>
-        <div class="lane-name">Lane 2 · Original &amp; Brand-Led</div>
-        <div class="lane-desc">The communal-table world, the Rico US-first story, the event-space concept, the collaboration series. Content no other OTR salon can make.</div>
-      </div>
-    </div>
-  </div>
+  <p class="section-sub">These are the signature pieces we would build for Pippi's. Not generic salon content. Concepts only you could make, each engineered to travel from a standing start and mapped across the funnel, from first discovery to a booked chair.</p>
 
   <div class="accordion" id="accordion">
 
-    <!-- IDEA 1 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">✂️</div>
+          <div class="acc-icon">&#127916;</div>
           <div>
-            <div class="acc-title">I left the chair to build a table</div>
-            <div class="acc-sub">Founder origin reel · Lane 1 · Proven</div>
+            <div class="acc-title">The table, built on camera</div>
+            <div class="acc-sub">The signature series</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane1-badge">Lane 1</span>
-          </div>
-          <div class="acc-chevron">▼</div>
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Founder origin reel, and the pre-launch trust engine. Hook: "Everyone told me to rent a booth. I gutted a 130-year-old building on Vine Street instead." The bravest version of the brand story.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">TOFU → MOFU · Founder</span>
-        </div>
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Every salon is a row of strangers in mirrors. We're building one table instead. Watch.&rdquo;</p>
+        <p>A serialized build-in-public film: your communal table coming to life from raw lumber in the gutted building, each episode ending before it is finished so the next one earns its place. It turns the single most ownable thing you have into a story before it is even a place, and it pays off in a cinematic row-of-mirrors-versus-one-table reveal.</p>
+        <div class="acc-metrics"><span class="metric-tag">TOFU &middot; Reach</span><span class="metric-tag method">The signature series</span></div>
       </div>
     </div>
 
-    <!-- IDEA 2 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">✨</div>
+          <div class="acc-icon">&#128064;</div>
           <div>
-            <div class="acc-title">The reveal</div>
-            <div class="acc-sub">Cinematic color transformation · Lane 1 · Proven</div>
+            <div class="acc-title">The colorist's read</div>
+            <div class="acc-sub">Reach + authority</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane1-badge">Lane 1</span>
-          </div>
-          <div class="acc-chevron">▼</div>
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Cinematic color transformation. Hook: a slow, music-driven build to the final blonde, "POV: you finally found a colorist who gets it." Satisfying, high-save, high-share.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">BOFU · Bookings</span>
-        </div>
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;I can tell you exactly what your last colorist got wrong. In about four seconds.&rdquo;</p>
+        <p>You read real people's color with an editorial eye, never mean, always expert. It is the format that scales, because it travels off other people's hair instead of your following, which is exactly what a brand-new account needs. It positions you as Cincinnati's colorist before you have colored a single local head.</p>
+        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Authority</span></div>
       </div>
     </div>
 
-    <!-- IDEA 3 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">💬</div>
+          <div class="acc-icon">&#9986;&#65039;</div>
           <div>
-            <div class="acc-title">Why good blonde is never cheap</div>
-            <div class="acc-sub">Honest color education · Lane 1 · Proven</div>
+            <div class="acc-title">Things I quit to get here</div>
+            <div class="acc-sub">Founder</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane1-badge">Lane 1</span>
-          </div>
-          <div class="acc-chevron">▼</div>
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Honest color education. Hook: "Cheap color is the most expensive thing you will ever put in your hair." Confident and contrarian, demystifies the craft and the price without ever talking down.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">MOFU · Authority</span>
-        </div>
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Art school. Then advertising. Then wine. Now hair. People think that's a mess. It's the whole point.&rdquo;</p>
+        <p>The founder story told as a reframe: every chapter that looks like a detour is the reason your eye is what it is. The most emotionally resonant thing the brand owns, and the share-trigger for every woman who ever feared she started too late.</p>
+        <div class="acc-metrics"><span class="metric-tag">TOFU &rarr; MOFU &middot; Founder</span></div>
       </div>
     </div>
 
-    <!-- IDEA 4 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">🔍</div>
+          <div class="acc-icon">&#10024;</div>
           <div>
-            <div class="acc-title">Things only a color specialist notices</div>
-            <div class="acc-sub">Expertise reel · Lane 1 · Proven</div>
+            <div class="acc-title">The correction</div>
+            <div class="acc-sub">Bookings</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-carousel">Carousel</span>
-            <span class="lane-badge lane1-badge">Lane 1</span>
-          </div>
-          <div class="acc-chevron">▼</div>
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Expertise reel. Hook: "I can usually tell who colored your hair just by looking at your roots." Insider craft, eminently saveable.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">MOFU · Authority</span>
-        </div>
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;She walked in with $400 of damage from another salon. Here's what we did.&rdquo;</p>
+        <p>A color correction told with real stakes: the damage, your read of what went wrong, the intentional process, and a reveal that lands on her face, not just her hair. Corrections are the highest-intent content a salon can make. This is the piece the right client saves for months, then books.</p>
+        <div class="acc-metrics"><span class="metric-tag">BOFU &middot; Bookings</span></div>
       </div>
     </div>
 
-    <!-- IDEA 5 · Lane 2 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">🪑</div>
+          <div class="acc-icon">&#127862;</div>
           <div>
-            <div class="acc-title">One table, not a row of mirrors</div>
-            <div class="acc-sub">The communal-table manifesto · Lane 2 · Original</div>
+            <div class="acc-title">The bottle Cincinnati's never seen</div>
+            <div class="acc-sub">Discovery</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-carousel">Carousel</span>
-            <span class="lane-badge lane2-badge">Lane 2</span>
-          </div>
-          <div class="acc-chevron">▼</div>
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>The manifesto. Hook: "Every other salon keeps stylists apart on purpose. We did the opposite." Your single most ownable detail, told as a point of view.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">MOFU · Authority</span>
-        </div>
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;There's a hair product half of Italy swears by. I had to gut a building to bring it here.&rdquo;</p>
+        <p>Rico, shot tactile and cinematic. A discovery story with built-in scarcity that is simply true, and one no other salon in the city can tell.</p>
+        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Discovery</span></div>
       </div>
     </div>
 
-    <!-- IDEA 6 · Lane 2 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">🇮🇹</div>
+          <div class="acc-icon">&#129681;</div>
           <div>
-            <div class="acc-title">The hair brand all of Italy is obsessed with</div>
-            <div class="acc-sub">Rico discovery · Lane 2 · Original</div>
+            <div class="acc-title">The salon your stylist wishes she worked at</div>
+            <div class="acc-sub">Clients + stylists</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-carousel">Carousel</span>
-            <span class="lane-badge lane2-badge">Lane 2</span>
-          </div>
-          <div class="acc-chevron">▼</div>
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Rico discovery. Hook: "The hair brand all of Italy is obsessed with, and almost no one in America has touched it." A curiosity loop and a first-in-the-US story no one else here can tell.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">MOFU · Discovery</span>
-        </div>
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;What if your stylist didn't have to rent her chair, buy her own products, and figure it all out alone?&rdquo;</p>
+        <p>The overwhelm of booth rental, then a hard cut to the calm of the table. Recruiting that never feels like a job post. Stylists send it to stylists, and clients send it to their stylist.</p>
+        <div class="acc-metrics"><span class="metric-tag">Recruiting &middot; Clients + stylists</span></div>
       </div>
     </div>
 
-    <!-- IDEA 7 · Lane 2 -->
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">🤝</div>
-          <div>
-            <div class="acc-title">We're hiring for a chair that doesn't exist yet</div>
-            <div class="acc-sub">Recruiting that doubles as brand · Lane 2 · Original</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane2-badge">Lane 2</span>
-          </div>
-          <div class="acc-chevron">▼</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p>Recruiting that doubles as brand. Hook: "Most salons hand you a station. We built you a table." Speaks straight to the stylists you need at the table before opening.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">Conversion · Recruiting</span>
-        </div>
-      </div>
-    </div>
+  </div>
 
+  <img class="squiggle-divider" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="200" height="111" />
+
+  <!-- CONTENT ENGINE · node-network motif -->
+  <div class="engine" id="engine">
+    <div class="engine-head">
+      <div class="eyebrow" style="margin-top:0;">The engine behind them</div>
+      <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Not one-offs. <em style="font-style:italic;color:var(--azure);">Outputs of a loop.</em></h3>
+      <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;">Every idea above runs the same four-step loop. We pick the idea, choose the format that carries it, engineer the hook that stops the scroll, then read the data and feed the winners back in. That is the Scroll content engine, and it never stops turning.</p>
+    </div>
+    <div class="engine-stage" id="engine-stage">
+      <svg class="engine-links" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <circle cx="50" cy="50" r="38" class="engine-link" fill="none" stroke-width="1.3"></circle>
+        <circle r="2.2" class="engine-pulse">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M 50 12 A 38 38 0 1 1 50 88 A 38 38 0 1 1 50 12 Z"></animateMotion>
+        </circle>
+      </svg>
+      <div class="engine-center">
+        <img src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="" aria-hidden="true" width="60" height="30" />
+        <span>Scroll system</span>
+      </div>
+      <button type="button" class="engine-node active" data-i="0"><span class="en-step">Step 01</span><span class="en-name">Idea</span></button>
+      <button type="button" class="engine-node" data-i="1"><span class="en-step">Step 02</span><span class="en-name">Format</span></button>
+      <button type="button" class="engine-node" data-i="2"><span class="en-step">Step 03</span><span class="en-name">Hook</span></button>
+      <button type="button" class="engine-node signal" data-i="3"><span class="en-step">Step 04</span><span class="en-name">Data</span></button>
+    </div>
+    <div class="engine-steps" id="engine-steps">
+      <div class="engine-step active" data-i="0"><div class="engine-step-n">01 &middot; Idea</div><div class="engine-step-name">Pulled from your world</div><div class="engine-step-desc">Your audience, your craft, and what is already working in the category.</div></div>
+      <div class="engine-step" data-i="1"><div class="engine-step-n">02 &middot; Format</div><div class="engine-step-name">The right vehicle</div><div class="engine-step-desc">The format that carries the idea, chosen from the Scroll format library.</div></div>
+      <div class="engine-step" data-i="2"><div class="engine-step-n">03 &middot; Hook</div><div class="engine-step-name">Stop the scroll</div><div class="engine-step-desc">The first line, engineered to earn the next second of attention.</div></div>
+      <div class="engine-step" data-i="3"><div class="engine-step-n">04 &middot; Data</div><div class="engine-step-name">Read and feed back</div><div class="engine-step-desc">We track what travels, then feed the winners into the next idea.</div></div>
+    </div>
   </div>
 
   <!-- CREATIVE BENCHMARK BLOCK -->
@@ -1785,15 +1830,12 @@
         <div class="diff-num">Coffee and bakery · Deeper Roots and Brown Bear Bakery × Pippi's</div>
         <p>Content: a "salon and sip" pop-up or a coffee-and-color morning in your event space. Over-the-Rhine neighbors showing up for each other.</p>
       </div>
-      <div class="diff-card">
-        <div class="diff-num">Beauty adjacency · Brow OTR × Pippi's</div>
-        <p>Content: a "complete the look" get-ready, hair with you and brows with them, cross-referrals with zero service overlap.</p>
-      </div>
     </div>
 
     <div class="card mt-md">
       <div class="card-label">Also in the mix</div>
       <ul class="arrow-list mt-sm">
+        <li><strong>And more across our network.</strong> Non-competing beauty (brows, lashes, nails, a "complete the look" get-ready with a partner like Brow OTR), plus warm intros across our wider Cincinnati roster.</li>
         <li><strong>Built-in partner.</strong> Rico co-markets their US debut with you. The product launch is itself a collaboration story.</li>
         <li><strong>Institutional credibility.</strong> Over-the-Rhine momentum content with 3CDC and Cincinnati lifestyle press.</li>
       </ul>
@@ -1808,7 +1850,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 06 · SCOPE ══════════ -->
-<div class="wrap" id="scope">
+<div class="wrap reveal" id="scope">
   <div class="eyebrow">Scope of Work</div>
   <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
   <p class="section-sub">Everything below is included in the monthly retainer. You run the salon. We run the launch and the Instagram.</p>
@@ -1891,7 +1933,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 07 · TIMELINE ══════════ -->
-<div class="wrap" id="timeline">
+<div class="wrap reveal" id="timeline">
   <div class="eyebrow">Timeline</div>
   <h2 class="section-title">Strategy first. <em>Posting before August.</em></h2>
   <p class="section-sub">Strategy before execution, always, but a launch runs on a clock. Here is the path from signature to a fully warmed launch.</p>
@@ -2135,10 +2177,15 @@
 <div class="divider"></div>
 
 <!-- ══════════ 08 · WHAT WE NEED ══════════ -->
-<div class="wrap" id="what-we-need">
-  <div class="eyebrow">What We Need From You</div>
-  <h2 class="section-title">Your side <em>of the equation.</em></h2>
-  <p class="section-sub">This works when both sides show up. Here's what we need from Pippi's to hit the ground running.</p>
+<div class="wrap reveal" id="what-we-need">
+  <div class="need-head">
+    <div>
+      <div class="eyebrow">What We Need From You</div>
+      <h2 class="section-title">Your side <em>of the equation.</em></h2>
+      <p class="section-sub" style="margin-bottom:0;">This works when both sides show up. Here's what we need from Pippi's to hit the ground running.</p>
+    </div>
+    <img class="dog-accent" src="https://tools.scrollmedia.co/assets/illustrations/howie-color.png" alt="" aria-hidden="true" width="176" height="176" />
+  </div>
 
   <div class="g2">
     <div class="card">
@@ -2170,7 +2217,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 09 · INVESTMENT ══════════ -->
-<div class="wrap" id="investment">
+<div class="wrap reveal" id="investment">
   <div class="eyebrow">Investment</div>
   <h2 class="section-title">What it <em>costs.</em></h2>
   <p class="section-sub">Straightforward pricing. No hidden fees. Billed month by month after the initial engagement.</p>
@@ -2227,7 +2274,7 @@
 <div class="divider"></div>
 
 <!-- ══════════ 10 · NEXT STEPS ══════════ -->
-<div class="wrap" id="next-steps">
+<div class="wrap reveal" id="next-steps">
   <div class="eyebrow">Next Steps</div>
   <h2 class="section-title">How we <em>move forward.</em></h2>
   <p class="section-sub">Questions before signing? Chase is available over email or a quick call.</p>
@@ -2258,8 +2305,8 @@
   </div>
 </div>
 
-<footer>
-  <img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="48" height="22" />
+<footer class="reveal">
+  <img src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="48" height="22" />
   <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
   <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
 </footer>
@@ -2310,6 +2357,39 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
     window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
   })();
+
+  // ── Section scroll-reveal ──
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+    setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 2500);
+  })();
+
+  // ── Content engine motif (auto-rotate + hover-pause + click-to-advance) ──
+  (function(){
+    var stage=document.getElementById('engine-stage'); if(!stage) return;
+    var nodes=[].slice.call(stage.querySelectorAll('.engine-node'));
+    var steps=[].slice.call(document.querySelectorAll('#engine-steps .engine-step'));
+    var i=0, timer=null, RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function set(n){ i=((n%4)+4)%4;
+      nodes.forEach(function(el,k){ el.classList.toggle('active',k===i); });
+      steps.forEach(function(el,k){ el.classList.toggle('active',k===i); });
+    }
+    function start(){ if(RM||timer) return; timer=setInterval(function(){ set(i+1); },2200); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    nodes.forEach(function(el){ el.addEventListener('click', function(){ set(parseInt(el.getAttribute('data-i'),10)); stop(); start(); }); });
+    stage.addEventListener('mouseenter', stop);
+    stage.addEventListener('mouseleave', start);
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); }, {threshold:0.25});
+      io.observe(stage);
+    } else { start(); }
+  })();
+
 </script>
 </body>
 </html>

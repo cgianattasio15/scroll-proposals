@@ -859,9 +859,75 @@
       font-size:14px; color:var(--ink-mid); line-height:1.6;
     }
     .transition-strip-body p strong { color:var(--shadow); }
+
+    /* ─── ACCESS-CODE GATE (Tier 3) ─── */
+    #sm-gate { position:fixed; inset:0; background:var(--ghost); display:flex; align-items:center; justify-content:center; z-index:99999; padding:24px; }
+    .sm-gate-card { background:#fff; border:1px solid var(--border); border-radius:20px; padding:48px 40px; width:100%; max-width:400px; text-align:center; box-shadow:0 4px 24px rgba(12,51,135,0.08); }
+    .sm-gate-logo { height:26px; width:auto; margin:0 auto 28px; display:block; }
+    .sm-gate-title { font-size:22px; font-weight:800; letter-spacing:-.03em; color:var(--shadow); margin-bottom:6px; }
+    .sm-gate-sub { font-size:14px; color:var(--ink-soft); margin-bottom:28px; line-height:1.5; }
+    .sm-gate-input-wrap { position:relative; margin-bottom:12px; }
+    .sm-gate-input { width:100%; background:var(--porcelain); border:1.5px solid var(--border); border-radius:8px; padding:13px 48px 13px 16px; font-size:15px; font-family:inherit; color:var(--shadow); outline:none; transition:border-color .2s; letter-spacing:.06em; }
+    .sm-gate-input:focus { border-color:var(--azure); }
+    .sm-gate-input::placeholder { letter-spacing:0; color:var(--ink-soft); }
+    .sm-gate-toggle { position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--ink-soft); padding:4px; display:flex; align-items:center; }
+    .sm-gate-btn { width:100%; background:var(--azure); color:#fff; border:none; border-radius:8px; padding:14px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; transition:background .2s, transform .1s; min-height:44px; }
+    .sm-gate-btn:hover { background:#0a276a; }
+    .sm-gate-btn:active { transform:scale(.98); }
+    .sm-gate-error { font-size:13px; color:#dc2626; margin-top:10px; display:none; }
+    .sm-gate-error.visible { display:block; }
+    body.sm-locked { overflow:hidden; }
   </style>
 </head>
 <body>
+
+<!-- ─── ACCESS-CODE GATE (Tier 3) ─── -->
+<div id="sm-gate">
+  <div class="sm-gate-card">
+    <img class="sm-gate-logo" src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="56" height="26" />
+    <div class="sm-gate-title">Private proposal</div>
+    <div class="sm-gate-sub">This proposal is private. Enter your access code to continue.</div>
+    <div class="sm-gate-input-wrap">
+      <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+      <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+        <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <button class="sm-gate-btn" id="sm-gate-btn">View proposal</button>
+    <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS='pippis.scroll', KEY='sm_pippis_v1';
+  var gate=document.getElementById('sm-gate');
+  var inp=document.getElementById('sm-gate-input');
+  var btn=document.getElementById('sm-gate-btn');
+  var err=document.getElementById('sm-gate-error');
+  var tog=document.getElementById('sm-gate-toggle');
+  if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+  else { document.body.classList.add('sm-locked'); inp.focus(); }
+  function unlock(){
+    if(inp.value.trim().toLowerCase()===PASS){
+      sessionStorage.setItem(KEY,'1');
+      document.body.classList.remove('sm-locked');
+      gate.style.opacity='0'; gate.style.transition='opacity .3s';
+      setTimeout(function(){ gate.style.display='none'; },300);
+    } else {
+      err.classList.add('visible'); inp.style.borderColor='#dc2626';
+      setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+    }
+  }
+  btn.addEventListener('click',unlock);
+  inp.addEventListener('keydown',function(e){ if(e.key==='Enter') unlock(); });
+  tog.addEventListener('click',function(){
+    var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+    document.getElementById('sm-eye-icon').innerHTML=isPw
+      ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+      :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  });
+})();
+</script>
 
 <div id="prog"></div>
 
@@ -1302,26 +1368,43 @@
     <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The pre-launch runway. <em style="font-style:italic;color:var(--azure);">The window you only get once.</em></h3>
     <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">The weeks before you open are the single highest-return content moment Pippi's will ever have. Most new businesses waste it waiting until they "have something to show." You do not need a finished space to start. The build is the story. By the time you open, you open to an audience that has already decided to book.</p>
 
+    <div class="insight" style="margin-bottom:22px;">
+      <p><strong>The head start you've already given us.</strong> Because you have already built a full brand world with Edelmade, we do not have to wait on a content shoot to go live. We start with graphic-led posts built from the assets you already have, then layer in video the moment the first shoot is scheduled. Most launches cannot move this fast. You set us up to.</p>
+    </div>
+
     <div class="card" style="padding:8px 22px;">
       <div class="mason-collapsibles">
         <details class="mason-row">
           <summary>
             <div class="mason-dot">1</div>
             <div class="mason-summary-text">
-              <div class="mason-summary-title">Foundation &amp; tease · now → July</div>
-              <div class="mason-summary-tease">The announcement, the brand world, the launch list. Audience capture before the first real push.</div>
+              <div class="mason-summary-title">Strategy + foundation · early July, about three weeks</div>
+              <div class="mason-summary-tease">Kickoff after the holiday, then the strategy build: profile architecture, launch-list capture, the two-audience pillars.</div>
             </div>
             <div class="mason-chev">▼</div>
           </summary>
           <div class="mason-body">
-            <p>The announcement, the brand world, the launch list. Audience capture before the first real push. CTA: join the launch list.</p>
+            <p>Kickoff after the holiday, then the strategy build: profile architecture, the launch-list capture mechanic, the two-audience pillars, and the runway calendar locked to your construction schedule.</p>
           </div>
         </details>
         <details class="mason-row">
           <summary>
             <div class="mason-dot">2</div>
             <div class="mason-summary-text">
-              <div class="mason-summary-title">Build-in-public · July → mid-August</div>
+              <div class="mason-summary-title">Posting live · before the end of July</div>
+              <div class="mason-summary-tease">Graphic-led posts from your existing assets get the account moving while we lock a content-shoot date.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>Graphic-led posts from your existing assets get the account moving while we lock a content-shoot date. The announcement, the brand world, the launch list. Video layers in right after the first shoot.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">3</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Build-in-public · late July → mid-August</div>
               <div class="mason-summary-tease">The buildout, the founder story, the communal-table reveal, Rico, recruiting content in parallel.</div>
             </div>
             <div class="mason-chev">▼</div>
@@ -1332,9 +1415,9 @@
         </details>
         <details class="mason-row">
           <summary>
-            <div class="mason-dot">3</div>
+            <div class="mason-dot">4</div>
             <div class="mason-summary-text">
-              <div class="mason-summary-title">Countdown · final weeks</div>
+              <div class="mason-summary-title">Countdown · the final weeks of August</div>
               <div class="mason-summary-tease">"Opening late August," booking and waitlist open, collaboration giveaways for shared reach.</div>
             </div>
             <div class="mason-chev">▼</div>
@@ -1345,28 +1428,15 @@
         </details>
         <details class="mason-row">
           <summary>
-            <div class="mason-dot">4</div>
+            <div class="mason-dot">5</div>
             <div class="mason-summary-text">
-              <div class="mason-summary-title">Launch · open week</div>
+              <div class="mason-summary-title">Launch + springboard · open week and the first 90 days</div>
               <div class="mason-summary-tease">Grand-open moment, the finished-space first look, founder welcome, ideally a collaboration launch event.</div>
             </div>
             <div class="mason-chev">▼</div>
           </summary>
           <div class="mason-body">
-            <p>Grand-open moment, the finished-space first look, founder welcome, ideally a collaboration launch event. Bookings open with launch urgency.</p>
-          </div>
-        </details>
-        <details class="mason-row">
-          <summary>
-            <div class="mason-dot">5</div>
-            <div class="mason-summary-text">
-              <div class="mason-summary-title">Springboard · first 90 days</div>
-              <div class="mason-summary-tease">Hype shifts to proof: real color transformations, full chairs, testimonials.</div>
-            </div>
-            <div class="mason-chev">▼</div>
-          </summary>
-          <div class="mason-body">
-            <p>Hype shifts to proof: real color transformations, full chairs, testimonials. The recurring engine locks in and we layer in product and the event space.</p>
+            <p>Grand-open moment, the finished-space first look, founder welcome, ideally a collaboration launch event. Then hype shifts to proof: real transformations, full chairs, testimonials, and we layer in product and the event space.</p>
           </div>
         </details>
       </div>
@@ -1384,7 +1454,7 @@
 <div class="wrap" id="seo">
   <div class="eyebrow">Social SEO</div>
   <h2 class="section-title">Cast wide. <em>Compress to OTR.</em></h2>
-  <p class="section-sub">Instagram is a search engine now, and a local salon is found in search before it is found on a feed. We build the keyword ladder so Pippi's shows up for the right searches from day one, and we set the local-search foundation (Google Business Profile, geo-tags) that a neighborhood business lives on.</p>
+  <p class="section-sub">Instagram is a search engine now, and a local salon is found in search before it is found on a feed. We build the keyword ladder so Pippi's shows up for the right searches from day one, and we set the Instagram search foundation (profile name field, location tags, geo-tags) that a neighborhood business lives on.</p>
 
   <div class="card">
     <div class="card-label">Pippi's · 4-Tier TAM Compression Keyword Bank</div>
@@ -1451,7 +1521,6 @@
       <li>Caption opening lines (Instagram weights the first sentence heavily)</li>
       <li>Alt text on every post</li>
       <li>Geo-tags on location-relevant posts</li>
-      <li>The Google Business Profile</li>
     </ul>
   </div>
 
@@ -1487,66 +1556,14 @@
 
   <div class="accordion" id="accordion">
 
-    <!-- IDEA 1 -->
+    <!-- IDEA 1 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">📣</div>
+          <div class="acc-icon">✂️</div>
           <div>
-            <div class="acc-title">Opening late August</div>
-            <div class="acc-sub">Pre-launch announcement · Lane 2 · Original</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane2-badge">Lane 2</span>
-          </div>
-          <div class="acc-chevron">▼</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p>The pre-launch announcement. The brand world, with a launch-list CTA. The first signal that Pippi's is coming to Over-the-Rhine, built to start capturing an audience before there is anything finished to show.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">TOFU · Awareness</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- IDEA 2 -->
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">🪑</div>
-          <div>
-            <div class="acc-title">One table, not a row of mirrors</div>
-            <div class="acc-sub">The communal-table story · Lane 2 · Original</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-carousel">Carousel</span>
-            <span class="lane-badge lane2-badge">Lane 2</span>
-          </div>
-          <div class="acc-chevron">▼</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p>The communal-table story. The signature differentiator. The single most ownable detail in the space, told as a brand story no competitor can copy.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag">MOFU · Authority</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- IDEA 3 -->
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">💇‍♀️</div>
-          <div>
-            <div class="acc-title">High-impact blonde, done right</div>
-            <div class="acc-sub">Color transformation · Lane 1 · Proven</div>
+            <div class="acc-title">I left the chair to build a table</div>
+            <div class="acc-sub">Founder origin reel · Lane 1 · Proven</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
@@ -1558,47 +1575,99 @@
         </div>
       </div>
       <div class="acc-body">
-        <p>Color transformation showcasing her craft and the booking format. The highest-intent content a salon can make, and it is the specialty Pippi's is built around.</p>
+        <p>Founder origin reel, and the pre-launch trust engine. Hook: "Everyone told me to rent a booth. I gutted a 130-year-old building on Vine Street instead." The bravest version of the brand story.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">TOFU → MOFU · Founder</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 2 · Lane 1 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">✨</div>
+          <div>
+            <div class="acc-title">The reveal</div>
+            <div class="acc-sub">Cinematic color transformation · Lane 1 · Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-reel">Reel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Cinematic color transformation. Hook: a slow, music-driven build to the final blonde, "POV: you finally found a colorist who gets it." Satisfying, high-save, high-share.</p>
         <div class="acc-metrics">
           <span class="metric-tag">BOFU · Bookings</span>
         </div>
       </div>
     </div>
 
-    <!-- IDEA 4 -->
+    <!-- IDEA 3 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">🤝</div>
+          <div class="acc-icon">💬</div>
           <div>
-            <div class="acc-title">Join the table</div>
-            <div class="acc-sub">Stylist recruiting · Lane 2 · Original</div>
+            <div class="acc-title">Why good blonde is never cheap</div>
+            <div class="acc-sub">Honest color education · Lane 1 · Proven</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
           <div class="acc-tags">
             <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane2-badge">Lane 2</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
           </div>
           <div class="acc-chevron">▼</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Stylist recruiting. The second audience made visible. Content that speaks directly to the talent Pippi's needs at the table before opening.</p>
+        <p>Honest color education. Hook: "Cheap color is the most expensive thing you will ever put in your hair." Confident and contrarian, demystifies the craft and the price without ever talking down.</p>
         <div class="acc-metrics">
-          <span class="metric-tag">Conversion · Recruiting</span>
+          <span class="metric-tag">MOFU · Authority</span>
         </div>
       </div>
     </div>
 
-    <!-- IDEA 5 -->
+    <!-- IDEA 4 · Lane 1 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">🇮🇹</div>
+          <div class="acc-icon">🔍</div>
           <div>
-            <div class="acc-title">The Rico story</div>
-            <div class="acc-sub">Discovery framing, soft product CTA · Lane 2 · Original</div>
+            <div class="acc-title">Things only a color specialist notices</div>
+            <div class="acc-sub">Expertise reel · Lane 1 · Proven</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags">
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane1-badge">Lane 1</span>
+          </div>
+          <div class="acc-chevron">▼</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p>Expertise reel. Hook: "I can usually tell who colored your hair just by looking at your roots." Insider craft, eminently saveable.</p>
+        <div class="acc-metrics">
+          <span class="metric-tag">MOFU · Authority</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDEA 5 · Lane 2 -->
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">🪑</div>
+          <div>
+            <div class="acc-title">One table, not a row of mirrors</div>
+            <div class="acc-sub">The communal-table manifesto · Lane 2 · Original</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
@@ -1610,47 +1679,47 @@
         </div>
       </div>
       <div class="acc-body">
-        <p>"The hair brand all of Italy is obsessed with, and almost no one in the US has touched." Discovery framing with a soft product CTA. A product story no one else in Cincinnati can tell.</p>
+        <p>The manifesto. Hook: "Every other salon keeps stylists apart on purpose. We did the opposite." Your single most ownable detail, told as a point of view.</p>
         <div class="acc-metrics">
-          <span class="metric-tag">MOFU</span>
+          <span class="metric-tag">MOFU · Authority</span>
         </div>
       </div>
     </div>
 
-    <!-- IDEA 6 -->
+    <!-- IDEA 6 · Lane 2 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">✂️</div>
+          <div class="acc-icon">🇮🇹</div>
           <div>
-            <div class="acc-title">She left a chair to build a table</div>
-            <div class="acc-sub">Founder story reel · Lane 1 · Proven</div>
+            <div class="acc-title">The hair brand all of Italy is obsessed with</div>
+            <div class="acc-sub">Rico discovery · Lane 2 · Original</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
           <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane1-badge">Lane 1</span>
+            <span class="acc-tag tag-carousel">Carousel</span>
+            <span class="lane-badge lane2-badge">Lane 2</span>
           </div>
           <div class="acc-chevron">▼</div>
         </div>
       </div>
       <div class="acc-body">
-        <p>Founder story reel. The pre-launch trust engine. The story of why Pippi's exists, told in her voice, building familiarity before the doors open.</p>
+        <p>Rico discovery. Hook: "The hair brand all of Italy is obsessed with, and almost no one in America has touched it." A curiosity loop and a first-in-the-US story no one else here can tell.</p>
         <div class="acc-metrics">
-          <span class="metric-tag">TOFU → MOFU</span>
+          <span class="metric-tag">MOFU · Discovery</span>
         </div>
       </div>
     </div>
 
-    <!-- IDEA 7 -->
+    <!-- IDEA 7 · Lane 2 -->
     <div class="acc-item">
       <div class="acc-header" onclick="toggleAcc(this)">
         <div class="acc-header-left">
-          <div class="acc-icon">🛋️</div>
+          <div class="acc-icon">🤝</div>
           <div>
-            <div class="acc-title">Inside the break room</div>
-            <div class="acc-sub">Recruiting + brand · Lane 2 · Original</div>
+            <div class="acc-title">We're hiring for a chair that doesn't exist yet</div>
+            <div class="acc-sub">Recruiting that doubles as brand · Lane 2 · Original</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
@@ -1662,59 +1731,71 @@
         </div>
       </div>
       <div class="acc-body">
-        <p>The overlooked-in-the-industry space, doubling as the event space. A recruiting and brand story at once, showing the room is built for the people behind the chair.</p>
+        <p>Recruiting that doubles as brand. Hook: "Most salons hand you a station. We built you a table." Speaks straight to the stylists you need at the table before opening.</p>
         <div class="acc-metrics">
-          <span class="metric-tag">MOFU</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- IDEA 8 -->
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">🌏</div>
-          <div>
-            <div class="acc-title">Australian-advanced</div>
-            <div class="acc-sub">Format and styling direction · Lane 1 · Proven</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags">
-            <span class="acc-tag tag-reel">Reel</span>
-            <span class="lane-badge lane1-badge">Lane 1</span>
-          </div>
-          <div class="acc-chevron">▼</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p>Pulling from the most advanced hair-content market (the aspirational accounts you shared) for format and styling direction. Proven formats, adapted to Pippi's craft.</p>
-        <div class="acc-metrics">
-          <span class="metric-tag method">Lane 1</span>
+          <span class="metric-tag">Conversion · Recruiting</span>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- COLLABORATION CARD BLOCK -->
+  <!-- CREATIVE BENCHMARK BLOCK -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">We Did Our Homework</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The bar we're building toward. <em style="font-style:italic;color:var(--azure);">Adapted to your craft.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">You sent us Amelia Jane and J. Edwards. Both are Australian, which is the most advanced hair-content market in the world. That is the standard we are building Pippi's toward, translated to your room and your color work.</p>
+
+    <div class="g3">
+      <div class="card">
+        <div class="card-label">Amelia Jane · @ameliajanehair</div>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Editorial blonde transformations and the way she shoots for light. <strong style="color:var(--shadow);">What we'll borrow:</strong> the reveal craft and colorist-as-authority positioning.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">J. Edwards · EdwardsAndCo</div>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Australia's "future-proof color" salon brand. <strong style="color:var(--shadow);">What we'll borrow:</strong> the discipline that makes the account itself feel like a destination, not just a feed.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Menspire</div>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">A production reference, not a niche one. <strong style="color:var(--shadow);">What we'll borrow:</strong> their cinematic reveal editing, the hook to process to dramatic-reveal structure, applied to your transformations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLABORATIONS BLOCK -->
   <div class="mt-lg">
     <div class="eyebrow" style="margin-top:0;">Collaborations · Borrow Credibility, Fast</div>
     <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The fastest way to trust a new name. <em style="font-style:italic;color:var(--azure);">Be vouched for by a trusted one.</em></h3>
-    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:18px;">A new brand has no trust equity yet. Collaborating with brands your audience already trusts transfers that trust and borrows their reach, which matters most when the following is still being built. We partner on audience overlap, never service competition.</p>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:18px;">A new brand has no trust equity yet. Collaborating with brands your audience already trusts transfers that trust and borrows their reach, which matters most while the following is still being built. We partner on audience overlap, never service competition.</p>
 
     <div class="assumption" style="margin-bottom:18px;">
-      <p><strong>The Scroll edge.</strong> Pippi's does not have to source partners cold. We can broker collaborations across our own Cincinnati client network, beauty, boutique, fitness and wellness, lifestyle, with warm introductions. No other agency can plug you into a ready-made local brand network like that.</p>
+      <p><strong>The Scroll edge.</strong> Pippi's does not have to source partners cold. We broker collaborations across our own Cincinnati client network, with warm introductions, across boutique, jewelry, food, and lifestyle. No other agency can plug you into a ready-made local brand network like that.</p>
     </div>
 
-    <div class="card">
-      <div class="card-label">Collaboration Concepts</div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">Fashion boutique · Idlewild × Pippi's</div>
+        <p>You raised them, and they are on your street. Content: a "get ready with me for a night out in Over-the-Rhine," the outfit from Idlewild and the hair and color from Pippi's, cross-posted to both audiences. Plus a two-Over-the-Rhine-women-founders story, Maddie and Tessa.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Jewelry · Lane &amp; Kate × Pippi's</div>
+        <p>The wedding and engagement moment, where custom engagement rings meet bridal hair. Content: a "getting wedding-ready" feature pairing a Lane &amp; Kate custom ring with Pippi's bridal color and styling. High-occasion content that converts.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Coffee and bakery · Deeper Roots and Brown Bear Bakery × Pippi's</div>
+        <p>Content: a "salon and sip" pop-up or a coffee-and-color morning in your event space. Over-the-Rhine neighbors showing up for each other.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Beauty adjacency · Brow OTR × Pippi's</div>
+        <p>Content: a "complete the look" get-ready, hair with you and brows with them, cross-referrals with zero service overlap.</p>
+      </div>
+    </div>
+
+    <div class="card mt-md">
+      <div class="card-label">Also in the mix</div>
       <ul class="arrow-list mt-sm">
-        <li><strong>Idlewild</strong> (the one you raised), a "get the look" joint editorial, a launch-window styling night in your event space, a pre-launch giveaway for shared list-building, and a two-OTR-founders story with Tessa.</li>
-        <li><strong>Non-competing beauty</strong>. Brows, lashes, nails, facials. A complete "get ready" ecosystem and cross-referrals.</li>
-        <li><strong>Food, beverage and hospitality</strong>. The matcha or coffee pop-up you mentioned, natural wine (your background), a bakery or cocktail bar. Pop-ups in your event space.</li>
-        <li><strong>Premium product</strong>. Rico co-markets their US debut with you. A built-in partner.</li>
-        <li><strong>Local institutions</strong>. Over-the-Rhine momentum content with 3CDC and Cincinnati lifestyle press.</li>
+        <li><strong>Built-in partner.</strong> Rico co-markets their US debut with you. The product launch is itself a collaboration story.</li>
+        <li><strong>Institutional credibility.</strong> Over-the-Rhine momentum content with 3CDC and Cincinnati lifestyle press.</li>
       </ul>
     </div>
   </div>
@@ -1744,7 +1825,7 @@
         </tr>
         <tr>
           <td>Launch Foundation <span class="scope-badge feat">Strategic Feature</span></td>
-          <td>Profile build-out, launch-list capture mechanic, Google Business Profile, local-search setup. The plumbing a launch needs on day one.</td>
+          <td>Profile build-out, launch-list capture mechanic, Instagram search setup (name field, location tags, geo-tags). The plumbing a launch needs on day one.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
@@ -1851,7 +1932,7 @@
             <span>✓ Two audiences + pillars</span>
             <span>✓ The runway plan</span>
             <span>✓ Recruiting track</span>
-            <span>✓ Social SEO + Google Business</span>
+            <span>✓ Instagram Social SEO</span>
           </div>
         </div>
       </div>
@@ -1879,9 +1960,9 @@
           <div class="ms-week">Week 4</div>
           <div class="ms-title">First Content Cycle</div>
           <div class="ms-items">
-            <span>✓ Pre-launch content drafted</span>
+            <span>✓ Graphic-led posts from existing assets</span>
             <span>✓ Routed for approval</span>
-            <span>✓ Assets prepped</span>
+            <span>✓ First content shoot scheduled</span>
           </div>
         </div>
       </div>
@@ -1892,11 +1973,12 @@
         <div class="ms-line"></div>
         <div class="ms-card">
           <div class="ms-week">Week 5</div>
-          <div class="ms-title">🚀 Posting Live (end of July)</div>
+          <div class="ms-title">🚀 Posting Live (before end of July)</div>
           <div class="ms-items">
-            <span>✓ The runway begins</span>
+            <span>✓ Runway begins with graphic-led posts</span>
             <span>✓ Build-in-public + recruiting in market</span>
             <span>✓ Launch list filling</span>
+            <span>✓ Video layers in after first shoot</span>
           </div>
         </div>
       </div>
@@ -2113,7 +2195,7 @@
     <div class="inv-row">
       <div class="item">
         <strong>Month 1 · Strategy + launch foundation</strong>
-        <small>kickoff · two audiences · pillars · pre-launch runway plan · Social SEO · launch-list + profile + Google Business build · strategy presentation</small>
+        <small>kickoff · two audiences · pillars · pre-launch runway plan · Social SEO · launch-list + profile + Instagram search build · strategy presentation</small>
       </div>
       <div class="amt">$1,917</div>
     </div>

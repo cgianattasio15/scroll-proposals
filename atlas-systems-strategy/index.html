@@ -276,7 +276,7 @@
     .ignition{margin-top:var(--sp-6);background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5)}
     .ignition .igl{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
     .ignition .igintro{font-size:13.5px;color:var(--fg-muted);line-height:1.5;margin-bottom:var(--sp-4)}
-    .ig-list{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4)}
+    .ig-list{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
     .ig-item{position:relative;padding-left:18px}
     .ig-item::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--azure-400)}
     .ig-item b{display:block;font-size:13px;color:var(--azure);margin-bottom:2px}
@@ -377,6 +377,70 @@
     .pin .pt{font-size:12.5px;font-weight:700;color:var(--azure);margin-top:4px;line-height:1.3}
     @media (max-width:760px){.profile-shelf{grid-template-columns:1fr}}
 
+    /* ===== v2 BRAND ACCENTS + NEW COMPONENTS ===== */
+    /* Monogram accent on the Section 1/2/3 eyebrow pills (ghost on azure) */
+    .eyebrow .act{display:inline-flex;align-items:center;gap:5px}
+    .eyebrow .act::before{content:"";width:13px;height:13px;display:inline-block;background:url("https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png") center/contain no-repeat;filter:brightness(0) invert(1);opacity:.92}
+    .mono-accent{height:30px;width:auto;display:block;margin:0 auto var(--sp-5);opacity:.85}
+    /* Squiggle2 divider (sparing) */
+    .sq-div{display:block;width:130px;max-width:42%;height:auto;opacity:.8}
+    .sq-div.center{margin:var(--sp-5) auto 0}
+    /* Understanding lead-in strip (compact cards above the focal timeline) */
+    .us-lead{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-5)}
+    .us-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
+    .us-card .ul{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--azure-600);margin-bottom:4px}
+    .us-card p{font-size:12.5px;color:var(--fg-muted);line-height:1.4}
+    .us-card p b{color:var(--shadow)}
+    @media (max-width:760px){.us-lead{grid-template-columns:1fr}}
+    /* Focal journey timeline (one continuous journey, every milestone) */
+    .journey{position:relative;margin-top:var(--sp-5);display:grid;grid-template-columns:repeat(8,1fr);gap:var(--sp-2)}
+    .journey::before{content:"";position:absolute;top:16px;left:5%;right:5%;height:3px;background:linear-gradient(90deg,var(--azure),var(--azure-200));border-radius:2px}
+    .j-step{position:relative;text-align:center;z-index:2}
+    .j-dot{width:18px;height:18px;border-radius:50%;background:var(--azure-200);border:3px solid var(--ghost);box-shadow:0 0 0 1px var(--rule);margin:0 auto 14px}
+    .j-step.done .j-dot{background:var(--azure)}
+    .j-step.now .j-dot{background:var(--highlighter);box-shadow:0 0 0 5px rgba(226,237,122,.4);transform:scale(1.3)}
+    .j-when{font-size:11px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--azure-600);line-height:1.25}
+    .j-what{font-size:12px;color:var(--fg-muted);margin-top:4px;line-height:1.35}
+    .j-step.now .j-when{color:var(--highlighter-dark)}
+    .j-tag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 7px;border-radius:999px;margin-top:5px}
+    .living-note{margin-top:var(--sp-6);font-size:13px;color:var(--fg-muted);font-style:italic;line-height:1.5;border-left:3px solid var(--lucid-deep);padding-left:var(--sp-4)}
+    .living-note b{color:var(--azure);font-style:normal}
+    @media (max-width:900px){.journey{grid-template-columns:1fr;gap:var(--sp-4)}.journey::before{display:none}.j-step{text-align:left;display:flex;gap:12px;align-items:flex-start}.j-dot{margin:3px 0 0;flex:0 0 18px}}
+    /* Nested zone steps (framework rail removed) */
+    .zone .zsub{font-size:13.5px;font-weight:800;color:var(--shadow);margin:6px 0 8px}
+    .zone ul.zsteps{list-style:none;display:flex;flex-direction:column;gap:6px;margin:8px 0}
+    .zone ul.zsteps li{font-size:12.5px;color:var(--fg-muted);line-height:1.4;padding-left:14px;position:relative}
+    .zone ul.zsteps li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--azure-400)}
+    /* Two-layer journey timeline: ongoing-rhythm band under the milestone track */
+    .tl-layer-label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin:var(--sp-7) 0 var(--sp-3)}
+    .tl-rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)}
+    .tl-rcard{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--lucid-deep);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
+    .tl-rcard .rw{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--azure-600)}
+    .tl-rcard .rt{font-size:12.5px;color:var(--fg-muted);margin-top:4px;line-height:1.4}
+    @media (max-width:760px){.tl-rhythm{grid-template-columns:1fr}}
+    /* Ideation example ideas (2-3 per pillar) */
+    .iquote-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}
+    .iqcol{border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);background:var(--bg-alt);padding:var(--sp-4)}
+    .iqcol .iqh{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--azure-600);margin-bottom:8px}
+    .iqcol ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .iqcol li{font-size:12.5px;color:var(--shadow);font-weight:600;line-height:1.35;font-style:italic;padding-left:12px;position:relative}
+    .iqcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--highlighter-dark)}
+    @media (max-width:880px){.iquote-row{grid-template-columns:1fr}}
+    /* The accordion (reach) · namespaced acc-* so it never collides with a generic .accordion */
+    .acc-keys{display:block;font-size:12px;color:var(--fg-muted);margin-top:4px;line-height:1.45}
+    .acc-keys .kw{color:var(--azure);font-weight:600}
+    .reach-axis{margin-top:var(--sp-4);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);font-size:12.5px;color:var(--fg-muted);line-height:1.45}
+    .reach-axis b{color:var(--azure)}
+    /* Local collaborations sub-block */
+    .collab{margin-top:var(--sp-5);background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5)}
+    .collab .igl{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
+    .collab .cintro{font-size:13.5px;color:var(--fg-muted);line-height:1.5;margin-bottom:var(--sp-4)}
+    .collab .cintro b{color:var(--shadow)}
+    .collab-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
+    .collab-col .ccl{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure);margin-bottom:6px}
+    .collab-col p{font-size:12.5px;color:var(--fg-muted);line-height:1.5}
+    @media (max-width:640px){.collab-grid{grid-template-columns:1fr}}
+
     /* REVIEW MODE */
     #reviewBar{display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:200;background:var(--azure);color:var(--ghost);border-radius:999px;padding:8px 10px 8px 16px;box-shadow:var(--sh-lg);align-items:center;gap:10px;font-size:13px;font-weight:600}
     body.review #reviewBar{display:flex}
@@ -396,7 +460,9 @@
       .persona .ptag,.persona .pstat .sv,.ivp-quote cite,.cblock li,.tl-what,
       .ichip,.iph .ips,.imq p,.tam-row .td,.seo-note p,.ig-item span,.ig-item b,.diff span,
       .mcol li,.mcol li.q,.rstat .rl,.ttac p,.ptip p,.pf-note,.icell .icl,
-      .bio-lines div,.pin .pt,.callout p,.mnote,.enode span,.tl-when{font-size:14px}
+      .bio-lines div,.pin .pt,.callout p,.mnote,.enode span,.tl-when,
+      .tl-rcard .rt,.tl-rcard .rw,.iqcol li,.acc-keys,.collab p,.collab .cintro,.reach-axis,
+      .us-card p,.zone ul.zsteps li,.zone .zsub,.j-when,.j-what,.living-note{font-size:14px}
       .cover-sub,.slide-lede{font-size:16px}
     }
   </style>
@@ -427,6 +493,7 @@
 
     <!-- S01 COVER -->
     <section class="slide" id="s01" data-nav="Cover">
+      <span class="section-num" style="color:var(--lucid)">01</span>
       <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700">
         <line x1="120" y1="120" x2="320" y2="240"/><line x1="320" y1="240" x2="540" y2="160"/>
         <line x1="540" y1="160" x2="760" y2="300"/><line x1="760" y1="300" x2="980" y2="200"/>
@@ -439,10 +506,10 @@
       <div class="slide-inner">
         <span class="cover-kicker"><span class="dot"></span>Atlas Systems &times; Scroll Media</span>
         <h1>Organic <span class="hl">social media</span> strategy.</h1>
-        <p class="cover-sub">The 90-day roadmap to get Atlas in front of the highest-quality audience and turn that attention into real leads and business growth. Built on the Scroll System.</p>
+        <p class="cover-sub">Atlas's organic social media strategy, built on the Scroll System. The foundation for getting in front of the highest-quality audience and turning attention into real leads. A living document we refine as we grow, not a one-and-done plan.</p>
         <div class="cover-meta">
           <div>Prepared for<b>Chase Smith, Atlas Systems</b></div>
-          <div>Strategy presentation<b>June 30, 2026</b></div>
+          <div>Strategy presentation<b>June 29, 2026</b></div>
           <div>Your Scroll lead<b>Riley Walker</b></div>
         </div>
       </div>
@@ -451,6 +518,7 @@
 
     <!-- S02 AGENDA -->
     <section class="slide" id="s02" data-nav="Agenda">
+      <span class="section-num">02</span>
       <div class="slide-inner">
         <span class="eyebrow reveal">What we'll cover today</span>
         <h2 class="slide-title reveal">The agenda.</h2>
@@ -463,7 +531,7 @@
           <div class="agenda-act reveal">Section 2 &middot; Execution</div>
           <a class="agenda-item reveal" href="#s08"><span class="agenda-num">04</span><span class="agenda-text"><b>Who we're talking to</b><span>The buyer we reverse-engineer everything for</span></span></a>
           <a class="agenda-item reveal" href="#s09"><span class="agenda-num">05</span><span class="agenda-text"><b>The content system</b><span>Three pillars, tested across the funnel</span></span></a>
-          <a class="agenda-item reveal" href="#s10"><span class="agenda-num">06</span><span class="agenda-text"><b>How we reach them</b><span>The reach ladder, social SEO, and ignition</span></span></a>
+          <a class="agenda-item reveal" href="#s10"><span class="agenda-num">06</span><span class="agenda-text"><b>How we reach them</b><span>The accordion, social SEO, and local collaborations</span></span></a>
           <a class="agenda-item reveal" href="#s11"><span class="agenda-num">07</span><span class="agenda-text"><b>What makes Atlas different</b><span>Differentiators and how we position against the noise</span></span></a>
           <div class="agenda-act reveal">Section 3 &middot; Performance</div>
           <a class="agenda-item reveal" href="#s12"><span class="agenda-num">08</span><span class="agenda-text"><b>What we measure, and why</b><span>The metrics that predict real customers</span></span></a>
@@ -475,57 +543,68 @@
 
     <!-- S03 OUR UNDERSTANDING -->
     <section class="slide" id="s03" data-nav="Our understanding">
-      <span class="section-num">01</span>
+      <span class="section-num">03</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 1</span>Foundation</span>
         <h2 class="slide-title reveal">What we heard, and where we are.</h2>
-        <p class="slide-lede reveal">Before any content, we made sure we understand the business. Here's the short version of what we took away from kickoff, and the runway ahead.</p>
-        <div class="grid-3" style="margin-bottom:var(--sp-7)">
-          <div class="card reveal d1"><h3>The business</h3><p>Founder-led tech and AI consulting for small and mid-sized businesses across Kentucky and Greater Cincinnati. The gateway offer is a fixed-scope Technology Assessment.</p></div>
-          <div class="card reveal d2"><h3>The opportunity</h3><p>Your buyer finds and trusts a partner <em>before</em> they ever reach out. Right now that trust-building isn't happening anywhere they're already looking. That's the gap we fill.</p></div>
-          <div class="card reveal d3"><h3>The job</h3><p>Make Chase the calm, no-hype technical voice regional owners already follow, so when their systems hit a wall, Atlas is the obvious call.</p></div>
+        <p class="slide-lede reveal">Before any content, we made sure we understand the business. Here's the short version of what we took away, and the journey ahead.</p>
+        <div class="us-lead">
+          <div class="us-card reveal d1"><div class="ul">The business</div><p><b>AI consulting for small businesses</b> in Northern Kentucky and Greater Cincinnati. That's the niche.</p></div>
+          <div class="us-card reveal d2"><div class="ul">The opportunity</div><p>A growing firm that wants more leads. <b>The attention is all on social</b>, so Atlas is committing to one strategy to capture it: brand awareness and high-quality lead generation.</p></div>
+          <div class="us-card reveal d3"><div class="ul">The job</div><p>Make Chase <b>the region's no-hype tech voice</b>, making AI simple so the right owners get what he does and the value he brings.</p></div>
         </div>
-        <h3 class="reveal" style="font-size:var(--fs-md);color:var(--azure);margin-bottom:6px">Where we are in the runway</h3>
-        <div class="tl reveal d1">
-          <div class="tl-step done"><div class="tl-dot"></div><div class="tl-when">Jun 10</div><div class="tl-what">Kickoff call</div></div>
-          <div class="tl-step done"><div class="tl-dot"></div><div class="tl-when">Jun 11</div><div class="tl-what">Engagement signed</div></div>
-          <div class="tl-step now"><div class="tl-dot"></div><div class="tl-when">Jun 30</div><div class="tl-what">Strategy presentation</div><span class="tl-tag">You are here</span></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Jul 1</div><div class="tl-what">First content shoot</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Jul 10</div><div class="tl-what">First posts go live</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Ongoing</div><div class="tl-what">Monthly rhythm + reporting</div></div>
+        <h3 class="reveal" style="font-size:var(--fs-md);color:var(--azure);margin-bottom:var(--sp-2)">The journey, kickoff through the ongoing rhythm</h3>
+        <div class="journey reveal d1">
+          <div class="j-step done"><div class="j-dot"></div><div class="j-when">Wed Jun 10</div><div class="j-what">Kickoff meeting</div></div>
+          <div class="j-step now"><div class="j-dot"></div><div class="j-when">Mon Jun 29</div><div class="j-what">Strategy presentation + first shot-list review (90 min)</div><span class="j-tag">You are here</span></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Wed Jul 1</div><div class="j-what">First content shoot</div></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Wed Jul 8</div><div class="j-what">First bi-weekly connect</div></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Fri Jul 10</div><div class="j-what">First post live</div></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Every other Wed</div><div class="j-what">Bi-weekly connects, 30 min</div></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Week of Aug 3</div><div class="j-what">First performance report, covers July</div></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Ongoing</div><div class="j-what">Bi-weekly connects + monthly report, first week each month</div></div>
         </div>
+        <div class="living-note reveal"><b>A living document, refined as we learn.</b> This strategy is the foundation, not a fixed plan. We refine it as we learn what your audience responds to.</div>
       </div>
     </section>
 
     <!-- S04 STRATEGIC FRAMEWORK -->
     <section class="slide" id="s04" data-nav="Strategic framework">
-      <span class="section-num">02</span>
+      <span class="section-num">04</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 1</span>Foundation</span>
         <h2 class="slide-title reveal">You're not buying posts. You're buying a system.</h2>
-        <p class="slide-lede reveal">Everything we do runs on the Scroll System, a repeatable engine with three zones. Here's the whole thing at a glance, then we'll walk the parts that matter most.</p>
+        <p class="slide-lede reveal">Everything we do runs on the Scroll System, <strong>a repeatable engine with three zones</strong>. Here's the whole thing at a glance, then we'll walk the parts that matter most.</p>
         <div class="zones">
-          <div class="zone reveal d1"><span class="zn">Zone 01</span><h3>Foundation</h3><p>We immerse in your brand and get specific about exactly who we're trying to reach. Strategy before a single piece of content. The part most agencies skip.</p></div>
-          <div class="zone reveal d2"><span class="zn">Zone 02</span><h3>Execution</h3><p>The Content Engine. We map a content funnel to your audience, then generate ideas, choose formats, sharpen hooks, and ship on a consistent cadence.</p></div>
-          <div class="zone reveal d3"><span class="zn">Zone 03</span><h3>Performance</h3><p>We track the signals that predict customers, report monthly, and adjust the strategy quarterly. The system gets sharper every cycle.</p></div>
-        </div>
-        <div class="fw-flow">
-          <div class="fw-step reveal d1"><span class="n">Step 1</span><h4>Immerse</h4><p>Learn the brand deeply so we operate as an extension of Atlas, not an outside vendor.</p></div>
-          <div class="fw-step reveal d2"><span class="n">Step 2</span><h4>Understand the viewer</h4><p>Get specific on the one buyer so every decision is reverse-engineered for them.</p></div>
-          <div class="fw-step reveal d3"><span class="n">Step 3</span><h4>Map the funnel</h4><p>Relatable, then authority, then proof, then the ask. The viewer's path to a yes.</p></div>
-          <div class="fw-step reveal d4"><span class="n">Step 4</span><h4>Run the engine</h4><p>Idea to format to hook to data, on a loop. Strong content, made repeatable.</p></div>
-          <div class="fw-step reveal d4"><span class="n">Step 5</span><h4>Measure and refine</h4><p>Monitor monthly, adjust quarterly. Double down on winners, never overcorrect.</p></div>
+          <div class="zone reveal d1">
+            <span class="zn">Zone 01</span><h3>Foundation</h3>
+            <div class="zsub">We build the strategy.</div>
+            <ul class="zsteps"><li>Brand immersion</li><li>Understand your viewer</li><li>Map the funnel</li></ul>
+            <p>Strategy before a single piece of content. The part most agencies skip.</p>
+          </div>
+          <div class="zone reveal d2">
+            <span class="zn">Zone 02</span><h3>Execution</h3>
+            <div class="zsub">We run the Content Engine.</div>
+            <ul class="zsteps"><li>Heavy testing first, then refine on what's working</li><li>Strong ideation across many formats</li><li>Curiosity levers and attention hooks</li></ul>
+            <p>The 4-step engine is the next slide.</p>
+          </div>
+          <div class="zone reveal d3">
+            <span class="zn">Zone 03</span><h3>Performance</h3>
+            <div class="zsub">We track, learn, and adjust.</div>
+            <ul class="zsteps"><li>Analytics mapped back to your goals</li><li>Find the winning formats for each funnel stage</li><li>Make strategic adjustments</li></ul>
+            <p>The system gets sharper every cycle.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- S05 CONTENT FUNNEL -->
     <section class="slide" id="s05" data-nav="The content funnel">
-      <span class="section-num">02</span>
+      <span class="section-num">05</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 1</span>Foundation &middot; The funnel</span>
         <h2 class="slide-title reveal">How a stranger becomes a booked call.</h2>
-        <p class="slide-lede reveal">Nobody books a tech partner from one post. We move the viewer through four stages, each doing a specific job in their decision.</p>
+        <p class="slide-lede reveal">Nobody books a tech partner from one post. We move the viewer through <strong>four stages</strong>, each doing a specific job in their decision.</p>
         <div class="funnel-stage fs-tofu reveal d1"><div class="fbadge">Relatable</div><div class="fmain"><h4>Top of funnel &middot; get their attention</h4><p>Content they recognize themselves in. "That's my business." They start associating Atlas with the problem they feel. This is where reach lives.</p></div></div>
         <div class="funnel-stage fs-mofu reveal d2"><div class="fbadge">Authority</div><div class="fmain"><h4>Middle of funnel &middot; earn their trust</h4><p>Education that shows Chase actually knows this. Interest turns into trust. They start thinking "this is the person who gets it."</p></div></div>
         <div class="funnel-stage fs-bofu reveal d3"><div class="fbadge">Proof</div><div class="fmain"><h4>Bottom of funnel &middot; remove the doubt</h4><p>Evidence it works. Real transformations, before-and-afters, results. The viewer believes the outcome is real, not a promise.</p></div></div>
@@ -535,7 +614,7 @@
 
     <!-- S06 CONTENT ENGINE + MATURITY RIBBON -->
     <section class="slide" id="s06" data-nav="The Content Engine">
-      <span class="section-num">02</span>
+      <span class="section-num">06</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 1</span>Foundation &middot; The engine</span>
         <h2 class="slide-title reveal">How we manufacture strong content, on repeat.</h2>
@@ -552,7 +631,7 @@
         <div class="mnote reveal" style="margin-top:var(--sp-7)"><b>How we evolve it.</b> Early on we test heavily, trying a wide range of formats to learn what your audience cares about and what converts. From there we settle on the one or two that win at each stage of the funnel. We monitor monthly and adjust quarterly. Always evolving, never overcorrecting on a single post.</div>
 
         <h3 class="reveal" style="font-size:var(--fs-md);color:var(--azure);margin:var(--sp-7) 0 6px">Where Atlas starts, and where we're taking it</h3>
-        <p class="reveal" style="font-size:13.5px;color:var(--fg-muted);line-height:1.55;max-width:74ch">We read account maturity on more than follower count. Engagement health, audience quality, content velocity, and business fundamentals all factor in. Atlas starts at Spark, a new account with a clear runway.</p>
+        <p class="reveal" style="font-size:13.5px;color:var(--fg-muted);line-height:1.55;max-width:74ch">We read account maturity on <strong>more than follower count</strong>. Engagement health, audience quality, content velocity, and business fundamentals all factor in. <strong>Atlas starts at Spark</strong>, a new account with a clear runway.</p>
         <div class="mat">
           <div class="mat-stage here reveal d1"><div class="mn">Spark</div><div class="ml">New account, building the foundation. Prove the audience and the formats.</div></div>
           <div class="mat-stage reveal d2"><div class="mn">Lift</div><div class="ml">Reach and engagement start compounding. Winning formats emerge.</div></div>
@@ -565,7 +644,7 @@
 
     <!-- S07 GOALS -->
     <section class="slide" id="s07" data-nav="Goals + tracking">
-      <span class="section-num">03</span>
+      <span class="section-num">07</span>
       <div class="slide-inner">
         <div class="callout reveal" style="margin-bottom:var(--sp-6)">
           <div class="cl-label">Why organic social</div>
@@ -578,21 +657,21 @@
           <div class="goal reveal d1">
             <span class="gstage">Awareness &middot; Top of funnel</span>
             <h3>Get Atlas in front of regional owners.</h3>
-            <p>Relatable content that the right owners across Kentucky and Cincinnati see and recognize themselves in.</p>
-            <div class="kpi"><div class="kl">How we track it</div><div class="kv">Reach to new accounts, sends, and saves. Are we surfacing to the right people?</div></div>
+            <p>Relatable content that the right owners across Northern Kentucky and Cincinnati see and recognize themselves in.</p>
+            <div class="kpi"><div class="kl">How we track it</div><div class="kv"><strong>Views, shares, new followers.</strong> Is the right audience finding us?</div></div>
           </div>
           <div class="goal priority reveal d2">
             <span class="gflag">Your #1 priority</span>
             <span class="gstage">Trust &amp; authority &middot; Middle of funnel</span>
             <h3>Become the trusted no-hype tech voice.</h3>
             <p>Education and expertise that turn interest into trust. The shift from "who's this?" to "this is the person who gets it."</p>
-            <div class="kpi"><div class="kl">How we track it</div><div class="kv">Saves, profile visits, and watch time. Are they coming back and going deeper?</div></div>
+            <div class="kpi"><div class="kl">How we track it</div><div class="kv"><strong>Profile visits, retention %, saves.</strong> Are they coming back and going deeper?</div></div>
           </div>
           <div class="goal reveal d3">
             <span class="gstage">Conversion &middot; Bottom of funnel</span>
             <h3>Generate qualified fit-call signal.</h3>
             <p>Get Atlas in front of the right owners, walk them through a clear path to a fit call, and track the interest signals that predict customers.</p>
-            <div class="kpi"><div class="kl">How we track it</div><div class="kv">DMs, link taps, and booked fit calls. The metric that actually predicts revenue.</div></div>
+            <div class="kpi"><div class="kl">How we track it</div><div class="kv"><strong>Link taps, conversion rate.</strong> Are they taking action? Booked fit calls are the end goal we're driving toward, not yet wired into reporting.</div></div>
           </div>
         </div>
         <div class="mnote reveal" style="margin-top:var(--sp-6)"><b>How you'll see this.</b> Every month you get a performance report scored against these three goals, with your top posts and the focus for the month ahead. We review signals at the bi-weekly check-in and re-baseline the plan each quarter.</div>
@@ -601,7 +680,7 @@
 
     <!-- S08 IVP -->
     <section class="slide" id="s08" data-nav="Who we're getting you in front of">
-      <span class="section-num">04</span>
+      <span class="section-num">08</span>
       <div class="slide-inner">
         <div class="callout reveal" style="margin-bottom:var(--sp-6)">
           <div class="cl-label">Why we capture this in depth</div>
@@ -652,7 +731,7 @@
 
     <!-- S09 THE CONTENT SYSTEM (IDEATION MATRIX) -->
     <section class="slide" id="s09" data-nav="The content system">
-      <span class="section-num">05</span>
+      <span class="section-num">09</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 2</span>Execution &middot; The content system</span>
         <h2 class="slide-title reveal">Three pillars. Every stage of the funnel.</h2>
@@ -677,35 +756,56 @@
             <div class="icell bofu"><div class="icl">Proof + ask &middot; DMs &middot; link taps &middot; booked calls</div><div class="ichips"><span class="ichip">Product Feature (the Assessment)</span><span class="ichip">Before/After Transformation</span><span class="ichip">Case Study / Before-After Carousel</span></div></div>
           </div>
         </div>
-        <div class="imarquee">
-          <div class="imq reveal d1"><div class="imql">P1 marquee idea</div><p>"Most small businesses don't need AI. Here's the one thing they actually do."</p></div>
-          <div class="imq reveal d2"><div class="imql">P2 marquee idea</div><p>"Why I left a decade in enterprise to build Atlas."</p></div>
-          <div class="imq reveal d3"><div class="imql">P3 marquee idea</div><p>"What a Technology Assessment actually looks like, exactly what you get."</p></div>
+        <div class="iquote-row">
+          <div class="iqcol reveal d1">
+            <div class="iqh">P1 &middot; example ideas</div>
+            <ul>
+              <li>"Most small businesses don't need AI. Here's the one thing they do."</li>
+              <li>"3 'AI tools' you're wasting money on (and the one that pays off)."</li>
+              <li>"Your spreadsheet is one bad row from disaster."</li>
+            </ul>
+          </div>
+          <div class="iqcol reveal d2">
+            <div class="iqh">P2 &middot; example ideas</div>
+            <ul>
+              <li>"Why I left a decade in enterprise to build Atlas."</li>
+              <li>"If I ran tech for a local law firm, here's what I'd fix first."</li>
+              <li>"I'm not building for a quick exit. I'm building something my kids could run."</li>
+            </ul>
+          </div>
+          <div class="iqcol reveal d3">
+            <div class="iqh">P3 &middot; example ideas</div>
+            <ul>
+              <li>"What a Technology Assessment actually looks like."</li>
+              <li>"One spreadsheet, three editors, zero source of truth, here's the fix."</li>
+              <li>"'What's it going to cost?' A straight answer, no 'it depends.'"</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- S10 HOW WE REACH THEM -->
     <section class="slide" id="s10" data-nav="How we reach them">
-      <span class="section-num">06</span>
+      <span class="section-num">10</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 2</span>Execution &middot; Reaching them</span>
         <h2 class="slide-title reveal">Start broad to get found. Narrow to get chosen.</h2>
-        <p class="slide-lede reveal">We open wide to reach as many of the right people as possible, then compress over time to the hyper-local owner Atlas closes. The keywords we optimize for get more specific as we go.</p>
+        <p class="slide-lede reveal">We open wide to reach as many of the right people as possible, then compress over time to the hyper-local owner Atlas closes. We call it <strong>the accordion</strong>: wide at the top for reach, narrowing to precision as audience quality climbs.</p>
         <div class="reach-grid">
           <div>
-            <h3 class="colhead reveal">The reach ladder</h3>
+            <h3 class="colhead reveal">The accordion</h3>
             <div class="tam">
-              <div class="tam-row tam-r1 reveal d1"><span class="tl-num">Widest</span><span><span class="tk">AI and tech for small business</span> <span class="td">&middot; broad reach, burst into the feed</span></span></div>
-              <div class="tam-row tam-r2 reveal d2"><span class="tl-num">Narrower</span><span><span class="tk">AI for service businesses</span> <span class="td">&middot; the right category</span></span></div>
-              <div class="tam-row tam-r3 reveal d3"><span class="tl-num">Local</span><span><span class="tk">tech help in Cincinnati and KY</span> <span class="td">&middot; the geography</span></span></div>
-              <div class="tam-row tam-r4 reveal d4"><span class="tl-num">Hyper-local</span><span><span class="tk">fractional CTO for NKY firms</span> <span class="td">&middot; the exact buyer</span></span></div>
+              <div class="tam-row tam-r1 reveal d1"><span class="tl-num">Widest</span><span><span class="tk">Broad reach</span> <span class="td">&middot; burst into the feed</span><span class="acc-keys"><span class="kw">"AI for small business"</span> &middot; <span class="kw">"small business automation"</span> &middot; <span class="kw">"AI tools for business"</span></span></span></div>
+              <div class="tam-row tam-r2 reveal d2"><span class="tl-num">Narrow</span><span><span class="tk">The right category</span> <span class="td">&middot; service businesses</span><span class="acc-keys"><span class="kw">"AI for service businesses"</span> &middot; <span class="kw">"automation for professional services"</span> &middot; <span class="kw">"business automation consultant"</span></span></span></div>
+              <div class="tam-row tam-r3 reveal d3"><span class="tl-num">Local</span><span><span class="tk">The geography</span> <span class="td">&middot; Cincinnati and KY</span><span class="acc-keys"><span class="kw">"Cincinnati small business tech"</span> &middot; <span class="kw">"Northern Kentucky IT consultant"</span> &middot; <span class="kw">"Cincinnati business automation"</span></span></span></div>
+              <div class="tam-row tam-r4 reveal d4"><span class="tl-num">Hyper-local</span><span><span class="tk">The exact buyer</span> <span class="td">&middot; the operator we close</span><span class="acc-keys"><span class="kw">"fractional CTO Cincinnati"</span> &middot; <span class="kw">"Florence KY tech consultant"</span> &middot; <span class="kw">"NKY AI consultant"</span></span></span></div>
             </div>
-            <div class="tam-cap reveal"><span>Month 1: reach</span><span>Month 6+: precision</span></div>
+            <div class="reach-axis reveal"><b>Month 1: reach</b> (wide audience, just earning attention) to <b>Month 6+: precision</b> (narrow, high-quality, ready to act). The audience narrows while quality rises at every step, mirroring the funnel's shape.</div>
           </div>
           <div>
             <h3 class="colhead reveal">Social SEO</h3>
-            <div class="seo-note reveal d1"><p>Instagram search now works on keywords, not just hashtags. We load your profile name, bio, and captions with the terms your buyer types, so Atlas surfaces when an owner searches for help. The terms get more specific as we narrow.</p></div>
+            <div class="seo-note reveal d1"><p>Instagram search now runs on keywords, not just hashtags. We <strong>spike into the algorithm early</strong>, <strong>learn which formats land</strong>, <strong>read the data</strong>, and <strong>refine and repeat</strong>, while watching your niche and adjacent niches for what's working. The profile name, bio, and captions get loaded with the terms your buyer types, more specific as we narrow.</p></div>
           </div>
         </div>
         <div class="ignition reveal">
@@ -713,9 +813,16 @@
           <div class="igintro">Starting from zero, here's how we get traction in the first 90 days.</div>
           <div class="ig-list">
             <div class="ig-item"><b>Seed the account</b><span>From your email list, LinkedIn, and local network on day one.</span></div>
-            <div class="ig-item"><b>Local collabs</b><span>About two collab posts a month with complementary businesses (CPAs, attorneys, the chamber) who also send referrals.</span></div>
             <div class="ig-item"><b>Daily engagement</b><span>About 30 minutes a day of manual engagement with the right local accounts.</span></div>
             <div class="ig-item"><b>Speaking moments</b><span>We capture your speaking engagements when you give us two weeks' notice.</span></div>
+          </div>
+        </div>
+        <div class="collab reveal">
+          <div class="igl">Local collaborations: borrow the audience</div>
+          <p class="cintro">Partner with visible, social-active local businesses to co-create an "AI in action" piece. Atlas fixes one painful manual workflow on camera, the featured business shares it to their audience, and other local owners see what's possible. It positions Atlas as the go-to AI resource for local business, and doubles as live proof. <b>We anchor every collab on a use case the paying buyer also has</b> (intake, scheduling, follow-up, data organization), so the content reaches a wide local audience but still magnetizes the high-value operator.</p>
+          <div class="collab-grid">
+            <div class="collab-col"><div class="ccl">Business types to target</div><p>Restaurants and cafés &middot; boutique retail and local e-commerce &middot; fitness studios, gyms, salons, med spas &middot; home and local services &middot; real estate teams &middot; local startups.</p></div>
+            <div class="collab-col"><div class="ccl">Best use cases for content</div><p>24/7 lead capture and instant response &middot; booking, scheduling, and no-show reduction &middot; customer follow-up and reviews &middot; killing manual data entry into one source of truth.</p></div>
           </div>
         </div>
       </div>
@@ -723,7 +830,7 @@
 
     <!-- S11 DIFFERENTIATORS -->
     <section class="slide" id="s11" data-nav="What makes Atlas different">
-      <span class="section-num">07</span>
+      <span class="section-num">11</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 2</span>Execution &middot; Positioning</span>
         <h2 class="slide-title reveal">What makes Atlas different, woven into every post.</h2>
@@ -744,15 +851,15 @@
 
     <!-- S12 METRICS -->
     <section class="slide" id="s12" data-nav="What we measure">
-      <span class="section-num">08</span>
+      <span class="section-num">12</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 3</span>Performance &middot; Measurement</span>
         <h2 class="slide-title reveal">We track the signals that predict customers.</h2>
         <p class="slide-lede reveal">Followers and views are context, not the scoreboard. For a business with your deal size, the metric that matters is qualified fit calls. Everything else tells us whether we're on the path to them.</p>
         <div class="metric-grid">
-          <div class="mcol tofu reveal d1"><div class="mhead">Top of funnel</div><ul><li><b>Reach</b> to new accounts</li><li><b>Sends</b>, the top 2026 discovery signal</li><li><b>Saves</b>, the authority signal</li><li class="q">Is the right audience finding us?</li></ul></div>
-          <div class="mcol mofu reveal d2"><div class="mhead">Middle of funnel</div><ul><li><b>Saves</b> on frameworks and how-tos</li><li><b>Watch time</b>, the strongest attention and trust signal</li><li><b>Profile visits</b>, interest beyond the post</li><li class="q">Are they coming to trust the founder?</li></ul></div>
-          <div class="mcol bofu reveal d3"><div class="mhead">Bottom of funnel</div><ul><li><b>DMs</b> and qualified conversations</li><li><b>Link taps</b> to the booking path</li><li><b>Booked fit calls</b>, the north star</li><li class="q">Are they converting?</li></ul></div>
+          <div class="mcol tofu reveal d1"><div class="mhead">Top of funnel</div><ul><li><b>Views</b></li><li><b>Shares</b>, the top 2026 discovery signal</li><li><b>New followers</b></li><li class="q">Is the right audience finding us?</li></ul></div>
+          <div class="mcol mofu reveal d2"><div class="mhead">Middle of funnel</div><ul><li><b>Profile visits</b>, interest beyond the post</li><li><b>Retention %</b>, the strongest attention and trust signal</li><li><b>Saves</b> on frameworks and how-tos</li><li class="q">Are they coming to trust the founder?</li></ul></div>
+          <div class="mcol bofu reveal d3"><div class="mhead">Bottom of funnel</div><ul><li><b>Link taps</b> to the booking path</li><li><b>Conversion rate</b></li><li class="q">Are they taking action? Booked fit calls are the north-star goal we're driving toward, not yet wired into reporting.</li></ul></div>
         </div>
         <div class="mnote reveal"><b>How the score works.</b> Each month's content is scored on a weighted framework where saves and click-through carry the most weight, because they best predict customer behavior. You get one clear score, your top posts, and the focus for next month.</div>
         <div class="callout anchor reveal" style="margin-top:var(--sp-5)">
@@ -764,11 +871,11 @@
 
     <!-- S13 VALUE MODEL -->
     <section class="slide" id="s13" data-nav="The value model">
-      <span class="section-num">09</span>
+      <span class="section-num">13</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 3</span>Performance &middot; The value model</span>
         <h2 class="slide-title reveal">A conservative 12-month picture.</h2>
-        <p class="slide-lede reveal">This is illustrative, not a guarantee, and it's built on the bottom of every credible range with zero viral assumption. If the funnel performs even at industry norms, we beat this plan.</p>
+        <p class="slide-lede reveal">This is <strong>illustrative, not a guarantee</strong>, and it's built on the bottom of every credible range with zero viral assumption. <strong>If the funnel performs even at industry norms, we beat this plan.</strong></p>
         <div class="roi-stats">
           <div class="rstat reveal d1"><div class="rv" data-count="26">26</div><div class="rl">qualified fit calls projected in year one</div></div>
           <div class="rstat reveal d2"><div class="rv" data-count="3">3</div><div class="rl">closed clients at a conservative 12% close rate</div></div>
@@ -789,7 +896,7 @@
 
     <!-- S14 PLAN / CTA -->
     <section class="slide" id="s14" data-nav="The plan from here">
-      <span class="section-num">10</span>
+      <span class="section-num">14</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Section 3</span>Performance &middot; From here</span>
         <h2 class="slide-title reveal">The one action we drive people to.</h2>
@@ -811,6 +918,7 @@
 
     <!-- S15 CLOSE -->
     <section class="slide" id="s15" data-nav="Close">
+      <span class="section-num" style="color:var(--lucid)">15</span>
       <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700">
         <line x1="160" y1="180" x2="360" y2="120"/><line x1="360" y1="120" x2="560" y2="260"/>
         <line x1="560" y1="260" x2="820" y2="160"/><line x1="820" y1="160" x2="1040" y2="300"/>
@@ -821,8 +929,10 @@
         <circle cx="700" cy="520" r="6"/><circle cx="960" cy="460" r="5"/>
       </svg>
       <div class="slide-inner">
+        <img class="mono-accent reveal" loading="lazy" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="" aria-hidden="true" style="filter:brightness(0) invert(1)" />
         <h2 class="reveal">Let's make Atlas the name owners already trust.</h2>
         <p class="reveal d1">We've got the system, the audience, and the plan. Now we build the content that makes it real, starting July 1.</p>
+        <img class="sq-div center reveal d2" loading="lazy" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" style="filter:brightness(0) invert(1);opacity:.55" />
         <div class="signoff reveal d2">Scroll Media &middot; Phase 1 Strategy &middot; Prepared for Atlas Systems</div>
       </div>
     </section>

@@ -453,6 +453,24 @@
     .collab-col p{font-size:12.5px;color:var(--fg-muted);line-height:1.5}
     @media (max-width:640px){.collab-grid{grid-template-columns:1fr}}
 
+    /* ACCESS-CODE GATE (Tier 3 · client-side, post-delivery) */
+    body.sm-locked{overflow:hidden}
+    #sm-gate{position:fixed;inset:0;background:var(--ghost);display:flex;align-items:center;justify-content:center;z-index:99999;padding:24px}
+    .sm-gate-card{background:var(--white);border:1px solid var(--rule-faint);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;text-align:center;box-shadow:0 4px 24px rgba(12,51,135,.08)}
+    .sm-gate-logo{height:30px;width:auto;margin:0 auto 26px;display:block}
+    .sm-gate-title{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--shadow);margin-bottom:6px}
+    .sm-gate-sub{font-size:14px;color:var(--fg-muted);margin-bottom:26px;line-height:1.5}
+    .sm-gate-input-wrap{position:relative;margin-bottom:12px}
+    .sm-gate-input{width:100%;background:var(--bg-alt);border:1.5px solid var(--rule);border-radius:8px;padding:13px 48px 13px 16px;font-size:15px;font-family:inherit;color:var(--shadow);outline:none;transition:border-color .2s;letter-spacing:.06em}
+    .sm-gate-input:focus{border-color:var(--azure)}
+    .sm-gate-input::placeholder{letter-spacing:0;color:var(--fg-subtle)}
+    .sm-gate-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--fg-muted);padding:4px;display:flex;align-items:center;min-height:auto}
+    .sm-gate-btn{width:100%;background:var(--azure);color:var(--white);border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s,transform .1s;min-height:44px}
+    .sm-gate-btn:hover{background:var(--azure-900)}
+    .sm-gate-btn:active{transform:scale(.98)}
+    .sm-gate-error{font-size:13px;color:#dc2626;margin-top:10px;display:none}
+    .sm-gate-error.visible{display:block}
+
     /* REVIEW MODE */
     #reviewBar{display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:200;background:var(--azure);color:var(--ghost);border-radius:999px;padding:8px 10px 8px 16px;box-shadow:var(--sh-lg);align-items:center;gap:10px;font-size:13px;font-weight:600}
     body.review #reviewBar{display:flex}
@@ -481,6 +499,54 @@
   </style>
 </head>
 <body>
+  <!-- ─── ACCESS-CODE GATE (Tier 3) ─── -->
+  <div id="sm-gate">
+    <div class="sm-gate-card">
+      <img class="sm-gate-logo" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="Scroll Media" width="60" height="30" />
+      <div class="sm-gate-title">Private strategy deck</div>
+      <div class="sm-gate-sub">This strategy deck is private. Enter your access code to continue.</div>
+      <div class="sm-gate-input-wrap">
+        <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+        <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+          <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <button class="sm-gate-btn" id="sm-gate-btn">View deck</button>
+      <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var PASS='atlas.scroll', KEY='sm_atlas_v1';
+    var gate=document.getElementById('sm-gate');
+    var inp=document.getElementById('sm-gate-input');
+    var btn=document.getElementById('sm-gate-btn');
+    var err=document.getElementById('sm-gate-error');
+    var tog=document.getElementById('sm-gate-toggle');
+    if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+    else { document.body.classList.add('sm-locked'); inp.focus(); }
+    function unlock(){
+      if(inp.value.trim().toLowerCase()===PASS){
+        sessionStorage.setItem(KEY,'1');
+        document.body.classList.remove('sm-locked');
+        gate.style.opacity='0'; gate.style.transition='opacity .3s';
+        setTimeout(function(){ gate.style.display='none'; },300);
+      } else {
+        err.classList.add('visible'); inp.style.borderColor='#dc2626';
+        setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+      }
+    }
+    btn.addEventListener('click',unlock);
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') unlock(); });
+    tog.addEventListener('click',function(){
+      var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+      document.getElementById('sm-eye-icon').innerHTML=isPw
+        ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+        :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    });
+  })();
+  </script>
+
   <div id="progress"></div>
 
   <header class="deck-header">

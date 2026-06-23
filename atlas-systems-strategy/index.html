@@ -85,8 +85,8 @@
     .eyebrow .act{background:var(--azure);color:var(--ghost);padding:3px 9px;border-radius:999px;font-size:10px;letter-spacing:.1em}
     .slide-title{font-size:var(--fs-3xl);margin-bottom:var(--sp-4);max-width:20ch}
     .slide-lede{font-size:var(--fs-lg);color:var(--fg-muted);max-width:64ch;margin-bottom:var(--sp-6);line-height:1.5}
-    .section-num{position:absolute;top:var(--sp-7);right:var(--sp-7);font-size:13px;font-weight:700;color:var(--azure-200);letter-spacing:.05em}
-    @media (max-width:560px){.section-num{display:none}}
+    .section-num{position:absolute;top:calc(var(--header-h) + 8px);right:var(--sp-6);z-index:6;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--azure);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:999px;padding:3px 9px;font-variant-numeric:tabular-nums}
+    .section-num.on-dark{background:rgba(203,233,255,.18);border-color:rgba(203,233,255,.40);color:var(--ghost)}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -123,6 +123,18 @@
     .agenda-act{grid-column:1 / -1;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azure-600);margin-top:var(--sp-4);display:flex;align-items:center;gap:10px}
     .agenda-act::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
     @media (max-width:760px){.agenda-grid{grid-template-columns:1fr}}
+    /* Agenda · how-today two-part framing */
+    .today-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-5)}
+    .today-card{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-4) var(--sp-5)}
+    .today-card.p2{border-top-color:var(--highlighter-dark)}
+    .today-card .tch{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-3)}
+    .today-card .tcp{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600)}
+    .today-card .tcm{font-size:12px;font-weight:800;color:var(--fg-subtle);letter-spacing:.03em;white-space:nowrap}
+    .today-card .tct{font-size:var(--fs-md);font-weight:800;color:var(--azure);margin:2px 0 0}
+    .today-card p{font-size:13.5px;color:var(--fg-muted);line-height:1.45;margin-top:6px}
+    @media (max-width:640px){.today-split{grid-template-columns:1fr}}
+    .agenda-sublabel{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3);display:flex;align-items:center;gap:10px}
+    .agenda-sublabel::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
 
     /* CARD GRIDS */
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5)}
@@ -462,7 +474,8 @@
       .mcol li,.mcol li.q,.rstat .rl,.ttac p,.ptip p,.pf-note,.icell .icl,
       .bio-lines div,.pin .pt,.callout p,.mnote,.enode span,.tl-when,
       .tl-rcard .rt,.tl-rcard .rw,.iqcol li,.acc-keys,.collab p,.collab .cintro,.reach-axis,
-      .us-card p,.zone ul.zsteps li,.zone .zsub,.j-when,.j-what,.living-note{font-size:14px}
+      .us-card p,.zone ul.zsteps li,.zone .zsub,.j-when,.j-what,.living-note,
+      .today-card p,.today-card .tcm,.today-card .tcp,.agenda-sublabel{font-size:14px}
       .cover-sub,.slide-lede{font-size:16px}
     }
   </style>
@@ -493,7 +506,7 @@
 
     <!-- S01 COVER -->
     <section class="slide" id="s01" data-nav="Cover">
-      <span class="section-num" style="color:var(--lucid)">01</span>
+      <span class="section-num on-dark">01</span>
       <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700">
         <line x1="120" y1="120" x2="320" y2="240"/><line x1="320" y1="240" x2="540" y2="160"/>
         <line x1="540" y1="160" x2="760" y2="300"/><line x1="760" y1="300" x2="980" y2="200"/>
@@ -522,7 +535,20 @@
       <div class="slide-inner">
         <span class="eyebrow reveal">What we'll cover today</span>
         <h2 class="slide-title reveal">The agenda.</h2>
-        <p class="slide-lede reveal">We'll walk the strategy in three sections: the foundation we build on, how we execute, and how we measure it. Click any line to jump straight to it.</p>
+        <p class="slide-lede reveal">Today is a 90-minute working meeting in two parts. Click any line below to jump straight to it.</p>
+        <div class="today-split">
+          <div class="today-card reveal d1">
+            <div class="tch"><span class="tcp">Part 1</span><span class="tcm">~35 min</span></div>
+            <div class="tct">The strategy</div>
+            <p>We walk the plan together: the foundation we build on, how we execute, and how we measure it.</p>
+          </div>
+          <div class="today-card p2 reveal d2">
+            <div class="tch"><span class="tcp">Part 2</span><span class="tcm">~50 min</span></div>
+            <div class="tct">Working session</div>
+            <p>Visual direction and grid &middot; your profile and handle &middot; the first shot list &middot; open questions.</p>
+          </div>
+        </div>
+        <div class="agenda-sublabel reveal">Part 1 &middot; what we'll walk through</div>
         <div class="agenda-grid">
           <div class="agenda-act reveal">Section 1 &middot; Foundation</div>
           <a class="agenda-item reveal" href="#s03"><span class="agenda-num">01</span><span class="agenda-text"><b>Our understanding</b><span>What we heard, and where we are in the timeline</span></span></a>
@@ -918,7 +944,7 @@
 
     <!-- S15 CLOSE -->
     <section class="slide" id="s15" data-nav="Close">
-      <span class="section-num" style="color:var(--lucid)">15</span>
+      <span class="section-num on-dark">15</span>
       <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700">
         <line x1="160" y1="180" x2="360" y2="120"/><line x1="360" y1="120" x2="560" y2="260"/>
         <line x1="560" y1="260" x2="820" y2="160"/><line x1="820" y1="160" x2="1040" y2="300"/>

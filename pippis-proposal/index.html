@@ -912,6 +912,16 @@
     .need-head { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap; }
     @media (max-width:640px){ .dog-accent{ width:120px; margin:0 auto; } .need-head{ justify-content:center; } }
 
+    /* ══ PROOF · collapsible "show more" ══ */
+    details.proof-more { margin-top:22px; border:1px solid var(--border); border-radius:var(--radius); background:#fff; overflow:hidden; }
+    details.proof-more > summary { list-style:none; cursor:pointer; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; gap:12px; font-weight:700; color:var(--azure); font-size:14px; min-height:44px; transition:background .15s; }
+    details.proof-more > summary::-webkit-details-marker { display:none; }
+    details.proof-more > summary:hover { background:var(--azure-lt); }
+    details.proof-more > summary .chev { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; }
+    details.proof-more[open] > summary .chev { transform:rotate(180deg); }
+    .proof-more-body { padding:4px 22px 22px; }
+    .proof-more-body .proof-sub-head { margin-top:8px; }
+
     /* ══ CONTENT ENGINE · node-network motif ══ */
     .engine { margin-top:28px; }
     .engine-head { max-width:640px; margin-bottom:8px; }
@@ -932,12 +942,16 @@
     .engine-center span { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
     .engine-node {
       position:absolute; transform:translate(-50%,-50%);
-      min-width:84px; padding:10px 6px; border-radius:10px; text-align:center; cursor:pointer;
+      min-width:88px; padding:9px 8px; border-radius:10px; text-align:center; cursor:pointer;
       background:var(--azure); color:#fff; border:2px solid transparent;
+      display:flex; flex-direction:column; align-items:center; gap:1px; line-height:1.1;
       transition:transform .25s ease, box-shadow .25s ease; user-select:none;
     }
-    .engine-node .en-step { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.7; }
-    .engine-node .en-name { font-size:14px; font-weight:800; letter-spacing:-.01em; }
+    .engine-node .en-step { display:block; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.72; margin:0; }
+    .engine-node .en-name { display:block; font-size:15px; font-weight:800; letter-spacing:-.01em; margin:0; }
+    /* idea group labels */
+    .idea-group-label { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin:30px 0 12px; display:flex; align-items:center; gap:12px; }
+    .idea-group-label::after { content:''; flex:1; height:1px; background:var(--border); }
     .engine-node.signal { background:var(--hi); color:var(--shadow); }
     .engine-node.active { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 8px 22px rgba(12,51,135,.22); border-color:#fff; z-index:3; }
     .engine-node.signal.active { box-shadow:0 8px 22px rgba(200,214,0,.45); }
@@ -1051,13 +1065,14 @@
 
 <!-- ══════════ HERO ══════════ -->
 <div class="hero reveal" id="top">
-  <div class="hero-chip">Scroll Media × Pippi's · Signature Package Proposal</div>
-  <h1>Built before you open.<br/><em>Booked when you do.</em></h1>
+  <div class="hero-chip">Scroll Media × Pippi's · Organic Social Media Marketing Proposal</div>
+  <h1>Your organic social,<br/><em>built for Instagram.</em></h1>
   <img class="squiggle-underline" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="108" height="60" />
-  <p class="hero-sub" style="margin-top:18px;">A Signature Package proposal for Pippi's. Built around the one window you only get once: the weeks before you open the doors in Over-the-Rhine.</p>
+  <p class="hero-sub" style="margin-top:18px;">A proposal for Pippi's to bring on Scroll Media as your <strong>organic social media marketing partner</strong>, focused entirely on Instagram. We run <strong>strategy, content, and growth end to end</strong>, so you stay the artist and the owner.</p>
   <div class="hero-meta">
     <span><strong>Client</strong> Pippi's</span>
     <span><strong>Package</strong> Signature · Growth</span>
+    <span><strong>Focus</strong> Organic social · Instagram</span>
     <span><strong>Prepared</strong> June 2026</span>
     <span><strong>Strategist</strong> Chase Gianattasio</span>
     <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--azure);font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(12,51,135,0.15)'" onmouseout="this.style.background='var(--azure-lt)'">📖 How We Work →</a>
@@ -1076,24 +1091,24 @@
   <div class="goals-grid">
     <div class="goal-card">
       <div class="goal-num">01</div>
-      <h4>Fill the room</h4>
-      <p class="goal-headline">Stylists first, then chairs.</p>
-      <p class="goal-application">Get the right talent to the table and the right clients in the chairs. A commission salon launches on people, so day one we run two tracks at once: recruiting stylists and warming an audience of clients ready to book when you open.</p>
-      <span class="goal-tag tag-tofu">TOFU · Awareness + Recruiting</span>
+      <h4>Awareness, through relatable content</h4>
+      <p class="goal-headline">Get seen by the right room.</p>
+      <p class="goal-application">The top of the funnel is being <strong>discovered by the right Over-the-Rhine audience</strong>, with content they see themselves in. <strong>Relatable content</strong> that feels like Pippi's and stops the people who belong in your chair.</p>
+      <span class="goal-tag tag-tofu">TOFU · Awareness · Relatable</span>
     </div>
     <div class="goal-card">
       <div class="goal-num">02</div>
-      <h4>Build the trust before the doors open</h4>
-      <p class="goal-headline">Credibility, fast.</p>
-      <p class="goal-application">A new name has to earn trust quickly. We do it with the founder story, the brand world, the Rico story, and collaborations that borrow credibility from brands Over-the-Rhine already trusts.</p>
-      <span class="goal-tag tag-mofu">MOFU · Authority</span>
+      <h4>Authority, through education</h4>
+      <p class="goal-headline">Become the expert they trust.</p>
+      <p class="goal-application">The middle of the funnel is where we teach. <strong>Educational content</strong> that shows your craft and positions Pippi's as <strong>the expert</strong>, so the audience learns from you and trusts you before they ever book.</p>
+      <span class="goal-tag tag-mofu">MOFU · Authority · Educational</span>
     </div>
     <div class="goal-card">
       <div class="goal-num">03</div>
-      <h4>Open to demand, not silence</h4>
-      <p class="goal-headline">Bookings on day one.</p>
-      <p class="goal-application">By launch, you open to an audience that has watched Pippi's come to life and already decided they are booking. We build the launch list, the booking path, and the conversion moment so opening week is busy, not quiet.</p>
-      <span class="goal-tag tag-bofu">BOFU · Conversion</span>
+      <h4>Conversion, through proof</h4>
+      <p class="goal-headline">Turn attention into qualified leads.</p>
+      <p class="goal-application">The bottom of the funnel is consideration. <strong>Proof-based content</strong>, real results and real transformations, that shows the work actually works and moves the right people to become <strong>qualified leads</strong> for Pippi's.</p>
+      <span class="goal-tag tag-bofu">BOFU · Conversion · Proof</span>
     </div>
   </div>
 
@@ -1268,7 +1283,10 @@
 
   </div>
 
-  <!-- ══ PROOF LAYER 2 · BREADTH CHIP GRID ══ -->
+  <!-- ══ PROOF LAYER 2 · BREADTH CHIP GRID (collapsed) ══ -->
+  <details class="proof-more">
+    <summary><span>📊 Show ten more wins across the funnel</span> <span class="chev">▼</span></summary>
+    <div class="proof-more-body">
   <div class="proof-sub-head">
     <div class="eyebrow">And More Where That Came From</div>
     <h3>Ten more wins. <em>Across the funnel.</em></h3>
@@ -1349,14 +1367,14 @@
   </div>
 
   <p class="breadth-footer">Different clients. Different formats. Different funnel stages. Same strategic system underneath every win.</p>
+    </div>
+  </details>
 
-  <!-- ══ PROOF · TESTIMONIAL QUOTES (white-labeled) ══ -->
-  <div class="mt-lg">
-    <div class="eyebrow" style="margin-top:0;">What Clients Say</div>
-    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">In their own <em style="font-style:italic;color:var(--azure);">words.</em></h3>
-    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Three current clients on what it is like to work with us.</p>
-
-    <div class="proof-quotes">
+  <!-- ══ PROOF · TESTIMONIAL QUOTES (white-labeled, collapsed) ══ -->
+  <details class="proof-more">
+    <summary><span>💬 Show what clients say</span> <span class="chev">▼</span></summary>
+    <div class="proof-more-body">
+    <div class="proof-quotes" style="margin-top:8px;">
       <div class="proof-quote">
         <p>"She helped us develop our social strategy, filmed engaging content, and grew our following significantly. I highly recommend Scroll Media."</p>
         <div class="proof-quote-attr">— Owner, Cincinnati beauty boutique</div>
@@ -1370,7 +1388,8 @@
         <div class="proof-quote-attr">— Current client, after a member-generated reel went viral</div>
       </div>
     </div>
-  </div>
+    </div>
+  </details>
 </div>
 
 <div class="divider"></div>
@@ -1389,56 +1408,56 @@
     <div class="ivp-panel active" id="ivp-0">
       <div class="ivp-col">
         <h4>Who They Are</h4>
-        <p>Higher-end Over-the-Rhine and Cincinnati women, roughly 25 to 45, professional and exec-tier (the Kroger-executive archetype). Some are your loyal clients coming with you. Some are new, currently sitting in a chair that does not feel like Pippi's.</p>
+        <p>Higher-end Over-the-Rhine and Cincinnati women, roughly 25 to 45, <strong>professional and exec-tier</strong> (the Kroger-executive archetype). Some are your <strong>loyal clients coming with you</strong>. Some are new, currently sitting in a chair that does not feel like Pippi's.</p>
         <h4>Motivators</h4>
         <ul class="arrow-list">
-          <li>A colorist they trust completely</li>
-          <li>A space that feels intentional and elevated</li>
-          <li>Being early to something special in the neighborhood</li>
-          <li>A premium experience that is not stuffy</li>
+          <li>A <strong>colorist they trust completely</strong></li>
+          <li>A space that feels <strong>intentional and elevated</strong></li>
+          <li>Being <strong>early to something special</strong> in the neighborhood</li>
+          <li>A <strong>premium experience that is not stuffy</strong></li>
         </ul>
       </div>
       <div class="ivp-col">
         <h4>Current Challenges</h4>
         <ul class="arrow-list">
-          <li>They have a stylist but not a home</li>
-          <li>They do not know Pippi's exists yet</li>
-          <li>They want elevated, not basic and not intimidating luxury</li>
+          <li>They have a stylist but <strong>not a home</strong></li>
+          <li>They <strong>do not know Pippi's exists</strong> yet</li>
+          <li>They want <strong>elevated</strong>, not basic and not intimidating luxury</li>
         </ul>
         <h4>Dream Outcomes</h4>
         <ul class="arrow-list">
-          <li>The colorist who finally gets it right</li>
-          <li>A salon that feels like theirs</li>
-          <li>Being a Pippi's regular before everyone else is</li>
+          <li>The <strong>colorist who finally gets it right</strong></li>
+          <li>A <strong>salon that feels like theirs</strong></li>
+          <li>Being a <strong>Pippi's regular before everyone else</strong> is</li>
         </ul>
         <h4>How Content Adapts</h4>
-        <p>Color transformations, the communal-table experience, founder POV, the brand world, Rico. The pre-launch runway warms them so they book in week one.</p>
+        <p><strong>Color transformations</strong>, the <strong>communal-table experience</strong>, founder POV, the brand world, Rico. The pre-launch runway warms them so they <strong>book in week one</strong>.</p>
       </div>
     </div>
     <div class="ivp-panel" id="ivp-1">
       <div class="ivp-col">
         <h4>Who They Are</h4>
-        <p>Talented Cincinnati stylists who want more than a booth. People drawn to craft, mentorship, and a community-first room.</p>
+        <p>Talented Cincinnati stylists who want <strong>more than a booth</strong>. People drawn to <strong>craft, mentorship, and a community-first room</strong>.</p>
         <h4>Motivators</h4>
         <ul class="arrow-list">
-          <li>A beautiful space</li>
-          <li>A real break room and a team that invests in them</li>
-          <li>Growth and mentorship</li>
-          <li>A commission model in a room that is going somewhere</li>
+          <li>A <strong>beautiful space</strong></li>
+          <li>A <strong>real break room</strong> and a team that invests in them</li>
+          <li><strong>Growth and mentorship</strong></li>
+          <li>A <strong>commission model</strong> in a room that is going somewhere</li>
         </ul>
       </div>
       <div class="ivp-col">
         <h4>Current Challenges</h4>
         <ul class="arrow-list">
-          <li>Stuck in salons that overlook the people behind the chair</li>
-          <li>Want a table, not a row of stations</li>
+          <li>Stuck in salons that <strong>overlook the people behind the chair</strong></li>
+          <li>Want <strong>a table, not a row of stations</strong></li>
         </ul>
         <h4>Dream Outcomes</h4>
         <ul class="arrow-list">
-          <li>A studio that takes their craft and their well-being seriously, in the best location in the city</li>
+          <li>A studio that <strong>takes their craft and their well-being seriously</strong>, in the best location in the city</li>
         </ul>
         <h4>How Content Adapts</h4>
-        <p>The communal-table philosophy, the break room, the founder's vision, "join the table" recruiting content. This audience is how the chairs get filled before opening.</p>
+        <p>The <strong>communal-table philosophy</strong>, the break room, the founder's vision, <strong>"join the table"</strong> recruiting content. This audience is how the chairs get filled before opening.</p>
       </div>
     </div>
   </div>
@@ -1620,146 +1639,14 @@
 <div class="wrap reveal" id="ideation">
   <div class="eyebrow">Content Ideation</div>
   <h2 class="section-title">Built around your launch. <em>Designed to perform.</em></h2>
-  <p class="section-sub">These are the signature pieces we would build for Pippi's. Not generic salon content. Concepts only you could make, each engineered to travel from a standing start and mapped across the funnel, from first discovery to a booked chair.</p>
+  <p class="section-sub">Here is <strong>how we generate ideas</strong>, and the ideas themselves. Not generic salon content. Concepts <strong>only Pippi's could make</strong>, each engineered to travel from a standing start and mapped to the funnel: relatable at the top, educational in the middle, proof at the bottom.</p>
 
-  <div class="accordion" id="accordion">
-
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">&#127916;</div>
-          <div>
-            <div class="acc-title">The table, built on camera</div>
-            <div class="acc-sub">The signature series</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
-          <div class="acc-chevron">&#9660;</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Every salon is a row of strangers in mirrors. We're building one table instead. Watch.&rdquo;</p>
-        <p>A serialized build-in-public film: your communal table coming to life from raw lumber in the gutted building, each episode ending before it is finished so the next one earns its place. It turns the single most ownable thing you have into a story before it is even a place, and it pays off in a cinematic row-of-mirrors-versus-one-table reveal.</p>
-        <div class="acc-metrics"><span class="metric-tag">TOFU &middot; Reach</span><span class="metric-tag method">The signature series</span></div>
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">&#128064;</div>
-          <div>
-            <div class="acc-title">The colorist's read</div>
-            <div class="acc-sub">Reach + authority</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
-          <div class="acc-chevron">&#9660;</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;I can tell you exactly what your last colorist got wrong. In about four seconds.&rdquo;</p>
-        <p>You read real people's color with an editorial eye, never mean, always expert. It is the format that scales, because it travels off other people's hair instead of your following, which is exactly what a brand-new account needs. It positions you as Cincinnati's colorist before you have colored a single local head.</p>
-        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Authority</span></div>
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">&#9986;&#65039;</div>
-          <div>
-            <div class="acc-title">Things I quit to get here</div>
-            <div class="acc-sub">Founder</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
-          <div class="acc-chevron">&#9660;</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Art school. Then advertising. Then wine. Now hair. People think that's a mess. It's the whole point.&rdquo;</p>
-        <p>The founder story told as a reframe: every chapter that looks like a detour is the reason your eye is what it is. The most emotionally resonant thing the brand owns, and the share-trigger for every woman who ever feared she started too late.</p>
-        <div class="acc-metrics"><span class="metric-tag">TOFU &rarr; MOFU &middot; Founder</span></div>
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">&#10024;</div>
-          <div>
-            <div class="acc-title">The correction</div>
-            <div class="acc-sub">Bookings</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
-          <div class="acc-chevron">&#9660;</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;She walked in with $400 of damage from another salon. Here's what we did.&rdquo;</p>
-        <p>A color correction told with real stakes: the damage, your read of what went wrong, the intentional process, and a reveal that lands on her face, not just her hair. Corrections are the highest-intent content a salon can make. This is the piece the right client saves for months, then books.</p>
-        <div class="acc-metrics"><span class="metric-tag">BOFU &middot; Bookings</span></div>
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">&#127862;</div>
-          <div>
-            <div class="acc-title">The bottle Cincinnati's never seen</div>
-            <div class="acc-sub">Discovery</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
-          <div class="acc-chevron">&#9660;</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;There's a hair product half of Italy swears by. I had to gut a building to bring it here.&rdquo;</p>
-        <p>Rico, shot tactile and cinematic. A discovery story with built-in scarcity that is simply true, and one no other salon in the city can tell.</p>
-        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Discovery</span></div>
-      </div>
-    </div>
-
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this)">
-        <div class="acc-header-left">
-          <div class="acc-icon">&#129681;</div>
-          <div>
-            <div class="acc-title">The salon your stylist wishes she worked at</div>
-            <div class="acc-sub">Clients + stylists</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
-          <div class="acc-chevron">&#9660;</div>
-        </div>
-      </div>
-      <div class="acc-body">
-        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;What if your stylist didn't have to rent her chair, buy her own products, and figure it all out alone?&rdquo;</p>
-        <p>The overwhelm of booth rental, then a hard cut to the calm of the table. Recruiting that never feels like a job post. Stylists send it to stylists, and clients send it to their stylist.</p>
-        <div class="acc-metrics"><span class="metric-tag">Recruiting &middot; Clients + stylists</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <img class="squiggle-divider" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="200" height="111" />
-
-  <!-- CONTENT ENGINE · node-network motif -->
+  <!-- CONTENT ENGINE · node-network motif (framework intro, above the grid) -->
   <div class="engine" id="engine">
     <div class="engine-head">
-      <div class="eyebrow" style="margin-top:0;">The engine behind them</div>
-      <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Not one-offs. <em style="font-style:italic;color:var(--azure);">Outputs of a loop.</em></h3>
-      <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;">Every idea above runs the same four-step loop. We pick the idea, choose the format that carries it, engineer the hook that stops the scroll, then read the data and feed the winners back in. That is the Scroll content engine, and it never stops turning.</p>
+      <div class="eyebrow" style="margin-top:0;">The Scroll Content Engine</div>
+      <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">How we generate ideas. <em style="font-style:italic;color:var(--azure);">Idea, format, hook, data.</em></h3>
+      <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;">Every idea below comes out of this engine. We <strong>pull the idea</strong>, choose the <strong>format</strong>, sharpen the <strong>hook</strong>, then let the <strong>data</strong> tell us what to scale. It is a repeatable loop, and it never stops turning.</p>
     </div>
     <div class="engine-stage" id="engine-stage">
       <svg class="engine-links" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -1770,7 +1657,7 @@
       </svg>
       <div class="engine-center">
         <img src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="" aria-hidden="true" width="60" height="30" />
-        <span>Scroll system</span>
+        <span>Scroll Content Engine</span>
       </div>
       <button type="button" class="engine-node active" data-i="0"><span class="en-step">Step 01</span><span class="en-name">Idea</span></button>
       <button type="button" class="engine-node" data-i="1"><span class="en-step">Step 02</span><span class="en-name">Format</span></button>
@@ -1785,24 +1672,233 @@
     </div>
   </div>
 
+  <img class="squiggle-divider" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="200" height="111" />
+
+  <div class="idea-group-label">Signature series &middot; recurring franchises</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127916;</div>
+          <div>
+            <div class="acc-title">The table, built on camera</div>
+            <div class="acc-sub">Build-in-public film · the signature series</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Every salon is a row of strangers in mirrors. We're building one table instead. Watch.&rdquo;</p>
+        <p>A serialized build-in-public film: the communal table coming to life from raw lumber in the gutted building, each episode ending before it is finished so the next one earns its place. It turns the single most ownable thing you have into a story before it is even a place, and pays off in a cinematic “row of mirrors versus one table” reveal.</p>
+        <div class="acc-metrics"><span class="metric-tag">TOFU &middot; Relatable</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#128064;</div>
+          <div>
+            <div class="acc-title">The colorist's read</div>
+            <div class="acc-sub">Editorial read · signature series</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;I can tell you exactly what your last colorist got wrong. In about four seconds.&rdquo;</p>
+        <p>You read real people's color with an editorial eye, never mean, always expert. It scales because it travels off other people's hair instead of your following, which is exactly what a brand-new account needs. It positions you as Cincinnati's colorist before you have colored a single local head.</p>
+        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Educational</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#10024;</div>
+          <div>
+            <div class="acc-title">The reveal</div>
+            <div class="acc-sub">Transformation series · signature series</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;POV: you finally found a colorist who gets it.&rdquo;</p>
+        <p>The recurring transformation series, a slow, scored build to the final blonde. The highest-intent content a salon can make, and the most saved and shared format there is. Every episode is proof the work works.</p>
+        <div class="acc-metrics"><span class="metric-tag">BOFU &middot; Proof</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="idea-group-label">Reels &middot; standalone</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#9986;&#65039;</div>
+          <div>
+            <div class="acc-title">Things I quit to get here</div>
+            <div class="acc-sub">Founder story</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Art school. Then advertising. Then wine. Now hair. People think that's a mess. It's the whole point.&rdquo;</p>
+        <p>The founder story as a reframe: every chapter that looks like a detour is the reason your eye is what it is. The share-trigger for every woman who ever feared she started too late.</p>
+        <div class="acc-metrics"><span class="metric-tag">TOFU &middot; Relatable &middot; founder</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127912;</div>
+          <div>
+            <div class="acc-title">The correction</div>
+            <div class="acc-sub">Color correction, real stakes</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;She walked in with $400 of damage from another salon. Here's what we did.&rdquo;</p>
+        <p>A color correction with real stakes: the damage, your read of what went wrong, the process, and a reveal that lands on her face, not just her hair. The piece the right client saves for months, then books.</p>
+        <div class="acc-metrics"><span class="metric-tag">BOFU &middot; Proof</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#129309;</div>
+          <div>
+            <div class="acc-title">The salon your stylist wishes she worked at</div>
+            <div class="acc-sub">Recruiting that travels</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;What if your stylist didn't have to rent her chair, buy her own products, and figure it all out alone?&rdquo;</p>
+        <p>The overwhelm of booth rental, then a hard cut to the calm of the table. Recruiting that never feels like a job post. Stylists send it to stylists, and clients send it to their stylist.</p>
+        <div class="acc-metrics"><span class="metric-tag">Recruiting &middot; clients + stylists</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="idea-group-label">Carousels &middot; saveable</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#128269;</div>
+          <div>
+            <div class="acc-title">What your colorist sees vs. what you see</div>
+            <div class="acc-sub">Annotated expertise</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Carousel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;You see blonde. I see fourteen decisions.&rdquo;</p>
+        <p>A finished blonde, annotated decision by decision (root shadow, brightness around the face, cool tone at the nape). The most saveable format there is, and instant proof of expertise.</p>
+        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Educational</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127470;&#127481;</div>
+          <div>
+            <div class="acc-title">The bottle Cincinnati's never seen</div>
+            <div class="acc-sub">Rico discovery</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Carousel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;There's a hair product half of Italy swears by, and almost no one in America has touched it.&rdquo;</p>
+        <p>Rico, told as a discovery carousel. Built-in scarcity that is simply true, and a product story no other salon in the city can tell.</p>
+        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Discovery</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#129681;</div>
+          <div>
+            <div class="acc-title">One table, not a row of mirrors</div>
+            <div class="acc-sub">The communal-table manifesto</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Carousel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Every other salon keeps stylists apart on purpose. We did the opposite, and here's why it changes your appointment.&rdquo;</p>
+        <p>The communal-table manifesto as a carousel. Your most ownable detail, told as a point of view.</p>
+        <div class="acc-metrics"><span class="metric-tag">MOFU &middot; Relatable &middot; brand</span></div>
+      </div>
+    </div>
+
+  </div>
+
   <!-- CREATIVE BENCHMARK BLOCK -->
   <div class="mt-lg">
     <div class="eyebrow" style="margin-top:0;">We Did Our Homework</div>
     <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The bar we're building toward. <em style="font-style:italic;color:var(--azure);">Adapted to your craft.</em></h3>
-    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">You sent us Amelia Jane and J. Edwards. Both are Australian, which is the most advanced hair-content market in the world. That is the standard we are building Pippi's toward, translated to your room and your color work.</p>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">You sent us <strong>Amelia Jane</strong> and <strong>J. Edwards</strong>, both Australian, which is the most advanced hair-content market in the world. That is the standard we are building Pippi's toward.</p>
 
     <div class="g3">
-      <div class="card">
-        <div class="card-label">Amelia Jane · @ameliajanehair</div>
-        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Editorial blonde transformations and the way she shoots for light. <strong style="color:var(--shadow);">What we'll borrow:</strong> the reveal craft and colorist-as-authority positioning.</p>
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">Amelia Jane</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">@ameliajanehair · editorial blonde, and the way she shoots for light.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> her transformation-reveal craft and colorist-as-authority positioning.</p>
       </div>
-      <div class="card">
-        <div class="card-label">J. Edwards · EdwardsAndCo</div>
-        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Australia's "future-proof color" salon brand. <strong style="color:var(--shadow);">What we'll borrow:</strong> the discipline that makes the account itself feel like a destination, not just a feed.</p>
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">J. Edwards</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">EdwardsAndCo · Australia's "future-proof color" salon brand.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> the brand discipline that makes the account itself feel like a destination, not just a feed.</p>
       </div>
-      <div class="card">
-        <div class="card-label">Menspire</div>
-        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;">A production reference, not a niche one. <strong style="color:var(--shadow);">What we'll borrow:</strong> their cinematic reveal editing, the hook to process to dramatic-reveal structure, applied to your transformations.</p>
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">Menspire</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">A production reference, not a niche one · cinematic male-grooming content.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> their reveal editing, the hook to process to dramatic-reveal structure, applied to your color work.</p>
       </div>
     </div>
   </div>
@@ -1940,102 +2036,98 @@
 
   <div class="tl-cta">
     <div style="font-size:24px;">⚡</div>
-    <p><strong>The runway window is now.</strong> Sign by end of June, kick off the first week of July, strategy locked mid-July, posting live by end of July. That gives Pippi's a full month-plus of pre-launch content before the late-August opening.</p>
+    <p><strong>The runway window is now.</strong> Sign by end of June, kick off early July, strategy locked by late July, first post live in early August. That gives Pippi's weeks of pre-launch runway before the late-August opening.</p>
   </div>
 
   <!-- VISUAL MILESTONE TIMELINE -->
   <div class="milestone-wrap mt-lg">
     <div class="milestone-track">
 
-      <!-- M1 · Week 1 · Kickoff + Foundation -->
+      <!-- M1 · Week 1 · Kickoff -->
       <div class="milestone-col">
         <div class="ms-dot ms-blue"></div>
         <div class="ms-line"></div>
         <div class="ms-card">
           <div class="ms-week">Week 1</div>
-          <div class="ms-title">Kickoff + Foundation</div>
+          <div class="ms-title">Kickoff</div>
           <div class="ms-items">
             <span>✓ Onboarding + kickoff call</span>
             <span>✓ Goals + launch date locked</span>
             <span>✓ Asset audit (Matt Stauf + Edelmade)</span>
-            <span>✓ Launch-list + profile build started</span>
           </div>
         </div>
       </div>
 
-      <!-- M2 · Week 2 · Strategy Development -->
+      <!-- M2 · Week 2 · Strategy development -->
       <div class="milestone-col">
         <div class="ms-dot ms-blue"></div>
         <div class="ms-line"></div>
         <div class="ms-card">
           <div class="ms-week">Week 2</div>
-          <div class="ms-title">Strategy Development</div>
+          <div class="ms-title">Strategy development</div>
           <div class="ms-items">
-            <span>✓ Two audiences + pillars</span>
+            <span>✓ Two audiences + content pillars</span>
             <span>✓ The runway plan</span>
-            <span>✓ Recruiting track</span>
             <span>✓ Instagram Social SEO</span>
           </div>
         </div>
       </div>
 
-      <!-- M3 · Week 3 · Strategy Presentation -->
+      <!-- M3 · Week 3 · Strategy presentation -->
       <div class="milestone-col">
         <div class="ms-dot ms-blue"></div>
         <div class="ms-line"></div>
         <div class="ms-card">
           <div class="ms-week">Week 3</div>
-          <div class="ms-title">Strategy Presentation</div>
+          <div class="ms-title">Strategy presentation</div>
           <div class="ms-items">
-            <span>✓ Deck presented</span>
-            <span>✓ Runway calendar approved</span>
+            <span>✓ Strategy deck presented</span>
             <span>✓ Strategy locked</span>
           </div>
         </div>
       </div>
 
-      <!-- M4 · Week 4 · First Content Cycle -->
+      <!-- M4 · Week 4 · First content shoot -->
       <div class="milestone-col">
         <div class="ms-dot ms-green"></div>
         <div class="ms-line"></div>
         <div class="ms-card">
           <div class="ms-week">Week 4</div>
-          <div class="ms-title">First Content Cycle</div>
+          <div class="ms-title">First content shoot</div>
           <div class="ms-items">
-            <span>✓ Graphic-led posts from existing assets</span>
-            <span>✓ Routed for approval</span>
-            <span>✓ First content shoot scheduled</span>
+            <span>✓ First production session</span>
+            <span>✓ Content captured + prepped</span>
+            <span>✓ First cycle routed for approval</span>
           </div>
         </div>
       </div>
 
-      <!-- M5 · Week 5 · Posting Live -->
+      <!-- M5 · Week 5 · First post goes live -->
       <div class="milestone-col">
         <div class="ms-dot ms-green"></div>
         <div class="ms-line"></div>
         <div class="ms-card">
           <div class="ms-week">Week 5</div>
-          <div class="ms-title">🚀 Posting Live (before end of July)</div>
+          <div class="ms-title">🚀 First post goes live</div>
           <div class="ms-items">
-            <span>✓ Runway begins with graphic-led posts</span>
-            <span>✓ Build-in-public + recruiting in market</span>
+            <span>✓ The runway begins</span>
+            <span>✓ Build-in-public in market</span>
             <span>✓ Launch list filling</span>
-            <span>✓ Video layers in after first shoot</span>
           </div>
         </div>
       </div>
 
-      <!-- M6 · Ongoing · Launch + Springboard -->
+      <!-- M6 · Ongoing · Execution mode -->
       <div class="milestone-col">
         <div class="ms-dot ms-green"></div>
         <div class="ms-line ms-line-fade"></div>
         <div class="ms-card ms-card-featured">
           <div class="ms-week">Ongoing</div>
-          <div class="ms-title">Launch + Springboard</div>
+          <div class="ms-title">Execution mode</div>
           <div class="ms-items">
+            <span>✓ Full content engine running</span>
             <span>✓ Countdown into late-August open</span>
-            <span>✓ Grand-open moment</span>
-            <span>✓ Hype shifts to proof</span>
+            <span>✓ Then hype shifts to proof</span>
           </div>
         </div>
       </div>
@@ -2054,12 +2146,12 @@
   <!-- ONGOING OPERATING RHYTHM -->
   <div class="rhythm-row mt-lg">
     <div class="rhythm-label">Ongoing operating rhythm</div>
-    <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once execution is live, four cadences run in parallel. They're the heartbeat of the engagement.</div>
+    <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once execution is live, <strong>five cadences</strong> run in parallel. They're the heartbeat of the engagement.</div>
     <div class="rhythm-steps">
       <div class="rhythm-step">
         <div class="rhythm-icon">📸</div>
         <div class="rhythm-name">Content Shoot</div>
-        <div class="rhythm-detail">Regular cadence · Batch shoots designed to minimize your time.</div>
+        <div class="rhythm-detail">Every 3 to 4 weeks · 2 to 4 hours.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
@@ -2069,15 +2161,21 @@
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
+        <div class="rhythm-icon">📝</div>
+        <div class="rhythm-name">Feed Posts</div>
+        <div class="rhythm-detail">3 per week · Monday, Wednesday, Friday.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
         <div class="rhythm-icon">📅</div>
         <div class="rhythm-name">Story Days</div>
-        <div class="rhythm-detail">Two per week.</div>
+        <div class="rhythm-detail">2 per week · Tuesday, Thursday.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">📊</div>
         <div class="rhythm-name">Performance Report</div>
-        <div class="rhythm-detail">End of every month.</div>
+        <div class="rhythm-detail">First week of every month.</div>
       </div>
     </div>
   </div>

@@ -331,7 +331,10 @@
     .rstat .rl{font-size:12.5px;color:var(--fg-muted);margin-top:6px;line-height:1.4}
     .rstat.flag::after{background:var(--highlighter)}
     .roi-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--sp-5);margin-top:var(--sp-5);align-items:stretch}
-    .roi-chart-wrap{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);display:flex;flex-direction:column;justify-content:center}
+    .roi-chart-wrap{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);position:relative;height:320px}
+    .roi-chart-wrap canvas{display:block;width:100%!important;height:100%!important}
+    @media (max-width:768px){.roi-chart-wrap{height:260px}}
+    .roi-chart-cap{font-size:12px;color:var(--fg-subtle);line-height:1.45;text-align:center;margin-top:var(--sp-3)}
     .breakeven{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-6)}
     .breakeven .bl{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--highlighter)}
     .breakeven .bv{font-size:30px;font-weight:800;color:var(--ghost);line-height:1.1;margin:8px 0}
@@ -1048,10 +1051,10 @@
         </div>
         <div class="mnote reveal"><b>Where it lands.</b> Roughly <b>2 qualified leads a month</b> at the conservative floor, <b>4 to 5</b> at target. About <b>3 to 6 new clients</b> in year one, roughly <b>$45K to $90K+</b> in client value against about $37K invested. It pays for itself at <b>2 to 3 clients</b>.</div>
         <div class="eng-label reveal" style="margin-top:var(--sp-6)">The projection, as the account matures Spark &rarr; Lift &rarr; Rise</div>
-        <div class="roi-chart-wrap reveal d1" style="margin-bottom:var(--sp-4)">
-          <canvas id="roiChart" height="240"></canvas>
-          <p style="font-size:12px;color:var(--fg-subtle);line-height:1.45;text-align:center;margin-top:var(--sp-3)">Illustrative ramp, qualified leads per month. Months 1&ndash;2 are the testing window, no ROI expected yet. The curve climbs as the account matures.</p>
+        <div class="roi-chart-wrap reveal d1">
+          <canvas id="roiChart"></canvas>
         </div>
+        <p class="roi-chart-cap reveal" style="margin-bottom:var(--sp-4)">Illustrative ramp, qualified leads per month. Months 1&ndash;2 are the testing window, no ROI expected yet. The curve climbs as the account matures.</p>
         <div class="proj-ladder">
           <div class="pl-card anchor reveal d1"><div class="plw">6 months</div><p>Foundation built, audience proven, first qualified leads and an early close or two.</p><span class="pl-tag anchor">Defensible anchor</span></div>
           <div class="pl-card anchor reveal d2"><div class="plw">12 months</div><p>About 3 to 6 new clients, roughly $45K to $90K in client value. The engine pays for itself.</p><span class="pl-tag anchor">Defensible anchor</span></div>

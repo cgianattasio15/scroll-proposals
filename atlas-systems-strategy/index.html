@@ -1048,6 +1048,10 @@
         </div>
         <div class="mnote reveal"><b>Where it lands.</b> Roughly <b>2 qualified leads a month</b> at the conservative floor, <b>4 to 5</b> at target. About <b>3 to 6 new clients</b> in year one, roughly <b>$45K to $90K+</b> in client value against about $37K invested. It pays for itself at <b>2 to 3 clients</b>.</div>
         <div class="eng-label reveal" style="margin-top:var(--sp-6)">The projection, as the account matures Spark &rarr; Lift &rarr; Rise</div>
+        <div class="roi-chart-wrap reveal d1" style="margin-bottom:var(--sp-4)">
+          <canvas id="roiChart" height="240"></canvas>
+          <p style="font-size:12px;color:var(--fg-subtle);line-height:1.45;text-align:center;margin-top:var(--sp-3)">Illustrative ramp, qualified leads per month. Months 1&ndash;2 are the testing window, no ROI expected yet. The curve climbs as the account matures.</p>
+        </div>
         <div class="proj-ladder">
           <div class="pl-card anchor reveal d1"><div class="plw">6 months</div><p>Foundation built, audience proven, first qualified leads and an early close or two.</p><span class="pl-tag anchor">Defensible anchor</span></div>
           <div class="pl-card anchor reveal d2"><div class="plw">12 months</div><p>About 3 to 6 new clients, roughly $45K to $90K in client value. The engine pays for itself.</p><span class="pl-tag anchor">Defensible anchor</span></div>
@@ -1201,20 +1205,47 @@
     /* ROI chart */
     function drawChart(){
       const ctx=document.getElementById('roiChart'); if(!ctx||!window.Chart)return;
+      // X = months 1..24 (ticks shown only at 3/6/12/24). Months 1-2 = testing window.
+      const months=Array.from({length:24},(_,i)=>i+1);
+      const target=[0,0.2,1,1.4,2,2.5,2.9,3.2,3.6,3.9,4.2,4.5,4.8,5,5.3,5.5,5.7,5.9,6.1,6.3,6.5,6.7,6.85,7];
+      const floor =[0,0.1,0.5,0.8,1.2,1.5,1.6,1.7,1.8,1.85,1.95,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.75,2.85,2.9,2.95,3];
+      // Shade months 1-2 as the testing window (no annotation plugin needed)
+      const testingBand={
+        id:'testingBand',
+        beforeDatasetsDraw(chart){
+          const a=chart.chartArea, x=chart.scales.x; if(!a||!x)return;
+          const xEnd=(x.getPixelForValue(1)+x.getPixelForValue(2))/2; // edge of month 2 -> month 3
+          const ctx2=chart.ctx;
+          ctx2.save();
+          ctx2.fillStyle='rgba(203,233,255,.45)';
+          ctx2.fillRect(a.left,a.top,xEnd-a.left,a.bottom-a.top);
+          ctx2.fillStyle='#254fb0';
+          ctx2.font='600 10px "Source Sans 3",sans-serif';
+          ctx2.textAlign='left';
+          ctx2.fillText('Testing',a.left+6,a.top+13);
+          ctx2.fillText('no ROI yet',a.left+6,a.top+25);
+          ctx2.restore();
+        }
+      };
       new Chart(ctx,{
         type:'line',
-        data:{labels:['M1','M2','M3','M4','M5','M6','M7+'],
+        plugins:[testingBand],
+        data:{labels:months,
           datasets:[
-            {label:'Target (~1% to lead)',data:[0,0.5,1.5,3,4,4.5,5],
+            {label:'Target (~1% to lead)',data:target,
               borderColor:'#0C3387',backgroundColor:'rgba(12,51,135,.08)',fill:true,tension:.4,
-              pointBackgroundColor:'#0C3387',pointRadius:3},
-            {label:'Conservative floor (~0.5%)',data:[0,0.3,0.8,1.3,1.7,1.9,2],
+              pointBackgroundColor:'#0C3387',pointRadius:0,pointHoverRadius:4,borderWidth:2.5},
+            {label:'Conservative floor (~0.5%)',data:floor,
               borderColor:'#9ecee8',backgroundColor:'transparent',borderDash:[5,4],fill:false,tension:.4,
-              pointBackgroundColor:'#9ecee8',pointRadius:3}
+              pointBackgroundColor:'#9ecee8',pointRadius:0,pointHoverRadius:4,borderWidth:2}
           ]},
-        options:{plugins:{legend:{display:true,position:'bottom',labels:{color:'#5a6070',font:{size:11},boxWidth:14,padding:12}}},
-          scales:{y:{beginAtZero:true,ticks:{color:'#5a6070'},grid:{color:'rgba(12,51,135,.06)'},title:{display:true,text:'Qualified fit calls / month',color:'#5a6070'}},
-            x:{ticks:{color:'#5a6070'},grid:{display:false}}},
+        options:{
+          plugins:{legend:{display:true,position:'bottom',labels:{color:'#5a6070',font:{size:11},boxWidth:14,padding:12}},
+            tooltip:{callbacks:{title:(t)=>'Month '+t[0].label,label:(c)=>c.dataset.label.split(' (')[0]+': ~'+c.parsed.y+'/mo'}}},
+          scales:{
+            y:{beginAtZero:true,ticks:{color:'#5a6070',stepSize:1},grid:{color:'rgba(12,51,135,.06)'},title:{display:true,text:'Qualified leads / month',color:'#5a6070',font:{size:12}}},
+            x:{grid:{display:false},title:{display:true,text:'Month',color:'#5a6070',font:{size:12}},
+              ticks:{color:'#5a6070',autoSkip:false,callback:function(v){const m=this.getLabelForValue(v);return [3,6,12,24].includes(m)?m:'';}}}},
           responsive:true,maintainAspectRatio:false}
       });
     }

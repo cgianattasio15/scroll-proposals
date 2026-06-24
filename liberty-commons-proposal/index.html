@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="googlebot" content="noindex,nofollow" />
+  <title>Dr. Isha Patel × Scroll Media · Signature Package Proposal</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.14);
+      --lucid:     #cbe9ff;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --green:     #2a7a3a;
+      --green-lt:  rgba(42,122,58,0.08);
+      --radius:    12px;
+      --card-shadow: none;
+      --card-hover-shadow: 0 8px 24px rgba(12,51,135,0.10);
+      /* IG Insights accent palette for Proof section */
+      --ig-grad-1: #f09433;
+      --ig-grad-2: #dc2743;
+      --ig-grad-3: #bc1888;
+      --ig-pink:   #e1306c;
+      --ig-purple: #833ab4;
+      --ig-up:     #00ba7c;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:var(--azure); z-index:1001; transition:width .1s linear; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:transparent;
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    /* Frosted-glass topbar via pseudo-element so nav doesn't become the
+       containing block for its position:fixed descendants (the mobile nav overlay). */
+    nav::before {
+      content:''; position:absolute; inset:0; z-index:-1;
+      background:rgba(250,253,255,.94);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    }
+    .nav-logo img { height:26px; width:auto; display:block; image-rendering:auto; }
+    .nav-links { list-style:none; display:flex; gap:3px; }
+    .nav-links a {
+      display:block; padding:5px 10px; font-size:12px; font-weight:600;
+      color:var(--ink-mid); text-decoration:none; border-radius:6px; transition:color .2s,background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color:var(--azure); background:var(--azure-lt); }
+
+    /* Mobile nav toggle (hamburger) — hidden on desktop */
+    .nav-toggle {
+      display:none; align-items:center; justify-content:center;
+      width:44px; height:44px; padding:0; margin-right:-10px;
+      background:transparent; border:0; cursor:pointer;
+      position:relative; z-index:1002;
+    }
+    .nav-toggle-box { display:flex; flex-direction:column; gap:5px; }
+    .nav-toggle-box span {
+      display:block; width:22px; height:2px; background:var(--shadow); border-radius:2px;
+      transition:transform .25s ease, opacity .15s ease;
+    }
+    body.nav-open .nav-toggle-box span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    body.nav-open .nav-toggle-box span:nth-child(2) { opacity:0; }
+    body.nav-open .nav-toggle-box span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    @media(max-width:900px){
+      nav{padding:0 20px;}
+      .nav-toggle{display:flex;}
+      .nav-links{
+        position:fixed; top:63px; left:0; right:0; bottom:0;
+        flex-direction:column; gap:0; padding:12px 24px 40px;
+        background:rgba(250,253,255,.98);
+        backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+        transform:translateX(100%); transition:transform .3s ease;
+        z-index:999; overflow-y:auto;
+      }
+      body.nav-open .nav-links{transform:translateX(0);}
+      body.nav-open{overflow:hidden;}
+      .nav-links li{border-bottom:1px solid var(--border);}
+      .nav-links li:last-child{border-bottom:0;}
+      .nav-links a{
+        display:flex; align-items:center; min-height:52px; padding:14px 4px;
+        font-size:17px; font-weight:600; color:var(--shadow); border-radius:0;
+      }
+      .nav-links a:hover, .nav-links a.active{color:var(--azure); background:transparent;}
+    }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:620px; margin-bottom:28px; line-height:1.65; }
+
+    /* ── CARDS ── */
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .card-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+
+    /* ── LISTS ── */
+    .tick-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tick-list li { font-size:14px; color:var(--ink-mid); padding-left:22px; position:relative; line-height:1.5; }
+    .tick-list li::before { content:'✓'; color:var(--azure); position:absolute; left:0; font-weight:700; font-size:12px; top:2px; }
+
+    .arrow-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .arrow-list li { font-size:14px; color:var(--ink-mid); padding-left:18px; position:relative; line-height:1.5; }
+    .arrow-list li::before { content:'→'; color:var(--azure); font-weight:700; position:absolute; left:0; }
+
+    /* ── GRIDS ── */
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .g2,.g3{grid-template-columns:1fr;} }
+
+    /* ── UTILS ── */
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    .insight { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .insight p strong { color:var(--azure); }
+
+    .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .assumption p strong { color:var(--azure); }
+
+    /* ══ HERO ══ */
+    .hero { padding:150px 32px 72px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:560px; line-height:1.65; margin-bottom:28px; }
+    .hero-meta { display:flex; gap:10px; flex-wrap:wrap; }
+    .hero-meta span { background:var(--porcelain); border:1px solid var(--border); border-radius:100px; padding:6px 16px; font-size:13px; color:var(--ink-mid); }
+    .hero-meta span strong { color:var(--shadow); }
+
+    /* ══ PRIORITY (WHAT WE KNOW) GRID ══ */
+    .goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:760px){ .goals-grid{grid-template-columns:1fr;} }
+    .goal-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; display:flex; flex-direction:column; gap:10px; }
+    .goal-num { width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0; }
+    .goal-card h4 { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .goal-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; flex:1; }
+    .goal-card p + p { margin-top:6px; }
+    .goal-card p strong { color:var(--shadow); }
+    .goal-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; align-self:flex-start; }
+    .tag-tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .tag-mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .tag-bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* ══ DIFFERENTIATOR BLOCK ══ */
+    .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:640px){ .diff-grid{grid-template-columns:1fr;} }
+    .diff-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px 24px; }
+    .diff-num { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:8px; }
+    .diff-card h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:10px; line-height:1.35; }
+    .diff-card p { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ PROOF SECTION (NEW) ══ */
+    .proof-stack { display:flex; flex-direction:column; gap:22px; }
+    .proof-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:26px 28px;
+    }
+    .proof-card-eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft); margin-bottom:8px;
+    }
+    .proof-card-pill {
+      display:inline-block; font-size:11px; font-weight:700;
+      padding:4px 12px; border-radius:100px;
+      background:var(--porcelain); border:1px solid var(--border); color:var(--ink-mid);
+      margin-bottom:18px;
+    }
+    .proof-metrics-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:16px 28px;
+      padding:6px 0 18px;
+    }
+    @media(max-width:480px){ .proof-metrics-grid{grid-template-columns:1fr 1fr; gap:14px 18px;} }
+    .proof-metric { display:flex; flex-direction:column; gap:2px; }
+    .proof-metric-value {
+      font-size:28px; font-weight:800; color:var(--azure);
+      letter-spacing:-.02em; line-height:1.05;
+    }
+    .proof-metric-value.pct {
+      color:var(--azure);
+    }
+    .proof-metric-label {
+      font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft); margin-top:2px;
+    }
+    .proof-card-footer {
+      border-top:1px solid var(--border); padding-top:14px; margin-top:6px;
+    }
+    .proof-card-footer p {
+      font-size:13px; color:var(--ink-mid); line-height:1.6; font-style:italic;
+    }
+    .proof-card-footer p strong { color:var(--shadow); font-style:normal; }
+
+    /* Dashboard variant */
+    .proof-dashboard-body {
+      display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center;
+      padding:8px 0 20px;
+    }
+    @media(max-width:640px){
+      .proof-dashboard-body { grid-template-columns:1fr; gap:24px; justify-items:center; }
+    }
+    .proof-donut {
+      position:relative; width:160px; height:160px; flex-shrink:0;
+    }
+    .proof-donut-svg { width:100%; height:100%; transform:rotate(-90deg); }
+    .proof-donut-track { fill:none; stroke:rgba(0,0,0,0.06); stroke-width:10; }
+    .proof-donut-fill { fill:none; stroke:var(--azure); stroke-width:10; stroke-linecap:round; }
+    .proof-donut-center {
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:2px;
+    }
+    .proof-donut-label {
+      font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .proof-donut-value {
+      font-size:24px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1;
+    }
+    .proof-donut-legend {
+      display:flex; flex-direction:column; gap:6px; margin-top:14px;
+      align-items:flex-start;
+    }
+    .proof-donut-legend-row {
+      display:flex; align-items:center; gap:8px; font-size:11px; color:var(--ink-mid);
+    }
+    .proof-donut-dot {
+      width:8px; height:8px; border-radius:50%; flex-shrink:0;
+    }
+    .proof-donut-dot.followers { background:var(--azure); }
+    .proof-donut-dot.nonfollowers { background:var(--lucid-deep,#9ecee8); }
+    .proof-dashboard-metrics {
+      display:flex; flex-direction:column; gap:10px; width:100%;
+    }
+    .proof-dash-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 14px; background:var(--porcelain); border-radius:8px;
+      gap:12px;
+    }
+    .proof-dash-label {
+      font-size:12px; color:var(--ink-mid); font-weight:600; flex:1;
+    }
+    .proof-dash-value {
+      font-size:16px; font-weight:800; color:var(--shadow); letter-spacing:-.01em;
+    }
+    .proof-dash-delta {
+      display:inline-flex; align-items:center; gap:3px;
+      font-size:11px; font-weight:700; color:var(--ig-up);
+      background:rgba(0,186,124,.1); padding:3px 8px; border-radius:4px;
+      white-space:nowrap;
+    }
+    .proof-hero-reel {
+      background:var(--azure-lt);
+      border:1px solid rgba(220,39,67,.18); border-radius:var(--radius);
+      padding:14px 18px; margin-bottom:18px;
+    }
+    .proof-hero-reel-label {
+      font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--azure);
+      margin-bottom:4px;
+    }
+    .proof-hero-reel p {
+      font-size:13px; color:var(--ink-mid); line-height:1.55;
+    }
+    .proof-hero-reel p strong { color:var(--shadow); }
+
+    /* Quote block */
+    .proof-quotes { display:flex; flex-direction:column; gap:18px; }
+    .proof-quote {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:24px 28px;
+      border-left:4px solid var(--azure);
+    }
+    .proof-quote p {
+      font-size:17px; font-style:italic; color:var(--azure);
+      line-height:1.5; margin-bottom:12px; letter-spacing:-.005em;
+    }
+    .proof-quote-attr {
+      font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+
+    /* ══ IVP TABS ══ */
+    .ivp-tabs { display:flex; gap:8px; margin-bottom:0; flex-wrap:wrap; }
+    .ivp-tab { padding:8px 18px; border-radius:8px 8px 0 0; font-size:13px; font-weight:700; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--porcelain); color:var(--ink-soft); transition:background .15s,color .15s; user-select:none; }
+    .ivp-tab.active { background:#fff; color:var(--azure); }
+    .ivp-panels { border:1px solid var(--border); border-radius:0 var(--radius) var(--radius) var(--radius); background:#fff; box-shadow:var(--card-shadow); }
+    .ivp-panel { display:none; padding:26px; }
+    .ivp-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:640px){ .ivp-panel.active{grid-template-columns:1fr;} }
+    .ivp-col h4 { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+    .ivp-col p  { font-size:14px; color:var(--ink-mid); line-height:1.6; margin-bottom:12px; }
+    .ivp-col h4 + h4 { margin-top:16px; }
+    .ivp-col ul.arrow-list { margin-bottom:6px; }
+
+    /* ══ PHASE FLOW (Mason arc) ══ */
+    .phase-flow { display:flex; flex-direction:column; }
+    .phase-item { display:grid; grid-template-columns:28px 1fr; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); }
+    .phase-item:last-child { border-bottom:none; }
+    .phase-dot { width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; margin-top:2px; }
+    .phase-dot.muted { background:var(--porcelain); color:var(--ink-soft); border:1px solid var(--border); }
+    .phase-body h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .phase-body p  { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ══ SOCIAL SEO ══ */
+    .keyword-bank { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .kw {
+      font-size:12px; font-weight:600; padding:5px 12px;
+      border-radius:100px; border:1px solid var(--azure-bd);
+      background:var(--azure-lt); color:var(--azure);
+    }
+    .kw.tier2 { background:rgba(226,237,122,.3); border-color:rgba(200,214,0,.3); color:#4d5e00; }
+    .kw.tier3 { background:var(--azure-lt); border-color:var(--azure-bd); color:var(--azure); }
+    .kw.tier4 { background:rgba(12,51,135,.05); border-color:rgba(12,51,135,.12); color:var(--azure); font-weight:700; }
+
+    /* ══ CONTENT IDEATION ACCORDION ══ */
+    .accordion { display:flex; flex-direction:column; gap:10px; }
+    .acc-item { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .acc-header {
+      padding:16px 22px; display:flex; align-items:center; justify-content:space-between;
+      cursor:pointer; user-select:none; transition:background .15s;
+    }
+    .acc-header:hover { background:var(--porcelain); }
+    .acc-header-left { display:flex; align-items:center; gap:14px; }
+    .acc-icon { font-size:20px; flex-shrink:0; }
+    .acc-title { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .acc-sub   { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+    .acc-tags  { display:flex; gap:6px; flex-wrap:wrap; }
+    .acc-tag   { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:4px; }
+    .tag-reel     { background:rgba(12,51,135,.1); color:var(--azure); }
+    .tag-carousel { background:rgba(226,237,122,.4); color:#4d5e00; }
+    .tag-static   { background:rgba(255,190,80,.22); color:#7a4800; }
+    .acc-chevron { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; margin-left:12px; }
+    .acc-item.open .acc-chevron { transform:rotate(180deg); }
+    .acc-body { display:none; padding:0 22px 20px; border-top:1px solid var(--border); }
+    .acc-item.open .acc-body { display:block; }
+    .acc-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:14px; }
+    .acc-metrics { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .metric-tag { font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; background:rgba(12,51,135,.08); color:var(--azure); border:1px solid var(--azure-bd); }
+    .metric-tag.method { background:rgba(226,237,122,.3); color:#4d5e00; border-color:rgba(200,214,0,.35); }
+
+    /* ══ SCOPE TABLE ══ */
+    .scope-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
+    .scope-table th:last-child { text-align:center; }
+    .scope-table td { padding:11px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:36%; padding-right:16px; }
+    .scope-table td:last-child { text-align:center; width:80px; }
+    .scope-table tr:last-child td { border-bottom:none; }
+    .scope-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:var(--azure-lt); color:var(--azure); margin-left:6px; }
+    .scope-badge.feat { background:rgba(226,237,122,.55); color:#4d5e00; }
+    .check { color:var(--azure); font-weight:700; font-size:16px; }
+
+    /* ══ TIMELINE ══ */
+    .tl-cta { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+    .tl-cta p strong { color:var(--shadow); }
+
+    /* ══ INVESTMENT ══ */
+    .inv-hero { background:var(--azure); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
+    .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+    .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; max-width:560px; line-height:1.55; }
+    .inv-hero-row { display:flex; gap:32px; flex-wrap:wrap; }
+    .inv-hero-stat .amount { font-size:32px; font-weight:800; line-height:1; }
+    .inv-hero-stat .lbl { font-size:12px; opacity:.7; margin-top:3px; }
+    @media(max-width:640px){ .inv-hero{padding:24px 20px;} }
+    .inv-breakdown { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inv-row { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); font-size:14px; gap:16px; }
+    .inv-row:last-child { border-bottom:none; }
+    .inv-row.total { background:var(--azure-lt); font-weight:700; }
+    .inv-row .item { color:var(--ink-mid); flex:1; }
+    .inv-row .item strong { color:var(--shadow); display:block; font-size:15px; margin-bottom:2px; }
+    .inv-row .item small { font-size:12px; color:var(--ink-soft); }
+    .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
+    .inv-row.total .amt { color:var(--azure); font-size:17px; }
+    .credit-note { font-size:13px; color:var(--azure); font-weight:600; background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:8px; padding:12px 16px; margin-top:14px; }
+
+    /* ══ STEPS ══ */
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .steps-grid{grid-template-columns:1fr;} }
+    .step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .step-n { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .step h3 { font-size:16px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ══ CTA ══ */
+    .cta-block { background:var(--azure); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:460px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; min-height:44px; line-height:18px; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.55); margin-top:14px; }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ══ LANE LABELS ══ */
+    .lane-labels { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+    @media(max-width:640px){ .lane-labels{grid-template-columns:1fr;} }
+    .lane-label { display:flex; gap:12px; align-items:flex-start; padding:14px 18px; border-radius:var(--radius); border:1px solid; }
+    .lane1-label { background:rgba(203,233,255,.2); border-color:rgba(12,51,135,.15); }
+    .lane2-label { background:rgba(226,237,122,.15); border-color:rgba(200,214,0,.25); }
+    .lane-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .lane1-dot { background:var(--azure); }
+    .lane2-dot { background:#8a9e00; }
+    .lane-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:3px; }
+    .lane-desc { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .lane-badge { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px; }
+    .lane1-badge { background:rgba(12,51,135,.1); color:var(--azure); }
+    .lane2-badge { background:rgba(138,158,0,.2); color:#4d5e00; }
+
+    /* ══ FOOTER ══ */
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+
+    /* ══ MILESTONE TIMELINE ══ */
+    .milestone-wrap { width:100%; }
+    .milestone-track {
+      display:grid; grid-template-columns:repeat(6,1fr); gap:0;
+      position:relative; padding-top:20px;
+    }
+    @media(max-width:760px){
+      .milestone-track { grid-template-columns:1fr 1fr; gap:16px; }
+      .ms-line { display:none; }
+    }
+    .milestone-col { display:flex; flex-direction:column; align-items:center; position:relative; }
+    .ms-dot {
+      width:16px; height:16px; border-radius:50%; flex-shrink:0; z-index:2;
+      border:3px solid #fff; box-shadow:0 0 0 2px currentColor;
+    }
+    .ms-blue { background:var(--azure); color:var(--azure); }
+    .ms-green { background:var(--green); color:var(--green); }
+    .ms-highlight { background:#8a9e00; color:#8a9e00; }
+    .ms-line {
+      position:absolute; top:8px; left:50%; right:-50%;
+      height:2px; background:var(--border); z-index:1;
+    }
+    .ms-line-fade { background:var(--border); opacity:.5; }
+    .ms-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%;
+      font-size:13px;
+    }
+    .ms-card-featured {
+      border-color:#8a9e00;
+      box-shadow:0 0 0 2px rgba(138,158,0,.18), var(--card-shadow);
+    }
+    .ms-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .ms-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
+    .ms-items { display:flex; flex-direction:column; gap:4px; }
+    .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
+
+    /* Recurring rhythm */
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:16px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+
+    /* Milestone banner */
+    .milestone-banner {
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-left:4px solid var(--azure); border-radius:var(--radius);
+      padding:18px 22px; display:flex; gap:14px; align-items:flex-start;
+    }
+    .milestone-banner-icon { font-size:22px; flex-shrink:0; }
+    .milestone-banner-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .milestone-banner-desc { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* Content calendar */
+    .cal-wrap { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .cal-header { padding:18px 22px; border-bottom:1px solid var(--border); }
+    .cal-header-title { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .cal-header-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; }
+    .cal-grid {
+      display:grid; grid-template-columns:repeat(5,1fr);
+      border-bottom:1px solid var(--border);
+    }
+    .cal-day-header {
+      padding:10px; text-align:center; font-size:11px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+      background:var(--porcelain); border-right:1px solid var(--border);
+    }
+    .cal-day-header:last-child { border-right:none; }
+    .cal-cell {
+      padding:12px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+      min-height:96px;
+    }
+    .cal-cell:nth-child(5n) { border-right:none; }
+    .cal-cell.feed.tofu  { background:rgba(203,233,255,.15); }
+    .cal-cell.feed.mofu  { background:rgba(226,237,122,.12); }
+    .cal-cell.feed.bofu  { background:rgba(12,51,135,.05); }
+    .cal-cell.story      { background:rgba(255,190,80,.1); }
+    .cal-type  { font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+    .cal-name  { font-size:12px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .cal-funnel { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-bottom:4px; }
+    .tofu-tag { background:rgba(203,233,255,.5); color:var(--azure); }
+    .mofu-tag { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .bofu-tag { background:rgba(12,51,135,.09); color:var(--azure); }
+    .cal-goal  { font-size:10px; color:var(--ink-soft); }
+    .cal-legend { display:flex; gap:12px; flex-wrap:wrap; padding:12px 18px; background:var(--porcelain); border-top:1px solid var(--border); }
+    .leg { font-size:11px; font-weight:600; }
+    .tofu-leg { color:var(--azure); }
+    .mofu-leg { color:#4d5e00; }
+    .bofu-leg { color:var(--azure); }
+    .story-leg { color:#7a4800; }
+
+    /* ══ MOBILE FIXES ══ */
+    .scope-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:600px){
+      .scope-table { font-size:13px; min-width:540px; }
+      .scope-table td:first-child { width:42%; }
+      .scope-table td:last-child { width:60px; }
+    }
+    .cal-wrap-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @media(max-width:640px){ .cal-cell{ min-height:80px; padding:8px; } .cal-name{ font-size:11px; } }
+    @media(max-width:480px){ .milestone-track{ grid-template-columns:1fr; } }
+    @media(max-width:480px){
+      .acc-header { flex-wrap:wrap; gap:8px; }
+      .acc-header > div:last-child { width:100%; display:flex; justify-content:space-between; align-items:center; }
+    }
+    /* Body-text floor on small screens — keeps minimum 14px on critical reading surfaces */
+    @media(max-width:414px){
+      .section-sub { font-size:14px; }
+      .acc-body p { font-size:14px; }
+      .ivp-col p { font-size:14px; }
+      .phase-body p { font-size:14px; }
+      .proof-card { padding:22px; }
+      .proof-card-footer p { font-size:14px; }
+      .proof-quote p { font-size:16px; }
+      .diff-card p { font-size:14px; }
+      .goal-headline { font-size:14px; }
+      .goal-card p { font-size:14px; }
+      .mason-summary-tease { font-size:14px; }
+      .mason-body p { font-size:14px; }
+      .tier-explainer { font-size:14px; }
+      .rhythm-detail { font-size:14px; }
+      .engine-step-desc { font-size:14px; }
+      .engine-head p { font-size:14px; }
+    }
+
+    /* ══ V6 ADDITIONS ══ */
+
+    /* Goal card v6: two-tier headline + concise application */
+    .goal-headline {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.4;
+    }
+    .goal-application {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+    }
+
+    /* Proof card v6 funnel pill (top-right) */
+    .proof-card-head {
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:14px; margin-bottom:0;
+    }
+    .proof-card-head > div { flex:1; min-width:0; }
+    .funnel-pill {
+      display:inline-block; font-size:10px; font-weight:700;
+      letter-spacing:.07em; text-transform:uppercase;
+      padding:4px 10px; border-radius:4px; white-space:nowrap; flex-shrink:0;
+    }
+    .funnel-pill.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .funnel-pill.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .funnel-pill.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+
+    /* ══ PROOF LAYER 2 + 3 SUB-HEADS (v8) ══ */
+    .proof-sub-head { margin-top:36px; margin-bottom:18px; }
+    .proof-sub-head .eyebrow { margin-top:0; }
+    .proof-sub-head h3 {
+      font-size:22px; font-weight:800; color:var(--shadow);
+      letter-spacing:-.02em; margin-bottom:8px;
+    }
+    .proof-sub-head h3 em { font-style:italic; color:var(--azure); }
+    .proof-sub-head p {
+      font-size:15px; color:var(--ink-mid); max-width:620px; line-height:1.65;
+    }
+
+    /* ══ PROOF LAYER 2 · BREADTH CHIP GRID (v8) ══ */
+    .breadth-grid {
+      display:grid; grid-template-columns:repeat(5, 1fr); gap:14px;
+    }
+    @media(max-width:1100px){
+      .breadth-grid { grid-template-columns:repeat(3, 1fr); }
+    }
+    @media(max-width:640px){
+      .breadth-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
+    }
+    @media(max-width:400px){
+      .breadth-grid { grid-template-columns:1fr; }
+    }
+    .breadth-chip {
+      position:relative; background:#fff; border:1px solid var(--border);
+      border-radius:10px; padding:14px 14px 12px; min-height:120px;
+      box-shadow:0 1px 2px rgba(12,51,135,.04);
+      display:flex; flex-direction:column; gap:6px;
+      transition:transform .15s, box-shadow .15s;
+    }
+    .breadth-chip:hover {
+      transform:translateY(-1px);
+      box-shadow:0 3px 8px rgba(12,51,135,.07);
+    }
+    .breadth-chip-format {
+      position:absolute; top:10px; right:10px;
+      font-size:9px; font-weight:700; letter-spacing:.08em;
+      padding:3px 7px; border-radius:3px;
+      background:var(--porcelain); border:1px solid var(--border);
+      color:var(--ink-soft); text-transform:uppercase;
+    }
+    .breadth-chip-num {
+      font-size:10px; font-weight:700; letter-spacing:.1em;
+      color:var(--ink-soft); text-transform:uppercase;
+    }
+    .breadth-chip-metric {
+      font-size:24px; font-weight:800; color:var(--azure);
+      letter-spacing:-.02em; line-height:1.05; margin-top:2px;
+    }
+    .breadth-chip-context {
+      font-size:11px; color:var(--ink-mid); line-height:1.45;
+      flex:1; margin-top:2px;
+    }
+    .breadth-chip-funnel {
+      align-self:flex-start;
+      font-size:9px; font-weight:700; letter-spacing:.08em;
+      padding:3px 7px; border-radius:3px;
+      text-transform:uppercase;
+    }
+    .breadth-chip-funnel.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .breadth-chip-funnel.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .breadth-chip-funnel.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+    .breadth-footer {
+      margin-top:14px; font-size:13px; color:var(--ink-soft);
+      font-style:italic; text-align:center; line-height:1.55;
+    }
+
+    /* ══ PROOF LAYER 3 · CASE STUDY COLLAPSIBLES (v8) ══ */
+    .case-stack { display:flex; flex-direction:column; gap:14px; }
+    details.case-row {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+    }
+    details.case-row > summary {
+      display:grid; grid-template-columns:36px 1fr 24px; gap:14px;
+      align-items:center; padding:20px 22px;
+      cursor:pointer; user-select:none; list-style:none;
+      min-height:44px; transition:background .15s;
+    }
+    details.case-row > summary::-webkit-details-marker { display:none; }
+    details.case-row > summary:hover { background:var(--porcelain); }
+    .case-dot {
+      width:32px; height:32px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:13px; font-weight:800; flex-shrink:0;
+    }
+    .case-summary-text { display:flex; flex-direction:column; gap:4px; min-width:0; }
+    .case-summary-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.35;
+    }
+    .case-summary-tease {
+      font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+    .case-chev {
+      font-size:12px; color:var(--ink-soft); transition:transform .2s;
+      justify-self:end;
+    }
+    details.case-row[open] .case-chev { transform:rotate(180deg); }
+    .case-body { padding:0 22px 22px 22px; }
+    .case-body ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+    .case-body li {
+      font-size:14px; color:var(--ink-mid); line-height:1.65;
+      padding-left:18px; position:relative;
+    }
+    .case-body li::before {
+      content:""; position:absolute; left:0; top:9px;
+      width:6px; height:6px; border-radius:50%; background:var(--azure);
+    }
+    .case-body li strong { color:var(--shadow); }
+    @media(max-width:640px){
+      details.case-row > summary { padding:18px 16px; grid-template-columns:32px 1fr 20px; gap:12px; }
+      .case-body { padding:0 16px 18px 16px; }
+      .case-summary-title { font-size:14px; }
+      .case-summary-tease { font-size:12px; }
+    }
+
+    /* BOFU conversion-led metrics grid (replaces dashboard-body for Card 3) */
+    .bofu-conv-metrics {
+      display:grid; grid-template-columns:1fr 1fr; gap:14px;
+      padding:8px 0 16px;
+    }
+    @media(max-width:640px){ .bofu-conv-metrics{ grid-template-columns:1fr; } }
+    .bofu-conv-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px; background:var(--porcelain); border-radius:8px;
+      gap:12px;
+    }
+    .bofu-conv-label {
+      font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .bofu-conv-value {
+      font-size:22px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1;
+    }
+    .bofu-conv-delta {
+      display:inline-flex; align-items:center; gap:3px;
+      font-size:11px; font-weight:700; color:var(--ig-up);
+      background:rgba(0,186,124,.1); padding:3px 8px; border-radius:4px;
+      white-space:nowrap; margin-top:4px;
+    }
+    .bofu-conv-meta { display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
+    .bofu-reach-callout {
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-radius:8px; padding:12px 16px; margin-bottom:14px;
+    }
+    .bofu-reach-callout p {
+      font-size:13px; color:var(--ink-mid); line-height:1.55;
+    }
+    .bofu-reach-callout p strong { color:var(--shadow); }
+
+    /* Mason runway native collapsibles */
+    .mason-collapsibles { display:flex; flex-direction:column; gap:0; }
+    details.mason-row {
+      border-bottom:1px solid var(--border);
+      background:#fff;
+    }
+    details.mason-row:last-child { border-bottom:none; }
+    details.mason-row > summary {
+      display:grid; grid-template-columns:32px 1fr 24px; gap:14px;
+      align-items:center; padding:18px 4px;
+      cursor:pointer; user-select:none; list-style:none;
+      min-height:44px; transition:background .15s;
+    }
+    details.mason-row > summary::-webkit-details-marker { display:none; }
+    details.mason-row > summary:hover { background:var(--porcelain); }
+    .mason-dot {
+      width:28px; height:28px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:800; flex-shrink:0;
+    }
+    .mason-summary-text {
+      display:flex; flex-direction:column; gap:3px; min-width:0;
+    }
+    .mason-summary-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3;
+    }
+    .mason-summary-tease {
+      font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+    .mason-chev {
+      font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0;
+      justify-self:end;
+    }
+    details.mason-row[open] .mason-chev { transform:rotate(180deg); }
+    .mason-body {
+      padding:0 4px 18px 46px;
+    }
+    .mason-body p {
+      font-size:14px; color:var(--ink-mid); line-height:1.65;
+    }
+    @media(max-width:640px){
+      details.mason-row > summary { padding:16px 4px; }
+      .mason-body { padding:0 4px 16px 4px; }
+    }
+
+    /* Social SEO v6: tier explainer + subtitles */
+    .tier-explainer {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+      margin-bottom:18px; padding:12px 16px;
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-radius:8px;
+    }
+    .tier-header {
+      display:flex; flex-direction:column; gap:2px; margin-bottom:10px;
+    }
+    .tier-label {
+      font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .tier-subtitle {
+      font-size:12px; color:var(--ink-soft); font-style:italic; line-height:1.5;
+    }
+
+    /* Timeline v6: weekly block grids + transition strip */
+    .week-blocks {
+      display:grid; gap:14px;
+    }
+    .week-blocks.cols-3 { grid-template-columns:repeat(3,1fr); }
+    .week-blocks.cols-2 { grid-template-columns:repeat(2,1fr); }
+    @media(max-width:760px){
+      .week-blocks.cols-3, .week-blocks.cols-2 { grid-template-columns:1fr; }
+    }
+    .week-block {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:22px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .week-num {
+      width:36px; height:36px; border-radius:50%; background:var(--azure); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; font-weight:800; flex-shrink:0;
+    }
+    .week-block.execution .week-num { background:var(--green); }
+    .week-label {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+    .week-title {
+      font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3;
+    }
+    .week-desc {
+      font-size:13px; color:var(--ink-mid); line-height:1.6;
+    }
+    .phase-eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--azure); margin-bottom:12px;
+    }
+    .phase-eyebrow.execution { color:var(--green); }
+    .transition-strip {
+      background:var(--azure-lt); border:1px solid var(--azure-bd);
+      border-left:4px solid var(--azure); border-radius:var(--radius);
+      padding:18px 22px; margin:18px 0;
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .transition-strip-icon { font-size:22px; flex-shrink:0; }
+    .transition-strip-body p {
+      font-size:14px; color:var(--ink-mid); line-height:1.6;
+    }
+    .transition-strip-body p strong { color:var(--shadow); }
+
+    /* ─── ACCESS-CODE GATE (Tier 3) ─── */
+    #sm-gate { position:fixed; inset:0; background:var(--ghost); display:flex; align-items:center; justify-content:center; z-index:99999; padding:24px; }
+    .sm-gate-card { background:#fff; border:1px solid var(--border); border-radius:20px; padding:48px 40px; width:100%; max-width:400px; text-align:center; box-shadow:0 4px 24px rgba(12,51,135,0.08); }
+    .sm-gate-logo { height:34px; width:auto; margin:0 auto 28px; display:block; }
+    .sm-gate-title { font-size:22px; font-weight:800; letter-spacing:-.03em; color:var(--shadow); margin-bottom:6px; }
+    .sm-gate-sub { font-size:14px; color:var(--ink-soft); margin-bottom:28px; line-height:1.5; }
+    .sm-gate-input-wrap { position:relative; margin-bottom:12px; }
+    .sm-gate-input { width:100%; background:var(--porcelain); border:1.5px solid var(--border); border-radius:8px; padding:13px 48px 13px 16px; font-size:15px; font-family:inherit; color:var(--shadow); outline:none; transition:border-color .2s; letter-spacing:.06em; }
+    .sm-gate-input:focus { border-color:var(--azure); }
+    .sm-gate-input::placeholder { letter-spacing:0; color:var(--ink-soft); }
+    .sm-gate-toggle { position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--ink-soft); padding:4px; display:flex; align-items:center; }
+    .sm-gate-btn { width:100%; background:var(--azure); color:#fff; border:none; border-radius:8px; padding:14px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; transition:background .2s, transform .1s; min-height:44px; }
+    .sm-gate-btn:hover { background:#0a276a; }
+    .sm-gate-btn:active { transform:scale(.98); }
+    .sm-gate-error { font-size:13px; color:#dc2626; margin-top:10px; display:none; }
+    .sm-gate-error.visible { display:block; }
+    body.sm-locked { overflow:hidden; }
+
+    /* ─── MOTION: section scroll-reveal ─── */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity:1 !important; transform:none !important; transition:none; }
+    }
+
+    /* ─── MOTION: subtle card hover (no shadow at rest) ─── */
+    .card, .goal-card, .diff-card, .proof-card, .step {
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    @media (hover:hover) {
+      .card:hover, .goal-card:hover, .diff-card:hover, .proof-card:hover, .step:hover {
+        transform:translateY(-2px); box-shadow:var(--card-hover-shadow);
+      }
+    }
+
+    /* ─── NAV: animated underline on hover (desktop) ─── */
+    @media (min-width:901px) {
+      .nav-links a { position:relative; }
+      .nav-links a::after {
+        content:''; position:absolute; left:10px; right:10px; bottom:2px; height:2px;
+        background:var(--azure); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;
+      }
+      .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    }
+
+    /* ─── BRAND ACCENTS: squiggle + dogs ─── */
+    .squiggle-underline { display:block; width:108px; height:auto; margin:16px 0 0; }
+    .squiggle-divider { display:block; width:min(200px,42%); height:auto; margin:6px auto 0; opacity:.85; }
+    .dog-accent { width:clamp(128px,24%,176px); height:auto; flex-shrink:0; }
+    .need-head { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    @media (max-width:640px){ .dog-accent{ width:120px; margin:0 auto; } .need-head{ justify-content:center; } }
+
+    /* ══ PROOF · collapsible "show more" ══ */
+    details.proof-more { margin-top:22px; border:1px solid var(--border); border-radius:var(--radius); background:#fff; overflow:hidden; }
+    details.proof-more > summary { list-style:none; cursor:pointer; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; gap:12px; font-weight:700; color:var(--azure); font-size:14px; min-height:44px; transition:background .15s; }
+    details.proof-more > summary::-webkit-details-marker { display:none; }
+    details.proof-more > summary:hover { background:var(--azure-lt); }
+    details.proof-more > summary .chev { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; }
+    details.proof-more[open] > summary .chev { transform:rotate(180deg); }
+    .proof-more-body { padding:4px 22px 22px; }
+    .proof-more-body .proof-sub-head { margin-top:8px; }
+
+    /* ══ CONTENT ENGINE · node-network motif ══ */
+    .engine { margin-top:28px; }
+    .engine-head { max-width:640px; margin-bottom:8px; }
+    .engine-stage {
+      position:relative; width:min(360px,86vw); aspect-ratio:1/1; margin:18px auto 6px;
+    }
+    .engine-links { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+    .engine-link { fill:none; stroke:var(--lucid-deep,#9ecee8); stroke-width:2.5; stroke-linecap:round; }
+    .engine-arrowhead { fill:var(--lucid-deep,#9ecee8); }
+    .engine-pulse { fill:var(--azure); }
+    .engine-center {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:34%; aspect-ratio:1/1; border-radius:50%; background:#fff;
+      border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:2px; text-align:center; padding:8px;
+    }
+    .engine-center img { width:46%; height:auto; display:block; }
+    .engine-center span { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
+    .engine-node {
+      position:absolute; transform:translate(-50%,-50%);
+      min-width:88px; padding:9px 8px; border-radius:10px; text-align:center; cursor:pointer;
+      background:var(--azure); color:#fff; border:2px solid transparent;
+      display:flex; flex-direction:column; align-items:center; gap:1px; line-height:1.1;
+      transition:transform .25s ease, box-shadow .25s ease; user-select:none;
+    }
+    .engine-node .en-step { display:block; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.72; margin:0; }
+    .engine-node .en-name { display:block; font-size:15px; font-weight:800; letter-spacing:-.01em; margin:0; }
+    /* idea group labels */
+    .idea-group-label { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin:30px 0 12px; display:flex; align-items:center; gap:12px; }
+    .idea-group-label::after { content:''; flex:1; height:1px; background:var(--border); }
+    .engine-node.signal { background:var(--hi); color:var(--shadow); }
+    .engine-node.active { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 8px 22px rgba(12,51,135,.22); border-color:#fff; z-index:3; }
+    .engine-node.signal.active { box-shadow:0 8px 22px rgba(200,214,0,.45); }
+    .engine-node[data-i="0"] { top:12%; left:50%; }
+    .engine-node[data-i="1"] { top:50%; left:88%; }
+    .engine-node[data-i="2"] { top:88%; left:50%; }
+    .engine-node[data-i="3"] { top:50%; left:12%; }
+    @media (max-width:560px){
+      .engine-stage { width:min(300px,82vw); }
+      .engine-node { min-width:66px; padding:8px 4px; }
+      .engine-node .en-name { font-size:13px; }
+      .engine-node .en-step { font-size:8px; }
+    }
+    .engine-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:26px; }
+    @media (max-width:640px){ .engine-steps{ grid-template-columns:1fr 1fr; } }
+    .engine-step {
+      border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; background:#fff;
+      transition:border-color .2s ease, background .2s ease;
+    }
+    .engine-step.active { border-color:var(--azure); background:var(--azure-lt); }
+    .engine-step-n { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .engine-step-name { font-size:14px; font-weight:800; color:var(--shadow); margin-bottom:4px; }
+    .engine-step-desc { font-size:13px; color:var(--ink-mid); line-height:1.5; }
+  </style>
+</head>
+<body>
+
+<!-- ─── ACCESS-CODE GATE (Tier 3) ─── -->
+<div id="sm-gate">
+  <div class="sm-gate-card">
+    <img class="sm-gate-logo" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="Scroll Media" width="60" height="30" />
+    <div class="sm-gate-title">Private proposal</div>
+    <div class="sm-gate-sub">This proposal is private. Enter your access code to continue.</div>
+    <div class="sm-gate-input-wrap">
+      <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+      <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+        <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <button class="sm-gate-btn" id="sm-gate-btn">View proposal</button>
+    <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS='libertycommons.scroll', KEY='sm_libertycommons_v1';
+  var gate=document.getElementById('sm-gate');
+  var inp=document.getElementById('sm-gate-input');
+  var btn=document.getElementById('sm-gate-btn');
+  var err=document.getElementById('sm-gate-error');
+  var tog=document.getElementById('sm-gate-toggle');
+  if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+  else { document.body.classList.add('sm-locked'); inp.focus(); }
+  function unlock(){
+    if(inp.value.trim().toLowerCase()===PASS){
+      sessionStorage.setItem(KEY,'1');
+      document.body.classList.remove('sm-locked');
+      gate.style.opacity='0'; gate.style.transition='opacity .3s';
+      setTimeout(function(){ gate.style.display='none'; },300);
+    } else {
+      err.classList.add('visible'); inp.style.borderColor='#dc2626';
+      setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+    }
+  }
+  btn.addEventListener('click',unlock);
+  inp.addEventListener('keydown',function(e){ if(e.key==='Enter') unlock(); });
+  tog.addEventListener('click',function(){
+    var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+    document.getElementById('sm-eye-icon').innerHTML=isPw
+      ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+      :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  });
+})();
+</script>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="56" height="26" />
+    </a>
+  </div>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open section navigation" aria-controls="nav-links" aria-expanded="false">
+    <span class="nav-toggle-box"><span></span><span></span><span></span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#know"         data-section="know">What We Know</a></li>
+    <li><a href="#proof"        data-section="proof">Proof</a></li>
+    <li><a href="#strategy"     data-section="strategy">Strategy</a></li>
+    <li><a href="#seo"          data-section="seo">Social SEO</a></li>
+    <li><a href="#ideation"     data-section="ideation">Content Ideas</a></li>
+    <li><a href="#scope"        data-section="scope">Scope</a></li>
+    <li><a href="#timeline"     data-section="timeline">Timeline</a></li>
+    <li><a href="#what-we-need" data-section="what-we-need">What We Need</a></li>
+    <li><a href="#investment"   data-section="investment">Investment</a></li>
+    <li><a href="#next-steps"   data-section="next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<!-- Shared SVG defs for Proof donut gradient -->
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#f09433"/>
+      <stop offset="50%" stop-color="#dc2743"/>
+      <stop offset="100%" stop-color="#bc1888"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero reveal" id="top">
+  <div class="hero-chip">Scroll Media × Dr. Isha Patel · Organic Social Media Marketing Proposal</div>
+  <h1>Your organic social,<br/><em>built for Instagram.</em></h1>
+  <img class="squiggle-underline" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="108" height="60" />
+  <p class="hero-sub" style="margin-top:18px;">A proposal for Dr. Isha Patel to bring on Scroll Media as your <strong>organic social media marketing partner</strong>, focused entirely on Instagram and built around the <strong>All-on-X transformations</strong> that define your work. We run <strong>strategy, content, and growth end to end</strong>, so you stay the dentist and the owner.</p>
+  <div class="hero-meta">
+    <span><strong>Client</strong> Dr. Isha Patel · Liberty Commons Family Dental</span>
+    <span><strong>Package</strong> Signature · Growth</span>
+    <span><strong>Focus</strong> Organic social · Instagram</span>
+    <span><strong>Prepared</strong> June 2026</span>
+    <span><strong>Strategist</strong> Chase Gianattasio</span>
+    <a href="https://decks.scrollmedia.co/how-we-work/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--azure-lt);border:1px solid var(--azure-bd);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--azure);font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(12,51,135,0.15)'" onmouseout="this.style.background='var(--azure-lt)'">📖 How We Work →</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 01 · WHAT WE KNOW ══════════ -->
+<div class="wrap reveal" id="know">
+  <div class="eyebrow">What We Know</div>
+  <h2 class="section-title">Three goals. <em>One system.</em></h2>
+  <p class="section-sub">The goal is simple to say and hard to do well: more of the right All-on-X patients, found on Instagram. Every dollar in this engagement maps to one of three goals, sequenced so we build momentum instead of spreading thin across services.</p>
+  <p class="section-sub">You are not starting from scratch. You see nearly <strong>467 patients a month</strong>. You have a brand-new facility built for content, a conversion system already running in Smile Virtual, and the marketing infrastructure of a $17B parent behind you. You teach this craft to rooms of thousands. What the last partner could not give you was content that looks and sounds like you, captured by a team that shows up prepared. That is the gap. We are the engine, so you stay the dentist and the owner.</p>
+
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <h4>Awareness, through relatable content</h4>
+      <p class="goal-headline">Get seen by the right room.</p>
+      <p class="goal-application">The top of the funnel is being <strong>discovered by the right Cincinnati audience</strong> with content they see themselves in. The person who has hidden their smile for years. The adult child quietly worried about a parent's teeth. <strong>Relatable content</strong> that feels human, never clinical, and stops the people who belong in your chair.</p>
+      <span class="goal-tag tag-tofu">TOFU · Awareness · Relatable</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <h4>Authority, through education</h4>
+      <p class="goal-headline">Become the expert they trust.</p>
+      <p class="goal-application">The middle of the funnel is where we teach. <strong>Educational content</strong> that demystifies All-on-X and positions Dr. Isha Patel as <strong>the expert</strong>, so the audience learns from you and trusts you before they ever book. You already teach this to other dentists. We point that authority at patients.</p>
+      <span class="goal-tag tag-mofu">MOFU · Authority · Educational</span>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <h4>Conversion, through proof</h4>
+      <p class="goal-headline">Turn attention into qualified leads.</p>
+      <p class="goal-application">The bottom of the funnel is consideration. <strong>Proof-based content</strong>, real transformations and real reactions, that shows the work changes lives and moves the right people to a <strong>Smile Virtual submission</strong>.</p>
+      <span class="goal-tag tag-bofu">BOFU · Conversion · Proof</span>
+    </div>
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>How we measure success.</strong> Each goal has its own performance metrics, calibrated to the stage the audience is in.</p>
+    <ul class="arrow-list mt-sm" style="margin-top:12px;">
+      <li><strong>Top of funnel · Awareness.</strong> Reach, non-follower views, profile visits, saves on relatable content. Getting Dr. Isha in front of the right Cincinnati audience.</li>
+      <li><strong>Middle of funnel · Trust + authority.</strong> Saves, shares, comments, story replies, watch time on educational content. The audience building familiarity and starting to see Dr. Isha as the dentist to trust with something this big.</li>
+      <li><strong>Bottom of funnel · Conversion.</strong> Link taps to Smile Virtual, profile visits, DM inquiries, save-to-book behavior on proof content. Attention becoming qualified leads.</li>
+    </ul>
+    <p style="margin-top:12px;">A full-arch decision is one of the most considered, emotional purchases a person makes. It is rarely impulsive. So we track the audience we build and warm over time as carefully as the inquiries, because the first predicts the second. We track signal first and qualified leads second. We do not promise last-click attribution that organic social cannot honestly deliver.</p>
+  </div>
+
+  <!-- DIFFERENTIATORS BLOCK -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">What Sets Dr. Isha Apart</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">Four things <em style="font-style:italic;color:var(--azure);">no other Cincinnati dentist can claim.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Each of these is an ownable brand story, and each one becomes a recurring pillar in the content system.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 01</div>
+        <h4 style="margin-bottom:8px;">The doctor is the brand, and the credentials are real.</h4>
+        <p>Dr. Isha is a fellowship-trained implant dentist, an Invisalign Gold provider, and sedation-certified, with a Master's in oral biology and more than a decade in the chair. We are not building authority from zero. We put a genuinely credentialed expert in front of the right local audience and let that do the work.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 02</div>
+        <h4 style="margin-bottom:8px;">An all-female-led practice the governor recognized.</h4>
+        <p>A governor's proclamation for an all-female-led business, an all-women team, and a seat on the Liberty Township Chamber of Commerce. For a category most people walk into anxious, an all-women team that gets it is the most trust-building, ownable brand story in Cincinnati dentistry. No competitor has it.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 03</div>
+        <h4 style="margin-bottom:8px;">A direct line to the people who wrote the All-on-X playbook.</h4>
+        <p>Dr. Isha's mentor founded ESTEEM Dental Implants, the national full-arch network her aspirational accounts belong to. She has access to the exact standard the best full-arch dentists in the country use. We bring that standard to Cincinnati.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">Differentiator 04</div>
+        <h4 style="margin-bottom:8px;">A conversion system already running.</h4>
+        <p>Smile Virtual is live, the funnel works, the practice is mature. Most accounts we take over are starting from scratch on infrastructure. Dr. Isha is not. We plug into a working machine and feed it the right attention.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 02 · PROOF ══════════ -->
+<div class="wrap reveal" id="proof">
+  <div class="eyebrow">What the Work Does</div>
+  <h2 class="section-title">Performance. <em>Across the funnel.</em></h2>
+  <p class="section-sub">The same system we run for every Signature client, shown across beauty, aesthetics, and service brands in Cincinnati. One piece of proof per funnel stage. White-labeled, real numbers.</p>
+
+  <div class="proof-stack">
+
+    <!-- PROOF CARD 1 · TOFU REACH PROOF -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati aesthetics practice we work with</div>
+          <div class="proof-card-pill">Reel · Transformation</div>
+        </div>
+        <span class="funnel-pill tofu">TOFU · Reach Proof</span>
+      </div>
+
+      <div class="proof-metrics-grid">
+        <div class="proof-metric">
+          <div class="proof-metric-value">25,432</div>
+          <div class="proof-metric-label">Views</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">1,177</div>
+          <div class="proof-metric-label">Starting reach</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">21×</div>
+          <div class="proof-metric-label">Algorithmic multiple</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">97%</div>
+          <div class="proof-metric-label">Non-follower reach</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">59</div>
+          <div class="proof-metric-label">Saves</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">18</div>
+          <div class="proof-metric-label">Shares</div>
+        </div>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> A transformation reel that started small got pushed by the algorithm to 25,432 views, 97% of them from people outside the follower base. This is what awareness looks like in a transformation-driven category. It is also a before-and-after, the exact format that will carry your All-on-X work.</p>
+      </div>
+    </div>
+
+    <!-- PROOF CARD 2 · MOFU ENGAGEMENT PROOF -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati boutique we work with</div>
+          <div class="proof-card-pill">Reel · Engagement-led</div>
+        </div>
+        <span class="funnel-pill mofu">MOFU · Engagement Proof</span>
+      </div>
+
+      <div class="proof-metrics-grid">
+        <div class="proof-metric">
+          <div class="proof-metric-value">21,304</div>
+          <div class="proof-metric-label">Views</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value pct">79.8%</div>
+          <div class="proof-metric-label">View rate</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">321</div>
+          <div class="proof-metric-label">Comments</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">150</div>
+          <div class="proof-metric-label">Shares</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-metric-value">11</div>
+          <div class="proof-metric-label">Reposts</div>
+        </div>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> Reach without engagement is just attention. This is the middle of the funnel doing its job: 79.8% watch-through, 321 conversations in the comments, reposted into other people's feeds. The audience talking back and pulling the brand into their own orbit.</p>
+      </div>
+    </div>
+
+    <!-- PROOF CARD 3 · BOFU INTENT PROOF · leads on SAVES -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">A Cincinnati service practice we work with</div>
+          <div class="proof-card-pill">Save-driven carousel · High-consideration service</div>
+        </div>
+        <span class="funnel-pill bofu">BOFU · Intent Proof</span>
+      </div>
+
+      <div class="bofu-conv-metrics">
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Saves on a high-consideration service</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value">82</div>
+          </div>
+        </div>
+        <div class="bofu-conv-row">
+          <div>
+            <div class="bofu-conv-label">Save-to-reach ratio</div>
+          </div>
+          <div class="bofu-conv-meta">
+            <div class="bofu-conv-value" style="font-size:15px;">Well above category</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card-footer">
+        <p><strong>Why this matters.</strong> For a considered, higher-investment decision, saves are the purchase-intent signal. People save what they intend to come back to. A full-arch decision is the same kind of considered choice, and this is the content pattern that drives it toward an inquiry.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ PROOF LAYER 2 · BREADTH CHIP GRID (collapsed) ══ -->
+  <details class="proof-more">
+    <summary><span>📊 Show ten more wins across the funnel</span> <span class="chev">▼</span></summary>
+    <div class="proof-more-body">
+  <div class="proof-sub-head">
+    <div class="eyebrow">And More Where That Came From</div>
+    <h3>Ten more wins. <em>Across the funnel.</em></h3>
+    <p>Three cards above are the deep dives. Below is the breadth. A snapshot of the kind of performance the system produces, across formats, funnel stages, and account types.</p>
+  </div>
+
+  <div class="breadth-grid">
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">01</div>
+      <div class="breadth-chip-metric">457K views</div>
+      <div class="breadth-chip-context">Single reel · 7 days post-publish</div>
+      <span class="breadth-chip-funnel tofu">TOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">02</div>
+      <div class="breadth-chip-metric">+4,290%</div>
+      <div class="breadth-chip-context">Reach lift · 30-day account-level vs prior 30 days</div>
+      <span class="breadth-chip-funnel tofu">TOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">03</div>
+      <div class="breadth-chip-metric">22,420 shares</div>
+      <div class="breadth-chip-context">1 month of content for a Lift-stage account</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">04</div>
+      <div class="breadth-chip-metric">1,447 saves</div>
+      <div class="breadth-chip-context">1 month of content for a Lift-stage account</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Reel</span>
+      <div class="breadth-chip-num">05</div>
+      <div class="breadth-chip-metric">321 comments</div>
+      <div class="breadth-chip-context">Educational reel</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Static</span>
+      <div class="breadth-chip-num">06</div>
+      <div class="breadth-chip-metric">10.45%</div>
+      <div class="breadth-chip-context">Engagement · static post · atypical for the format</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Carousel</span>
+      <div class="breadth-chip-num">07</div>
+      <div class="breadth-chip-metric">82 saves</div>
+      <div class="breadth-chip-context">High-consideration service · save-driven carousel</div>
+      <span class="breadth-chip-funnel mofu">MOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">08</div>
+      <div class="breadth-chip-metric">26.3%</div>
+      <div class="breadth-chip-context">Post conversion rate · 1 month · Rise-stage account · service business</div>
+      <span class="breadth-chip-funnel bofu">BOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">09</div>
+      <div class="breadth-chip-metric">22.3%</div>
+      <div class="breadth-chip-context">Click-through rate · 1 month · Lift-stage account · service</div>
+      <span class="breadth-chip-funnel bofu">BOFU</span>
+    </div>
+    <div class="breadth-chip">
+      <span class="breadth-chip-format">Account</span>
+      <div class="breadth-chip-num">10</div>
+      <div class="breadth-chip-metric">+213%</div>
+      <div class="breadth-chip-context">External link taps · 30-day account-level vs prior 30 days</div>
+      <span class="breadth-chip-funnel bofu">BOFU</span>
+    </div>
+  </div>
+
+  <p class="breadth-footer">Different clients. Different formats. Different funnel stages. Same strategic system underneath every win.</p>
+    </div>
+  </details>
+
+  <!-- ══ PROOF · TESTIMONIAL QUOTES (white-labeled, collapsed) ══ -->
+  <details class="proof-more">
+    <summary><span>💬 Show what clients say</span> <span class="chev">▼</span></summary>
+    <div class="proof-more-body">
+    <div class="proof-quotes" style="margin-top:8px;">
+      <div class="proof-quote">
+        <p>"She helped us develop our social strategy, filmed engaging content, and grew our following significantly. I highly recommend Scroll Media."</p>
+        <div class="proof-quote-attr">— Owner, Cincinnati aesthetics practice</div>
+      </div>
+      <div class="proof-quote">
+        <p>"Our Instagram engagement has tripled. Partnering with Scroll has been one of the best investments for our business."</p>
+        <div class="proof-quote-attr">— Owner, Cincinnati boutique studio</div>
+      </div>
+      <div class="proof-quote">
+        <p>"She is a true marketing partner. She cares about my business and goes above and beyond what is expected."</p>
+        <div class="proof-quote-attr">— Owner, Cincinnati boutique</div>
+      </div>
+    </div>
+    </div>
+  </details>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 03 · STRATEGY ══════════ -->
+<div class="wrap reveal" id="strategy">
+  <div class="eyebrow">Strategic Approach</div>
+  <h2 class="section-title">Who we're reaching. <em>How we'll reach them.</em></h2>
+  <p class="section-sub">Two audiences, reverse-engineered from the two services that matter most. We do not build content for "people who need a dentist." We build it for the specific person considering a specific procedure, and every post knows which one it is talking to.</p>
+  <p class="section-sub">Inside each audience there are two talk tracks: people already inside the house (existing patients who do not yet know what is possible here) and people outside the house (prospects who fit the profile and have never heard of you). Same audience, different message depending on where they sit.</p>
+
+  <div class="ivp-tabs">
+    <div class="ivp-tab active" onclick="switchTab(0)">The Full-Arch Candidate · Primary Audience (All-on-X)</div>
+    <div class="ivp-tab" onclick="switchTab(1)">The Confident-Smile Seeker · Secondary Audience (Invisalign + cosmetic)</div>
+  </div>
+  <div class="ivp-panels">
+    <div class="ivp-panel active" id="ivp-0">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Adults, often <strong>45 and up</strong>, living with failing, broken-down, or missing teeth, or stuck in dentures that never felt right. Frequently it is not the patient who starts the search. It is an <strong>adult child or a spouse</strong> quietly researching for someone they love. Higher-investment, high-emotion, deeply considered.</p>
+        <h4>Motivators</h4>
+        <ul class="arrow-list">
+          <li>Wanting to <strong>eat, laugh, and be photographed</strong> without thinking about their teeth</li>
+          <li>Being <strong>done with temporary fixes</strong></li>
+          <li>A <strong>doctor they trust completely</strong> with something this big and this permanent</li>
+          <li><strong>Doing it once and doing it right</strong></li>
+        </ul>
+      </div>
+      <div class="ivp-col">
+        <h4>Current Challenges</h4>
+        <ul class="arrow-list">
+          <li>Years of <strong>shame and avoidance</strong></li>
+          <li>The belief that they have <strong>"let it go too far"</strong></li>
+          <li>Fear of the <strong>surgery, the cost, and the judgment</strong></li>
+          <li>They do not know a <strong>same-day full-arch solution exists</strong>, or that the person who can do it is twenty minutes away</li>
+        </ul>
+        <h4>Dream Outcomes</h4>
+        <ul class="arrow-list">
+          <li>A <strong>new smile in a single day</strong></li>
+          <li>Eating the <strong>foods they gave up</strong></li>
+          <li>Walking into their next event <strong>looking and feeling like themselves again</strong></li>
+          <li>The relief of <strong>having finally handled it</strong></li>
+        </ul>
+        <h4>How Content Adapts</h4>
+        <p>Inside the house, we surface candidates who came in for something else and never knew All-on-X was an option. Outside the house, <strong>relatable shame-reframing content</strong> and <strong>proof-based transformation reveals</strong> do the warming. This is the priority lever, and the All-on-X Transformation Story System below is how we feed it.</p>
+      </div>
+    </div>
+    <div class="ivp-panel" id="ivp-1">
+      <div class="ivp-col">
+        <h4>Who They Are</h4>
+        <p>Image-conscious adults and professionals who want a <strong>straighter, brighter, more confident smile</strong> but are not full-arch cases. Many are <strong>already existing patients</strong> sitting in your chair for cleanings, never told what cosmetic options exist for them.</p>
+        <h4>Motivators</h4>
+        <ul class="arrow-list">
+          <li>Looking <strong>polished and put-together</strong></li>
+          <li>A <strong>discreet fix, not braces</strong></li>
+          <li>A smile that <strong>matches the rest of how they show up</strong></li>
+        </ul>
+      </div>
+      <div class="ivp-col">
+        <h4>Current Challenges</h4>
+        <ul class="arrow-list">
+          <li>They assume Invisalign or cosmetic work <strong>is not for them</strong>, or is a hassle</li>
+          <li>They simply <strong>have never been prompted</strong></li>
+          <li>They <strong>do not see Dr. Isha as a cosmetic dentist</strong> because nothing has told them she is</li>
+        </ul>
+        <h4>Dream Outcomes</h4>
+        <ul class="arrow-list">
+          <li>A <strong>straighter smile without the visible hardware</strong></li>
+          <li>Feeling <strong>photo-ready</strong></li>
+          <li>A <strong>small change that quietly upgrades</strong> how they feel every day</li>
+        </ul>
+        <h4>How Content Adapts</h4>
+        <p><strong>Educational and relatable content</strong> on Invisalign and cosmetic outcomes, with a strong <strong>inside-the-house play</strong> to convert existing patients who already trust you. The secondary lane keeps the account broad enough to spike reach without diluting the All-on-X focus.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="assumption mt-md">
+    <p><strong>Assumption.</strong> This engagement focuses on growing @dr.ishapatel, the personal-brand account, not @libertycommonsfd. All-on-X is the priority lever. Invisalign and cosmetic are the secondary lane. The second doctor joining in July is not in scope for this engagement, though the system we build is ready to extend if and when that becomes a priority. Heartland and Smile Virtual infrastructure stay as they are. We feed the funnel that already exists, we do not rebuild it.</p>
+  </div>
+
+  <!-- ══ STRATEGY SUB-BLOCK · ALL-ON-X TRANSFORMATION STORY SYSTEM ══ -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">Unique to Your Engagement</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The All-on-X Transformation Story System. <em style="font-style:italic;color:var(--azure);">Your most ownable content, built into a repeatable engine.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">An All-on-X case is an eight-hour day that ends with a person walking out with a brand-new smile. It is the single most powerful piece of content your practice can make, and the last partner kept pushing it aside as "just surgical." It is not just surgical. It is the meat of your business and the most emotional story in dentistry. We build a repeatable system to capture it, clear it, and serialize it, so it becomes a steady stream of proof instead of a one-off you hope someone films.</p>
+
+    <div class="insight" style="margin-bottom:22px;">
+      <p><strong>The shoot problem we solve.</strong> Shutting the office down to film costs you $17,000 to $20,000 a day. That is exactly why our shoots are prepped, scripted, and batched, with a two-to-three-person crew that includes a woman on set every time, so the team feels comfortable and looks their best. We capture full-arch days with at least a week of notice, working around the surgery, never in the way of it.</p>
+    </div>
+
+    <div class="card" style="padding:8px 22px;">
+      <div class="mason-collapsibles">
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">1</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Capture · prepped and crew-ready</div>
+              <div class="mason-summary-tease">A shot list and consent checklist built before the day, a small crew that includes a female team member.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>A shot list and consent checklist built before the day, a small crew that includes a female team member, capturing the surgery day and the reveal without disrupting care or running up payroll on a chaotic set.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">2</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Consent · cleared and protected</div>
+              <div class="mason-summary-tease">A clean release and consent process locked in Phase 1, so every transformation we post is fully cleared.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>A clean release and consent process locked in Phase 1, so every transformation we post is fully cleared. Patients who want to share their story are surfaced and prioritized. Privacy is never the thing we gamble.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">3</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Serialize · one case, many posts</div>
+              <div class="mason-summary-tease">Each case becomes a series, not a single post: the before, the day-of, the reveal, the reaction, the follow-up.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>Each case becomes a series, not a single post: the before, the day-of, the reveal, the reaction, the follow-up months later. One eight-hour day produces weeks of funnel-spanning content.</p>
+          </div>
+        </details>
+        <details class="mason-row">
+          <summary>
+            <div class="mason-dot">4</div>
+            <div class="mason-summary-text">
+              <div class="mason-summary-title">Convert · pointed at Smile Virtual</div>
+              <div class="mason-summary-tease">Every transformation story routes the right viewer to a Smile Virtual submission.</div>
+            </div>
+            <div class="mason-chev">▼</div>
+          </summary>
+          <div class="mason-body">
+            <p>Every transformation story routes the right viewer to a Smile Virtual submission, the conversion mechanic you already pay for and already have running.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="insight mt-md">
+      <p><strong>Why this matters.</strong> This is the difference between hoping a surgery gets filmed and knowing your best work becomes content every single month. It is built around your schedule and your team's comfort, and it turns your highest-value procedure into your highest-performing content.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 04 · SOCIAL SEO ══════════ -->
+<div class="wrap reveal" id="seo">
+  <div class="eyebrow">Social SEO</div>
+  <h2 class="section-title">Cast wide. <em>Compress to Cincinnati.</em></h2>
+  <p class="section-sub">Instagram is a search engine now, and a local practice is found in search before it is found in a feed. We build the keyword ladder so Dr. Isha shows up for the right searches from day one, and we set the Instagram search foundation (profile name field, bio, location tags, geo-tags) that a local business lives on.</p>
+
+  <div class="card">
+    <div class="card-label">Dr. Isha Patel · 4-Tier TAM Compression Keyword Bank</div>
+    <p class="tier-explainer">Each tier compresses the total addressable market. Tier 1 is broad enough to spike algorithmic reach. Tier 4 is hyper-local and authority-anchored. Together they cover the full search journey from "dental implants" to "best All-on-X dentist near Liberty Township."</p>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 1 · Niche-Broad (no geo) · Broad Reach</span>
+      <span class="tier-subtitle">Cast the widest net inside the niche. Spike the algorithm with broad relevance signal.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw">dental implants</span>
+      <span class="kw">all on 4</span>
+      <span class="kw">all on x</span>
+      <span class="kw">full mouth restoration</span>
+      <span class="kw">smile makeover</span>
+      <span class="kw">dental transformation</span>
+      <span class="kw">new smile</span>
+    </div>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 2 · Niche + Demographic · Qualified</span>
+      <span class="tier-subtitle">Narrow by procedure and audience. Still pre-geo.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier2">full arch implants</span>
+      <span class="kw tier2">permanent teeth</span>
+      <span class="kw tier2">denture alternative</span>
+      <span class="kw tier2">teeth in a day</span>
+      <span class="kw tier2">dental implant journey</span>
+      <span class="kw tier2">Invisalign</span>
+      <span class="kw tier2">cosmetic dentist</span>
+    </div>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 3 · Metro · Cincinnati-Anchored</span>
+      <span class="tier-subtitle">Add geographic specificity. Cincinnati anchoring.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;margin-bottom:18px;">
+      <span class="kw tier3">Cincinnati dentist</span>
+      <span class="kw tier3">Cincinnati dental implants</span>
+      <span class="kw tier3">Cincinnati All-on-X</span>
+      <span class="kw tier3">Cincinnati cosmetic dentist</span>
+      <span class="kw tier3">Cincinnati Invisalign</span>
+    </div>
+
+    <div class="tier-header">
+      <span class="tier-label">Tier 4 · Hyper-local + Authority · Max Intent</span>
+      <span class="tier-subtitle">Neighborhood specifics. These are the highest-intent search terms.</span>
+    </div>
+    <div class="keyword-bank" style="margin-top:0;">
+      <span class="kw tier4">Liberty Township dentist</span>
+      <span class="kw tier4">West Chester dentist</span>
+      <span class="kw tier4">Liberty Center dental</span>
+      <span class="kw tier4">best implant dentist Cincinnati</span>
+      <span class="kw tier4">Dr. Isha Patel</span>
+    </div>
+  </div>
+
+  <div class="card mt-lg">
+    <div class="card-label">Where These Land</div>
+    <ul class="arrow-list mt-sm">
+      <li>Profile name field (high SEO weight)</li>
+      <li>Bio (descriptive copy, primary terms front-loaded)</li>
+      <li>Highlight covers and titles</li>
+      <li>Caption opening lines (Instagram weights the first sentence heavily)</li>
+      <li>Alt text on every post</li>
+      <li>Geo-tags on location-relevant posts</li>
+    </ul>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Why this matters.</strong> Tier 1 builds reach. Tier 4 captures the person searching for a full-arch dentist near Liberty Township tonight. The middle tiers are the bridge that turns a broad viewer into a local lead.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 05 · CONTENT IDEAS ══════════ -->
+<div class="wrap reveal" id="ideation">
+  <div class="eyebrow">Content Ideation</div>
+  <h2 class="section-title">Built around your work. <em>Designed to perform.</em></h2>
+  <p class="section-sub">Here is <strong>how we generate ideas</strong>, and the ideas themselves. Not generic dental content. Concepts <strong>only Dr. Isha could make</strong>, each engineered to travel from a standing start and mapped to the funnel: relatable at the top, educational in the middle, proof at the bottom. Several are built on Cincinnati culture and community, so they feel made by a local, not just in the city.</p>
+
+  <!-- CONTENT ENGINE · node-network motif (framework intro, above the grid) -->
+  <div class="engine" id="engine">
+    <div class="engine-head">
+      <div class="eyebrow" style="margin-top:0;">The Scroll Content Engine</div>
+      <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">How we generate ideas. <em style="font-style:italic;color:var(--azure);">Idea, format, hook, data.</em></h3>
+      <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;">Every idea below comes out of this engine. We <strong>pull the idea</strong>, choose the <strong>format</strong>, sharpen the <strong>hook</strong>, then let the <strong>data</strong> tell us what to scale. It is a repeatable loop, and it never stops turning.</p>
+    </div>
+    <div class="engine-stage" id="engine-stage">
+      <svg class="engine-links" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <circle cx="50" cy="50" r="38" class="engine-link" fill="none" stroke-width="1.3"></circle>
+        <circle r="2.2" class="engine-pulse">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M 50 12 A 38 38 0 1 1 50 88 A 38 38 0 1 1 50 12 Z"></animateMotion>
+        </circle>
+      </svg>
+      <div class="engine-center">
+        <img src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="" aria-hidden="true" width="60" height="30" />
+        <span>Scroll Content Engine</span>
+      </div>
+      <button type="button" class="engine-node active" data-i="0"><span class="en-step">Step 01</span><span class="en-name">Idea</span></button>
+      <button type="button" class="engine-node" data-i="1"><span class="en-step">Step 02</span><span class="en-name">Format</span></button>
+      <button type="button" class="engine-node" data-i="2"><span class="en-step">Step 03</span><span class="en-name">Hook</span></button>
+      <button type="button" class="engine-node signal" data-i="3"><span class="en-step">Step 04</span><span class="en-name">Data</span></button>
+    </div>
+    <div class="engine-steps" id="engine-steps">
+      <div class="engine-step active" data-i="0"><div class="engine-step-n">01 &middot; Idea</div><div class="engine-step-name">Pulled from your world</div><div class="engine-step-desc">Your audience, your craft, and what is already working in the category.</div></div>
+      <div class="engine-step" data-i="1"><div class="engine-step-n">02 &middot; Format</div><div class="engine-step-name">The right vehicle</div><div class="engine-step-desc">The format that carries the idea, chosen from the Scroll format library.</div></div>
+      <div class="engine-step" data-i="2"><div class="engine-step-n">03 &middot; Hook</div><div class="engine-step-name">Stop the scroll</div><div class="engine-step-desc">The first line, engineered to earn the next second of attention.</div></div>
+      <div class="engine-step" data-i="3"><div class="engine-step-n">04 &middot; Data</div><div class="engine-step-name">Read and feed back</div><div class="engine-step-desc">We track what travels, then feed the winners into the next idea.</div></div>
+    </div>
+  </div>
+
+  <img class="squiggle-divider" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="200" height="111" />
+
+  <div class="idea-group-label">Signature series &middot; recurring franchises</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127860;</div>
+          <div>
+            <div class="acc-title">The First Bite</div>
+            <div class="acc-sub">Hyper-cinematic reel · the signature series</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;She hadn't eaten corn on the cob in nine years. Today's the day.&rdquo;</p>
+        <p>A single locked-off, scored shot of a patient's first real meal after the reveal, minimal cuts, the moment left to breathe, with a Cincinnati food as the prop (Montgomery Inn ribs, a Skyline coney, a Graeter's cone). You are not watching dentistry, you are watching someone get their life back, which is exactly why non-dental audiences stay. The franchise: every episode a new patient, a new Cincinnati food, the same gasp.</p>
+        <div class="acc-metrics"><span class="metric-tag">Hyper-Cinematic Reel (recurring) &middot; BOFU &middot; Proof</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127908;</div>
+          <div>
+            <div class="acc-title">The Truth About the Cost</div>
+            <div class="acc-sub">Talking head · signature series</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;A dentist is about to tell you what All-on-X actually costs. No DM-for-pricing games.&rdquo;</p>
+        <p>Dr. Isha at her actual desk, direct address, calm authority, one honest-answer episode a month on the question everyone is afraid to ask. Cost transparency in a category built on hiding it is a pattern interrupt, and &ldquo;the one who'll just tell you the truth&rdquo; turns her humility into the hook. People save and send honest-pricing content to whoever they are deciding with.</p>
+        <div class="acc-metrics"><span class="metric-tag">Talking Head (recurring) &middot; MOFU &middot; Educational</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127963;&#65039;</div>
+          <div>
+            <div class="acc-title">All-Women, On Purpose</div>
+            <div class="acc-sub">Team reel or carousel · signature series</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Series</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;The governor recognized us for one thing most dental offices can't say.&rdquo;</p>
+        <p>The proclamation on screen as a real artifact, warm and team-led, running as a &ldquo;meet the women who'll be in the room&rdquo; series that lowers the fear of the surgery frame by frame. For a category people enter scared, an all-female team the governor proclaimed is the most trust-building, un-copyable story in Cincinnati dentistry, and civic and Chamber accounts reshare it.</p>
+        <div class="acc-metrics"><span class="metric-tag">Team Reel or Carousel (recurring) &middot; TOFU/MOFU &middot; Relatable</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="idea-group-label">Reels &middot; standalone</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#128241;</div>
+          <div>
+            <div class="acc-title">The Day My Mom Got Her Smile Back</div>
+            <div class="acc-sub">UGC-style POV</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;I didn't do this for me. I did it for my mom.&rdquo;</p>
+        <p>Shot from the adult child's point of view, phone-textured and lo-fi on purpose. The real All-on-X buyer is often the daughter, not the patient, so content from her POV reaches an audience the practice never speaks to directly, and that audience cries and shares. The highest emotional ceiling in the deck.</p>
+        <div class="acc-metrics"><span class="metric-tag">Reel (UGC-style POV) &middot; BOFU &middot; Proof</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#128264;</div>
+          <div>
+            <div class="acc-title">The Oddly Satisfying One</div>
+            <div class="acc-sub">ASMR reveal</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">On-screen text only, no talking: &ldquo;full arch, start to finish. sound on.&rdquo;</p>
+        <p>Slow, scored, ASMR-grade, clean macro shots and craft, zero clinical gore. Transformation-reveal ASMR is a proven non-follower reach engine, so this is the distribution workhorse that puts All-on-X in front of huge cold audiences who stay for the satisfaction. Vivid-Alchemy-grade production is the moat. This is the idea that climbs the account's reach.</p>
+        <div class="acc-metrics"><span class="metric-tag">ASMR Reveal Reel &middot; TOFU &middot; Reach</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127944;</div>
+          <div>
+            <div class="acc-title">Smile Cam at Paycor</div>
+            <div class="acc-sub">Game-day, local crossover</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Reel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Bengals fans, we found the best smiles in the stadium. Who Dey.&rdquo;</p>
+        <p>Game-day energy, fan smiles, fast cuts, Dr. Isha as the smile expert with a take. Pure Cincinnati reach borrow: Bengals content travels city-wide regardless of dental interest, and &ldquo;smile cam&rdquo; is a natural, non-salesy way for a dentist to ride it. Builds the local audience the All-on-X content later converts. Seasonal to NFL season.</p>
+        <div class="acc-metrics"><span class="metric-tag">Reel (game-day) &middot; TOFU &middot; Reach</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="idea-group-label">Carousels &middot; saveable</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#129463;</div>
+          <div>
+            <div class="acc-title">What Nobody Tells You About Dentures</div>
+            <div class="acc-sub">Educational carousel · 8 slides</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Carousel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">Slide 1: &ldquo;If someone you love wears dentures, slide 2 is for you.&rdquo;</p>
+        <p>Hook into the hidden problem with dentures, then what same-day full-arch actually is, the day-of timeline, and the result. Most people do not know same-day full-arch exists, so a carousel that teaches it without selling gets saved and sent to the family member who needs it. Education is the save mechanic.</p>
+        <div class="acc-metrics"><span class="metric-tag">Educational Carousel (8 slides) &middot; MOFU &middot; Educational</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#128337;</div>
+          <div>
+            <div class="acc-title">The 8 Hours</div>
+            <div class="acc-sub">Documentary carousel · 8 to 10 slides</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Carousel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">Slide 1: &ldquo;Walked in with failing teeth at 7am. Walked out with a permanent smile by dinner. Here's every hour.&rdquo;</p>
+        <p>One slide per hour, documentary cadence, the real timeline of a real day. The same-day claim is the most shocking, least-understood fact about All-on-X, and mapping it hour by hour makes the unbelievable feel real and bookable. Strong save content because it answers &ldquo;how is that even possible.&rdquo;</p>
+        <div class="acc-metrics"><span class="metric-tag">Documentary Carousel (8-10 slides) &middot; MOFU/BOFU &middot; Proof</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#128184;</div>
+          <div>
+            <div class="acc-title">Use It or Lose It</div>
+            <div class="acc-sub">Urgency carousel · 6 slides</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Carousel</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">Slide 1: &ldquo;Your dental benefits reset January 1. Most people throw away thousands. Don't.&rdquo;</p>
+        <p>Crisp, urgent, practical, timed to the year-end benefits and FSA deadline, especially for existing patients sitting on unused benefits. A genuine, dated financial deadline is one of the few honest urgency plays in dentistry, and it converts because it is true, not manufactured. Routes to Smile Virtual.</p>
+        <div class="acc-metrics"><span class="metric-tag">Urgency Carousel (6 slides) &middot; BOFU &middot; Conversion</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="idea-group-label">Stories &middot; the engagement layer</div>
+  <div class="accordion">
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#10067;</div>
+          <div>
+            <div class="acc-title">Ask Me Anything: the question you're embarrassed to ask</div>
+            <div class="acc-sub">Weekly question box / AMA</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Story</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Anonymous box. Ask me the All-on-X question you don't want to say out loud.&rdquo;</p>
+        <p>Question box into multi-frame replies where Dr. Isha answers the hard ones to camera. Anonymity removes the shame barrier that keeps these patients silent, her compassion is the brand promise demonstrated live, and the replies become future Reel scripts.</p>
+        <div class="acc-metrics"><span class="metric-tag">Question Box / AMA (weekly) &middot; MOFU &middot; Educational</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#127828;</div>
+          <div>
+            <div class="acc-title">This or That: Cincinnati Edition</div>
+            <div class="acc-sub">Recurring poll / this-or-that</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Story</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Skyline or Gold Star. Graeter's or Jeni's. Be honest.&rdquo;</p>
+        <p>Rapid local-food-rivalry polls, then a soft turn: &ldquo;the point of new teeth? eating all of these again.&rdquo; Cincinnati food rivalries are bait people cannot not tap, the high sticker-tap rate feeds reach, and the turn ties it back to the emotional payoff of eating again. A low-lift recurring engagement engine.</p>
+        <div class="acc-metrics"><span class="metric-tag">Poll / This-or-That (recurring) &middot; TOFU &middot; Relatable</span></div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-header-left">
+          <div class="acc-icon">&#9203;</div>
+          <div>
+            <div class="acc-title">Countdown to the Reveal</div>
+            <div class="acc-sub">Countdown + link sticker</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="acc-tags"><span class="acc-tag tag-reel">Story</span></div>
+          <div class="acc-chevron">&#9660;</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;In 3 days, a patient who hasn't smiled in a photo in 12 years sees her new smile. The countdown's on.&rdquo;</p>
+        <p>A countdown sticker into build-up frames, with the reveal dropping as a Reel the Story drives traffic to. Manufactured anticipation around a real human moment turns a single reveal into a multi-day arc and trains the audience to watch for reveals.</p>
+        <div class="acc-metrics"><span class="metric-tag">Countdown + link sticker &middot; BOFU &middot; Conversion</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CREATIVE BENCHMARK BLOCK -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">We Did Our Homework</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The bar we're building toward. <em style="font-style:italic;color:var(--azure);">Set by your own network.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:22px;">Every account you sent us belongs to <strong>ESTEEM Dental Implants</strong>, the national full-arch network your mentor founded inside your own organization. The standard you are reaching for is the standard the best in the country already set, and you have a direct line to it. We are building Dr. Isha Patel into Cincinnati's version of it.</p>
+
+    <div class="diff-grid">
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">Vivid Alchemy</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">@vivid.alchemy · the agency behind the best full-arch content in the country, cinematic videography for DSOs and top clinicians.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> their reveal production quality and the emotional, cinematic storytelling that makes a transformation feel like a film.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">Dr. Jeff Lynch</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">@drjefflynch.dds · your mentor, founder of ESTEEM Dental Implants.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> his full-arch transformation storytelling and authority positioning, the exact standard inside your own network.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">Dr. Jacob Berger</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">@dr.jacobberger · ESTEEM provider, confidence-first personal brand, 1,000-plus smiles.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> his approachable personal-brand voice and the consistent transformation cadence that keeps an account growing.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--azure);">
+        <div class="card-label" style="color:var(--azure);">Dr. Marvin Berlin</div>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.55;margin-bottom:8px;">@drmarvinberlin · "The Berlin Smile," one of the nation's leading cosmetic dentists.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.6;"><strong style="color:var(--shadow);">What we'll pull:</strong> his branded signature-process framing and premium smile-makeover aesthetic.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLABORATIONS BLOCK · the fifth idea group -->
+  <div class="mt-lg">
+    <div class="eyebrow" style="margin-top:0;">Collaborations · Borrow Credibility, Fast</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The fastest way to trust a new name. <em style="font-style:italic;color:var(--azure);">Be vouched for by a trusted one.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:620px;line-height:1.65;margin-bottom:18px;">A growing account borrows trust and reach by partnering with brands the audience already trusts. We partner on audience overlap, never service competition.</p>
+
+    <div class="assumption" style="margin-bottom:18px;">
+      <p><strong>The Scroll edge.</strong> Dr. Isha does not have to source partners cold. We broker collaborations across our own Cincinnati client network with warm introductions, and you already have your own network through the Chamber of Commerce. No other agency can plug you into a ready-made local brand network like that.</p>
+    </div>
+
+    <div class="idea-group-label">Collaborations &middot; three to test</div>
+    <div class="accordion">
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-header-left">
+            <div class="acc-icon">&#128279;</div>
+            <div>
+              <div class="acc-title">The Cincinnati Confidence Chain</div>
+              <div class="acc-sub">Collab reel · phase-2 hero play</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="acc-tags"><span class="acc-tag tag-reel">Collab</span></div>
+            <div class="acc-chevron">&#9660;</div>
+          </div>
+        </div>
+        <div class="acc-body">
+          <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;One Cincinnati woman. Five local brands. One transformation. Posted everywhere at once.&rdquo;</p>
+          <p>One subject moves through skincare (Dr. Mona / Cincinnati Skin Center), her smile with Dr. Isha (the anchor beat), brows or aesthetics, then a photographer, posted same-day across every account so each partner's audience stacks on one piece of content. Dr. Isha as the centerpiece of a local confidence chain borrows reach she cannot buy, brokerable through the Scroll Cincinnati network and her Chamber. The highest-ceiling, highest-effort play. <strong>Frame this as the phase-2 hero, not a week-one build</strong> (it needs cross-account coordination and same-day posting logistics).</p>
+          <div class="acc-metrics"><span class="metric-tag">Collab Reel (phase-2 hero play) &middot; TOFU/MOFU &middot; Reach</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-header-left">
+            <div class="acc-icon">&#128141;</div>
+            <div>
+              <div class="acc-title">The Appointment Before the Aisle</div>
+              <div class="acc-sub">Collab reel · wedding-vendor</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="acc-tags"><span class="acc-tag tag-reel">Collab</span></div>
+            <div class="acc-chevron">&#9660;</div>
+          </div>
+        </div>
+        <div class="acc-body">
+          <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;Brides book the venue, the dress, the photographer. They forget the one thing that's in every photo.&rdquo;</p>
+          <p>A co-branded wedding collab with a local bridal boutique, planner, or photographer, soft and aspirational, Invisalign and cosmetic forward. Weddings are a massive cross-reference audience and a natural cosmetic on-ramp, and &ldquo;the appointment you forgot to book&rdquo; is a save-and-send hook for the bride and her people. Seasonal to the spring and summer ramp.</p>
+          <div class="acc-metrics"><span class="metric-tag">Collab Reel (wedding-vendor) &middot; MOFU &middot; Conversion</span></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-header-left">
+            <div class="acc-icon">&#129309;</div>
+            <div>
+              <div class="acc-title">Small Business, Big Smile</div>
+              <div class="acc-sub">Chamber spotlight · collab reel or carousel</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="acc-tags"><span class="acc-tag tag-reel">Collab</span></div>
+            <div class="acc-chevron">&#9660;</div>
+          </div>
+        </div>
+        <div class="acc-body">
+          <p style="font-style:italic;color:var(--azure);margin-top:14px;">&ldquo;I gave a fellow Cincinnati small-business owner her smile back. Here's her story.&rdquo;</p>
+          <p>Dr. Isha treats a local owner and both accounts post, cross-promoting into the Chamber's small-business network, a warm local audience that trusts peer endorsement. Positions her as the dentist who backs Cincinnati business, not just a provider.</p>
+          <div class="acc-metrics"><span class="metric-tag">Collab Reel or Carousel &middot; MOFU &middot; Reach</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card mt-md">
+      <div class="card-label">Also in the mix</div>
+      <ul class="arrow-list mt-sm">
+        <li><strong>Institutional credibility.</strong> Lean on the governor's proclamation and the Liberty Township Chamber for community-momentum content that no out-of-town account can claim.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight mt-lg">
+    <p><strong>These are the ideas we would test in Phase 1.</strong> The ones that hit get scaled. The ones that do not get cut. The data decides. Every patient-featured idea (the reveals, the first bite, the day-of) runs on a consent process we lock in Phase 1, so the proof we post is always fully cleared.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 06 · SCOPE ══════════ -->
+<div class="wrap reveal" id="scope">
+  <div class="eyebrow">Scope of Work</div>
+  <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
+  <p class="section-sub">Everything below is included in the monthly retainer. You run the practice. We run the Instagram.</p>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div class="scope-table-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding:24px 26px;">
+    <table class="scope-table">
+      <thead><tr><th>Deliverable</th><th>Details</th><th>Incl.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Content Strategy <span class="scope-badge">Month 1</span></td>
+          <td>The full strategy build: brand and marketing audit, two audience personas reverse-engineered to All-on-X and Invisalign, content pillars, the keyword bank, an aspirational benchmark, format mix, and positioning and voice. Delivered as your Social Media Strategy plus a 30-day content calendar.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>All-on-X Transformation Story System <span class="scope-badge feat">Strategic Feature</span></td>
+          <td>The one piece built uniquely for this practice: the capture-consent-serialize-convert system that turns full-arch surgery days into a repeatable stream of funnel-spanning proof content, scheduled around your surgery calendar and your team's comfort.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Feed Content Production</td>
+          <td>3 feed posts per week (reels, carousels, statics), produced and scheduled, every post mapped to a pillar and funnel stage. Includes weekly stories and graphic design as needed.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Content Shoots</td>
+          <td>A content shoot every 3 to 4 weeks (about 3 hours), storyboarded and scripted in advance, with a 2-to-3-person crew including a female team member on every shoot. Plus All-on-X case capture on at least a week's notice, worked around your surgery schedule.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Profile + Social SEO</td>
+          <td>Bio, link-in-bio, highlight covers, alt text, captions, the Cincinnati keyword ladder, and ongoing profile maintenance on @dr.ishapatel.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management</td>
+          <td>Comments, DMs, and mentions, plus proactive outreach and collaborations with brand-aligned local accounts. Booking and All-on-X inquiries flagged to your team.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Approvals &amp; Posting</td>
+          <td>Content submitted for your approval before it goes live.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Monthly Performance Report</td>
+          <td>Reach, engagement, and conversion signal, delivered the first week of each month, tracking five to six metrics that matter, not twenty that do not.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Biweekly Check-ins</td>
+          <td>30 minutes every two weeks.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Content approvals.</strong> All content submitted 5 business days before publish. Max 2 rounds of revisions per cycle, batched at the biweekly check-in.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 07 · TIMELINE ══════════ -->
+<div class="wrap reveal" id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2 class="section-title">Strategy first. <em>First post in August.</em></h2>
+  <p class="section-sub">Strategy before execution, always. Your current contract runs through end of July, so we use that window to get fully onboarded and build the strategy, then go live in August with no wasted motion.</p>
+
+  <div class="tl-cta">
+    <div style="font-size:24px;">⚡</div>
+    <p><strong>The timing lines up cleanly.</strong> Sign in early July, kick off right after, strategy built and presented through July, first post live in early August as the old contract ends. A short content gap in late July is fine and expected. We come on already up to speed.</p>
+  </div>
+
+  <!-- VISUAL MILESTONE TIMELINE -->
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-track">
+
+      <!-- M1 · Week 1 · Kickoff -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 1</div>
+          <div class="ms-title">Kickoff</div>
+          <div class="ms-items">
+            <span>✓ Onboarding + kickoff call</span>
+            <span>✓ Goals + All-on-X focus locked</span>
+            <span>✓ Asset and account audit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M2 · Week 2 · Strategy development -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 2</div>
+          <div class="ms-title">Strategy development</div>
+          <div class="ms-items">
+            <span>✓ Two audiences + content pillars</span>
+            <span>✓ The Transformation Story System</span>
+            <span>✓ Instagram Social SEO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M3 · Week 3 · Strategy presentation -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-blue"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 3</div>
+          <div class="ms-title">Strategy presentation</div>
+          <div class="ms-items">
+            <span>✓ Strategy deck presented</span>
+            <span>✓ Strategy locked</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M4 · Week 4 · First content shoot -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 4</div>
+          <div class="ms-title">First content shoot</div>
+          <div class="ms-items">
+            <span>✓ First production session</span>
+            <span>✓ Content captured + prepped</span>
+            <span>✓ Female crew on set</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M5 · Week 5 · First post goes live -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line"></div>
+        <div class="ms-card">
+          <div class="ms-week">Week 5</div>
+          <div class="ms-title">🚀 First post goes live</div>
+          <div class="ms-items">
+            <span>✓ The account in motion</span>
+            <span>✓ The funnel framework running</span>
+            <span>✓ First content in market</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M6 · Ongoing · Execution mode -->
+      <div class="milestone-col">
+        <div class="ms-dot ms-green"></div>
+        <div class="ms-line ms-line-fade"></div>
+        <div class="ms-card ms-card-featured">
+          <div class="ms-week">Ongoing</div>
+          <div class="ms-title">Execution mode</div>
+          <div class="ms-items">
+            <span>✓ Full content engine running</span>
+            <span>✓ All-on-X cases captured and serialized</span>
+            <span>✓ Proof feeding Smile Virtual</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TRANSITION STRIP -->
+  <div class="transition-strip mt-lg">
+    <div class="transition-strip-icon">⚡</div>
+    <div class="transition-strip-body">
+      <p><strong>Strategy locked, execution begins.</strong> The end of Week 3 is the handoff from planning to weekly content production.</p>
+    </div>
+  </div>
+
+  <!-- ONGOING OPERATING RHYTHM -->
+  <div class="rhythm-row mt-lg">
+    <div class="rhythm-label">Ongoing operating rhythm</div>
+    <div style="font-size:13px;color:var(--ink-mid);margin-bottom:16px;line-height:1.6;">Once execution is live, <strong>five cadences</strong> run in parallel. They're the heartbeat of the engagement.</div>
+    <div class="rhythm-steps">
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📸</div>
+        <div class="rhythm-name">Content Shoot</div>
+        <div class="rhythm-detail">Every 3 to 4 weeks · about 3 hours · female crew on set.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">💬</div>
+        <div class="rhythm-name">Status Meeting</div>
+        <div class="rhythm-detail">Every other week · 30 minutes.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📝</div>
+        <div class="rhythm-name">Feed Posts</div>
+        <div class="rhythm-detail">3 per week · Monday, Wednesday, Friday.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📅</div>
+        <div class="rhythm-name">Story Days</div>
+        <div class="rhythm-detail">2 per week · Tuesday, Thursday.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📊</div>
+        <div class="rhythm-name">Performance Report</div>
+        <div class="rhythm-detail">First week of every month.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="milestone-wrap mt-lg">
+    <div class="milestone-banner">
+      <div class="milestone-banner-icon">🗓️</div>
+      <div>
+        <div class="milestone-banner-title">Surgery capture · the highest-value content we make</div>
+        <div class="milestone-banner-desc">All-on-X days are the highest-value content we capture. We coordinate each one on at least a week's notice, plan the shot list and consent in advance, and work around the surgery, never in the way of it, so the office is never shut down on our account.</div>
+      </div>
+    </div>
+
+    <div class="cal-wrap-outer mt-lg">
+    <div class="cal-wrap" style="min-width:520px;">
+      <div class="cal-header">
+        <div class="cal-header-title">Sample Content Calendar · Phase 2 Month</div>
+        <div class="cal-header-sub">A representative month. Feed posts Monday, Wednesday, Friday; story days Tuesday and Thursday; pulled directly from the ideas above. Exact scheduling is locked in Phase 1.</div>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-day-header">Mon</div>
+        <div class="cal-day-header">Tue</div>
+        <div class="cal-day-header">Wed</div>
+        <div class="cal-day-header">Thu</div>
+        <div class="cal-day-header">Fri</div>
+
+        <!-- Week 1 -->
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">The Oddly Satisfying One</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">This or That: Cincinnati Edition</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Relatable</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">What Nobody Tells You About Dentures</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Educational</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Ask Me Anything</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies</div>
+        </div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">The First Bite (Ep. 1)</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Proof</div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">The Truth About the Cost (Ep. 1)</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Educational</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Countdown to the Reveal</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Conversion</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">The 8 Hours</div>
+          <div class="cal-funnel mofu-tag">MOFU/BOFU</div>
+          <div class="cal-goal">Proof</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Ask Me Anything</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies</div>
+        </div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">The Day My Mom Got Her Smile Back</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Proof</div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">All-Women, On Purpose (Ep. 1)</div>
+          <div class="cal-funnel tofu-tag">TOFU/MOFU</div>
+          <div class="cal-goal">Relatable</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">This or That: Cincinnati Edition</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Relatable</div>
+        </div>
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Carousel</div>
+          <div class="cal-name">Use It or Lose It</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Conversion</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Ask Me Anything</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies</div>
+        </div>
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">Smile Cam at Paycor</div>
+          <div class="cal-funnel tofu-tag">TOFU</div>
+          <div class="cal-goal">Reach</div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="cal-cell feed bofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">The First Bite (Ep. 2)</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Proof</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Countdown to the Reveal</div>
+          <div class="cal-funnel bofu-tag">BOFU</div>
+          <div class="cal-goal">Conversion</div>
+        </div>
+        <div class="cal-cell feed tofu">
+          <div class="cal-type">Feed · Collab</div>
+          <div class="cal-name">The Cincinnati Confidence Chain</div>
+          <div class="cal-funnel tofu-tag">TOFU/MOFU</div>
+          <div class="cal-goal">Reach</div>
+        </div>
+        <div class="cal-cell story">
+          <div class="cal-type">Story Day</div>
+          <div class="cal-name">Ask Me Anything</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Replies</div>
+        </div>
+        <div class="cal-cell feed mofu">
+          <div class="cal-type">Feed · Reel</div>
+          <div class="cal-name">The Truth About the Cost (Ep. 2)</div>
+          <div class="cal-funnel mofu-tag">MOFU</div>
+          <div class="cal-goal">Educational</div>
+        </div>
+
+      </div>
+      <div class="cal-legend">
+        <span class="leg tofu-leg">TOFU · Reach &amp; Discovery</span>
+        <span class="leg mofu-leg">MOFU · Trust &amp; Engagement</span>
+        <span class="leg bofu-leg">BOFU · Booking &amp; Conversion</span>
+        <span class="leg story-leg">Story Days · two per week</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 08 · WHAT WE NEED ══════════ -->
+<div class="wrap reveal" id="what-we-need">
+  <div class="need-head">
+    <div>
+      <div class="eyebrow">What We Need From You</div>
+      <h2 class="section-title">Your side <em>of the equation.</em></h2>
+      <p class="section-sub" style="margin-bottom:0;">This works when both sides show up. Here's what we need from Dr. Isha to hit the ground running.</p>
+    </div>
+    <img class="dog-accent" src="https://tools.scrollmedia.co/assets/illustrations/howie-color.png" alt="" aria-hidden="true" width="176" height="176" />
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-label">At Phase 1 Kickoff</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>60 minutes</strong> for the kickoff session.</li>
+        <li><strong>Any existing brand assets</strong> and prior content worth repurposing, plus any Heartland or ESTEEM brand guidelines we should work within.</li>
+        <li><strong>Your story in your words</strong>, voice samples, and the All-on-X cases you are proudest of.</li>
+        <li><strong>The patient consent and release posture</strong> for before-and-afters and surgical capture, so we lock a clean process up front.</li>
+        <li><strong>A heads-up on upcoming All-on-X surgery days</strong> for shoot coordination.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Ongoing (Phase 2)</div>
+      <ul class="tick-list mt-sm">
+        <li><strong>30 minutes every two weeks</strong> for the check-in.</li>
+        <li><strong>Content approval turnaround</strong> within 5 business days.</li>
+        <li><strong>At least a week's notice</strong> on surgery days we should capture.</li>
+        <li><strong>A heads-up</strong> on press, community moments, and milestones as they happen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Your time commitment.</strong> Roughly 60 minutes at kickoff, 30 minutes every two weeks, and short windows on shoot and surgery days. Designed to be a few hours a month, not a few hours a week.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 09 · INVESTMENT ══════════ -->
+<div class="wrap reveal" id="investment">
+  <div class="eyebrow">Investment</div>
+  <h2 class="section-title">What it <em>costs.</em></h2>
+  <p class="section-sub">Straightforward pricing. No hidden fees. Billed month by month after the initial engagement.</p>
+
+  <div class="inv-hero">
+    <div class="inv-hero-label">Signature Package · Growth Tier · 3-Month Initial Engagement</div>
+    <h3>Dr. Isha Patel · Liberty Commons Family Dental</h3>
+    <div class="inv-hero-sub">Phase 1 locks the strategy and builds the All-on-X Transformation Story System. Phase 2 runs the full content engine. After Month 3, the retainer rolls month to month at the same rate, no resets, no additional strategy fees.</div>
+    <div class="inv-hero-row">
+      <div class="inv-hero-stat">
+        <div class="amount">$3,250</div>
+        <div class="lbl">Monthly retainer (Months 2–3)</div>
+      </div>
+      <div class="inv-hero-stat">
+        <div class="amount">$8,417</div>
+        <div class="lbl">Total 3-month engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-breakdown">
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 1 · Strategy + Story System build</strong>
+        <small>kickoff · two audiences · pillars · the All-on-X Transformation Story System · Social SEO · profile and Instagram search build · strategy presentation</small>
+      </div>
+      <div class="amt">$1,917</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 2 · Full execution</strong>
+        <small>3 feed posts/wk · 2 story days/wk · content shoot · All-on-X capture · community management · biweekly check-in · monthly report</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 3 · Full execution</strong>
+        <small>full content engine running · transformations serialized and feeding Smile Virtual</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row total">
+      <div class="item"><strong>3-Month Total</strong><small>Billed monthly</small></div>
+      <div class="amt">$8,417</div>
+    </div>
+  </div>
+
+  <div class="credit-note mt-md">
+    ★ After the initial 3-month engagement, Dr. Isha rolls into a monthly retainer at $3,250/month, no additional strategy fees, no resets. Month to month from there.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 10 · NEXT STEPS ══════════ -->
+<div class="wrap reveal" id="next-steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2 class="section-title">How we <em>move forward.</em></h2>
+  <p class="section-sub">Questions before signing, including anything Heartland needs to review? Chase is available over email or a quick call.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-n">Step 01</div>
+      <h3>Sign the Contract</h3>
+      <p>Sent within 24 hours of approval, e-sign under 5 minutes. To hold an August start, this lands in early July.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 02</div>
+      <h3>Complete the Onboarding Form</h3>
+      <p>Covers brand, All-on-X focus, consent posture, and surgery scheduling. About 20 minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 03</div>
+      <h3>Kickoff Call</h3>
+      <p>Early July. Phase 1 starts immediately, posting live in early August as your current contract ends.</p>
+    </div>
+  </div>
+
+  <div class="cta-block mt-lg">
+    <h2>Ready to move?</h2>
+    <p>Reply to this proposal or reach Chase directly. A contract can be sent today, and we are happy to provide anything Heartland needs for approval. Let's put your best work in front of the right Cincinnati.</p>
+    <a href="mailto:chase@getscrollmedia.com" class="cta-btn">chase@getscrollmedia.com</a>
+    <div class="cta-sub">Prefer a quick call first? Just reply. Happy to connect before anything moves forward.</div>
+  </div>
+</div>
+
+<footer class="reveal">
+  <img src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="48" height="22" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  });
+
+  // Scroll-spy
+  const sections = ['know','proof','strategy','seo','ideation','scope','timeline','what-we-need','investment','next-steps'];
+  const links = document.querySelectorAll('.nav-links a[data-section]');
+  function onScroll() {
+    const y = window.scrollY + 80;
+    let active = sections[0];
+    sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= y) active = id; });
+    links.forEach(a => a.classList.toggle('active', a.dataset.section === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // IVP tabs
+  function switchTab(idx) {
+    document.querySelectorAll('.ivp-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.ivp-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
+
+  // Accordion
+  function toggleAcc(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  }
+
+  // Mobile nav toggle
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const list   = document.getElementById('nav-links');
+    if (!toggle || !list) return;
+    function setOpen(open) {
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close section navigation' : 'Open section navigation');
+    }
+    toggle.addEventListener('click', () => setOpen(!document.body.classList.contains('nav-open')));
+    list.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
+  })();
+
+  // ── Section scroll-reveal ──
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+    setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 2500);
+  })();
+
+  // ── Content engine motif (auto-rotate + hover-pause + click-to-advance) ──
+  (function(){
+    var stage=document.getElementById('engine-stage'); if(!stage) return;
+    var nodes=[].slice.call(stage.querySelectorAll('.engine-node'));
+    var steps=[].slice.call(document.querySelectorAll('#engine-steps .engine-step'));
+    var i=0, timer=null, RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function set(n){ i=((n%4)+4)%4;
+      nodes.forEach(function(el,k){ el.classList.toggle('active',k===i); });
+      steps.forEach(function(el,k){ el.classList.toggle('active',k===i); });
+    }
+    function start(){ if(RM||timer) return; timer=setInterval(function(){ set(i+1); },2200); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    nodes.forEach(function(el){ el.addEventListener('click', function(){ set(parseInt(el.getAttribute('data-i'),10)); stop(); start(); }); });
+    stage.addEventListener('mouseenter', stop);
+    stage.addEventListener('mouseleave', start);
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); }, {threshold:0.25});
+      io.observe(stage);
+    } else { start(); }
+  })();
+
+</script>
+</body>
+</html>

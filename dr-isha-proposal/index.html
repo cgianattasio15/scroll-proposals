@@ -69,7 +69,7 @@
     .act-group:hover .act-btn, .act-group.open .act-btn, .act-group.active .act-btn { color:var(--azure); background:var(--azure-lt); }
     .act-group:hover .act-caret, .act-group.open .act-caret { transform:rotate(180deg); }
     .act-sections {
-      position:absolute; top:calc(100% + 9px); left:0; min-width:215px;
+      position:absolute; top:calc(100% + 9px); left:0; min-width:225px;
       background:#fff; border:1px solid var(--border); border-radius:12px;
       box-shadow:0 10px 30px rgba(12,51,135,.12); padding:7px; z-index:1001;
       display:none; flex-direction:column; gap:1px;
@@ -194,12 +194,29 @@
     .snap-card.feat { background:var(--azure); border-color:var(--azure); }
     .snap-card.feat .snap-icon { background:rgba(255,255,255,.16); color:#fff; }
     .snap-card.feat .snap-label { color:rgba(255,255,255,.7); }
-    .snap-count { font-size:34px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1; }
-    .snap-count-sub { font-size:11px; color:rgba(255,255,255,.72); font-weight:600; }
+    .snap-card.feat .snap-value { color:#fff; }
+    .snap-stage { font-size:26px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1; }
+    .snap-stage-sub { font-size:11px; color:rgba(255,255,255,.74); font-weight:600; line-height:1.4; }
 
     /* ── CHIP ROW ── */
     .chip-row { display:flex; flex-wrap:wrap; gap:8px; }
     .chip { font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:100px; border:1px solid var(--azure-bd); background:var(--azure-lt); color:var(--azure); }
+
+    /* ── TWO-PHASE ENGAGEMENT BLOCKS ── */
+    .phase-blocks { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px; }
+    @media(max-width:760px){ .phase-blocks{ grid-template-columns:1fr; } }
+    .phase-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px; }
+    .phase-block.p1 { border-top:3px solid var(--azure); }
+    .phase-block.p2 { border-top:3px solid var(--green); }
+    .phase-block-eyebrow { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .phase-block.p2 .phase-block-eyebrow { color:var(--green); }
+    .phase-block h4 { font-size:17px; font-weight:800; color:var(--shadow); margin-bottom:4px; letter-spacing:-.01em; }
+    .phase-block-dur { font-size:12px; color:var(--ink-soft); font-weight:600; margin-bottom:14px; }
+    .phase-block ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .phase-block li { font-size:13.5px; color:var(--ink-mid); line-height:1.5; padding-left:20px; position:relative; }
+    .phase-block li::before { content:'✓'; position:absolute; left:0; color:var(--azure); font-weight:700; font-size:12px; top:1px; }
+    .phase-block.p2 li::before { color:var(--green); }
+    .phase-block li strong { color:var(--shadow); }
 
     /* ── CANONICAL COLLAPSIBLE ── */
     details.cl { border:1px solid var(--border); border-radius:var(--radius); background:#fff; box-shadow:var(--card-shadow); overflow:hidden; }
@@ -241,15 +258,14 @@
     .idea-body { padding:0 20px 18px; }
     .idea-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
 
-    /* ── AUDIENCE CARDS ── */
-    .aud-stack { display:flex; flex-direction:column; gap:14px; }
-    .aud-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px 24px; }
-    .aud-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:10px; }
-    .aud-tag.primary { background:rgba(12,51,135,.09); color:var(--azure); }
-    .aud-tag.secondary { background:rgba(226,237,122,.4); color:#4d5e00; }
-    .aud-card h4 { font-size:16px; font-weight:800; color:var(--shadow); margin-bottom:8px; letter-spacing:-.01em; }
-    .aud-card > p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    /* ── AUDIENCE CARD ── */
+    .aud-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .aud-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:10px; background:rgba(12,51,135,.09); color:var(--azure); }
+    .aud-card h4 { font-size:18px; font-weight:800; color:var(--shadow); margin-bottom:8px; letter-spacing:-.01em; }
+    .aud-card > p { font-size:14.5px; color:var(--ink-mid); line-height:1.6; }
     .aud-card details.cl { margin-top:14px; }
+    .secondary-lane { font-size:14px; color:var(--ink-mid); line-height:1.6; margin-top:14px; padding-left:16px; border-left:3px solid var(--border); }
+    .secondary-lane strong { color:var(--shadow); }
 
     /* ── DIFFERENTIATORS ── */
     .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
@@ -275,18 +291,20 @@
     /* ── EXAMPLE ROI FUNNEL ── */
     .roi-box { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:26px 28px; margin-top:8px; text-align:center; }
     .roi-illus { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); background:var(--azure-lt); border:1px solid var(--azure-bd); border-radius:100px; padding:4px 14px; margin-bottom:14px; }
-    .roi-box h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:18px; }
+    .roi-box h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:10px; }
     .roi-box h3 em { font-style:italic; color:var(--azure); }
+    .roi-frame { font-size:13px; color:var(--ink-mid); line-height:1.6; max-width:560px; margin:0 auto 18px; }
     .roi-funnel { display:flex; flex-direction:column; align-items:center; gap:8px; margin:6px auto 4px; }
-    .roi-step { color:#fff; border-radius:8px; padding:13px 14px; display:flex; flex-direction:column; gap:1px; }
+    .roi-step { color:#fff; border-radius:8px; padding:13px 16px; display:flex; flex-direction:column; gap:1px; }
     .roi-step .rs-name { font-size:14px; font-weight:800; letter-spacing:-.01em; }
-    .roi-step .rs-sub { font-size:11px; font-weight:600; opacity:.85; }
+    .roi-step .rs-sub { font-size:11.5px; font-weight:600; opacity:.9; }
     .roi-step:nth-child(1){ width:100%; background:var(--azure); }
-    .roi-step:nth-child(2){ width:84%; background:#22479a; }
-    .roi-step:nth-child(3){ width:67%; background:#42619f; }
-    .roi-step:nth-child(4){ width:50%; background:#6e85b8; }
-    .roi-step:nth-child(5){ width:36%; background:#9aabcf; }
-    .roi-caption { font-size:13px; color:var(--ink-soft); line-height:1.6; margin-top:16px; font-style:italic; }
+    .roi-step:nth-child(2){ width:80%; background:#22479a; }
+    .roi-step:nth-child(3){ width:60%; background:#42619f; }
+    .roi-step:nth-child(4){ width:44%; background:#6e85b8; }
+    .roi-takeaway { font-size:15px; color:var(--shadow); line-height:1.55; margin-top:20px; font-weight:600; }
+    .roi-takeaway strong { color:var(--azure); }
+    .roi-caption { font-size:12.5px; color:var(--ink-soft); line-height:1.6; margin-top:12px; font-style:italic; }
 
     /* ── INSPO CARDS ── */
     .inspo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
@@ -318,23 +336,23 @@
     .approach-thesis strong { color:var(--shadow); }
 
     /* ══ PROOF SECTION ══ */
-    .proof-stack { display:flex; flex-direction:column; gap:22px; }
-    .proof-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:26px 28px; transition:transform .18s ease, box-shadow .18s ease; }
+    .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:980px){ .proof-grid{ grid-template-columns:1fr; } }
+    .proof-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px 22px; transition:transform .18s ease, box-shadow .18s ease; display:flex; flex-direction:column; }
     @media(hover:hover){ .proof-card:hover{ transform:translateY(-2px); box-shadow:var(--card-hover-shadow); } }
-    .proof-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:0; }
+    .proof-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0; }
     .proof-card-head > div { flex:1; min-width:0; }
-    .proof-card-eyebrow { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px; }
-    .proof-card-pill { display:inline-block; font-size:11px; font-weight:700; padding:4px 12px; border-radius:100px; background:var(--porcelain); border:1px solid var(--border); color:var(--ink-mid); margin-bottom:18px; }
-    .funnel-pill { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:4px 10px; border-radius:4px; white-space:nowrap; flex-shrink:0; }
+    .proof-card-eyebrow { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px; line-height:1.4; }
+    .proof-card-pill { display:inline-block; font-size:10.5px; font-weight:700; padding:4px 11px; border-radius:100px; background:var(--porcelain); border:1px solid var(--border); color:var(--ink-mid); margin-bottom:16px; }
+    .funnel-pill { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:4px 9px; border-radius:4px; white-space:nowrap; flex-shrink:0; }
     .funnel-pill.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
     .funnel-pill.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
     .funnel-pill.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
-    .proof-metrics-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 28px; padding:6px 0 18px; }
-    @media(max-width:480px){ .proof-metrics-grid{grid-template-columns:1fr 1fr; gap:14px 18px;} }
+    .proof-metrics-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding:6px 0 16px; }
     .proof-metric { display:flex; flex-direction:column; gap:2px; }
-    .proof-metric-value { font-size:28px; font-weight:800; color:var(--azure); letter-spacing:-.02em; line-height:1.05; }
-    .proof-metric-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-top:2px; }
-    .proof-card-footer { border-top:1px solid var(--border); padding-top:14px; margin-top:6px; }
+    .proof-metric-value { font-size:24px; font-weight:800; color:var(--azure); letter-spacing:-.02em; line-height:1.05; }
+    .proof-metric-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-top:2px; }
+    .proof-card-footer { border-top:1px solid var(--border); padding-top:14px; margin-top:auto; }
     .proof-card-footer p { font-size:13px; color:var(--ink-mid); line-height:1.6; font-style:italic; }
     .proof-card-footer p strong { color:var(--shadow); font-style:normal; }
 
@@ -375,53 +393,43 @@
     .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
     .scope-table th:last-child { text-align:center; }
     .scope-table td { padding:12px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
-    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:30%; padding-right:16px; }
-    .scope-table td.when { width:24%; font-size:12.5px; color:var(--ink-soft); font-style:italic; padding-right:14px; }
-    .scope-table td:last-child { text-align:center; width:60px; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:28%; padding-right:16px; }
+    .scope-table td.when { width:26%; font-size:12.5px; color:var(--ink-soft); font-style:italic; padding-right:14px; }
+    .scope-table td:last-child { text-align:center; width:56px; }
     .scope-table tr:last-child td { border-bottom:none; }
-    .scope-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:rgba(226,237,122,.55); color:#4d5e00; margin-left:6px; }
     .check { color:var(--azure); font-weight:700; font-size:16px; }
     @media(max-width:600px){
-      .scope-table { font-size:13px; min-width:600px; }
+      .scope-table { font-size:13px; min-width:620px; }
     }
-    .story-banner { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:22px 24px; }
-    .story-banner .eyebrow { margin-top:0; }
-    .story-banner h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:8px; line-height:1.25; }
-    .story-banner h3 em { font-style:italic; color:var(--azure); }
-    .story-banner > p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
-    .story-banner > p strong { color:var(--shadow); }
 
-    /* ══ TIMELINE ══ */
+    /* ══ TIMELINE (phase-split) ══ */
     .tl-cta { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
     .tl-cta p { font-size:14px; color:var(--ink-mid); line-height:1.55; }
     .tl-cta p strong { color:var(--shadow); }
-    .milestone-wrap { width:100%; }
-    .milestone-track { display:grid; grid-template-columns:repeat(6,1fr); gap:0; position:relative; padding-top:20px; }
-    @media(max-width:900px){ .milestone-track { grid-template-columns:1fr 1fr; gap:16px; } .ms-line { display:none; } }
-    @media(max-width:480px){ .milestone-track{ grid-template-columns:1fr; } }
-    .milestone-col { display:flex; flex-direction:column; align-items:center; position:relative; min-width:0; opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
-    .milestone-col.in { opacity:1; transform:none; }
-    @media (prefers-reduced-motion: reduce){ .milestone-col{ opacity:1 !important; transform:none !important; } }
-    .ms-dot { width:16px; height:16px; border-radius:50%; flex-shrink:0; z-index:2; border:3px solid #fff; box-shadow:0 0 0 2px currentColor; }
-    .ms-blue { background:var(--azure); color:var(--azure); }
-    .ms-green { background:var(--green); color:var(--green); }
-    .ms-line { position:absolute; top:8px; left:50%; right:-50%; height:2px; background:var(--border); z-index:1; }
-    .ms-line-fade { background:var(--border); opacity:.5; }
-    .ms-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:14px 16px; margin-top:14px; width:100%; font-size:13px; }
-    .ms-card-featured { border-color:var(--green); box-shadow:0 0 0 2px rgba(42,122,58,.16), var(--card-shadow); }
-    .ms-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
-    .ms-title { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:8px; }
-    .ms-items { display:flex; flex-direction:column; gap:4px; }
-    .ms-items span { font-size:11px; color:var(--ink-mid); line-height:1.4; }
-    .struct-bar { display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 22px; margin-top:18px; }
-    .struct-step { flex:1; min-width:130px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
-    .struct-step strong { display:block; font-size:13px; color:var(--shadow); margin-bottom:3px; }
-    .struct-step span { font-size:11px; color:var(--ink-soft); line-height:1.4; }
-    .struct-arrow { font-size:16px; color:var(--azure); font-weight:700; flex-shrink:0; }
-    @media(max-width:640px){ .struct-arrow{ display:none; } }
-    .struct-note { width:100%; font-size:12px; color:var(--ink-soft); line-height:1.5; text-align:center; margin-top:4px; }
-    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; }
-    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:16px; }
+    .tl-phase { margin-top:24px; }
+    .tl-phase-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .tl-phase-badge { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:6px 15px; border-radius:100px; white-space:nowrap; }
+    .tl-phase-badge.p1 { background:var(--azure-lt); color:var(--azure); border:1px solid var(--azure-bd); }
+    .tl-phase-badge.trans { background:rgba(226,237,122,.25); color:#4d5e00; border:1px solid rgba(200,214,0,.32); }
+    .tl-phase-badge.p2 { background:var(--green-lt); color:var(--green); border:1px solid rgba(42,122,58,.28); }
+    .tl-phase-line { flex:1; height:1px; background:var(--border); }
+    .tl-cards { display:grid; gap:14px; }
+    .tl-cards.c3 { grid-template-columns:repeat(3,1fr); }
+    .tl-cards.c2 { grid-template-columns:repeat(2,1fr); }
+    .tl-cards.c1 { grid-template-columns:1fr; }
+    @media(max-width:760px){ .tl-cards.c3, .tl-cards.c2 { grid-template-columns:1fr; } }
+    .tl-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 20px; border-left:3px solid var(--azure);
+      opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease; }
+    .tl-card.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce){ .tl-card{ opacity:1 !important; transform:none !important; } }
+    .tl-card.trans { border-left-color:#8a9e00; }
+    .tl-card.green { border-left-color:var(--green); }
+    .tl-card-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:5px; }
+    .tl-card h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .tl-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; margin-top:24px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:6px; }
+    .rhythm-intro { font-size:13px; color:var(--ink-mid); line-height:1.55; margin-bottom:16px; }
     .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
     .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
     .rhythm-icon { font-size:20px; margin-bottom:6px; }
@@ -552,6 +560,7 @@
       .idea-body p { font-size:14px; }
       .idea-hook { font-size:14px; }
       .aud-card > p { font-size:14px; }
+      .secondary-lane { font-size:14px; }
       .diff-card p { font-size:14px; }
       .zone-card p { font-size:14px; }
       .fstage-goal { font-size:14px; }
@@ -562,7 +571,9 @@
       .inspo-pull { font-size:14px; }
       .rhythm-detail { font-size:14px; }
       .approach-thesis { font-size:15px; }
-      .roi-caption { font-size:14px; }
+      .roi-frame { font-size:14px; }
+      .phase-block li { font-size:14px; }
+      .tl-card p { font-size:14px; }
     }
   </style>
 </head>
@@ -586,7 +597,7 @@
 </div>
 <script>
 (function(){
-  var PASS='drisha.scroll', KEY='sm_libertycommons_v3';
+  var PASS='drisha.scroll', KEY='sm_drisha_v4';
   var gate=document.getElementById('sm-gate');
   var inp=document.getElementById('sm-gate-input');
   var btn=document.getElementById('sm-gate-btn');
@@ -643,15 +654,16 @@
       <div class="act-sections">
         <a href="#approach"><span class="as-n">06</span> Our Approach</a>
         <a href="#built"><span class="as-n">07</span> Built Around You</a>
-        <a href="#ideas"><span class="as-n">08</span> Content Ideas</a>
-        <a href="#results"><span class="as-n">09</span> How We Drive Results</a>
+        <a href="#audience"><span class="as-n">08</span> Your Audience</a>
+        <a href="#ideas"><span class="as-n">09</span> Content Ideas</a>
+        <a href="#results"><span class="as-n">10</span> How We Drive Results</a>
       </div>
     </div>
     <div class="act-group" data-act="proof">
       <button type="button" class="act-btn">The Proof <span class="act-caret">&#9660;</span></button>
       <div class="act-sections">
-        <a href="#proof"><span class="as-n">10</span> Proof</a>
-        <a href="#next-steps"><span class="as-n">11</span> Next Steps</a>
+        <a href="#proof"><span class="as-n">11</span> Proof</a>
+        <a href="#next-steps"><span class="as-n">12</span> Next Steps</a>
       </div>
     </div>
   </div>
@@ -715,10 +727,10 @@
       <div class="snap-value">Liberty Township, Cincinnati</div>
     </div>
     <div class="snap-card feat">
-      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div>
-      <div class="snap-label">Volume</div>
-      <div class="snap-count" data-count="467">0</div>
-      <div class="snap-count-sub">patients a month · single provider</div>
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 12.5a1 1 0 0 0 .8 1.6H11l-1 7.9L18.5 11a1 1 0 0 0-.8-1.6H12l1-7.4z"/></svg></div>
+      <div class="snap-label">Instagram maturity</div>
+      <div class="snap-stage">Spark</div>
+      <div class="snap-stage-sub">a strong account with a clear runway</div>
     </div>
   </div>
 </div>
@@ -728,22 +740,42 @@
 <!-- ══════════ 02 · THE ENGAGEMENT ══════════ -->
 <div class="wrap reveal" id="engagement">
   <div class="eyebrow">The Engagement</div>
-  <h2 class="section-title">One package. <em>Run end to end.</em></h2>
-  <p class="section-sub">Scroll Media's Signature Package is a productized organic-social engagement. We build the strategy, then run content and growth end to end on Instagram. It comes in two phases: a Phase 1 strategy build, then Phase 2 full execution that continues every month. Everything below, the timeline, the investment, and exactly what is included, is that package.</p>
+  <h2 class="section-title">The Signature Package. <em>Run end to end.</em></h2>
+  <p class="section-sub">Our <strong>Signature Package</strong> is your organic social, built and run end to end on Instagram. One team owns the strategy, the content, and the growth, so you stay the dentist and the owner.</p>
 
-  <div class="insight">
-    <p><strong>Why it fits you.</strong> You are not starting from scratch. Nearly 467 patients a month, a brand-new content-ready facility, Smile Virtual already converting, the marketing infrastructure of a $17B parent, and fellowship-level credentials. What the last partner could not give you was content that looks and sounds like you, captured by a team that shows up prepared. That is the gap this engagement closes.</p>
+  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px;">What's included</div>
+  <div class="chip-row">
+    <span class="chip">A full social strategy, built around All-on-X</span>
+    <span class="chip">3 feed posts a week</span>
+    <span class="chip">2 story days a week</span>
+    <span class="chip">A content shoot every 3-4 weeks</span>
+    <span class="chip">Community management</span>
+    <span class="chip">Monthly report + biweekly check-ins</span>
   </div>
 
-  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:24px 0 12px;">What's included at a glance</div>
-  <div class="chip-row">
-    <span class="chip">Phase 1 strategy build</span>
-    <span class="chip">3 feed posts/wk</span>
-    <span class="chip">2 story days/wk</span>
-    <span class="chip">Content shoots every 3-4 weeks</span>
-    <span class="chip">Community management</span>
-    <span class="chip">Monthly performance reporting</span>
-    <span class="chip">All-on-X Transformation Story System</span>
+  <div class="phase-blocks">
+    <div class="phase-block p1">
+      <div class="phase-block-eyebrow">Phase 1 · Strategy</div>
+      <h4>The foundation</h4>
+      <div class="phase-block-dur">First ~3 weeks</div>
+      <ul>
+        <li>Brand, audience, and funnel strategy</li>
+        <li>Content pillars + the Instagram keyword plan (Social SEO)</li>
+        <li>A 30-day content calendar</li>
+        <li><strong>Presented and locked with you in a strategy meeting at the end of week 3</strong></li>
+      </ul>
+    </div>
+    <div class="phase-block p2">
+      <div class="phase-block-eyebrow">Phase 2 · Execution</div>
+      <h4>The engine runs</h4>
+      <div class="phase-block-dur">The following 2 months, then ongoing</div>
+      <ul>
+        <li>We shoot, produce, schedule, and post, 3 feed posts + 2 story days a week</li>
+        <li>We manage the community and run collaborations</li>
+        <li>We report every month and refine as the data comes in</li>
+        <li><strong>The engine runs. You review and approve.</strong></li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -752,139 +784,107 @@
 <!-- ══════════ 03 · TIMELINE ══════════ -->
 <div class="wrap reveal" id="timeline">
   <div class="eyebrow">Timeline</div>
-  <h2 class="section-title">Strategy first. <em>First post in August.</em></h2>
-  <p class="section-sub">Strategy before execution, always. Your current contract runs through end of July, so we use that window to get fully onboarded and build the strategy, then go live in August with no wasted motion.</p>
+  <h2 class="section-title">Strategy first. <em>Then we execute.</em></h2>
+  <p class="section-sub">The 3-month initial engagement, at a glance. Strategy in weeks 1 to 3, then we transition to execution and the content goes live.</p>
 
   <div class="tl-cta">
     <div style="font-size:24px;">⚡</div>
-    <p><strong>The timing lines up cleanly.</strong> Sign in early July, kick off right after, strategy built and presented through July, first post live in early August as the old contract ends. A short content gap in late July is fine and expected. We come on already up to speed.</p>
+    <p><strong>The timing lines up cleanly with your current contract ending in July.</strong> Sign in early July, kick off right after, strategy locked through July, first post live in early August.</p>
   </div>
 
-  <!-- VISUAL MILESTONE TIMELINE -->
-  <div class="milestone-wrap mt-lg">
-    <div class="milestone-track" id="ms-track">
-      <div class="milestone-col">
-        <div class="ms-dot ms-blue"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 1</div>
-          <div class="ms-title">Kickoff</div>
-          <div class="ms-items">
-            <span>✓ Onboarding + kickoff call</span>
-            <span>✓ Goals + All-on-X focus locked</span>
-            <span>✓ Asset and account audit</span>
-          </div>
-        </div>
+  <!-- PHASE 1 -->
+  <div class="tl-phase">
+    <div class="tl-phase-head">
+      <span class="tl-phase-badge p1">Phase 1 · Strategy · Weeks 1-3</span>
+      <span class="tl-phase-line"></span>
+    </div>
+    <div class="tl-cards c3">
+      <div class="tl-card">
+        <div class="tl-card-week">Week 1</div>
+        <h4>Kickoff</h4>
+        <p>Onboarding, kickoff call, goals and All-on-X focus locked, account audit.</p>
       </div>
-      <div class="milestone-col">
-        <div class="ms-dot ms-blue"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 2</div>
-          <div class="ms-title">Strategy development</div>
-          <div class="ms-items">
-            <span>✓ Two audiences + content pillars</span>
-            <span>✓ The Transformation Story System</span>
-            <span>✓ Instagram Social SEO</span>
-          </div>
-        </div>
+      <div class="tl-card">
+        <div class="tl-card-week">Week 2</div>
+        <h4>Strategy development</h4>
+        <p>The audience, content pillars, Instagram Social SEO.</p>
       </div>
-      <div class="milestone-col">
-        <div class="ms-dot ms-blue"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 3</div>
-          <div class="ms-title">Strategy presentation</div>
-          <div class="ms-items">
-            <span>✓ Strategy deck presented</span>
-            <span>✓ Strategy locked</span>
-          </div>
-        </div>
-      </div>
-      <div class="milestone-col">
-        <div class="ms-dot ms-green"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 4</div>
-          <div class="ms-title">First content shoot</div>
-          <div class="ms-items">
-            <span>✓ First production session</span>
-            <span>✓ Content captured + prepped</span>
-            <span>✓ Female crew on set</span>
-          </div>
-        </div>
-      </div>
-      <div class="milestone-col">
-        <div class="ms-dot ms-green"></div>
-        <div class="ms-line"></div>
-        <div class="ms-card">
-          <div class="ms-week">Week 5</div>
-          <div class="ms-title">🚀 First post goes live</div>
-          <div class="ms-items">
-            <span>✓ The account in motion</span>
-            <span>✓ The funnel framework running</span>
-            <span>✓ First content in market</span>
-          </div>
-        </div>
-      </div>
-      <div class="milestone-col">
-        <div class="ms-dot ms-green"></div>
-        <div class="ms-line ms-line-fade"></div>
-        <div class="ms-card ms-card-featured">
-          <div class="ms-week">Ongoing</div>
-          <div class="ms-title">Execution mode</div>
-          <div class="ms-items">
-            <span>✓ Full content engine running</span>
-            <span>✓ All-on-X cases serialized</span>
-            <span>✓ Proof feeding Smile Virtual</span>
-          </div>
-        </div>
+      <div class="tl-card">
+        <div class="tl-card-week">Week 3</div>
+        <h4>Strategy presentation</h4>
+        <p>Presented and locked with you.</p>
       </div>
     </div>
   </div>
 
-  <!-- ENGAGEMENT-STRUCTURE BAR -->
-  <div class="struct-bar mt-lg">
-    <div class="struct-step"><strong>3-month initial</strong><span>the starting term</span></div>
-    <div class="struct-arrow">→</div>
-    <div class="struct-step"><strong>6 / 9 / 12-month</strong><span>rolling extensions</span></div>
-    <div class="struct-arrow">→</div>
-    <div class="struct-step"><strong>12-month-plus</strong><span>the long game</span></div>
-    <div class="struct-note">Organic social compounds, so each term builds on the last.</div>
+  <!-- TRANSITION -->
+  <div class="tl-phase">
+    <div class="tl-phase-head">
+      <span class="tl-phase-badge trans">Transition · Week 4</span>
+      <span class="tl-phase-line"></span>
+    </div>
+    <div class="tl-cards c1">
+      <div class="tl-card trans">
+        <div class="tl-card-week">Week 4</div>
+        <h4>First content shoot</h4>
+        <p>The first production session, with a female crew on set. Content captured and prepped for launch.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- ONGOING OPERATING RHYTHM -->
-  <div class="rhythm-row mt-lg">
+  <!-- PHASE 2 -->
+  <div class="tl-phase">
+    <div class="tl-phase-head">
+      <span class="tl-phase-badge p2">Phase 2 · Execution · Week 5 → ongoing</span>
+      <span class="tl-phase-line"></span>
+    </div>
+    <div class="tl-cards c2">
+      <div class="tl-card green">
+        <div class="tl-card-week">Week 5</div>
+        <h4>First post goes live</h4>
+        <p>The account in motion, the funnel running.</p>
+      </div>
+      <div class="tl-card green">
+        <div class="tl-card-week">Weeks 6+</div>
+        <h4>Execution mode</h4>
+        <p>3 feed posts + 2 story days a week, shoots every 3-4 weeks, monthly reporting.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONGOING OPERATING RHYTHM (steady-state, distinct from the ramp) -->
+  <div class="rhythm-row">
     <div class="rhythm-label">Ongoing operating rhythm</div>
+    <div class="rhythm-intro">Once execution is live, this is the steady-state cadence that keeps running.</div>
     <div class="rhythm-steps">
       <div class="rhythm-step">
         <div class="rhythm-icon">📸</div>
         <div class="rhythm-name">Content Shoot</div>
-        <div class="rhythm-detail">Every 3 to 4 weeks · about 3 hours · female crew on set.</div>
+        <div class="rhythm-detail">Every 3-4 weeks.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">💬</div>
-        <div class="rhythm-name">Status Meeting</div>
-        <div class="rhythm-detail">Every other week · 30 minutes.</div>
+        <div class="rhythm-name">Check-in</div>
+        <div class="rhythm-detail">Every other week.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">📅</div>
-        <div class="rhythm-name">Feed Posts</div>
-        <div class="rhythm-detail">3 per week · Monday, Wednesday, Friday.</div>
+        <div class="rhythm-name">Feed</div>
+        <div class="rhythm-detail">Mon / Wed / Fri.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">✨</div>
-        <div class="rhythm-name">Story Days</div>
-        <div class="rhythm-detail">2 per week · Tuesday, Thursday.</div>
+        <div class="rhythm-name">Stories</div>
+        <div class="rhythm-detail">Tue / Thu.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
         <div class="rhythm-icon">📊</div>
-        <div class="rhythm-name">Performance Report</div>
-        <div class="rhythm-detail">First week of every month.</div>
+        <div class="rhythm-name">Report</div>
+        <div class="rhythm-detail">First week of each month.</div>
       </div>
     </div>
   </div>
@@ -901,7 +901,7 @@
   <div class="inv-hero">
     <div class="inv-hero-label">Signature Package · Growth Tier · 3-Month Initial Engagement</div>
     <h3>Dr. Isha Patel · Liberty Commons Family Dental</h3>
-    <div class="inv-hero-sub">Phase 1 locks the strategy and builds the All-on-X Transformation Story System. Phase 2 runs the full content engine. After the initial 3 months, the retainer continues at the same rate, with no resets and no new strategy fees. Organic social compounds, so most clients extend into a 6, 9, or 12-month term to play the long game.</div>
+    <div class="inv-hero-sub">Phase 1 builds the strategy. Phase 2 runs the full content engine. After the initial 3 months, the retainer continues at the same rate, with no resets and no new strategy fees. Organic social compounds, so most clients extend into a 6, 9, or 12-month term to play the long game.</div>
     <div class="inv-hero-row">
       <div class="inv-hero-stat">
         <div class="amount">$3,250</div>
@@ -917,22 +917,22 @@
   <div class="inv-breakdown">
     <div class="inv-row">
       <div class="item">
-        <strong>Month 1 · Strategy + Story System build</strong>
-        <small>kickoff · two audiences · pillars · the All-on-X Transformation Story System · Social SEO · profile and Instagram search build · strategy presentation</small>
+        <strong>Month 1 · Strategy build</strong>
+        <small>kickoff · the audience · content pillars · Social SEO · profile + Instagram search build · the 30-day calendar · strategy presentation</small>
       </div>
       <div class="amt">$1,917</div>
     </div>
     <div class="inv-row">
       <div class="item">
         <strong>Month 2 · Full execution</strong>
-        <small>3 feed posts/wk · 2 story days/wk · content shoot · All-on-X capture · community management · biweekly check-in · monthly report</small>
+        <small>3 feed posts/wk · 2 story days/wk · content shoot · community management · biweekly check-in · monthly report</small>
       </div>
       <div class="amt">$3,250</div>
     </div>
     <div class="inv-row">
       <div class="item">
         <strong>Month 3 · Full execution</strong>
-        <small>full content engine running · transformations serialized and feeding Smile Virtual</small>
+        <small>the full content engine running</small>
       </div>
       <div class="amt">$3,250</div>
     </div>
@@ -953,60 +953,54 @@
 <div class="wrap reveal" id="scope">
   <div class="eyebrow">Scope &amp; Deliverables</div>
   <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
-  <p class="section-sub">Everything below is included in the monthly retainer. You run the practice. We run the Instagram. Each deliverable carries when you can expect it.</p>
+  <p class="section-sub">Everything below is included in the monthly retainer. You run the practice. We run the Instagram. Each line shows when you can expect it.</p>
 
   <div class="scope-table-wrap">
     <table class="scope-table">
       <thead>
-        <tr><th>Deliverable</th><th>Details</th><th>When</th><th>Incl.</th></tr>
+        <tr><th>Deliverable</th><th>What you get</th><th>When</th><th>Incl.</th></tr>
       </thead>
       <tbody>
         <tr>
           <td>Content Strategy</td>
-          <td>Full strategy build: brand and marketing audit, two audience personas (All-on-X + Invisalign), content pillars, keyword bank, aspirational benchmark, format mix, positioning and voice, plus a 30-day content calendar.</td>
-          <td class="when">Delivered end of Month 1.</td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>All-on-X Transformation Story System <span class="scope-badge">Strategic feature</span></td>
-          <td>The capture-consent-serialize-convert system that turns full-arch surgery days into a repeatable stream of funnel-spanning proof content.</td>
-          <td class="when">Built in Month 1, runs ongoing.</td>
+          <td>The full strategy build: brand and marketing audit, audience persona, content pillars, keyword bank, format mix, positioning and voice, plus a 30-day content calendar.</td>
+          <td class="when">Presented and locked with you in week 3.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Feed Content Production</td>
-          <td>3 feed posts per week (reels, carousels, statics), produced and scheduled, every post mapped to a pillar and funnel stage. Weekly stories and graphic design as needed.</td>
-          <td class="when">Live early August, weekly thereafter.</td>
+          <td>3 feed posts per week (reels, carousels, statics), produced and scheduled, each mapped to a pillar and funnel stage. Weekly stories and graphic design as needed.</td>
+          <td class="when">Live from week 5, weekly thereafter.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Content Shoots</td>
-          <td>A shoot every 3 to 4 weeks (about 3 hours), storyboarded and scripted in advance, 2-to-3-person crew including a female team member every time, plus All-on-X case capture on a week's notice.</td>
-          <td class="when">First shoot Week 4, every 3-4 weeks ongoing.</td>
+          <td>A shoot every 3 to 4 weeks (about 3 hours), storyboarded and scripted in advance, with a 2-to-3-person crew including a female team member every time. Includes capturing All-on-X surgery days on a week's notice, worked around the procedure, fully consent-cleared.</td>
+          <td class="when">First shoot week 4, then every 3-4 weeks.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Profile + Social SEO</td>
           <td>Bio, link-in-bio, highlight covers, alt text, captions, the Cincinnati keyword ladder, ongoing profile maintenance on @dr.ishapatel.</td>
-          <td class="when">Built Month 1, maintained ongoing.</td>
+          <td class="when">Built in weeks 1-3, maintained ongoing.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Community Management</td>
           <td>Comments, DMs, mentions, proactive outreach, and collaborations with brand-aligned local accounts. Booking and All-on-X inquiries flagged to your team.</td>
-          <td class="when">Ongoing from launch.</td>
+          <td class="when">Ongoing from launch (week 5).</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Approvals &amp; Posting</td>
           <td>Content submitted for your approval before it goes live.</td>
-          <td class="when">Ongoing, 5 business days before publish.</td>
+          <td class="when">Every cycle, 5 business days before publish.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Monthly Performance Report</td>
           <td>Reach, engagement, and conversion signal, 5-6 metrics that matter.</td>
-          <td class="when">First week of every month.</td>
+          <td class="when">First week of each month, from month 2.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
@@ -1017,36 +1011,6 @@
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <!-- THE STRATEGIC FEATURE, FEATURED -->
-  <div class="story-banner mt-lg">
-    <div class="eyebrow">Built only for you</div>
-    <h3>The All-on-X Transformation Story System. <em>Your most ownable content, made repeatable.</em></h3>
-    <p>An All-on-X case is an eight-hour day that ends with a person walking out with a brand-new smile. The last partner kept pushing it aside as "just surgical." It is not just surgical. It is the meat of your business and the most emotional story in dentistry. We build a repeatable system to capture it, clear it, and serialize it.</p>
-
-    <div class="insight" style="margin-top:18px;">
-      <p><strong>The shoot problem we solve.</strong> Shutting the office down to film costs you $17,000 to $20,000 a day. That is exactly why our shoots are prepped, scripted, and batched, with a 2-to-3-person crew that includes a woman on set every time. We capture full-arch days with at least a week of notice, working around the surgery, never in the way of it.</p>
-    </div>
-
-    <div style="margin-top:18px;">
-      <details class="cl">
-        <summary><div class="cl-sum-text"><span class="cl-sum-title">1 · Capture · prepped and crew-ready</span></div><span class="cl-chev">&#9660;</span></summary>
-        <div class="cl-body"><p>A shot list and consent checklist built before the day, a small crew including a female team member, capturing the day and the reveal without disrupting care.</p></div>
-      </details>
-      <details class="cl">
-        <summary><div class="cl-sum-text"><span class="cl-sum-title">2 · Consent · cleared and protected</span></div><span class="cl-chev">&#9660;</span></summary>
-        <div class="cl-body"><p>A clean release and consent process locked in Phase 1, so every transformation we post is fully cleared.</p></div>
-      </details>
-      <details class="cl">
-        <summary><div class="cl-sum-text"><span class="cl-sum-title">3 · Serialize · one case, many posts</span></div><span class="cl-chev">&#9660;</span></summary>
-        <div class="cl-body"><p>Each case becomes a series: the before, the day-of, the reveal, the reaction, the follow-up. One day produces weeks of content.</p></div>
-      </details>
-      <details class="cl">
-        <summary><div class="cl-sum-text"><span class="cl-sum-title">4 · Convert · pointed at Smile Virtual</span></div><span class="cl-chev">&#9660;</span></summary>
-        <div class="cl-body"><p>Every story routes the right viewer to a Smile Virtual submission.</p></div>
-      </details>
-    </div>
   </div>
 
   <div class="insight mt-md">
@@ -1103,7 +1067,7 @@
     <div class="zone-card">
       <div class="zone-n">Zone 01</div>
       <h4>Foundation</h4>
-      <p>Brand immersion, your audience, the funnel.</p>
+      <p>Brand, audience, the funnel.</p>
     </div>
     <div class="zone-card">
       <div class="zone-n">Zone 02</div>
@@ -1113,7 +1077,7 @@
     <div class="zone-card">
       <div class="zone-n">Zone 03</div>
       <h4>Performance</h4>
-      <p>Analytics mapped to your goals, the winning formats promoted, the plan adjusted.</p>
+      <p>Analytics mapped to your goals, winners promoted, the plan adjusted.</p>
     </div>
   </div>
 
@@ -1126,7 +1090,7 @@
     <span class="mat-stage">Rise</span>
     <span class="mat-arrow">→</span>
     <span class="mat-stage">Thrive</span>
-    <div class="mat-note">We read account maturity on more than follower count. <strong>Dr. Isha's account starts at the Spark stage</strong>, a strong account with a clear runway. We calibrate the targets to that stage and raise them as it grows.</div>
+    <div class="mat-note">We read account maturity on more than follower count. <strong>Dr. Isha's account starts at Spark</strong>, a strong account with a clear runway. We calibrate targets to that stage and raise them as it grows.</div>
   </div>
 </div>
 
@@ -1136,81 +1100,73 @@
 <div class="wrap reveal" id="built">
   <div class="built-head">
     <div style="flex:1;min-width:260px;">
-      <div class="eyebrow">Built Around You</div>
-      <h2 class="section-title">What sets you apart. <em>Who we're reaching.</em></h2>
-      <p class="section-sub" style="margin-bottom:0;">The strategy starts from what only you have, and the exact person we are putting it in front of.</p>
+      <div class="eyebrow">What sets you apart</div>
+      <h2 class="section-title">Four things <em>we build your content around.</em></h2>
+      <p class="section-sub" style="margin-bottom:0;">These are the advantages no other Cincinnati dentist can copy. Every one becomes a recurring content pillar.</p>
     </div>
     <img class="dog-accent" src="https://tools.scrollmedia.co/assets/illustrations/howie-color.png" alt="" aria-hidden="true" width="168" height="168" />
   </div>
 
-  <!-- DIFFERENTIATORS -->
   <div class="diff-grid mt-lg">
     <div class="diff-card">
       <div class="diff-num">01 · Differentiator</div>
-      <h4>The doctor is the brand, and the credentials are real.</h4>
-      <p>Dr. Isha is a fellowship-trained implant dentist, an Invisalign Gold provider, and sedation-certified, with a Master's in oral biology and more than a decade in the chair. We put a genuinely credentialed expert in front of the right local audience and let that do the work.</p>
+      <h4>All-female-led, governor-recognized.</h4>
+      <p>An all-women team with a state proclamation. In a category people walk in anxious, that is trust no competitor here can claim.</p>
     </div>
     <div class="diff-card">
       <div class="diff-num">02 · Differentiator</div>
-      <h4>An all-female-led practice the governor recognized.</h4>
-      <p>A governor's proclamation for an all-female-led business, an all-women team, and a seat on the Liberty Township Chamber of Commerce. For a category most people walk into anxious, an all-women team that gets it is the most trust-building, ownable story in Cincinnati dentistry. No competitor has it.</p>
+      <h4>The face, not a faceless logo.</h4>
+      <p>This is @dr.ishapatel, the doctor herself. People follow people, and patients trust a person before a practice.</p>
     </div>
     <div class="diff-card">
       <div class="diff-num">03 · Differentiator</div>
-      <h4>A direct line to the people who wrote the All-on-X playbook.</h4>
-      <p>Dr. Isha's mentor founded ESTEEM Dental Implants, the national full-arch network her aspirational accounts belong to. We bring that standard to Cincinnati.</p>
+      <h4>A fellowship-trained implant specialist.</h4>
+      <p>Implant fellowship, Invisalign Gold, sedation-certified, a Master's in oral biology. Not a generalist who dabbles in implants.</p>
     </div>
     <div class="diff-card">
       <div class="diff-num">04 · Differentiator</div>
-      <h4>A conversion system already running.</h4>
-      <p>Smile Virtual is live, the funnel works, the practice is mature. We plug into a working machine and feed it the right attention.</p>
+      <h4>Work that's built to be watched.</h4>
+      <p>All-on-X is a same-day, life-changing transformation. The most dramatic before-and-after in dentistry is your everyday work, which means the content makes itself.</p>
     </div>
-  </div>
-  <p style="font-size:13px;color:var(--ink-soft);font-style:italic;margin-top:14px;">Each differentiator becomes a recurring content pillar.</p>
-
-  <!-- YOUR AUDIENCE -->
-  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:30px 0 14px;">Your audience</div>
-  <div class="aud-stack">
-    <div class="aud-card">
-      <span class="aud-tag primary">Primary · All-on-X</span>
-      <h4>The Full-Arch Candidate</h4>
-      <p>Adults often 45+, living with failing or missing teeth or dentures that never felt right. Frequently the searcher is an adult child or spouse researching for someone they love. High-emotion, high-consideration.</p>
-      <details class="cl">
-        <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">Motivators, challenges, dream outcomes</span></div><span class="cl-chev">&#9660;</span></summary>
-        <div class="cl-body">
-          <p><strong>Motivators.</strong> Eat, laugh, and be photographed again. Do it once, done right.</p>
-          <p><strong>Challenges.</strong> Years of shame, fear of surgery and cost, unaware same-day full-arch exists.</p>
-          <p><strong>Dream outcomes.</strong> A new smile in a day, the relief of having handled it.</p>
-        </div>
-      </details>
-    </div>
-    <div class="aud-card">
-      <span class="aud-tag secondary">Secondary · Invisalign + cosmetic</span>
-      <h4>The Confident-Smile Seeker</h4>
-      <p>Image-conscious adults and professionals who want a straighter, brighter smile, many of them existing patients never told their cosmetic options.</p>
-      <details class="cl">
-        <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">Motivators, challenges, dream outcomes</span></div><span class="cl-chev">&#9660;</span></summary>
-        <div class="cl-body">
-          <p><strong>Motivators.</strong> Polished, discreet, photo-ready.</p>
-          <p><strong>Challenges.</strong> Assume it is not for them, never prompted.</p>
-          <p><strong>Dream outcomes.</strong> A straighter smile without the hardware.</p>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <div class="assumption mt-md">
-    <p><strong>Assumption.</strong> This engagement focuses on growing @dr.ishapatel, not @libertycommonsfd. All-on-X is the priority lever; Invisalign and cosmetic are the secondary lane. The second doctor joining in July is not in scope, though the system is ready to extend. We feed the funnel that already exists, we do not rebuild it.</p>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ══════════ 08 · CONTENT IDEAS ══════════ -->
+<!-- ══════════ 08 · YOUR AUDIENCE ══════════ -->
+<div class="wrap reveal" id="audience">
+  <div class="eyebrow">Who we're getting you in front of</div>
+  <h2 class="section-title">One audience. <em>The one you want more of.</em></h2>
+  <p class="section-sub">This engagement is about new-patient acquisition for All-on-X. We get Dr. Isha in front of the right new people, the ones who match the patient you want more of, and walk them from a stranger to a booked consult.</p>
+
+  <div class="aud-card">
+    <span class="aud-tag">The persona</span>
+    <h4>The New-Smile Seeker</h4>
+    <p>Adults, often 45 and up, living with failing, broken-down, or missing teeth, or stuck in dentures that never felt right. Frequently the person searching is an adult child or a spouse, quietly researching for someone they love. High-emotion, high-consideration, ready for a permanent fix done right.</p>
+    <details class="cl">
+      <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">Motivators, challenges, dream outcomes, how content adapts</span></div><span class="cl-chev">&#9660;</span></summary>
+      <div class="cl-body">
+        <p><strong>Motivators.</strong> To eat, laugh, and be photographed again without thinking about their teeth. One permanent solution, done right.</p>
+        <p><strong>Challenges.</strong> Years of shame and avoidance, fear of the surgery and the cost, and not knowing a same-day full-arch option even exists.</p>
+        <p><strong>Dream outcomes.</strong> A new smile in a single day, and the relief of having finally handled it.</p>
+        <p><strong>How content adapts.</strong> Relatable shame-reframing at the top, education in the middle, transformation proof at the bottom, all pointed at a Smile Virtual submission.</p>
+      </div>
+    </details>
+    <div class="secondary-lane"><strong>Secondary lane.</strong> A lighter secondary lane keeps cosmetic and Invisalign in view for existing patients, without pulling focus from All-on-X.</div>
+  </div>
+
+  <div class="assumption mt-md">
+    <p><strong>Assumption.</strong> This engagement focuses on growing @dr.ishapatel for All-on-X new-patient acquisition. The full ideal-viewer profile, and any second persona, is built in the Phase 1 strategy. We feed the funnel that already exists, we do not rebuild it.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 09 · CONTENT IDEAS ══════════ -->
 <div class="wrap reveal" id="ideas">
   <div class="eyebrow">Content Ideas</div>
   <h2 class="section-title">Built around your work. <em>Designed to perform.</em></h2>
-  <p class="section-sub">Not generic dental content. Concepts only Dr. Isha could make, each engineered to travel from a standing start and mapped to the funnel: relatable at the top, educational in the middle, proof at the bottom. Several are built on Cincinnati culture, so they feel made by a local. Every idea comes out of the Content Engine above. All-on-X dominant, with the distribution-heavy ideas (food, ASMR, confidence) engineered to carry the All-on-X payload to cold audiences.</p>
+  <p class="section-sub">Not generic dental content. Concepts only Dr. Isha could make, each engineered to travel from a standing start and mapped to the funnel. Every idea comes out of the Content Engine above. These are the highest-impact ideas we would test first.</p>
 
   <!-- SIGNATURE SERIES -->
   <div class="idea-group-label">Signature series &middot; recurring franchises</div>
@@ -1224,7 +1180,7 @@
       </div>
       <span class="idea-chev">&#9660;</span>
     </summary>
-    <div class="idea-body"><p>A single locked-off, scored shot of a patient's first real meal after the reveal, minimal cuts, with a Cincinnati food as the prop (Montgomery Inn ribs, a Skyline coney, a Graeter's cone). You are not watching dentistry, you are watching someone get their life back, which is exactly why non-dental audiences stay. The franchise: every episode a new patient, a new Cincinnati food, the same gasp.</p></div>
+    <div class="idea-body"><p>A single locked-off, scored shot of a patient's first real meal after the reveal, with a Cincinnati food as the prop (Montgomery Inn ribs, a Skyline coney). You are not watching dentistry, you are watching someone get their life back, which is exactly why non-dental audiences stay. The franchise: every episode a new patient, a new Cincinnati food, the same gasp.</p></div>
   </details>
 
   <details class="idea">
@@ -1239,37 +1195,13 @@
     <div class="idea-body"><p>Dr. Isha at her desk, direct address, one honest-answer episode a month on the question everyone is afraid to ask. Cost transparency in a category built on hiding it is a pattern interrupt. People save and send honest-pricing content to whoever they are deciding with.</p></div>
   </details>
 
-  <details class="idea">
-    <summary>
-      <div>
-        <div class="idea-meta"><span class="idea-n">03</span><span class="idea-pill">Team Reel or Carousel · recurring</span><span class="idea-pill tofu">TOFU/MOFU · Relatable</span></div>
-        <div class="idea-title">All-Women, On Purpose</div>
-        <div class="idea-hook">"The governor recognized us for one thing most dental offices can't say."</div>
-      </div>
-      <span class="idea-chev">&#9660;</span>
-    </summary>
-    <div class="idea-body"><p>The proclamation on screen as a real artifact, warm and team-led, a "meet the women who'll be in the room" series that lowers the fear of the surgery frame by frame. Civic and Chamber accounts reshare it.</p></div>
-  </details>
-
   <!-- REELS -->
   <div class="idea-group-label">Reels &middot; standalone</div>
 
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">04</span><span class="idea-pill">Reel · UGC-style POV</span><span class="idea-pill bofu">BOFU · Proof</span></div>
-        <div class="idea-title">The Day My Mom Got Her Smile Back</div>
-        <div class="idea-hook">"I didn't do this for me. I did it for my mom."</div>
-      </div>
-      <span class="idea-chev">&#9660;</span>
-    </summary>
-    <div class="idea-body"><p>Shot from the adult child's POV, phone-textured and lo-fi on purpose. The real All-on-X buyer is often the daughter, so content from her POV reaches an audience the practice never speaks to directly, and that audience cries and shares. The highest emotional ceiling in the deck.</p></div>
-  </details>
-
-  <details class="idea">
-    <summary>
-      <div>
-        <div class="idea-meta"><span class="idea-n">05</span><span class="idea-pill">ASMR Reveal Reel</span><span class="idea-pill tofu">TOFU · Reach</span></div>
+        <div class="idea-meta"><span class="idea-n">03</span><span class="idea-pill">ASMR Reveal Reel</span><span class="idea-pill tofu">TOFU · Reach</span></div>
         <div class="idea-title">The Oddly Satisfying One</div>
         <div class="idea-hook">on-screen text only, no talking: "full arch, start to finish. sound on."</div>
       </div>
@@ -1281,13 +1213,13 @@
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">06</span><span class="idea-pill">Reel · game-day</span><span class="idea-pill tofu">TOFU · Reach</span></div>
-        <div class="idea-title">Smile Cam at Paycor</div>
-        <div class="idea-hook">"Bengals fans, we found the best smiles in the stadium. Who Dey."</div>
+        <div class="idea-meta"><span class="idea-n">04</span><span class="idea-pill">Reel · UGC-style POV</span><span class="idea-pill bofu">BOFU · Proof</span></div>
+        <div class="idea-title">The Day My Mom Got Her Smile Back</div>
+        <div class="idea-hook">"I didn't do this for me. I did it for my mom."</div>
       </div>
       <span class="idea-chev">&#9660;</span>
     </summary>
-    <div class="idea-body"><p>Game-day energy, fan smiles, fast cuts, Dr. Isha as the smile expert with a take. Pure Cincinnati reach borrow that builds the local audience the All-on-X content later converts. Seasonal to NFL season.</p></div>
+    <div class="idea-body"><p>Shot from the adult child's POV, phone-textured and lo-fi on purpose. The real All-on-X buyer is often the daughter, so content from her POV reaches an audience the practice never speaks to directly, and that audience cries and shares. The highest emotional ceiling in the set.</p></div>
   </details>
 
   <!-- CAROUSELS -->
@@ -1296,19 +1228,7 @@
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">07</span><span class="idea-pill">Educational Carousel · 8 slides</span><span class="idea-pill mofu">MOFU · Educational</span></div>
-        <div class="idea-title">What Nobody Tells You About Dentures</div>
-        <div class="idea-hook">slide 1: "If someone you love wears dentures, slide 2 is for you."</div>
-      </div>
-      <span class="idea-chev">&#9660;</span>
-    </summary>
-    <div class="idea-body"><p>The hidden problem with dentures, what same-day full-arch actually is, the day-of timeline, the result. A carousel that teaches without selling gets saved and sent to the family member who needs it.</p></div>
-  </details>
-
-  <details class="idea">
-    <summary>
-      <div>
-        <div class="idea-meta"><span class="idea-n">08</span><span class="idea-pill">Documentary Carousel · 8-10 slides</span><span class="idea-pill mofu">MOFU/BOFU · Proof</span></div>
+        <div class="idea-meta"><span class="idea-n">05</span><span class="idea-pill">Documentary Carousel · 8-10 slides</span><span class="idea-pill mofu">MOFU/BOFU · Proof</span></div>
         <div class="idea-title">The 8 Hours</div>
         <div class="idea-hook">slide 1: "Walked in with failing teeth at 7am. Walked out with a permanent smile by dinner. Here's every hour."</div>
       </div>
@@ -1320,13 +1240,13 @@
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">09</span><span class="idea-pill">Urgency Carousel · 6 slides</span><span class="idea-pill bofu">BOFU · Conversion</span></div>
-        <div class="idea-title">Use It or Lose It</div>
-        <div class="idea-hook">slide 1: "Your dental benefits reset January 1. Most people throw away thousands. Don't."</div>
+        <div class="idea-meta"><span class="idea-n">06</span><span class="idea-pill">Educational Carousel · 8 slides</span><span class="idea-pill mofu">MOFU · Educational</span></div>
+        <div class="idea-title">What Nobody Tells You About Dentures</div>
+        <div class="idea-hook">slide 1: "If someone you love wears dentures, slide 2 is for you."</div>
       </div>
       <span class="idea-chev">&#9660;</span>
     </summary>
-    <div class="idea-body"><p>Timed to the year-end benefits and FSA deadline, especially for existing patients sitting on unused benefits. A genuine, dated financial deadline that converts because it is true. Routes to Smile Virtual.</p></div>
+    <div class="idea-body"><p>The hidden problem with dentures, what same-day full-arch actually is, the day-of timeline, the result. A carousel that teaches without selling gets saved and sent to the family member who needs it.</p></div>
   </details>
 
   <!-- STORIES -->
@@ -1335,7 +1255,7 @@
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">10</span><span class="idea-pill">Question Box / AMA · weekly</span><span class="idea-pill mofu">MOFU · Educational</span></div>
+        <div class="idea-meta"><span class="idea-n">07</span><span class="idea-pill">Question Box / AMA · weekly</span><span class="idea-pill mofu">MOFU · Educational</span></div>
         <div class="idea-title">Ask Me Anything: the question you're embarrassed to ask</div>
         <div class="idea-hook">"Anonymous box. Ask me the All-on-X question you don't want to say out loud."</div>
       </div>
@@ -1347,38 +1267,26 @@
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">11</span><span class="idea-pill">Poll / This-or-That · recurring</span><span class="idea-pill tofu">TOFU · Relatable</span></div>
-        <div class="idea-title">This or That: Cincinnati Edition</div>
-        <div class="idea-hook">"Skyline or Gold Star. Graeter's or Jeni's. Be honest."</div>
-      </div>
-      <span class="idea-chev">&#9660;</span>
-    </summary>
-    <div class="idea-body"><p>Local-food-rivalry polls, then a soft turn: "the point of new teeth? eating all of these again." High sticker-tap rate feeds reach; the turn ties it back to the emotional payoff of eating again.</p></div>
-  </details>
-
-  <details class="idea">
-    <summary>
-      <div>
-        <div class="idea-meta"><span class="idea-n">12</span><span class="idea-pill">Countdown + link sticker</span><span class="idea-pill bofu">BOFU · Conversion</span></div>
+        <div class="idea-meta"><span class="idea-n">08</span><span class="idea-pill">Countdown + link sticker</span><span class="idea-pill bofu">BOFU · Conversion</span></div>
         <div class="idea-title">Countdown to the Reveal</div>
         <div class="idea-hook">"In 3 days, a patient who hasn't smiled in a photo in 12 years sees her new smile. The countdown's on."</div>
       </div>
       <span class="idea-chev">&#9660;</span>
     </summary>
-    <div class="idea-body"><p>A countdown into build-up frames, the reveal dropping as a Reel the Story drives traffic to. Turns a single reveal into a multi-day arc.</p></div>
+    <div class="idea-body"><p>A countdown into build-up frames, the reveal dropping as a Reel the Story drives traffic to. Turns a single reveal into a multi-day arc and trains the audience to watch for reveals.</p></div>
   </details>
 
   <!-- COLLABORATIONS -->
   <div class="idea-group-label">Collaborations &middot; borrow credibility and reach, fast</div>
 
   <div class="insight" style="margin-bottom:14px;">
-    <p><strong>The Scroll edge.</strong> Dr. Isha does not have to source partners cold. We broker collaborations across our own Cincinnati client network with warm introductions, and you already have your Chamber network. No other agency can plug you into a ready-made local brand network like that.</p>
+    <p><strong>The Scroll edge.</strong> Dr. Isha does not have to source partners cold. We broker collaborations across our own Cincinnati client network with warm introductions, and you already have your Chamber network.</p>
   </div>
 
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">13</span><span class="idea-pill">Collab Reel · phase-2 hero play</span><span class="idea-pill tofu">TOFU/MOFU · Reach</span></div>
+        <div class="idea-meta"><span class="idea-n">09</span><span class="idea-pill">Collab Reel · phase-2 hero play</span><span class="idea-pill tofu">TOFU/MOFU · Reach</span></div>
         <div class="idea-title">The Cincinnati Confidence Chain</div>
         <div class="idea-hook">"One Cincinnati woman. Five local brands. One transformation. Posted everywhere at once."</div>
       </div>
@@ -1390,19 +1298,7 @@
   <details class="idea">
     <summary>
       <div>
-        <div class="idea-meta"><span class="idea-n">14</span><span class="idea-pill">Collab Reel · wedding-vendor</span><span class="idea-pill mofu">MOFU · Conversion</span></div>
-        <div class="idea-title">The Appointment Before the Aisle</div>
-        <div class="idea-hook">"Brides book the venue, the dress, the photographer. They forget the one thing that's in every photo."</div>
-      </div>
-      <span class="idea-chev">&#9660;</span>
-    </summary>
-    <div class="idea-body"><p>A co-branded wedding collab with a local bridal boutique, planner, or photographer, Invisalign and cosmetic forward. A save-and-send hook for the bride and her people. Seasonal to spring/summer.</p></div>
-  </details>
-
-  <details class="idea">
-    <summary>
-      <div>
-        <div class="idea-meta"><span class="idea-n">15</span><span class="idea-pill">Collab Reel or Carousel</span><span class="idea-pill mofu">MOFU · Reach</span></div>
+        <div class="idea-meta"><span class="idea-n">10</span><span class="idea-pill">Collab Reel or Carousel</span><span class="idea-pill mofu">MOFU · Reach</span></div>
         <div class="idea-title">Small Business, Big Smile (Chamber spotlight)</div>
         <div class="idea-hook">"I gave a fellow Cincinnati small-business owner her smile back. Here's her story."</div>
       </div>
@@ -1414,39 +1310,39 @@
   <!-- WE DID OUR HOMEWORK -->
   <div style="margin-top:34px;">
     <div class="eyebrow">We did our homework</div>
-    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The bar we're building toward. <em style="font-style:italic;color:var(--azure);">Set by your own network.</em></h3>
-    <p style="font-size:15px;color:var(--ink-mid);max-width:640px;line-height:1.65;margin-bottom:18px;">Every account you sent us belongs to <strong>ESTEEM Dental Implants</strong>, the national full-arch network your mentor founded inside your own organization. We are building Dr. Isha Patel into Cincinnati's version of it.</p>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The accounts you sent us. <em style="font-style:italic;color:var(--azure);">What we'll pull.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:640px;line-height:1.65;margin-bottom:18px;">You shared a few accounts you admire. We studied them, and here is what we will weave into your strategy.</p>
     <div class="inspo-grid">
       <div class="inspo-card">
         <div class="inspo-name">Vivid Alchemy</div>
-        <div class="inspo-handle">@vivid.alchemy · the agency behind the best full-arch content in the country, cinematic videography for DSOs and top clinicians.</div>
-        <div class="inspo-pull"><strong>What we'll pull:</strong> their reveal production quality and emotional, cinematic storytelling.</div>
+        <div class="inspo-handle">@vivid.alchemy</div>
+        <div class="inspo-pull"><strong>What we'll pull:</strong> their reveal production quality and the emotional, cinematic storytelling that makes a transformation feel like a film.</div>
       </div>
       <div class="inspo-card">
         <div class="inspo-name">Dr. Jeff Lynch</div>
-        <div class="inspo-handle">@drjefflynch.dds · your mentor, founder of ESTEEM Dental Implants.</div>
+        <div class="inspo-handle">@drjefflynch.dds</div>
         <div class="inspo-pull"><strong>What we'll pull:</strong> his full-arch transformation storytelling and authority positioning.</div>
       </div>
       <div class="inspo-card">
         <div class="inspo-name">Dr. Jacob Berger</div>
-        <div class="inspo-handle">@dr.jacobberger · ESTEEM provider, confidence-first personal brand, 1,000-plus smiles.</div>
+        <div class="inspo-handle">@dr.jacobberger</div>
         <div class="inspo-pull"><strong>What we'll pull:</strong> his approachable personal-brand voice and consistent transformation cadence.</div>
       </div>
       <div class="inspo-card">
         <div class="inspo-name">Dr. Marvin Berlin</div>
-        <div class="inspo-handle">@drmarvinberlin · "The Berlin Smile," one of the nation's leading cosmetic dentists.</div>
+        <div class="inspo-handle">@drmarvinberlin</div>
         <div class="inspo-pull"><strong>What we'll pull:</strong> his branded signature-process framing and premium aesthetic.</div>
       </div>
     </div>
     <div class="insight mt-md">
-      <p>These are the ideas we would test in Phase 1. The ones that hit get scaled. The ones that do not get cut. The data decides. Every patient-featured idea runs on a consent process we lock in Phase 1, so the proof we post is always fully cleared.</p>
+      <p>These are the ideas we would test first. The ones that hit get scaled, the ones that do not get cut. The data decides. Every patient-featured idea runs on a consent process we lock in Phase 1.</p>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ══════════ 09 · HOW WE DRIVE RESULTS ══════════ -->
+<!-- ══════════ 10 · HOW WE DRIVE RESULTS ══════════ -->
 <div class="wrap reveal" id="results">
   <div class="eyebrow">How We Drive Results</div>
   <h2 class="section-title">A clear path. <em>From a stranger to a patient.</em></h2>
@@ -1457,19 +1353,19 @@
     <div class="fstage">
       <div class="fstage-top"><span class="fstage-name">Relatable</span><span class="fstage-pct">40%</span></div>
       <div class="fstage-stage">Top of funnel</div>
-      <div class="fstage-goal">Get seen by the right Cincinnati room (the person hiding their smile, the adult child worried about a parent).</div>
+      <div class="fstage-goal">Get seen by the right Cincinnati room.</div>
       <div class="fstage-signal"><strong>Signal:</strong> reach, non-follower views, saves.</div>
     </div>
     <div class="fstage">
       <div class="fstage-top"><span class="fstage-name">Educational</span><span class="fstage-pct">35%</span></div>
       <div class="fstage-stage">Middle of funnel</div>
-      <div class="fstage-goal">Become the expert they trust. Demystify All-on-X.</div>
+      <div class="fstage-goal">Become the expert they trust.</div>
       <div class="fstage-signal"><strong>Signal:</strong> saves, shares, watch time, profile visits.</div>
     </div>
     <div class="fstage">
       <div class="fstage-top"><span class="fstage-name">Proof</span><span class="fstage-pct">25%</span></div>
       <div class="fstage-stage">Bottom of funnel</div>
-      <div class="fstage-goal">Turn attention into qualified leads. Real transformations and reactions.</div>
+      <div class="fstage-goal">Turn attention into qualified leads.</div>
       <div class="fstage-signal"><strong>Signal:</strong> link taps to Smile Virtual, DM inquiries.</div>
     </div>
   </div>
@@ -1479,15 +1375,15 @@
     <details class="cl">
       <summary><div class="cl-sum-text"><span class="cl-sum-title">How we reach the right audience</span><span class="cl-sum-tease">Test wide, Social SEO, strategic reach</span></div><span class="cl-chev">&#9660;</span></summary>
       <div class="cl-body">
-        <p><strong>Test heavily up front.</strong> The first couple of months are about learning, not view counts. We test formats and topics wide to learn what your exact audience responds to, then double down.</p>
-        <p><strong>Social SEO.</strong> Instagram is a search engine. We optimize with a 4-tier keyword ladder (broad, then niche plus demographic, then Cincinnati-anchored, then hyper-local plus authority), landing in the profile name, bio, highlights, captions, alt text, and geo-tags.</p>
-        <p><strong>Strategic reach tactics.</strong> Local collaborations, proactive outreach and community engagement, and events or speaking, the moves that spike a new account into the algorithm.</p>
+        <p><strong>Test wide early.</strong> The first couple of months are about learning what your exact audience responds to, then doubling down on what works.</p>
+        <p><strong>Instagram Social SEO.</strong> Instagram is a search engine. We optimize with a 4-tier keyword ladder (broad to hyper-local), landing in the profile name, bio, highlights, captions, alt text, and geo-tags.</p>
+        <p><strong>Strategic reach.</strong> Local collaborations, proactive outreach, and events or speaking, the moves that spike a new account into the algorithm.</p>
       </div>
     </details>
     <details class="cl">
       <summary><div class="cl-sum-text"><span class="cl-sum-title">How we measure</span><span class="cl-sum-tease">Signal first, qualified leads second</span></div><span class="cl-chev">&#9660;</span></summary>
       <div class="cl-body">
-        <p>Followers and views are context, not the scoreboard. A monthly performance report, first week of every month, scored against the three goals, your top posts, and the focus for next month, plus biweekly check-ins. We track signal first and qualified leads second. We do not promise last-click attribution that organic social cannot honestly deliver.</p>
+        <p>A monthly performance report, first week of every month, scored against the three goals, with your top posts and next month's focus, plus biweekly check-ins. We track signal first and qualified leads second. We do not promise last-click attribution that organic social cannot honestly deliver.</p>
       </div>
     </details>
   </div>
@@ -1495,15 +1391,16 @@
   <!-- EXAMPLE ROI -->
   <div class="roi-box">
     <div class="roi-illus">An illustrative picture</div>
-    <h3>What the math <em>can build.</em></h3>
+    <h3>What success <em>can look like.</em></h3>
+    <p class="roi-frame">An illustrative model for a Spark-stage account, built on conservative industry averages. Not a promise, a picture of what consistency builds.</p>
     <div class="roi-funnel">
-      <div class="roi-step"><span class="rs-name">Attention</span><span class="rs-sub">reach</span></div>
-      <div class="roi-step"><span class="rs-name">Engagement</span><span class="rs-sub">saves, shares, profile visits</span></div>
-      <div class="roi-step"><span class="rs-name">Clicks</span><span class="rs-sub">Smile Virtual link taps</span></div>
-      <div class="roi-step"><span class="rs-name">Leads</span><span class="rs-sub">form inquiries</span></div>
-      <div class="roi-step"><span class="rs-name">Patients</span></div>
+      <div class="roi-step"><span class="rs-name">Attention</span><span class="rs-sub">~10,000–40,000 monthly views</span></div>
+      <div class="roi-step"><span class="rs-name">Interaction</span><span class="rs-sub">~1–2% take an action: saves, shares, comments, profile visits</span></div>
+      <div class="roi-step"><span class="rs-name">Clicks</span><span class="rs-sub">~5–40 link taps a month to Smile Virtual</span></div>
+      <div class="roi-step"><span class="rs-name">Qualified leads</span><span class="rs-sub">~25% of clicks become a submission</span></div>
     </div>
-    <p class="roi-caption">This is an illustrative model of how organic attention compounds into qualified leads over time, not a promise. We track signal first. The full, numbers-in ROI model, built on your real cost and close rates, is part of your Phase 1 strategy build.</p>
+    <div class="roi-takeaway">Roughly <strong>2 qualified All-on-X leads a month</strong> at the conservative floor, <strong>4 to 5 at target</strong>, climbing as the account grows from Spark to Lift and Rise.</div>
+    <p class="roi-caption">The full, numbers-in model built on your real close rate and case value is part of the Phase 1 strategy.</p>
   </div>
 </div>
 
@@ -1514,32 +1411,30 @@
   <p>The same system, shown in the numbers, and a clean three-step way in.</p>
 </div>
 
-<!-- ══════════ 10 · PROOF ══════════ -->
+<!-- ══════════ 11 · PROOF ══════════ -->
 <div class="wrap reveal" id="proof" style="padding-top:40px;">
   <div class="eyebrow">Proof</div>
-  <h2 class="section-title">Performance. <em>Across the funnel.</em></h2>
-  <p class="section-sub">The same system we run for every Signature client, shown across beauty, aesthetics, and service brands in Cincinnati. One piece of proof per funnel stage. White-labeled, real numbers.</p>
+  <h2 class="section-title">Content that drives <em>real results.</em></h2>
+  <p class="section-sub">We know how to make content that gets brands real results, qualified leads, across the funnel. Here is the proof, white-labeled, real numbers, one per stage.</p>
 
-  <div class="proof-stack">
+  <div class="proof-grid">
     <!-- TOFU -->
     <div class="proof-card">
       <div class="proof-card-head">
         <div>
-          <div class="proof-card-eyebrow">A Cincinnati aesthetics practice we work with</div>
-          <div class="proof-card-pill">Reel · Reach proof</div>
+          <div class="proof-card-eyebrow">Top of funnel · Reach<br/>A Cincinnati aesthetics practice we work with</div>
+          <div class="proof-card-pill">Reel · Transformation</div>
         </div>
         <span class="funnel-pill tofu">TOFU</span>
       </div>
       <div class="proof-metrics-grid">
         <div class="proof-metric"><div class="proof-metric-value">25,432</div><div class="proof-metric-label">Views</div></div>
-        <div class="proof-metric"><div class="proof-metric-value">1,177</div><div class="proof-metric-label">Starting reach</div></div>
         <div class="proof-metric"><div class="proof-metric-value">21×</div><div class="proof-metric-label">Algorithmic multiple</div></div>
         <div class="proof-metric"><div class="proof-metric-value">97%</div><div class="proof-metric-label">Non-follower reach</div></div>
         <div class="proof-metric"><div class="proof-metric-value">59</div><div class="proof-metric-label">Saves</div></div>
-        <div class="proof-metric"><div class="proof-metric-value">18</div><div class="proof-metric-label">Shares</div></div>
       </div>
       <div class="proof-card-footer">
-        <p>A transformation reel pushed to <strong>25,432 views, 97% from outside the follower base</strong>. The exact before-and-after format that will carry your All-on-X work.</p>
+        <p>A transformation reel pushed to <strong>25,432 views, 97% from outside the follower base</strong>. The exact before-and-after format that carries All-on-X.</p>
       </div>
     </div>
 
@@ -1547,8 +1442,8 @@
     <div class="proof-card">
       <div class="proof-card-head">
         <div>
-          <div class="proof-card-eyebrow">A Cincinnati boutique we work with</div>
-          <div class="proof-card-pill">Reel · Engagement proof</div>
+          <div class="proof-card-eyebrow">Middle of funnel · Engagement<br/>A Cincinnati boutique we work with</div>
+          <div class="proof-card-pill">Reel · Engagement-led</div>
         </div>
         <span class="funnel-pill mofu">MOFU</span>
       </div>
@@ -1557,10 +1452,9 @@
         <div class="proof-metric"><div class="proof-metric-value">79.8%</div><div class="proof-metric-label">View rate</div></div>
         <div class="proof-metric"><div class="proof-metric-value">321</div><div class="proof-metric-label">Comments</div></div>
         <div class="proof-metric"><div class="proof-metric-value">150</div><div class="proof-metric-label">Shares</div></div>
-        <div class="proof-metric"><div class="proof-metric-value">11</div><div class="proof-metric-label">Reposts</div></div>
       </div>
       <div class="proof-card-footer">
-        <p>The middle of the funnel doing its job, <strong>the audience talking back</strong> and pulling the brand into their own orbit.</p>
+        <p>The middle of the funnel doing its job, <strong>the audience talking back</strong> and pulling the brand into their orbit.</p>
       </div>
     </div>
 
@@ -1568,8 +1462,8 @@
     <div class="proof-card">
       <div class="proof-card-head">
         <div>
-          <div class="proof-card-eyebrow">A Cincinnati service practice we work with</div>
-          <div class="proof-card-pill">Save-driven carousel · Intent proof</div>
+          <div class="proof-card-eyebrow">Bottom of funnel · Intent<br/>A Cincinnati service practice we work with</div>
+          <div class="proof-card-pill">Save-driven carousel</div>
         </div>
         <span class="funnel-pill bofu">BOFU</span>
       </div>
@@ -1632,7 +1526,7 @@
 
 <div class="divider"></div>
 
-<!-- ══════════ 11 · NEXT STEPS ══════════ -->
+<!-- ══════════ 12 · NEXT STEPS ══════════ -->
 <div class="wrap reveal" id="next-steps">
   <div class="eyebrow">Next Steps</div>
   <h2 class="section-title">How we <em>move forward.</em></h2>
@@ -1682,7 +1576,7 @@
     var NAV=[
       {id:'snapshot',act:'engagement'},{id:'engagement',act:'engagement'},{id:'timeline',act:'engagement'},
       {id:'investment',act:'engagement'},{id:'scope',act:'engagement'},
-      {id:'approach',act:'strategy'},{id:'built',act:'strategy'},{id:'ideas',act:'strategy'},{id:'results',act:'strategy'},
+      {id:'approach',act:'strategy'},{id:'built',act:'strategy'},{id:'audience',act:'strategy'},{id:'ideas',act:'strategy'},{id:'results',act:'strategy'},
       {id:'proof',act:'proof'},{id:'next-steps',act:'proof'}
     ];
     var groups=[].slice.call(document.querySelectorAll('.act-group'));
@@ -1694,7 +1588,6 @@
       links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+active.id); });
     }
     window.addEventListener('scroll',spy,{passive:true}); spy();
-    // desktop click-to-toggle dropdown
     groups.forEach(function(g){
       var btn=g.querySelector('.act-btn');
       btn.addEventListener('click',function(e){
@@ -1708,7 +1601,6 @@
     document.addEventListener('click',function(e){
       if(!e.target.closest('.act-group')) groups.forEach(function(g){ g.classList.remove('open'); });
     });
-    // close dropdown + mobile overlay on section click
     links.forEach(function(a){ a.addEventListener('click',function(){
       groups.forEach(function(g){ g.classList.remove('open'); });
       document.body.classList.remove('nav-open');
@@ -1740,32 +1632,16 @@
     setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 2500);
   })();
 
-  // ── Count-up (dashboard + any data-count) ──
+  // ── Timeline card staggered reveal ──
   (function(){
-    var els=[].slice.call(document.querySelectorAll('[data-count]'));
-    if(!els.length) return;
-    function run(el){
-      var target=parseInt(el.getAttribute('data-count'),10), dur=1500, t0=null;
-      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1);
-        var val=Math.floor((1-Math.pow(1-p,3))*target);
-        el.textContent=val.toLocaleString();
-        if(p<1) requestAnimationFrame(step); else el.textContent=target.toLocaleString();
-      }
-      requestAnimationFrame(step);
-    }
-    if(!('IntersectionObserver' in window)){ els.forEach(run); return; }
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } }); }, {threshold:0.4});
-    els.forEach(function(e){ io.observe(e); });
-  })();
-
-  // ── Animated timeline reveal along the track ──
-  (function(){
-    var track=document.getElementById('ms-track'); if(!track) return;
-    var cols=[].slice.call(track.querySelectorAll('.milestone-col'));
-    function reveal(){ cols.forEach(function(c,i){ setTimeout(function(){ c.classList.add('in'); }, i*160); }); }
-    if(!('IntersectionObserver' in window)){ cols.forEach(function(c){ c.classList.add('in'); }); return; }
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ reveal(); io.disconnect(); } }); }, {threshold:0.2});
-    io.observe(track);
+    var cards=[].slice.call(document.querySelectorAll('.tl-card'));
+    if(!cards.length) return;
+    if(!('IntersectionObserver' in window)){ cards.forEach(function(c){ c.classList.add('in'); }); return; }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ var c=e.target; var d=cards.indexOf(c)%3; setTimeout(function(){ c.classList.add('in'); }, d*120); io.unobserve(c); } });
+    }, {threshold:0.2});
+    cards.forEach(function(c){ io.observe(c); });
+    setTimeout(function(){ cards.forEach(function(c){ c.classList.add('in'); }); }, 2500);
   })();
 
   // ── Content engine motif (auto-rotate + hover-pause + click-to-advance) ──

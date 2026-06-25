@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /atlas-systems-kickoff/
 Disallow: /atlas-systems-strategy/
 Disallow: /pippis-proposal/
-Disallow: /liberty-commons-proposal/
+Disallow: /dr-isha-proposal/

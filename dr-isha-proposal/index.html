@@ -398,8 +398,20 @@
     .scope-table td:last-child { text-align:center; width:56px; }
     .scope-table tr:last-child td { border-bottom:none; }
     .check { color:var(--azure); font-weight:700; font-size:16px; }
-    @media(max-width:600px){
-      .scope-table { font-size:13px; min-width:620px; }
+    /* Mobile: collapse the 4-col table into stacked cards (no horizontal scroll / clipped text). */
+    @media(max-width:640px){
+      .scope-table-wrap { overflow-x:visible; }
+      .scope-table { min-width:0; width:100%; font-size:14px; }
+      .scope-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+      .scope-table, .scope-table tbody, .scope-table tr, .scope-table td { display:block; width:100%; }
+      .scope-table tr { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; margin-bottom:12px; }
+      .scope-table tr:last-child { margin-bottom:0; }
+      .scope-table td { border:none; padding:0; width:auto; }
+      .scope-table td:first-child { width:auto; font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:6px; padding-right:0; }
+      .scope-table td:nth-child(2) { width:auto; font-size:14px; color:var(--ink-mid); margin-bottom:10px; }
+      .scope-table td.when { width:auto; font-size:13px; color:var(--ink-soft); font-style:italic; padding-right:0; }
+      .scope-table td.when::before { content:'When'; display:block; font-style:normal; font-weight:700; letter-spacing:.05em; text-transform:uppercase; font-size:11px; color:var(--azure); margin-bottom:2px; }
+      .scope-table td:last-child { display:none; } /* uniform ✓ column; inclusion already stated in the section intro */
     }
 
     /* ══ TIMELINE (phase-split) ══ */
@@ -543,7 +555,7 @@
       .engine-stage { width:min(300px,82vw); }
       .engine-node { min-width:66px; padding:8px 4px; }
       .engine-node .en-name { font-size:13px; }
-      .engine-node .en-step { font-size:8px; }
+      .engine-node .en-step { font-size:9px; }
     }
     .engine-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:26px; }
     @media (max-width:640px){ .engine-steps{ grid-template-columns:1fr 1fr; } }

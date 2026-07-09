@@ -253,13 +253,6 @@
     .cl-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
     .cl-body p + p { margin-top:10px; }
     .cl-body p strong { color:var(--shadow); }
-    .cl-body ul.guardrails { list-style:none; display:flex; flex-direction:column; gap:12px; }
-    .cl-body ul.guardrails > li { font-size:14px; color:var(--ink-mid); line-height:1.6; padding-left:20px; position:relative; }
-    .cl-body ul.guardrails > li::before { content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:2px; background:var(--azure); }
-    .cl-body ul.guardrails > li strong { color:var(--shadow); }
-    .cl-body ul.guardrails ul { list-style:none; margin-top:8px; display:flex; flex-direction:column; gap:6px; }
-    .cl-body ul.guardrails ul li { font-size:13.5px; color:var(--ink-mid); line-height:1.55; padding-left:16px; position:relative; }
-    .cl-body ul.guardrails ul li::before { content:'→'; position:absolute; left:0; color:var(--azure); font-weight:700; }
 
     /* ── CONTENT IDEA CARDS ── */
     .idea-group-label { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin:30px 0 12px; display:flex; align-items:center; gap:12px; }
@@ -279,7 +272,6 @@
     .idea-star { font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:4px; background:rgba(226,237,122,.5); color:#4d5e00; border:1px solid rgba(200,214,0,.4); }
     .idea-hero-tag { font-size:9.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; padding:3px 8px; border-radius:4px; background:var(--azure); color:#fff; }
     .idea-title { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; margin-bottom:6px; }
-    .idea-hook { font-size:13.5px; font-style:italic; color:var(--azure); line-height:1.5; }
     .idea-teaser { font-size:13.5px; color:var(--ink-mid); line-height:1.55; }
     .idea-chev { font-size:11px; color:var(--azure); transition:transform .2s; margin-top:4px; justify-self:end; }
     details.idea[open] .idea-chev { transform:rotate(180deg); }
@@ -351,25 +343,6 @@
     .hi-callout { background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.34); border-left:4px solid #b6c200; border-radius:var(--radius); padding:16px 20px; margin-top:22px; }
     .hi-callout p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
     .hi-callout p strong { color:var(--shadow); }
-
-    /* ── EXAMPLE ROI FUNNEL ── */
-    .roi-box { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:26px 28px; margin-top:22px; text-align:center; }
-    .roi-illus { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); background:var(--azure-lt); border:1px solid var(--azure-bd); border-radius:100px; padding:4px 14px; margin-bottom:14px; }
-    .roi-box h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:10px; }
-    .roi-box h3 em { font-style:italic; color:var(--azure); }
-    .roi-frame { font-size:13px; color:var(--ink-mid); line-height:1.6; max-width:560px; margin:0 auto 18px; }
-    .roi-funnel { display:flex; flex-direction:column; align-items:center; gap:8px; margin:6px auto 4px; }
-    .roi-step { color:#fff; border-radius:8px; padding:13px 16px; display:flex; flex-direction:column; gap:1px; }
-    .roi-step .rs-name { font-size:14px; font-weight:800; letter-spacing:-.01em; }
-    .roi-step .rs-sub { font-size:11.5px; font-weight:600; opacity:.9; }
-    .roi-step:nth-child(1){ width:100%; background:var(--azure); }
-    .roi-step:nth-child(2){ width:80%; background:#22479a; }
-    .roi-step:nth-child(3){ width:60%; background:#42619f; }
-    .roi-step:nth-child(4){ width:44%; background:#6e85b8; }
-    .roi-takeaway { font-size:15px; color:var(--shadow); line-height:1.6; margin-top:20px; font-weight:600; text-align:left; }
-    .roi-takeaway strong { color:var(--azure); }
-    .roi-sources { text-align:left; font-size:13px; color:var(--ink-soft); line-height:1.6; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
-    .roi-sources strong { color:var(--ink-mid); }
 
     /* ── §3 UNIQUE TO YOUR ENGAGEMENT · full-width feature band ── */
     .feature-band { background:var(--azure-lt); border-top:1px solid var(--azure-bd); border-bottom:1px solid var(--azure-bd); padding:14px 0; margin:0; }
@@ -714,7 +687,6 @@
       .section-sub { font-size:14px; }
       .cl-body p { font-size:14px; }
       .idea-body p { font-size:14px; }
-      .idea-hook { font-size:14px; }
       .idea-teaser { font-size:14px; }
       .idea-flat-body { font-size:14px; }
       .idea-build-note { font-size:14px; }
@@ -726,7 +698,6 @@
       .fstage-goal { font-size:14px; }
       .hi-callout p { font-size:14px; }
       .credit-note { font-size:14px; }
-      .roi-sources { font-size:14px; }
       .proof-card-footer p { font-size:14px; }
       .proof-quote p { font-size:16px; }
       .engine-step-desc { font-size:14px; }
@@ -734,8 +705,6 @@
       .inspo-pull { font-size:14px; }
       .rhythm-detail { font-size:14px; }
       .approach-thesis { font-size:15px; }
-      .roi-frame { font-size:14px; }
-      .roi-takeaway { font-size:15px; }
       .phase-block li { font-size:14px; }
       .tl-card p { font-size:14px; }
       .uniq-step p { font-size:14px; }

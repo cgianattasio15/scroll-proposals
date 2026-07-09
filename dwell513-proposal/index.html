@@ -146,7 +146,7 @@
 
     /* ── LAYOUT ── */
     .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
-    .wrap[id], .hero[id], .act-divider[id] { scroll-margin-top:78px; }
+    .wrap[id], .hero[id], .act-divider[id], .feature-band[id] { scroll-margin-top:78px; }
     @media(max-width:640px){ .wrap{padding:56px 20px;} }
     .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
 
@@ -322,7 +322,6 @@
     .aud-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
     .aud-card + .aud-card { margin-top:16px; }
     .aud-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:10px; background:rgba(12,51,135,.09); color:var(--azure); }
-    .aud-tag.secondary { background:var(--porcelain); color:var(--ink-soft); border:1px solid var(--border); }
     .aud-card h4 { font-size:18px; font-weight:800; color:var(--shadow); margin-bottom:8px; letter-spacing:-.01em; }
     .aud-card > p { font-size:14.5px; color:var(--ink-mid); line-height:1.6; }
     .aud-card details.cl { margin-top:14px; }
@@ -372,7 +371,30 @@
     .roi-sources { text-align:left; font-size:13px; color:var(--ink-soft); line-height:1.6; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
     .roi-sources strong { color:var(--ink-mid); }
 
-    /* ── §6 UNIQUE TO YOUR ENGAGEMENT ── */
+    /* ── §3 UNIQUE TO YOUR ENGAGEMENT · full-width feature band ── */
+    .feature-band { background:var(--azure-lt); border-top:1px solid var(--azure-bd); border-bottom:1px solid var(--azure-bd); padding:14px 0; margin:0; }
+    .feature-band-inner { max-width:900px; margin:0 auto; padding:66px 32px; }
+    @media(max-width:640px){ .feature-band-inner{ padding:48px 20px; } }
+    .feature-band .eyebrow { color:var(--azure); }
+    .feature-band .uniq-step, .feature-band .uniq-commit { background:#fff; }
+
+    /* chip pointer link (§2 → §3) */
+    .chip-link { display:inline-flex; align-items:center; gap:7px; text-decoration:none; cursor:pointer; transition:background .15s, border-color .15s; }
+    .chip-link:hover { background:var(--azure); color:#fff; border-color:var(--azure); }
+    .chip-badge { font-size:8.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:100px; background:var(--azure); color:#fff; white-space:nowrap; }
+    .chip-link:hover .chip-badge { background:#fff; color:var(--azure); }
+
+    /* ── §4 DELIVERABLES STRIP (beneath the timeline) ── */
+    .deliv-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:24px; }
+    @media(max-width:760px){ .deliv-strip{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:420px){ .deliv-strip{ grid-template-columns:1fr; } }
+    .deliv-item { display:flex; align-items:flex-start; gap:10px; background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:14px 16px; }
+    .deliv-icon { font-size:20px; line-height:1; flex-shrink:0; }
+    .deliv-text { display:flex; flex-direction:column; gap:2px; }
+    .deliv-text strong { font-size:13px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .deliv-text span { font-size:12px; color:var(--ink-soft); line-height:1.4; }
+
+    /* ── §6 UNIQUE TO YOUR ENGAGEMENT · inner components ── */
     .uniq-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:8px; }
     @media(max-width:760px){ .uniq-flow{ grid-template-columns:1fr; } }
     .uniq-step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; }
@@ -718,6 +740,8 @@
       .tl-card p { font-size:14px; }
       .uniq-step p { font-size:14px; }
       .uniq-commit p { font-size:14px; }
+      .deliv-text strong { font-size:14px; }
+      .deliv-text span { font-size:14px; }
       .traj-frame { font-size:14px; }
       .traj-leg-txt { font-size:14px; }
       .traj-marker-note { font-size:14px; }
@@ -746,7 +770,7 @@
 </div>
 <script>
 (function(){
-  var PASS='dwell.scroll', KEY='sm_dwell_v2';
+  var PASS='dwell.scroll', KEY='sm_dwell_v3';
   var gate=document.getElementById('sm-gate');
   var inp=document.getElementById('sm-gate-input');
   var btn=document.getElementById('sm-gate-btn');
@@ -794,10 +818,10 @@
       <div class="act-sections">
         <a href="#snapshot"><span class="as-n">01</span> Account Snapshot</a>
         <a href="#engagement"><span class="as-n">02</span> The Engagement</a>
-        <a href="#timeline"><span class="as-n">03</span> Timeline</a>
-        <a href="#investment"><span class="as-n">04</span> Investment</a>
-        <a href="#scope"><span class="as-n">05</span> Scope &amp; Deliverables</a>
-        <a href="#listing"><span class="as-n">06</span> Listing Pipeline</a>
+        <a href="#listing"><span class="as-n">03</span> Listing Pipeline</a>
+        <a href="#timeline"><span class="as-n">04</span> Timeline</a>
+        <a href="#investment"><span class="as-n">05</span> Investment</a>
+        <a href="#scope"><span class="as-n">06</span> Scope &amp; Deliverables</a>
       </div>
     </div>
     <div class="act-group" data-act="strategy">
@@ -897,10 +921,11 @@
   <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px;">What's included</div>
   <div class="chip-row">
     <span class="chip">A full social media strategy, built around your expertise</span>
+    <span class="chip">A creative direction for the account</span>
     <span class="chip">3 feed posts a week</span>
     <span class="chip">2 story days a week</span>
-    <span class="chip">A content shoot every 3 weeks</span>
-    <span class="chip">The Listing Content Pipeline</span>
+    <span class="chip">A content shoot every 3 to 4 weeks</span>
+    <a href="#listing" class="chip chip-link">The Listing Content Pipeline <span class="chip-badge">Unique to your engagement</span></a>
     <span class="chip">Community management</span>
     <span class="chip">Monthly report + biweekly check-ins</span>
   </div>
@@ -911,11 +936,12 @@
       <h4>The foundation</h4>
       <div class="phase-block-dur">First ~3 weeks</div>
       <ul>
-        <li>Brand, audience, and funnel strategy</li>
-        <li>Content pillars plus the Instagram keyword plan (Social SEO)</li>
-        <li>Profile rebuild</li>
-        <li>A 30-day content calendar</li>
-        <li><strong>Presented and locked with you in a strategy meeting at the end of week 3</strong></li>
+        <li>Goal setting, plus a brand and competitive review</li>
+        <li>Your audience, built out in full (the ideal viewer profile)</li>
+        <li>Content pillars, funnel mapping, and the Instagram keyword plan (Social SEO)</li>
+        <li>Creative direction and inspiration for the account</li>
+        <li>Profile optimization guidance, plus the shot list and content plan</li>
+        <li><strong>Presented and locked with you in a strategy meeting at the end of week 3: the strategy deck and the creative direction, together</strong></li>
       </ul>
     </div>
     <div class="phase-block p2">
@@ -925,8 +951,9 @@
       <ul>
         <li>We shoot, produce, schedule, and post, 3 feed posts plus 2 story days a week</li>
         <li>The Listing Content Pipeline goes live</li>
-        <li>We manage the community and run collaborations</li>
-        <li>We report every month and refine as the data comes in</li>
+        <li>We write the copy, manage the calendar, and publish</li>
+        <li>We manage the community, route qualified inquiries to your team, and run collaborations</li>
+        <li>We report every month, review performance, and adjust the strategy as the data comes in</li>
         <li><strong>The engine runs. You review and approve.</strong></li>
       </ul>
     </div>
@@ -935,7 +962,53 @@
 
 <div class="divider"></div>
 
-<!-- ══════════ 03 · TIMELINE ══════════ -->
+<!-- ══════════ 03 · UNIQUE TO YOUR ENGAGEMENT (feature band) ══════════ -->
+<div class="feature-band reveal" id="listing">
+  <div class="feature-band-inner">
+    <div class="eyebrow">Unique to your engagement</div>
+    <h2 class="section-title">Your listings, live <em>while they matter.</em></h2>
+    <p class="section-sub">Almost everything we do is planned in advance. Listings are not. A property goes live on its own schedule, and waiting on the next scheduled shoot is not an option when a week of exposure is the difference. Most agencies would either ignore this or promise a shoot crew on standby. <strong>We built it into the engagement instead.</strong> This is the one part of this proposal that exists only for DWELL513.</p>
+
+    <div class="uniq-flow">
+      <div class="uniq-step">
+        <div class="uniq-step-n">1</div>
+        <h4>Your media partner captures</h4>
+        <p>Wow Video Tours shoots the listing on their usual short-notice schedule. Nothing new lands on your calendar.</p>
+      </div>
+      <div class="uniq-step">
+        <div class="uniq-step-n">2</div>
+        <h4>You tell us when it's booked</h4>
+        <p>Not when the footage arrives. That lead time is what makes the speed possible.</p>
+      </div>
+      <div class="uniq-step">
+        <div class="uniq-step-n">3</div>
+        <h4>We edit and publish</h4>
+        <p>The listing reaches your audience while it still matters.</p>
+      </div>
+    </div>
+
+    <div class="uniq-commit-grid">
+      <div class="uniq-commit">
+        <h4>Speed where it counts</h4>
+        <p>Stories and a first cut in market within about 48 hours of receiving usable footage. The polished Reel follows within the week.</p>
+      </div>
+      <div class="uniq-commit">
+        <h4>A clear volume</h4>
+        <p>Up to four listings a month, included in the retainer. More than that, and we'll talk.</p>
+      </div>
+      <div class="uniq-commit">
+        <h4>An honest start</h4>
+        <p>This is a new pipeline for both of us. The first two months are a calibration window while we tune the handoff. We would rather tell you that now than promise a flawless first month and miss.</p>
+      </div>
+    </div>
+
+    <div class="hi-callout">
+      <p><strong>We work through the specifics together at kickoff.</strong> The exact turnaround, what we need from your partner's footage, and how the three of us coordinate are worth a real conversation rather than a paragraph in a proposal. If we move forward, we lock them at kickoff.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 04 · TIMELINE ══════════ -->
 <div class="wrap reveal" id="timeline">
   <div class="eyebrow">Timeline</div>
   <h2 class="section-title">Strategy first. <em>Then we execute.</em></h2>
@@ -956,17 +1029,17 @@
       <div class="tl-card">
         <div class="tl-card-week">Week 1</div>
         <h4>Kickoff</h4>
-        <p>Onboarding, kickoff call, goals locked, full account audit.</p>
+        <p>Onboarding, kickoff call, goal setting, full account audit, brand and competitive review.</p>
       </div>
       <div class="tl-card">
         <div class="tl-card-week">Week 2</div>
         <h4>Strategy development</h4>
-        <p>The audience, content pillars, Instagram Social SEO, and we align with your media partner on the listing pipeline.</p>
+        <p>Your audience, content pillars, Instagram Social SEO, the creative direction, and we align with your media partner on the listing pipeline.</p>
       </div>
       <div class="tl-card">
         <div class="tl-card-week">Week 3</div>
         <h4>Strategy presentation</h4>
-        <p>Presented and locked with you.</p>
+        <p>The strategy deck and the creative direction, presented and locked with you together.</p>
       </div>
     </div>
   </div>
@@ -1001,8 +1074,28 @@
       <div class="tl-card green">
         <div class="tl-card-week">Weeks 6+</div>
         <h4>Execution mode</h4>
-        <p>3 feed posts plus 2 story days a week, shoots every 3 weeks, the Listing Content Pipeline running, monthly reporting.</p>
+        <p>3 feed posts plus 2 story days a week, shoots every 3 to 4 weeks, the listing pipeline running, monthly reporting and strategy review.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOU RECEIVE IN WEEK 3 (deliverables strip) -->
+  <div class="deliv-strip">
+    <div class="deliv-item">
+      <div class="deliv-icon">📘</div>
+      <div class="deliv-text"><strong>Strategy Deck + Creative Direction</strong><span>One-time, week 3.</span></div>
+    </div>
+    <div class="deliv-item">
+      <div class="deliv-icon">📅</div>
+      <div class="deliv-text"><strong>Content Plan</strong><span>Delivered with the strategy, updated through execution.</span></div>
+    </div>
+    <div class="deliv-item">
+      <div class="deliv-icon">📱</div>
+      <div class="deliv-text"><strong>Social Media Content</strong><span>Begins after strategy approval.</span></div>
+    </div>
+    <div class="deliv-item">
+      <div class="deliv-icon">📊</div>
+      <div class="deliv-text"><strong>Monthly Performance Report</strong><span>First week of each month.</span></div>
     </div>
   </div>
 
@@ -1014,7 +1107,7 @@
       <div class="rhythm-step">
         <div class="rhythm-icon">📸</div>
         <div class="rhythm-name">Content Shoot</div>
-        <div class="rhythm-detail">Every 3 weeks.</div>
+        <div class="rhythm-detail">Every 3-4 weeks.</div>
       </div>
       <div class="rhythm-arrow">→</div>
       <div class="rhythm-step">
@@ -1052,7 +1145,7 @@
 
 <div class="divider"></div>
 
-<!-- ══════════ 04 · INVESTMENT ══════════ -->
+<!-- ══════════ 05 · INVESTMENT ══════════ -->
 <div class="wrap reveal" id="investment">
   <div class="eyebrow">Investment</div>
   <h2 class="section-title">What it <em>costs.</em></h2>
@@ -1078,7 +1171,7 @@
     <div class="inv-row">
       <div class="item">
         <strong>Month 1 · Strategy build</strong>
-        <small>kickoff · the audience · content pillars · Social SEO · profile and Instagram search build · the listing pipeline plan · the 30-day calendar · strategy presentation</small>
+        <small>kickoff · goal setting · brand and competitive review · the audience · content pillars · Social SEO · the creative direction · profile optimization · the listing pipeline plan · the content plan · the strategy presentation</small>
       </div>
       <div class="amt">$1,917</div>
     </div>
@@ -1109,7 +1202,7 @@
 
 <div class="divider"></div>
 
-<!-- ══════════ 05 · SCOPE & DELIVERABLES ══════════ -->
+<!-- ══════════ 06 · SCOPE & DELIVERABLES ══════════ -->
 <div class="wrap reveal" id="scope">
   <div class="eyebrow">Scope &amp; Deliverables</div>
   <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
@@ -1123,31 +1216,37 @@
       <tbody>
         <tr>
           <td>Content Strategy</td>
-          <td>The full strategy build: brand and market audit, your audience, content pillars, keyword bank, format mix, positioning and voice, plus a 30-day content calendar.</td>
+          <td>The full strategy build: goal setting, brand and competitive review, your ideal viewer profile, content pillars and funnel mapping, the keyword bank, positioning and voice, profile optimization guidance, plus the shot list and content plan.</td>
           <td class="when">Presented and locked with you in week 3.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>Feed Content Production</td>
-          <td>3 feed posts per week (reels, carousels, statics), produced and scheduled, each mapped to a pillar and a funnel stage. Stories and graphic design as needed.</td>
-          <td class="when">Live from week 5, weekly thereafter.</td>
+          <td>🎨 Creative Direction</td>
+          <td>The visual and creative direction for the account. Reference boards, tone, look and feel, and the aesthetic we are taking @dwell513 toward. Delivered alongside the strategy deck, not buried inside it.</td>
+          <td class="when">Presented with the strategy, end of week 3.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Content Shoots</td>
-          <td>A shoot every 3 weeks (about 2 to 3 hours), storyboarded and scripted in advance, built to minimize your time on set. Doug and the team on camera.</td>
-          <td class="when">First shoot week 4, then every 3 weeks.</td>
+          <td>A shoot every 3 to 4 weeks (about 2 to 3 hours), storyboarded and scripted in advance, built to minimize your time on set. Doug and the team on camera. Cadence is set collaboratively as the partnership develops, with 3 to 4 weeks as the general target.</td>
+          <td class="when">First shoot week 4, then every 3 to 4 weeks.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>🏠 The Listing Content Pipeline <span class="feat-pill">Strategic Feature</span></td>
-          <td>Your listings, edited and in market fast, without adding a shoot to your calendar. See the next section.</td>
+          <td>Feed Content Production</td>
+          <td>Creative planning (concepts, hooks, shot lists, scripts, production direction), then editing and asset production. 3 feed posts/week (reels, carousels, statics), each mapped to a pillar and a funnel stage. Stories and graphic design as needed.</td>
+          <td class="when">Live from week 5, weekly thereafter.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>🏠 The Listing Content Pipeline <span class="feat-pill">Unique to your engagement</span></td>
+          <td>Your listings, edited and in market fast, without adding a shoot to your calendar. Full detail in section 3.</td>
           <td class="when">Live from week 5, per listing.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Profile + Social SEO</td>
-          <td>Bio, link-in-bio, highlight covers, alt text, captions, the Cincinnati and Northern Kentucky keyword ladder, ongoing profile maintenance on @dwell513. Built to Coldwell Banker brokerage attribution requirements.</td>
+          <td>Bio, link-in-bio, highlight covers, alt text, captions, the Cincinnati and Northern Kentucky keyword ladder, ongoing profile maintenance on @dwell513.</td>
           <td class="when">Built in weeks 1-3, maintained ongoing.</td>
           <td><span class="check">✓</span></td>
         </tr>
@@ -1158,26 +1257,26 @@
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>Community Management</td>
-          <td>Comments, DMs, mentions, proactive outreach, and collaborations with brand-aligned local accounts. Buyer and seller inquiries flagged to your team.</td>
+          <td>Copywriting, Publishing &amp; Calendar Management</td>
+          <td>We write the copy, prepare publish-ready assets, schedule approved content, post on the active plan, and maintain the working content calendar throughout.</td>
+          <td class="when">Ongoing from week 5.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management &amp; DM Routing</td>
+          <td>Comments, DMs, mentions, proactive outreach, and collaborations with brand-aligned local accounts. Qualified buyer and seller inquiries routed to your designated contact.</td>
           <td class="when">Ongoing from launch (week 5).</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>Approvals &amp; Posting</td>
-          <td>Content submitted for your approval before it goes live.</td>
-          <td class="when">Every cycle, 5 business days before publish.</td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>Monthly Performance Report</td>
-          <td>Reach, engagement, and conversion signal, the metrics that matter.</td>
-          <td class="when">First week of each month, from month 2.</td>
+          <td>Monthly Reporting &amp; Strategy Support</td>
+          <td>A monthly performance report covering reach, engagement, and conversion signal, plus recurring strategy reviews and adjustments based on what the data shows.</td>
+          <td class="when">Report in the first week of each month; strategy reviews throughout.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
           <td>Biweekly Check-ins</td>
-          <td>30 minutes every two weeks.</td>
+          <td>30 minutes every two weeks: approvals, performance signals, priorities, and open items.</td>
           <td class="when">Ongoing from kickoff.</td>
           <td><span class="check">✓</span></td>
         </tr>
@@ -1187,52 +1286,6 @@
 
   <div class="insight mt-md">
     <p><strong>Content approvals.</strong> All content submitted 5 business days before publish. Max 2 rounds of revisions per cycle, batched at the biweekly check-in. Listing content runs on its own faster approval, agreed at kickoff.</p>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════ 06 · UNIQUE TO YOUR ENGAGEMENT ══════════ -->
-<div class="wrap reveal" id="listing">
-  <div class="eyebrow">Unique to your engagement</div>
-  <h2 class="section-title">Your listings, live <em>while they matter.</em></h2>
-  <p class="section-sub">Almost everything we do is planned in advance. Listings are not. A property goes live on its own schedule, and waiting on the next scheduled shoot is not an option when a week of exposure is the difference. Most agencies would either ignore this or promise a shoot crew on standby. We built it into the engagement instead.</p>
-
-  <div class="uniq-flow">
-    <div class="uniq-step">
-      <div class="uniq-step-n">1</div>
-      <h4>Your media partner captures</h4>
-      <p>Wow Video Tours shoots the listing on their usual short-notice schedule. Nothing new lands on your calendar.</p>
-    </div>
-    <div class="uniq-step">
-      <div class="uniq-step-n">2</div>
-      <h4>You tell us when it's booked</h4>
-      <p>Not when the footage arrives. That lead time is what makes the speed possible.</p>
-    </div>
-    <div class="uniq-step">
-      <div class="uniq-step-n">3</div>
-      <h4>We edit and publish</h4>
-      <p>The listing reaches your audience while it still matters.</p>
-    </div>
-  </div>
-
-  <div class="uniq-commit-grid">
-    <div class="uniq-commit">
-      <h4>Speed where it counts</h4>
-      <p>Stories and a first cut in market within about 48 hours of receiving usable footage. The polished Reel follows within the week.</p>
-    </div>
-    <div class="uniq-commit">
-      <h4>A clear volume</h4>
-      <p>Up to four listings a month, included in the retainer. More than that, and we'll talk.</p>
-    </div>
-    <div class="uniq-commit">
-      <h4>An honest start</h4>
-      <p>This is a new pipeline for both of us. The first two months are a calibration window while we tune the handoff. We would rather tell you that now than promise a flawless first month and miss.</p>
-    </div>
-  </div>
-
-  <div class="hi-callout">
-    <p><strong>We work through the specifics together at kickoff.</strong> The exact turnaround, what we need from your partner's footage, and how the three of us coordinate are worth a real conversation rather than a paragraph in a proposal. If we move forward, we lock them at kickoff.</p>
   </div>
 </div>
 
@@ -1828,8 +1881,8 @@
   // ── Act-grouped nav: scroll-spy + dropdown ──
   (function(){
     var NAV=[
-      {id:'snapshot',act:'engagement'},{id:'engagement',act:'engagement'},{id:'timeline',act:'engagement'},
-      {id:'investment',act:'engagement'},{id:'scope',act:'engagement'},{id:'listing',act:'engagement'},
+      {id:'snapshot',act:'engagement'},{id:'engagement',act:'engagement'},{id:'listing',act:'engagement'},
+      {id:'timeline',act:'engagement'},{id:'investment',act:'engagement'},{id:'scope',act:'engagement'},
       {id:'approach',act:'strategy'},{id:'built',act:'strategy'},{id:'audience',act:'strategy'},{id:'ideas',act:'strategy'},{id:'results',act:'strategy'},
       {id:'proof',act:'proof'},{id:'next-steps',act:'proof'}
     ];

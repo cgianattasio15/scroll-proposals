@@ -372,6 +372,58 @@
     .roi-sources { text-align:left; font-size:13px; color:var(--ink-soft); line-height:1.6; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
     .roi-sources strong { color:var(--ink-mid); }
 
+    /* ── §6 UNIQUE TO YOUR ENGAGEMENT ── */
+    .uniq-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:8px; }
+    @media(max-width:760px){ .uniq-flow{ grid-template-columns:1fr; } }
+    .uniq-step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; }
+    .uniq-step-n { width:30px; height:30px; border-radius:8px; background:var(--azure); color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+    .uniq-step h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .uniq-step p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .uniq-commit-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+    @media(max-width:760px){ .uniq-commit-grid{ grid-template-columns:1fr; } }
+    .uniq-commit { background:#fff; border:1px solid var(--border); border-top:3px solid var(--azure); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 20px; }
+    .uniq-commit h4 { font-size:14px; font-weight:800; color:var(--azure); margin-bottom:6px; }
+    .uniq-commit p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ── §11 24-MONTH TRAJECTORY GRAPH ── */
+    .traj-box { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:26px 28px; margin-top:22px; }
+    @media(max-width:640px){ .traj-box{ padding:22px 18px; } }
+    .traj-illus { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); background:var(--azure-lt); border:1px solid var(--azure-bd); border-radius:100px; padding:4px 14px; margin-bottom:14px; }
+    .traj-head h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:10px; }
+    .traj-head h3 em { font-style:italic; color:var(--azure); }
+    .traj-frame { font-size:13px; color:var(--ink-mid); line-height:1.6; max-width:580px; margin:0 0 16px; }
+    .traj-svg-wrap { width:100%; overflow:visible; }
+    .traj-svg { width:100%; height:auto; display:block; overflow:visible; }
+    .traj-band-1 { fill:rgba(12,51,135,0.045); }
+    .traj-band-2 { fill:rgba(12,51,135,0.08); }
+    .traj-band-3 { fill:rgba(12,51,135,0.13); }
+    .traj-axis { stroke:var(--border); stroke-width:1.2; }
+    .traj-grid12 { stroke:var(--lucid-deep); stroke-width:1.3; stroke-dasharray:4 4; }
+    .traj-line { fill:none; stroke:var(--azure); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1600; stroke-dashoffset:0; }
+    @media (prefers-reduced-motion: no-preference){
+      .reveal.in .traj-line { animation:trajDraw 1.9s ease .2s both; }
+    }
+    @keyframes trajDraw { from{ stroke-dashoffset:1600; } to{ stroke-dashoffset:0; } }
+    .traj-dot { fill:var(--azure); }
+    .traj-arrow { fill:var(--ink-soft); }
+    .traj-axtext { font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; fill:var(--ink-soft); }
+    .traj-ylabel { font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700; fill:var(--ink-soft); letter-spacing:.05em; text-transform:uppercase; }
+    .traj-marker-note { font-size:13px; color:var(--shadow); font-weight:600; line-height:1.5; margin-top:14px; text-align:center; }
+    .traj-marker-note strong { color:var(--azure); }
+    .traj-legend { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+    @media(max-width:640px){ .traj-legend{ grid-template-columns:1fr; } }
+    .traj-leg { border:1px solid var(--border); border-radius:10px; padding:12px 14px; border-left:4px solid var(--azure); }
+    .traj-leg.b1 { border-left-color:#adc0e0; }
+    .traj-leg.b2 { border-left-color:#5c7bbf; }
+    .traj-leg.b3 { border-left-color:var(--azure); }
+    .traj-leg-ph { font-size:12.5px; font-weight:800; color:var(--shadow); }
+    .traj-leg-mo { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin:2px 0 5px; }
+    .traj-leg-txt { font-size:12.5px; color:var(--ink-mid); font-style:italic; line-height:1.5; }
+    .traj-context { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:18px; }
+    .traj-context strong { color:var(--shadow); }
+    .traj-sources { font-size:13px; color:var(--ink-soft); line-height:1.6; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+    .traj-sources strong { color:var(--ink-mid); }
+
     /* ── INSPO CARDS ── */
     .inspo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     @media(max-width:640px){ .inspo-grid{ grid-template-columns:1fr; } }
@@ -662,6 +714,13 @@
       .roi-takeaway { font-size:15px; }
       .phase-block li { font-size:14px; }
       .tl-card p { font-size:14px; }
+      .uniq-step p { font-size:14px; }
+      .uniq-commit p { font-size:14px; }
+      .traj-frame { font-size:14px; }
+      .traj-leg-txt { font-size:14px; }
+      .traj-marker-note { font-size:14px; }
+      .traj-context { font-size:14px; }
+      .traj-sources { font-size:14px; }
     }
   </style>
 </head>
@@ -685,7 +744,7 @@
 </div>
 <script>
 (function(){
-  var PASS='dwell.scroll', KEY='sm_dwell_v1';
+  var PASS='dwell.scroll', KEY='sm_dwell_v2';
   var gate=document.getElementById('sm-gate');
   var inp=document.getElementById('sm-gate-input');
   var btn=document.getElementById('sm-gate-btn');
@@ -736,17 +795,17 @@
         <a href="#timeline"><span class="as-n">03</span> Timeline</a>
         <a href="#investment"><span class="as-n">04</span> Investment</a>
         <a href="#scope"><span class="as-n">05</span> Scope &amp; Deliverables</a>
+        <a href="#listing"><span class="as-n">06</span> Listing Pipeline</a>
       </div>
     </div>
     <div class="act-group" data-act="strategy">
       <button type="button" class="act-btn">The Strategy <span class="act-caret">&#9660;</span></button>
       <div class="act-sections">
-        <a href="#approach"><span class="as-n">06</span> Our Approach</a>
-        <a href="#built"><span class="as-n">07</span> Built Around You</a>
-        <a href="#audience"><span class="as-n">08</span> Your Audience</a>
-        <a href="#ideas"><span class="as-n">09</span> Content Ideas</a>
-        <a href="#results"><span class="as-n">10</span> How We Drive Results</a>
-        <a href="#compliance"><span class="as-n">11</span> Compliance</a>
+        <a href="#approach"><span class="as-n">07</span> Our Approach</a>
+        <a href="#built"><span class="as-n">08</span> Built Around You</a>
+        <a href="#audience"><span class="as-n">09</span> Your Audience</a>
+        <a href="#ideas"><span class="as-n">10</span> Content Ideas</a>
+        <a href="#results"><span class="as-n">11</span> How We Drive Results</a>
       </div>
     </div>
     <div class="act-group" data-act="proof">
@@ -852,7 +911,7 @@
       <ul>
         <li>Brand, audience, and funnel strategy</li>
         <li>Content pillars plus the Instagram keyword plan (Social SEO)</li>
-        <li>Profile rebuild, including brokerage-compliant architecture</li>
+        <li>Profile rebuild</li>
         <li>A 30-day content calendar</li>
         <li><strong>Presented and locked with you in a strategy meeting at the end of week 3</strong></li>
       </ul>
@@ -895,12 +954,12 @@
       <div class="tl-card">
         <div class="tl-card-week">Week 1</div>
         <h4>Kickoff</h4>
-        <p>Onboarding, kickoff call, goals locked, full account audit including a brokerage-compliance review.</p>
+        <p>Onboarding, kickoff call, goals locked, full account audit.</p>
       </div>
       <div class="tl-card">
         <div class="tl-card-week">Week 2</div>
         <h4>Strategy development</h4>
-        <p>The audiences, content pillars, Instagram Social SEO, the Listing Content Pipeline capture spec built with your media partner.</p>
+        <p>The audience, content pillars, Instagram Social SEO, and we align with your media partner on the listing pipeline.</p>
       </div>
       <div class="tl-card">
         <div class="tl-card-week">Week 3</div>
@@ -1017,7 +1076,7 @@
     <div class="inv-row">
       <div class="item">
         <strong>Month 1 · Strategy build</strong>
-        <small>kickoff · the audiences · content pillars · Social SEO · profile and Instagram search build · compliance audit · the Listing Content Pipeline spec · the 30-day calendar · strategy presentation</small>
+        <small>kickoff · the audience · content pillars · Social SEO · profile and Instagram search build · the listing pipeline plan · the 30-day calendar · strategy presentation</small>
       </div>
       <div class="amt">$1,917</div>
     </div>
@@ -1062,7 +1121,7 @@
       <tbody>
         <tr>
           <td>Content Strategy</td>
-          <td>The full strategy build: brand and market audit, two audience personas, content pillars, keyword bank, format mix, positioning and voice, plus a 30-day content calendar.</td>
+          <td>The full strategy build: brand and market audit, your audience, content pillars, keyword bank, format mix, positioning and voice, plus a 30-day content calendar.</td>
           <td class="when">Presented and locked with you in week 3.</td>
           <td><span class="check">✓</span></td>
         </tr>
@@ -1080,7 +1139,7 @@
         </tr>
         <tr>
           <td>🏠 The Listing Content Pipeline <span class="feat-pill">Strategic Feature</span></td>
-          <td>Your listings, edited and live fast, without waiting on us to schedule a shoot. Full guardrails in the panel below the table.</td>
+          <td>Your listings, edited and in market fast, without adding a shoot to your calendar. See the next section.</td>
           <td class="when">Live from week 5, per listing.</td>
           <td><span class="check">✓</span></td>
         </tr>
@@ -1092,8 +1151,8 @@
         </tr>
         <tr>
           <td>Compliance-Aware Production</td>
-          <td>Every post, template, and profile element built to Ohio and Kentucky real estate advertising requirements, with a full compliance audit of your existing account in week 1.</td>
-          <td class="when">Audit week 1, applied to everything thereafter.</td>
+          <td>Every post, template, and profile element built to Ohio and Kentucky real estate advertising requirements, including brokerage attribution.</td>
+          <td class="when">From week 1, applied to everything thereafter.</td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
@@ -1124,32 +1183,55 @@
     </table>
   </div>
 
-  <!-- STRATEGIC FEATURE · Listing Content Pipeline guardrails -->
-  <details class="cl mt-md">
-    <summary><div class="cl-sum-text"><span class="cl-sum-title">🏠 The Listing Content Pipeline · how it works, and what we each commit to</span><span class="cl-sum-tease">Strategic feature. Two-tier turnaround, the capture spec, the monthly cap, the calibration window.</span></div><span class="cl-chev">&#9660;</span></summary>
-    <div class="cl-body">
-      <ul class="guardrails">
-        <li><strong>Your media partner captures.</strong> Wow Video Tours (or any partner you choose) shoots the listing on their usual short-notice schedule. We do not add a shoot to your calendar.</li>
-        <li><strong>We issue the capture spec.</strong> Before the first listing, we give your partner a written spec covering vertical orientation, resolution, minimum coverage, file delivery method, and destination. Footage captured to spec is footage we can turn fast.</li>
-        <li><strong>You tell us at booking, not at delivery.</strong> The moment a listing shoot is booked, we know. That lead time is what makes the fast turnaround possible.</li>
-        <li><strong>Two-tier turnaround, from receipt of usable footage:</strong>
-          <ul>
-            <li><strong>Fast cut, within 48 hours.</strong> Stories plus a simple Reel, so the listing is in market while it matters.</li>
-            <li><strong>Polished Reel, within 5 business days.</strong> The full edit, hooked and captioned, built to perform.</li>
-          </ul>
-        </li>
-        <li><strong>Included volume:</strong> up to 4 listings per month. Additional listings are available at a set per-listing rate.</li>
-        <li><strong>Months 1 and 2 are a calibration window.</strong> This is a new pipeline for both of us. We will be tuning the spec, the handoff, and the turnaround, with a formal review at the end of month 2. We would rather tell you that now than promise a perfectly smooth first month.</li>
-        <li><strong>What sits outside the pipeline:</strong> capture quality that falls outside the spec is your partner's to correct, not ours to salvage.</li>
-      </ul>
-    </div>
-  </details>
-
   <div class="insight mt-md">
-    <p><strong>Content approvals.</strong> All content submitted 5 business days before publish. Max 2 rounds of revisions per cycle, batched at the biweekly check-in. Listing pipeline content runs on its own accelerated approval, agreed at kickoff.</p>
+    <p><strong>Content approvals.</strong> All content submitted 5 business days before publish. Max 2 rounds of revisions per cycle, batched at the biweekly check-in. Listing content runs on its own faster approval, agreed at kickoff.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 06 · UNIQUE TO YOUR ENGAGEMENT ══════════ -->
+<div class="wrap reveal" id="listing">
+  <div class="eyebrow">Unique to your engagement</div>
+  <h2 class="section-title">Your listings, live <em>while they matter.</em></h2>
+  <p class="section-sub">Almost everything we do is planned in advance. Listings are not. A property goes live on its own schedule, and waiting on the next scheduled shoot is not an option when a week of exposure is the difference. Most agencies would either ignore this or promise a shoot crew on standby. We built it into the engagement instead.</p>
+
+  <div class="uniq-flow">
+    <div class="uniq-step">
+      <div class="uniq-step-n">1</div>
+      <h4>Your media partner captures</h4>
+      <p>Wow Video Tours shoots the listing on their usual short-notice schedule. Nothing new lands on your calendar.</p>
+    </div>
+    <div class="uniq-step">
+      <div class="uniq-step-n">2</div>
+      <h4>You tell us when it's booked</h4>
+      <p>Not when the footage arrives. That lead time is what makes the speed possible.</p>
+    </div>
+    <div class="uniq-step">
+      <div class="uniq-step-n">3</div>
+      <h4>We edit and publish</h4>
+      <p>The listing reaches your audience while it still matters.</p>
+    </div>
   </div>
 
-  <p class="muted-note" style="margin-top:16px;">Cross-posting to TikTok, Facebook, or YouTube is available as an optional add-on. Instagram is where this strategy is built to win, so we recommend mastering it first and expanding from strength.</p>
+  <div class="uniq-commit-grid">
+    <div class="uniq-commit">
+      <h4>Speed where it counts</h4>
+      <p>Stories and a first cut in market within about 48 hours of receiving usable footage. The polished Reel follows within the week.</p>
+    </div>
+    <div class="uniq-commit">
+      <h4>A clear volume</h4>
+      <p>Up to four listings a month, included in the retainer. More than that, and we'll talk.</p>
+    </div>
+    <div class="uniq-commit">
+      <h4>An honest start</h4>
+      <p>This is a new pipeline for both of us. The first two months are a calibration window while we tune the handoff. We would rather tell you that now than promise a flawless first month and miss.</p>
+    </div>
+  </div>
+
+  <div class="hi-callout">
+    <p><strong>We work through the specifics together at kickoff.</strong> The exact turnaround, what we need from your partner's footage, and how the three of us coordinate are worth a real conversation rather than a paragraph in a proposal. If we move forward, we lock them at kickoff.</p>
+  </div>
 </div>
 
 <!-- ════════════════════ ACT 2 ════════════════════ -->
@@ -1159,7 +1241,7 @@
   <p>A tight teaser of how it works. Depth lives in the dropdowns and, after you sign, in the full strategy build.</p>
 </div>
 
-<!-- ══════════ 06 · OUR APPROACH ══════════ -->
+<!-- ══════════ 07 · OUR APPROACH ══════════ -->
 <div class="wrap reveal" id="approach" style="padding-top:40px;">
   <div class="eyebrow">Our Approach</div>
   <h2 class="section-title">You're not buying posts. <em>You're buying a system.</em></h2>
@@ -1230,7 +1312,7 @@
 
 <div class="divider"></div>
 
-<!-- ══════════ 07 · BUILT AROUND YOU ══════════ -->
+<!-- ══════════ 08 · BUILT AROUND YOU ══════════ -->
 <div class="wrap reveal" id="built">
   <div class="built-head">
     <div style="flex:1;min-width:260px;">
@@ -1267,50 +1349,57 @@
 
 <div class="divider"></div>
 
-<!-- ══════════ 08 · YOUR AUDIENCE ══════════ -->
+<!-- ══════════ 09 · YOUR AUDIENCE ══════════ -->
 <div class="wrap reveal" id="audience">
   <div class="eyebrow">Who we're getting you in front of</div>
-  <h2 class="section-title">Two audiences. <em>One funnel.</em></h2>
-  <p class="section-sub">This engagement is about new lead acquisition. We get DWELL513 in front of the right people at the moment they start thinking about a move, and walk them from a stranger to a conversation.</p>
+  <h2 class="section-title">One audience. <em>The one that grows the business.</em></h2>
+  <p class="section-sub">This engagement is about new lead acquisition, and we are pointing all of it at one person. Not because buyers do not matter, but because focus is what makes content work. Content written for everyone reaches no one.</p>
 
-  <div class="aud-card">
-    <span class="aud-tag">Primary persona</span>
-    <h4>The Considered Seller</h4>
-    <p>A Cincinnati homeowner, often in an older or character home they have lived in for years. Something has changed, and they are starting to wonder what the house is worth and whether it is time. This is a high-stakes decision they make once or twice in a lifetime, and their quiet fear is picking the wrong agent, because they know how low the barrier to entry is in this business.</p>
+  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px;">Why sellers</div>
+  <div class="uniq-commit-grid" style="margin-top:0;">
+    <div class="uniq-commit">
+      <h4>The asset your business runs on</h4>
+      <p>A listing creates the exposure, the buyer leads, and the referrals. Win the listing and everything else follows.</p>
+    </div>
+    <div class="uniq-commit">
+      <h4>Your expertise peaks here</h4>
+      <p>When someone is deciding what to fix and what their home is really worth, a builder's eye is not a nice-to-have. It is the whole difference.</p>
+    </div>
+    <div class="uniq-commit">
+      <h4>Sellers compound</h4>
+      <p>Every listing you win becomes content that helps you win the next one. Buyers do not work that way.</p>
+    </div>
+  </div>
+
+  <div class="aud-card mt-lg">
+    <span class="aud-tag">The persona</span>
+    <h4>The Cincinnati Home Seller</h4>
+    <p>A homeowner in Cincinnati or Northern Kentucky, often in an older home they have lived in for years. Something has changed, and they are starting to wonder what the house is worth and whether it is time. This is a decision they make once or twice in a lifetime, and their quiet fear is choosing the wrong agent, because they know how easy it is to get a license in this business.</p>
     <details class="cl">
-      <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">Motivators, challenges, dream outcomes, how content adapts</span></div><span class="cl-chev">&#9660;</span></summary>
+      <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">What motivates them, what gets in the way, what they want, how content adapts</span></div><span class="cl-chev">&#9660;</span></summary>
       <div class="cl-body">
-        <p><strong>Motivators.</strong> To know what the house is genuinely worth, to not leave money on the table, and to be guided by someone who has actually seen a hundred houses like theirs.</p>
-        <p><strong>Challenges.</strong> They do not know what to fix first, what is cosmetic versus structural, or which agent is an expert rather than a salesperson with a license.</p>
-        <p><strong>Dream outcomes.</strong> The house sells for what it is worth, the process is handled, and they never once feel lost.</p>
-        <p><strong>How content adapts.</strong> Doug's builder authority at the middle of the funnel, process transparency to build trust, and a clear pre-listing call to action at the bottom.</p>
+        <p><strong>What motivates them.</strong> Knowing what the house is genuinely worth, not leaving money on the table, and being guided by someone who has actually seen a hundred houses like theirs.</p>
+        <p><strong>What gets in the way.</strong> They do not know what to fix first, what is cosmetic versus structural, or how to tell an expert from a salesperson with a license.</p>
+        <p><strong>What they actually want.</strong> The house sells for what it is worth, the process is handled, and they never once feel lost.</p>
+        <p><strong>How the content adapts.</strong> Doug's builder authority in the middle of the funnel, process transparency to build trust, and a low-pressure way to start a conversation at the bottom.</p>
       </div>
     </details>
   </div>
 
-  <div class="aud-card">
-    <span class="aud-tag secondary">Secondary persona</span>
-    <h4>The Character-Home Buyer</h4>
-    <p>Buyers and relocators drawn to Cincinnati's neighborhoods and its older housing stock. Often earlier in the journey, picturing a life here before they are actively searching. They want a guide who knows the city and the houses, not a door-opener.</p>
-    <details class="cl">
-      <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">Motivators, challenges, dream outcomes, how content adapts</span></div><span class="cl-chev">&#9660;</span></summary>
-      <div class="cl-body">
-        <p><strong>Motivators.</strong> Finding a home with character in a neighborhood they love, and an agent who can tell them what they are actually buying.</p>
-        <p><strong>Challenges.</strong> Fear of the money pit, not knowing which neighborhoods fit their life, and not knowing what questions to ask.</p>
-        <p><strong>Dream outcomes.</strong> The right house, in the right pocket of the city, bought with confidence.</p>
-        <p><strong>How content adapts.</strong> Cincinnati lifestyle and neighborhood content at the top of the funnel for reach, historic-home education in the middle, and a clear path to a conversation at the bottom.</p>
-      </div>
-    </details>
+  <div class="insight mt-md">
+    <p><strong>Why this matters.</strong> We build every pillar, format, and call to action around one person because different audiences are motivated by different things, get stuck on different things, and consume content differently. Writing for one person is what makes the content feel like it was written for them.</p>
   </div>
+
+  <p style="font-size:14px;color:var(--ink-mid);line-height:1.6;margin-top:14px;padding-left:16px;border-left:3px solid var(--border);"><strong style="color:var(--shadow);">Buyers still find you.</strong> The Cincinnati lifestyle and neighborhood content that earns your reach lands naturally in front of buyers and people moving to the city. Those inquiries go straight to your team. We simply do not build a second funnel for them.</p>
 
   <div class="assumption mt-md">
-    <p><strong>Assumption.</strong> These personas are our informed hypothesis, built from your website, your account, and our conversation. The full ideal-viewer profile for each, and the decision on where to weight the effort between sellers and buyers, is built and locked with you in the Phase 1 strategy. We do not guess in the dark, and we do not lock anything before you have seen it.</p>
+    <p><strong>Assumption.</strong> This persona is our informed hypothesis, built from your website, your account, and our conversation. The full profile is built and locked with you in the Phase 1 strategy. We do not guess in the dark, and we do not lock anything before you have seen it.</p>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ══════════ 09 · CONTENT IDEAS ══════════ -->
+<!-- ══════════ 10 · CONTENT IDEAS ══════════ -->
 <div class="wrap reveal" id="ideas">
   <div class="eyebrow">Content Ideas</div>
   <h2 class="section-title">Built around your expertise. <em>Designed to perform.</em></h2>
@@ -1324,6 +1413,8 @@
     <div class="legend-item"><strong>Bottom</strong>Drives conversion and proof.</div>
     <div class="legend-item star"><strong>⭐ Signature Series</strong>A repeatable franchise with a new subject each episode, the kind of content an audience learns to look for. Franchises run across all three stages.</div>
   </div>
+
+  <p class="muted-note" style="margin-top:12px;">We have opened up one idea in full so you can see exactly how we think, from the hook down to the on-screen text. The other nine stay at concept level on purpose. Ten fully-built ideas would not be a proposal, it would be the strategy document, and that is what Phase 1 is for.</p>
 
   <!-- TOP -->
   <div class="idea-group-label">Top &middot; <span class="gl-sub">relatability &amp; reach</span></div>
@@ -1343,7 +1434,7 @@
   <div class="idea-flat">
     <div class="idea-meta"><span class="idea-n">03</span><span class="idea-pill">Talking Head Reel</span><span class="idea-pill tofu">TOFU · Relatability</span></div>
     <div class="idea-title">First-Timer, Fresh Off It</div>
-    <p class="idea-flat-body">Erika just bought her own home in Northern Kentucky. What actually surprised her, honestly, including the parts nobody warns you about. The relatable human voice on a team otherwise built on two decades of expertise. Buyers see themselves in her.</p>
+    <p class="idea-flat-body">Erika just bought her own home in Northern Kentucky. What actually surprised her, honestly, including the parts nobody warns you about. The relatable human voice on a team otherwise built on two decades of expertise.</p>
   </div>
 
   <!-- MIDDLE -->
@@ -1376,7 +1467,7 @@
         <span class="vstamp walkaway">Walk Away</span>
       </div>
       <p><strong>Caption direction.</strong> Open with the finding, not the credential. Name the material and the number. Close with a genuine question to the audience, never a pitch.</p>
-      <p><strong>Why it travels.</strong> It is insider expertise the viewer can immediately apply to their own house, which is the saveable, sendable combination. Specificity is the engine. "Knob-and-tube wiring" and "$30,000 in three years" travel. "Old electrical" and "expensive problems" do not.</p>
+      <p><strong>Why it travels.</strong> It is insider expertise the viewer can immediately apply to their own house, which is the saveable, sendable combination. Specificity is the engine. "Knob-and-tube wiring" and "thirty thousand dollars" travel. "Old electrical" and "expensive problems" do not.</p>
     </div>
   </details>
 
@@ -1389,7 +1480,7 @@
   <div class="idea-flat">
     <div class="idea-meta"><span class="idea-n">06</span><span class="idea-pill">Talking Head Reel</span><span class="idea-pill mofu">MOFU · Trust</span></div>
     <div class="idea-title">Salesman or Expert?</div>
-    <p class="idea-flat-body">The questions to ask that reveal whether your agent actually understands houses. It names the Considered Seller's real fear out loud, which is the fastest way to earn her trust, and it quietly disqualifies every competitor who could not answer them.</p>
+    <p class="idea-flat-body">The questions to ask that reveal whether your agent actually understands houses. It names the seller's real fear out loud, which is the fastest way to earn her trust, and it quietly disqualifies every competitor who could not answer them.</p>
   </div>
 
   <div class="idea-flat">
@@ -1405,7 +1496,7 @@
     <div class="idea-meta"><span class="idea-n">08</span><span class="idea-star">⭐ Signature Series</span><span class="idea-pill">Before-and-After Reel · recurring</span><span class="idea-pill bofu">BOFU · Proof</span></div>
     <div class="idea-title">The Reveal</div>
     <p class="idea-flat-body">A DWELL513 client's home when they got it, and the sale when Doug was done, in the client's own words. Proof the expertise actually pays, told by someone with nothing to sell. <em>Each episode: a new client, the same arc.</em></p>
-    <div class="idea-build-note"><strong>Build note.</strong> Requires consent and a completed transaction with good footage. Fully viable, since your media partner captures on short notice, but this is a "once we have the first consented win" format rather than a week-one format.</div>
+    <div class="idea-build-note"><strong>Build note.</strong> Requires consent and a completed transaction with good footage. Fully viable through the listing pipeline, but this is a "once we have the first consented win" format rather than a week-one format.</div>
   </div>
 
   <div class="idea-flat">
@@ -1420,7 +1511,7 @@
     <p class="idea-flat-body">Doug offers one free fix before you list, based on the address alone. A give, not a pitch. It self-selects serious sellers into the DMs, and it demonstrates the expertise in the act of giving it away.</p>
   </div>
 
-  <p class="muted-note" style="margin-top:18px;">A note on how we handle neighborhoods. Content that ranks neighborhoods against each other is a Fair Housing risk when a licensee publishes it. Our local content celebrates places, businesses, and history. It never grades where someone should live. More on this in the next section.</p>
+  <p class="muted-note" style="margin-top:18px;">A note on neighborhoods. Our local content celebrates places, businesses, and history. It never ranks neighborhoods against each other, which keeps everything we publish on the right side of Fair Housing.</p>
 
   <!-- WE DID OUR HOMEWORK -->
   <div style="margin-top:34px;">
@@ -1445,14 +1536,14 @@
       </div>
     </div>
     <div class="insight mt-md">
-      <p>These are the concepts we would test first. The ones that hit get scaled, the ones that do not get cut. The data decides. Every idea here is built to run inside your brokerage's advertising requirements, which is the subject of the next section.</p>
+      <p>These are the concepts we would test first. The ones that hit get scaled, the ones that do not get cut. The data decides.</p>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ══════════ 10 · HOW WE DRIVE RESULTS ══════════ -->
+<!-- ══════════ 11 · HOW WE DRIVE RESULTS ══════════ -->
 <div class="wrap reveal" id="results">
   <div class="eyebrow">How We Drive Results</div>
   <h2 class="section-title">A clear path. <em>From a stranger to a client.</em></h2>
@@ -1498,59 +1589,70 @@
     </details>
   </div>
 
-  <!-- THE HONEST TIMELINE (highlighter-bordered) -->
+  <!-- THE TWO-YEAR MINDSET (highlighter-bordered, above the graph) -->
   <div class="hi-callout">
-    <p><strong>The honest timeline.</strong> Organic social compounds. Months 1 through 3 build the foundation, and the first thing you will see move is reach and the quality of the audience finding you. Leads follow trust, and trust takes time. Any partner who promises you leads in thirty days is selling you something. We would rather tell you the truth now and then beat it.</p>
+    <p><strong>Social media is a two-year game. That is not a hedge, it is the actual shape of the thing.</strong></p>
+    <p>Months 1 through 3 are foundation and testing. We are learning what your specific audience responds to, and you should expect to see reach move before anything else does. The rest of year one builds the baseline: a bigger, better-qualified audience, and trust that compounds every time you show up. Year two is when the interest turns into inquiries at a rate that feels like a machine, because two years of proof is sitting behind every post.</p>
+    <p>There are no steps to skip here. Any partner who promises you leads in thirty days is selling you something. Commit to the process, think in years rather than weeks, and the results are real.</p>
   </div>
 
-  <!-- EXAMPLE ROI (dollarized, sourced) -->
-  <div class="roi-box">
-    <div class="roi-illus">An illustrative picture</div>
-    <h3>What success <em>can look like.</em></h3>
-    <p class="roi-frame">An illustrative model for a Lift-stage account, built on your own closed-sales record and conservative public averages. Not a promise, a picture of what consistency builds.</p>
-    <div class="roi-funnel">
-      <div class="roi-step"><span class="rs-name">Attention</span><span class="rs-sub">roughly 15,000 to 50,000 monthly views from the right audience</span></div>
-      <div class="roi-step"><span class="rs-name">Interaction</span><span class="rs-sub">roughly 1 to 2% take an action: saves, shares, comments, profile visits</span></div>
-      <div class="roi-step"><span class="rs-name">Clicks and inquiries</span><span class="rs-sub">roughly 10 to 50 link taps and direct messages a month</span></div>
-      <div class="roi-step"><span class="rs-name">Qualified leads</span><span class="rs-sub">a fraction of those become a real conversation with your team</span></div>
+  <!-- THE TRAJECTORY (24-month graph, inline SVG, no chart library, no gradients) -->
+  <div class="traj-box">
+    <div class="traj-illus">An illustrative picture</div>
+    <div class="traj-head">
+      <h3>What consistency <em>builds.</em></h3>
     </div>
-    <div class="roi-takeaway">The dollar picture. Over your last twelve months, your closed listing-side sales averaged roughly <strong>$356,000</strong>. At an average listing-side commission of roughly <strong>2.88%</strong>, that is about <strong>$10,300 in gross commission on a single closed side</strong>, before your brokerage split. On those figures, <strong>one additional closed listing covers roughly three months of this engagement. Three more across a year, and it has paid for itself several times over.</strong></div>
-    <p class="roi-sources"><strong>Sources and honesty.</strong> Your average sale price is drawn from public records of your closed transactions over the trailing twelve months (23 listing-side sales). Average commission rates per published 2026 industry data; commissions are always negotiable and vary by transaction. Figures are gross, before your brokerage split. These are public-record figures, not your books. We build the real model, on your actual close rate, split, and cost of acquisition, as part of the Phase 1 strategy.</p>
+    <p class="traj-frame">An illustrative model of qualified inquiries per month across a two-year engagement, built on conservative industry and market assumptions. Not a promise. A picture of the shape.</p>
+
+    <div class="traj-svg-wrap">
+      <svg class="traj-svg" viewBox="0 0 700 312" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A line rising over 24 months: flat and low through months 1 to 3, a steady climb through months 4 to 12, then steepening through months 13 to 24.">
+        <!-- phase bands -->
+        <rect class="traj-band-1" x="46" y="18" width="75" height="262"></rect>
+        <rect class="traj-band-2" x="121" y="18" width="247" height="262"></rect>
+        <rect class="traj-band-3" x="368" y="18" width="322" height="262"></rect>
+        <!-- axes -->
+        <line class="traj-axis" x1="46" y1="280" x2="690" y2="280"></line>
+        <line class="traj-axis" x1="46" y1="280" x2="46" y2="18"></line>
+        <polygon class="traj-arrow" points="40,26 46,13 52,26"></polygon>
+        <!-- month-12 inflection -->
+        <line class="traj-grid12" x1="354" y1="280" x2="354" y2="172"></line>
+        <!-- the trajectory line -->
+        <path class="traj-line" d="M52 268 L107 268 L134 258 L244 222 L354 172 L464 128 L574 82 L684 40"></path>
+        <circle class="traj-dot" cx="354" cy="172" r="4.5"></circle>
+        <circle class="traj-dot" cx="684" cy="40" r="4.5"></circle>
+        <!-- y-axis label -->
+        <text class="traj-ylabel" transform="rotate(-90 18 150)" x="18" y="150" text-anchor="middle">Qualified inquiries</text>
+        <!-- x-axis labels -->
+        <text class="traj-axtext" x="52" y="298" text-anchor="start">Month 1</text>
+        <text class="traj-axtext" x="354" y="298" text-anchor="middle">Month 12</text>
+        <text class="traj-axtext" x="684" y="298" text-anchor="end">Month 24</text>
+      </svg>
+    </div>
+
+    <div class="traj-marker-note"><strong>Month 12.</strong> Year one builds the baseline. Year two is where it compounds.</div>
+
+    <div class="traj-legend">
+      <div class="traj-leg b1">
+        <div class="traj-leg-ph">Foundation &amp; Testing</div>
+        <div class="traj-leg-mo">Months 1&ndash;3</div>
+        <div class="traj-leg-txt">Learning what works. Reach moves first.</div>
+      </div>
+      <div class="traj-leg b2">
+        <div class="traj-leg-ph">Execution</div>
+        <div class="traj-leg-mo">Months 4&ndash;12</div>
+        <div class="traj-leg-txt">The system runs. The audience builds.</div>
+      </div>
+      <div class="traj-leg b3">
+        <div class="traj-leg-ph">Compounding</div>
+        <div class="traj-leg-mo">Months 13&ndash;24</div>
+        <div class="traj-leg-txt">Two years of trust behind every post.</div>
+      </div>
+    </div>
+
+    <p class="traj-context">For context on what a single result is worth: the median Cincinnati home sale is roughly <strong>$290,000</strong>, and the average listing-side commission is roughly <strong>2.88%</strong>. That puts gross commission on one closed listing at roughly <strong>$8,000</strong>, before your brokerage split. On those figures, <strong>a single additional closed listing covers roughly two and a half months of this engagement.</strong></p>
+
+    <p class="traj-sources"><strong>Sources and honesty.</strong> Median sale price per Redfin, three months ending May 2026. Average commission rates per published 2026 industry data. Commissions are always negotiable and vary by transaction, and figures are gross, before your brokerage split. These are public market averages, not your numbers. We build the real model, on your actual average sale price, close rate, and split, as part of the Phase 1 strategy.</p>
   </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════ 11 · COMPLIANCE BY DESIGN ══════════ -->
-<div class="wrap reveal" id="compliance">
-  <div class="eyebrow">Built for a brokerage</div>
-  <h2 class="section-title">Growth that <em>stays compliant.</em></h2>
-  <p class="section-sub">You are a Coldwell Banker team, and that comes with advertising rules most social media agencies have never read. We build to them from day one, because a strategy that puts your license at risk is not a strategy.</p>
-
-  <div class="diff-grid">
-    <div class="diff-card">
-      <div class="diff-num">01 · Compliance</div>
-      <h4>Brokerage attribution, built in.</h4>
-      <p>Ohio requires the brokerage name to appear with at least equal prominence to the team name in advertising, including social media. We architect your profile and every content template to carry it correctly, rather than bolting it on afterward.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-num">02 · Compliance</div>
-      <h4>Fair Housing discipline.</h4>
-      <p>Content that ranks neighborhoods by desirability can edge toward steering when a licensee publishes it. Our neighborhood content celebrates places, it never ranks them against each other. This is a real constraint, and it shapes what we make.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-num">03 · Compliance</div>
-      <h4>Listing content, done right.</h4>
-      <p>Every piece of listing content produced through the pipeline carries the attribution and disclosure the rules require, on both sides of the river.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-num">04 · Compliance</div>
-      <h4>A compliance audit in week 1.</h4>
-      <p>We review your existing bio, highlights, and recent posts against Ohio and Kentucky advertising requirements, and we tell you plainly what needs to change.</p>
-    </div>
-  </div>
-
-  <p class="muted-note mt-md">We are a marketing partner, not attorneys, and none of this is legal advice. Final review always sits with your broker. What we commit to is building to the standard, flagging what we see, and never putting you in a position where you have to choose between growth and compliance.</p>
 </div>
 
 <!-- ════════════════════ ACT 3 ════════════════════ -->
@@ -1690,7 +1792,7 @@
     <div class="step">
       <div class="step-n">Step 02</div>
       <h3>Complete the onboarding form</h3>
-      <p>Covers your brand, your goals, your average transaction, your listing volume, and how we coordinate with your media partner. About 20 minutes.</p>
+      <p>Covers your brand, your goals, and how we coordinate with your media partner. About 20 minutes.</p>
     </div>
     <div class="step">
       <div class="step-n">Step 03</div>
@@ -1725,8 +1827,8 @@
   (function(){
     var NAV=[
       {id:'snapshot',act:'engagement'},{id:'engagement',act:'engagement'},{id:'timeline',act:'engagement'},
-      {id:'investment',act:'engagement'},{id:'scope',act:'engagement'},
-      {id:'approach',act:'strategy'},{id:'built',act:'strategy'},{id:'audience',act:'strategy'},{id:'ideas',act:'strategy'},{id:'results',act:'strategy'},{id:'compliance',act:'strategy'},
+      {id:'investment',act:'engagement'},{id:'scope',act:'engagement'},{id:'listing',act:'engagement'},
+      {id:'approach',act:'strategy'},{id:'built',act:'strategy'},{id:'audience',act:'strategy'},{id:'ideas',act:'strategy'},{id:'results',act:'strategy'},
       {id:'proof',act:'proof'},{id:'next-steps',act:'proof'}
     ];
     var groups=[].slice.call(document.querySelectorAll('.act-group'));

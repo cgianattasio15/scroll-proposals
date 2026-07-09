@@ -543,6 +543,8 @@
     .tl-phase-badge.p1 { background:var(--azure-lt); color:var(--azure); border:1px solid var(--azure-bd); }
     .tl-phase-badge.trans { background:rgba(226,237,122,.25); color:#4d5e00; border:1px solid rgba(200,214,0,.32); }
     .tl-phase-badge.p2 { background:var(--green-lt); color:var(--green); border:1px solid rgba(42,122,58,.28); }
+    /* Allow the longest badge ("Week 5 → ongoing") to wrap instead of forcing horizontal scroll on <=360px phones. */
+    @media(max-width:360px){ .tl-phase-badge { white-space:normal; } }
     .tl-phase-line { flex:1; height:1px; background:var(--border); }
     .tl-cards { display:grid; gap:14px; }
     .tl-cards.c3 { grid-template-columns:repeat(3,1fr); }

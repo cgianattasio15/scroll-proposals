@@ -783,9 +783,66 @@
     .field-hint { font-size: 0.875rem; }
     .inline-field-label { font-size: 0.88rem; }
     .subfield-label { font-size: 0.875rem; }
+    .subgroup-label { font-size: 0.875rem; }
     .recap-box p { font-size: 0.9rem; }
     .intro-note { font-size: 0.9rem; }
     .submit-meta { gap: 10px; }
+  }
+
+  /* ---- Rev C additions ---- */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(21,21,22,0.4)' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .subgroup-label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: var(--azure);
+    margin: 18px 0 8px;
+    padding-left: 2px;
+  }
+  .subgroup-label.first { margin-top: 0; }
+  .subgroup-prompt {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: -2px 0 10px;
+    padding-left: 2px;
+    line-height: 1.45;
+  }
+  .exact-field { margin-top: 10px; }
+  .exact-field input { max-width: 300px; }
+  .rank-row { margin-bottom: 12px; }
+  .rank-row:last-child { margin-bottom: 0; }
+  .ack-note {
+    margin-bottom: 24px;
+    padding: 14px 18px 14px 20px;
+    border-radius: 14px;
+    background: rgba(203,233,255,0.16);
+    border: 1px solid rgba(12,51,135,0.13);
+    border-left: 3px solid rgba(12,51,135,0.42);
+  }
+  .ack-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    color: var(--azure);
+    margin-bottom: 8px;
+  }
+  .ack-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--azure); flex-shrink: 0; }
+  .ack-note p { font-size: 0.9rem; line-height: 1.6; color: rgba(21,21,22,0.78); }
+
+  @media (max-width: 420px) {
+    .subgroup-label { font-size: 0.875rem; }
   }
 </style>
 </head>
@@ -808,10 +865,10 @@
     Welcome to Scroll Media
   </div>
   <h1>Let's get Pippi's launch-ready.</h1>
-  <p class="hero-sub">You already told us most of this, so it is mostly a quick confirm or correct. About 15 minutes, and you can stop and come back where you left off.</p>
+  <p class="hero-sub">You already told us most of this, so it is mostly quick picks and a few confirms. About 12 to 15 minutes, and you can stop and come back where you left off.</p>
   <div class="hero-pills">
-    <div class="hero-pill"><span class="hero-pill-icon">📝</span> 6 sections</div>
-    <div class="hero-pill"><span class="hero-pill-icon">⏱</span> ~15 minutes</div>
+    <div class="hero-pill"><span class="hero-pill-icon">📝</span> 7 sections</div>
+    <div class="hero-pill"><span class="hero-pill-icon">⏱</span> ~12-15 minutes</div>
     <div class="hero-pill"><span class="hero-pill-icon">🔒</span> Sent directly to Chase</div>
   </div>
 </section>
@@ -831,15 +888,14 @@
       <div class="form-inner">
 
         <div class="intro-note">
-          We built this around what you already told us, so most of it is a quick confirm-or-correct rather than a blank page. It should take about 15 minutes. Where we already have something, we have filled it in. Fix anything we got wrong, and sharpen anything we got close on.
+          We built this around what you already told us, so most of it is a quick pick or a confirm rather than a blank page. About 12 to 15 minutes. Where we already have something, we filled it in. Fix anything we got wrong.
         </div>
-
-        <!-- ===================== SECTION 1 · THE BASICS ===================== -->
+        <!-- SECTION 1 -->
         <div class="form-section" data-section="1">
           <div class="section-header">
             <div class="section-icon">🏠</div>
             <span class="section-title">The Basics</span>
-            <span class="section-step">1 of 6</span>
+            <span class="section-step">1 of 7</span>
           </div>
 
           <div class="field-group" id="fg-details">
@@ -849,24 +905,12 @@
             </div>
             <div class="field-hint">Pre-filled from what we have. Fix anything that is off, and add your best phone number.</div>
             <div class="field-row">
-              <div>
-                <label class="subfield-label" for="p-name">Your name</label>
-                <input type="text" id="p-name" name="contactName" value="Maddie Heile" autocomplete="name" required>
-              </div>
-              <div>
-                <label class="subfield-label" for="p-business">Business name</label>
-                <input type="text" id="p-business" name="businessName" value="Pippi's" required>
-              </div>
+              <div><label class="subfield-label" for="p-name">Your name</label><input type="text" id="p-name" name="contactName" value="Maddie Heile" autocomplete="name" required></div>
+              <div><label class="subfield-label" for="p-business">Business name</label><input type="text" id="p-business" name="businessName" value="Pippi's" required></div>
             </div>
             <div class="field-row" style="margin-top:14px;">
-              <div>
-                <label class="subfield-label" for="p-email">Best email</label>
-                <input type="email" id="p-email" name="contactEmail" value="madelineheile@gmail.com" autocomplete="email" required>
-              </div>
-              <div>
-                <label class="subfield-label" for="p-phone">Best phone</label>
-                <input type="tel" id="p-phone" name="contactPhone" placeholder="(555) 555-5555" autocomplete="tel" required>
-              </div>
+              <div><label class="subfield-label" for="p-email">Best email</label><input type="email" id="p-email" name="contactEmail" value="madelineheile@gmail.com" autocomplete="email" required></div>
+              <div><label class="subfield-label" for="p-phone">Best phone</label><input type="tel" id="p-phone" name="contactPhone" placeholder="(555) 555-5555" autocomplete="tel" required></div>
             </div>
             <div class="field-error">Please fill in your name, business, email, and phone.</div>
           </div>
@@ -878,123 +922,243 @@
             </div>
             <div class="field-hint">We build your local search foundation around these. Fix anything that is off.</div>
             <div class="field-row">
-              <div>
-                <label class="subfield-label" for="p-address">Address and neighborhood</label>
-                <input type="text" id="p-address" name="address" value="1502 Vine Street, Over-the-Rhine, Cincinnati" required>
-              </div>
-              <div>
-                <label class="subfield-label" for="p-handle">Instagram handle</label>
-                <input type="text" id="p-handle" name="instagramHandle" value="@pippis.salon" required>
-              </div>
+              <div><label class="subfield-label" for="p-address">Address and neighborhood</label><input type="text" id="p-address" name="address" value="1502 Vine Street, Over-the-Rhine, Cincinnati" required></div>
+              <div><label class="subfield-label" for="p-handle">Instagram handle</label><input type="text" id="p-handle" name="instagramHandle" value="@pippis.salon" required></div>
             </div>
             <div class="field-error">Please confirm your address and handle.</div>
           </div>
         </div>
-
-        <!-- ===================== SECTION 2 · AUDIENCES & WHAT YOU STAND FOR ===================== -->
+        <!-- SECTION 2 -->
         <div class="form-section" data-section="2">
           <div class="section-header">
             <div class="section-icon">🎯</div>
-            <span class="section-title">Your Audiences &amp; What You Stand For</span>
-            <span class="section-step">2 of 6</span>
+            <span class="section-title">Your Two Audiences</span>
+            <span class="section-step">2 of 7</span>
           </div>
 
           <div class="section-note">
-            <strong>A salon launch has two jobs.</strong> Fill the chairs with clients, and fill the chairs with stylists. Every piece of content we make knows which one it is talking to. Here is who we think each one is. Tell us what we got right and where we are off.
+            <strong>A salon launch has two jobs:</strong> fill the chairs with clients, and fill them with stylists. It is cleaner to lead hard with one first. Here is who each is, and we want your read on the priority.
           </div>
-
-          <div class="field-group" id="fg-woman">
+          <div class="field-group" id="fg-q3">
+            <div class="field-header"><span class="field-num">03</span><span class="field-question">Which chair do we fill first? <span class="field-required">*</span></span></div>
+            <div class="field-hint">A commission salon needs stylists in place to open, so recruiting often has to lead early. But we optimize best when we point the launch at one audience first. Your call, and we lock it together at kickoff.</div>
+            <div class="pill-group" data-group-name="chairFirst">
+              <div class="pill-opt"><input type="radio" id="chairfirst-stylists-first-recruiting-is-the-gate" name="chairFirst" value="Stylists first, recruiting is the gate to opening"><label for="chairfirst-stylists-first-recruiting-is-the-gate">Stylists first, recruiting is the gate to opening</label></div>
+              <div class="pill-opt"><input type="radio" id="chairfirst-clients-first-drive-bookings-and-the-" name="chairFirst" value="Clients first, drive bookings and the waitlist"><label for="chairfirst-clients-first-drive-bookings-and-the-">Clients first, drive bookings and the waitlist</label></div>
+              <div class="pill-opt"><input type="radio" id="chairfirst-both-but-lean-stylists-early" name="chairFirst" value="Both, but lean stylists early"><label for="chairfirst-both-but-lean-stylists-early">Both, but lean stylists early</label></div>
+              <div class="pill-opt"><input type="radio" id="chairfirst-both-but-lean-clients-early" name="chairFirst" value="Both, but lean clients early"><label for="chairfirst-both-but-lean-clients-early">Both, but lean clients early</label></div>
+              <div class="pill-opt"><input type="radio" id="chairfirst-not-sure-let-s-decide-at-kickoff" name="chairFirst" value="Not sure, let's decide at kickoff"><label for="chairfirst-not-sure-let-s-decide-at-kickoff">Not sure, let's decide at kickoff</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+          <div class="field-group" id="fg-q4" style="margin-top:16px;">
             <div class="recap-box">
               <div class="recap-eyebrow"><span class="recap-eyebrow-dot"></span>What we already have</div>
-              <p>Higher-end Over-the-Rhine and Cincinnati women, roughly 25 to 45, professional or executive. Some are loyal clients coming with you. Some are new, sitting in a chair that does not feel like home. They want a colorist they trust completely, an intentional and elevated space, and to be early to something special. Premium, not stuffy.</p>
+              <p>Higher-end OTR and Cincinnati women, roughly 25 to 45, professional or executive. Some are loyal clients coming with you, some are new. They want a colorist they trust, an elevated space, and to be early to something special.</p>
             </div>
-            <div class="field-header">
-              <span class="field-num">03</span>
-              <span class="field-question">The woman in the chair <span class="field-required">*</span></span>
+            <div class="field-header"><span class="field-num">04</span><span class="field-question">The woman in the chair <span class="field-required">*</span></span></div>
+            <span class="subgroup-label first">Age</span>
+            <div class="pill-group" data-group-name="clientAge">
+              <div class="pill-opt"><input type="checkbox" id="clientage-22-30" name="clientAge" value="22-30"><label for="clientage-22-30">22-30</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientage-30-40" name="clientAge" value="30-40"><label for="clientage-30-40">30-40</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientage-40-55" name="clientAge" value="40-55"><label for="clientage-40-55">40-55</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientage-55" name="clientAge" value="55+"><label for="clientage-55">55+</label></div>
             </div>
-            <div class="field-hint">What did we get right, and what would you sharpen or add?</div>
-            <textarea id="woman-in-chair" name="womanInChair" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">What she most wants</span>
+            <div class="pill-group" data-group-name="clientWants">
+              <div class="pill-opt"><input type="checkbox" id="clientwants-a-colorist-she-can-finally-trust" name="clientWants" value="a colorist she can finally trust"><label for="clientwants-a-colorist-she-can-finally-trust">a colorist she can finally trust</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientwants-an-elevated-intentional-space" name="clientWants" value="an elevated, intentional space"><label for="clientwants-an-elevated-intentional-space">an elevated, intentional space</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientwants-low-maintenance-lived-in-color" name="clientWants" value="low-maintenance, lived-in color"><label for="clientwants-low-maintenance-lived-in-color">low-maintenance, lived-in color</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientwants-special-occasion-hair" name="clientWants" value="special-occasion hair"><label for="clientwants-special-occasion-hair">special-occasion hair</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientwants-to-be-early-to-something-special" name="clientWants" value="to be early to something special"><label for="clientwants-to-be-early-to-something-special">to be early to something special</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientwants-consistency-every-time" name="clientWants" value="consistency every time"><label for="clientwants-consistency-every-time">consistency every time</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientwants-other-tell-us-below" name="clientWants" value="Other (tell us below)"><label for="clientwants-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option in each.</div>
           </div>
-
-          <div class="field-group" id="fg-stylist" style="margin-top:16px;">
+          <div class="field-group" id="fg-q5" style="margin-top:16px;">
             <div class="recap-box">
               <div class="recap-eyebrow"><span class="recap-eyebrow-dot"></span>What we already have</div>
-              <p>Talented Cincinnati stylists who want more than a booth. Drawn to craft, mentorship, and a community-first room. They want a commission model in a room that is going somewhere, a real break room, and a team that invests in them. The communal table, not a row of stations.</p>
+              <p>Talented Cincinnati stylists who want more than a booth. Craft, mentorship, a community-first room, the communal table not a row of stations.</p>
             </div>
-            <div class="field-header">
-              <span class="field-num">04</span>
-              <span class="field-question">The stylist at the table <span class="field-required">*</span></span>
+            <div class="field-header"><span class="field-num">05</span><span class="field-question">The stylist at the table <span class="field-required">*</span></span></div>
+            <span class="subgroup-label first">What draws her</span>
+            <div class="pill-group" data-group-name="stylistDraws">
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-commission-on-a-real-book" name="stylistDraws" value="commission on a real book"><label for="stylistdraws-commission-on-a-real-book">commission on a real book</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-mentorship-and-growth" name="stylistDraws" value="mentorship and growth"><label for="stylistdraws-mentorship-and-growth">mentorship and growth</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-rica-and-technical-training" name="stylistDraws" value="Rica and technical training"><label for="stylistdraws-rica-and-technical-training">Rica and technical training</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-a-community-first-room" name="stylistDraws" value="a community-first room"><label for="stylistdraws-a-community-first-room">a community-first room</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-a-beautiful-space-and-a-real-break-" name="stylistDraws" value="a beautiful space and a real break room"><label for="stylistdraws-a-beautiful-space-and-a-real-break-">a beautiful space and a real break room</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-creative-freedom" name="stylistDraws" value="creative freedom"><label for="stylistdraws-creative-freedom">creative freedom</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-a-path-to-her-own-chair" name="stylistDraws" value="a path to her own chair"><label for="stylistdraws-a-path-to-her-own-chair">a path to her own chair</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistdraws-other-tell-us-below" name="stylistDraws" value="Other (tell us below)"><label for="stylistdraws-other-tell-us-below">Other (tell us below)</label></div>
             </div>
-            <div class="field-hint">What draws her to Pippi's, and what did we miss?</div>
-            <textarea id="stylist-at-table" name="stylistAtTable" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">Experience level you want</span>
+            <div class="pill-group" data-group-name="stylistExperience">
+              <div class="pill-opt"><input type="checkbox" id="stylistexperience-apprentice-newer" name="stylistExperience" value="apprentice / newer"><label for="stylistexperience-apprentice-newer">apprentice / newer</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistexperience-established-with-a-book" name="stylistExperience" value="established with a book"><label for="stylistexperience-established-with-a-book">established with a book</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistexperience-master-colorist" name="stylistExperience" value="master colorist"><label for="stylistexperience-master-colorist">master colorist</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylistexperience-other-tell-us-below" name="stylistExperience" value="Other (tell us below)"><label for="stylistexperience-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option in each.</div>
+          </div>
+          <div class="field-group" id="fg-q6" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">06</span><span class="field-question">Recruiting specifics <span class="field-required">*</span></span></div>
+            <span class="subgroup-label first">Chairs to fill</span>
+            <div class="pill-group" data-group-name="chairsToFill">
+              <div class="pill-opt"><input type="radio" id="chairstofill-1-2" name="chairsToFill" value="1-2"><label for="chairstofill-1-2">1-2</label></div>
+              <div class="pill-opt"><input type="radio" id="chairstofill-3-4" name="chairsToFill" value="3-4"><label for="chairstofill-3-4">3-4</label></div>
+              <div class="pill-opt"><input type="radio" id="chairstofill-5-6" name="chairsToFill" value="5-6"><label for="chairstofill-5-6">5-6</label></div>
+              <div class="pill-opt"><input type="radio" id="chairstofill-7-8" name="chairsToFill" value="7-8"><label for="chairstofill-7-8">7-8</label></div>
+              <div class="pill-opt"><input type="radio" id="chairstofill-9" name="chairsToFill" value="9+"><label for="chairstofill-9">9+</label></div>
+            </div>
+            <span class="subgroup-label">Filled so far</span>
+            <div class="pill-group" data-group-name="chairsFilled">
+              <div class="pill-opt"><input type="radio" id="chairsfilled-0" name="chairsFilled" value="0"><label for="chairsfilled-0">0</label></div>
+              <div class="pill-opt"><input type="radio" id="chairsfilled-1-2" name="chairsFilled" value="1-2"><label for="chairsfilled-1-2">1-2</label></div>
+              <div class="pill-opt"><input type="radio" id="chairsfilled-3-4" name="chairsFilled" value="3-4"><label for="chairsfilled-3-4">3-4</label></div>
+              <div class="pill-opt"><input type="radio" id="chairsfilled-5" name="chairsFilled" value="5+"><label for="chairsfilled-5">5+</label></div>
+            </div>
+            <span class="subgroup-label">Urgency</span>
+            <div class="pill-group" data-group-name="recruitUrgency">
+              <div class="pill-opt"><input type="radio" id="recruiturgency-must-fill-before-we-open" name="recruitUrgency" value="must fill before we open"><label for="recruiturgency-must-fill-before-we-open">must fill before we open</label></div>
+              <div class="pill-opt"><input type="radio" id="recruiturgency-rolling-ongoing" name="recruitUrgency" value="rolling, ongoing"><label for="recruiturgency-rolling-ongoing">rolling, ongoing</label></div>
+              <div class="pill-opt"><input type="radio" id="recruiturgency-after-launch-is-fine" name="recruitUrgency" value="after launch is fine"><label for="recruiturgency-after-launch-is-fine">after launch is fine</label></div>
+            </div>
+            <div class="field-error">Please make a selection in each.</div>
+          </div>
+          <div class="field-group" id="fg-q7" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">07</span><span class="field-question">How much do you want to be the face of Pippi's? <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="founderFace">
+              <div class="pill-opt"><input type="radio" id="founderface-happy-to-be-on-camera-regularly" name="founderFace" value="Happy to be on camera regularly"><label for="founderface-happy-to-be-on-camera-regularly">Happy to be on camera regularly</label></div>
+              <div class="pill-opt"><input type="radio" id="founderface-sometimes-in-the-mix-with-the-team-a" name="founderFace" value="Sometimes, in the mix with the team and the work"><label for="founderface-sometimes-in-the-mix-with-the-team-a">Sometimes, in the mix with the team and the work</label></div>
+              <div class="pill-opt"><input type="radio" id="founderface-i-d-rather-the-team-and-the-work-lea" name="founderFace" value="I'd rather the team and the work lead, less me"><label for="founderface-i-d-rather-the-team-and-the-work-lea">I'd rather the team and the work lead, less me</label></div>
+              <div class="pill-opt"><input type="radio" id="founderface-not-sure-let-s-figure-it-out-at-kick" name="founderFace" value="Not sure, let's figure it out at kickoff"><label for="founderface-not-sure-let-s-figure-it-out-at-kick">Not sure, let's figure it out at kickoff</label></div>
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+        </div>
+        <!-- SECTION 3 -->
+        <div class="form-section" data-section="3">
+          <div class="section-header">
+            <div class="section-icon">🧭</div>
+            <span class="section-title">What You Stand For</span>
+            <span class="section-step">3 of 7</span>
           </div>
 
-          <div class="field-group" id="fg-recruiting" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">05</span>
-              <span class="field-question">Recruiting specifics <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">We have you hiring for roughly 8 chairs, with about 2 stylists in so far. Confirm the numbers, and tell us how urgent recruiting is relative to opening. Recruiting content is a launch priority, so specifics help us calibrate.</div>
-            <textarea id="recruiting-specifics" name="recruitingSpecifics" required></textarea>
-            <div class="field-error">This field is required.</div>
-          </div>
-
-          <div class="field-group" id="fg-exists-to" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">06</span>
-              <span class="field-question">Complete this sentence: "Pippi's exists to ____." <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">The hardest question here, and the most important. Don't overthink it. Your gut answer is the right one.</div>
+          <div class="field-group" id="fg-q8">
+            <div class="field-header"><span class="field-num">08</span><span class="field-question">Complete this sentence: "Pippi's exists to ____." <span class="field-required">*</span></span></div>
+            <div class="field-hint">The hardest question here and the most important. Don't overthink it. Your gut answer is right.</div>
             <textarea id="exists-to" name="existsTo" placeholder="Pippi's exists to ..." required></textarea>
             <div class="field-error">This field is required.</div>
           </div>
-
-          <div class="field-group" id="fg-unique" style="margin-top:16px;">
+          <div class="field-group" id="fg-q9" style="margin-top:16px;">
             <div class="recap-box">
               <div class="recap-eyebrow"><span class="recap-eyebrow-dot"></span>What we already have</div>
-              <p>We already see: the communal table, your color and session pedigree, the Rica line through your mentor Joseph DiMaggio, and a commission room built on mentorship.</p>
+              <p>We already see the communal table, your color and session pedigree, the Rica line through Joseph DiMaggio, and a commission room built on mentorship.</p>
             </div>
-            <div class="field-header">
-              <span class="field-num">07</span>
-              <span class="field-question">What is uniquely yours? <span class="field-required">*</span></span>
+            <div class="field-header"><span class="field-num">09</span><span class="field-question">What is uniquely yours? <span class="field-required">*</span></span></div>
+            <span class="subgroup-label first">Confirm all that are truly yours</span>
+            <div class="pill-group" data-group-name="uniqueConfirm">
+              <div class="pill-opt"><input type="checkbox" id="uniqueconfirm-the-communal-table" name="uniqueConfirm" value="the communal table"><label for="uniqueconfirm-the-communal-table">the communal table</label></div>
+              <div class="pill-opt"><input type="checkbox" id="uniqueconfirm-fashion-week-color-and-session-ped" name="uniqueConfirm" value="fashion-week color and session pedigree"><label for="uniqueconfirm-fashion-week-color-and-session-ped">fashion-week color and session pedigree</label></div>
+              <div class="pill-opt"><input type="checkbox" id="uniqueconfirm-the-rica-line-via-your-mentor" name="uniqueConfirm" value="the Rica line via your mentor"><label for="uniqueconfirm-the-rica-line-via-your-mentor">the Rica line via your mentor</label></div>
+              <div class="pill-opt"><input type="checkbox" id="uniqueconfirm-a-commission-room-built-on-mentors" name="uniqueConfirm" value="a commission room built on mentorship"><label for="uniqueconfirm-a-commission-room-built-on-mentors">a commission room built on mentorship</label></div>
+              <div class="pill-opt"><input type="checkbox" id="uniqueconfirm-other-tell-us-below" name="uniqueConfirm" value="Other (tell us below)"><label for="uniqueconfirm-other-tell-us-below">Other (tell us below)</label></div>
             </div>
-            <div class="field-hint">What are we missing? The things no other Over-the-Rhine salon could claim, in your words.</div>
-            <textarea id="uniquely-yours" name="uniquelyYours" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">And the single most central one</span>
+            <div class="pill-group" data-group-name="uniqueCentral">
+              <div class="pill-opt"><input type="radio" id="uniquecentral-the-communal-table" name="uniqueCentral" value="the communal table"><label for="uniquecentral-the-communal-table">the communal table</label></div>
+              <div class="pill-opt"><input type="radio" id="uniquecentral-fashion-week-color-and-session-ped" name="uniqueCentral" value="fashion-week color and session pedigree"><label for="uniquecentral-fashion-week-color-and-session-ped">fashion-week color and session pedigree</label></div>
+              <div class="pill-opt"><input type="radio" id="uniquecentral-the-rica-line-via-your-mentor" name="uniqueCentral" value="the Rica line via your mentor"><label for="uniquecentral-the-rica-line-via-your-mentor">the Rica line via your mentor</label></div>
+              <div class="pill-opt"><input type="radio" id="uniquecentral-a-commission-room-built-on-mentors" name="uniqueCentral" value="a commission room built on mentorship"><label for="uniquecentral-a-commission-room-built-on-mentors">a commission room built on mentorship</label></div>
+              <div class="pill-opt"><input type="radio" id="uniquecentral-other-tell-us-below" name="uniqueCentral" value="Other (tell us below)"><label for="uniquecentral-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Confirm at least one, and pick the most central.</div>
           </div>
-
-          <div class="field-group" id="fg-hesitation" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">08</span>
-              <span class="field-question">The one hesitation <span class="field-required">*</span></span>
+          <div class="field-group" id="fg-q10" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">10</span><span class="field-question">The trigger moment <span class="field-required">*</span></span></div>
+            <div class="field-hint">What finally tips someone over the edge. Pick all that fit in each.</div>
+            <span class="subgroup-label first">For clients</span>
+            <div class="subgroup-prompt">What finally makes someone book a new colorist?</div>
+            <div class="pill-group" data-group-name="clientTrigger">
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-a-color-or-cut-gone-wrong-elsewher" name="clientTrigger" value="a color or cut gone wrong elsewhere"><label for="clienttrigger-a-color-or-cut-gone-wrong-elsewher">a color or cut gone wrong elsewhere</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-moving-to-the-area" name="clientTrigger" value="moving to the area"><label for="clienttrigger-moving-to-the-area">moving to the area</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-a-big-event-coming-up" name="clientTrigger" value="a big event coming up"><label for="clienttrigger-a-big-event-coming-up">a big event coming up</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-their-stylist-left-retired-or-rais" name="clientTrigger" value="their stylist left, retired, or raised prices"><label for="clienttrigger-their-stylist-left-retired-or-rais">their stylist left, retired, or raised prices</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-just-ready-for-a-change" name="clientTrigger" value="just ready for a change"><label for="clienttrigger-just-ready-for-a-change">just ready for a change</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-a-friend-s-hair-they-loved" name="clientTrigger" value="a friend's hair they loved"><label for="clienttrigger-a-friend-s-hair-they-loved">a friend's hair they loved</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienttrigger-other-tell-us-below" name="clientTrigger" value="Other (tell us below)"><label for="clienttrigger-other-tell-us-below">Other (tell us below)</label></div>
             </div>
-            <div class="field-hint">The unspoken worry someone has before they book Pippi's for the first time. We write content straight to it. 1 to 2 sentences.</div>
-            <textarea id="one-hesitation" name="oneHesitation" style="min-height:88px;" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">For stylists</span>
+            <div class="subgroup-prompt">What finally makes a stylist leave for a new chair?</div>
+            <div class="pill-group" data-group-name="stylistTrigger">
+              <div class="pill-opt"><input type="checkbox" id="stylisttrigger-tired-of-booth-rent-wants-commiss" name="stylistTrigger" value="tired of booth rent, wants commission and support"><label for="stylisttrigger-tired-of-booth-rent-wants-commiss">tired of booth rent, wants commission and support</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisttrigger-wants-mentorship-and-growth" name="stylistTrigger" value="wants mentorship and growth"><label for="stylisttrigger-wants-mentorship-and-growth">wants mentorship and growth</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisttrigger-their-current-salon-s-culture" name="stylistTrigger" value="their current salon's culture"><label for="stylisttrigger-their-current-salon-s-culture">their current salon's culture</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisttrigger-wants-a-more-beautiful-intentiona" name="stylistTrigger" value="wants a more beautiful, intentional space"><label for="stylisttrigger-wants-a-more-beautiful-intentiona">wants a more beautiful, intentional space</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisttrigger-ready-to-build-a-book-somewhere-w" name="stylistTrigger" value="ready to build a book somewhere with momentum"><label for="stylisttrigger-ready-to-build-a-book-somewhere-w">ready to build a book somewhere with momentum</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisttrigger-other-tell-us-below" name="stylistTrigger" value="Other (tell us below)"><label for="stylisttrigger-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one in each.</div>
+          </div>
+          <div class="field-group" id="fg-q11" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">11</span><span class="field-question">What makes someone hesitate? <span class="field-required">*</span></span></div>
+            <div class="field-hint">The unspoken worry before committing. We write content straight to it. Pick all that fit in each.</div>
+            <span class="subgroup-label first">For clients</span>
+            <div class="pill-group" data-group-name="clientHesitation">
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-price-is-it-worth-it" name="clientHesitation" value="price, is it worth it"><label for="clienthesitation-price-is-it-worth-it">price, is it worth it</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-will-they-get-my-color-right" name="clientHesitation" value="will they get my color right"><label for="clienthesitation-will-they-get-my-color-right">will they get my color right</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-new-and-unproven" name="clientHesitation" value="new and unproven"><label for="clienthesitation-new-and-unproven">new and unproven</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-loyal-to-my-current-stylist" name="clientHesitation" value="loyal to my current stylist"><label for="clienthesitation-loyal-to-my-current-stylist">loyal to my current stylist</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-feels-too-cool-or-intimidating" name="clientHesitation" value="feels too cool or intimidating"><label for="clienthesitation-feels-too-cool-or-intimidating">feels too cool or intimidating</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-location-or-parking" name="clientHesitation" value="location or parking"><label for="clienthesitation-location-or-parking">location or parking</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-wait-time-for-an-appointment" name="clientHesitation" value="wait time for an appointment"><label for="clienthesitation-wait-time-for-an-appointment">wait time for an appointment</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clienthesitation-other-tell-us-below" name="clientHesitation" value="Other (tell us below)"><label for="clienthesitation-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <span class="subgroup-label">For stylists</span>
+            <div class="pill-group" data-group-name="stylistHesitation">
+              <div class="pill-opt"><input type="checkbox" id="stylisthesitation-is-it-real-will-it-last" name="stylistHesitation" value="is it real, will it last"><label for="stylisthesitation-is-it-real-will-it-last">is it real, will it last</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisthesitation-commission-vs-what-i-have-now" name="stylistHesitation" value="commission vs what I have now"><label for="stylisthesitation-commission-vs-what-i-have-now">commission vs what I have now</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisthesitation-leaving-my-current-book-behind" name="stylistHesitation" value="leaving my current book behind"><label for="stylisthesitation-leaving-my-current-book-behind">leaving my current book behind</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisthesitation-culture-fit" name="stylistHesitation" value="culture fit"><label for="stylisthesitation-culture-fit">culture fit</label></div>
+              <div class="pill-opt"><input type="checkbox" id="stylisthesitation-other-tell-us-below" name="stylistHesitation" value="Other (tell us below)"><label for="stylisthesitation-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one in each.</div>
+          </div>
+          <div class="field-group" id="fg-q12" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">12</span><span class="field-question">What do clients most often ask you? <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="clientFaqs">
+              <div class="pill-opt"><input type="checkbox" id="clientfaqs-are-you-taking-new-clients" name="clientFaqs" value="Are you taking new clients"><label for="clientfaqs-are-you-taking-new-clients">Are you taking new clients</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientfaqs-can-you-fix-color-done-somewhere-else" name="clientFaqs" value="Can you fix color done somewhere else"><label for="clientfaqs-can-you-fix-color-done-somewhere-else">Can you fix color done somewhere else</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientfaqs-do-you-do-extensions-or-treatments" name="clientFaqs" value="Do you do extensions or treatments"><label for="clientfaqs-do-you-do-extensions-or-treatments">Do you do extensions or treatments</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientfaqs-how-much-does-it-cost-and-how-long-do" name="clientFaqs" value="How much does it cost and how long does it take"><label for="clientfaqs-how-much-does-it-cost-and-how-long-do">How much does it cost and how long does it take</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientfaqs-do-you-do-a-consultation-first" name="clientFaqs" value="Do you do a consultation first"><label for="clientfaqs-do-you-do-a-consultation-first">Do you do a consultation first</label></div>
+              <div class="pill-opt"><input type="checkbox" id="clientfaqs-other-tell-us-below" name="clientFaqs" value="Other (tell us below)"><label for="clientfaqs-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
           </div>
         </div>
-
-        <!-- ===================== SECTION 3 · HOW PIPPI'S SOUNDS ===================== -->
-        <div class="form-section" data-section="3">
+        <!-- SECTION 4 -->
+        <div class="form-section" data-section="4">
           <div class="section-header">
-            <div class="section-icon">🎙️</div>
-            <span class="section-title">How Pippi's Sounds</span>
-            <span class="section-step">3 of 6</span>
+            <div class="section-icon">🎨</div>
+            <span class="section-title">How Pippi's Sounds and Looks</span>
+            <span class="section-step">4 of 7</span>
           </div>
 
           <div class="section-note">
-            <strong>Quick gut-check, not a deep dive.</strong> Your captions, on-screen text, DMs, and comments need to sound like <em>you</em>, not an agency template. We do the deep voice work live at your kickoff. This just gives us a starting read.
+            <strong>Edelmade built the brand world. Our job is to make it move,</strong> and to match how you sound and look. Quick gut-checks here; the deep voice work happens live at kickoff.
           </div>
 
-          <div class="field-group" id="fg-tone-pairs">
-            <div class="field-header">
-              <span class="field-num">09</span>
-              <span class="field-question">Tone calibration. Pick the closer match in each pair. <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">Quick gut reactions. No right answer. Both are on-brand, we just want to know which way you lean.</div>
+          <div class="ack-note">
+            <div class="ack-eyebrow"><span class="ack-eyebrow-dot"></span>Already in our Drive</div>
+            <p>You already sent your full brand kit and the Matt Stauf photography and video, and it is all in our Drive. Great handoff. Nothing more needed on assets.</p>
+          </div>
 
+          <div class="field-group" id="fg-q13">
+            <div class="field-header"><span class="field-num">13</span><span class="field-question">Tone calibration. Pick the closer match in each pair. <span class="field-required">*</span></span></div>
+            <div class="field-hint">Quick gut reactions. No right answer. Both are on-brand, we just want to know which way you lean.</div>
             <div class="tone-pair">
               <span class="tone-pair-label">Pair A</span>
               <div class="inline-fields-stack">
@@ -1002,7 +1166,6 @@
                 <label class="inline-field"><input type="radio" name="tonePairA" value="B. The salon Cincinnati didn't know it was missing."><span class="inline-field-label">"The salon Cincinnati didn't know it was missing."</span></label>
               </div>
             </div>
-
             <div class="tone-pair">
               <span class="tone-pair-label">Pair B</span>
               <div class="inline-fields-stack">
@@ -1010,7 +1173,6 @@
                 <label class="inline-field"><input type="radio" name="tonePairB" value="B. If your blonde goes brassy in six weeks, your colorist cut corners."><span class="inline-field-label">"If your blonde goes brassy in six weeks, your colorist cut corners."</span></label>
               </div>
             </div>
-
             <div class="tone-pair">
               <span class="tone-pair-label">Pair C</span>
               <div class="inline-fields-stack">
@@ -1020,252 +1182,289 @@
             </div>
             <div class="field-error">Please pick one option in each pair.</div>
           </div>
-
-          <div class="field-group" id="fg-anti-examples" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">10</span>
-              <span class="field-question">One or two accounts whose voice is the opposite of what you want</span>
-            </div>
-            <div class="field-hint">Anti-examples are often clearer than examples. The accounts where you read a caption and think "never that."</div>
-            <input type="text" id="anti-examples" name="antiExamples" placeholder="@handle, @handle">
-          </div>
-
-          <div class="field-group" id="fg-formatting" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">11</span>
-              <span class="field-question">Formatting and punctuation. Pick all that fit.</span>
-            </div>
-            <div class="pill-group" data-group-type="checkbox" data-group-name="formatting">
-              <div class="pill-opt"><input type="checkbox" id="fmt-excl-spare" name="formatting" value="Exclamation points: sparingly only"><label for="fmt-excl-spare">Exclamation points: sparingly only</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-excl-free" name="formatting" value="Exclamation points: freely, for energy"><label for="fmt-excl-free">Exclamation points: freely, for energy</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-emoji-yes" name="formatting" value="Emoji in posts: yes, naturally"><label for="fmt-emoji-yes">Emoji in posts: yes, naturally</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-emoji-no" name="formatting" value="Emoji in posts: rarely or never"><label for="fmt-emoji-no">Emoji in posts: rarely or never</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-caps-yes" name="formatting" value="All caps for emphasis: yes, sparingly"><label for="fmt-caps-yes">All caps for emphasis: yes, sparingly</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-caps-no" name="formatting" value="All caps for emphasis: never"><label for="fmt-caps-no">All caps for emphasis: never</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-lower" name="formatting" value="Lowercase styling: yes, it fits the brand"><label for="fmt-lower">Lowercase styling: yes, it fits the brand</label></div>
-              <div class="pill-opt"><input type="checkbox" id="fmt-other" name="formatting" value="Other (tell us below)"><label for="fmt-other">Other (tell us below)</label></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===================== SECTION 4 · HOW PIPPI'S LOOKS ===================== -->
-        <div class="form-section" data-section="4">
-          <div class="section-header">
-            <div class="section-icon">🎨</div>
-            <span class="section-title">How Pippi's Looks</span>
-            <span class="section-step">4 of 6</span>
-          </div>
-
-          <div class="section-note">
-            <strong>Edelmade built the brand world. Our job is to make it move,</strong> and to match your visual feel, not just your voice. This makes sure Pippi's Instagram looks like Pippi's.
-          </div>
-
-          <div class="field-group" id="fg-visual-mood">
-            <div class="field-header">
-              <span class="field-num">12</span>
-              <span class="field-question">Visual mood. Pick all that fit. <span class="field-required">*</span></span>
-            </div>
-            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="visualMood">
-              <div class="pill-opt"><input type="checkbox" id="mood-editorial" name="visualMood" value="Elevated and editorial"><label for="mood-editorial">Elevated and editorial</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-warm" name="visualMood" value="Warm and intimate"><label for="mood-warm">Warm and intimate</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-minimal" name="visualMood" value="Minimal and clean"><label for="mood-minimal">Minimal and clean</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-bold" name="visualMood" value="Bold and confident"><label for="mood-bold">Bold and confident</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-craft" name="visualMood" value="Craft-forward and detailed"><label for="mood-craft">Craft-forward and detailed</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-moody" name="visualMood" value="Moody and cinematic"><label for="mood-moody">Moody and cinematic</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-bright" name="visualMood" value="Bright and airy"><label for="mood-bright">Bright and airy</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-natural" name="visualMood" value="Natural and undone"><label for="mood-natural">Natural and undone</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-playful" name="visualMood" value="Playful and individual"><label for="mood-playful">Playful and individual</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-timeless" name="visualMood" value="Timeless and classic"><label for="mood-timeless">Timeless and classic</label></div>
-              <div class="pill-opt"><input type="checkbox" id="mood-other" name="visualMood" value="Other (tell us below)"><label for="mood-other">Other (tell us below)</label></div>
+          <div class="field-group" id="fg-q14" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">14</span><span class="field-question">Which words describe how Pippi's should sound? <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="voiceDescriptors">
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-warm-and-welcoming" name="voiceDescriptors" value="Warm and welcoming"><label for="voicedescriptors-warm-and-welcoming">Warm and welcoming</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-confident-and-direct" name="voiceDescriptors" value="Confident and direct"><label for="voicedescriptors-confident-and-direct">Confident and direct</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-elevated-and-editorial" name="voiceDescriptors" value="Elevated and editorial"><label for="voicedescriptors-elevated-and-editorial">Elevated and editorial</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-playful-and-a-little-irreverent" name="voiceDescriptors" value="Playful and a little irreverent"><label for="voicedescriptors-playful-and-a-little-irreverent">Playful and a little irreverent</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-calm-and-reassuring" name="voiceDescriptors" value="Calm and reassuring"><label for="voicedescriptors-calm-and-reassuring">Calm and reassuring</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-expert-and-precise" name="voiceDescriptors" value="Expert and precise"><label for="voicedescriptors-expert-and-precise">Expert and precise</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-intimate-and-personal" name="voiceDescriptors" value="Intimate and personal"><label for="voicedescriptors-intimate-and-personal">Intimate and personal</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-down-to-earth-and-real" name="voiceDescriptors" value="Down to earth and real"><label for="voicedescriptors-down-to-earth-and-real">Down to earth and real</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-aspirational" name="voiceDescriptors" value="Aspirational"><label for="voicedescriptors-aspirational">Aspirational</label></div>
+              <div class="pill-opt"><input type="checkbox" id="voicedescriptors-other-tell-us-below" name="voiceDescriptors" value="Other (tell us below)"><label for="voicedescriptors-other-tell-us-below">Other (tell us below)</label></div>
             </div>
             <div class="field-error">Select at least one option.</div>
           </div>
-
-          <div class="field-group" id="fg-look" style="margin-top:16px;">
+          <div class="field-group" id="fg-q15" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">15</span><span class="field-question">Formatting and punctuation. Pick all that fit.</span></div>
+            <div class="pill-group" data-group-name="formatting">
+              <div class="pill-opt"><input type="checkbox" id="formatting-exclamation-points-sparingly" name="formatting" value="Exclamation points: sparingly"><label for="formatting-exclamation-points-sparingly">Exclamation points: sparingly</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-exclamation-points-freely" name="formatting" value="Exclamation points: freely"><label for="formatting-exclamation-points-freely">Exclamation points: freely</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-emoji-yes-naturally" name="formatting" value="Emoji: yes, naturally"><label for="formatting-emoji-yes-naturally">Emoji: yes, naturally</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-emoji-rarely-or-never" name="formatting" value="Emoji: rarely or never"><label for="formatting-emoji-rarely-or-never">Emoji: rarely or never</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-all-caps-for-emphasis-yes-sparingly" name="formatting" value="All caps for emphasis: yes, sparingly"><label for="formatting-all-caps-for-emphasis-yes-sparingly">All caps for emphasis: yes, sparingly</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-all-caps-for-emphasis-never" name="formatting" value="All caps for emphasis: never"><label for="formatting-all-caps-for-emphasis-never">All caps for emphasis: never</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-lowercase-styling-fits-the-brand" name="formatting" value="Lowercase styling: fits the brand"><label for="formatting-lowercase-styling-fits-the-brand">Lowercase styling: fits the brand</label></div>
+              <div class="pill-opt"><input type="checkbox" id="formatting-other-tell-us-below" name="formatting" value="Other (tell us below)"><label for="formatting-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+          </div>
+          <div class="field-group" id="fg-q16" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">16</span><span class="field-question">Visual mood. Pick all that fit. <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="visualMood">
+              <div class="pill-opt"><input type="checkbox" id="visualmood-elevated-and-editorial" name="visualMood" value="Elevated and editorial"><label for="visualmood-elevated-and-editorial">Elevated and editorial</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-warm-and-intimate" name="visualMood" value="Warm and intimate"><label for="visualmood-warm-and-intimate">Warm and intimate</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-minimal-and-clean" name="visualMood" value="Minimal and clean"><label for="visualmood-minimal-and-clean">Minimal and clean</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-bold-and-confident" name="visualMood" value="Bold and confident"><label for="visualmood-bold-and-confident">Bold and confident</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-craft-forward-and-detailed" name="visualMood" value="Craft-forward and detailed"><label for="visualmood-craft-forward-and-detailed">Craft-forward and detailed</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-moody-and-cinematic" name="visualMood" value="Moody and cinematic"><label for="visualmood-moody-and-cinematic">Moody and cinematic</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-bright-and-airy" name="visualMood" value="Bright and airy"><label for="visualmood-bright-and-airy">Bright and airy</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-natural-and-undone" name="visualMood" value="Natural and undone"><label for="visualmood-natural-and-undone">Natural and undone</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-playful-and-individual" name="visualMood" value="Playful and individual"><label for="visualmood-playful-and-individual">Playful and individual</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-timeless-and-classic" name="visualMood" value="Timeless and classic"><label for="visualmood-timeless-and-classic">Timeless and classic</label></div>
+              <div class="pill-opt"><input type="checkbox" id="visualmood-other-tell-us-below" name="visualMood" value="Other (tell us below)"><label for="visualmood-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+          <div class="field-group" id="fg-q17" style="margin-top:16px;">
             <div class="recap-box">
               <div class="recap-eyebrow"><span class="recap-eyebrow-dot"></span>What we already have</div>
-              <p>You sent us Amelia Jane and J. Edwards, both Australian, the most advanced hair-content market there is. We would also study Menspire for cinematic reveal editing.</p>
+              <p>You sent us Amelia Jane and J. Edwards, both Australian, the top of the hair-content world. We would also study Menspire for cinematic reveal editing.</p>
             </div>
-            <div class="field-header">
-              <span class="field-num">13</span>
-              <span class="field-question">The look you're building toward <span class="field-required">*</span></span>
-            </div>
+            <div class="field-header"><span class="field-num">17</span><span class="field-question">The look you're building toward</span></div>
             <div class="field-hint">Anyone else whose look you love? Drop @handles.</div>
-            <textarea id="look-toward" name="lookBuildingToward" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <textarea id="look-toward" name="lookBuildingToward" placeholder="@handle, @handle"></textarea>
           </div>
-
-          <div class="field-group" id="fg-assets" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">14</span>
-              <span class="field-question">Where do your brand assets live?</span>
+          <div class="field-group" id="fg-q18" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">18</span><span class="field-question">Signature space, and anything to keep off-camera <span class="field-required">*</span></span></div>
+            <span class="subgroup-label first">Signature elements to feature</span>
+            <div class="pill-group" data-group-name="signatureElements">
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-the-communal-table" name="signatureElements" value="the communal table"><label for="signatureelements-the-communal-table">the communal table</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-the-color-bar" name="signatureElements" value="the color bar"><label for="signatureelements-the-color-bar">the color bar</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-the-retail-shelf" name="signatureElements" value="the retail shelf"><label for="signatureelements-the-retail-shelf">the retail shelf</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-the-reception-moment" name="signatureElements" value="the reception moment"><label for="signatureelements-the-reception-moment">the reception moment</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-the-backwash-area" name="signatureElements" value="the backwash area"><label for="signatureelements-the-backwash-area">the backwash area</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-natural-light-windows" name="signatureElements" value="natural-light windows"><label for="signatureelements-natural-light-windows">natural-light windows</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-the-exterior-and-signage" name="signatureElements" value="the exterior and signage"><label for="signatureelements-the-exterior-and-signage">the exterior and signage</label></div>
+              <div class="pill-opt"><input type="checkbox" id="signatureelements-other-tell-us-below" name="signatureElements" value="Other (tell us below)"><label for="signatureelements-other-tell-us-below">Other (tell us below)</label></div>
             </div>
-            <div class="field-hint">The Edelmade kit, logos, fonts, and the Matt Stauf photography and video. Drop a folder link if you have one handy. If not, we will pull specifics after kickoff.</div>
-            <input type="url" id="assets-folder" name="assetsFolder" placeholder="https://">
-            <div class="field-error">Please enter a valid URL.</div>
-          </div>
-
-          <div class="field-group" id="fg-signature" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">15</span>
-              <span class="field-question">Signature space, and anything to keep off-camera <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">The communal table is your signature. Are there other physical details of the space you want the content built around? And is there anything you would rather we not show, for example unfinished areas during the build?</div>
-            <textarea id="signature-space" name="signatureSpace" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">Anything to keep off-camera</span>
+            <textarea id="off-camera" name="offCamera" placeholder="Anything you would rather we not show, for example unfinished areas during the build." style="min-height:80px;"></textarea>
+            <div class="field-error">Select at least one signature element.</div>
           </div>
         </div>
-
-        <!-- ===================== SECTION 5 · THE LAUNCH ===================== -->
+        <!-- SECTION 5 -->
         <div class="form-section" data-section="5">
+          <div class="section-header">
+            <div class="section-icon">📊</div>
+            <span class="section-title">Booking, Offers, and Your Numbers</span>
+            <span class="section-step">5 of 7</span>
+          </div>
+
+          <div class="field-group" id="fg-q19">
+            <div class="field-header"><span class="field-num">19</span><span class="field-question">Where should a launch post send people? <span class="field-required">*</span></span></div>
+            <div class="field-hint">Every "book now" post needs a live destination. This is how we turn attention into booked chairs.</div>
+            <div class="pill-group" data-group-name="bookingDestination">
+              <div class="pill-opt"><input type="radio" id="bookingdestination-online-booking" name="bookingDestination" value="Online booking"><label for="bookingdestination-online-booking">Online booking</label></div>
+              <div class="pill-opt"><input type="radio" id="bookingdestination-a-waitlist-or-interest-form" name="bookingDestination" value="A waitlist or interest form"><label for="bookingdestination-a-waitlist-or-interest-form">A waitlist or interest form</label></div>
+              <div class="pill-opt"><input type="radio" id="bookingdestination-dm-to-book" name="bookingDestination" value="DM to book"><label for="bookingdestination-dm-to-book">DM to book</label></div>
+              <div class="pill-opt"><input type="radio" id="bookingdestination-not-set-up-yet-we-ll-help-you" name="bookingDestination" value="Not set up yet, we'll help you decide"><label for="bookingdestination-not-set-up-yet-we-ll-help-you">Not set up yet, we'll help you decide</label></div>
+            </div>
+            <div id="q19-platform-wrap" style="display:none; margin-top:12px;">
+              <label class="subfield-label" for="q19-platform">Which platform?</label>
+              <input type="text" id="q19-platform" name="bookingPlatform" placeholder="Vagaro, GlossGenius, Boulevard, Square, or other">
+            </div>
+            <div class="field-error">Select one option.</div>
+          </div>
+          <div class="field-group" id="fg-q20" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">20</span><span class="field-question">What do you most want Pippi's to be known for? <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="heroService">
+              <div class="pill-opt"><input type="checkbox" id="heroservice-blonde-and-balayage" name="heroService" value="Blonde and balayage"><label for="heroservice-blonde-and-balayage">Blonde and balayage</label></div>
+              <div class="pill-opt"><input type="checkbox" id="heroservice-lived-in-natural-color" name="heroService" value="Lived-in, natural color"><label for="heroservice-lived-in-natural-color">Lived-in, natural color</label></div>
+              <div class="pill-opt"><input type="checkbox" id="heroservice-color-correction" name="heroService" value="Color correction"><label for="heroservice-color-correction">Color correction</label></div>
+              <div class="pill-opt"><input type="checkbox" id="heroservice-extensions" name="heroService" value="Extensions"><label for="heroservice-extensions">Extensions</label></div>
+              <div class="pill-opt"><input type="checkbox" id="heroservice-precision-cutting" name="heroService" value="Precision cutting"><label for="heroservice-precision-cutting">Precision cutting</label></div>
+              <div class="pill-opt"><input type="checkbox" id="heroservice-editorial-and-session-work" name="heroService" value="Editorial and session work"><label for="heroservice-editorial-and-session-work">Editorial and session work</label></div>
+              <div class="pill-opt"><input type="checkbox" id="heroservice-other-tell-us-below" name="heroService" value="Other (tell us below)"><label for="heroservice-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Select at least one option.</div>
+          </div>
+          <div class="field-group" id="fg-q21" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">21</span><span class="field-question">Beyond the chairs, how do you rank the other revenue streams? <span class="field-required">*</span></span></div>
+            <div class="field-hint">Rank these for near-term focus. Chairs are covered in question 3, this is about what comes next.</div>
+            <div class="rank-row"><label class="subgroup-label first" for="q21-rank1">1st near-term priority</label><select id="q21-rank1" name="revenueRank1"><option value="">Choose one</option><option value="Rica retail">Rica retail</option><option value="Event-space rental">Event-space rental</option><option value="Training and education">Training and education</option><option value="Other">Other</option></select></div>
+            <div class="rank-row"><label class="subgroup-label" for="q21-rank2">2nd</label><select id="q21-rank2" name="revenueRank2"><option value="">Choose one</option><option value="Rica retail">Rica retail</option><option value="Event-space rental">Event-space rental</option><option value="Training and education">Training and education</option><option value="Other">Other</option></select></div>
+            <div class="rank-row"><label class="subgroup-label" for="q21-rank3">3rd</label><select id="q21-rank3" name="revenueRank3"><option value="">Choose one</option><option value="Rica retail">Rica retail</option><option value="Event-space rental">Event-space rental</option><option value="Training and education">Training and education</option><option value="Other">Other</option></select></div>
+            <div class="exact-field"><input type="text" id="q21-other" name="revenueRankOther" placeholder="If you chose Other, tell us what"></div>
+            <div class="field-error">Please choose your top near-term priority.</div>
+          </div>
+          <div class="field-group" id="fg-q22" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">22</span><span class="field-question">A few quick estimates about a typical client's spending <span class="field-required">*</span></span></div>
+            <div class="field-hint">You are pre-launch, so best guesses are perfect. We use these to model the revenue signal your Instagram drives, and we rebuild it on your real numbers once you have a few months of sales. Internal to your account only.</div>
+            <span class="subgroup-label first">Average ticket (per visit, all services blended)</span>
+            <div class="pill-group" data-group-name="avgTicket">
+              <div class="pill-opt"><input type="radio" id="avgticket-under-75" name="avgTicket" value="under $75"><label for="avgticket-under-75">under $75</label></div>
+              <div class="pill-opt"><input type="radio" id="avgticket-75-125" name="avgTicket" value="$75-125"><label for="avgticket-75-125">$75-125</label></div>
+              <div class="pill-opt"><input type="radio" id="avgticket-125-200" name="avgTicket" value="$125-200"><label for="avgticket-125-200">$125-200</label></div>
+              <div class="pill-opt"><input type="radio" id="avgticket-200-300" name="avgTicket" value="$200-300"><label for="avgticket-200-300">$200-300</label></div>
+              <div class="pill-opt"><input type="radio" id="avgticket-300-450" name="avgTicket" value="$300-450"><label for="avgticket-300-450">$300-450</label></div>
+              <div class="pill-opt"><input type="radio" id="avgticket-450" name="avgTicket" value="$450+"><label for="avgticket-450">$450+</label></div>
+            </div>
+            <div class="exact-field"><input type="text" id="q22-ticket-exact" name="avgTicketExact" placeholder="or exact figure"></div>
+            <span class="subgroup-label">Visits per year (a regular on a maintenance schedule)</span>
+            <div class="pill-group" data-group-name="visitsPerYear">
+              <div class="pill-opt"><input type="radio" id="visitsperyear-1-2" name="visitsPerYear" value="1-2"><label for="visitsperyear-1-2">1-2</label></div>
+              <div class="pill-opt"><input type="radio" id="visitsperyear-3-4" name="visitsPerYear" value="3-4"><label for="visitsperyear-3-4">3-4</label></div>
+              <div class="pill-opt"><input type="radio" id="visitsperyear-5-6" name="visitsPerYear" value="5-6"><label for="visitsperyear-5-6">5-6</label></div>
+              <div class="pill-opt"><input type="radio" id="visitsperyear-7-8" name="visitsPerYear" value="7-8"><label for="visitsperyear-7-8">7-8</label></div>
+              <div class="pill-opt"><input type="radio" id="visitsperyear-9-10" name="visitsPerYear" value="9-10"><label for="visitsperyear-9-10">9-10</label></div>
+              <div class="pill-opt"><input type="radio" id="visitsperyear-10" name="visitsPerYear" value="10+"><label for="visitsperyear-10">10+</label></div>
+            </div>
+            <div class="exact-field"><input type="text" id="q22-visits-exact" name="visitsExact" placeholder="or exact figure"></div>
+            <span class="subgroup-label">How long a loyal client keeps coming back</span>
+            <div class="pill-group" data-group-name="retentionYears">
+              <div class="pill-opt"><input type="radio" id="retentionyears-under-1-yr" name="retentionYears" value="under 1 yr"><label for="retentionyears-under-1-yr">under 1 yr</label></div>
+              <div class="pill-opt"><input type="radio" id="retentionyears-1-2" name="retentionYears" value="1-2"><label for="retentionyears-1-2">1-2</label></div>
+              <div class="pill-opt"><input type="radio" id="retentionyears-2-3" name="retentionYears" value="2-3"><label for="retentionyears-2-3">2-3</label></div>
+              <div class="pill-opt"><input type="radio" id="retentionyears-3-5" name="retentionYears" value="3-5"><label for="retentionyears-3-5">3-5</label></div>
+              <div class="pill-opt"><input type="radio" id="retentionyears-5" name="retentionYears" value="5+"><label for="retentionyears-5">5+</label></div>
+              <div class="pill-opt"><input type="radio" id="retentionyears-not-sure-yet" name="retentionYears" value="not sure yet"><label for="retentionyears-not-sure-yet">not sure yet</label></div>
+            </div>
+            <div class="exact-field"><input type="text" id="q22-retention-exact" name="retentionExact" placeholder="or exact figure"></div>
+            <span class="subgroup-label">From discovering you on Instagram to booking the first appointment</span>
+            <div class="pill-group" data-group-name="decisionTimeline">
+              <div class="pill-opt"><input type="radio" id="decisiontimeline-a-few-days" name="decisionTimeline" value="a few days"><label for="decisiontimeline-a-few-days">a few days</label></div>
+              <div class="pill-opt"><input type="radio" id="decisiontimeline-1-2-weeks" name="decisionTimeline" value="1-2 weeks"><label for="decisiontimeline-1-2-weeks">1-2 weeks</label></div>
+              <div class="pill-opt"><input type="radio" id="decisiontimeline-about-a-month" name="decisionTimeline" value="about a month"><label for="decisiontimeline-about-a-month">about a month</label></div>
+              <div class="pill-opt"><input type="radio" id="decisiontimeline-1-3-months" name="decisionTimeline" value="1-3 months"><label for="decisiontimeline-1-3-months">1-3 months</label></div>
+              <div class="pill-opt"><input type="radio" id="decisiontimeline-longer" name="decisionTimeline" value="longer"><label for="decisiontimeline-longer">longer</label></div>
+              <div class="pill-opt"><input type="radio" id="decisiontimeline-other-tell-us-below" name="decisionTimeline" value="Other (tell us below)"><label for="decisiontimeline-other-tell-us-below">Other (tell us below)</label></div>
+            </div>
+            <div class="field-error">Please make a selection in each row.</div>
+          </div>
+        </div>
+        <!-- SECTION 6 -->
+        <div class="form-section" data-section="6">
           <div class="section-header">
             <div class="section-icon">🚀</div>
             <span class="section-title">The Launch</span>
-            <span class="section-step">5 of 6</span>
+            <span class="section-step">6 of 7</span>
           </div>
 
-          <div class="section-note">
-            <strong>The weeks before you open are the highest-return content moment Pippi's will ever have.</strong> This locks the runway. The plan flexes if the build moves, so best current dates are fine.
-          </div>
-
-          <div class="field-group" id="fg-launch-dates">
+          <div class="field-group" id="fg-q23">
             <div class="recap-box">
               <div class="recap-eyebrow"><span class="recap-eyebrow-dot"></span>What we already have</div>
-              <p>Friends and family party: Saturday, August 22, 4:00 to 6:30 PM. Team training: week of August 24. Grand opening: Monday, August 31. Space handed off from construction around August 19. You are traveling August 17 to 19.</p>
+              <p>F&amp;F party Saturday, August 22, 4:00 to 6:30 PM. Team training the week of August 24. Grand opening Monday, August 31. Space handed off around August 19. You travel August 17 to 19.</p>
             </div>
-            <div class="field-header">
-              <span class="field-num">16</span>
-              <span class="field-question">Your launch dates <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">Confirm or correct these, and add anything we are missing (target open date if it firms up, other key construction milestones, any other travel).</div>
+            <div class="field-header"><span class="field-num">23</span><span class="field-question">Your launch dates <span class="field-required">*</span></span></div>
+            <div class="field-hint">Confirm or correct these, and add anything we are missing (target open date if it firms, other construction milestones, other travel).</div>
             <textarea id="launch-dates" name="launchDates" required></textarea>
             <div class="field-error">This field is required.</div>
           </div>
 
-          <div class="field-group" id="fg-reaching-clients" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">17</span>
-              <span class="field-question">Reaching your current clients <span class="field-required">*</span></span>
+          <div class="field-group" id="fg-q24" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">24</span><span class="field-question">Relationships we should know about <span class="field-required">*</span></span></div>
+            <div class="field-hint">A new brand borrows trust fastest through people the audience already trusts. You mentioned Idlewild.</div>
+            <span class="subgroup-label first">Where do you already have a connection?</span>
+            <div class="pill-group" data-group-name="relationshipCats">
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-other-otr-retail-or-boutiques" name="relationshipCats" value="other OTR retail or boutiques"><label for="relationshipcats-other-otr-retail-or-boutiques">other OTR retail or boutiques</label></div>
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-coffee-food-or-wine-spots" name="relationshipCats" value="coffee, food, or wine spots"><label for="relationshipcats-coffee-food-or-wine-spots">coffee, food, or wine spots</label></div>
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-photographers-or-creatives" name="relationshipCats" value="photographers or creatives"><label for="relationshipcats-photographers-or-creatives">photographers or creatives</label></div>
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-fashion-or-beauty-brands" name="relationshipCats" value="fashion or beauty brands"><label for="relationshipcats-fashion-or-beauty-brands">fashion or beauty brands</label></div>
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-wedding-or-event-vendors" name="relationshipCats" value="wedding or event vendors"><label for="relationshipcats-wedding-or-event-vendors">wedding or event vendors</label></div>
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-fitness-or-wellness" name="relationshipCats" value="fitness or wellness"><label for="relationshipcats-fitness-or-wellness">fitness or wellness</label></div>
+              <div class="pill-opt"><input type="checkbox" id="relationshipcats-other-tell-us-below" name="relationshipCats" value="Other (tell us below)"><label for="relationshipcats-other-tell-us-below">Other (tell us below)</label></div>
             </div>
-            <div class="field-hint">The strongest launch audience is the people already loyal to you. Do you have a way to reach your current clients directly, for example a client list, phone contacts, or an email export? We can seed a launch list so you open to a room that has already decided to book. Instagram is our channel, but this is how we make the audience yours, not the algorithm's.</div>
-            <textarea id="reaching-clients" name="reachingClients" required></textarea>
-            <div class="field-error">This field is required.</div>
-          </div>
-
-          <div class="field-group" id="fg-relationships" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">18</span>
-              <span class="field-question">Relationships we should know about <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">A new brand borrows trust fastest through people the audience already trusts. You mentioned Idlewild. Which other local brands, businesses, or people do you already have a relationship with that we should consider for collaborations? Names and how you know them is plenty.</div>
-            <textarea id="relationships" name="relationships" required></textarea>
-            <div class="field-error">This field is required.</div>
-          </div>
-
-          <div class="field-group" id="fg-commercial" style="margin-top:16px;">
-            <div class="recap-box">
-              <div class="recap-eyebrow"><span class="recap-eyebrow-dot"></span>What we already have</div>
-              <p>We plan to sequence the asks: chairs first (clients and stylists), then the Rica retail line, then the event-space rental.</p>
-            </div>
-            <div class="field-header">
-              <span class="field-num">19</span>
-              <span class="field-question">What matters most commercially <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">Confirm that order or reorder it, and flag anything that is a bigger near-term priority than we think.</div>
-            <textarea id="commercial-priority" name="commercialPriority" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">Name anyone specific</span>
+            <textarea id="relationship-names" name="relationshipNames" placeholder="Names and how you know them is plenty." style="min-height:80px;"></textarea>
+            <div class="field-error">Select at least one option.</div>
           </div>
         </div>
-
-        <!-- ===================== SECTION 6 · SHOOTING, CONSENT, AND A FEW LAST THINGS ===================== -->
-        <div class="form-section" data-section="6">
+        <!-- SECTION 7 -->
+        <div class="form-section" data-section="7">
           <div class="section-header">
             <div class="section-icon">🎬</div>
-            <span class="section-title">Shooting, Consent, and a Few Last Things</span>
-            <span class="section-step">6 of 6</span>
+            <span class="section-title">Shooting, Consent, and Last Things</span>
+            <span class="section-step">7 of 7</span>
           </div>
 
-          <div class="field-group" id="fg-shoot-times">
-            <div class="field-header">
-              <span class="field-num">20</span>
-              <span class="field-question">Best days and times for content shoots <span class="field-required">*</span></span>
+          <div class="field-group" id="fg-q25">
+            <div class="field-header"><span class="field-num">25</span><span class="field-question">Content shoots <span class="field-required">*</span></span></div>
+            <div class="field-hint">Shoots run every 3 to 4 weeks, about 2 to 4 hours, storyboarded in advance.</div>
+            <span class="subgroup-label first">Best days</span>
+            <div class="pill-group" data-group-name="shootDays">
+              <div class="pill-opt"><input type="checkbox" id="shootdays-mon" name="shootDays" value="Mon"><label for="shootdays-mon">Mon</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shootdays-tue" name="shootDays" value="Tue"><label for="shootdays-tue">Tue</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shootdays-wed" name="shootDays" value="Wed"><label for="shootdays-wed">Wed</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shootdays-thu" name="shootDays" value="Thu"><label for="shootdays-thu">Thu</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shootdays-fri" name="shootDays" value="Fri"><label for="shootdays-fri">Fri</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shootdays-sat" name="shootDays" value="Sat"><label for="shootdays-sat">Sat</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shootdays-sun" name="shootDays" value="Sun"><label for="shootdays-sun">Sun</label></div>
             </div>
-            <div class="field-hint">Shoots run every 3 to 4 weeks, about 2 to 4 hours, storyboarded in advance. Include where you would want to shoot (the salon once ready, a neutral space, or a mix).</div>
-            <textarea id="shoot-times" name="shootTimes" required></textarea>
-            <div class="field-error">This field is required.</div>
+            <span class="subgroup-label">Time of day</span>
+            <div class="pill-group" data-group-name="shootTimeOfDay">
+              <div class="pill-opt"><input type="checkbox" id="shoottimeofday-morning" name="shootTimeOfDay" value="morning"><label for="shoottimeofday-morning">morning</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shoottimeofday-midday" name="shootTimeOfDay" value="midday"><label for="shoottimeofday-midday">midday</label></div>
+              <div class="pill-opt"><input type="checkbox" id="shoottimeofday-evening" name="shootTimeOfDay" value="evening"><label for="shoottimeofday-evening">evening</label></div>
+            </div>
+            <span class="subgroup-label">Where</span>
+            <div class="pill-group" data-group-name="shootWhere">
+              <div class="pill-opt"><input type="radio" id="shootwhere-the-salon-once-ready" name="shootWhere" value="the salon once ready"><label for="shootwhere-the-salon-once-ready">the salon once ready</label></div>
+              <div class="pill-opt"><input type="radio" id="shootwhere-a-neutral-space" name="shootWhere" value="a neutral space"><label for="shootwhere-a-neutral-space">a neutral space</label></div>
+              <div class="pill-opt"><input type="radio" id="shootwhere-a-mix" name="shootWhere" value="a mix"><label for="shootwhere-a-mix">a mix</label></div>
+            </div>
+            <div class="field-error">Please make a selection in each.</div>
           </div>
 
-          <div class="field-group" id="fg-consent" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">21</span>
-              <span class="field-question">Client content consent <span class="field-required">*</span></span>
-            </div>
+          <div class="field-group" id="fg-q26" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">26</span><span class="field-question">Client content consent <span class="field-required">*</span></span></div>
             <div class="field-hint">Client transformations are the highest-performing content a salon can make, so we want your posture clear before we shoot. Pick all that fit.</div>
-            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="consent">
-              <div class="pill-opt"><input type="checkbox" id="consent-ba" name="consent" value="Client before-and-afters: yes, with a signed release"><label for="consent-ba">Client before-and-afters: yes, with a signed release</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-process" name="consent" value="In-chair and process content: yes"><label for="consent-process">In-chair and process content: yes</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-faces-yes" name="consent" value="Client faces shown: yes, with the client's permission"><label for="consent-faces-yes">Client faces shown: yes, with the client's permission</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-faces-no" name="consent" value="Client faces: prefer to focus on the hair, not the face"><label for="consent-faces-no">Client faces: prefer to focus on the hair, not the face</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-private" name="consent" value="Some clients will be private, case by case"><label for="consent-private">Some clients will be private, case by case</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-form" name="consent" value="We will use a consent or release form (yours or one we provide)"><label for="consent-form">We will use a consent or release form (yours or one we provide)</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-kickoff" name="consent" value="Not sure, discuss at kickoff"><label for="consent-kickoff">Not sure, discuss at kickoff</label></div>
-              <div class="pill-opt"><input type="checkbox" id="consent-other" name="consent" value="Other (tell us below)"><label for="consent-other">Other (tell us below)</label></div>
+            <div class="pill-group" data-group-name="consent">
+              <div class="pill-opt"><input type="checkbox" id="consent-before-and-afters-yes-with-a-signed-rele" name="consent" value="Before-and-afters: yes, with a signed release"><label for="consent-before-and-afters-yes-with-a-signed-rele">Before-and-afters: yes, with a signed release</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-in-chair-and-process-content-yes" name="consent" value="In-chair and process content: yes"><label for="consent-in-chair-and-process-content-yes">In-chair and process content: yes</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-client-faces-shown-yes-with-permission" name="consent" value="Client faces shown: yes, with permission"><label for="consent-client-faces-shown-yes-with-permission">Client faces shown: yes, with permission</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-faces-prefer-to-focus-on-the-hair-not-th" name="consent" value="Faces: prefer to focus on the hair, not the face"><label for="consent-faces-prefer-to-focus-on-the-hair-not-th">Faces: prefer to focus on the hair, not the face</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-some-clients-will-be-private-case-by-cas" name="consent" value="Some clients will be private, case by case"><label for="consent-some-clients-will-be-private-case-by-cas">Some clients will be private, case by case</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-we-ll-use-a-consent-or-release-form-your" name="consent" value="We'll use a consent or release form (yours or ours)"><label for="consent-we-ll-use-a-consent-or-release-form-your">We'll use a consent or release form (yours or ours)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-not-sure-discuss-at-kickoff" name="consent" value="Not sure, discuss at kickoff"><label for="consent-not-sure-discuss-at-kickoff">Not sure, discuss at kickoff</label></div>
+              <div class="pill-opt"><input type="checkbox" id="consent-other-tell-us-below" name="consent" value="Other (tell us below)"><label for="consent-other-tell-us-below">Other (tell us below)</label></div>
             </div>
-            <div class="field-error">Select at least one option.</div>
             <textarea id="consent-notes" name="consentNotes" placeholder="Anything specific about client privacy we should know?" style="min-height:88px; margin-top:12px;"></textarea>
+            <div class="field-error">Select at least one option.</div>
           </div>
 
-          <div class="field-group" id="fg-ai" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">22</span>
-              <span class="field-question">AI and content boundaries. Pick all that fit. <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">AI is part of modern content production. Tell us where you land, plus anything off-limits.</div>
-            <div class="pill-group" data-required-group="true" data-group-type="checkbox" data-group-name="aiBoundaries">
-              <div class="pill-opt"><input type="checkbox" id="ai-tool" name="aiBoundaries" value="Open to AI being used as a tool in the production process"><label for="ai-tool">Open to AI being used as a tool in the production process</label></div>
-              <div class="pill-opt"><input type="checkbox" id="ai-ideation" name="aiBoundaries" value="Prefer AI limited to research and ideation, not final output"><label for="ai-ideation">Prefer AI limited to research and ideation, not final output</label></div>
-              <div class="pill-opt"><input type="checkbox" id="ai-human" name="aiBoundaries" value="All output should be human-crafted, no AI"><label for="ai-human">All output should be human-crafted, no AI</label></div>
-              <div class="pill-opt"><input type="checkbox" id="ai-visual" name="aiBoundaries" value="Open to AI-assisted visual experiments (graphics, carousels)"><label for="ai-visual">Open to AI-assisted visual experiments (graphics, carousels)</label></div>
-              <div class="pill-opt"><input type="checkbox" id="ai-offlimits" name="aiBoundaries" value="Certain topics are off-limits (tell us below)"><label for="ai-offlimits">Certain topics are off-limits (tell us below)</label></div>
-              <div class="pill-opt"><input type="checkbox" id="ai-kickoff" name="aiBoundaries" value="Not sure, discuss at kickoff"><label for="ai-kickoff">Not sure, discuss at kickoff</label></div>
-              <div class="pill-opt"><input type="checkbox" id="ai-other" name="aiBoundaries" value="Other (tell us below)"><label for="ai-other">Other (tell us below)</label></div>
+          <div class="field-group" id="fg-q27" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">27</span><span class="field-question">AI and content boundaries. Pick all that fit. <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="aiBoundaries">
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-open-to-ai-as-a-tool-in-production" name="aiBoundaries" value="Open to AI as a tool in production"><label for="aiboundaries-open-to-ai-as-a-tool-in-production">Open to AI as a tool in production</label></div>
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-ai-limited-to-research-and-ideation" name="aiBoundaries" value="AI limited to research and ideation"><label for="aiboundaries-ai-limited-to-research-and-ideation">AI limited to research and ideation</label></div>
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-all-output-human-crafted" name="aiBoundaries" value="All output human-crafted"><label for="aiboundaries-all-output-human-crafted">All output human-crafted</label></div>
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-open-to-ai-assisted-visual-experime" name="aiBoundaries" value="Open to AI-assisted visual experiments"><label for="aiboundaries-open-to-ai-assisted-visual-experime">Open to AI-assisted visual experiments</label></div>
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-certain-topics-are-off-limits-tell-" name="aiBoundaries" value="Certain topics are off-limits (tell us below)"><label for="aiboundaries-certain-topics-are-off-limits-tell-">Certain topics are off-limits (tell us below)</label></div>
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-not-sure-discuss-at-kickoff" name="aiBoundaries" value="Not sure, discuss at kickoff"><label for="aiboundaries-not-sure-discuss-at-kickoff">Not sure, discuss at kickoff</label></div>
+              <div class="pill-opt"><input type="checkbox" id="aiboundaries-other-tell-us-below" name="aiBoundaries" value="Other (tell us below)"><label for="aiboundaries-other-tell-us-below">Other (tell us below)</label></div>
             </div>
             <div class="field-error">Select at least one option.</div>
           </div>
 
-          <div class="field-group" id="fg-clv" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">23</span>
-              <span class="field-question">Roughly what is a client worth to you over the full relationship? <span class="field-required">*</span></span>
+          <div class="field-group" id="fg-q28" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">28</span><span class="field-question">Who approves content? <span class="field-required">*</span></span></div>
+            <div class="pill-group" data-group-name="approverWho">
+              <div class="pill-opt"><input type="radio" id="approverwho-just-me" name="approverWho" value="Just me"><label for="approverwho-just-me">Just me</label></div>
+              <div class="pill-opt"><input type="radio" id="approverwho-me-and-a-partner" name="approverWho" value="Me and a partner"><label for="approverwho-me-and-a-partner">Me and a partner</label></div>
+              <div class="pill-opt"><input type="radio" id="approverwho-someone-else" name="approverWho" value="Someone else"><label for="approverwho-someone-else">Someone else</label></div>
             </div>
-            <div class="field-hint">Total expected value of one client across the years they stay with you, not a single visit. Best estimate is fine.</div>
-            <div class="pill-group" data-required-group="true" data-group-type="radio" data-group-name="clv">
-              <div class="pill-opt"><input type="radio" id="clv-u1" name="clv" value="Under $1K"><label for="clv-u1">Under $1K</label></div>
-              <div class="pill-opt"><input type="radio" id="clv-1-3" name="clv" value="$1K to $3K"><label for="clv-1-3">$1K to $3K</label></div>
-              <div class="pill-opt"><input type="radio" id="clv-3-7" name="clv" value="$3K to $7K"><label for="clv-3-7">$3K to $7K</label></div>
-              <div class="pill-opt"><input type="radio" id="clv-7-15" name="clv" value="$7K to $15K"><label for="clv-7-15">$7K to $15K</label></div>
-              <div class="pill-opt"><input type="radio" id="clv-15plus" name="clv" value="$15K+"><label for="clv-15plus">$15K+</label></div>
-              <div class="pill-opt"><input type="radio" id="clv-varies" name="clv" value="Varies a lot, discuss at kickoff"><label for="clv-varies">Varies a lot, discuss at kickoff</label></div>
-              <div class="pill-opt"><input type="radio" id="clv-unsure" name="clv" value="Not sure"><label for="clv-unsure">Not sure</label></div>
+            <div id="q28-name-wrap" style="display:none; margin-top:12px;">
+              <label class="subfield-label" for="q28-name">Their name and best way to reach them</label>
+              <input type="text" id="q28-name" name="approverName" placeholder="Name, email or phone">
             </div>
             <div class="field-error">Select one option.</div>
           </div>
 
-          <div class="field-group" id="fg-approver" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">24</span>
-              <span class="field-question">Who approves content? <span class="field-required">*</span></span>
-            </div>
-            <div class="field-hint">Name and best way to reach them. Defaults to you if left blank.</div>
-            <input type="text" id="approver" name="approver" placeholder="Name, email or phone" required>
-            <div class="field-error">This field is required.</div>
-          </div>
-
-          <div class="field-group" id="fg-else" style="margin-top:16px;">
-            <div class="field-header">
-              <span class="field-num">25</span>
-              <span class="field-question">Anything else you want us to know before we start?</span>
-            </div>
+          <div class="field-group" id="fg-q29" style="margin-top:16px;">
+            <div class="field-header"><span class="field-num">29</span><span class="field-question">Anything else you want us to know?</span></div>
             <textarea id="anything-else" name="anythingElse" placeholder="Open floor. Anything that helps us hit the ground running." data-maxlength="900" maxlength="900"></textarea>
           </div>
         </div>
@@ -1274,23 +1473,12 @@
       <div class="submit-section">
         <button type="submit" class="submit-btn" id="submit-btn">
           <span>Submit and let's get started</span>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="submit-meta">
-          <div class="submit-meta-item">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l3.5 2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg>
-            <span>~15 minutes</span>
-          </div>
-          <div class="submit-meta-item">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            <span>Most of this is confirm-or-correct</span>
-          </div>
-          <div class="submit-meta-item">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1112 0v2M5 10h14v9H5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Responses go straight to Chase and your Scroll team</span>
-          </div>
+          <div class="submit-meta-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l3.5 2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg><span>~12-15 minutes</span></div>
+          <div class="submit-meta-item"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg><span>Mostly quick picks</span></div>
+          <div class="submit-meta-item"><svg viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1112 0v2M5 10h14v9H5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Responses go straight to Chase and your Scroll team</span></div>
         </div>
       </div>
     </form>
@@ -1313,226 +1501,171 @@
   const successState = document.getElementById('success-state');
   const submitBtn = document.getElementById('submit-btn');
 
-  const requiredTextFields = [
-    'p-name',
-    'p-business',
-    'p-email',
-    'p-phone',
-    'p-address',
-    'p-handle',
-    'woman-in-chair',
-    'stylist-at-table',
-    'recruiting-specifics',
-    'exists-to',
-    'uniquely-yours',
-    'one-hesitation',
-    'look-toward',
-    'signature-space',
-    'launch-dates',
-    'reaching-clients',
-    'relationships',
-    'commercial-priority',
-    'shoot-times',
-    'approver'
-  ].map(id => document.getElementById(id));
+  const requiredTextFields = ['p-name','p-business','p-email','p-phone','p-address','p-handle','exists-to','launch-dates'].map(id => document.getElementById(id));
+  const requiredSelects = ['q21-rank1'].map(id => document.getElementById(id));
 
   const requiredGroups = [
-    { container: document.getElementById('fg-tone-pairs'), name: 'tonePairA', type: 'radio' },
-    { container: document.getElementById('fg-tone-pairs'), name: 'tonePairB', type: 'radio' },
-    { container: document.getElementById('fg-tone-pairs'), name: 'tonePairC', type: 'radio' },
-    { container: document.getElementById('fg-visual-mood'), name: 'visualMood', type: 'checkbox' },
-    { container: document.getElementById('fg-consent'), name: 'consent', type: 'checkbox' },
-    { container: document.getElementById('fg-ai'), name: 'aiBoundaries', type: 'checkbox' },
-    { container: document.getElementById('fg-clv'), name: 'clv', type: 'radio' }
-  ];
+    { container: 'fg-q3', name: 'chairFirst', type: 'radio' },
+    { container: 'fg-q4', name: 'clientAge', type: 'checkbox' },
+    { container: 'fg-q4', name: 'clientWants', type: 'checkbox' },
+    { container: 'fg-q5', name: 'stylistDraws', type: 'checkbox' },
+    { container: 'fg-q5', name: 'stylistExperience', type: 'checkbox' },
+    { container: 'fg-q6', name: 'chairsToFill', type: 'radio' },
+    { container: 'fg-q6', name: 'chairsFilled', type: 'radio' },
+    { container: 'fg-q6', name: 'recruitUrgency', type: 'radio' },
+    { container: 'fg-q7', name: 'founderFace', type: 'radio' },
+    { container: 'fg-q9', name: 'uniqueConfirm', type: 'checkbox' },
+    { container: 'fg-q9', name: 'uniqueCentral', type: 'radio' },
+    { container: 'fg-q10', name: 'clientTrigger', type: 'checkbox' },
+    { container: 'fg-q10', name: 'stylistTrigger', type: 'checkbox' },
+    { container: 'fg-q11', name: 'clientHesitation', type: 'checkbox' },
+    { container: 'fg-q11', name: 'stylistHesitation', type: 'checkbox' },
+    { container: 'fg-q12', name: 'clientFaqs', type: 'checkbox' },
+    { container: 'fg-q13', name: 'tonePairA', type: 'radio' },
+    { container: 'fg-q13', name: 'tonePairB', type: 'radio' },
+    { container: 'fg-q13', name: 'tonePairC', type: 'radio' },
+    { container: 'fg-q14', name: 'voiceDescriptors', type: 'checkbox' },
+    { container: 'fg-q16', name: 'visualMood', type: 'checkbox' },
+    { container: 'fg-q18', name: 'signatureElements', type: 'checkbox' },
+    { container: 'fg-q19', name: 'bookingDestination', type: 'radio' },
+    { container: 'fg-q20', name: 'heroService', type: 'checkbox' },
+    { container: 'fg-q22', name: 'avgTicket', type: 'radio' },
+    { container: 'fg-q22', name: 'visitsPerYear', type: 'radio' },
+    { container: 'fg-q22', name: 'retentionYears', type: 'radio' },
+    { container: 'fg-q22', name: 'decisionTimeline', type: 'radio' },
+    { container: 'fg-q24', name: 'relationshipCats', type: 'checkbox' },
+    { container: 'fg-q25', name: 'shootDays', type: 'checkbox' },
+    { container: 'fg-q25', name: 'shootTimeOfDay', type: 'checkbox' },
+    { container: 'fg-q25', name: 'shootWhere', type: 'radio' },
+    { container: 'fg-q26', name: 'consent', type: 'checkbox' },
+    { container: 'fg-q27', name: 'aiBoundaries', type: 'checkbox' },
+    { container: 'fg-q28', name: 'approverWho', type: 'radio' }
+  ].map(g => ({ ...g, containerEl: document.getElementById(g.container) }));
 
-  // Tone-pair group requires all three sub-pairs answered.
-  const tonePairNames = ['tonePairA', 'tonePairB', 'tonePairC'];
+  const tonePairNames = ['tonePairA','tonePairB','tonePairC'];
 
   function getCheckedValues(name) {
-    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+    return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(i => i.value);
   }
-
   function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = progress + '%';
+    const st = window.scrollY;
+    const dh = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (dh > 0 ? (st/dh)*100 : 0) + '%';
   }
-
   function updateFormProgress() {
-    // Count tone pairs as a single completion unit to avoid double-counting fg-tone-pairs.
     const uniqueGroupNames = [...new Set(requiredGroups.map(g => g.name).filter(n => !tonePairNames.includes(n)))];
-    const totalChecks = requiredTextFields.length + uniqueGroupNames.length + 1; // +1 for tone-pairs unit
-    let complete = 0;
-
-    requiredTextFields.forEach(field => {
-      if (field && field.value.trim()) complete += 1;
-    });
-
-    uniqueGroupNames.forEach(name => {
-      if (getCheckedValues(name).length > 0) complete += 1;
-    });
-
-    if (tonePairNames.every(n => getCheckedValues(n).length > 0)) complete += 1;
-
-    const percent = totalChecks > 0 ? (complete / totalChecks) * 100 : 0;
-    formProgressFill.style.width = percent + '%';
+    const total = requiredTextFields.length + requiredSelects.length + uniqueGroupNames.length + 1;
+    let done = 0;
+    requiredTextFields.forEach(f => { if (f && f.value.trim()) done += 1; });
+    requiredSelects.forEach(s => { if (s && s.value) done += 1; });
+    uniqueGroupNames.forEach(n => { if (getCheckedValues(n).length > 0) done += 1; });
+    if (tonePairNames.every(n => getCheckedValues(n).length > 0)) done += 1;
+    formProgressFill.style.width = (total > 0 ? (done/total)*100 : 0) + '%';
   }
-
-  function setFieldError(container, hasError) {
-    if (!container) return;
-    container.classList.toggle('has-error', hasError);
-  }
-
+  function setFieldError(el, hasError) { if (el) el.classList.toggle('has-error', hasError); }
   function validateField(field) {
-    const container = field.closest('.field-group');
+    const c = field.closest('.field-group');
     let valid = true;
-
-    if (field.type === 'email' && field.value.trim()) {
-      valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
-    } else if (field.type === 'url' && field.value.trim()) {
-      try {
-        new URL(field.value.trim());
-      } catch (error) {
-        valid = false;
-      }
-    } else {
-      valid = Boolean(field.value.trim());
-    }
-
-    setFieldError(container, !valid);
+    if (field.type === 'email' && field.value.trim()) valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+    else if (field.type === 'url' && field.value.trim()) { try { new URL(field.value.trim()); } catch (e) { valid = false; } }
+    else valid = Boolean(field.value.trim());
+    setFieldError(c, !valid);
     return valid;
   }
-
+  function validateSelect(sel) { const c = sel.closest('.field-group'); const v = Boolean(sel.value); setFieldError(c, !v); return v; }
   function validateTonePairs() {
-    const container = document.getElementById('fg-tone-pairs');
-    const isValid = tonePairNames.every(n => getCheckedValues(n).length > 0);
-    setFieldError(container, !isValid);
-    return isValid;
+    const c = document.getElementById('fg-q13');
+    const ok = tonePairNames.every(n => getCheckedValues(n).length > 0);
+    setFieldError(c, !ok);
+    return ok;
+  }
+  function validateRequiredGroup(g) {
+    if (tonePairNames.includes(g.name)) return validateTonePairs();
+    const ok = getCheckedValues(g.name).length > 0;
+    setFieldError(g.containerEl, !ok);
+    return ok;
   }
 
-  function validateRequiredGroup(group) {
-    if (tonePairNames.includes(group.name)) return validateTonePairs();
-    const values = getCheckedValues(group.name);
-    const isValid = values.length > 0;
-    setFieldError(group.container, !isValid);
-    return isValid;
-  }
-
-  /* ---------- localStorage persistence ---------- */
   function saveState() {
     try {
       const state = { text: {}, checked: [] };
-      form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select').forEach(el => {
-        if (el.id) state.text[el.id] = el.value;
-      });
-      form.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').forEach(el => {
-        state.checked.push({ name: el.name, value: el.value });
-      });
+      form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select').forEach(el => { if (el.id) state.text[el.id] = el.value; });
+      form.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').forEach(el => state.checked.push({ name: el.name, value: el.value }));
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (e) { /* storage unavailable · fail silently */ }
+    } catch (e) {}
   }
-
   function restoreState() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
+      const raw = localStorage.getItem(STORAGE_KEY); if (!raw) return;
       const state = JSON.parse(raw);
-      if (state.text) {
-        Object.entries(state.text).forEach(([id, value]) => {
-          const el = document.getElementById(id);
-          if (el && value) el.value = value;
-        });
-      }
-      if (Array.isArray(state.checked)) {
-        state.checked.forEach(({ name, value }) => {
-          const el = form.querySelector(`input[name="${CSS.escape(name)}"][value="${CSS.escape(value)}"]`);
-          if (el) el.checked = true;
-        });
-      }
-    } catch (e) { /* corrupt state · ignore */ }
+      if (state.text) Object.entries(state.text).forEach(([id, v]) => { const el = document.getElementById(id); if (el && v) el.value = v; });
+      if (Array.isArray(state.checked)) state.checked.forEach(({ name, value }) => { const el = form.querySelector('input[name="'+CSS.escape(name)+'"][value="'+CSS.escape(value)+'"]'); if (el) el.checked = true; });
+    } catch (e) {}
   }
+  function clearState() { try { localStorage.removeItem(STORAGE_KEY); } catch (e) {} }
 
-  function clearState() {
-    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-  }
-
-  /* ---------- event wiring ---------- */
   requiredTextFields.forEach(field => {
-    field.addEventListener('input', () => {
-      if (field.closest('.field-group').classList.contains('has-error')) validateField(field);
-      updateFormProgress();
-      saveState();
-    });
+    field.addEventListener('input', () => { if (field.closest('.field-group').classList.contains('has-error')) validateField(field); updateFormProgress(); saveState(); });
     field.addEventListener('blur', () => validateField(field));
   });
+  requiredSelects.forEach(sel => sel.addEventListener('change', () => { validateSelect(sel); updateFormProgress(); saveState(); }));
 
-  Array.from(document.querySelectorAll('input[type="email"], input[type="url"]')).forEach(field => {
-    if (!requiredTextFields.includes(field)) {
-      field.addEventListener('blur', () => {
-        const container = field.closest('.field-group');
-        if (!field.value.trim()) {
-          setFieldError(container, false);
-          return;
-        }
-        validateField(field);
-      });
-    }
-  });
-
-  requiredGroups.forEach(group => {
-    Array.from(document.querySelectorAll(`input[name="${group.name}"]`)).forEach(input => {
-      input.addEventListener('change', () => {
-        validateRequiredGroup(group);
-        updateFormProgress();
-        saveState();
-      });
+  requiredGroups.forEach(g => {
+    Array.from(document.querySelectorAll('input[name="'+g.name+'"]')).forEach(input => {
+      input.addEventListener('change', () => { validateRequiredGroup(g); updateFormProgress(); saveState(); });
     });
   });
 
   Array.from(document.querySelectorAll('textarea, input[type="text"], input[type="tel"], input[type="url"], select, input[type="checkbox"], input[type="radio"]')).forEach(field => {
-    if (!requiredTextFields.includes(field)) {
-      field.addEventListener('input', () => { updateFormProgress(); saveState(); });
-      field.addEventListener('change', () => { updateFormProgress(); saveState(); });
-    }
+    if (!requiredTextFields.includes(field)) { field.addEventListener('input', () => { updateFormProgress(); saveState(); }); field.addEventListener('change', () => { updateFormProgress(); saveState(); }); }
   });
 
+  // conditional Q19 platform
+  const q19wrap = document.getElementById('q19-platform-wrap');
+  const q19platform = document.getElementById('q19-platform');
+  function toggleQ19() {
+    const c = document.querySelector('input[name="bookingDestination"]:checked');
+    const show = c && c.value === 'Online booking';
+    q19wrap.style.display = show ? 'block' : 'none';
+    if (!show && q19platform) q19platform.value = '';
+  }
+  Array.from(document.querySelectorAll('input[name="bookingDestination"]')).forEach(i => i.addEventListener('change', () => { toggleQ19(); saveState(); }));
+
+  // conditional Q28 approver name
+  const q28wrap = document.getElementById('q28-name-wrap');
+  const q28name = document.getElementById('q28-name');
+  function toggleQ28() {
+    const c = document.querySelector('input[name="approverWho"]:checked');
+    const show = c && c.value !== 'Just me';
+    q28wrap.style.display = show ? 'block' : 'none';
+    if (!show && q28name) q28name.value = '';
+  }
+  Array.from(document.querySelectorAll('input[name="approverWho"]')).forEach(i => i.addEventListener('change', () => { toggleQ28(); saveState(); }));
+
   restoreState();
+  toggleQ19();
+  toggleQ28();
   updateScrollProgress();
   updateFormProgress();
-
   window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     let isValid = true;
-
-    requiredTextFields.forEach(field => {
-      if (!validateField(field)) isValid = false;
-    });
-
-    // Validate each unique required group once.
-    const seenGroups = new Set();
-    requiredGroups.forEach(group => {
-      if (seenGroups.has(group.name)) return;
-      seenGroups.add(group.name);
-      if (!validateRequiredGroup(group)) isValid = false;
-    });
-
+    requiredTextFields.forEach(f => { if (!validateField(f)) isValid = false; });
+    requiredSelects.forEach(s => { if (!validateSelect(s)) isValid = false; });
+    const seen = new Set();
+    requiredGroups.forEach(g => { if (seen.has(g.name)) return; seen.add(g.name); if (!validateRequiredGroup(g)) isValid = false; });
     if (!isValid) {
-      const firstError = document.querySelector('.field-group.has-error');
-      if (firstError) {
-        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      const first = document.querySelector('.field-group.has-error');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-
     submitBtn.disabled = true;
     submitBtn.querySelector('span').textContent = 'Submitting...';
-
     const val = id => (document.getElementById(id) ? document.getElementById(id).value.trim() : '');
+    const join = name => getCheckedValues(name).join(', ');
+    const one = name => getCheckedValues(name)[0] || '';
 
     const payload = {
       _subject: "Client Onboarding · Pippi's",
@@ -1544,60 +1677,73 @@
       'Best Phone': val('p-phone'),
       'Address and Neighborhood': val('p-address'),
       'Instagram Handle': val('p-handle'),
-      'The Woman in the Chair': val('woman-in-chair'),
-      'The Stylist at the Table': val('stylist-at-table'),
-      'Recruiting Specifics': val('recruiting-specifics'),
+      'Which Chair First': one('chairFirst'),
+      'Client Age': join('clientAge'),
+      'Client Wants': join('clientWants'),
+      'Stylist Draws': join('stylistDraws'),
+      'Stylist Experience Wanted': join('stylistExperience'),
+      'Chairs to Fill': one('chairsToFill'),
+      'Chairs Filled So Far': one('chairsFilled'),
+      'Recruiting Urgency': one('recruitUrgency'),
+      'Founder as Face': one('founderFace'),
       "Pippi's Exists To": val('exists-to'),
-      'What Is Uniquely Yours': val('uniquely-yours'),
-      'The One Hesitation': val('one-hesitation'),
-      'Tone Pair A': getCheckedValues('tonePairA')[0] || '',
-      'Tone Pair B': getCheckedValues('tonePairB')[0] || '',
-      'Tone Pair C': getCheckedValues('tonePairC')[0] || '',
-      'Anti-Example Accounts': val('anti-examples'),
-      'Formatting and Punctuation': getCheckedValues('formatting').join(', '),
-      'Visual Mood': getCheckedValues('visualMood').join(', '),
+      'Uniquely Yours (confirmed)': join('uniqueConfirm'),
+      'Most Central Differentiator': one('uniqueCentral'),
+      'Client Trigger Moments': join('clientTrigger'),
+      'Stylist Trigger Moments': join('stylistTrigger'),
+      'Client Hesitations': join('clientHesitation'),
+      'Stylist Hesitations': join('stylistHesitation'),
+      'Client FAQs': join('clientFaqs'),
+      'Tone Pair A': one('tonePairA'),
+      'Tone Pair B': one('tonePairB'),
+      'Tone Pair C': one('tonePairC'),
+      'Voice Descriptors': join('voiceDescriptors'),
+      'Formatting and Punctuation': join('formatting'),
+      'Visual Mood': join('visualMood'),
       'The Look Building Toward': val('look-toward'),
-      'Brand Assets Folder Link': val('assets-folder'),
-      'Signature Space and Off-Camera Notes': val('signature-space'),
+      'Signature Elements': join('signatureElements'),
+      'Keep Off-Camera': val('off-camera'),
+      'Booking Destination': one('bookingDestination'),
+      'Booking Platform': val('q19-platform'),
+      'Hero Service (known for)': join('heroService'),
+      'Revenue Rank 1': val('q21-rank1'),
+      'Revenue Rank 2': val('q21-rank2'),
+      'Revenue Rank 3': val('q21-rank3'),
+      'Revenue Rank Other': val('q21-other'),
+      'Average Ticket': one('avgTicket'),
+      'Average Ticket (exact)': val('q22-ticket-exact'),
+      'Visits Per Year': one('visitsPerYear'),
+      'Visits Per Year (exact)': val('q22-visits-exact'),
+      'Retention Years': one('retentionYears'),
+      'Retention Years (exact)': val('q22-retention-exact'),
+      'Decision Timeline (IG to booking)': one('decisionTimeline'),
       'Launch Dates': val('launch-dates'),
-      'Reaching Current Clients': val('reaching-clients'),
-      'Relationships for Collabs': val('relationships'),
-      'Commercial Priority Order': val('commercial-priority'),
-      'Best Days / Times for Shoots': val('shoot-times'),
-      'Client Content Consent': getCheckedValues('consent').join(', '),
+      'Relationship Categories': join('relationshipCats'),
+      'Relationship Names': val('relationship-names'),
+      'Shoot Days': join('shootDays'),
+      'Shoot Time of Day': join('shootTimeOfDay'),
+      'Shoot Location': one('shootWhere'),
+      'Client Content Consent': join('consent'),
       'Client Privacy Notes': val('consent-notes'),
-      'AI and Content Boundaries': getCheckedValues('aiBoundaries').join(', '),
-      'Client Lifetime Value': getCheckedValues('clv')[0] || '',
-      'Content Approver': val('approver'),
-      'Anything Else Before We Start': val('anything-else'),
+      'AI and Content Boundaries': join('aiBoundaries'),
+      'Content Approver': one('approverWho'),
+      'Content Approver Name': val('q28-name'),
+      'Anything Else': val('anything-else'),
       'Submitted At': new Date().toLocaleString()
     };
-
     try {
-      const formData = new FormData();
-      Object.entries(payload).forEach(([key, value]) => {
-        formData.append(key, value || '(not answered)');
-      });
-
-      const response = await fetch(form.action, {
-        method: form.method,
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: formData
-      });
-
-      if (!response.ok) throw new Error('Submission failed');
-
+      const fd = new FormData();
+      Object.entries(payload).forEach(([k, v]) => fd.append(k, v || '(not answered)'));
+      const res = await fetch(form.action, { method: form.method, headers: { 'Accept': 'application/json' }, body: fd });
+      if (!res.ok) throw new Error('Submission failed');
       clearState();
       form.classList.add('hidden');
       successState.style.display = 'block';
       formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch (error) {
+    } catch (err) {
       submitBtn.disabled = false;
       submitBtn.querySelector('span').textContent = "Submit and let's get started";
       alert('Something went wrong while submitting. Please try again or email chase@getscrollmedia.com directly.');
-      return;
     }
   });
 </script>

@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Pippi's &middot; Kickoff | Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="../scroll-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       SCROLL MEDIA DESIGN SYSTEM · Pippi's Kickoff Deck (v2)
+       Clone of the canonical kickoff design system (light client palette · Scheme B)
+       Per brand_system.md §5 + scroll-web-design v2.1
+       v2 = discovery-first: 8 slides + interactive picker UI (S4/S5/S6/S7)
+       ========================================================= */
+
+    :root {
+      /* Brand tokens */
+      --ghost: #FAFDFF;
+      --azure: #0C3387;
+      --azure-900: #071d4f;
+      --azure-800: #0c3387;
+      --azure-600: #254fb0;
+      --azure-400: #7a9ad8;
+      --azure-200: #b9cdee;
+      --lucid: #CBE9FF;
+      --lucid-deep: #9ecee8;
+      --lucid-soft: #e4f3ff;
+      --highlighter: #E2ED7A;
+      --highlighter-dark: #c8d94a;
+      --shadow: #151516;
+      --white: #ffffff;
+
+      /* Semantic */
+      --bg: var(--ghost);
+      --bg-alt: #f4f7fb;
+      --bg-panel: var(--white);
+      --fg: var(--shadow);
+      --fg-heading: var(--azure);
+      --fg-muted: #5a6070;
+      --fg-subtle: #9097a6;
+      --fg-on-azure: var(--white);
+      --rule: rgba(12, 51, 135, 0.20);
+      --rule-strong: rgba(12, 51, 135, 0.40);
+      --rule-faint: rgba(12, 51, 135, 0.08);
+
+      /* Type scale */
+      --fs-xs: 11px;
+      --fs-sm: 13px;
+      --fs-base: 15px;
+      --fs-md: 17px;
+      --fs-lg: 20px;
+      --fs-xl: 24px;
+      --fs-2xl: 32px;
+      --fs-3xl: 44px;
+      --fs-4xl: 64px;
+
+      /* Spacing */
+      --sp-1: 4px;
+      --sp-2: 8px;
+      --sp-3: 12px;
+      --sp-4: 16px;
+      --sp-5: 24px;
+      --sp-6: 32px;
+      --sp-7: 40px;
+      --sp-8: 56px;
+      --sp-9: 80px;
+
+      /* Layout */
+      --header-h: 60px;
+      --content-max: 1120px;
+      --slide-max: 1080px;
+
+      /* Radii */
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 16px;
+
+      /* Shadows */
+      --sh-sm: 0 1px 2px rgba(12, 51, 135, .06);
+      --sh-md: 0 6px 24px rgba(12, 51, 135, .08);
+
+      /* Motion */
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3, h4 { font-family: inherit; font-weight: 700; color: var(--fg-heading); letter-spacing: -0.01em; }
+    a { color: var(--azure-600); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; }
+
+    /* HEADER · co-branded (Scroll left, Pippi's right) */
+    .deck-header {
+      position: sticky; top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: rgba(250, 253, 255, 0.92);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid var(--rule-faint);
+      z-index: 100;
+      display: flex; align-items: center;
+    }
+    .deck-header-inner {
+      width: 100%; max-width: var(--content-max);
+      margin: 0 auto; padding: 0 var(--sp-5);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--sp-4);
+    }
+    .header-logo {
+      display: flex; align-items: center; gap: var(--sp-3);
+      min-height: 44px; padding: 4px 0;
+      text-decoration: none;
+    }
+    .header-logo-img { height: 24px; width: auto; display: block; }
+    .header-co {
+      display: flex; align-items: center; gap: var(--sp-4);
+      min-height: 44px;
+    }
+    .header-x {
+      font-size: 13px; color: var(--fg-subtle); font-weight: 600;
+    }
+    /* TODO: swap Pippi's wordmark for official Edelmade logo asset (drop pippis-logo.png here) */
+    .header-pippis {
+      font-size: 21px; font-weight: 800; color: var(--azure);
+      letter-spacing: -0.01em; line-height: 1; white-space: nowrap;
+    }
+
+    /* Slide nav (desktop only) */
+    .slide-nav {
+      display: none;
+      position: fixed;
+      top: 50%; right: var(--sp-5);
+      transform: translateY(-50%);
+      z-index: 50;
+      flex-direction: column; gap: 6px;
+    }
+    .slide-nav a {
+      width: 8px; height: 8px;
+      background: var(--azure-200);
+      border-radius: 50%;
+      transition: all 200ms var(--ease);
+      position: relative;
+    }
+    .slide-nav a:hover { background: var(--azure-600); transform: scale(1.4); }
+    .slide-nav a.active { background: var(--azure); transform: scale(1.5); }
+    .slide-nav a span {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      background: var(--azure); color: var(--ghost);
+      padding: 4px 10px; font-size: 11px; white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 180ms var(--ease);
+    }
+    .slide-nav a:hover span { opacity: 1; }
+    @media (min-width: 1280px) { .slide-nav { display: flex; } }
+
+    /* SLIDES */
+    main { padding-top: 0; }
+    .slide {
+      width: 100%;
+      max-width: var(--slide-max);
+      margin: 0 auto;
+      padding: var(--sp-8) var(--sp-6) var(--sp-8);
+      position: relative;
+      scroll-margin-top: calc(var(--header-h) + 12px);
+    }
+    .slide + .slide { border-top: 1px solid var(--rule-faint); }
+    /* tighter vertical rhythm for dense slides to hold single-screen fit */
+    .slide.is-tight { padding-top: var(--sp-6); padding-bottom: var(--sp-6); }
+    .slide.is-tight .slide-eyebrow { margin-bottom: var(--sp-3); }
+    .slide.is-tight .slide-title { margin-bottom: var(--sp-3); }
+    .slide.is-tight .slide-subtitle { margin-bottom: var(--sp-4); }
+
+    .slide-eyebrow {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 12px; font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: var(--sp-5);
+    }
+    .slide-eyebrow-num {
+      width: 28px; height: 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--azure); color: var(--ghost);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0;
+    }
+    .slide-eyebrow-text { color: var(--fg-muted); }
+
+    .slide-title {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--azure);
+      letter-spacing: -0.015em;
+      margin-bottom: var(--sp-4);
+      max-width: 940px;
+    }
+    .slide-subtitle {
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.5;
+      color: var(--fg-muted);
+      max-width: 760px;
+      margin-bottom: var(--sp-7);
+    }
+
+    /* Fade-in reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Generic callout */
+    .callout {
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--lucid-soft);
+      border-left: 2px solid var(--azure);
+      max-width: 920px;
+    }
+    .callout.is-lime {
+      background: rgba(226, 237, 122, 0.16);
+      border-left-color: var(--highlighter-dark);
+    }
+    .callout-label {
+      display: block;
+      font-size: 10px; font-weight: 800;
+      color: var(--azure); text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--sp-2);
+    }
+    .callout-body {
+      font-size: 14px; color: var(--shadow);
+      line-height: 1.6;
+    }
+    .callout-body strong { color: var(--azure); font-weight: 700; }
+    .callout-list { list-style: none; padding: 0; margin-top: var(--sp-2); display: flex; flex-direction: column; gap: 7px; }
+    .callout-list li { font-size: 14px; color: var(--shadow); line-height: 1.5; padding-left: var(--sp-4); position: relative; }
+    .callout-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--azure-400); }
+    .framing-line {
+      margin-top: var(--sp-5);
+      font-size: 15px; color: var(--fg-muted);
+      line-height: 1.55; max-width: 820px;
+      font-style: italic;
+    }
+    .framing-line strong { color: var(--azure); font-style: normal; }
+
+    /* SLIDE 01 · COVER + agenda */
+    .slide-cover {
+      min-height: calc(100vh - var(--header-h));
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: var(--sp-7); padding-bottom: var(--sp-7);
+    }
+    .cover-mark {
+      display: inline-flex; align-items: center; gap: var(--sp-3);
+      font-size: 13px; font-weight: 600; color: var(--azure-600);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: var(--sp-6);
+    }
+    .cover-mark-line { flex: 0 0 40px; height: 1px; background: var(--azure-400); }
+    .cover-title {
+      font-size: clamp(38px, 6.4vw, 64px);
+      font-weight: 800;
+      color: var(--azure);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--sp-4);
+      max-width: 960px;
+    }
+    .cover-lede {
+      font-size: clamp(17px, 2vw, 21px);
+      color: var(--fg-muted);
+      line-height: 1.5;
+      max-width: 720px;
+      margin-bottom: var(--sp-6);
+    }
+
+    /* AGENDA */
+    .agenda-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-3); margin-top: var(--sp-5);
+    }
+    .astop {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-left: 3px solid var(--azure-400);
+    }
+    .astop.is-yours { border-left-color: var(--highlighter-dark); background: rgba(226, 237, 122, 0.08); }
+    .astop-top { display: flex; align-items: center; gap: var(--sp-2); }
+    .astop-num { font-size: 12px; font-weight: 800; color: var(--azure); letter-spacing: 0.04em; flex-shrink: 0; }
+    .astop-label { font-size: 14px; font-weight: 700; color: var(--shadow); line-height: 1.2; }
+    .astop-desc { font-size: 12px; color: var(--fg-muted); line-height: 1.3; }
+    .astop-meta { font-size: 11px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+    .astop-yours {
+      margin-left: auto; flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 999px;
+      background: var(--highlighter); color: var(--shadow);
+      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .astop-yours svg { width: 12px; height: 12px; fill: none; stroke: var(--shadow); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .agenda-note {
+      margin-top: var(--sp-5); font-size: 15px; color: var(--azure);
+      font-weight: 700; line-height: 1.45; max-width: 820px;
+    }
+
+    /* clock chip on the working slides */
+    .slide-head-row {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: var(--sp-4);
+    }
+    .slide-clock {
+      flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(226, 237, 122, 0.18); border: 1px solid var(--highlighter-dark);
+      font-size: 12px; font-weight: 800; color: var(--shadow);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .slide-clock svg { width: 14px; height: 14px; fill: none; stroke: var(--shadow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* open-question line */
+    .open-q {
+      margin-top: var(--sp-4); font-size: 14px; font-weight: 700; color: var(--azure);
+      line-height: 1.5; max-width: 900px;
+    }
+    .open-q span {
+      display: inline-block;
+      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--azure); margin-right: var(--sp-2);
+      padding: 2px 8px; background: var(--lucid); border-radius: 999px;
+    }
+
+    /* SLIDE 02 · SCOPE */
+    .scope-line { font-size: 15px; line-height: 1.75; color: var(--shadow); margin-top: var(--sp-4); max-width: 940px; }
+    .scope-line strong { color: var(--azure); font-weight: 700; }
+
+    .engagement-callouts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); margin-top: var(--sp-5); align-items: start; }
+    .launch-card { background: var(--bg-panel); border: 1px solid var(--rule-faint); border-left: 3px solid var(--highlighter-dark); padding: var(--sp-4) var(--sp-5); }
+    .launch-tag { display: inline-block; font-size: 10px; font-weight: 800; color: var(--shadow); background: var(--highlighter); padding: 3px 9px; border-radius: 999px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--sp-3); }
+    .launch-body { display: block; font-size: 14px; color: var(--shadow); line-height: 1.6; }
+
+    .ig-only-line {
+      margin-top: var(--sp-5);
+      font-size: 14px; color: var(--shadow); line-height: 1.6; max-width: 920px;
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--bg-alt); border-radius: var(--r-sm);
+      border-left: 2px solid var(--azure-400);
+    }
+    .ig-only-line strong { color: var(--azure); font-weight: 700; }
+
+    .approval-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); margin-top: var(--sp-5); }
+    .approw { display: flex; align-items: flex-start; gap: var(--sp-3); padding: var(--sp-4); background: var(--bg-alt); border-radius: var(--r-sm); font-size: 13.5px; line-height: 1.45; color: var(--shadow); }
+    .approw-step { flex-shrink: 0; width: 22px; height: 22px; background: var(--azure); color: var(--ghost); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+
+    .work-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: var(--sp-6);
+      border: 1px solid var(--rule-faint);
+    }
+    .work-col-head {
+      padding: var(--sp-3) var(--sp-5);
+      font-size: 11px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      display: flex; align-items: center; gap: var(--sp-2);
+    }
+    .work-col-head.keeps { background: var(--lucid-soft); color: var(--azure); }
+    .work-col-head.friction { background: var(--bg-alt); color: var(--fg-muted); }
+    .work-cell {
+      padding: var(--sp-3) var(--sp-5);
+      font-size: 13.5px; line-height: 1.45;
+      border-top: 1px solid var(--rule-faint);
+      display: flex; align-items: flex-start; gap: var(--sp-3);
+    }
+    .work-cell.keeps { color: var(--shadow); }
+    .work-cell.friction { color: var(--fg-muted); border-left: 1px solid var(--rule-faint); }
+    .work-ico {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+      fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .work-cell.keeps .work-ico { stroke: var(--azure); }
+    .work-cell.friction .work-ico { stroke: var(--fg-subtle); }
+
+    /* SLIDE 03 · RUNWAY timeline (10 nodes · 2 rows of 5) */
+    .runway {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-3); margin-top: var(--sp-5);
+    }
+    .rnode {
+      position: relative;
+      display: flex; flex-direction: column; gap: 5px;
+      padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-4);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-left: 3px solid var(--azure-400);
+      border-radius: var(--r-sm);
+    }
+    .rnode.is-current { border-left-color: var(--azure); background: var(--lucid-soft); }
+    .rnode.is-hero { border-left-color: var(--highlighter-dark); background: rgba(226, 237, 122, 0.12); box-shadow: 0 0 0 1px var(--highlighter-dark); }
+    .rnode-date { font-size: 11px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.05em; }
+    .rnode-name { font-size: 14px; color: var(--shadow); line-height: 1.3; font-weight: 600; }
+    .rnode-tag {
+      display: inline-flex; align-items: center; gap: 4px; width: fit-content;
+      margin-top: 2px; font-size: 9px; font-weight: 800; color: var(--shadow);
+      background: var(--highlighter); padding: 2px 7px;
+      letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px;
+    }
+    .rnode-tag.is-addon { background: var(--lucid); color: var(--azure); }
+    .rnode-tag svg { width: 10px; height: 10px; fill: none; stroke: var(--shadow); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+    .dates-lock { margin-top: var(--sp-6); background: var(--bg-panel); border: 1px solid var(--rule-faint); border-top: 3px solid var(--highlighter-dark); padding: var(--sp-5); }
+    .dates-lock-label { font-size: 10px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--sp-3); }
+    .dlock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3) var(--sp-5); }
+    .dlock-row { display: flex; flex-direction: column; gap: 2px; padding-left: var(--sp-3); border-left: 2px solid var(--highlighter-dark); }
+    .dlock-when { font-size: 14px; font-weight: 800; color: var(--shadow); }
+    .dlock-what { font-size: 14px; color: var(--fg-muted); }
+
+    .note-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); margin-top: var(--sp-5); align-items: start; }
+
+    /* SLIDE 04 · GOALS funnel (interactive) */
+    .goals-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4); margin-top: var(--sp-5); align-items: stretch;
+    }
+    .goal-col {
+      background: var(--bg-panel);
+      border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure-400);
+      padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .goal-stage {
+      font-size: 10px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .goal-headline {
+      font-size: 15px; font-weight: 700; color: var(--azure);
+      line-height: 1.25; letter-spacing: -0.01em;
+    }
+
+    /* ===== INTERACTIVE PICKERS (v2) =====
+       discovery stimulus: she selects live, we capture via Gemini;
+       nothing pre-selected, no recommended pick */
+    .picker-eyebrow {
+      font-size: 11px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4;
+      margin-bottom: var(--sp-3);
+    }
+    .picker-eyebrow em { font-style: normal; color: var(--fg-muted); font-weight: 600; text-transform: none; letter-spacing: 0; display: block; margin-top: 3px; font-size: 14px; }
+
+    /* stacked single-select options (goal columns, voice rows) */
+    .opt-stack { display: flex; flex-direction: column; gap: var(--sp-2); margin-top: var(--sp-2); }
+    .opt {
+      font-size: 14px; color: var(--shadow); line-height: 1.4;
+      background: var(--bg-panel); border: 1.5px solid var(--rule);
+      padding: 11px 14px; border-radius: var(--r-sm);
+      min-height: 44px; display: flex; align-items: center; gap: 10px;
+      cursor: pointer; transition: background 150ms var(--ease), border-color 150ms var(--ease);
+      user-select: none;
+    }
+    .opt:hover { border-color: var(--azure-400); }
+    .opt:focus-visible { outline: 2px solid var(--azure); outline-offset: 2px; }
+    .opt-check {
+      flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid var(--azure-200); background: var(--white);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: all 150ms var(--ease);
+    }
+    .opt-check svg { width: 11px; height: 11px; fill: none; stroke: var(--shadow); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+    .opt.is-selected { background: rgba(226, 237, 122, 0.20); border-color: var(--highlighter-dark); font-weight: 700; box-shadow: inset 0 0 0 1px var(--highlighter-dark); }
+    .opt.is-selected .opt-check { border-color: var(--highlighter-dark); background: var(--highlighter); }
+    .opt.is-selected .opt-check svg { opacity: 1; }
+
+    /* chip picker (multi or single) */
+    .chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-2); }
+    .chip {
+      font-size: 14px; color: var(--shadow); line-height: 1.3;
+      background: var(--bg-panel); border: 1.5px solid var(--rule);
+      padding: 9px 15px; border-radius: 999px;
+      min-height: 44px; display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer; transition: background 150ms var(--ease), border-color 150ms var(--ease);
+      user-select: none;
+    }
+    .chip:hover { border-color: var(--azure-400); }
+    .chip:focus-visible { outline: 2px solid var(--azure); outline-offset: 2px; }
+    .chip-check { flex-shrink: 0; width: 15px; height: 15px; fill: none; stroke: var(--highlighter-dark); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; margin-left: -2px; transition: opacity 150ms var(--ease); }
+    .chip.is-selected { background: rgba(226, 237, 122, 0.22); border-color: var(--highlighter-dark); font-weight: 700; }
+    .chip.is-selected .chip-check { opacity: 1; }
+
+    /* add-your-own inline input */
+    .opt-input {
+      font-family: inherit; font-size: 14px; color: var(--shadow);
+      background: var(--bg-panel); border: 1.5px dashed var(--rule);
+      padding: 11px 14px; border-radius: var(--r-sm); width: 100%;
+      min-height: 44px; line-height: 1.4;
+    }
+    .opt-input::placeholder { color: var(--fg-subtle); }
+    .opt-input:focus { outline: none; border-color: var(--azure-400); border-style: solid; background: var(--lucid-soft); }
+    .chip-input { max-width: 260px; border-radius: 999px; }
+
+    /* SLIDE 05 · pull quote + prompts */
+    .pullquote {
+      margin-top: var(--sp-5);
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--azure);
+      color: var(--ghost);
+      border-radius: var(--r-md);
+    }
+    .pullquote p {
+      font-size: clamp(17px, 2.1vw, 22px);
+      font-weight: 700; line-height: 1.3; letter-spacing: -0.01em;
+    }
+    .pullquote .pq-attr {
+      margin-top: var(--sp-2);
+      font-size: 12px; font-weight: 600; color: var(--azure-200);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .say-more { margin-top: var(--sp-3); font-size: 14px; color: var(--fg-muted); line-height: 1.55; font-style: italic; max-width: 820px; }
+    .say-more strong { color: var(--azure); font-style: normal; }
+
+    .open-strip { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); margin-top: var(--sp-4); }
+    .open-item {
+      background: var(--bg-alt); border-left: 3px solid var(--azure-400);
+      padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-5); border-radius: var(--r-sm);
+      font-size: 14px; color: var(--shadow); line-height: 1.55;
+    }
+
+    .prompt-cols {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4); margin-top: var(--sp-4);
+    }
+    .prompt-col {
+      background: var(--bg-panel);
+      border: 1px dashed var(--rule);
+      padding: var(--sp-4);
+      min-height: 108px;
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .prompt-label {
+      font-size: 11px; font-weight: 800; color: var(--azure);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .prompt-q { font-size: 14px; color: var(--fg-muted); line-height: 1.5; }
+    .prompt-lines { margin-top: auto; display: flex; flex-direction: column; gap: var(--sp-2); padding-top: var(--sp-2); }
+    .prompt-line { height: 1px; background: var(--rule-faint); }
+
+    .block-head {
+      font-size: 15px; font-weight: 800; color: var(--azure);
+      margin-top: var(--sp-6); margin-bottom: var(--sp-1);
+      display: flex; align-items: center; gap: var(--sp-3);
+    }
+    .block-head::before {
+      content: ""; width: 22px; height: 2px; background: var(--highlighter-dark); flex-shrink: 0;
+    }
+
+    /* SLIDE 06 · inspiration cards */
+    .inspo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); margin-top: var(--sp-5); }
+    .inspo-card {
+      background: var(--bg-panel); border: 1px solid var(--rule-faint);
+      border-radius: var(--r-md); overflow: hidden; display: flex; flex-direction: column;
+    }
+    .inspo-imgwrap { position: relative; width: 100%; aspect-ratio: 4 / 5; background: var(--bg-alt); overflow: hidden; }
+    .inspo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .inspo-body { padding: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }
+    .inspo-headrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
+    .inspo-name { font-size: 15px; font-weight: 800; color: var(--azure); }
+    .inspo-handle { font-size: 13px; color: var(--fg-muted); }
+    .inspo-add {
+      display: inline-block; font-size: 9px; font-weight: 800; color: var(--shadow);
+      background: var(--highlighter); padding: 2px 8px; border-radius: 999px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .inspo-prompt { font-size: 14px; color: var(--shadow); line-height: 1.5; }
+    .inspo-q { margin-top: var(--sp-5); }
+
+    .sig-strip {
+      margin-top: var(--sp-5); background: var(--bg-panel);
+      border: 1px solid var(--rule-faint); border-top: 3px solid var(--azure);
+      padding: var(--sp-4) var(--sp-5); font-size: 14px; color: var(--shadow); line-height: 1.6;
+    }
+    .sig-strip strong { color: var(--azure); font-weight: 700; }
+    .sig-strip .sig-label { font-size: 10px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: var(--sp-2); }
+
+    /* SLIDE 07 · voice moments */
+    .vmoment {
+      display: flex; align-items: flex-start; gap: var(--sp-4);
+      padding: var(--sp-4) 0; border-bottom: 1px solid var(--rule-faint);
+    }
+    .vmoment:last-of-type { border-bottom: none; }
+    .vmoment-num {
+      flex-shrink: 0; width: 26px; height: 26px;
+      background: var(--azure); color: var(--ghost);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .vmoment-body { flex: 1; min-width: 0; }
+    .vmoment-title { font-size: 15px; font-weight: 700; color: var(--azure); margin-bottom: 3px; }
+    .vmoment-q { font-size: 14px; color: var(--shadow); line-height: 1.55; }
+    .vmoment-q strong { color: var(--azure); font-weight: 700; }
+
+    .vp-row { display: grid; grid-template-columns: 130px 1fr; gap: var(--sp-3); align-items: start; margin-bottom: var(--sp-3); }
+    .vp-row:last-child { margin-bottom: 0; }
+    .vp-rowlabel { font-size: 13px; font-weight: 700; color: var(--azure); padding-top: 11px; line-height: 1.3; }
+    .vp-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); }
+    .vp-opts .opt { min-height: 44px; }
+    .vp-add { margin-top: var(--sp-3); }
+
+    .vq-beat {
+      display: flex; align-items: center; gap: var(--sp-3);
+      margin-top: var(--sp-5); margin-bottom: var(--sp-2);
+      font-size: 11px; font-weight: 800; color: var(--azure-400);
+      text-transform: uppercase; letter-spacing: 0.12em; white-space: nowrap;
+    }
+    .vq-beat::after { content: ""; flex: 1; height: 1px; background: var(--rule-faint); }
+
+    .caption-calib { margin-top: var(--sp-6); }
+    .calib-intro { font-size: 14px; font-weight: 700; color: var(--azure); margin-bottom: var(--sp-3); }
+    .caption-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4); margin-top: var(--sp-2);
+    }
+    .caption-card {
+      background: var(--bg-panel); border: 1.5px solid var(--rule);
+      padding: var(--sp-5); border-radius: var(--r-sm);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+      cursor: pointer; transition: background 150ms var(--ease), border-color 150ms var(--ease);
+      user-select: none;
+    }
+    .caption-card:hover { border-color: var(--azure-400); }
+    .caption-card:focus-visible { outline: 2px solid var(--azure); outline-offset: 2px; }
+    .caption-card.is-selected { background: rgba(226, 237, 122, 0.14); border-color: var(--highlighter-dark); box-shadow: inset 0 0 0 1px var(--highlighter-dark); }
+    .caption-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); }
+    .caption-label { font-size: 11px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.1em; }
+    .caption-style { font-size: 12px; color: var(--fg-subtle); font-style: italic; }
+    .caption-text { font-size: 14px; color: var(--shadow); line-height: 1.55; }
+    .caption-pick { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-size: 11px; font-weight: 800; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.08em; }
+    .caption-pick svg { width: 15px; height: 15px; fill: none; stroke: var(--highlighter-dark); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+    .caption-card.is-selected .caption-pick { color: var(--azure); }
+    .caption-card.is-selected .caption-pick svg { opacity: 1; }
+    .calib-line { margin-top: var(--sp-3); font-size: 14px; font-weight: 700; color: var(--azure); }
+
+    /* SLIDE 08 · DECISIONS + next steps */
+    .decisions {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4); margin-top: var(--sp-5);
+    }
+    .decision-block {
+      background: var(--bg-panel); border: 1px solid var(--rule-faint);
+      padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .decision-top { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); }
+    .decision-title { font-size: 16px; font-weight: 700; color: var(--azure); line-height: 1.2; }
+    .decision-chip { flex-shrink: 0; font-size: 10px; font-weight: 800; padding: 4px 10px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px; }
+    .decision-chip.confirm { background: var(--lucid); color: var(--azure); }
+    .decision-chip.lock { background: var(--highlighter); color: var(--shadow); }
+    .decision-row { font-size: 14px; line-height: 1.5; }
+    .decision-row .dlabel { font-size: 10px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.1em; margin-right: 6px; }
+    .decision-row.form { color: var(--fg-muted); }
+    .decision-row.rec { color: var(--shadow); }
+
+    .buckets { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); margin-top: var(--sp-6); }
+    .bucket {
+      background: var(--bg-panel); border: 1px solid var(--rule-faint);
+      border-top: 3px solid var(--azure); padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .bucket-eyebrow { font-size: 10px; font-weight: 800; color: var(--azure); text-transform: uppercase; letter-spacing: 0.1em; }
+    .bucket-owner { font-size: 12px; color: var(--fg-subtle); }
+    .bucket-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .bucket-list li { font-size: 14px; color: var(--shadow); line-height: 1.5; padding-left: var(--sp-4); position: relative; }
+    .bucket-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--azure-400); }
+
+    .close-block { margin-top: var(--sp-7); }
+    .close-line {
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700; color: var(--azure); line-height: 1.35;
+      max-width: 840px; letter-spacing: -0.01em;
+    }
+    .close-sign {
+      margin-top: var(--sp-5); display: flex; flex-wrap: wrap; gap: var(--sp-7);
+      padding-top: var(--sp-4); border-top: 1px solid var(--rule-faint);
+    }
+    .close-sign-name { font-size: 15px; font-weight: 700; color: var(--azure); }
+    .close-sign-title { font-size: 12px; color: var(--fg-muted); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .agenda-strip { grid-template-columns: 1fr 1fr; }
+      .engagement-callouts { grid-template-columns: 1fr; }
+      .approval-strip { grid-template-columns: 1fr; }
+      .runway { grid-template-columns: 1fr 1fr; }
+      .dlock-grid { grid-template-columns: 1fr; }
+      .note-pair { grid-template-columns: 1fr; }
+      .goals-grid { grid-template-columns: 1fr; }
+      .open-strip { grid-template-columns: 1fr; }
+      .prompt-cols { grid-template-columns: 1fr; }
+      .inspo-grid { grid-template-columns: 1fr 1fr; }
+      .caption-cards { grid-template-columns: 1fr; }
+      .decisions { grid-template-columns: 1fr; }
+      .buckets { grid-template-columns: 1fr; }
+      .vp-opts { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .slide { padding: var(--sp-7) var(--sp-4) var(--sp-7); }
+      .slide-cover { padding-top: var(--sp-6); padding-bottom: var(--sp-6); }
+      .runway { grid-template-columns: 1fr; }
+      .work-table { grid-template-columns: 1fr; }
+      .work-cell.friction { border-left: none; }
+      .slide-head-row { flex-wrap: wrap; }
+      .inspo-grid { grid-template-columns: 1fr; }
+      .vp-row { grid-template-columns: 1fr; gap: var(--sp-2); }
+      .vp-rowlabel { padding-top: 0; }
+    }
+
+    @media (max-width: 414px) {
+      .deck-header-inner { padding: 0 var(--sp-4); }
+      .header-x { display: none; }
+      .header-pippis { font-size: 19px; }
+      .header-logo-img { height: 21px; }
+      .slide { padding: var(--sp-6) var(--sp-4) var(--sp-6); }
+      .cover-title { font-size: 34px; }
+      .cover-lede { font-size: 16px; }
+      .slide-title { font-size: 26px; }
+      .slide-subtitle { font-size: 15px; }
+      .agenda-strip { grid-template-columns: 1fr; }
+      .inspo-grid { grid-template-columns: 1fr; }
+      .scope-line, .callout-body, .callout-list li, .launch-body, .ig-only-line,
+      .approw, .work-cell, .rnode-name, .dlock-when, .dlock-what,
+      .goal-stage, .goal-headline, .goal-body, .opt, .chip, .opt-input,
+      .framing-line, .open-q, .say-more, .open-item, .prompt-q,
+      .inspo-prompt, .inspo-handle, .sig-strip, .vmoment-q, .vp-rowlabel,
+      .caption-text, .calib-intro, .decision-row, .bucket-list li, .close-sign-title {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .slide { padding: var(--sp-5) var(--sp-4) var(--sp-6); }
+      .cover-title { font-size: 30px; }
+      .slide-title { font-size: 24px; }
+    }
+
+    @media print {
+      .deck-header, .slide-nav { display: none; }
+      .reveal { opacity: 1; transform: none; }
+      .slide { page-break-after: always; padding: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER · co-branded (Scroll left, Pippi's right) -->
+  <header class="deck-header">
+    <div class="deck-header-inner">
+      <a href="https://decks.scrollmedia.co/pitch/" target="_blank" rel="noopener" class="header-logo" aria-label="Scroll Media">
+        <img src="scroll-media-logo.png" alt="Scroll Media" class="header-logo-img" />
+      </a>
+      <div class="header-co">
+        <span class="header-x" aria-hidden="true">&times;</span>
+        <!-- TODO: swap Pippi's wordmark below for the official Edelmade logo asset once in the Drive folder -->
+        <span class="header-pippis">Pippi's</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="slide-nav" aria-label="Slide navigation">
+    <a href="#s01" data-slide="01"><span>Welcome</span></a>
+    <a href="#s02" data-slide="02"><span>The engagement</span></a>
+    <a href="#s03" data-slide="03"><span>Timeline + dates</span></a>
+    <a href="#s04" data-slide="04"><span>Goals</span></a>
+    <a href="#s05" data-slide="05"><span>What Pippi's stands for</span></a>
+    <a href="#s06" data-slide="06"><span>How Pippi's looks</span></a>
+    <a href="#s07" data-slide="07"><span>How Pippi's sounds</span></a>
+    <a href="#s08" data-slide="08"><span>Decisions + next steps</span></a>
+  </nav>
+
+  <main>
+
+    <!-- SLIDE 01 · WELCOME (cover + agenda) -->
+    <section class="slide slide-cover" id="s01" aria-labelledby="s01-title">
+      <div class="cover-mark reveal">
+        <span class="cover-mark-line"></span>
+        <span>Pippi's &times; Scroll Media &middot; Kickoff</span>
+      </div>
+      <h1 id="s01-title" class="cover-title reveal">Welcome to your kickoff.</h1>
+      <p class="cover-lede reveal">Raising the standard of the craft and the guest experience. That's the brand we're building. Today is mostly us listening.</p>
+
+      <div class="agenda-strip">
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">01</span><span class="astop-label">Welcome</span></div><span class="astop-desc">Today's path</span><span class="astop-meta">3 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">02</span><span class="astop-label">The engagement</span></div><span class="astop-desc">What we're running</span><span class="astop-meta">5 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">03</span><span class="astop-label">Timeline + dates</span></div><span class="astop-desc">Locking the runway</span><span class="astop-meta">6 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">04</span><span class="astop-label">Goals</span></div><span class="astop-desc">What a win looks like</span><span class="astop-meta">6 min</span></div>
+        <div class="astop is-yours reveal"><div class="astop-top"><span class="astop-num">05</span><span class="astop-label">What Pippi's stands for</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div><span class="astop-desc">In your words</span><span class="astop-meta">11 min</span></div>
+        <div class="astop is-yours reveal"><div class="astop-top"><span class="astop-num">06</span><span class="astop-label">How Pippi's looks</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div><span class="astop-desc">The visual target</span><span class="astop-meta">9 min</span></div>
+        <div class="astop is-yours reveal"><div class="astop-top"><span class="astop-num">07</span><span class="astop-label">How Pippi's sounds</span><span class="astop-yours"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span></div><span class="astop-desc">Your voice, captured</span><span class="astop-meta">10 min</span></div>
+        <div class="astop reveal"><div class="astop-top"><span class="astop-num">08</span><span class="astop-label">Decisions + next steps</span></div><span class="astop-desc">Confirm and go</span><span class="astop-meta">8 min</span></div>
+      </div>
+
+      <p class="agenda-note reveal">This is a working session, not a presentation. Three of these stops are yours entirely. The more you talk, the better we build.</p>
+    </section>
+
+    <!-- SLIDE 02 · THE ENGAGEMENT -->
+    <section class="slide" id="s02" aria-labelledby="s02-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">02</span>
+        <span class="slide-eyebrow-text">The engagement</span>
+      </div>
+      <h2 id="s02-title" class="slide-title reveal">Signature Growth. Here's what we're running.</h2>
+
+      <p class="scope-line reveal"><strong>3 feed posts a week</strong> (Mon, Wed, Fri) &middot; <strong>2 story days a week</strong> (Tue, Thu) &middot; <strong>3 reshares a week</strong> &middot; <strong>community management</strong> on every post &middot; <strong>one content shoot every 3 to 4 weeks</strong> &middot; <strong>monthly performance report</strong> &middot; <strong>pre-launch runway program</strong> &middot; <strong>collaboration coordination</strong> &middot; <strong>profile and Instagram SEO</strong>.</p>
+
+      <div class="engagement-callouts">
+        <div class="callout reveal">
+          <span class="callout-label">Full service</span>
+          <span class="callout-body">This is end to end, not content drops. We run the account: posting, DMs, comments, community. It is still your account, jump in anytime. This is a partnership.</span>
+        </div>
+        <div class="launch-card reveal">
+          <span class="launch-tag">Unique to your engagement</span>
+          <span class="launch-body">We will be on-site at two of your launch moments at no extra charge: the friends and family party on August 22 and grand opening on August 31. Training week we can cover as a one-off add-on if you want it. This is a big launch, so we are leaning in.</span>
+        </div>
+      </div>
+
+      <p class="ig-only-line reveal"><strong>Everything we run is Instagram.</strong> When we say search or SEO, we mean Instagram search, location tags, and geo-tags. Not Google.</p>
+
+      <div class="approval-strip">
+        <div class="approw reveal"><span class="approw-step">1</span>Content lands in Plann 5 business days before publish.</div>
+        <div class="approw reveal"><span class="approw-step">2</span>Your approval is due within 2 business days.</div>
+        <div class="approw reveal"><span class="approw-step">3</span>2 rounds of edits per batch, flexible the first 30 days while we calibrate.</div>
+      </div>
+
+      <div class="work-table reveal">
+        <div class="work-col-head keeps">Keeps it moving</div>
+        <div class="work-col-head friction">Slows it down</div>
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals in Plann</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Day-before approvals</div>
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One voice and one round</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback scattered across channels</div>
+        <div class="work-cell keeps"><svg class="work-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust in month one</div>
+        <div class="work-cell friction"><svg class="work-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Re-opening a locked post</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 03 · TIMELINE + KEY DATES -->
+    <section class="slide" id="s03" aria-labelledby="s03-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">03</span>
+        <span class="slide-eyebrow-text">Timeline + key dates</span>
+      </div>
+      <h2 id="s03-title" class="slide-title reveal">Here's the runway. Let's lock the dates.</h2>
+
+      <div class="runway reveal" role="list" aria-label="Runway to launch">
+        <div class="rnode is-current" role="listitem"><span class="rnode-date">Thu Jul 16</span><span class="rnode-name">Kickoff (today)</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">3 weeks</span><span class="rnode-name">Strategy build</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Tue Jul 28</span><span class="rnode-name">Strategy presentation</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Wed Jul 29 or Thu Jul 30</span><span class="rnode-name">First content shoot</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Fri Aug 7</span><span class="rnode-name">First status call</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Aug 8 to 11</span><span class="rnode-name">Edits</span></div>
+        <div class="rnode is-hero" role="listitem"><span class="rnode-date">Wed Aug 12</span><span class="rnode-name">First post live</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Sat Aug 22</span><span class="rnode-name">Friends and family party</span><span class="rnode-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Week of Aug 24</span><span class="rnode-name">Team training</span><span class="rnode-tag is-addon">Add-on</span></div>
+        <div class="rnode" role="listitem"><span class="rnode-date">Mon Aug 31</span><span class="rnode-name">Grand opening</span><span class="rnode-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
+      </div>
+
+      <div class="note-pair">
+        <div class="callout reveal">
+          <span class="callout-label">Shoot day</span>
+          <span class="callout-body">Your shoot days are Monday to Wednesday, mornings and midday. Let's pick Wednesday July 29 or Thursday July 30 for the first one. First post holds at August 12 either way.</span>
+        </div>
+        <div class="callout reveal">
+          <span class="callout-label">Second shoot</span>
+          <span class="callout-body">We will bank a second shoot before you travel August 17 to 19, so the account keeps posting through your travel and the construction handoff with nothing needed from you.</span>
+        </div>
+      </div>
+
+      <div class="dates-lock reveal">
+        <div class="dates-lock-label">Dates to lock today</div>
+        <div class="dlock-grid">
+          <div class="dlock-row"><span class="dlock-when">Strategy presentation</span><span class="dlock-what">Tuesday, July 28</span></div>
+          <div class="dlock-row"><span class="dlock-when">First shoot</span><span class="dlock-what">Wednesday, July 29 or Thursday, July 30</span></div>
+          <div class="dlock-row"><span class="dlock-when">First post</span><span class="dlock-what">Wednesday, August 12</span></div>
+          <div class="dlock-row"><span class="dlock-when">Check-in cadence</span><span class="dlock-what">Lock a recurring slot after July 28</span></div>
+          <div class="dlock-row"><span class="dlock-when">On-site launch dates</span><span class="dlock-what">Party Aug 22 &middot; grand opening Aug 31</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 04 · GOALS (interactive funnel quiz) -->
+    <section class="slide" id="s04" aria-labelledby="s04-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">04</span>
+        <span class="slide-eyebrow-text">Goals</span>
+      </div>
+      <h2 id="s04-title" class="slide-title reveal">What does a win actually look like?</h2>
+      <p class="slide-subtitle reveal">A salon launch has two jobs: fill the chairs with clients, and fill them with stylists. We run that through three stages. You tell us what winning looks like at each one.</p>
+
+      <div class="goals-grid">
+        <!-- discovery stimulus: she selects live, we capture via Gemini; nothing pre-selected, no recommended pick -->
+        <div class="goal-col reveal">
+          <span class="goal-stage">Awareness &middot; Top of funnel</span>
+          <h3 class="goal-headline">Pick your win.</h3>
+          <div class="opt-stack" data-picker="single" role="radiogroup" aria-label="Awareness win">
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>OTR knows Pippi's exists by open day</div>
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>A pre-launch following that actually shows up to the events</div>
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Known as the new room worth watching get built</div>
+            <input class="opt-input" type="text" placeholder="Add your own..." aria-label="Add your own awareness win" />
+          </div>
+        </div>
+        <div class="goal-col reveal">
+          <span class="goal-stage">Trust and authority &middot; Middle of funnel</span>
+          <h3 class="goal-headline">Pick your win.</h3>
+          <div class="opt-stack" data-picker="single" role="radiogroup" aria-label="Trust win">
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>The colorist Cincinnati trusts for lived-in color and correction</div>
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>The mentorship room stylists in the city talk about</div>
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>The most-saved, most-shared hair content in Over-the-Rhine</div>
+            <input class="opt-input" type="text" placeholder="Add your own..." aria-label="Add your own trust win" />
+          </div>
+        </div>
+        <div class="goal-col reveal">
+          <span class="goal-stage">Conversion &middot; Bottom of funnel</span>
+          <h3 class="goal-headline">Pick your win.</h3>
+          <div class="opt-stack" data-picker="single" role="radiogroup" aria-label="Conversion win">
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>A full chair calendar at open</div>
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>A real waitlist before the doors open</div>
+            <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>The last one or two quality stylists landed</div>
+            <input class="opt-input" type="text" placeholder="Add your own..." aria-label="Add your own conversion win" />
+          </div>
+        </div>
+      </div>
+
+      <p class="framing-line reveal"><strong>Relatability earns attention. Authority earns trust. Proof books the chair.</strong> You tell us which win matters most at each stage.</p>
+      <p class="open-q reveal"><span>Open question</span>Now put numbers on it. What does a win look like at launch, and at 90 days? Booked chairs, a waitlist size, stylists hired? Name the numbers you would be thrilled with.</p>
+    </section>
+
+    <!-- SLIDE 05 · WORKING SESSION: WHAT PIPPI'S STANDS FOR
+         Discovery-first working slide. Differentiators come from HER selections
+         and answers. No differentiator hero-list, no pillar-hypothesis. Deliberate.
+         May run tall (single-screen-fit exempt). -->
+    <section class="slide" id="s05" aria-labelledby="s05-title">
+      <div class="slide-head-row reveal">
+        <div class="slide-eyebrow">
+          <span class="slide-eyebrow-num">05</span>
+          <span class="slide-eyebrow-text">Working session &middot; What Pippi's stands for</span>
+        </div>
+        <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>11 min</div>
+      </div>
+      <h2 id="s05-title" class="slide-title reveal">We did our homework. Now we need you.</h2>
+
+      <!-- Block 1 -->
+      <div class="reveal">
+        <div class="picker-eyebrow">What makes someone choose Pippi's?<em>Not what we think. What's actually true. Pick what's real, cross out what isn't, add what's missing.</em></div>
+        <!-- discovery stimulus: she selects live, we capture via Gemini; nothing pre-selected, no recommended pick -->
+        <div class="chips" data-picker="multi" role="group" aria-label="What makes someone choose Pippi's">
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>a commission room built on mentorship</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>one shared table, not a row of stations</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>the Rica line, through your mentor</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>color and session pedigree at a fashion-week level</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>a 130-year-old building on Vine Street</div>
+          <input class="opt-input chip-input" type="text" placeholder="Add your own..." aria-label="Add your own" />
+        </div>
+        <p class="open-q" style="margin-top:var(--sp-4);"><span>Ask</span>Which of these are genuinely, only-yours true? Which is the single most central? And what did we miss?</p>
+      </div>
+
+      <!-- Block 2 · pull quote -->
+      <div class="pullquote reveal">
+        <p>"Pippi's exists to raise the standard of our craft and the experience of the guest."</p>
+        <span class="pq-attr">Your words, from your onboarding form</span>
+      </div>
+      <p class="say-more reveal"><strong>Say more.</strong> What does raising the standard actually look like, day to day, in the room?</p>
+
+      <!-- Block 3 · two questions we need answered today -->
+      <div class="block-head reveal">Two questions we need answered today</div>
+      <div class="open-strip">
+        <div class="open-item reveal">Tell us about a real client who came to you after a color went wrong somewhere else. What did she say when she sat down, and what did you say back?</div>
+        <div class="open-item reveal">What finally makes a great stylist leave a booth for a room like yours? Think of the last one you talked to.</div>
+      </div>
+
+      <!-- Block 4 · three quick prompts -->
+      <div class="block-head reveal">Three quick prompts</div>
+      <div class="prompt-cols">
+        <div class="prompt-col reveal">
+          <span class="prompt-label">Personal</span>
+          <span class="prompt-q">Two or three things that matter to you outside the salon.</span>
+          <div class="prompt-lines"><span class="prompt-line"></span><span class="prompt-line"></span><span class="prompt-line"></span></div>
+        </div>
+        <div class="prompt-col reveal">
+          <span class="prompt-label">Professional</span>
+          <span class="prompt-q">Two or three things that matter to you as the founder running Pippi's.</span>
+          <div class="prompt-lines"><span class="prompt-line"></span><span class="prompt-line"></span><span class="prompt-line"></span></div>
+        </div>
+        <div class="prompt-col reveal">
+          <span class="prompt-label">Brand</span>
+          <span class="prompt-q">Two or three things Pippi's stands for, whether or not we ever post about them.</span>
+          <div class="prompt-lines"><span class="prompt-line"></span><span class="prompt-line"></span><span class="prompt-line"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 06 · WORKING SESSION: HOW PIPPI'S LOOKS (new in v2)
+         Inspiration accounts + visual quiz. May run tall (single-screen-fit exempt).
+         Inspiration handles are EXACT: @ameliajanehair, @edwardsandcoeducation,
+         @menspireacademy. Menspire is labelled "one we'd add" (ours, not hers). -->
+    <section class="slide" id="s06" aria-labelledby="s06-title">
+      <div class="slide-head-row reveal">
+        <div class="slide-eyebrow">
+          <span class="slide-eyebrow-num">06</span>
+          <span class="slide-eyebrow-text">Working session &middot; How Pippi's looks</span>
+        </div>
+        <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>9 min</div>
+      </div>
+      <h2 id="s06-title" class="slide-title reveal">The look you're building toward.</h2>
+      <p class="slide-subtitle reveal">You sent us the feeds you admire. Let's look at them together and pin down exactly what you want.</p>
+
+      <!-- Block 1 · inspiration accounts -->
+      <div class="inspo-grid">
+        <div class="inspo-card reveal">
+          <div class="inspo-imgwrap">
+            <!-- TODO: drop real IG grid screenshot for @ameliajanehair -->
+            <img class="inspo-img" src="assets/inspo/ameliajanehair.jpg" alt="Instagram grid for @ameliajanehair, editorial blonde and lived-in color, founder-forward." />
+          </div>
+          <div class="inspo-body">
+            <div class="inspo-headrow"><span class="inspo-name">Amelia Jane</span><span class="inspo-handle">@ameliajanehair</span></div>
+            <p class="inspo-prompt">You sent us this one. What is it about her feed that you want? The color work, the way she shows up, the pace?</p>
+          </div>
+        </div>
+        <div class="inspo-card reveal">
+          <div class="inspo-imgwrap">
+            <!-- TODO: drop real IG grid screenshot for @edwardsandcoeducation -->
+            <img class="inspo-img" src="assets/inspo/edwardsandco-education.jpg" alt="Instagram grid for @edwardsandcoeducation, craft-and-mentorship, education-forward." />
+          </div>
+          <div class="inspo-body">
+            <div class="inspo-headrow"><span class="inspo-name">EdwardsAndCo</span><span class="inspo-handle">@edwardsandcoeducation</span></div>
+            <p class="inspo-prompt">You sent Edwards and Co. We are showing their education account, the mentorship side that fits your room. Is this the piece of them you meant?</p>
+          </div>
+        </div>
+        <div class="inspo-card reveal">
+          <div class="inspo-imgwrap">
+            <!-- TODO: drop real IG grid screenshot for @menspireacademy -->
+            <img class="inspo-img" src="assets/inspo/menspire-academy.jpg" alt="Instagram grid for @menspireacademy, cinematic, editorial reveal editing." />
+          </div>
+          <div class="inspo-body">
+            <div class="inspo-headrow"><span class="inspo-name">Menspire</span><span class="inspo-handle">@menspireacademy</span><span class="inspo-add">one we'd add</span></div>
+            <p class="inspo-prompt">This one is ours, not yours. We would study their cinematic reveal editing for your hero transformations. Does this energy fit, or is it too much?</p>
+          </div>
+        </div>
+      </div>
+      <p class="open-q inspo-q reveal"><span>Question</span>Beyond these three, anyone whose feed you love? Drop the @handles and we will study them.</p>
+
+      <!-- Block 2 · visual mood -->
+      <div class="reveal">
+        <div class="picker-eyebrow" style="margin-top:var(--sp-6);">Visual mood</div>
+        <!-- discovery stimulus: she selects live, we capture via Gemini; nothing pre-selected, no recommended pick -->
+        <div class="chips" data-picker="multi" role="group" aria-label="Visual mood">
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>minimal and clean</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>craft-forward and detailed</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>elevated and editorial</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>warm and intimate</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>moody and cinematic</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>bright and airy</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>natural and undone</div>
+          <div class="chip"><svg class="chip-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>timeless and classic</div>
+        </div>
+        <p class="say-more reveal">On your form you picked minimal-clean and craft-forward. Still right? Anything you would add now that you see them together?</p>
+      </div>
+
+      <!-- Block 3 · signature elements -->
+      <div class="sig-strip reveal">
+        <span class="sig-label">Signature elements</span>
+        The three you flagged to feature: <strong>the communal table</strong>, <strong>the color bar</strong>, <strong>the backwash area</strong>. The table is the signature image. Agreed, and anything to add? (Keep off-camera: the laundry room. Fine on-camera: the breakroom and lobby.)
+      </div>
+    </section>
+
+    <!-- SLIDE 07 · WORKING SESSION: HOW PIPPI'S SOUNDS
+         Voice quiz. May run tall (single-screen-fit exempt). Caption closer: three
+         drafts, EQUAL weight, NO prediction shown, single-select. No "recommended". -->
+    <section class="slide" id="s07" aria-labelledby="s07-title">
+      <div class="slide-head-row reveal">
+        <div class="slide-eyebrow">
+          <span class="slide-eyebrow-num">07</span>
+          <span class="slide-eyebrow-text">Working session &middot; How Pippi's sounds</span>
+        </div>
+        <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>10 min</div>
+      </div>
+      <h2 id="s07-title" class="slide-title reveal">Your voice, on every surface we run.</h2>
+      <p class="slide-subtitle reveal">We will be writing your captions and replying to your comments and DMs. A few quick picks. The more you say out loud, the better we sound like you.</p>
+
+      <!-- Moment 1 · confirm -->
+      <div class="vmoment reveal">
+        <span class="vmoment-num">1</span>
+        <div class="vmoment-body">
+          <div class="vmoment-title">Your voice, confirmed</div>
+          <p class="vmoment-q">Your form read as confident, elevated, and down to earth. You liked "the salon Cincinnati didn't know it was missing" and "great hair starts with a great colorist," and you passed on the sharper option. So: confident and warm, not provocative. Did we read that right?</p>
+        </div>
+      </div>
+
+      <!-- Moment 2 · which sounds like you (three single-select rows) -->
+      <div class="vmoment reveal">
+        <span class="vmoment-num">2</span>
+        <div class="vmoment-body">
+          <div class="vmoment-title">Which sounds like you?</div>
+          <p class="vmoment-q">Pick one per row, or add your own. Nothing here is the right answer. We want the one that sounds like you.</p>
+          <!-- discovery stimulus: she selects live, we capture via Gemini; nothing pre-selected, no recommended pick -->
+          <div class="vp-row">
+            <span class="vp-rowlabel">What Pippi's is</span>
+            <div class="vp-opts" data-picker="single" role="radiogroup" aria-label="What Pippi's is">
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"a salon that feels like home"</div>
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"the salon Cincinnati didn't know it was missing"</div>
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"a commission room built on mentorship"</div>
+            </div>
+          </div>
+          <div class="vp-row">
+            <span class="vp-rowlabel">The chair</span>
+            <div class="vp-opts" data-picker="single" role="radiogroup" aria-label="The chair">
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"book with us"</div>
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"some chairs are worth the wait"</div>
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"there's a seat with your name on it"</div>
+            </div>
+          </div>
+          <div class="vp-row">
+            <span class="vp-rowlabel">The craft</span>
+            <div class="vp-opts" data-picker="single" role="radiogroup" aria-label="The craft">
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"we do great color"</div>
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"great hair starts with a great colorist"</div>
+              <div class="opt"><span class="opt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>"lived-in color that grows out right"</div>
+            </div>
+          </div>
+          <input class="opt-input vp-add" type="text" placeholder="Add your own line..." aria-label="Add your own line" />
+        </div>
+      </div>
+
+      <!-- Moment 3 · open -->
+      <div class="vmoment reveal">
+        <span class="vmoment-num">3</span>
+        <div class="vmoment-body">
+          <div class="vmoment-title">The last yes</div>
+          <p class="vmoment-q">Think of a client who booked after a bad color somewhere else, or a stylist you were recruiting. What did they say, and what did you say back?</p>
+        </div>
+      </div>
+
+      <!-- Moment 4 · open -->
+      <div class="vmoment reveal">
+        <span class="vmoment-num">4</span>
+        <div class="vmoment-body">
+          <div class="vmoment-title">The hard line</div>
+          <p class="vmoment-q">What should we never do in your captions, comments, or DMs, even if it performed? And how do you feel about us using AI as a behind-the-scenes tool in production, never on anything that reaches your audience without you seeing it first?</p>
+        </div>
+      </div>
+
+      <!-- Caption calibration closer · three equal-weight drafts, single-select -->
+      <div class="vq-beat reveal">Last one &middot; pick your sound</div>
+      <div class="caption-calib reveal">
+        <p class="calib-intro">Same launch teaser, three different sounds. Pick the closest. Tell us why. Edit it live.</p>
+        <!-- discovery stimulus: she selects live, we capture via Gemini; nothing pre-selected, no recommended pick; equal weight, no read revealed -->
+        <div class="caption-cards" data-picker="single" role="radiogroup" aria-label="Pick your sound">
+          <div class="caption-card">
+            <div class="caption-head"><span class="caption-label">Draft A</span></div>
+            <span class="caption-style">Elevated, editorial</span>
+            <p class="caption-text">"A new room is coming to Vine Street. One shared table. Color built to grow out right. The kind of chair Cincinnati has been waiting for, quietly, for a while now. Doors open soon. The wait is almost over."</p>
+            <span class="caption-pick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Closest</span>
+          </div>
+          <div class="caption-card">
+            <div class="caption-head"><span class="caption-label">Draft B</span></div>
+            <span class="caption-style">Warm, founder voice</span>
+            <p class="caption-text">"I have wanted this room for years. A place where stylists are mentored, not just booked, and where a guest leaves feeling like the best version of themselves. That room is almost real, on Vine Street, and I cannot wait to show you. Opening soon."</p>
+            <span class="caption-pick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Closest</span>
+          </div>
+          <div class="caption-card">
+            <div class="caption-head"><span class="caption-label">Draft C</span></div>
+            <span class="caption-style">Confident, bold</span>
+            <p class="caption-text">"Great hair starts with a great colorist. Full stop. We built a room around that idea, on Vine Street, and it opens soon. Come see what the standard is supposed to look like."</p>
+            <span class="caption-pick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Closest</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 08 · DECISIONS + NEXT STEPS -->
+    <section class="slide is-tight" id="s08" aria-labelledby="s08-title">
+      <div class="slide-eyebrow reveal">
+        <span class="slide-eyebrow-num">08</span>
+        <span class="slide-eyebrow-text">Decisions + next steps</span>
+      </div>
+      <h2 id="s08-title" class="slide-title reveal">A few decisions. Then we build.</h2>
+
+      <div class="decisions">
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">1 &middot; Priority-chair sequencing</span>
+            <span class="decision-chip lock">Lock</span>
+          </div>
+          <p class="decision-row form"><span class="dlabel">Your form</span>Both, lean stylists early.</p>
+          <p class="decision-row rec"><span class="dlabel">Our plan</span>Stylist-leaning content through the pre-open runway to land your last one or two, then flip to client-leaning at open.</p>
+        </div>
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">2 &middot; Booking destination</span>
+            <span class="decision-chip confirm">Confirm</span>
+          </div>
+          <p class="decision-row rec"><span class="dlabel">Our plan</span>Aura goes live August 1. That is where every "book now" points.</p>
+          <p class="decision-row form"><span class="dlabel">We need</span>Send us the live link the day it is up.</p>
+        </div>
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">3 &middot; Content boundaries</span>
+            <span class="decision-chip lock">Lock</span>
+          </div>
+          <p class="decision-row rec"><span class="dlabel">Our plan</span>AI stays behind the scenes in production, never on anything client-facing without your eyes first.</p>
+          <p class="decision-row form"><span class="dlabel">We need</span>Anything else off-limits?</p>
+        </div>
+        <div class="decision-block reveal">
+          <div class="decision-top">
+            <span class="decision-title">4 &middot; Launch coverage</span>
+            <span class="decision-chip confirm">Confirm</span>
+          </div>
+          <p class="decision-row rec"><span class="dlabel">Our plan</span>On-site at the party (Aug 22) and grand opening (Aug 31).</p>
+          <p class="decision-row form"><span class="dlabel">Optional</span>Training available as an add-on.</p>
+        </div>
+      </div>
+
+      <div class="buckets">
+        <div class="bucket reveal">
+          <span class="bucket-eyebrow">This week &middot; Access</span>
+          <span class="bucket-owner">Rachel owns</span>
+          <ul class="bucket-list">
+            <li>Instagram 2FA</li>
+            <li>Plann setup and walkthrough</li>
+            <li>Confirm the Google Drive share</li>
+          </ul>
+        </div>
+        <div class="bucket reveal">
+          <span class="bucket-eyebrow">Assets</span>
+          <span class="bucket-owner">You confirm</span>
+          <ul class="bucket-list">
+            <li>Brand folder is complete.</li>
+            <li>Any booking-link or consent-form logistics before the first shoot.</li>
+          </ul>
+        </div>
+        <div class="bucket reveal">
+          <span class="bucket-eyebrow">Already in motion</span>
+          <span class="bucket-owner">Rachel owns</span>
+          <ul class="bucket-list">
+            <li>The 3-week strategy sprint starts now.</li>
+            <li>Full reveal at your strategy presentation on Tuesday, July 28.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="close-block reveal">
+        <p class="close-line">You are building something with a real point of view, and the pre-launch window is where we win it. Rachel runs your account from here. Chase is always a call away.</p>
+        <div class="close-sign">
+          <div>
+            <div class="close-sign-name">Rachel Dina</div>
+            <div class="close-sign-title">Your account manager &middot; Scroll Media</div>
+          </div>
+          <div>
+            <div class="close-sign-name">Chase Gianattasio</div>
+            <div class="close-sign-title">Co-Founder &amp; COO &middot; Scroll Media</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Fade-in reveal */
+    (function() {
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+    })();
+
+    /* Slide nav active state */
+    (function() {
+      var navLinks = document.querySelectorAll('.slide-nav a');
+      if (!navLinks.length) return;
+      var slides = document.querySelectorAll('.slide');
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            navLinks.forEach(function(link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+      slides.forEach(function(s) { io.observe(s); });
+    })();
+
+    /* Interactive pickers · discovery stimuli (single + multi select)
+       In-memory only, no persistence. Toggles on click and Enter/Space. */
+    (function() {
+      var groups = document.querySelectorAll('[data-picker]');
+      groups.forEach(function(group) {
+        var mode = group.getAttribute('data-picker'); // 'single' | 'multi'
+        var opts = group.querySelectorAll('.opt, .chip, .caption-card');
+        opts.forEach(function(opt) {
+          opt.setAttribute('tabindex', '0');
+          opt.setAttribute('role', mode === 'single' ? 'radio' : 'checkbox');
+          opt.setAttribute('aria-checked', 'false');
+          function toggle() {
+            if (mode === 'single') {
+              var wasSel = opt.classList.contains('is-selected');
+              opts.forEach(function(o) { o.classList.remove('is-selected'); o.setAttribute('aria-checked', 'false'); });
+              if (!wasSel) { opt.classList.add('is-selected'); opt.setAttribute('aria-checked', 'true'); }
+            } else {
+              var sel = opt.classList.toggle('is-selected');
+              opt.setAttribute('aria-checked', sel ? 'true' : 'false');
+            }
+          }
+          opt.addEventListener('click', toggle);
+          opt.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
+          });
+        });
+      });
+    })();
+
+    /* Arrow-key slide navigation (presenter-driven screen-share) */
+    (function() {
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      if (!slides.length) return;
+      var NEXT = { ArrowRight: 1, ArrowDown: 1, PageDown: 1 };
+      var PREV = { ArrowLeft: 1, ArrowUp: 1, PageUp: 1 };
+
+      function currentIndex() {
+        var marker = window.innerHeight * 0.35;
+        var idx = 0;
+        for (var i = 0; i < slides.length; i++) {
+          if (slides[i].getBoundingClientRect().top <= marker) { idx = i; }
+          else { break; }
+        }
+        return idx;
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+        // don't hijack arrows while typing in an add-your-own field
+        var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'input' || tag === 'textarea') return;
+        var dir = NEXT[e.key] ? 1 : (PREV[e.key] ? -1 : 0);
+        if (!dir) return;
+        var target = Math.min(slides.length - 1, Math.max(0, currentIndex() + dir));
+        e.preventDefault();
+        slides[target].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    })();
+  </script>
+
+</body>
+</html>

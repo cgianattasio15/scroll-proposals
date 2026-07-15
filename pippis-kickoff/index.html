@@ -198,6 +198,16 @@
     @media (max-width:560px){.scope-grid{grid-template-columns:1fr}.flow-strip{grid-template-columns:1fr}.flow-cell.slows{border-left:none}}
 
     /* ===== TIMELINE (horizontal journey) ===== */
+    .phase-band{display:grid;grid-template-columns:2fr 6fr;gap:10px;margin-top:var(--sp-4)}
+    .phase-seg{border-radius:var(--r-md);padding:8px var(--sp-4);position:relative}
+    .phase-seg.p1{background:var(--lucid-soft);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400)}
+    .phase-seg.p2{background:rgba(226,237,122,.16);border:1px solid var(--highlighter-dark);border-left:3px solid var(--highlighter-dark)}
+    .phase-name{display:block;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--azure);line-height:1.2}
+    .phase-seg.p2 .phase-name{color:var(--azure-900)}
+    .phase-sub{display:block;font-size:12px;color:var(--fg-muted);line-height:1.25;margin-top:1px}
+    .phase-seg.p2::before{content:"";position:absolute;left:-7px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:7px solid var(--highlighter-dark)}
+    .phase-band + .journey{margin-top:var(--sp-3)}
+    @media (max-width:640px){.phase-band{grid-template-columns:1fr}.phase-seg.p2::before{display:none}}
     .journey{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:var(--sp-5)}
     .journey::before{content:"";position:absolute;top:9px;left:3%;right:3%;height:2px;background:var(--rule)}
     .jnode{position:relative;z-index:2;text-align:center;padding-top:22px}
@@ -365,7 +375,7 @@
       .scope-item b,.panel-body,.approw,.ig-line,.flow-cell,.fstage-headline,.fwin,
       .goal-frame,.capture-body,.vchip,.ask-line,.trigger-q,.inspo-prompt,.mood-note,
       .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
-      .pmini-name,.pmini-role,
+      .pmini-name,.pmini-role,.phase-sub,.phase-name,
       .drow,.lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
       .shoot-callout-body,.yourevent-key,.inspo-prompt,.mood-note,
       .shoot-note,.shoot-note strong{font-size:14px}
@@ -531,7 +541,14 @@
               <div class="approw"><span class="approw-step">1</span>Content lands in Plann 5 business days before publish.</div>
               <div class="approw"><span class="approw-step">2</span>Your approval is due within 2 business days.</div>
               <div class="approw"><span class="approw-step">3</span>2 rounds of edits per batch, flexible the first 30 days while we calibrate.</div>
-              <div class="approw"><span class="approw-step">&check;</span>Approvals in Plann on time and one voice keep it moving. Day-before, scattered feedback slows it down.</div>
+            </div>
+            <div class="flow-strip">
+              <div class="flow-head keeps">Keeps it moving</div>
+              <div class="flow-head slows">Slows it down</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals in Plann, on time</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Day-before approvals</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One voice, one round</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback scattered</div>
             </div>
           </div>
         </div>
@@ -555,6 +572,10 @@
         <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Timeline + key dates</span>
         <h2 class="slide-title reveal">Twelve days to the plan. Here's the runway.</h2>
         <p class="slide-lede reveal">From today to your strategy presentation is about twelve days. Tight, on purpose. We want you posting early so the account is building real excitement well before you open.</p>
+        <div class="phase-band reveal">
+          <div class="phase-seg p1"><span class="phase-name">Phase 1 &middot; Strategy build</span><span class="phase-sub">Kickoff through your strategy presentation</span></div>
+          <div class="phase-seg p2"><span class="phase-name">Phase 2 &middot; Execution retainer</span><span class="phase-sub">Posting and ongoing execution begin right after the strategy presentation, when the monthly retainer picks up</span></div>
+        </div>
         <div class="journey reveal" role="list" aria-label="Runway to launch">
           <div class="jnode here d1" role="listitem"><span class="jdot"></span><span class="jwhen">Thu Jul 16</span><span class="jwhat">Kickoff</span><span class="jhere-lbl">You are here</span></div>
           <div class="jnode d1" role="listitem"><span class="jdot"></span><span class="jwhen">Tue Jul 28</span><span class="jwhat">Strategy presentation</span></div>

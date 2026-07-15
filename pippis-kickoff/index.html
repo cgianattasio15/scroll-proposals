@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="googlebot" content="noindex,nofollow" />
+  <title>Pippi's &middot; Kickoff | Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="../scroll-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       SCROLL MEDIA DESIGN SYSTEM · Pippi's Kickoff Deck (v4)
+       Strategy-tier rebuild on the canonical Signature strategy-deck
+       design system (light client palette, Scheme B).
+       Per brand_system.md §5 + scroll-web-design v2.1.
+       v4 = content + structure revision of v3. One-screen-per-slide,
+       reveal-only interactions, 9 slides. Real Pippi's logo in topbar.
+       ========================================================= */
+    :root {
+      --ghost:#FAFDFF; --azure:#0C3387; --azure-900:#071d4f; --azure-800:#0c3387;
+      --azure-600:#254fb0; --azure-400:#7a9ad8; --azure-200:#b9cdee;
+      --lucid:#CBE9FF; --lucid-deep:#9ecee8; --lucid-soft:#e4f3ff;
+      --highlighter:#E2ED7A; --highlighter-dark:#c8d94a; --shadow:#151516; --white:#fff;
+
+      --bg:var(--ghost); --bg-alt:#f4f7fb; --bg-panel:var(--white);
+      --fg:var(--shadow); --fg-heading:var(--azure); --fg-muted:#5a6070; --fg-subtle:#9097a6;
+      --fg-on-azure:var(--white);
+      --rule:rgba(12,51,135,.20); --rule-strong:rgba(12,51,135,.40); --rule-faint:rgba(12,51,135,.08);
+
+      --fs-xs:11px; --fs-sm:13px; --fs-base:15px; --fs-md:17px; --fs-lg:20px;
+      --fs-xl:24px; --fs-2xl:32px; --fs-3xl:44px; --fs-4xl:60px;
+      --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:40px; --sp-8:56px; --sp-9:80px;
+      --header-h:60px; --content-max:1120px; --slide-max:1040px;
+      --r-sm:4px; --r-md:8px; --r-lg:16px;
+      --sh-sm:0 1px 2px rgba(12,51,135,.06); --sh-md:0 6px 24px rgba(12,51,135,.08); --sh-lg:0 18px 60px rgba(12,51,135,.10);
+      --ease:cubic-bezier(.22,.61,.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--header-h)}
+    body{font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);font-size:var(--fs-base);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:inherit;font-weight:800;color:var(--fg-heading);letter-spacing:-.01em;line-height:1.12}
+    a{color:var(--azure-600);text-decoration:none}
+    button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0}
+    strong{font-weight:700;color:var(--shadow)}
+    em{font-style:italic}
+
+    /* HEADER · co-branded (Scroll left, Pippi's azure wordmark right) */
+    .deck-header{position:sticky;top:0;height:var(--header-h);background:rgba(250,253,255,.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule-faint);z-index:100;display:flex;align-items:center}
+    .deck-header-inner{width:100%;max-width:var(--content-max);margin:0 auto;padding:0 var(--sp-5);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)}
+    .header-logo{display:flex;align-items:center;gap:var(--sp-3);min-height:44px;padding:4px 0}
+    .header-logo-img{height:24px;width:auto;display:block}
+    .header-co{display:flex;align-items:center;gap:var(--sp-4);min-height:44px}
+    .header-x{font-size:13px;color:var(--fg-subtle);font-weight:600}
+    .header-pippis-img{height:22px;width:auto;display:block}
+
+    /* SCROLL PROGRESS */
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--azure),var(--azure-400));z-index:120;transition:width .1s linear}
+
+    /* SLIDE NAV DOTS */
+    .slide-nav{display:none;position:fixed;top:50%;right:var(--sp-5);transform:translateY(-50%);z-index:50;flex-direction:column;gap:7px}
+    .slide-nav a{width:8px;height:8px;background:var(--azure-200);border-radius:50%;transition:all .2s var(--ease);position:relative}
+    .slide-nav a:hover{background:var(--azure-600);transform:scale(1.4)}
+    .slide-nav a.active{background:var(--azure);transform:scale(1.6)}
+    .slide-nav a span{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--azure);color:var(--ghost);padding:4px 10px;font-size:12px;white-space:nowrap;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .18s var(--ease)}
+    .slide-nav a:hover span{opacity:1}
+    @media (min-width:1340px){.slide-nav{display:flex}}
+
+    /* SLIDE SHELL · one screen per slide */
+    .slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + 16px) var(--sp-6) var(--sp-6);border-bottom:1px solid var(--rule-faint);position:relative;scroll-margin-top:var(--header-h)}
+    .slide.is-tight{padding-top:calc(var(--header-h) + 12px);padding-bottom:var(--sp-5)}
+    .slide-inner{width:100%;max-width:var(--slide-max);margin:0 auto}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3)}
+    .eyebrow .act{background:var(--azure);color:var(--ghost);padding:3px 9px;border-radius:999px;font-size:12px;letter-spacing:.1em}
+    .eyebrow .act.yours{background:var(--highlighter);color:var(--azure-900)}
+    .eyebrow-num{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;background:var(--azure);color:var(--ghost);font-size:12px;font-weight:800}
+    .slide-title{font-size:clamp(26px,3.5vw,40px);margin-bottom:var(--sp-3);max-width:24ch}
+    .slide-lede{font-size:clamp(15px,1.65vw,18px);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-4);line-height:1.45}
+    .section-num{position:absolute;top:var(--sp-7);right:var(--sp-7);font-size:13px;font-weight:700;color:var(--azure-200);letter-spacing:.05em}
+    @media (max-width:560px){.section-num{display:none}}
+
+    /* clock chip (working slides) */
+    .slide-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
+    .slide-clock{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(226,237,122,.18);border:1px solid var(--highlighter-dark);font-size:12px;font-weight:800;color:var(--shadow);text-transform:uppercase;letter-spacing:.06em}
+    .slide-clock svg{width:14px;height:14px;fill:none;stroke:var(--shadow);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal.d1{transition-delay:.06s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.22s}
+    .reveal.d4{transition-delay:.30s}.reveal.d5{transition-delay:.38s}.reveal.d6{transition-delay:.46s}
+    .reveal.d7{transition-delay:.54s}.reveal.d8{transition-delay:.62s}.reveal.d9{transition-delay:.70s}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+    /* ===== COVER + CLOSE (azure, node-network motif) ===== */
+    .azure-slide{color:var(--ghost);min-height:100vh;justify-content:center;overflow:hidden}
+    #s01{background:radial-gradient(120% 90% at 85% 5%,#16367a 0%,var(--azure) 46%,var(--azure-900) 100%)}
+    #s10{background:radial-gradient(120% 90% at 15% 92%,#16367a 0%,var(--azure) 48%,var(--azure-900) 100%)}
+    .net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
+    .net line{stroke:rgba(203,233,255,.22);stroke-width:1}
+    .net circle{fill:rgba(203,233,255,.5)}
+    .net circle.hl{fill:var(--highlighter)}
+    .azure-slide .slide-inner{position:relative;z-index:2}
+    .cover-kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lucid);margin-bottom:var(--sp-5)}
+    .cover-kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--highlighter);box-shadow:0 0 12px var(--highlighter)}
+    .cover-title{color:var(--ghost);font-size:clamp(38px,6.6vw,72px);line-height:1.03;letter-spacing:-.02em;max-width:15ch;font-weight:800}
+    .cover-title .hl{color:var(--highlighter)}
+    .cover-sub{font-size:clamp(17px,2vw,var(--fs-xl));color:var(--lucid);margin-top:var(--sp-5);max-width:52ch;font-weight:400;line-height:1.45}
+    .cover-meta{margin-top:var(--sp-8);display:flex;flex-wrap:wrap;gap:var(--sp-6);font-size:14px;color:var(--lucid-soft)}
+    .cover-meta b{display:block;color:var(--ghost);font-size:16px;font-weight:700;margin-top:2px}
+    .scrollcue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--lucid);font-size:12px;letter-spacing:.1em;text-transform:uppercase;z-index:2}
+    .scrollcue .bar{width:1px;height:28px;background:linear-gradient(var(--highlighter),transparent);animation:cue 1.8s ease-in-out infinite}
+    @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+    @media (prefers-reduced-motion:reduce){.scrollcue .bar{animation:none}}
+
+    /* ===== AGENDA (three act bands) ===== */
+    .agenda-acts{display:flex;flex-direction:column;gap:var(--sp-3);margin-top:var(--sp-2)}
+    .act-band{border:1px solid var(--rule-faint);border-left:4px solid var(--azure);border-radius:var(--r-md);background:var(--bg-panel);padding:var(--sp-3) var(--sp-4);box-shadow:var(--sh-sm)}
+    .act-band.is-yours{border-left-color:var(--highlighter-dark);background:rgba(226,237,122,.08)}
+    .act-band-head{display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-2)}
+    .act-band-name{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azure-600)}
+    .act-band.is-yours .act-band-name{color:var(--azure)}
+    .act-yours-flag{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:999px;background:var(--highlighter);color:var(--azure-900);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .act-yours-flag svg{width:12px;height:12px;fill:none;stroke:var(--azure-900);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .act-band-note{margin-left:auto;font-size:12px;color:var(--fg-subtle)}
+    .act-stops{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)}
+    .astop{display:flex;flex-direction:column;gap:1px;padding:var(--sp-2) var(--sp-3);border-radius:var(--r-sm);background:var(--bg-alt);transition:all .18s var(--ease);cursor:pointer}
+    .astop:hover{background:var(--lucid-soft);transform:translateY(-2px)}
+    .act-band.is-yours .astop{background:rgba(226,237,122,.10)}
+    .act-band.is-yours .astop:hover{background:rgba(226,237,122,.20)}
+    .astop-top{display:flex;align-items:baseline;gap:6px}
+    .astop-num{font-size:12px;font-weight:800;color:var(--azure);font-variant-numeric:tabular-nums}
+    .astop-time{margin-left:auto;font-size:12px;color:var(--fg-subtle);letter-spacing:.04em;text-transform:uppercase}
+    .astop-label{font-size:14px;font-weight:700;color:var(--shadow);line-height:1.2}
+    .astop-desc{font-size:12px;color:var(--fg-muted);line-height:1.3}
+    .agenda-note{margin-top:var(--sp-4);font-size:15px;color:var(--azure);font-weight:700;line-height:1.4;max-width:82ch}
+    @media (max-width:760px){.act-stops{grid-template-columns:1fr 1fr}}
+
+    /* ===== ENGAGEMENT ===== */
+    .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);margin-top:var(--sp-2)}
+    .pillar{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4);display:flex;flex-direction:column;gap:var(--sp-2);box-shadow:var(--sh-sm)}
+    .pillar-head{display:flex;align-items:center;gap:9px}
+    .pillar-ico{flex-shrink:0;width:19px;height:19px;fill:none;stroke:var(--azure);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .pillar-name{font-size:14px;font-weight:800;color:var(--azure);line-height:1.15}
+    .pillar-act{font-size:12.5px;color:var(--fg-muted);line-height:1.4}
+    .pillar-delivs{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:var(--sp-2)}
+    .pillar-deliv{display:inline-flex;align-items:center;font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:4px 10px;line-height:1.2}
+    .pillar-deliv.lime{background:rgba(226,237,122,.4)}
+    .eng-lower{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--sp-4);align-items:start;margin-top:var(--sp-4)}
+    .review-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:var(--sp-2)}
+    @media (max-width:900px){.pillars{grid-template-columns:1fr 1fr}.eng-lower{grid-template-columns:1fr}}
+    @media (max-width:560px){.pillars{grid-template-columns:1fr}}
+    .eng-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-4);align-items:start}
+    .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+    .scope-item{display:flex;align-items:flex-start;gap:9px;padding:6px 11px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);box-shadow:var(--sh-sm)}
+    .scope-ico{flex-shrink:0;width:18px;height:18px;fill:none;stroke:var(--azure);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+    .scope-item b{display:block;font-size:13.5px;font-weight:700;color:var(--shadow);line-height:1.2}
+    .scope-item span{display:block;font-size:12px;color:var(--fg-muted);line-height:1.25}
+    .eng-side{display:flex;flex-direction:column;gap:var(--sp-2)}
+    .panel{padding:var(--sp-3) var(--sp-4);border-radius:var(--r-md);border:1px solid var(--rule-faint)}
+    .panel.lucid{background:var(--lucid-soft);border-left:3px solid var(--azure)}
+    .panel.lime{background:rgba(226,237,122,.16);border-left:3px solid var(--highlighter-dark)}
+    .panel-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:6px}
+    .panel.lime .panel-label{color:var(--azure-900)}
+    .panel-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .panel-body strong{color:var(--azure)}
+    .approval{display:flex;flex-direction:column;gap:6px;margin-top:2px}
+    .approw{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--shadow);line-height:1.4}
+    .approw-step{flex-shrink:0;width:20px;height:20px;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+    .ig-line{margin-top:var(--sp-3);font-size:13.5px;color:var(--shadow);line-height:1.5;padding:10px var(--sp-4);background:var(--bg-alt);border-radius:var(--r-sm);border-left:2px solid var(--azure-400)}
+    .ig-line strong{color:var(--azure)}
+    .flow-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:var(--sp-3);border:1px solid var(--rule-faint);border-radius:var(--r-md);overflow:hidden}
+    .flow-head{padding:5px var(--sp-4);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .flow-head.keeps{background:var(--lucid-soft);color:var(--azure)}
+    .flow-head.slows{background:var(--bg-alt);color:var(--fg-muted)}
+    .flow-cell{padding:5px var(--sp-4);font-size:13px;line-height:1.3;border-top:1px solid var(--rule-faint);display:flex;align-items:flex-start;gap:8px}
+    .flow-cell.slows{color:var(--fg-muted);border-left:1px solid var(--rule-faint)}
+    .flow-ico{width:15px;height:15px;flex-shrink:0;margin-top:2px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .flow-cell.keeps .flow-ico{stroke:var(--azure)}
+    .flow-cell.slows .flow-ico{stroke:var(--fg-subtle)}
+    @media (max-width:880px){.eng-grid{grid-template-columns:1fr}.scope-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.scope-grid{grid-template-columns:1fr}.flow-strip{grid-template-columns:1fr}.flow-cell.slows{border-left:none}}
+
+    /* ===== TEAM / POD ===== */
+    .pod{display:flex;flex-direction:column;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .pod-tier-label{display:flex;align-items:center;gap:var(--sp-3);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-600);margin-bottom:var(--sp-3)}
+    .pod-tier-label::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
+    .pod-tier-label.day::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--highlighter-dark);flex-shrink:0}
+    .pod-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
+    .pod-card{display:flex;align-items:flex-start;gap:var(--sp-3);background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4);box-shadow:var(--sh-sm)}
+    .pod-card.primary{border-top-color:var(--highlighter-dark);background:rgba(226,237,122,.09)}
+    .pod-mono{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;letter-spacing:.02em}
+    .pod-card.primary .pod-mono{background:var(--highlighter);color:var(--azure-900)}
+    .pod-mono svg{width:20px;height:20px;fill:none;stroke:var(--ghost);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .pod-body{display:flex;flex-direction:column;gap:1px;min-width:0}
+    .pod-name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .pod-name{font-size:15px;font-weight:800;color:var(--azure);line-height:1.15}
+    .pod-primary-tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;background:var(--highlighter);color:var(--azure-900);padding:2px 8px;border-radius:999px}
+    .pod-role{font-size:12.5px;font-weight:700;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.05em}
+    .pod-note{font-size:13px;color:var(--shadow);line-height:1.4;margin-top:3px}
+    .pod-flow{margin-top:var(--sp-3);font-size:13.5px;color:var(--fg-muted);line-height:1.5;padding:10px var(--sp-4);background:var(--bg-alt);border-radius:var(--r-sm);border-left:2px solid var(--azure-400)}
+    .pod-flow strong{color:var(--azure)}
+    @media (max-width:760px){.pod-row{grid-template-columns:1fr}}
+
+    /* ===== TIMELINE (horizontal journey) ===== */
+    .journey{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:var(--sp-5)}
+    .journey::before{content:"";position:absolute;top:9px;left:3%;right:3%;height:2px;background:var(--rule)}
+    .jnode{position:relative;z-index:2;text-align:center;padding-top:22px}
+    .jdot{position:absolute;top:2px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:var(--azure-200);border:3px solid var(--ghost);box-shadow:0 0 0 1px var(--rule)}
+    .jnode.here .jdot{background:var(--highlighter);box-shadow:0 0 0 4px rgba(226,237,122,.4);transform:translateX(-50%) scale(1.2)}
+    .jnode.hero .jdot{background:var(--azure);width:18px;height:18px;box-shadow:0 0 0 4px rgba(12,51,135,.14)}
+    .jwhen{display:block;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--azure-600);line-height:1.2}
+    .jnode.here .jwhen{color:var(--highlighter-dark)}
+    .jwhat{display:block;font-size:12px;color:var(--fg-muted);margin-top:3px;line-height:1.25}
+    .jnode.hero .jwhat{font-weight:700;color:var(--azure)}
+    .jtag{display:inline-flex;align-items:center;gap:3px;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 6px;border-radius:999px}
+    .jtag.off{background:var(--bg-alt);color:var(--fg-muted);border:1px solid var(--rule)}
+    .jtag svg{width:9px;height:9px;fill:none;stroke:var(--azure-900);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .jnode.event .jdot{background:var(--lucid-deep);box-shadow:0 0 0 3px rgba(158,206,232,.32)}
+    .jnode.event .jwhen{color:var(--azure)}
+    .yourevent-key{display:inline-flex;align-items:center;gap:7px;margin-top:var(--sp-4);font-size:12.5px;color:var(--fg-muted)}
+    .yourevent-key .yk-dot{width:11px;height:11px;border-radius:50%;background:var(--lucid-deep);box-shadow:0 0 0 3px rgba(158,206,232,.32);flex-shrink:0}
+    .shoot-callout{display:flex;align-items:flex-start;gap:13px;margin-top:var(--sp-5);background:var(--lucid-soft);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .shoot-callout .sc-ico{flex-shrink:0;width:24px;height:24px;fill:none;stroke:var(--azure);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+    .shoot-callout-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .shoot-callout-body .sc-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:3px}
+    .shoot-callout-body strong{color:var(--azure)}
+    .jhere-lbl{display:inline-block;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 6px;border-radius:999px}
+    .lock-band{margin-top:var(--sp-6);background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .lock-label{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:var(--sp-3)}
+    .lock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3) var(--sp-5)}
+    .lock-row{display:flex;flex-direction:column;gap:1px;padding-left:var(--sp-3);border-left:2px solid var(--highlighter-dark)}
+    .lock-when{font-size:13px;font-weight:800;color:var(--shadow)}
+    .lock-what{font-size:13px;color:var(--fg-muted)}
+    .shoot-note{margin-top:var(--sp-4);font-size:13.5px;color:var(--fg-muted);line-height:1.5;max-width:96ch}
+    .shoot-note strong{color:var(--azure)}
+    @media (max-width:900px){.journey{grid-template-columns:1fr;gap:var(--sp-3)}.journey::before{display:none}.jnode{text-align:left;padding-top:0;padding-left:26px}.jdot{top:3px;left:0;transform:none}.jnode.here .jdot{transform:scale(1.2)}.lock-grid{grid-template-columns:1fr}}
+
+    /* ===== GOALS (descending funnel) ===== */
+    .funnel{display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);margin-top:var(--sp-3)}
+    .fstage{width:100%;display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-3) var(--sp-5);border-radius:var(--r-lg);border:1px solid var(--rule-faint)}
+    .fstage.w1{width:100%;background:var(--tofu-bg,#eff6ff)}
+    .fstage.w2{width:90%;background:#f0fdf4}
+    .fstage.w3{width:80%;background:rgba(226,237,122,.16);border-color:var(--highlighter-dark);box-shadow:var(--sh-md)}
+    .fbadge{flex:0 0 148px}
+    .fstage-stage{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600);line-height:1.3}
+    .fstage.w3 .fstage-stage{color:var(--azure-900)}
+    .fstage-headline{display:block;font-size:15px;font-weight:800;color:var(--azure);line-height:1.15;margin-top:3px}
+    .fstage.w3 .fstage-headline{font-size:16px}
+    .fwins{flex:1;display:flex;flex-wrap:wrap;gap:6px}
+    .fwin{font-size:12.5px;color:var(--shadow);line-height:1.3;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-sm);padding:5px 10px}
+    .fstage.w3 .fwin{border-color:var(--highlighter-dark)}
+    .fwin.is-success{font-weight:800;color:var(--azure);background:var(--lucid-soft);border-color:var(--azure-200)}
+    .fstage.w3 .fwin.is-success{color:var(--azure-900);background:rgba(226,237,122,.5);border-color:var(--highlighter-dark)}
+    .goal-frame{margin-top:var(--sp-4);font-size:14.5px;color:var(--fg-muted);line-height:1.45;max-width:92ch;font-style:italic}
+    .goal-frame strong{color:var(--azure);font-style:normal}
+    .capture-band{margin-top:var(--sp-3);display:flex;align-items:flex-start;gap:var(--sp-3);background:var(--azure);color:var(--ghost);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
+    .capture-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-900);background:var(--highlighter);padding:3px 9px;border-radius:999px;margin-top:2px}
+    .capture-body{font-size:14px;color:var(--lucid-soft);line-height:1.5}
+    .capture-body strong{color:var(--ghost)}
+    @media (max-width:760px){.fstage{flex-direction:column;align-items:flex-start;gap:10px;width:100%!important}.fbadge{flex-basis:auto}}
+
+    /* ===== STANDS FOR ===== */
+    .stands-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--sp-5);align-items:stretch;margin-top:var(--sp-3)}
+    .bigquote{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6);box-shadow:var(--sh-md);display:flex;flex-direction:column;justify-content:center}
+    .bigquote .qm{font-size:52px;line-height:.4;color:var(--azure-400);font-weight:800}
+    .bigquote p{font-size:clamp(19px,2.2vw,26px);font-weight:700;line-height:1.28;letter-spacing:-.01em;margin:12px 0 10px}
+    .bigquote cite{font-size:12px;font-weight:600;color:var(--lucid);text-transform:uppercase;letter-spacing:.1em;font-style:normal}
+    .bigquote .say-more{margin-top:var(--sp-4);font-size:14px;color:var(--lucid-soft);line-height:1.5;font-style:italic}
+    .bigquote .say-more strong{color:var(--ghost);font-style:normal}
+    .stands-right{display:flex;flex-direction:column;gap:var(--sp-4);justify-content:center}
+    .picker-eyebrow{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.1em;line-height:1.4;margin-bottom:var(--sp-3)}
+    .picker-eyebrow em{font-style:normal;color:var(--fg-muted);font-weight:600;text-transform:none;letter-spacing:0;display:block;margin-top:4px;font-size:14px}
+    .chip-cloud{display:flex;flex-wrap:wrap;gap:8px}
+    .vchip{font-size:13.5px;color:var(--shadow);line-height:1.3;background:var(--bg-panel);border:1.5px solid var(--rule);padding:8px 14px;border-radius:999px}
+    .vchip.is-prior{background:rgba(226,237,122,.22);border-color:var(--highlighter-dark);font-weight:700}
+    .ask-line{margin-top:var(--sp-3);font-size:14px;font-weight:700;color:var(--azure);line-height:1.5}
+    .ask-line .ask-tag{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);background:var(--lucid);border-radius:999px;padding:2px 8px;margin-right:8px}
+    .prompt-stack{display:flex;flex-direction:column;gap:var(--sp-3)}
+    .prompt-item{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
+    .prompt-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:4px}
+    .prompt-q{font-size:13.5px;color:var(--shadow);line-height:1.45}
+    .diff-block{margin-top:var(--sp-3)}
+    @media (max-width:880px){.stands-grid{grid-template-columns:1fr}}
+
+    /* ===== LOOKS ===== */
+    .inspo-cue{font-size:14px;font-weight:700;color:var(--azure);margin-bottom:var(--sp-3)}
+    .inspo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
+    .inspo-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3)}
+    .inspo-headrow{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2)}
+    .inspo-name{font-size:16px;font-weight:800;color:var(--azure)}
+    .inspo-handle{font-size:14px;color:var(--azure-600);font-weight:700;border-bottom:1px solid var(--azure-200)}
+    .inspo-handle:hover{border-bottom-color:var(--azure-600)}
+    .inspo-add{display:inline-block;font-size:12px;font-weight:800;color:var(--azure-900);background:var(--highlighter);padding:2px 8px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+    .inspo-prompt{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .looks-lower{display:grid;grid-template-columns:1fr;gap:var(--sp-4);margin-top:var(--sp-5)}
+    .mood-block .picker-eyebrow{margin-bottom:var(--sp-2)}
+    .mood-note{margin-top:var(--sp-3);font-size:13.5px;color:var(--fg-muted);line-height:1.5;font-style:italic}
+    .mood-note strong{color:var(--azure);font-style:normal}
+    .sig-strip{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5);font-size:13.5px;color:var(--shadow);line-height:1.6}
+    .sig-strip strong{color:var(--azure)}
+    .sig-label{display:block;font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+    @media (max-width:880px){.inspo-grid{grid-template-columns:1fr}}
+
+    /* ===== SHARED · "from your form" note ===== */
+    .form-note{display:flex;align-items:flex-start;gap:10px;background:var(--lucid-soft);border-left:3px solid var(--azure-400);border-radius:var(--r-sm);padding:8px var(--sp-4);margin-top:var(--sp-3)}
+    .fn-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-top:1px}
+    .fn-text{font-size:13px;color:var(--shadow);line-height:1.45}
+    .fn-text strong{color:var(--azure)}
+
+    /* ===== SOUNDS · say it your way ===== */
+    .say-intro{font-size:clamp(15px,1.65vw,18px);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-4);line-height:1.45}
+    .say-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-5)}
+    .say-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-6) var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3);box-shadow:var(--sh-sm)}
+    .say-num{width:30px;height:30px;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;border-radius:50%}
+    .say-label{font-size:16px;font-weight:800;color:var(--azure);line-height:1.2}
+    .say-prompt{font-size:14.5px;color:var(--shadow);line-height:1.55}
+    .say-prompt em{color:var(--fg-muted);font-style:italic}
+    @media (max-width:880px){.say-cards{grid-template-columns:1fr;gap:var(--sp-4)}}
+
+    /* ===== DECISIONS + CLOSE (on azure) ===== */
+    #s10 .slide-title,#s10 .slide-lede{color:var(--ghost)}
+    #s10 .slide-lede{color:var(--lucid)}
+    .dec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);margin-top:var(--sp-3)}
+    .dcard{background:rgba(255,255,255,.06);border:1px solid rgba(203,233,255,.2);border-radius:var(--r-md);padding:var(--sp-4);display:flex;flex-direction:column;gap:8px;backdrop-filter:blur(2px)}
+    .dcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .dcard-title{font-size:14px;font-weight:800;color:var(--ghost);line-height:1.2}
+    .dchip{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:999px}
+    .dchip.lock{background:var(--highlighter);color:var(--azure-900)}
+    .dchip.confirm{background:var(--lucid);color:var(--azure-900)}
+    .drow{font-size:12px;line-height:1.45;color:var(--lucid-soft)}
+    .drow .dl{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--lucid-deep);margin-bottom:1px}
+    .drow strong{color:var(--ghost);font-weight:600}
+    .checklist{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-3)}
+    .check-col{background:rgba(255,255,255,.05);border:1px solid rgba(203,233,255,.16);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .check-col.done{border-top:2px solid var(--highlighter)}
+    .check-col.open{border-top:2px solid var(--lucid)}
+    .check-col-head{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--sp-2)}
+    .check-col.done .check-col-head{color:var(--highlighter)}
+    .check-col.open .check-col-head{color:var(--lucid)}
+    .citem{display:flex;gap:10px;align-items:flex-start;padding:5px 0}
+    .citem+.citem{border-top:1px solid rgba(203,233,255,.1)}
+    .cmark{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+    .cmark.is-done{background:var(--highlighter)}
+    .cmark.is-done svg{width:11px;height:11px;fill:none;stroke:var(--azure-900);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .cmark.is-open{border:2px solid var(--lucid-deep);background:transparent}
+    .ctext{font-size:13px;color:var(--lucid-soft);line-height:1.4}
+    .ctext strong{color:var(--ghost);font-weight:600}
+    .ctext .owner{display:block;font-size:12px;color:var(--lucid-deep);margin-top:1px}
+    .close-block{margin-top:var(--sp-2);padding-top:var(--sp-3);border-top:1px solid rgba(203,233,255,.2)}
+    .close-line{font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--ghost);line-height:1.35;max-width:70ch}
+    .close-sign{margin-top:var(--sp-3);display:flex;flex-wrap:wrap;gap:var(--sp-6)}
+    .close-sign-name{font-size:15px;font-weight:700;color:var(--highlighter)}
+    .close-sign-title{font-size:12px;color:var(--lucid)}
+    @media (max-width:880px){.dec-grid{grid-template-columns:1fr 1fr}.checklist{grid-template-columns:1fr}}
+    @media (max-width:560px){.dec-grid{grid-template-columns:1fr}}
+
+    /* ===== RESPONSIVE (shared) ===== */
+    @media (max-width:414px){
+      .deck-header-inner{padding:0 var(--sp-4)}
+      .header-x{display:none}
+      .header-pippis-img{height:20px}
+      .header-logo-img{height:21px}
+      .slide{padding:calc(var(--header-h) + 14px) var(--sp-4) var(--sp-6)}
+      .cover-title{font-size:34px}
+      .cover-sub{font-size:16px}
+      .slide-title{font-size:26px}
+      .slide-lede{font-size:15px}
+      .astop-desc,.scope-item span,.jwhat,.fwin,.drow{font-size:12px}
+      .scope-item b,.panel-body,.approw,.ig-line,.flow-cell,.fstage-headline,.fwin,
+      .goal-frame,.capture-body,.vchip,.ask-line,.trigger-q,.inspo-prompt,.mood-note,
+      .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
+      .pod-note,.pod-flow,.pod-role,
+      .drow,.lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
+      .shoot-callout-body,.yourevent-key,.inspo-prompt,.mood-note,
+      .shoot-note,.shoot-note strong{font-size:14px}
+    }
+    @media (max-width:375px){
+      .slide{padding:calc(var(--header-h) + 12px) var(--sp-4) var(--sp-6)}
+      .cover-title{font-size:30px}
+      .slide-title{font-size:24px}
+    }
+    @media print{.deck-header,.slide-nav,#progress,.scrollcue{display:none}.reveal{opacity:1;transform:none}.slide{page-break-after:always;min-height:auto;padding:40px}}
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+
+  <!-- HEADER · co-branded (Scroll left, Pippi's azure wordmark right) -->
+  <header class="deck-header">
+    <div class="deck-header-inner">
+      <a href="https://decks.scrollmedia.co/pitch/" target="_blank" rel="noopener" class="header-logo" aria-label="Scroll Media">
+        <img src="scroll-media-logo.png" alt="Scroll Media" class="header-logo-img" />
+      </a>
+      <div class="header-co">
+        <span class="header-x" aria-hidden="true">&times;</span>
+        <img src="pippis-logo.png" alt="Pippi's" class="header-pippis-img" />
+      </div>
+    </div>
+  </header>
+
+  <nav class="slide-nav" id="slideNav" aria-label="Slide navigation"></nav>
+
+  <main>
+
+    <!-- ===================== S01 · COVER ===================== -->
+    <section class="slide azure-slide" id="s01" data-nav="Welcome">
+      <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700" aria-hidden="true">
+        <line x1="120" y1="130" x2="330" y2="250"/><line x1="330" y1="250" x2="560" y2="170"/>
+        <line x1="560" y1="170" x2="780" y2="310"/><line x1="780" y1="310" x2="1000" y2="210"/>
+        <line x1="330" y1="250" x2="430" y2="470"/><line x1="780" y1="310" x2="650" y2="530"/>
+        <line x1="1000" y1="210" x2="1090" y2="430"/><line x1="430" y1="470" x2="650" y2="530"/>
+        <circle cx="120" cy="130" r="5"/><circle class="hl" cx="330" cy="250" r="7"/><circle cx="560" cy="170" r="5"/>
+        <circle cx="780" cy="310" r="6"/><circle class="hl" cx="1000" cy="210" r="6"/><circle cx="430" cy="470" r="5"/>
+        <circle cx="650" cy="530" r="6"/><circle cx="1090" cy="430" r="5"/>
+      </svg>
+      <div class="slide-inner">
+        <span class="cover-kicker reveal"><span class="dot"></span>Pippi's &times; Scroll Media &middot; Kickoff</span>
+        <h1 class="cover-title reveal d1">Welcome to your <span class="hl">kickoff.</span></h1>
+        <p class="cover-sub reveal d2">The official start of your engagement. Today we align on the plan and learn Pippi's inside out, so the strategy we build next fits you exactly.</p>
+        <div class="cover-meta reveal d3">
+          <div>Prepared for<b>Pippi's</b></div>
+          <div>Kickoff<b>Wednesday, July 16, 2026</b></div>
+          <div>Your Scroll lead<b>Rachel Dina</b></div>
+        </div>
+      </div>
+      <div class="scrollcue"><span>Scroll or press the arrow keys</span><span class="bar"></span></div>
+    </section>
+
+    <!-- ===================== S02 · AGENDA ===================== -->
+    <section class="slide" id="s02" data-nav="Agenda">
+      <span class="section-num">01</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">02</span>What today looks like</span>
+        <h2 class="slide-title reveal">A working session, in three parts.</h2>
+        <p class="slide-lede reveal">You've hired us to run your organic social. Today we do two things: align on the plan, and learn Pippi's inside out. The middle part is where we learn you, so the strategy we build next is unmistakably yours. Tap any stop to jump to it.</p>
+        <div class="agenda-acts">
+          <div class="act-band reveal d1">
+            <div class="act-band-head"><span class="act-band-name">Part 1 &middot; The setup</span><span class="act-band-note">We walk you through it</span></div>
+            <div class="act-stops">
+              <a class="astop" href="#s03"><span class="astop-top"><span class="astop-num">03</span><span class="astop-time">5 min</span></span><span class="astop-label">The engagement</span><span class="astop-desc">What we're running</span></a>
+              <a class="astop" href="#s04"><span class="astop-top"><span class="astop-num">04</span><span class="astop-time">3 min</span></span><span class="astop-label">Your Scroll team</span><span class="astop-desc">Your dedicated pod</span></a>
+              <a class="astop" href="#s05"><span class="astop-top"><span class="astop-num">05</span><span class="astop-time">6 min</span></span><span class="astop-label">Timeline</span><span class="astop-desc">Locking the runway</span></a>
+            </div>
+          </div>
+          <div class="act-band is-yours reveal d2">
+            <div class="act-band-head"><span class="act-band-name">Part 2 &middot; Brand immersion</span><span class="act-yours-flag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span><span class="act-band-note">You talk, we learn you</span></div>
+            <div class="act-stops">
+              <a class="astop" href="#s06"><span class="astop-top"><span class="astop-num">06</span><span class="astop-time">5 min</span></span><span class="astop-label">Goals</span><span class="astop-desc">What a win looks like</span></a>
+              <a class="astop" href="#s07"><span class="astop-top"><span class="astop-num">07</span><span class="astop-time">11 min</span></span><span class="astop-label">What you stand for</span><span class="astop-desc">In your words</span></a>
+              <a class="astop" href="#s08"><span class="astop-top"><span class="astop-num">08</span><span class="astop-time">9 min</span></span><span class="astop-label">How you look</span><span class="astop-desc">The visual target</span></a>
+              <a class="astop" href="#s09"><span class="astop-top"><span class="astop-num">09</span><span class="astop-time">8 min</span></span><span class="astop-label">How you sound</span><span class="astop-desc">Say it your way</span></a>
+            </div>
+          </div>
+          <div class="act-band reveal d3">
+            <div class="act-band-head"><span class="act-band-name">Part 3 &middot; Decisions + next steps</span><span class="act-band-note">We lock, then we build</span></div>
+            <div class="act-stops">
+              <a class="astop" href="#s10"><span class="astop-top"><span class="astop-num">10</span><span class="astop-time">8 min</span></span><span class="astop-label">Decisions + next steps</span><span class="astop-desc">Lock and go</span></a>
+            </div>
+          </div>
+        </div>
+        <p class="agenda-note reveal d4">The middle part is yours entirely. The more you talk, the sharper we build.</p>
+      </div>
+    </section>
+
+    <!-- ===================== S03 · THE ENGAGEMENT ===================== -->
+    <section class="slide" id="s03" data-nav="The engagement">
+      <span class="section-num">02</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">03</span>The engagement</span>
+        <h2 class="slide-title reveal">Signature Growth. Here's what we're running.</h2>
+        <div class="pillars">
+          <div class="pillar reveal d1">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="0.6" fill="var(--azure)" stroke="none"/></svg><span class="pillar-name">Strategy</span></div>
+            <p class="pillar-act">Goals, brand and competitive review, your IVP, content architecture, and Instagram SEO. Then creative direction, profile optimization, and your shot list and content plan.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Strategy deck</span><span class="pillar-deliv">Visual deck</span></div>
+          </div>
+          <div class="pillar reveal d2">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span class="pillar-name">Content creation</span></div>
+            <p class="pillar-act">Creative planning and ideation, content shoots, and full editing and production.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv lime">Social content &middot; 3 feed posts Mon/Wed/Fri + 2 story days Tue/Thu</span></div>
+          </div>
+          <div class="pillar reveal d3">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span class="pillar-name">Profile management</span></div>
+            <p class="pillar-act">Caption copywriting and publishing, community management on every post, and content calendar management.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Profile maintenance</span></div>
+          </div>
+          <div class="pillar reveal d4">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="pillar-name">Performance</span></div>
+            <p class="pillar-act">A scored performance report every month, and quarterly strategy adjustments as we learn what lands.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Monthly report</span></div>
+          </div>
+        </div>
+        <div class="eng-lower">
+          <div class="eng-side">
+            <div class="panel lucid reveal d1"><span class="panel-label">Full service</span><span class="panel-body">This is end to end, not content drops. We run the account: posting, captions, DMs, comments, community. It is still your account, jump in anytime. This is a partnership.</span></div>
+            <div class="panel lime reveal d2"><span class="panel-label">Unique to your engagement</span><span class="panel-body">We will be on-site at two of your launch moments at no extra charge, which is not normally part of our scope: the <strong>friends and family party on August 22</strong> and the <strong>grand opening on August 31</strong>. Any other one-off events down the road are handled as à la carte options with a little advance notice.</span></div>
+          </div>
+          <div class="reveal d3">
+            <span class="review-head">Your content review process</span>
+            <div class="approval">
+              <div class="approw"><span class="approw-step">1</span>Content lands in Plann 5 business days before publish.</div>
+              <div class="approw"><span class="approw-step">2</span>Your approval is due within 2 business days.</div>
+              <div class="approw"><span class="approw-step">3</span>2 rounds of edits per batch, flexible the first 30 days while we calibrate.</div>
+            </div>
+            <div class="flow-strip">
+              <div class="flow-head keeps">Keeps it moving</div>
+              <div class="flow-head slows">Slows it down</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals in Plann, on time</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Day-before approvals</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One voice, one round</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback scattered across channels</div>
+            </div>
+          </div>
+        </div>
+        <p class="ig-line reveal d4"><strong>Everything we run is Instagram.</strong> When we say search or SEO, we mean Instagram search, location tags, and geo-tags. Not Google.</p>
+      </div>
+    </section>
+
+    <!-- ===================== S04 · YOUR SCROLL TEAM ===================== -->
+    <section class="slide" id="s04" data-nav="Your team">
+      <span class="section-num">03</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Your Scroll pod</span>
+        <h2 class="slide-title reveal">One dedicated pod on your account.</h2>
+        <p class="slide-lede reveal">A small, senior team on Pippi's from day one. Rachel is your day-to-day, Allison drives the strategy and holds the quality bar, and Chase keeps the whole thing accountable.</p>
+        <div class="pod">
+          <div class="reveal d1">
+            <div class="pod-tier-label">Strategy + leadership &middot; oversight</div>
+            <div class="pod-row">
+              <div class="pod-card">
+                <span class="pod-mono">A</span>
+                <div class="pod-body">
+                  <div class="pod-name-row"><span class="pod-name">Allison</span></div>
+                  <span class="pod-role">Account Strategist &middot; Delivery oversight</span>
+                  <span class="pod-note">Owns your strategy and holds the quality bar on everything that ships.</span>
+                </div>
+              </div>
+              <div class="pod-card">
+                <span class="pod-mono">CG</span>
+                <div class="pod-body">
+                  <div class="pod-name-row"><span class="pod-name">Chase Gianattasio</span></div>
+                  <span class="pod-role">Co-Founder &amp; COO</span>
+                  <span class="pod-note">Executive sponsor on the account. Always a call away.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal d2">
+            <div class="pod-tier-label day">On your account every day</div>
+            <div class="pod-row">
+              <div class="pod-card primary">
+                <span class="pod-mono">RD</span>
+                <div class="pod-body">
+                  <div class="pod-name-row"><span class="pod-name">Rachel Dina</span><span class="pod-primary-tag">Your primary contact</span></div>
+                  <span class="pod-role">Account Manager</span>
+                  <span class="pod-note">Your day-to-day. Runs the account, the content, and every approval.</span>
+                </div>
+              </div>
+              <div class="pod-card">
+                <span class="pod-mono"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+                <div class="pod-body">
+                  <div class="pod-name-row"><span class="pod-name">Content Editor</span></div>
+                  <span class="pod-role">Production + editing</span>
+                  <span class="pod-note">Supports Rachel on shoots, editing, and production.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="pod-flow reveal d3"><strong>How it flows:</strong> Rachel runs the day-to-day and is your one point of contact. Allison sets the strategy and signs off on quality. Chase backs the whole engagement. One pod, one contact.</p>
+      </div>
+    </section>
+
+    <!-- ===================== S05 · TIMELINE ===================== -->
+    <section class="slide" id="s05" data-nav="Timeline">
+      <span class="section-num">04</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">05</span>Timeline + key dates</span>
+        <h2 class="slide-title reveal">Twelve days to the plan. Here's the runway.</h2>
+        <p class="slide-lede reveal">From today to your strategy presentation is about twelve days. Tight, on purpose. We want you posting early so the account is building real excitement well before you open.</p>
+        <div class="journey reveal" role="list" aria-label="Runway to launch">
+          <div class="jnode here d1" role="listitem"><span class="jdot"></span><span class="jwhen">Thu Jul 16</span><span class="jwhat">Kickoff</span><span class="jhere-lbl">You are here</span></div>
+          <div class="jnode d1" role="listitem"><span class="jdot"></span><span class="jwhen">Tue Jul 28</span><span class="jwhat">Strategy presentation</span></div>
+          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Jul 29 or 30</span><span class="jwhat">First content shoot</span></div>
+          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Fri Aug 7</span><span class="jwhat">First status call</span></div>
+          <div class="jnode hero d3" role="listitem"><span class="jdot"></span><span class="jwhen">Wed Aug 12</span><span class="jwhat">First post live</span></div>
+          <div class="jnode event d4" role="listitem"><span class="jdot"></span><span class="jwhen">Sat Aug 22</span><span class="jwhat">Friends and family party</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
+          <div class="jnode event d4" role="listitem"><span class="jdot"></span><span class="jwhen">Week of Aug 24</span><span class="jwhat">Team training</span><span class="jtag off">Not on-site</span></div>
+          <div class="jnode event d5" role="listitem"><span class="jdot"></span><span class="jwhen">Mon Aug 31</span><span class="jwhat">Grand opening</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
+        </div>
+        <span class="yourevent-key reveal d3"><span class="yk-dot"></span>The last three are your events. We're on-site for the party and the grand opening.</span>
+        <div class="shoot-callout reveal d4">
+          <svg class="sc-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <div class="shoot-callout-body">
+            <span class="sc-label">Shoot days</span>
+            Your window is Monday to Wednesday, mornings and midday. Our pick for the first shoot: <strong>Wednesday July 29</strong> (or Thursday July 30). First post holds at August 12 either way, and we'll bank a second shoot before you travel Aug 17 to 19 so the account keeps posting with nothing needed from you.
+          </div>
+        </div>
+        <div class="lock-band reveal d5">
+          <div class="lock-label">Three dates we lock live, right now</div>
+          <div class="lock-grid">
+            <div class="lock-row"><span class="lock-when">Strategy presentation</span><span class="lock-what">Tuesday, July 28</span></div>
+            <div class="lock-row"><span class="lock-when">First status call</span><span class="lock-what">Friday, August 7</span></div>
+            <div class="lock-row"><span class="lock-when">First content shoot</span><span class="lock-what">Wed Jul 29 or Thu Jul 30</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== S05 · GOALS (funnel) ===================== -->
+    <section class="slide" id="s06" data-nav="Goals">
+      <span class="section-num">05</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">06</span>Goals</span>
+        <h2 class="slide-title reveal">What success looks like.</h2>
+        <p class="slide-lede reveal">Our job is to turn attention into qualified leads for your business, stage by stage. Here's what a win looks like at each one. This is us leading with the plan.</p>
+        <div class="funnel">
+          <div class="fstage w1 reveal d1">
+            <div class="fbadge"><span class="fstage-stage">Awareness &middot; Top of funnel</span><span class="fstage-headline">Relatable content</span></div>
+            <div class="fwins">
+              <span class="fwin">Get Pippi's in front of the right audience so they discover the brand and pay attention.</span>
+              <span class="fwin is-success">Success: views from the right audience.</span>
+            </div>
+          </div>
+          <div class="fstage w2 reveal d2">
+            <div class="fbadge"><span class="fstage-stage">Trust and authority &middot; Middle</span><span class="fstage-headline">Real, educational content</span></div>
+            <div class="fwins">
+              <span class="fwin">Earn that audience's trust so they engage with Pippi's.</span>
+              <span class="fwin is-success">Success: engagement from the right audience.</span>
+            </div>
+          </div>
+          <div class="fstage w3 reveal d3">
+            <div class="fbadge"><span class="fstage-stage">Conversion &middot; Bottom of funnel</span><span class="fstage-headline">Proof content</span></div>
+            <div class="fwins">
+              <span class="fwin">Move that engaged audience to act, into booked chairs and new stylists.</span>
+              <span class="fwin is-success">Success: booked appointments and qualified inquiries.</span>
+            </div>
+          </div>
+        </div>
+        <p class="goal-frame reveal d4"><strong>The one goal underneath all of it: more qualified leads for your business, through organic social.</strong> That is exactly what your monthly performance report tracks, so you always see it working.</p>
+        <div class="capture-band reveal d4"><span class="capture-tag">One for you</span><span class="capture-body">Any business milestones you're driving toward? <strong>Stylists hired, chairs booked, by when?</strong> We aim the content at them and celebrate them with you. Context we build toward, not committed numbers.</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== S06 · WHAT YOU STAND FOR ===================== -->
+    <section class="slide" id="s07" data-nav="What you stand for">
+      <div class="slide-inner">
+        <div class="slide-head-row reveal">
+          <div class="eyebrow"><span class="eyebrow-num">07</span><span class="act yours">Yours</span>What Pippi's stands for</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>11 min</div>
+        </div>
+        <h2 class="slide-title reveal">We did our homework. Now we need you.</h2>
+        <div class="stands-grid">
+          <div class="bigquote reveal d1">
+            <div class="qm">&ldquo;</div>
+            <p>Pippi's exists to raise the standard of our craft and the experience of the guest.</p>
+            <cite>Your words, from your onboarding form</cite>
+            <p class="say-more"><strong>Say more.</strong> What does raising the standard actually look like, day to day, in the room?</p>
+          </div>
+          <div class="stands-right reveal d2">
+            <div class="prompt-stack">
+              <div class="prompt-item"><span class="prompt-label">Personal</span><span class="prompt-q">The two or three things that make up you and your life outside the salon that we can lean into.</span></div>
+              <div class="prompt-item"><span class="prompt-label">Professional</span><span class="prompt-q">Where you're taking your career, your aspirations, the behind-the-scenes of building this.</span></div>
+              <div class="prompt-item"><span class="prompt-label">Brand</span><span class="prompt-q">How you want Pippi's portrayed. How you want people to think and feel about it. The behind-the-curtain look.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="diff-block reveal d3">
+          <div class="picker-eyebrow">The three or four things that set Pippi's apart, that we lean into<em>These are stimuli, not our conclusions. Confirm the ones that are genuinely, only-yours true, and edit freely.</em></div>
+          <div class="chip-cloud">
+            <span class="vchip">a commission room built on mentorship</span>
+            <span class="vchip">one shared table, not a row of stations</span>
+            <span class="vchip">the Rica line, through your mentor</span>
+            <span class="vchip">color and session pedigree at a fashion-week level</span>
+            <span class="vchip">a 130-year-old building on Vine Street</span>
+          </div>
+          <div class="form-note"><span class="fn-tag">From your form</span><span class="fn-text">You pointed to the <strong>mentorship-first room</strong>, the <strong>Rica line through your mentor</strong>, and fashion-week color and session pedigree.</span></div>
+          <p class="ask-line"><span class="ask-tag">Ask</span>Which is the single most central? And what did we miss?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== S07 · HOW YOU LOOK ===================== -->
+    <section class="slide" id="s08" data-nav="How you look">
+      <div class="slide-inner">
+        <div class="slide-head-row reveal">
+          <div class="eyebrow"><span class="eyebrow-num">08</span><span class="act yours">Yours</span>How Pippi's looks</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>9 min</div>
+        </div>
+        <h2 class="slide-title reveal">The look you're building toward.</h2>
+        <p class="inspo-cue reveal">This is the creative-direction exercise. Let's look at the feeds you admire and pin down the look we're building toward. We'll open each one live and scroll it together.</p>
+        <div class="inspo-grid">
+          <div class="inspo-card reveal d1">
+            <div class="inspo-headrow"><span class="inspo-name">Amelia Jane</span><a class="inspo-handle" href="https://www.instagram.com/ameliajanehair/" target="_blank" rel="noopener">@ameliajanehair</a></div>
+            <p class="inspo-prompt">You sent us this one. What is it about her feed that you want? The color work, the way she shows up, the pace?</p>
+          </div>
+          <div class="inspo-card reveal d2">
+            <div class="inspo-headrow"><span class="inspo-name">EdwardsAndCo</span><a class="inspo-handle" href="https://www.instagram.com/edwardsandcoeducation/" target="_blank" rel="noopener">@edwardsandcoeducation</a></div>
+            <p class="inspo-prompt">You sent Edwards and Co. We are showing their education account, the mentorship side that fits your room. Is this the piece of them you meant?</p>
+          </div>
+          <div class="inspo-card reveal d3">
+            <div class="inspo-headrow"><span class="inspo-name">Menspire</span><a class="inspo-handle" href="https://www.instagram.com/menspireacademy/" target="_blank" rel="noopener">@menspireacademy</a><span class="inspo-add">one we'd add</span></div>
+            <p class="inspo-prompt">This one is ours, not yours. We would study their cinematic reveal editing for your hero transformations. Does this energy fit, or is it too much?</p>
+          </div>
+        </div>
+        <div class="looks-lower">
+          <div class="mood-block reveal d4">
+            <div class="picker-eyebrow">Visual mood<em>On your form you picked minimal-clean and craft-forward (shown in lime). Still right? Anything to add now that you see them together?</em></div>
+            <div class="chip-cloud">
+              <span class="vchip is-prior">minimal and clean</span>
+              <span class="vchip is-prior">craft-forward and detailed</span>
+              <span class="vchip">elevated and editorial</span>
+              <span class="vchip">warm and intimate</span>
+              <span class="vchip">moody and cinematic</span>
+              <span class="vchip">bright and airy</span>
+              <span class="vchip">natural and undone</span>
+              <span class="vchip">timeless and classic</span>
+            </div>
+          </div>
+          <div class="sig-strip reveal d5">
+            <span class="sig-label">Signature elements</span>
+            The three you flagged to feature: <strong>the communal table</strong>, <strong>the color bar</strong>, <strong>the backwash area</strong>. The table is the signature image. Agreed, and anything to add? (Keep off-camera: the laundry room. Fine on-camera: the breakroom and lobby.)
+          </div>
+          <div class="form-note reveal d5"><span class="fn-tag">From your form</span><span class="fn-text">Visual mood: <strong>minimal and clean</strong>, <strong>craft-forward and detailed</strong>. Accounts you sent: <strong>@ameliajanehair</strong> and <strong>@edwardsandcoeducation</strong>.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== S08 · HOW YOU SOUND ===================== -->
+    <section class="slide" id="s09" data-nav="How you sound">
+      <div class="slide-inner">
+        <div class="slide-head-row reveal">
+          <div class="eyebrow"><span class="eyebrow-num">09</span><span class="act yours">Yours</span>How Pippi's sounds</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>8 min</div>
+        </div>
+        <h2 class="slide-title reveal">How you sound.</h2>
+        <p class="say-intro reveal">The fastest way to learn your voice is to hear it. Say these your way. We'll capture the actual words.</p>
+        <div class="say-cards">
+          <div class="say-card reveal d1">
+            <span class="say-num">1</span>
+            <span class="say-label">The launch teaser</span>
+            <p class="say-prompt">Announce the opening like you're telling your favorite client. <em>Out loud, in your words.</em></p>
+          </div>
+          <div class="say-card reveal d2">
+            <span class="say-num">2</span>
+            <span class="say-label">A DM reply</span>
+            <p class="say-prompt">Someone asks, "are you taking new clients?" <em>Reply the way you actually would.</em></p>
+          </div>
+          <div class="say-card reveal d3">
+            <span class="say-num">3</span>
+            <span class="say-label">A comment reply</span>
+            <p class="say-prompt">Someone comments, "obsessed, finally a salon that gets it." <em>Answer it live.</em></p>
+          </div>
+        </div>
+        <div class="form-note reveal d4"><span class="fn-tag">From your form</span><span class="fn-text">Confident, elevated, warm. Not spicy. Emoji rare, exclamations sparingly.</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== S09 · DECISIONS + NEXT STEPS (close) ===================== -->
+    <section class="slide azure-slide is-tight" id="s10" data-nav="Decisions + next steps">
+      <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700" aria-hidden="true">
+        <line x1="110" y1="180" x2="320" y2="290"/><line x1="320" y1="290" x2="540" y2="200"/>
+        <line x1="540" y1="200" x2="770" y2="330"/><line x1="770" y1="330" x2="1000" y2="230"/>
+        <line x1="320" y1="290" x2="420" y2="500"/><line x1="770" y1="330" x2="640" y2="540"/>
+        <line x1="1000" y1="230" x2="1090" y2="450"/><line x1="420" y1="500" x2="640" y2="540"/>
+        <circle cx="110" cy="180" r="5"/><circle class="hl" cx="320" cy="290" r="7"/><circle cx="540" cy="200" r="5"/>
+        <circle cx="770" cy="330" r="6"/><circle class="hl" cx="1000" cy="230" r="6"/><circle cx="420" cy="500" r="5"/>
+        <circle cx="640" cy="540" r="6"/><circle cx="1090" cy="450" r="5"/>
+      </svg>
+      <div class="slide-inner">
+        <span class="cover-kicker reveal"><span class="dot"></span>Confirm and go</span>
+        <h2 class="slide-title reveal">A few decisions. Then we build.</h2>
+        <div class="dec-grid">
+          <div class="dcard reveal d1">
+            <div class="dcard-top"><span class="dcard-title">1 &middot; Priority-chair sequencing</span><span class="dchip lock">Lock</span></div>
+            <span class="drow"><span class="dl">Your form</span><strong>Both, lean stylists early.</strong></span>
+            <span class="drow"><span class="dl">Our plan</span>Promote to stylists early through the pre-open runway to land your last one or two, then shift to clients as you get to open.</span>
+          </div>
+          <div class="dcard reveal d2">
+            <div class="dcard-top"><span class="dcard-title">2 &middot; Booking destination</span><span class="dchip confirm">Confirm</span></div>
+            <span class="drow"><span class="dl">Our plan</span>Aura goes live August 1. That is where every "book now" points.</span>
+            <span class="drow"><span class="dl">We need</span><strong>Send us the live link the day it is up.</strong></span>
+          </div>
+          <div class="dcard reveal d3">
+            <div class="dcard-top"><span class="dcard-title">3 &middot; Content boundaries</span><span class="dchip lock">Lock</span></div>
+            <span class="drow"><span class="dl">Our plan</span>AI stays behind the scenes in production, never on anything client-facing without your eyes first.</span>
+            <span class="drow"><span class="dl">We need</span><strong>Anything else off-limits?</strong></span>
+          </div>
+          <div class="dcard reveal d4">
+            <div class="dcard-top"><span class="dcard-title">4 &middot; Launch coverage</span><span class="dchip confirm">Confirm</span></div>
+            <span class="drow"><span class="dl">Our plan</span>On-site at the party (Aug 22) and grand opening (Aug 31).</span>
+            <span class="drow"><span class="dl">Team training</span>Not on-site. You have that covered.</span>
+          </div>
+        </div>
+        <div class="checklist">
+          <div class="check-col done reveal d5">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Handled and in motion</div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Kickoff scheduled and underway</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Onboarding form in</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Brand assets received</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Strategy build starts now<span class="owner">Full reveal Tuesday, July 28</span></span></div>
+          </div>
+          <div class="check-col open reveal d6">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>Still open</div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Instagram 2FA and Plann access<span class="owner">Rachel sets up this week</span></span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Confirm the three dates we locked today<span class="owner">You and Rachel</span></span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Send the Aura booking link<span class="owner">You, the day it goes live Aug 1</span></span></div>
+          </div>
+        </div>
+        <div class="close-block reveal d8">
+          <p class="close-line">You are building something with a real point of view, and the pre-launch window is where we win it. Rachel runs your account day to day, Allison drives the strategy, and Chase is always a call away.</p>
+          <div class="close-sign">
+            <div><div class="close-sign-name">Rachel Dina</div><div class="close-sign-title">Your account manager &middot; Scroll Media</div></div>
+            <div><div class="close-sign-name">Allison</div><div class="close-sign-title">Account strategist &amp; oversight &middot; Scroll Media</div></div>
+            <div><div class="close-sign-name">Chase Gianattasio</div><div class="close-sign-title">Co-Founder &amp; COO &middot; Scroll Media</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Build slide nav dots */
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var navWrap = document.getElementById('slideNav');
+    slides.forEach(function(s,i){
+      var a=document.createElement('a');
+      a.href='#'+s.id;
+      a.innerHTML='<span>'+(s.dataset.nav||('Slide '+(i+1)))+'</span>';
+      navWrap.appendChild(a);
+    });
+    var navDots=Array.prototype.slice.call(navWrap.querySelectorAll('a'));
+
+    /* Scroll progress + active dot */
+    var progress=document.getElementById('progress');
+    var current=0;
+    function onScroll(){
+      var h=document.documentElement;
+      var max=h.scrollHeight-h.clientHeight;
+      progress.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+      var idx=0, mid=window.scrollY+window.innerHeight/2;
+      slides.forEach(function(s,i){ if(s.offsetTop<=mid) idx=i; });
+      navDots.forEach(function(d,i){ d.classList.toggle('active',i===idx); });
+      current=idx;
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+
+    /* Reveal on scroll (respects reduced motion) */
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduced){
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    } else {
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    }
+
+    /* Arrow-key navigation (presenter-driven) */
+    function goTo(i){
+      i=Math.max(0,Math.min(slides.length-1,i));
+      slides[i].scrollIntoView({behavior:'smooth'});
+      current=i;
+    }
+    document.addEventListener('keydown',function(e){
+      var tag=(document.activeElement&&document.activeElement.tagName)||'';
+      if(tag==='INPUT'||tag==='TEXTAREA')return;
+      if(e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();goTo(current+1);}
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();goTo(current-1);}
+      else if(e.key==='Home'){e.preventDefault();goTo(0);}
+      else if(e.key==='End'){e.preventDefault();goTo(slides.length-1);}
+    });
+
+    onScroll();
+  </script>
+</body>
+</html>

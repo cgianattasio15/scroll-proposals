@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="googlebot" content="noindex,nofollow" />
+  <title>DWELL513 × Scroll Media · Signature Package Proposal</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/scroll-favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+    /* ────────────────────────────────────────────────────────────────
+       DWELL513 BRAND KIT · TOKEN SLOTS (pending delivery)
+       DWELL513's logo, colors, and type have NOT been received yet.
+       This build runs on the Scroll light-azure system. When the brand
+       kit lands, override the tokens below (brand primary + accent) and
+       swap the three logo slots (nav, gate, footer, engine center).
+       Do NOT invent brand colors before the kit is delivered.
+         --brand-primary  → maps to --azure today
+         --brand-accent   → maps to --hi today
+         --brand-logo     → the nav / gate / footer logo image src
+       A dedicated brand pass follows this build.
+       ──────────────────────────────────────────────────────────────── */
+
+    :root {
+      --shadow:    #151516;
+      --azure:     #0c3387;
+      --azure-lt:  rgba(12,51,135,0.09);
+      --azure-bd:  rgba(12,51,135,0.14);
+      --lucid:     #cbe9ff;
+      --lucid-deep:#9ecee8;
+      --hi:        #e2ed7a;
+      --porcelain: #f2f3f4;
+      --ghost:     #fafdff;
+      --ink-mid:   #3d3d52;
+      --ink-soft:  #7a7a94;
+      --border:    rgba(12,51,135,0.11);
+      --green:     #2a7a3a;
+      --green-lt:  rgba(42,122,58,0.08);
+      --radius:    12px;
+      --card-shadow: none;
+      --card-hover-shadow: 0 8px 24px rgba(12,51,135,0.10);
+      --ig-up:     #00ba7c;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body {
+      font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--ghost); color:var(--shadow);
+      font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #prog { position:fixed; top:0; left:0; height:3px; width:0%; background:var(--azure); z-index:1001; transition:width .1s linear; }
+
+    /* ── NAV (bar) ── */
+    nav {
+      position:fixed; top:3px; left:0; right:0; height:60px;
+      background:transparent;
+      border-bottom:1px solid var(--border); z-index:1000;
+      display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+    }
+    nav::before {
+      content:''; position:absolute; inset:0; z-index:-1;
+      background:rgba(250,253,255,.94);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    }
+    .nav-logo img { height:26px; width:auto; display:block; image-rendering:auto; }
+
+    /* ── ACT-GROUPED STICKY NAV ── */
+    .act-nav { display:flex; align-items:center; gap:2px; }
+    .act-group { position:relative; }
+    .act-btn {
+      display:flex; align-items:center; gap:7px;
+      padding:7px 14px; font-size:12.5px; font-weight:700; font-family:inherit;
+      color:var(--ink-mid); background:transparent; border:0; cursor:pointer;
+      border-radius:7px; transition:color .2s, background .2s; line-height:1;
+    }
+    .act-btn .act-caret { font-size:9px; opacity:.55; transition:transform .2s; }
+    .act-group:hover .act-btn, .act-group.open .act-btn, .act-group.active .act-btn { color:var(--azure); background:var(--azure-lt); }
+    .act-group:hover .act-caret, .act-group.open .act-caret { transform:rotate(180deg); }
+    .act-sections {
+      position:absolute; top:calc(100% + 9px); left:0; min-width:225px;
+      background:#fff; border:1px solid var(--border); border-radius:12px;
+      box-shadow:0 10px 30px rgba(12,51,135,.12); padding:7px; z-index:1001;
+      display:none; flex-direction:column; gap:1px;
+    }
+    .act-group:hover .act-sections, .act-group.open .act-sections { display:flex; }
+    .act-sections a {
+      padding:9px 13px; font-size:13px; font-weight:600; color:var(--ink-mid);
+      text-decoration:none; border-radius:7px; transition:color .15s, background .15s;
+      display:flex; align-items:center; gap:10px; white-space:nowrap;
+    }
+    .act-sections a .as-n { font-size:10px; font-weight:800; color:var(--ink-soft); min-width:14px; }
+    .act-sections a:hover, .act-sections a.active { color:var(--azure); background:var(--azure-lt); }
+    .act-sections a.active .as-n { color:var(--azure); }
+
+    /* Mobile nav toggle (hamburger) */
+    .nav-toggle {
+      display:none; align-items:center; justify-content:center;
+      width:44px; height:44px; padding:0; margin-right:-10px;
+      background:transparent; border:0; cursor:pointer;
+      position:relative; z-index:1002;
+    }
+    .nav-toggle-box { display:flex; flex-direction:column; gap:5px; }
+    .nav-toggle-box span {
+      display:block; width:22px; height:2px; background:var(--shadow); border-radius:2px;
+      transition:transform .25s ease, opacity .15s ease;
+    }
+    body.nav-open .nav-toggle-box span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    body.nav-open .nav-toggle-box span:nth-child(2) { opacity:0; }
+    body.nav-open .nav-toggle-box span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    @media(max-width:900px){
+      nav{padding:0 20px;}
+      .nav-toggle{display:flex;}
+      .act-nav {
+        position:fixed; top:63px; left:0; right:0; bottom:0;
+        flex-direction:column; align-items:stretch; gap:0; padding:14px 24px 44px;
+        background:rgba(250,253,255,.99);
+        backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+        transform:translateX(100%); transition:transform .3s ease;
+        z-index:999; overflow-y:auto;
+      }
+      body.nav-open .act-nav { transform:translateX(0); }
+      body.nav-open { overflow:hidden; }
+      .act-group { position:static; }
+      .act-btn {
+        width:100%; justify-content:flex-start; pointer-events:none;
+        padding:16px 4px 8px; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+        color:var(--ink-soft); background:transparent; border-radius:0;
+      }
+      .act-btn .act-caret { display:none; }
+      .act-sections {
+        position:static; display:flex; min-width:0; padding:0 0 8px;
+        background:transparent; border:0; box-shadow:none;
+      }
+      .act-sections a {
+        min-height:50px; font-size:16px; padding:13px 6px;
+        border-bottom:1px solid var(--border); border-radius:0;
+      }
+      .act-sections a:last-child { border-bottom:0; }
+    }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:900px; margin:0 auto; padding:80px 32px; }
+    .wrap[id], .hero[id], .act-divider[id], .feature-band[id] { scroll-margin-top:78px; }
+    @media(max-width:640px){ .wrap{padding:56px 20px;} }
+    .divider { height:1px; background:var(--border); max-width:900px; margin:0 auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .section-title { font-size:clamp(24px,3.8vw,34px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .section-title em { font-style:italic; color:var(--azure); }
+    .section-sub { font-size:15px; color:var(--ink-mid); max-width:620px; margin-bottom:28px; line-height:1.65; }
+
+    /* ── CARDS ── */
+    .card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+
+    /* ── UTILS ── */
+    .mt-sm{margin-top:12px;} .mt-md{margin-top:20px;} .mt-lg{margin-top:28px;}
+
+    .insight { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .insight p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .insight p strong { color:var(--azure); }
+
+    .assumption { background:rgba(203,233,255,.2); border:1px solid rgba(12,51,135,.15); border-left:4px solid var(--azure); border-radius:var(--radius); padding:16px 20px; }
+    .assumption p { font-size:14px; color:var(--ink-mid); line-height:1.6; }
+    .assumption p strong { color:var(--azure); }
+
+    /* ── MUTED NOTE (framing / fair housing / build note / not-legal-advice) ── */
+    .muted-note { font-size:13px; color:var(--ink-soft); line-height:1.6; font-style:italic; }
+    .muted-note strong { color:var(--ink-mid); font-style:normal; }
+
+    /* ══ HERO ══ */
+    .hero { padding:150px 32px 64px; max-width:900px; margin:0 auto; }
+    .hero-chip { display:inline-block; background:var(--azure-lt); color:var(--azure); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; border:1px solid var(--azure-bd); }
+    .hero h1 { font-size:clamp(34px,5vw,52px); font-weight:800; color:var(--shadow); letter-spacing:-.025em; line-height:1.12; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:var(--azure); }
+    .hero-sub { font-size:17px; color:var(--ink-mid); max-width:580px; line-height:1.65; }
+    @media(max-width:640px){ .hero{ padding:128px 20px 48px; } }
+
+    /* ── ACT DIVIDERS ── */
+    .act-divider { max-width:900px; margin:0 auto; padding:54px 32px 8px; text-align:center; }
+    .act-divider .act-eyebrow {
+      display:inline-block; font-size:11px; font-weight:800; letter-spacing:.18em;
+      text-transform:uppercase; color:var(--azure); background:var(--azure-lt);
+      border:1px solid var(--azure-bd); border-radius:100px; padding:6px 18px; margin-bottom:14px;
+    }
+    .act-divider h2 { font-size:clamp(22px,3.4vw,30px); font-weight:800; color:var(--shadow); letter-spacing:-.02em; line-height:1.2; margin-bottom:8px; }
+    .act-divider h2 em { font-style:italic; color:var(--azure); }
+    .act-divider p { font-size:15px; color:var(--ink-mid); max-width:580px; margin:0 auto; line-height:1.6; }
+    @media(max-width:640px){ .act-divider{ padding:40px 20px 4px; } }
+
+    /* ── ACCOUNT SNAPSHOT DASHBOARD ── */
+    .snap-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:760px){ .snap-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:380px){ .snap-grid{ grid-template-columns:1fr; } }
+    .snap-card {
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--card-shadow); padding:18px; display:flex; flex-direction:column; gap:8px;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    @media(hover:hover){ .snap-card:hover{ transform:translateY(-2px); box-shadow:var(--card-hover-shadow); } }
+    .snap-icon { width:30px; height:30px; border-radius:8px; background:var(--azure-lt); color:var(--azure); display:flex; align-items:center; justify-content:center; }
+    .snap-icon svg { width:17px; height:17px; }
+    .snap-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+    .snap-value { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .snap-card.feat { background:var(--azure); border-color:var(--azure); }
+    .snap-card.feat .snap-icon { background:rgba(255,255,255,.16); color:#fff; }
+    .snap-card.feat .snap-label { color:rgba(255,255,255,.7); }
+    .snap-card.feat .snap-value { color:#fff; }
+    .snap-stage { font-size:26px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1; }
+    .snap-stage-sub { font-size:11px; color:rgba(255,255,255,.74); font-weight:600; line-height:1.4; }
+
+    /* ── CHIP ROW ── */
+    .chip-row { display:flex; flex-wrap:wrap; gap:8px; }
+    .chip { font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:100px; border:1px solid var(--azure-bd); background:var(--azure-lt); color:var(--azure); }
+
+    /* ── TWO-PHASE ENGAGEMENT BLOCKS ── */
+    .phase-blocks { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px; }
+    @media(max-width:760px){ .phase-blocks{ grid-template-columns:1fr; } }
+    .phase-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px; }
+    .phase-block.p1 { border-top:3px solid var(--azure); }
+    .phase-block.p2 { border-top:3px solid var(--green); }
+    .phase-block-eyebrow { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .phase-block.p2 .phase-block-eyebrow { color:var(--green); }
+    .phase-block h4 { font-size:17px; font-weight:800; color:var(--shadow); margin-bottom:4px; letter-spacing:-.01em; }
+    .phase-block-dur { font-size:12px; color:var(--ink-soft); font-weight:600; margin-bottom:14px; }
+    .phase-block ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .phase-block li { font-size:13.5px; color:var(--ink-mid); line-height:1.5; padding-left:20px; position:relative; }
+    .phase-block li::before { content:'✓'; position:absolute; left:0; color:var(--azure); font-weight:700; font-size:12px; top:1px; }
+    .phase-block.p2 li::before { color:var(--green); }
+    .phase-block li strong { color:var(--shadow); }
+
+    /* ── CANONICAL COLLAPSIBLE ── */
+    details.cl { border:1px solid var(--border); border-radius:var(--radius); background:#fff; box-shadow:var(--card-shadow); overflow:hidden; }
+    details.cl + details.cl { margin-top:10px; }
+    details.cl > summary {
+      list-style:none; cursor:pointer; padding:15px 20px; display:flex; align-items:center;
+      justify-content:space-between; gap:14px; min-height:44px; transition:background .15s;
+    }
+    details.cl > summary::-webkit-details-marker { display:none; }
+    details.cl > summary:hover { background:var(--porcelain); }
+    .cl-sum-text { display:flex; flex-direction:column; gap:3px; min-width:0; }
+    .cl-sum-title { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .cl-sum-tease { font-size:13px; color:var(--ink-soft); font-style:italic; line-height:1.5; }
+    .cl-chev { font-size:11px; color:var(--azure); transition:transform .2s; flex-shrink:0; }
+    details.cl[open] > summary .cl-chev { transform:rotate(180deg); }
+    .cl-body { padding:2px 20px 20px; }
+    .cl-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
+    .cl-body p + p { margin-top:10px; }
+    .cl-body p strong { color:var(--shadow); }
+
+    /* ── CONTENT IDEA CARDS ── */
+    .idea-group-label { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azure); margin:30px 0 12px; display:flex; align-items:center; gap:12px; }
+    .idea-group-label span.gl-sub { font-weight:600; letter-spacing:.04em; text-transform:none; color:var(--ink-soft); font-size:12px; }
+    .idea-group-label::after { content:''; flex:1; height:1px; background:var(--border); }
+    details.idea { border:1px solid var(--border); border-radius:var(--radius); background:#fff; box-shadow:var(--card-shadow); overflow:hidden; }
+    details.idea + details.idea, details.idea + .idea-flat, .idea-flat + details.idea { margin-top:10px; }
+    details.idea > summary { list-style:none; cursor:pointer; padding:18px 20px; display:grid; grid-template-columns:1fr 18px; gap:14px; align-items:start; transition:background .15s; }
+    details.idea > summary::-webkit-details-marker { display:none; }
+    details.idea > summary:hover { background:var(--porcelain); }
+    .idea-meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-bottom:8px; }
+    .idea-n { font-size:11px; font-weight:800; color:var(--azure); letter-spacing:.06em; }
+    .idea-pill { font-size:9.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:4px; background:var(--porcelain); border:1px solid var(--border); color:var(--ink-soft); }
+    .idea-pill.tofu { background:rgba(203,233,255,.5); color:var(--azure); border-color:var(--azure-bd); }
+    .idea-pill.mofu { background:rgba(226,237,122,.4); color:#4d5e00; border-color:rgba(200,214,0,.3); }
+    .idea-pill.bofu { background:rgba(12,51,135,.09); color:var(--azure); border-color:var(--azure-bd); }
+    .idea-star { font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:4px; background:rgba(226,237,122,.5); color:#4d5e00; border:1px solid rgba(200,214,0,.4); }
+    .idea-hero-tag { font-size:9.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; padding:3px 8px; border-radius:4px; background:var(--azure); color:#fff; }
+    .idea-title { font-size:15px; font-weight:700; color:var(--shadow); line-height:1.3; margin-bottom:6px; }
+    .idea-teaser { font-size:13.5px; color:var(--ink-mid); line-height:1.55; }
+    .idea-chev { font-size:11px; color:var(--azure); transition:transform .2s; margin-top:4px; justify-self:end; }
+    details.idea[open] .idea-chev { transform:rotate(180deg); }
+    .idea-body { padding:0 20px 18px; }
+    .idea-body p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
+    .idea-body p + p { margin-top:12px; }
+    .idea-body p strong { color:var(--shadow); }
+
+    /* Featured hero idea card */
+    details.idea.feat { border:2px solid var(--azure); box-shadow:0 6px 20px rgba(12,51,135,.12); }
+    details.idea.feat > summary { background:var(--azure-lt); }
+    details.idea.feat > summary:hover { background:rgba(12,51,135,.12); }
+
+    /* Flat (non-collapsible) idea cards */
+    .idea-flat { border:1px solid var(--border); border-radius:var(--radius); background:#fff; box-shadow:var(--card-shadow); padding:18px 20px; }
+    .idea-flat + .idea-flat { margin-top:10px; }
+    .idea-flat-body { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:8px; }
+    .idea-flat-body em { font-style:italic; color:var(--ink-soft); }
+    .idea-build-note { font-size:12.5px; color:var(--ink-soft); font-style:italic; line-height:1.55; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); }
+    .idea-build-note strong { color:var(--ink-mid); font-style:normal; }
+
+    /* Hook options + verdict stamps (hero depth) */
+    .hook-opts { list-style:none; display:flex; flex-direction:column; gap:8px; margin:6px 0 4px; }
+    .hook-opts li { font-size:14px; font-style:italic; color:var(--azure); line-height:1.55; padding-left:14px; border-left:2px solid var(--azure-bd); }
+    .verdict-stamps { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 2px; }
+    .vstamp { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:5px 12px; border-radius:5px; }
+    .vstamp.cosmetic { background:var(--green-lt); color:var(--green); border:1px solid rgba(42,122,58,.3); }
+    .vstamp.structural { background:rgba(226,237,122,.32); color:#7a6a00; border:1px solid rgba(200,180,0,.4); }
+    .vstamp.walkaway { background:rgba(220,38,38,.08); color:#c0392b; border:1px solid rgba(220,38,38,.24); }
+
+    /* Funnel-key legend */
+    .funnel-legend { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; background:var(--porcelain); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; margin:18px 0 4px; }
+    @media(max-width:640px){ .funnel-legend{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:380px){ .funnel-legend{ grid-template-columns:1fr; } }
+    .legend-item { font-size:12.5px; color:var(--ink-mid); line-height:1.5; }
+    .legend-item strong { display:block; color:var(--shadow); font-size:12px; letter-spacing:.03em; margin-bottom:3px; text-transform:uppercase; }
+    .legend-item.star strong { color:#4d5e00; }
+
+    /* ── AUDIENCE CARD ── */
+    .aud-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 26px; }
+    .aud-card + .aud-card { margin-top:16px; }
+    .aud-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:10px; background:rgba(12,51,135,.09); color:var(--azure); }
+    .aud-card h4 { font-size:18px; font-weight:800; color:var(--shadow); margin-bottom:8px; letter-spacing:-.01em; }
+    .aud-card > p { font-size:14.5px; color:var(--ink-mid); line-height:1.6; }
+    .aud-card details.cl { margin-top:14px; }
+
+    /* ── DIFFERENTIATORS + COMPLIANCE (shared card system) ── */
+    .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:640px){ .diff-grid{grid-template-columns:1fr;} }
+    .diff-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px 24px; transition:transform .18s ease, box-shadow .18s ease; }
+    @media(hover:hover){ .diff-card:hover{ transform:translateY(-2px); box-shadow:var(--card-hover-shadow); } }
+    .diff-num { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:8px; }
+    .diff-card h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:10px; line-height:1.35; }
+    .diff-card p { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+
+    /* ── 3-STAGE FUNNEL ── */
+    .funnel-stages { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    @media(max-width:760px){ .funnel-stages{ grid-template-columns:1fr; } }
+    .fstage { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; display:flex; flex-direction:column; gap:10px; }
+    .fstage-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .fstage-name { font-size:15px; font-weight:800; color:var(--shadow); }
+    .fstage-pct { font-size:22px; font-weight:800; color:var(--azure); letter-spacing:-.02em; }
+    .fstage-stage { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
+    .fstage-goal { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .fstage-signal { font-size:12px; color:var(--ink-soft); font-style:italic; line-height:1.5; border-top:1px solid var(--border); padding-top:10px; }
+    .fstage-signal strong { color:var(--shadow); font-style:normal; }
+
+    /* ── HIGHLIGHTER-BORDERED CALLOUT (honest timeline; roll-into footnote) ── */
+    .hi-callout { background:rgba(226,237,122,.16); border:1px solid rgba(200,214,0,.34); border-left:4px solid #b6c200; border-radius:var(--radius); padding:16px 20px; margin-top:22px; }
+    .hi-callout p { font-size:14px; color:var(--ink-mid); line-height:1.65; }
+    .hi-callout p strong { color:var(--shadow); }
+
+    /* ── §3 UNIQUE TO YOUR ENGAGEMENT · full-width feature band ── */
+    .feature-band { background:var(--azure-lt); border-top:1px solid var(--azure-bd); border-bottom:1px solid var(--azure-bd); padding:14px 0; margin:0; }
+    .feature-band-inner { max-width:900px; margin:0 auto; padding:66px 32px; }
+    @media(max-width:640px){ .feature-band-inner{ padding:48px 20px; } }
+    .feature-band .eyebrow { color:var(--azure); }
+    .feature-band .uniq-step, .feature-band .uniq-commit { background:#fff; }
+
+    /* chip pointer link (§2 → §3) */
+    .chip-link { display:inline-flex; align-items:center; gap:7px; text-decoration:none; cursor:pointer; transition:background .15s, border-color .15s; }
+    .chip-link:hover { background:var(--azure); color:#fff; border-color:var(--azure); }
+    .chip-badge { font-size:8.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:100px; background:var(--azure); color:#fff; white-space:nowrap; }
+    .chip-link:hover .chip-badge { background:#fff; color:var(--azure); }
+
+    /* ── §4 DELIVERABLES STRIP (beneath the timeline) ── */
+    .deliv-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:24px; }
+    @media(max-width:760px){ .deliv-strip{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:420px){ .deliv-strip{ grid-template-columns:1fr; } }
+    .deliv-item { display:flex; align-items:flex-start; gap:10px; background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:14px 16px; }
+    .deliv-icon { font-size:20px; line-height:1; flex-shrink:0; }
+    .deliv-text { display:flex; flex-direction:column; gap:2px; }
+    .deliv-text strong { font-size:13px; font-weight:700; color:var(--shadow); line-height:1.3; }
+    .deliv-text span { font-size:12px; color:var(--ink-soft); line-height:1.4; }
+
+    /* ── §6 UNIQUE TO YOUR ENGAGEMENT · inner components ── */
+    .uniq-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:8px; }
+    @media(max-width:760px){ .uniq-flow{ grid-template-columns:1fr; } }
+    .uniq-step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px 22px; }
+    .uniq-step-n { width:30px; height:30px; border-radius:8px; background:var(--azure); color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+    .uniq-step h4 { font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:6px; line-height:1.3; }
+    .uniq-step p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .uniq-commit-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+    @media(max-width:760px){ .uniq-commit-grid{ grid-template-columns:1fr; } }
+    .uniq-commit { background:#fff; border:1px solid var(--border); border-top:3px solid var(--azure); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 20px; }
+    .uniq-commit h4 { font-size:14px; font-weight:800; color:var(--azure); margin-bottom:6px; }
+    .uniq-commit p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ── §11 24-MONTH TRAJECTORY GRAPH ── */
+    .traj-box { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:26px 28px; margin-top:22px; }
+    @media(max-width:640px){ .traj-box{ padding:22px 18px; } }
+    .traj-illus { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); background:var(--azure-lt); border:1px solid var(--azure-bd); border-radius:100px; padding:4px 14px; margin-bottom:14px; }
+    .traj-head h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:10px; }
+    .traj-head h3 em { font-style:italic; color:var(--azure); }
+    .traj-frame { font-size:13px; color:var(--ink-mid); line-height:1.6; max-width:580px; margin:0 0 16px; }
+    .traj-svg-wrap { width:100%; overflow:visible; }
+    .traj-svg { width:100%; height:auto; display:block; overflow:visible; }
+    .traj-band-1 { fill:rgba(12,51,135,0.045); }
+    .traj-band-2 { fill:rgba(12,51,135,0.08); }
+    .traj-band-3 { fill:rgba(12,51,135,0.13); }
+    .traj-axis { stroke:var(--border); stroke-width:1.2; }
+    .traj-grid12 { stroke:var(--lucid-deep); stroke-width:1.3; stroke-dasharray:4 4; }
+    .traj-line { fill:none; stroke:var(--azure); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1600; stroke-dashoffset:0; }
+    @media (prefers-reduced-motion: no-preference){
+      .reveal.in .traj-line { animation:trajDraw 1.9s ease .2s both; }
+    }
+    @keyframes trajDraw { from{ stroke-dashoffset:1600; } to{ stroke-dashoffset:0; } }
+    .traj-dot { fill:var(--azure); }
+    .traj-arrow { fill:var(--ink-soft); }
+    .traj-axtext { font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; fill:var(--ink-soft); }
+    .traj-ylabel { font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700; fill:var(--ink-soft); letter-spacing:.05em; text-transform:uppercase; }
+    .traj-marker-note { font-size:13px; color:var(--shadow); font-weight:600; line-height:1.5; margin-top:14px; text-align:center; }
+    .traj-marker-note strong { color:var(--azure); }
+    .traj-legend { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+    @media(max-width:640px){ .traj-legend{ grid-template-columns:1fr; } }
+    .traj-leg { border:1px solid var(--border); border-radius:10px; padding:12px 14px; border-left:4px solid var(--azure); }
+    .traj-leg.b1 { border-left-color:#adc0e0; }
+    .traj-leg.b2 { border-left-color:#5c7bbf; }
+    .traj-leg.b3 { border-left-color:var(--azure); }
+    .traj-leg-ph { font-size:12.5px; font-weight:800; color:var(--shadow); }
+    .traj-leg-mo { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin:2px 0 5px; }
+    .traj-leg-txt { font-size:12.5px; color:var(--ink-mid); font-style:italic; line-height:1.5; }
+    .traj-context { font-size:14px; color:var(--ink-mid); line-height:1.65; margin-top:18px; }
+    .traj-context strong { color:var(--shadow); }
+    .traj-sources { font-size:13px; color:var(--ink-soft); line-height:1.6; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+    .traj-sources strong { color:var(--ink-mid); }
+
+    /* ── INSPO CARDS ── */
+    .inspo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media(max-width:640px){ .inspo-grid{ grid-template-columns:1fr; } }
+    .inspo-card { background:#fff; border:1px solid var(--border); border-left:4px solid var(--azure); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 20px; }
+    .inspo-name { font-size:15px; font-weight:800; color:var(--shadow); margin-bottom:2px; }
+    .inspo-handle { font-size:12px; color:var(--ink-soft); line-height:1.5; margin-bottom:8px; }
+    .inspo-pull { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+    .inspo-pull strong { color:var(--shadow); }
+
+    /* ── MATURITY RIBBON ── */
+    .mat-ribbon { display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--porcelain); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; margin-top:16px; }
+    .mat-stage { font-size:12px; font-weight:700; color:var(--ink-soft); padding:5px 12px; border-radius:100px; border:1px solid var(--border); background:#fff; }
+    .mat-stage.here { color:#fff; background:var(--azure); border-color:var(--azure); }
+    .mat-arrow { color:var(--ink-soft); font-size:12px; }
+    .mat-note { font-size:13px; color:var(--ink-mid); line-height:1.55; width:100%; }
+    .mat-note strong { color:var(--shadow); }
+
+    /* ── ZONES ── */
+    .zone-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    @media(max-width:760px){ .zone-grid{ grid-template-columns:1fr; } }
+    .zone-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 20px; }
+    .zone-n { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:6px; }
+    .zone-card h4 { font-size:15px; font-weight:800; color:var(--shadow); margin-bottom:6px; }
+    .zone-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+
+    /* ── APPROACH THESIS ── */
+    .approach-thesis { font-size:16px; color:var(--ink-mid); line-height:1.7; max-width:660px; }
+    .approach-thesis strong { color:var(--shadow); }
+
+    /* ══ PROOF SECTION ══ */
+    .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:980px){ .proof-grid{ grid-template-columns:1fr; } }
+    .proof-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px 22px; transition:transform .18s ease, box-shadow .18s ease; display:flex; flex-direction:column; }
+    @media(hover:hover){ .proof-card:hover{ transform:translateY(-2px); box-shadow:var(--card-hover-shadow); } }
+    .proof-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0; }
+    .proof-card-head > div { flex:1; min-width:0; }
+    .proof-card-eyebrow { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px; line-height:1.4; }
+    .proof-card-pill { display:inline-block; font-size:10.5px; font-weight:700; padding:4px 11px; border-radius:100px; background:var(--porcelain); border:1px solid var(--border); color:var(--ink-mid); margin-bottom:16px; }
+    .funnel-pill { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:4px 9px; border-radius:4px; white-space:nowrap; flex-shrink:0; }
+    .funnel-pill.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .funnel-pill.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .funnel-pill.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+    .proof-metrics-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding:6px 0 16px; }
+    .proof-metric { display:flex; flex-direction:column; gap:2px; }
+    .proof-metric-value { font-size:24px; font-weight:800; color:var(--azure); letter-spacing:-.02em; line-height:1.05; }
+    .proof-metric-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-top:2px; }
+    .proof-card-footer { border-top:1px solid var(--border); padding-top:14px; margin-top:auto; }
+    .proof-card-footer p { font-size:13px; color:var(--ink-mid); line-height:1.6; font-style:italic; }
+    .proof-card-footer p strong { color:var(--shadow); font-style:normal; }
+
+    /* Proof collapsible + breadth + quotes */
+    details.proof-more { margin-top:22px; border:1px solid var(--border); border-radius:var(--radius); background:#fff; overflow:hidden; }
+    details.proof-more > summary { list-style:none; cursor:pointer; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; gap:12px; font-weight:700; color:var(--azure); font-size:14px; min-height:44px; transition:background .15s; }
+    details.proof-more > summary::-webkit-details-marker { display:none; }
+    details.proof-more > summary:hover { background:var(--azure-lt); }
+    details.proof-more > summary .chev { font-size:11px; color:var(--ink-soft); transition:transform .2s; flex-shrink:0; }
+    details.proof-more[open] > summary .chev { transform:rotate(180deg); }
+    .proof-more-body { padding:4px 22px 22px; }
+    .proof-sub-head { margin-top:8px; margin-bottom:18px; }
+    .proof-sub-head h3 { font-size:18px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:6px; }
+    .proof-sub-head h3 em { font-style:italic; color:var(--azure); }
+    .proof-sub-head p { font-size:14px; color:var(--ink-mid); max-width:620px; line-height:1.6; }
+    .breadth-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:14px; }
+    @media(max-width:1100px){ .breadth-grid { grid-template-columns:repeat(3, 1fr); } }
+    @media(max-width:640px){ .breadth-grid { grid-template-columns:repeat(2, 1fr); gap:12px; } }
+    @media(max-width:400px){ .breadth-grid { grid-template-columns:1fr; } }
+    .breadth-chip { position:relative; background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px 14px 12px; min-height:118px; display:flex; flex-direction:column; gap:6px; transition:transform .15s, box-shadow .15s; }
+    @media(hover:hover){ .breadth-chip:hover { transform:translateY(-1px); box-shadow:0 3px 8px rgba(12,51,135,.07); } }
+    .breadth-chip-format { position:absolute; top:10px; right:10px; font-size:9px; font-weight:700; letter-spacing:.08em; padding:3px 7px; border-radius:3px; background:var(--porcelain); border:1px solid var(--border); color:var(--ink-soft); text-transform:uppercase; }
+    .breadth-chip-metric { font-size:24px; font-weight:800; color:var(--azure); letter-spacing:-.02em; line-height:1.05; margin-top:2px; }
+    .breadth-chip-context { font-size:11px; color:var(--ink-mid); line-height:1.45; flex:1; margin-top:2px; }
+    .breadth-chip-funnel { align-self:flex-start; font-size:9px; font-weight:700; letter-spacing:.08em; padding:3px 7px; border-radius:3px; text-transform:uppercase; }
+    .breadth-chip-funnel.tofu { background:rgba(203,233,255,.5); color:var(--azure); }
+    .breadth-chip-funnel.mofu { background:rgba(226,237,122,.45); color:#4d5e00; }
+    .breadth-chip-funnel.bofu { background:rgba(12,51,135,.09); color:var(--azure); }
+    .breadth-footer { margin-top:14px; font-size:13px; color:var(--ink-soft); font-style:italic; text-align:center; line-height:1.55; }
+    .proof-quotes { display:flex; flex-direction:column; gap:18px; margin-top:8px; }
+    .proof-quote { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:24px 28px; border-left:4px solid var(--azure); }
+    .proof-quote p { font-size:17px; font-style:italic; color:var(--azure); line-height:1.5; margin-bottom:12px; letter-spacing:-.005em; }
+    .proof-quote-attr { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
+
+    /* ══ SCOPE TABLE ══ */
+    .scope-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .scope-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .scope-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); padding:0 0 10px; border-bottom:2px solid var(--border); }
+    .scope-table th:last-child { text-align:center; }
+    .scope-table td { padding:12px 0; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.5; }
+    .scope-table td:first-child { font-weight:600; color:var(--shadow); width:28%; padding-right:16px; }
+    .scope-table td.when { width:26%; font-size:12.5px; color:var(--ink-soft); font-style:italic; padding-right:14px; }
+    .scope-table td:last-child { text-align:center; width:56px; }
+    .scope-table tr:last-child td { border-bottom:none; }
+    .check { color:var(--azure); font-weight:700; font-size:16px; }
+    .feat-pill { display:inline-block; font-size:9px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:4px; background:var(--azure); color:#fff; vertical-align:middle; margin-left:4px; white-space:nowrap; }
+    /* Mobile: collapse the 4-col table into stacked cards (no horizontal scroll / clipped text). */
+    @media(max-width:640px){
+      .scope-table-wrap { overflow-x:visible; }
+      .scope-table { min-width:0; width:100%; font-size:14px; }
+      .scope-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+      .scope-table, .scope-table tbody, .scope-table tr, .scope-table td { display:block; width:100%; }
+      .scope-table tr { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; margin-bottom:12px; }
+      .scope-table tr:last-child { margin-bottom:0; }
+      .scope-table td { border:none; padding:0; width:auto; }
+      .scope-table td:first-child { width:auto; font-size:15px; font-weight:700; color:var(--shadow); margin-bottom:6px; padding-right:0; }
+      .scope-table td:nth-child(2) { width:auto; font-size:14px; color:var(--ink-mid); margin-bottom:10px; }
+      .scope-table td.when { width:auto; font-size:13px; color:var(--ink-soft); font-style:italic; padding-right:0; }
+      .scope-table td.when::before { content:'When'; display:block; font-style:normal; font-weight:700; letter-spacing:.05em; text-transform:uppercase; font-size:11px; color:var(--azure); margin-bottom:2px; }
+      .scope-table td:last-child { display:none; } /* uniform ✓ column; inclusion already stated in the section intro */
+    }
+
+    /* ══ TIMELINE (phase-split) ══ */
+    .tl-cta { background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:var(--radius); padding:20px 26px; margin-top:20px; display:flex; align-items:center; gap:16px; }
+    .tl-cta p { font-size:14px; color:var(--ink-mid); line-height:1.55; }
+    .tl-cta p strong { color:var(--shadow); }
+    .tl-phase { margin-top:24px; }
+    .tl-phase-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .tl-phase-badge { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:6px 15px; border-radius:100px; white-space:nowrap; }
+    .tl-phase-badge.p1 { background:var(--azure-lt); color:var(--azure); border:1px solid var(--azure-bd); }
+    .tl-phase-badge.trans { background:rgba(226,237,122,.25); color:#4d5e00; border:1px solid rgba(200,214,0,.32); }
+    .tl-phase-badge.p2 { background:var(--green-lt); color:var(--green); border:1px solid rgba(42,122,58,.28); }
+    /* Allow the longest badge ("Week 5 → ongoing") to wrap instead of forcing horizontal scroll on <=360px phones. */
+    @media(max-width:360px){ .tl-phase-badge { white-space:normal; } }
+    .tl-phase-line { flex:1; height:1px; background:var(--border); }
+    .tl-cards { display:grid; gap:14px; }
+    .tl-cards.c3 { grid-template-columns:repeat(3,1fr); }
+    .tl-cards.c2 { grid-template-columns:repeat(2,1fr); }
+    .tl-cards.c1 { grid-template-columns:1fr; }
+    @media(max-width:760px){ .tl-cards.c3, .tl-cards.c2 { grid-template-columns:1fr; } }
+    .tl-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:18px 20px; border-left:3px solid var(--azure);
+      opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease; }
+    .tl-card.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce){ .tl-card{ opacity:1 !important; transform:none !important; } }
+    .tl-card.trans { border-left-color:#8a9e00; }
+    .tl-card.green { border-left-color:var(--green); }
+    .tl-card-week { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:5px; }
+    .tl-card h4 { font-size:14px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .tl-card p { font-size:13px; color:var(--ink-mid); line-height:1.55; }
+    .rhythm-row { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; margin-top:24px; }
+    .rhythm-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:6px; }
+    .rhythm-intro { font-size:13px; color:var(--ink-mid); line-height:1.55; margin-bottom:16px; }
+    .rhythm-steps { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .rhythm-step { flex:1; min-width:120px; text-align:center; padding:12px 10px; background:var(--porcelain); border-radius:8px; }
+    .rhythm-icon { font-size:20px; margin-bottom:6px; }
+    .rhythm-name { font-size:13px; font-weight:700; color:var(--shadow); margin-bottom:4px; }
+    .rhythm-detail { font-size:11px; color:var(--ink-soft); line-height:1.4; }
+    .rhythm-arrow { font-size:18px; color:var(--azure); font-weight:700; flex-shrink:0; }
+    @media(max-width:640px){ .rhythm-arrow{display:none;} .rhythm-steps{gap:12px;} }
+
+    /* ══ INVESTMENT ══ */
+    .inv-hero { background:var(--azure); border-radius:var(--radius); padding:36px; color:#fff; margin-bottom:18px; }
+    .inv-hero-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-bottom:6px; }
+    .inv-hero h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+    .inv-hero-sub { font-size:14px; opacity:.8; margin-bottom:20px; max-width:560px; line-height:1.55; }
+    .inv-hero-row { display:flex; gap:32px; flex-wrap:wrap; }
+    .inv-hero-stat .amount { font-size:32px; font-weight:800; line-height:1; }
+    .inv-hero-stat .lbl { font-size:12px; opacity:.7; margin-top:3px; }
+    @media(max-width:640px){ .inv-hero{padding:24px 20px;} }
+    .inv-breakdown { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); overflow:hidden; }
+    .inv-row { display:flex; justify-content:space-between; align-items:center; padding:14px 22px; border-bottom:1px solid var(--border); font-size:14px; gap:16px; }
+    .inv-row:last-child { border-bottom:none; }
+    .inv-row.total { background:var(--azure-lt); font-weight:700; }
+    .inv-row .item { color:var(--ink-mid); flex:1; }
+    .inv-row .item strong { color:var(--shadow); display:block; font-size:15px; margin-bottom:2px; }
+    .inv-row .item small { font-size:12px; color:var(--ink-soft); }
+    .inv-row .amt { font-weight:700; color:var(--shadow); white-space:nowrap; font-size:15px; }
+    .inv-row.total .amt { color:var(--azure); font-size:17px; }
+    .credit-note { font-size:13px; color:var(--azure); font-weight:600; background:var(--azure-lt); border:1px solid var(--azure-bd); border-left:4px solid var(--azure); border-radius:8px; padding:12px 16px; margin-top:14px; line-height:1.55; }
+    .credit-note.hi { color:var(--ink-mid); background:rgba(226,237,122,.16); border-color:rgba(200,214,0,.34); border-left-color:#b6c200; }
+    .credit-note.hi strong { color:var(--shadow); }
+
+    /* ══ STEPS + CTA ══ */
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){ .steps-grid{grid-template-columns:1fr;} }
+    .step { background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:22px; transition:transform .18s ease, box-shadow .18s ease; }
+    @media(hover:hover){ .step:hover{ transform:translateY(-2px); box-shadow:var(--card-hover-shadow); } }
+    .step-n { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:10px; }
+    .step h3 { font-size:16px; font-weight:700; color:var(--shadow); margin-bottom:6px; }
+    .step p  { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+    .cta-block { background:var(--azure); border-radius:var(--radius); padding:48px 40px; text-align:center; }
+    .cta-block h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:10px; line-height:1.2; }
+    .cta-block p  { font-size:16px; color:rgba(255,255,255,.8); margin-bottom:28px; max-width:480px; margin-left:auto; margin-right:auto; }
+    .cta-btn { display:inline-block; background:var(--hi); color:var(--shadow); font-size:15px; font-weight:800; padding:14px 32px; border-radius:9px; text-decoration:none; transition:opacity .18s; min-height:44px; line-height:18px; }
+    .cta-btn:hover { opacity:.88; }
+    .cta-sub { font-size:13px; color:rgba(255,255,255,.55); margin-top:14px; }
+    @media(max-width:640px){ .cta-block{padding:32px 22px;} }
+
+    /* ══ FOOTER ══ */
+    footer { background:var(--porcelain); padding:36px 32px; text-align:center; border-top:1px solid var(--border); }
+    footer img { height:22px; display:block; margin:0 auto 14px; }
+    footer p   { font-size:13px; color:var(--ink-soft); }
+    footer a   { color:var(--ink-soft); text-decoration:none; transition:color .2s; }
+    footer a:hover { color:var(--azure); }
+
+    /* ─── ACCESS-CODE GATE (Tier 3) ─── */
+    #sm-gate { position:fixed; inset:0; background:var(--ghost); display:flex; align-items:center; justify-content:center; z-index:99999; padding:24px; }
+    .sm-gate-card { background:#fff; border:1px solid var(--border); border-radius:20px; padding:48px 40px; width:100%; max-width:400px; text-align:center; box-shadow:0 4px 24px rgba(12,51,135,0.08); }
+    .sm-gate-logo { height:34px; width:auto; margin:0 auto 28px; display:block; }
+    .sm-gate-title { font-size:22px; font-weight:800; letter-spacing:-.03em; color:var(--shadow); margin-bottom:6px; }
+    .sm-gate-sub { font-size:14px; color:var(--ink-soft); margin-bottom:28px; line-height:1.5; }
+    .sm-gate-input-wrap { position:relative; margin-bottom:12px; }
+    .sm-gate-input { width:100%; background:var(--porcelain); border:1.5px solid var(--border); border-radius:8px; padding:13px 48px 13px 16px; font-size:15px; font-family:inherit; color:var(--shadow); outline:none; transition:border-color .2s; letter-spacing:.06em; }
+    .sm-gate-input:focus { border-color:var(--azure); }
+    .sm-gate-input::placeholder { letter-spacing:0; color:var(--ink-soft); }
+    .sm-gate-toggle { position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--ink-soft); padding:4px; display:flex; align-items:center; }
+    .sm-gate-btn { width:100%; background:var(--azure); color:#fff; border:none; border-radius:8px; padding:14px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; transition:background .2s, transform .1s; min-height:44px; }
+    .sm-gate-btn:hover { background:#0a276a; }
+    .sm-gate-btn:active { transform:scale(.98); }
+    .sm-gate-error { font-size:13px; color:#dc2626; margin-top:10px; display:none; }
+    .sm-gate-error.visible { display:block; }
+    body.sm-locked { overflow:hidden; }
+
+    /* ─── MOTION: section scroll-reveal ─── */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1 !important; transform:none !important; transition:none; } }
+
+    @media (hover:hover) {
+      .card:hover { transform:translateY(-2px); box-shadow:var(--card-hover-shadow); transition:transform .18s ease, box-shadow .18s ease; }
+    }
+
+    /* ─── BRAND ACCENTS: squiggle + dog ─── */
+    .squiggle-underline { display:block; width:108px; height:auto; margin:16px 0 0; }
+    .dog-accent { width:clamp(120px,22%,168px); height:auto; flex-shrink:0; }
+    .built-head { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    @media (max-width:640px){ .dog-accent{ width:120px; margin:0 auto; } .built-head{ justify-content:center; text-align:center; } }
+
+    /* ══ CONTENT ENGINE · node-network motif ══ */
+    .engine { margin-top:8px; }
+    .engine-head { max-width:660px; margin-bottom:8px; }
+    .engine-head h3 { font-size:20px; font-weight:800; color:var(--shadow); letter-spacing:-.02em; margin-bottom:8px; }
+    .engine-head h3 em { font-style:italic; color:var(--azure); }
+    .engine-head p { font-size:15px; color:var(--ink-mid); line-height:1.65; }
+    .engine-head p strong { color:var(--shadow); }
+    .engine-stage { position:relative; width:min(360px,86vw); aspect-ratio:1/1; margin:18px auto 6px; }
+    .engine-links { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+    .engine-link { fill:none; stroke:var(--lucid-deep); stroke-width:2.5; stroke-linecap:round; }
+    .engine-pulse { fill:var(--azure); }
+    .engine-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:34%; aspect-ratio:1/1; border-radius:50%; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:2px; text-align:center; padding:8px; }
+    .engine-center img { width:46%; height:auto; display:block; }
+    .engine-center span { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
+    .engine-node { position:absolute; transform:translate(-50%,-50%); min-width:88px; padding:9px 8px; border-radius:10px; text-align:center; cursor:pointer; background:var(--azure); color:#fff; border:2px solid transparent; display:flex; flex-direction:column; align-items:center; gap:1px; line-height:1.1; transition:transform .25s ease, box-shadow .25s ease; user-select:none; }
+    .engine-node .en-step { display:block; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.72; margin:0; }
+    .engine-node .en-name { display:block; font-size:15px; font-weight:800; letter-spacing:-.01em; margin:0; }
+    .engine-node.signal { background:var(--hi); color:var(--shadow); }
+    .engine-node.active { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 8px 22px rgba(12,51,135,.22); border-color:#fff; z-index:3; }
+    .engine-node.signal.active { box-shadow:0 8px 22px rgba(200,214,0,.45); }
+    .engine-node[data-i="0"] { top:12%; left:50%; }
+    .engine-node[data-i="1"] { top:50%; left:88%; }
+    .engine-node[data-i="2"] { top:88%; left:50%; }
+    .engine-node[data-i="3"] { top:50%; left:12%; }
+    @media (max-width:560px){
+      .engine-stage { width:min(300px,82vw); }
+      .engine-node { min-width:66px; padding:8px 4px; }
+      .engine-node .en-name { font-size:13px; }
+      .engine-node .en-step { font-size:9px; }
+    }
+    .engine-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:26px; }
+    @media (max-width:640px){ .engine-steps{ grid-template-columns:1fr 1fr; } }
+    .engine-step { border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; background:#fff; transition:border-color .2s ease, background .2s ease; }
+    .engine-step.active { border-color:var(--azure); background:var(--azure-lt); }
+    .engine-step-n { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--azure); margin-bottom:4px; }
+    .engine-step-name { font-size:14px; font-weight:800; color:var(--shadow); margin-bottom:4px; }
+    .engine-step-desc { font-size:13px; color:var(--ink-mid); line-height:1.5; }
+
+    /* ── Mobile body-text floor (≥14px on reading surfaces) ── */
+    @media(max-width:414px){
+      .section-sub { font-size:14px; }
+      .cl-body p { font-size:14px; }
+      .idea-body p { font-size:14px; }
+      .idea-teaser { font-size:14px; }
+      .idea-flat-body { font-size:14px; }
+      .idea-build-note { font-size:14px; }
+      .muted-note { font-size:14px; }
+      .legend-item { font-size:14px; }
+      .aud-card > p { font-size:14px; }
+      .diff-card p { font-size:14px; }
+      .zone-card p { font-size:14px; }
+      .fstage-goal { font-size:14px; }
+      .hi-callout p { font-size:14px; }
+      .credit-note { font-size:14px; }
+      .proof-card-footer p { font-size:14px; }
+      .proof-quote p { font-size:16px; }
+      .engine-step-desc { font-size:14px; }
+      .engine-head p { font-size:14px; }
+      .inspo-pull { font-size:14px; }
+      .rhythm-detail { font-size:14px; }
+      .approach-thesis { font-size:15px; }
+      .phase-block li { font-size:14px; }
+      .tl-card p { font-size:14px; }
+      .uniq-step p { font-size:14px; }
+      .uniq-commit p { font-size:14px; }
+      .deliv-text strong { font-size:14px; }
+      .deliv-text span { font-size:14px; }
+      .traj-frame { font-size:14px; }
+      .traj-leg-txt { font-size:14px; }
+      .traj-marker-note { font-size:14px; }
+      .traj-context { font-size:14px; }
+      .traj-sources { font-size:14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── ACCESS-CODE GATE (Tier 3) ─── -->
+<div id="sm-gate">
+  <div class="sm-gate-card">
+    <img class="sm-gate-logo" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="Scroll Media" width="60" height="30" />
+    <div class="sm-gate-title">Private proposal</div>
+    <div class="sm-gate-sub">This proposal is private. Enter your access code to continue.</div>
+    <div class="sm-gate-input-wrap">
+      <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+      <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+        <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <button class="sm-gate-btn" id="sm-gate-btn">View proposal</button>
+    <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS='dwell.scroll', KEY='sm_dwell_v3';
+  var gate=document.getElementById('sm-gate');
+  var inp=document.getElementById('sm-gate-input');
+  var btn=document.getElementById('sm-gate-btn');
+  var err=document.getElementById('sm-gate-error');
+  var tog=document.getElementById('sm-gate-toggle');
+  if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+  else { document.body.classList.add('sm-locked'); inp.focus(); }
+  function unlock(){
+    if(inp.value.trim().toLowerCase()===PASS){
+      sessionStorage.setItem(KEY,'1');
+      document.body.classList.remove('sm-locked');
+      gate.style.opacity='0'; gate.style.transition='opacity .3s';
+      setTimeout(function(){ gate.style.display='none'; },300);
+    } else {
+      err.classList.add('visible'); inp.style.borderColor='#dc2626';
+      setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+    }
+  }
+  btn.addEventListener('click',unlock);
+  inp.addEventListener('keydown',function(e){ if(e.key==='Enter') unlock(); });
+  tog.addEventListener('click',function(){
+    var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+    document.getElementById('sm-eye-icon').innerHTML=isPw
+      ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+      :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  });
+})();
+</script>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-logo">
+    <!-- BRAND TOKEN SLOT · nav logo (Scroll default until DWELL513 kit lands) -->
+    <a href="https://decks.scrollmedia.co/pitch/">
+      <img src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="56" height="26" />
+    </a>
+  </div>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open section navigation" aria-controls="act-nav" aria-expanded="false">
+    <span class="nav-toggle-box"><span></span><span></span><span></span></span>
+  </button>
+  <div class="act-nav" id="act-nav">
+    <div class="act-group" data-act="engagement">
+      <button type="button" class="act-btn">The Engagement <span class="act-caret">&#9660;</span></button>
+      <div class="act-sections">
+        <a href="#snapshot"><span class="as-n">01</span> Account Snapshot</a>
+        <a href="#engagement"><span class="as-n">02</span> The Engagement</a>
+        <a href="#listing"><span class="as-n">03</span> Listing Pipeline</a>
+        <a href="#timeline"><span class="as-n">04</span> Timeline</a>
+        <a href="#investment"><span class="as-n">05</span> Investment</a>
+        <a href="#scope"><span class="as-n">06</span> Scope &amp; Deliverables</a>
+      </div>
+    </div>
+    <div class="act-group" data-act="strategy">
+      <button type="button" class="act-btn">The Strategy <span class="act-caret">&#9660;</span></button>
+      <div class="act-sections">
+        <a href="#approach"><span class="as-n">07</span> Our Approach</a>
+        <a href="#built"><span class="as-n">08</span> Built Around You</a>
+        <a href="#audience"><span class="as-n">09</span> Your Audience</a>
+        <a href="#ideas"><span class="as-n">10</span> Content Ideas</a>
+        <a href="#results"><span class="as-n">11</span> How We Drive Results</a>
+      </div>
+    </div>
+    <div class="act-group" data-act="proof">
+      <button type="button" class="act-btn">The Proof <span class="act-caret">&#9660;</span></button>
+      <div class="act-sections">
+        <a href="#proof"><span class="as-n">12</span> Proof</a>
+        <a href="#next-steps"><span class="as-n">13</span> Next Steps</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero reveal" id="top">
+  <div class="hero-chip">Scroll Media × DWELL513 · Organic Social Media Marketing Proposal</div>
+  <h1>Your Instagram,<br/><em>built to generate leads.</em></h1>
+  <img class="squiggle-underline" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" width="108" height="60" />
+  <p class="hero-sub" style="margin-top:18px;">A proposal for DWELL513 to bring on Scroll Media as your <strong>organic social media marketing partner</strong>, focused entirely on Instagram and built around the <strong>expertise that separates you from every other agent in this market</strong>. We run the strategy, the content, and the growth end to end on the Scroll System, so you stay focused on your clients.</p>
+</div>
+
+<!-- ════════════════════ ACT 1 ════════════════════ -->
+<div class="act-divider reveal">
+  <span class="act-eyebrow">Act 1 · The Engagement</span>
+  <h2>The offer, <em>crystal clear.</em></h2>
+  <p>What you're buying, when, and what it costs, up front.</p>
+</div>
+
+<!-- ══════════ 01 · ACCOUNT SNAPSHOT ══════════ -->
+<div class="wrap reveal" id="snapshot" style="padding-top:40px;">
+  <div class="eyebrow">Who we're building for</div>
+  <h2 class="section-title">The account, <em>at a glance.</em></h2>
+  <p class="section-sub">We did our homework before writing a word of this. Here is exactly who we are building for, and where.</p>
+
+  <div class="snap-grid">
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
+      <div class="snap-label">Owner</div>
+      <div class="snap-value">Doug Spitz</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+      <div class="snap-label">Team</div>
+      <div class="snap-value">DWELL513, a Coldwell Banker Realty team</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+      <div class="snap-label">Focus</div>
+      <div class="snap-value">Residential · buyer and seller representation</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></div>
+      <div class="snap-label">Account</div>
+      <div class="snap-value">@dwell513</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></div>
+      <div class="snap-label">Platform</div>
+      <div class="snap-value">Instagram · organic</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+      <div class="snap-label">Service</div>
+      <div class="snap-value">Signature Package · Growth</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="snap-label">Market</div>
+      <div class="snap-value">Cincinnati, OH and Northern Kentucky</div>
+    </div>
+    <div class="snap-card feat">
+      <div class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 12.5a1 1 0 0 0 .8 1.6H11l-1 7.9L18.5 11a1 1 0 0 0-.8-1.6H12l1-7.4z"/></svg></div>
+      <div class="snap-label">Instagram maturity</div>
+      <div class="snap-stage">Lift</div>
+      <div class="snap-stage-sub">3,800 followers and a real foundation to build on</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 02 · THE ENGAGEMENT ══════════ -->
+<div class="wrap reveal" id="engagement">
+  <div class="eyebrow">The Engagement</div>
+  <h2 class="section-title">The Signature Package. <em>Run end to end.</em></h2>
+  <p class="section-sub">Our <strong>Signature Package</strong> is your organic social, built and run end to end on Instagram. One team owns the strategy, the content, and the growth, so you stay focused on listings and clients.</p>
+
+  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px;">What's included</div>
+  <div class="chip-row">
+    <span class="chip">A full social media strategy, built around your expertise</span>
+    <span class="chip">A creative direction for the account</span>
+    <span class="chip">3 feed posts a week</span>
+    <span class="chip">2 story days a week</span>
+    <span class="chip">A content shoot every 3 to 4 weeks</span>
+    <a href="#listing" class="chip chip-link">The Listing Content Pipeline <span class="chip-badge">Unique to your engagement</span></a>
+    <span class="chip">Community management</span>
+    <span class="chip">Monthly report + biweekly check-ins</span>
+  </div>
+
+  <div class="phase-blocks">
+    <div class="phase-block p1">
+      <div class="phase-block-eyebrow">Phase 1 · Strategy</div>
+      <h4>The foundation</h4>
+      <div class="phase-block-dur">First ~3 weeks</div>
+      <ul>
+        <li>Goal setting, plus a brand and competitive review</li>
+        <li>Your audience, built out in full (the ideal viewer profile)</li>
+        <li>Content pillars, funnel mapping, and the Instagram keyword plan (Social SEO)</li>
+        <li>Creative direction and inspiration for the account</li>
+        <li>Profile optimization guidance, plus the shot list and content plan</li>
+        <li><strong>Presented and locked with you in a strategy meeting at the end of week 3: the strategy deck and the creative direction, together</strong></li>
+      </ul>
+    </div>
+    <div class="phase-block p2">
+      <div class="phase-block-eyebrow">Phase 2 · Execution</div>
+      <h4>The engine runs</h4>
+      <div class="phase-block-dur">The following 2 months, then ongoing</div>
+      <ul>
+        <li>We shoot, produce, schedule, and post, 3 feed posts plus 2 story days a week</li>
+        <li>The Listing Content Pipeline goes live</li>
+        <li>We write the copy, manage the calendar, and publish</li>
+        <li>We manage the community, route qualified inquiries to your team, and run collaborations</li>
+        <li>We report every month, review performance, and adjust the strategy as the data comes in</li>
+        <li><strong>The engine runs. You review and approve.</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 03 · UNIQUE TO YOUR ENGAGEMENT (feature band) ══════════ -->
+<div class="feature-band reveal" id="listing">
+  <div class="feature-band-inner">
+    <div class="eyebrow">Unique to your engagement</div>
+    <h2 class="section-title">Your listings, live <em>while they matter.</em></h2>
+    <p class="section-sub">Almost everything we do is planned in advance. Listings are not. A property goes live on its own schedule, and waiting on the next scheduled shoot is not an option when a week of exposure is the difference. Most agencies would either ignore this or promise a shoot crew on standby. <strong>We built it into the engagement instead.</strong> This is the one part of this proposal that exists only for DWELL513.</p>
+
+    <div class="uniq-flow">
+      <div class="uniq-step">
+        <div class="uniq-step-n">1</div>
+        <h4>Your media partner captures</h4>
+        <p>Wow Video Tours shoots the listing on their usual short-notice schedule. Nothing new lands on your calendar.</p>
+      </div>
+      <div class="uniq-step">
+        <div class="uniq-step-n">2</div>
+        <h4>You tell us when it's booked</h4>
+        <p>Not when the footage arrives. That lead time is what makes the speed possible.</p>
+      </div>
+      <div class="uniq-step">
+        <div class="uniq-step-n">3</div>
+        <h4>We edit and publish</h4>
+        <p>The listing reaches your audience while it still matters.</p>
+      </div>
+    </div>
+
+    <div class="uniq-commit-grid">
+      <div class="uniq-commit">
+        <h4>Speed where it counts</h4>
+        <p>Stories and a first cut in market within about 48 hours of receiving usable footage. The polished Reel follows within the week.</p>
+      </div>
+      <div class="uniq-commit">
+        <h4>A clear volume</h4>
+        <p>Up to four listings a month, included in the retainer. More than that, and we'll talk.</p>
+      </div>
+      <div class="uniq-commit">
+        <h4>An honest start</h4>
+        <p>This is a new pipeline for both of us. The first two months are a calibration window while we tune the handoff. We would rather tell you that now than promise a flawless first month and miss.</p>
+      </div>
+    </div>
+
+    <div class="hi-callout">
+      <p><strong>We work through the specifics together at kickoff.</strong> The exact turnaround, what we need from your partner's footage, and how the three of us coordinate are worth a real conversation rather than a paragraph in a proposal. If we move forward, we lock them at kickoff.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 04 · TIMELINE ══════════ -->
+<div class="wrap reveal" id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2 class="section-title">Strategy first. <em>Then we execute.</em></h2>
+  <p class="section-sub">The 3-month initial engagement, at a glance. Strategy in weeks 1 to 3, then we transition to execution and the content goes live.</p>
+
+  <div class="tl-cta">
+    <div style="font-size:24px;">⚡</div>
+    <p>Sign the contract, kick off within a week, strategy locked at the end of week 3, first post live in week 5. <strong>Roughly five weeks from signature to a live, running account.</strong></p>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="tl-phase">
+    <div class="tl-phase-head">
+      <span class="tl-phase-badge p1">Phase 1 · Strategy · Weeks 1-3</span>
+      <span class="tl-phase-line"></span>
+    </div>
+    <div class="tl-cards c3">
+      <div class="tl-card">
+        <div class="tl-card-week">Week 1</div>
+        <h4>Kickoff</h4>
+        <p>Onboarding, kickoff call, goal setting, full account audit, brand and competitive review.</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-week">Week 2</div>
+        <h4>Strategy development</h4>
+        <p>Your audience, content pillars, Instagram Social SEO, the creative direction, and we align with your media partner on the listing pipeline.</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-week">Week 3</div>
+        <h4>Strategy presentation</h4>
+        <p>The strategy deck and the creative direction, presented and locked with you together.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSITION -->
+  <div class="tl-phase">
+    <div class="tl-phase-head">
+      <span class="tl-phase-badge trans">Transition · Week 4</span>
+      <span class="tl-phase-line"></span>
+    </div>
+    <div class="tl-cards c1">
+      <div class="tl-card trans">
+        <div class="tl-card-week">Week 4</div>
+        <h4>First content shoot</h4>
+        <p>Content captured and prepped for launch, and the profile rebuilt.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="tl-phase">
+    <div class="tl-phase-head">
+      <span class="tl-phase-badge p2">Phase 2 · Execution · Week 5 → ongoing</span>
+      <span class="tl-phase-line"></span>
+    </div>
+    <div class="tl-cards c2">
+      <div class="tl-card green">
+        <div class="tl-card-week">Week 5</div>
+        <h4>First post goes live</h4>
+        <p>The account in motion, the funnel running.</p>
+      </div>
+      <div class="tl-card green">
+        <div class="tl-card-week">Weeks 6+</div>
+        <h4>Execution mode</h4>
+        <p>3 feed posts plus 2 story days a week, shoots every 3 to 4 weeks, the listing pipeline running, monthly reporting and strategy review.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOU RECEIVE IN WEEK 3 (deliverables strip) -->
+  <div class="deliv-strip">
+    <div class="deliv-item">
+      <div class="deliv-icon">📘</div>
+      <div class="deliv-text"><strong>Strategy Deck + Creative Direction</strong><span>One-time, week 3.</span></div>
+    </div>
+    <div class="deliv-item">
+      <div class="deliv-icon">📅</div>
+      <div class="deliv-text"><strong>Content Plan</strong><span>Delivered with the strategy, updated through execution.</span></div>
+    </div>
+    <div class="deliv-item">
+      <div class="deliv-icon">📱</div>
+      <div class="deliv-text"><strong>Social Media Content</strong><span>Begins after strategy approval.</span></div>
+    </div>
+    <div class="deliv-item">
+      <div class="deliv-icon">📊</div>
+      <div class="deliv-text"><strong>Monthly Performance Report</strong><span>First week of each month.</span></div>
+    </div>
+  </div>
+
+  <!-- ONGOING OPERATING RHYTHM (steady-state, distinct from the ramp) -->
+  <div class="rhythm-row">
+    <div class="rhythm-label">Ongoing operating rhythm</div>
+    <div class="rhythm-intro">Once execution is live, this is the steady-state cadence that keeps running.</div>
+    <div class="rhythm-steps">
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📸</div>
+        <div class="rhythm-name">Content Shoot</div>
+        <div class="rhythm-detail">Every 3-4 weeks.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">🏠</div>
+        <div class="rhythm-name">Listing Pipeline</div>
+        <div class="rhythm-detail">As listings go live.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">💬</div>
+        <div class="rhythm-name">Check-in</div>
+        <div class="rhythm-detail">Every other week.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📅</div>
+        <div class="rhythm-name">Feed</div>
+        <div class="rhythm-detail">Mon / Wed / Fri.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">✨</div>
+        <div class="rhythm-name">Stories</div>
+        <div class="rhythm-detail">Tue / Thu.</div>
+      </div>
+      <div class="rhythm-arrow">→</div>
+      <div class="rhythm-step">
+        <div class="rhythm-icon">📊</div>
+        <div class="rhythm-name">Report</div>
+        <div class="rhythm-detail">First week of each month.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 05 · INVESTMENT ══════════ -->
+<div class="wrap reveal" id="investment">
+  <div class="eyebrow">Investment</div>
+  <h2 class="section-title">What it <em>costs.</em></h2>
+  <p class="section-sub">Straightforward pricing. No hidden fees. Billed month by month after the initial engagement.</p>
+
+  <div class="inv-hero">
+    <div class="inv-hero-label">Signature Package · Growth Tier · 3-Month Initial Engagement</div>
+    <h3>DWELL513 · Doug Spitz</h3>
+    <div class="inv-hero-sub">Phase 1 builds the strategy. Phase 2 runs the full content engine. After the initial 3 months, the retainer continues at the same rate, with no resets and no new strategy fees. Organic social compounds, so most clients extend into a 6, 9, or 12-month term to play the long game.</div>
+    <div class="inv-hero-row">
+      <div class="inv-hero-stat">
+        <div class="amount">$3,250</div>
+        <div class="lbl">Monthly retainer (Months 2–3)</div>
+      </div>
+      <div class="inv-hero-stat">
+        <div class="amount">$8,417</div>
+        <div class="lbl">Total 3-month engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-breakdown">
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 1 · Strategy build</strong>
+        <small>kickoff · goal setting · brand and competitive review · the audience · content pillars · Social SEO · the creative direction · profile optimization · the listing pipeline plan · the content plan · the strategy presentation</small>
+      </div>
+      <div class="amt">$1,917</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 2 · Full execution</strong>
+        <small>3 feed posts/wk · 2 story days/wk · content shoot · listing pipeline live · community management · biweekly check-in · monthly report</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row">
+      <div class="item">
+        <strong>Month 3 · Full execution</strong>
+        <small>the full content engine running</small>
+      </div>
+      <div class="amt">$3,250</div>
+    </div>
+    <div class="inv-row total">
+      <div class="item"><strong>3-Month Total</strong><small>Billed monthly</small></div>
+      <div class="amt">$8,417</div>
+    </div>
+  </div>
+
+  <div class="credit-note hi mt-md">
+    ★ After the initial 3-month engagement, DWELL513 continues at $3,250/month, no additional strategy fees, no resets. Because organic social compounds over time, most clients extend into a 6, 9, or 12-month term from there. Month to month stays available if you ever want the flexibility.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 06 · SCOPE & DELIVERABLES ══════════ -->
+<div class="wrap reveal" id="scope">
+  <div class="eyebrow">Scope &amp; Deliverables</div>
+  <h2 class="section-title">What Scroll Media <em>handles.</em></h2>
+  <p class="section-sub">Everything below is included in the monthly retainer. You run the business. We run the Instagram. Each line shows when you can expect it.</p>
+
+  <div class="scope-table-wrap">
+    <table class="scope-table">
+      <thead>
+        <tr><th>Deliverable</th><th>What you get</th><th>When</th><th>Incl.</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Content Strategy</td>
+          <td>The full strategy build: goal setting, brand and competitive review, your ideal viewer profile, content pillars and funnel mapping, the keyword bank, positioning and voice, profile optimization guidance, plus the shot list and content plan.</td>
+          <td class="when">Presented and locked with you in week 3.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>🎨 Creative Direction</td>
+          <td>The visual and creative direction for the account. Reference boards, tone, look and feel, and the aesthetic we are taking @dwell513 toward. Delivered alongside the strategy deck, not buried inside it.</td>
+          <td class="when">Presented with the strategy, end of week 3.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Content Shoots</td>
+          <td>A shoot every 3 to 4 weeks (about 2 to 3 hours), storyboarded and scripted in advance, built to minimize your time on set. Doug and the team on camera. Cadence is set collaboratively as the partnership develops, with 3 to 4 weeks as the general target.</td>
+          <td class="when">First shoot week 4, then every 3 to 4 weeks.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Feed Content Production</td>
+          <td>Creative planning (concepts, hooks, shot lists, scripts, production direction), then editing and asset production. 3 feed posts/week (reels, carousels, statics), each mapped to a pillar and a funnel stage. Stories and graphic design as needed.</td>
+          <td class="when">Live from week 5, weekly thereafter.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>🏠 The Listing Content Pipeline <span class="feat-pill">Unique to your engagement</span></td>
+          <td>Your listings, edited and in market fast, without adding a shoot to your calendar. Full detail in section 3.</td>
+          <td class="when">Live from week 5, per listing.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Profile + Social SEO</td>
+          <td>Bio, link-in-bio, highlight covers, alt text, captions, the Cincinnati and Northern Kentucky keyword ladder, ongoing profile maintenance on @dwell513.</td>
+          <td class="when">Built in weeks 1-3, maintained ongoing.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Compliance-Aware Production</td>
+          <td>Every post, template, and profile element built to Ohio and Kentucky real estate advertising requirements, including brokerage attribution.</td>
+          <td class="when">From week 1, applied to everything thereafter.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Copywriting, Publishing &amp; Calendar Management</td>
+          <td>We write the copy, prepare publish-ready assets, schedule approved content, post on the active plan, and maintain the working content calendar throughout.</td>
+          <td class="when">Ongoing from week 5.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Community Management &amp; DM Routing</td>
+          <td>Comments, DMs, mentions, proactive outreach, and collaborations with brand-aligned local accounts. Qualified buyer and seller inquiries routed to your designated contact.</td>
+          <td class="when">Ongoing from launch (week 5).</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Monthly Reporting &amp; Strategy Support</td>
+          <td>A monthly performance report covering reach, engagement, and conversion signal, plus recurring strategy reviews and adjustments based on what the data shows.</td>
+          <td class="when">Report in the first week of each month; strategy reviews throughout.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Biweekly Check-ins</td>
+          <td>30 minutes every two weeks: approvals, performance signals, priorities, and open items.</td>
+          <td class="when">Ongoing from kickoff.</td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Content approvals.</strong> All content submitted 5 business days before publish. Max 2 rounds of revisions per cycle, batched at the biweekly check-in. Listing content runs on its own faster approval, agreed at kickoff.</p>
+  </div>
+</div>
+
+<!-- ════════════════════ ACT 2 ════════════════════ -->
+<div class="act-divider reveal">
+  <span class="act-eyebrow">Act 2 · The Strategy &amp; The Work</span>
+  <h2>The firepower <em>behind the engagement.</em></h2>
+  <p>A tight teaser of how it works. Depth lives in the dropdowns and, after you sign, in the full strategy build.</p>
+</div>
+
+<!-- ══════════ 07 · OUR APPROACH ══════════ -->
+<div class="wrap reveal" id="approach" style="padding-top:40px;">
+  <div class="eyebrow">Our Approach</div>
+  <h2 class="section-title">You're not buying posts. <em>You're buying a system.</em></h2>
+  <p class="approach-thesis">Everything we run sits on the Scroll System: we build the strategy (Foundation), run a content engine that turns it into posts that perform (Execution), then track and adjust against your goals (Performance). Here is the engine at the core.</p>
+
+  <!-- THE SCROLL CONTENT ENGINE (animation lives here, once) -->
+  <div class="engine" id="engine">
+    <div class="engine-head" style="margin-top:24px;">
+      <div class="eyebrow" style="margin-top:0;">The Scroll Content Engine</div>
+      <h3>How we turn strategy into posts. <em>Idea, format, hook, data.</em></h3>
+      <p>We <strong>pull the idea</strong>, choose the <strong>format</strong>, sharpen the <strong>hook</strong>, then let the <strong>data</strong> tell us what to scale. A repeatable loop that never stops turning.</p>
+    </div>
+    <div class="engine-stage" id="engine-stage">
+      <svg class="engine-links" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <circle cx="50" cy="50" r="38" class="engine-link" fill="none" stroke-width="1.3"></circle>
+        <circle r="2.2" class="engine-pulse">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M 50 12 A 38 38 0 1 1 50 88 A 38 38 0 1 1 50 12 Z"></animateMotion>
+        </circle>
+      </svg>
+      <div class="engine-center">
+        <img src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="" aria-hidden="true" width="60" height="30" />
+        <span>Scroll Content Engine</span>
+      </div>
+      <button type="button" class="engine-node active" data-i="0"><span class="en-step">Step 01</span><span class="en-name">Idea</span></button>
+      <button type="button" class="engine-node" data-i="1"><span class="en-step">Step 02</span><span class="en-name">Format</span></button>
+      <button type="button" class="engine-node" data-i="2"><span class="en-step">Step 03</span><span class="en-name">Hook</span></button>
+      <button type="button" class="engine-node signal" data-i="3"><span class="en-step">Step 04</span><span class="en-name">Data</span></button>
+    </div>
+    <div class="engine-steps" id="engine-steps">
+      <div class="engine-step active" data-i="0"><div class="engine-step-n">01 &middot; Idea</div><div class="engine-step-name">Pulled from your world</div><div class="engine-step-desc">Your audience, your expertise, and what is already working in the category.</div></div>
+      <div class="engine-step" data-i="1"><div class="engine-step-n">02 &middot; Format</div><div class="engine-step-name">The right vehicle</div><div class="engine-step-desc">The format that carries the idea, chosen from the Scroll format library.</div></div>
+      <div class="engine-step" data-i="2"><div class="engine-step-n">03 &middot; Hook</div><div class="engine-step-name">Stop the scroll</div><div class="engine-step-desc">The first line, engineered to earn the next second of attention.</div></div>
+      <div class="engine-step" data-i="3"><div class="engine-step-n">04 &middot; Data</div><div class="engine-step-name">Read and feed back</div><div class="engine-step-desc">We track what travels, then feed the winners into the next idea.</div></div>
+    </div>
+  </div>
+
+  <!-- THE THREE ZONES -->
+  <div class="zone-grid mt-lg">
+    <div class="zone-card">
+      <div class="zone-n">Zone 01</div>
+      <h4>Foundation</h4>
+      <p>Brand, audiences, the funnel.</p>
+    </div>
+    <div class="zone-card">
+      <div class="zone-n">Zone 02</div>
+      <h4>Execution</h4>
+      <p>The Content Engine, on a loop.</p>
+    </div>
+    <div class="zone-card">
+      <div class="zone-n">Zone 03</div>
+      <h4>Performance</h4>
+      <p>Analytics mapped to your goals, winners promoted, the plan adjusted.</p>
+    </div>
+  </div>
+
+  <!-- MATURITY RIBBON -->
+  <div class="mat-ribbon">
+    <span class="mat-stage">Spark</span>
+    <span class="mat-arrow">→</span>
+    <span class="mat-stage here">Lift · you are here</span>
+    <span class="mat-arrow">→</span>
+    <span class="mat-stage">Rise</span>
+    <span class="mat-arrow">→</span>
+    <span class="mat-stage">Thrive</span>
+    <div class="mat-note">We read account maturity on more than follower count. <strong>DWELL513 starts at Lift</strong>, the growth stage where strategy and consistency compound fastest. You have already built the foundation.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 08 · BUILT AROUND YOU ══════════ -->
+<div class="wrap reveal" id="built">
+  <div class="built-head">
+    <div style="flex:1;min-width:260px;">
+      <div class="eyebrow">What sets you apart</div>
+      <h2 class="section-title">Four things <em>we build your content around.</em></h2>
+      <p class="section-sub" style="margin-bottom:0;">These are advantages no other Cincinnati agent can copy. Every one becomes a recurring content pillar.</p>
+    </div>
+    <img class="dog-accent" src="https://tools.scrollmedia.co/assets/illustrations/howie-color.png" alt="" aria-hidden="true" width="168" height="168" />
+  </div>
+
+  <div class="diff-grid mt-lg">
+    <div class="diff-card">
+      <div class="diff-num">01 · Differentiator</div>
+      <h4>The builder who became the agent.</h4>
+      <p>Before real estate, Doug built and renovated homes, specializing in restoring historic Cincinnati properties. He can walk a buyer through what a hundred-year-old house actually needs, and tell a seller what to fix before it lists. No other agent in this market can make that content, and right now none of it is on your feed.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">02 · Differentiator</div>
+      <h4>White glove, end to end.</h4>
+      <p>Anyone can get a license. Not everyone can guide someone through the largest transaction of their life. DWELL513 is built around the walk-through, not the commission. That is the whole story, and it has never been told on Instagram.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">03 · Differentiator</div>
+      <h4>The 513 is the brand.</h4>
+      <p>Neighborhood tours, Cincy favorites, charitable partnerships. The local identity is already on your website. It has simply never made it to your feed, where the audience actually is.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">04 · Differentiator</div>
+      <h4>Nineteen years, and the receipts.</h4>
+      <p>Licensed since 2007, a Circle of Excellence Realtor, a Coldwell Banker Luxury Property Specialist, and a lifelong Cincinnatian. Expertise is the product. Content is how people find out it exists.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 09 · YOUR AUDIENCE ══════════ -->
+<div class="wrap reveal" id="audience">
+  <div class="eyebrow">Who we're getting you in front of</div>
+  <h2 class="section-title">One audience. <em>The one that grows the business.</em></h2>
+  <p class="section-sub">This engagement is about new lead acquisition, and we are pointing all of it at one person. Not because buyers do not matter, but because focus is what makes content work. Content written for everyone reaches no one.</p>
+
+  <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px;">Why sellers</div>
+  <div class="uniq-commit-grid" style="margin-top:0;">
+    <div class="uniq-commit">
+      <h4>The asset your business runs on</h4>
+      <p>A listing creates the exposure, the buyer leads, and the referrals. Win the listing and everything else follows.</p>
+    </div>
+    <div class="uniq-commit">
+      <h4>Your expertise peaks here</h4>
+      <p>When someone is deciding what to fix and what their home is really worth, a builder's eye is not a nice-to-have. It is the whole difference.</p>
+    </div>
+    <div class="uniq-commit">
+      <h4>Sellers compound</h4>
+      <p>Every listing you win becomes content that helps you win the next one. Buyers do not work that way.</p>
+    </div>
+  </div>
+
+  <div class="aud-card mt-lg">
+    <span class="aud-tag">The persona</span>
+    <h4>The Cincinnati Home Seller</h4>
+    <p>A homeowner in Cincinnati or Northern Kentucky, often in an older home they have lived in for years. Something has changed, and they are starting to wonder what the house is worth and whether it is time. This is a decision they make once or twice in a lifetime, and their quiet fear is choosing the wrong agent, because they know how easy it is to get a license in this business.</p>
+    <details class="cl">
+      <summary><div class="cl-sum-text"><span class="cl-sum-title">See the full profile</span><span class="cl-sum-tease">What motivates them, what gets in the way, what they want, how content adapts</span></div><span class="cl-chev">&#9660;</span></summary>
+      <div class="cl-body">
+        <p><strong>What motivates them.</strong> Knowing what the house is genuinely worth, not leaving money on the table, and being guided by someone who has actually seen a hundred houses like theirs.</p>
+        <p><strong>What gets in the way.</strong> They do not know what to fix first, what is cosmetic versus structural, or how to tell an expert from a salesperson with a license.</p>
+        <p><strong>What they actually want.</strong> The house sells for what it is worth, the process is handled, and they never once feel lost.</p>
+        <p><strong>How the content adapts.</strong> Doug's builder authority in the middle of the funnel, process transparency to build trust, and a low-pressure way to start a conversation at the bottom.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="insight mt-md">
+    <p><strong>Why this matters.</strong> We build every pillar, format, and call to action around one person because different audiences are motivated by different things, get stuck on different things, and consume content differently. Writing for one person is what makes the content feel like it was written for them.</p>
+  </div>
+
+  <p style="font-size:14px;color:var(--ink-mid);line-height:1.6;margin-top:14px;padding-left:16px;border-left:3px solid var(--border);"><strong style="color:var(--shadow);">Buyers still find you.</strong> The Cincinnati lifestyle and neighborhood content that earns your reach lands naturally in front of buyers and people moving to the city. Those inquiries go straight to your team. We simply do not build a second funnel for them.</p>
+
+  <div class="assumption mt-md">
+    <p><strong>Assumption.</strong> This persona is our informed hypothesis, built from your website, your account, and our conversation. The full profile is built and locked with you in the Phase 1 strategy. We do not guess in the dark, and we do not lock anything before you have seen it.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 10 · CONTENT IDEAS ══════════ -->
+<div class="wrap reveal" id="ideas">
+  <div class="eyebrow">Content Ideas</div>
+  <h2 class="section-title">Built around your expertise. <em>Designed to perform.</em></h2>
+  <p class="section-sub" style="margin-bottom:8px;">Not generic real estate content. Concepts only DWELL513 could make, each engineered to travel and mapped to the funnel. Every idea comes out of the Content Engine above.</p>
+  <p class="muted-note" style="margin-bottom:6px;">These are illustrative concepts, the caliber of content we build for DWELL513. Exact hooks, houses, and executions get developed in the Strategy phase.</p>
+
+  <!-- FUNNEL KEY LEGEND -->
+  <div class="funnel-legend">
+    <div class="legend-item"><strong>Top</strong>Builds relatability and reach.</div>
+    <div class="legend-item"><strong>Middle</strong>Builds authority and trust.</div>
+    <div class="legend-item"><strong>Bottom</strong>Drives conversion and proof.</div>
+    <div class="legend-item star"><strong>⭐ Signature Series</strong>A repeatable franchise with a new subject each episode, the kind of content an audience learns to look for. Franchises run across all three stages.</div>
+  </div>
+
+  <p class="muted-note" style="margin-top:12px;">We have opened up one idea in full so you can see exactly how we think, from the hook down to the on-screen text. The other nine stay at concept level on purpose. Ten fully-built ideas would not be a proposal, it would be the strategy document, and that is what Phase 1 is for.</p>
+
+  <!-- TOP -->
+  <div class="idea-group-label">Top &middot; <span class="gl-sub">relatability &amp; reach</span></div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">01</span><span class="idea-star">⭐ Signature Series</span><span class="idea-pill">Collab Reel · recurring</span><span class="idea-pill tofu">TOFU · Reach</span></div>
+    <div class="idea-title">Cincy Made</div>
+    <p class="idea-flat-body">Doug or Erika celebrating the local spots that make the 513 the 513. The Cincy Favorites page on your website, finally on the feed. Warm, local, endlessly shareable, and it puts DWELL513 in front of people who have never thought about real estate. Community collaboration is the highest-reach top-of-funnel format available to a local brand. <em>Each episode: a new spot, the same warmth.</em></p>
+  </div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">02</span><span class="idea-star">⭐ Signature Series</span><span class="idea-pill">Archival Reel · recurring</span><span class="idea-pill tofu">TOFU · Reach</span></div>
+    <div class="idea-title">Almost Torn Down</div>
+    <p class="idea-flat-body">Historic Cincinnati homes the city nearly lost, then and now. Doug's restoration background makes him the credible narrator of a story this city genuinely cares about. Cincinnati's preservation community shares this hard, and it reaches an audience far outside a real estate feed. <em>Each episode: a new building, the same rescue arc.</em></p>
+  </div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">03</span><span class="idea-pill">Talking Head Reel</span><span class="idea-pill tofu">TOFU · Relatability</span></div>
+    <div class="idea-title">First-Timer, Fresh Off It</div>
+    <p class="idea-flat-body">Erika just bought her own home in Northern Kentucky. What actually surprised her, honestly, including the parts nobody warns you about. The relatable human voice on a team otherwise built on two decades of expertise.</p>
+  </div>
+
+  <!-- MIDDLE -->
+  <div class="idea-group-label">Middle &middot; <span class="gl-sub">authority &amp; trust</span></div>
+
+  <!-- THE HERO -->
+  <details class="idea feat">
+    <summary>
+      <div>
+        <div class="idea-meta"><span class="idea-n">04</span><span class="idea-hero-tag">The hero franchise</span><span class="idea-star">⭐ Signature Series</span><span class="idea-pill">Walkthrough Reel · recurring</span><span class="idea-pill mofu">MOFU · Authority</span></div>
+        <div class="idea-title">What This House Is Hiding</div>
+        <div class="idea-teaser">Doug walks a home and names what you cannot see. Cosmetic, structural, or the thirty-thousand-dollar problem arriving in three years. This is the franchise only DWELL513 can make, and it is the reason people will follow this account.</div>
+      </div>
+      <span class="idea-chev">&#9660;</span>
+    </summary>
+    <div class="idea-body">
+      <p><strong>The engine.</strong> Every episode, a new house. Doug walks in cold, finds three things, and grades each one on camera. The structure never changes, so the audience learns the format and comes back for the verdict.</p>
+      <p><strong>Why it is unrepeatable.</strong> A person who physically restored historic homes for a living, saying true, specific, slightly uncomfortable things about a house, cannot be imitated by an agent who has only ever sold them. Every competitor can talk about a house. Doug can read one.</p>
+      <p><strong>Hook options.</strong></p>
+      <ul class="hook-opts">
+        <li>"I built and restored houses before I ever sold one. Here's what this room is telling me."</li>
+        <li>"This kitchen is beautiful. It's also hiding a thirty-thousand-dollar problem."</li>
+        <li>"Three things in this house. One is cosmetic. One is structural. One I'd walk away from."</li>
+      </ul>
+      <p class="muted-note">(If Doug confirms the number of years he spent building, restore the specificity: a real figure in the hook is stronger than the general claim. Do not invent one.)</p>
+      <p><strong>On-screen text.</strong> A running verdict stamp per finding. The stamp is the visual signature of the franchise.</p>
+      <div class="verdict-stamps">
+        <span class="vstamp cosmetic">Cosmetic</span>
+        <span class="vstamp structural">Structural</span>
+        <span class="vstamp walkaway">Walk Away</span>
+      </div>
+      <p><strong>Caption direction.</strong> Open with the finding, not the credential. Name the material and the number. Close with a genuine question to the audience, never a pitch.</p>
+      <p><strong>Why it travels.</strong> It is insider expertise the viewer can immediately apply to their own house, which is the saveable, sendable combination. Specificity is the engine. "Knob-and-tube wiring" and "thirty thousand dollars" travel. "Old electrical" and "expensive problems" do not.</p>
+    </div>
+  </details>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">05</span><span class="idea-star">⭐ Signature Series</span><span class="idea-pill">Split-Screen Reel · recurring</span><span class="idea-pill mofu">MOFU · Authority</span></div>
+    <div class="idea-title">Cosmetic or Catastrophe</div>
+    <p class="idea-flat-body">Two problems that look identical to anyone who has not built a house. One is nothing. One is expensive. Doug calls it. Built to be saved, because every homeowner watching immediately thinks of the thing in their own basement. <em>Each episode: a new pairing, the same verdict beat.</em></p>
+  </div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">06</span><span class="idea-pill">Talking Head Reel</span><span class="idea-pill mofu">MOFU · Trust</span></div>
+    <div class="idea-title">Salesman or Expert?</div>
+    <p class="idea-flat-body">The questions to ask that reveal whether your agent actually understands houses. It names the seller's real fear out loud, which is the fastest way to earn her trust, and it quietly disqualifies every competitor who could not answer them.</p>
+  </div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">07</span><span class="idea-pill">Origin-Story Reel</span><span class="idea-pill mofu">MOFU · Trust</span></div>
+    <div class="idea-title">The Builder Who Became the Agent</div>
+    <p class="idea-flat-body">A career restoring Cincinnati homes before he ever sold one. The forty-second answer to "why should I trust you," told once and pinned. This is the story the account has never told, and it recontextualizes everything else on the feed.</p>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="idea-group-label">Bottom &middot; <span class="gl-sub">conversion &amp; proof</span></div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">08</span><span class="idea-star">⭐ Signature Series</span><span class="idea-pill">Before-and-After Reel · recurring</span><span class="idea-pill bofu">BOFU · Proof</span></div>
+    <div class="idea-title">The Reveal</div>
+    <p class="idea-flat-body">A DWELL513 client's home when they got it, and the sale when Doug was done, in the client's own words. Proof the expertise actually pays, told by someone with nothing to sell. <em>Each episode: a new client, the same arc.</em></p>
+    <div class="idea-build-note"><strong>Build note.</strong> Requires consent and a completed transaction with good footage. Fully viable through the listing pipeline, but this is a "once we have the first consented win" format rather than a week-one format.</div>
+  </div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">09</span><span class="idea-pill">Talking Head Reel</span><span class="idea-pill bofu">BOFU · Conversion</span></div>
+    <div class="idea-title">The 15-Minute Conversation</div>
+    <p class="idea-flat-body">Not a listing appointment. Fifteen minutes and a straight answer about your house. It lowers the stakes of the first contact, which is the entire barrier for a seller who is only beginning to wonder.</p>
+  </div>
+
+  <div class="idea-flat">
+    <div class="idea-meta"><span class="idea-n">10</span><span class="idea-pill">Story sequence + DM prompt</span><span class="idea-pill bofu">BOFU · Conversion</span></div>
+    <div class="idea-title">Send Me the Address</div>
+    <p class="idea-flat-body">Doug offers one free fix before you list, based on the address alone. A give, not a pitch. It self-selects serious sellers into the DMs, and it demonstrates the expertise in the act of giving it away.</p>
+  </div>
+
+  <p class="muted-note" style="margin-top:18px;">A note on neighborhoods. Our local content celebrates places, businesses, and history. It never ranks neighborhoods against each other, which keeps everything we publish on the right side of Fair Housing.</p>
+
+  <!-- WE DID OUR HOMEWORK -->
+  <div style="margin-top:34px;">
+    <div class="eyebrow">We did our homework</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--shadow);letter-spacing:-.02em;margin-bottom:8px;">The accounts you sent us. <em style="font-style:italic;color:var(--azure);">What we'll pull.</em></h3>
+    <p style="font-size:15px;color:var(--ink-mid);max-width:640px;line-height:1.65;margin-bottom:18px;">You shared a few accounts you admire. We studied them, and here is what we will weave into your strategy.</p>
+    <div class="inspo-grid">
+      <div class="inspo-card">
+        <div class="inspo-name">Oyler Hines</div>
+        <div class="inspo-handle">@oylerhines</div>
+        <div class="inspo-pull"><strong>What we'll pull:</strong> their agent-on-camera authority Reels and the consistent visual brand system that makes the account feel like one thing rather than a feed of posts.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-name">Finn Team</div>
+        <div class="inspo-handle">@finnteamrealestate</div>
+        <div class="inspo-pull"><strong>What we'll pull:</strong> their community tie-ins, which reliably reach far beyond the follower base, and their neighborhood-anchored listing storytelling.</div>
+      </div>
+      <div class="inspo-card">
+        <div class="inspo-name">Hart &amp; Cru</div>
+        <div class="inspo-handle">@hartandcru</div>
+        <div class="inspo-pull"><strong>What we'll pull:</strong> they are not a real estate account, and that is the point. The warm, intentional Cincinnati-identity register they have built is exactly the emotional register DWELL513 should own.</div>
+      </div>
+    </div>
+    <div class="insight mt-md">
+      <p>These are the concepts we would test first. The ones that hit get scaled, the ones that do not get cut. The data decides.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 11 · HOW WE DRIVE RESULTS ══════════ -->
+<div class="wrap reveal" id="results">
+  <div class="eyebrow">How We Drive Results</div>
+  <h2 class="section-title">A clear path. <em>From a stranger to a client.</em></h2>
+  <p class="section-sub">Nobody lists their house because of one post. We move the right person through a funnel, each stage with a goal, the right content mix, and a signal we track, ending in one clear action: a conversation with your team.</p>
+
+  <!-- THE FUNNEL -->
+  <div class="funnel-stages">
+    <div class="fstage">
+      <div class="fstage-top"><span class="fstage-name">Relatable</span><span class="fstage-pct">40%</span></div>
+      <div class="fstage-stage">Top of funnel</div>
+      <div class="fstage-goal">Get seen by the right Cincinnati room.</div>
+      <div class="fstage-signal"><strong>Signal:</strong> reach, non-follower views, saves.</div>
+    </div>
+    <div class="fstage">
+      <div class="fstage-top"><span class="fstage-name">Educational</span><span class="fstage-pct">35%</span></div>
+      <div class="fstage-stage">Middle of funnel</div>
+      <div class="fstage-goal">Become the expert they trust.</div>
+      <div class="fstage-signal"><strong>Signal:</strong> saves, shares, watch time, profile visits.</div>
+    </div>
+    <div class="fstage">
+      <div class="fstage-top"><span class="fstage-name">Proof</span><span class="fstage-pct">25%</span></div>
+      <div class="fstage-stage">Bottom of funnel</div>
+      <div class="fstage-goal">Turn attention into qualified leads.</div>
+      <div class="fstage-signal"><strong>Signal:</strong> link taps, DM inquiries, form submissions.</div>
+    </div>
+  </div>
+
+  <!-- DEPTH IN COLLAPSIBLES -->
+  <div style="margin-top:22px;">
+    <details class="cl">
+      <summary><div class="cl-sum-text"><span class="cl-sum-title">How we reach the right audience</span><span class="cl-sum-tease">Test wide, Social SEO, strategic reach</span></div><span class="cl-chev">&#9660;</span></summary>
+      <div class="cl-body">
+        <p><strong>Test wide early.</strong> The first couple of months are about learning what your exact audience responds to, then doubling down on what works.</p>
+        <p><strong>Instagram Social SEO.</strong> Instagram is a search engine. We optimize with a four-tier keyword ladder (broad down to hyper-local), landing in the profile name, bio, highlights, captions, alt text, and geo-tags.</p>
+        <p><strong>Strategic reach.</strong> Local collaborations, proactive outreach, and community events, the moves that spike an account into the algorithm.</p>
+      </div>
+    </details>
+    <details class="cl">
+      <summary><div class="cl-sum-text"><span class="cl-sum-title">How we measure</span><span class="cl-sum-tease">Signal first, qualified leads second</span></div><span class="cl-chev">&#9660;</span></summary>
+      <div class="cl-body">
+        <p>A monthly performance report, first week of every month, scored against your goals, with your top posts and next month's focus, plus biweekly check-ins. We track signal first and qualified leads second. We do not promise last-click attribution that organic social cannot honestly deliver.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- THE TWO-YEAR MINDSET (highlighter-bordered, above the graph) -->
+  <div class="hi-callout">
+    <p><strong>Social media is a two-year game. That is not a hedge, it is the actual shape of the thing.</strong></p>
+    <p>Months 1 through 3 are foundation and testing. We are learning what your specific audience responds to, and you should expect to see reach move before anything else does. The rest of year one builds the baseline: a bigger, better-qualified audience, and trust that compounds every time you show up. Year two is when the interest turns into inquiries at a rate that feels like a machine, because two years of proof is sitting behind every post.</p>
+    <p>There are no steps to skip here. Any partner who promises you leads in thirty days is selling you something. Commit to the process, think in years rather than weeks, and the results are real.</p>
+  </div>
+
+  <!-- THE TRAJECTORY (24-month graph, inline SVG, no chart library, no gradients) -->
+  <div class="traj-box">
+    <div class="traj-illus">An illustrative picture</div>
+    <div class="traj-head">
+      <h3>What consistency <em>builds.</em></h3>
+    </div>
+    <p class="traj-frame">An illustrative model of qualified inquiries per month across a two-year engagement, built on conservative industry and market assumptions. Not a promise. A picture of the shape.</p>
+
+    <div class="traj-svg-wrap">
+      <svg class="traj-svg" viewBox="0 0 700 312" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A line rising over 24 months: flat and low through months 1 to 3, a steady climb through months 4 to 12, then steepening through months 13 to 24.">
+        <!-- phase bands -->
+        <rect class="traj-band-1" x="46" y="18" width="75" height="262"></rect>
+        <rect class="traj-band-2" x="121" y="18" width="247" height="262"></rect>
+        <rect class="traj-band-3" x="368" y="18" width="322" height="262"></rect>
+        <!-- axes -->
+        <line class="traj-axis" x1="46" y1="280" x2="690" y2="280"></line>
+        <line class="traj-axis" x1="46" y1="280" x2="46" y2="18"></line>
+        <polygon class="traj-arrow" points="40,26 46,13 52,26"></polygon>
+        <!-- month-12 inflection -->
+        <line class="traj-grid12" x1="354" y1="280" x2="354" y2="172"></line>
+        <!-- the trajectory line -->
+        <path class="traj-line" d="M52 268 L107 268 L134 258 L244 222 L354 172 L464 128 L574 82 L684 40"></path>
+        <circle class="traj-dot" cx="354" cy="172" r="4.5"></circle>
+        <circle class="traj-dot" cx="684" cy="40" r="4.5"></circle>
+        <!-- y-axis label -->
+        <text class="traj-ylabel" transform="rotate(-90 18 150)" x="18" y="150" text-anchor="middle">Qualified inquiries</text>
+        <!-- x-axis labels -->
+        <text class="traj-axtext" x="52" y="298" text-anchor="start">Month 1</text>
+        <text class="traj-axtext" x="354" y="298" text-anchor="middle">Month 12</text>
+        <text class="traj-axtext" x="684" y="298" text-anchor="end">Month 24</text>
+      </svg>
+    </div>
+
+    <div class="traj-marker-note"><strong>Month 12.</strong> Year one builds the baseline. Year two is where it compounds.</div>
+
+    <div class="traj-legend">
+      <div class="traj-leg b1">
+        <div class="traj-leg-ph">Foundation &amp; Testing</div>
+        <div class="traj-leg-mo">Months 1&ndash;3</div>
+        <div class="traj-leg-txt">Learning what works. Reach moves first.</div>
+      </div>
+      <div class="traj-leg b2">
+        <div class="traj-leg-ph">Execution</div>
+        <div class="traj-leg-mo">Months 4&ndash;12</div>
+        <div class="traj-leg-txt">The system runs. The audience builds.</div>
+      </div>
+      <div class="traj-leg b3">
+        <div class="traj-leg-ph">Compounding</div>
+        <div class="traj-leg-mo">Months 13&ndash;24</div>
+        <div class="traj-leg-txt">Two years of trust behind every post.</div>
+      </div>
+    </div>
+
+    <p class="traj-context">For context on what a single result is worth: the median Cincinnati home sale is roughly <strong>$290,000</strong>, and the average listing-side commission is roughly <strong>2.88%</strong>. That puts gross commission on one closed listing at roughly <strong>$8,000</strong>, before your brokerage split. On those figures, <strong>a single additional closed listing covers roughly two and a half months of this engagement.</strong></p>
+
+    <p class="traj-sources"><strong>Sources and honesty.</strong> Median sale price per Redfin, three months ending May 2026. Average commission rates per published 2026 industry data. Commissions are always negotiable and vary by transaction, and figures are gross, before your brokerage split. These are public market averages, not your numbers. We build the real model, on your actual average sale price, close rate, and split, as part of the Phase 1 strategy.</p>
+  </div>
+</div>
+
+<!-- ════════════════════ ACT 3 ════════════════════ -->
+<div class="act-divider reveal">
+  <span class="act-eyebrow">Act 3 · The Proof</span>
+  <h2>It works. <em>Here's the path to start.</em></h2>
+  <p>The same system, shown in the numbers, and a clean way in.</p>
+</div>
+
+<!-- ══════════ 12 · PROOF ══════════ -->
+<div class="wrap reveal" id="proof" style="padding-top:40px;">
+  <div class="eyebrow">Proof</div>
+  <h2 class="section-title">Content that drives <em>real results.</em></h2>
+  <p class="section-sub">Every business below sells something high-trust, high-consideration, and relationship-driven. Nobody buys on the first post. They follow, they learn, they trust, and then they reach out. That is the same journey a seller takes before they call an agent. The niche changes. The framework does not. Here is the proof, white-labeled, real numbers, one per stage.</p>
+
+  <div class="proof-grid">
+    <!-- TOFU -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">Top of funnel · Reach<br/>A Cincinnati aesthetics practice we work with</div>
+          <div class="proof-card-pill">Reel · Reach</div>
+        </div>
+        <span class="funnel-pill tofu">TOFU</span>
+      </div>
+      <div class="proof-metrics-grid">
+        <div class="proof-metric"><div class="proof-metric-value">25,432</div><div class="proof-metric-label">Views</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">21×</div><div class="proof-metric-label">Algorithmic multiple</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">97%</div><div class="proof-metric-label">Non-follower reach</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">59</div><div class="proof-metric-label">Saves</div></div>
+      </div>
+      <div class="proof-card-footer">
+        <p>Pushed to <strong>25,432 views, 97% of them from outside the follower base</strong>. This is what it looks like when the algorithm carries you to a new audience.</p>
+      </div>
+    </div>
+
+    <!-- MOFU -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">Middle of funnel · Engagement<br/>A Cincinnati boutique we work with</div>
+          <div class="proof-card-pill">Reel · Engagement-led</div>
+        </div>
+        <span class="funnel-pill mofu">MOFU</span>
+      </div>
+      <div class="proof-metrics-grid">
+        <div class="proof-metric"><div class="proof-metric-value">21,304</div><div class="proof-metric-label">Views</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">79.8%</div><div class="proof-metric-label">View rate</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">321</div><div class="proof-metric-label">Comments</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">150</div><div class="proof-metric-label">Shares</div></div>
+      </div>
+      <div class="proof-card-footer">
+        <p>The middle of the funnel doing its job, <strong>the audience talking back</strong> and pulling the brand into their orbit.</p>
+      </div>
+    </div>
+
+    <!-- BOFU -->
+    <div class="proof-card">
+      <div class="proof-card-head">
+        <div>
+          <div class="proof-card-eyebrow">Bottom of funnel · Intent<br/>A Cincinnati service practice we work with</div>
+          <div class="proof-card-pill">Save-driven carousel</div>
+        </div>
+        <span class="funnel-pill bofu">BOFU</span>
+      </div>
+      <div class="proof-metrics-grid">
+        <div class="proof-metric"><div class="proof-metric-value">82</div><div class="proof-metric-label">Saves</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">High</div><div class="proof-metric-label">Consideration service</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">Above</div><div class="proof-metric-label">Category save-to-reach</div></div>
+        <div class="proof-metric"><div class="proof-metric-value">Carousel</div><div class="proof-metric-label">Format</div></div>
+      </div>
+      <div class="proof-card-footer">
+        <p>For a considered decision, <strong>saves are the purchase-intent signal</strong>. Choosing an agent is the same kind of choice.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREADTH + TESTIMONIALS COLLAPSED -->
+  <details class="proof-more">
+    <summary>See the breadth, across formats and accounts <span class="chev">&#9660;</span></summary>
+    <div class="proof-more-body">
+      <div class="proof-sub-head">
+        <h3>The breadth. <em>Same system underneath every win.</em></h3>
+        <p>A snapshot of the kind of performance the system produces, across formats, funnel stages, and account types.</p>
+      </div>
+      <div class="breadth-grid">
+        <div class="breadth-chip"><span class="breadth-chip-format">Reel</span><div class="breadth-chip-metric">457K</div><div class="breadth-chip-context">Views on a single reel</div><span class="breadth-chip-funnel tofu">TOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Account</span><div class="breadth-chip-metric">+4,290%</div><div class="breadth-chip-context">Reach lift, 30-day account-level</div><span class="breadth-chip-funnel tofu">TOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Reel</span><div class="breadth-chip-metric">22,420</div><div class="breadth-chip-context">Shares on one reel</div><span class="breadth-chip-funnel mofu">MOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Reel</span><div class="breadth-chip-metric">1,447</div><div class="breadth-chip-context">Saves on one reel</div><span class="breadth-chip-funnel mofu">MOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Reel</span><div class="breadth-chip-metric">321</div><div class="breadth-chip-context">Comments on one reel</div><span class="breadth-chip-funnel mofu">MOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Static</span><div class="breadth-chip-metric">10.45%</div><div class="breadth-chip-context">Engagement rate on a static post</div><span class="breadth-chip-funnel mofu">MOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Carousel</span><div class="breadth-chip-metric">82</div><div class="breadth-chip-context">Saves on a high-consideration carousel</div><span class="breadth-chip-funnel mofu">MOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Account</span><div class="breadth-chip-metric">26.3%</div><div class="breadth-chip-context">Post conversion rate, service account</div><span class="breadth-chip-funnel bofu">BOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Account</span><div class="breadth-chip-metric">22.3%</div><div class="breadth-chip-context">Click-through rate, account-level</div><span class="breadth-chip-funnel bofu">BOFU</span></div>
+        <div class="breadth-chip"><span class="breadth-chip-format">Account</span><div class="breadth-chip-metric">+213%</div><div class="breadth-chip-context">External link taps, 30-day account-level</div><span class="breadth-chip-funnel bofu">BOFU</span></div>
+      </div>
+      <div class="breadth-footer">Different clients, different formats, same system underneath every win.</div>
+    </div>
+  </details>
+
+  <details class="proof-more">
+    <summary>Read what owners say <span class="chev">&#9660;</span></summary>
+    <div class="proof-more-body">
+      <div class="proof-quotes">
+        <div class="proof-quote">
+          <p>"She helped us develop our social strategy, filmed engaging content, and grew our following significantly. I highly recommend Scroll Media."</p>
+          <div class="proof-quote-attr">— Owner, Cincinnati aesthetics practice</div>
+        </div>
+        <div class="proof-quote">
+          <p>"Our Instagram engagement has tripled. Partnering with Scroll has been one of the best investments for our business."</p>
+          <div class="proof-quote-attr">— Owner, Cincinnati boutique studio</div>
+        </div>
+        <div class="proof-quote">
+          <p>"She is a true marketing partner. She cares about my business and goes above and beyond what is expected."</p>
+          <div class="proof-quote-attr">— Owner, Cincinnati boutique</div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ 13 · NEXT STEPS ══════════ -->
+<div class="wrap reveal" id="next-steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2 class="section-title">How we <em>move forward.</em></h2>
+  <p class="section-sub">Questions before signing? Chase is available over email or a quick call.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-n">Step 01</div>
+      <h3>Sign the contract</h3>
+      <p>Sent within 24 hours of approval, e-sign in under 5 minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 02</div>
+      <h3>Complete the onboarding form</h3>
+      <p>Covers your brand, your goals, and how we coordinate with your media partner. About 20 minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 03</div>
+      <h3>Kickoff call</h3>
+      <p>Phase 1 starts immediately. Your first post goes live roughly five weeks after signature.</p>
+    </div>
+  </div>
+
+  <div class="cta-block mt-lg">
+    <h2>Ready to move?</h2>
+    <p>Reply to this proposal or reach Chase directly. A contract can be sent today. Let's put the expertise you have spent two decades building in front of the right Cincinnati.</p>
+    <a href="mailto:chase@getscrollmedia.com" class="cta-btn">chase@getscrollmedia.com</a>
+    <div class="cta-sub">Prefer a quick call first? Just reply. Happy to connect before anything moves forward.</div>
+  </div>
+</div>
+
+<footer class="reveal">
+  <!-- BRAND TOKEN SLOT · footer logo (Scroll default until DWELL513 kit lands) -->
+  <img src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="48" height="22" />
+  <p><a href="https://decks.scrollmedia.co/pitch/">scrollmedia.co</a> &nbsp;·&nbsp; <a href="mailto:chase@getscrollmedia.com">chase@getscrollmedia.com</a></p>
+  <p style="margin-top:8px;">© 2026 Scroll Media · Cincinnati, OH · Simplifying Social Media</p>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', function () {
+    var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
+  }, { passive:true });
+
+  // ── Act-grouped nav: scroll-spy + dropdown ──
+  (function(){
+    var NAV=[
+      {id:'snapshot',act:'engagement'},{id:'engagement',act:'engagement'},{id:'listing',act:'engagement'},
+      {id:'timeline',act:'engagement'},{id:'investment',act:'engagement'},{id:'scope',act:'engagement'},
+      {id:'approach',act:'strategy'},{id:'built',act:'strategy'},{id:'audience',act:'strategy'},{id:'ideas',act:'strategy'},{id:'results',act:'strategy'},
+      {id:'proof',act:'proof'},{id:'next-steps',act:'proof'}
+    ];
+    var groups=[].slice.call(document.querySelectorAll('.act-group'));
+    var links=[].slice.call(document.querySelectorAll('.act-sections a'));
+    function spy(){
+      var y=window.scrollY+90, active=NAV[0];
+      NAV.forEach(function(n){ var el=document.getElementById(n.id); if(el && el.offsetTop<=y) active=n; });
+      groups.forEach(function(g){ g.classList.toggle('active', g.getAttribute('data-act')===active.act); });
+      links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+active.id); });
+    }
+    window.addEventListener('scroll',spy,{passive:true}); spy();
+    groups.forEach(function(g){
+      var btn=g.querySelector('.act-btn');
+      btn.addEventListener('click',function(e){
+        if(window.innerWidth<=900) return;
+        e.preventDefault();
+        var was=g.classList.contains('open');
+        groups.forEach(function(o){ o.classList.remove('open'); });
+        if(!was) g.classList.add('open');
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.act-group')) groups.forEach(function(g){ g.classList.remove('open'); });
+    });
+    links.forEach(function(a){ a.addEventListener('click',function(){
+      groups.forEach(function(g){ g.classList.remove('open'); });
+      document.body.classList.remove('nav-open');
+    }); });
+  })();
+
+  // Mobile nav toggle (hamburger)
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    if (!toggle) return;
+    function setOpen(open) {
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close section navigation' : 'Open section navigation');
+    }
+    toggle.addEventListener('click', function(){ setOpen(!document.body.classList.contains('nav-open')); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', function(){ if (window.innerWidth > 900) setOpen(false); });
+  })();
+
+  // ── Section scroll-reveal ──
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+    setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 2500);
+  })();
+
+  // ── Timeline card staggered reveal ──
+  (function(){
+    var cards=[].slice.call(document.querySelectorAll('.tl-card'));
+    if(!cards.length) return;
+    if(!('IntersectionObserver' in window)){ cards.forEach(function(c){ c.classList.add('in'); }); return; }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ var c=e.target; var d=cards.indexOf(c)%3; setTimeout(function(){ c.classList.add('in'); }, d*120); io.unobserve(c); } });
+    }, {threshold:0.2});
+    cards.forEach(function(c){ io.observe(c); });
+    setTimeout(function(){ cards.forEach(function(c){ c.classList.add('in'); }); }, 2500);
+  })();
+
+  // ── Content engine motif (auto-rotate + hover-pause + click-to-advance) ──
+  (function(){
+    var stage=document.getElementById('engine-stage'); if(!stage) return;
+    var nodes=[].slice.call(stage.querySelectorAll('.engine-node'));
+    var steps=[].slice.call(document.querySelectorAll('#engine-steps .engine-step'));
+    var i=0, timer=null, RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function set(n){ i=((n%4)+4)%4;
+      nodes.forEach(function(el,k){ el.classList.toggle('active',k===i); });
+      steps.forEach(function(el,k){ el.classList.toggle('active',k===i); });
+    }
+    function start(){ if(RM||timer) return; timer=setInterval(function(){ set(i+1); },2200); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    nodes.forEach(function(el){ el.addEventListener('click', function(){ set(parseInt(el.getAttribute('data-i'),10)); stop(); start(); }); });
+    stage.addEventListener('mouseenter', stop);
+    stage.addEventListener('mouseleave', start);
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); }, {threshold:0.25});
+      io.observe(stage);
+    } else { start(); }
+  })();
+</script>
+</body>
+</html>

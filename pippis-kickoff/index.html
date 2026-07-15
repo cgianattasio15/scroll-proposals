@@ -12,11 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     /* =========================================================
-       SCROLL MEDIA DESIGN SYSTEM · Pippi's Kickoff Deck (v3)
+       SCROLL MEDIA DESIGN SYSTEM · Pippi's Kickoff Deck (v4)
        Strategy-tier rebuild on the canonical Signature strategy-deck
        design system (light client palette, Scheme B).
        Per brand_system.md §5 + scroll-web-design v2.1.
-       v3 = one-screen-per-slide · reveal-only interactions · 9 slides.
+       v4 = content + structure revision of v3. One-screen-per-slide,
+       reveal-only interactions, 9 slides. Real Pippi's logo in topbar.
        ========================================================= */
     :root {
       --ghost:#FAFDFF; --azure:#0C3387; --azure-900:#071d4f; --azure-800:#0c3387;
@@ -53,7 +54,7 @@
     .header-logo-img{height:24px;width:auto;display:block}
     .header-co{display:flex;align-items:center;gap:var(--sp-4);min-height:44px}
     .header-x{font-size:13px;color:var(--fg-subtle);font-weight:600}
-    .header-pippis{font-size:21px;font-weight:800;color:var(--azure);letter-spacing:-.01em;line-height:1;white-space:nowrap}
+    .header-pippis-img{height:22px;width:auto;display:block}
 
     /* SCROLL PROGRESS */
     #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--azure),var(--azure-400));z-index:120;transition:width .1s linear}
@@ -138,6 +139,19 @@
     @media (max-width:760px){.act-stops{grid-template-columns:1fr 1fr}}
 
     /* ===== ENGAGEMENT ===== */
+    .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);margin-top:var(--sp-2)}
+    .pillar{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4);display:flex;flex-direction:column;gap:var(--sp-2);box-shadow:var(--sh-sm)}
+    .pillar-head{display:flex;align-items:center;gap:9px}
+    .pillar-ico{flex-shrink:0;width:19px;height:19px;fill:none;stroke:var(--azure);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .pillar-name{font-size:14px;font-weight:800;color:var(--azure);line-height:1.15}
+    .pillar-act{font-size:12.5px;color:var(--fg-muted);line-height:1.4}
+    .pillar-delivs{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:var(--sp-2)}
+    .pillar-deliv{display:inline-flex;align-items:center;font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:4px 10px;line-height:1.2}
+    .pillar-deliv.lime{background:rgba(226,237,122,.4)}
+    .eng-lower{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--sp-4);align-items:start;margin-top:var(--sp-4)}
+    .review-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:var(--sp-2)}
+    @media (max-width:900px){.pillars{grid-template-columns:1fr 1fr}.eng-lower{grid-template-columns:1fr}}
+    @media (max-width:560px){.pillars{grid-template-columns:1fr}}
     .eng-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-4);align-items:start}
     .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
     .scope-item{display:flex;align-items:flex-start;gap:9px;padding:6px 11px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);box-shadow:var(--sh-sm)}
@@ -170,7 +184,7 @@
     @media (max-width:560px){.scope-grid{grid-template-columns:1fr}.flow-strip{grid-template-columns:1fr}.flow-cell.slows{border-left:none}}
 
     /* ===== TIMELINE (horizontal journey) ===== */
-    .journey{position:relative;display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:var(--sp-5)}
+    .journey{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:var(--sp-5)}
     .journey::before{content:"";position:absolute;top:9px;left:3%;right:3%;height:2px;background:var(--rule)}
     .jnode{position:relative;z-index:2;text-align:center;padding-top:22px}
     .jdot{position:absolute;top:2px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:var(--azure-200);border:3px solid var(--ghost);box-shadow:0 0 0 1px var(--rule)}
@@ -181,8 +195,17 @@
     .jwhat{display:block;font-size:12px;color:var(--fg-muted);margin-top:3px;line-height:1.25}
     .jnode.hero .jwhat{font-weight:700;color:var(--azure)}
     .jtag{display:inline-flex;align-items:center;gap:3px;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 6px;border-radius:999px}
-    .jtag.addon{background:var(--lucid);color:var(--azure)}
+    .jtag.off{background:var(--bg-alt);color:var(--fg-muted);border:1px solid var(--rule)}
     .jtag svg{width:9px;height:9px;fill:none;stroke:var(--azure-900);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .jnode.event .jdot{background:var(--lucid-deep);box-shadow:0 0 0 3px rgba(158,206,232,.32)}
+    .jnode.event .jwhen{color:var(--azure)}
+    .yourevent-key{display:inline-flex;align-items:center;gap:7px;margin-top:var(--sp-4);font-size:12.5px;color:var(--fg-muted)}
+    .yourevent-key .yk-dot{width:11px;height:11px;border-radius:50%;background:var(--lucid-deep);box-shadow:0 0 0 3px rgba(158,206,232,.32);flex-shrink:0}
+    .shoot-callout{display:flex;align-items:flex-start;gap:13px;margin-top:var(--sp-5);background:var(--lucid-soft);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .shoot-callout .sc-ico{flex-shrink:0;width:24px;height:24px;fill:none;stroke:var(--azure);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+    .shoot-callout-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .shoot-callout-body .sc-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:3px}
+    .shoot-callout-body strong{color:var(--azure)}
     .jhere-lbl{display:inline-block;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 6px;border-radius:999px}
     .lock-band{margin-top:var(--sp-6);background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
     .lock-label{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:var(--sp-3)}
@@ -208,6 +231,8 @@
     .fwins{flex:1;display:flex;flex-wrap:wrap;gap:6px}
     .fwin{font-size:12.5px;color:var(--shadow);line-height:1.3;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-sm);padding:5px 10px}
     .fstage.w3 .fwin{border-color:var(--highlighter-dark)}
+    .fwin.is-success{font-weight:800;color:var(--azure);background:var(--lucid-soft);border-color:var(--azure-200)}
+    .fstage.w3 .fwin.is-success{color:var(--azure-900);background:rgba(226,237,122,.5);border-color:var(--highlighter-dark)}
     .goal-frame{margin-top:var(--sp-4);font-size:14.5px;color:var(--fg-muted);line-height:1.45;max-width:92ch;font-style:italic}
     .goal-frame strong{color:var(--azure);font-style:normal}
     .capture-band{margin-top:var(--sp-3);display:flex;align-items:flex-start;gap:var(--sp-3);background:var(--azure);color:var(--ghost);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
@@ -218,7 +243,7 @@
 
     /* ===== STANDS FOR ===== */
     .stands-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--sp-5);align-items:stretch;margin-top:var(--sp-3)}
-    .bigquote{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-6);box-shadow:var(--sh-md);display:flex;flex-direction:column;justify-content:center}
+    .bigquote{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6);box-shadow:var(--sh-md);display:flex;flex-direction:column;justify-content:center}
     .bigquote .qm{font-size:52px;line-height:.4;color:var(--azure-400);font-weight:800}
     .bigquote p{font-size:clamp(19px,2.2vw,26px);font-weight:700;line-height:1.28;letter-spacing:-.01em;margin:12px 0 10px}
     .bigquote cite{font-size:12px;font-weight:600;color:var(--lucid);text-transform:uppercase;letter-spacing:.1em;font-style:normal}
@@ -232,11 +257,12 @@
     .vchip.is-prior{background:rgba(226,237,122,.22);border-color:var(--highlighter-dark);font-weight:700}
     .ask-line{margin-top:var(--sp-3);font-size:14px;font-weight:700;color:var(--azure);line-height:1.5}
     .ask-line .ask-tag{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);background:var(--lucid);border-radius:999px;padding:2px 8px;margin-right:8px}
-    .trigger-strip{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-5)}
-    .trigger-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
-    .trigger-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:6px}
-    .trigger-q{font-size:14px;color:var(--shadow);line-height:1.5}
-    @media (max-width:880px){.stands-grid{grid-template-columns:1fr}.trigger-strip{grid-template-columns:1fr}}
+    .prompt-stack{display:flex;flex-direction:column;gap:var(--sp-3)}
+    .prompt-item{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
+    .prompt-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:4px}
+    .prompt-q{font-size:13.5px;color:var(--shadow);line-height:1.45}
+    .diff-block{margin-top:var(--sp-3)}
+    @media (max-width:880px){.stands-grid{grid-template-columns:1fr}}
 
     /* ===== LOOKS ===== */
     .inspo-cue{font-size:14px;font-weight:700;color:var(--azure);margin-bottom:var(--sp-3)}
@@ -257,39 +283,21 @@
     .sig-label{display:block;font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
     @media (max-width:880px){.inspo-grid{grid-template-columns:1fr}}
 
-    /* ===== SOUNDS ===== */
-    .sound-confirm{background:var(--lucid-soft);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:9px var(--sp-5);margin-top:var(--sp-2)}
-    .sound-confirm .sc-label{display:block;font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px}
-    .sound-confirm p{font-size:13.5px;color:var(--shadow);line-height:1.5}
-    .sound-block-head{font-size:13px;font-weight:800;color:var(--azure);margin-top:var(--sp-3);margin-bottom:var(--sp-2);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .sound-block-head::before{content:"";width:20px;height:2px;background:var(--highlighter-dark);flex-shrink:0}
-    .sound-block-head .shh-sub{font-weight:600;color:var(--fg-muted);text-transform:none;font-size:12.5px;letter-spacing:0}
-    .voice-rows{display:flex;flex-direction:column;gap:6px}
-    .vrow{display:grid;grid-template-columns:120px 1fr;gap:var(--sp-3);align-items:center}
-    .vrow-label{font-size:13px;font-weight:700;color:var(--azure);line-height:1.3}
-    .vrow-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-2)}
-    .vopt{font-size:12.5px;color:var(--shadow);line-height:1.3;background:var(--bg-panel);border:1.5px solid var(--rule);border-radius:var(--r-sm);padding:6px 10px}
-    .last-strip{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-2)}
-    .last-item{background:var(--bg-alt);border-left:3px solid var(--azure-400);border-radius:var(--r-sm);padding:8px var(--sp-4)}
-    .last-item .li-label{display:block;font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
-    .last-item p{font-size:13.5px;color:var(--shadow);line-height:1.5}
-    /* caption calibration · click-to-reveal (signature moment) */
-    .calib{margin-top:var(--sp-4)}
-    .calib-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-3);margin-bottom:var(--sp-2)}
-    .calib-intro{font-size:13.5px;font-weight:700;color:var(--azure);line-height:1.4}
-    .calib-btn{display:inline-flex;align-items:center;gap:7px;background:var(--azure);color:var(--ghost);font-size:12px;font-weight:700;padding:8px 16px;border-radius:999px;transition:background .2s var(--ease)}
-    .calib-btn:hover{background:var(--azure-600)}
-    .calib-btn svg{width:14px;height:14px;fill:none;stroke:var(--highlighter);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-    .calib-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}
-    .ccard{position:relative;background:var(--bg-panel);border:1.5px solid var(--rule);border-radius:var(--r-md);padding:10px var(--sp-4);display:flex;flex-direction:column;gap:5px;transition:border-color .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease)}
-    .ccard-label{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.1em}
-    .ccard-style{font-size:12px;color:var(--fg-subtle);font-style:italic}
-    .ccard-text{font-size:12.5px;color:var(--shadow);line-height:1.4}
-    .ccard-read{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--highlighter);color:var(--azure-900);padding:3px 9px;border-radius:999px;opacity:0;transform:translateY(-4px);transition:opacity .45s var(--ease),transform .45s var(--ease);pointer-events:none}
-    .calib.revealed .ccard.is-read{border-color:var(--highlighter-dark);box-shadow:0 0 0 1px var(--highlighter-dark),var(--sh-md);background:rgba(226,237,122,.10)}
-    .calib.revealed .ccard.is-read .ccard-read{opacity:1;transform:none}
-    @media (prefers-reduced-motion:reduce){.ccard,.ccard-read{transition:none}}
-    @media (max-width:880px){.vrow{grid-template-columns:1fr;gap:6px}.vrow-opts{grid-template-columns:1fr}.last-strip{grid-template-columns:1fr}.calib-cards{grid-template-columns:1fr}}
+    /* ===== SHARED · "from your form" note ===== */
+    .form-note{display:flex;align-items:flex-start;gap:10px;background:var(--lucid-soft);border-left:3px solid var(--azure-400);border-radius:var(--r-sm);padding:8px var(--sp-4);margin-top:var(--sp-3)}
+    .fn-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-top:1px}
+    .fn-text{font-size:13px;color:var(--shadow);line-height:1.45}
+    .fn-text strong{color:var(--azure)}
+
+    /* ===== SOUNDS · say it your way ===== */
+    .say-intro{font-size:clamp(15px,1.65vw,18px);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-4);line-height:1.45}
+    .say-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-5)}
+    .say-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-6) var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3);box-shadow:var(--sh-sm)}
+    .say-num{width:30px;height:30px;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;border-radius:50%}
+    .say-label{font-size:16px;font-weight:800;color:var(--azure);line-height:1.2}
+    .say-prompt{font-size:14.5px;color:var(--shadow);line-height:1.55}
+    .say-prompt em{color:var(--fg-muted);font-style:italic}
+    @media (max-width:880px){.say-cards{grid-template-columns:1fr;gap:var(--sp-4)}}
 
     /* ===== DECISIONS + CLOSE (on azure) ===== */
     #s09 .slide-title,#s09 .slide-lede{color:var(--ghost)}
@@ -304,38 +312,48 @@
     .drow{font-size:12px;line-height:1.45;color:var(--lucid-soft)}
     .drow .dl{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--lucid-deep);margin-bottom:1px}
     .drow strong{color:var(--ghost);font-weight:600}
-    .next-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-4)}
-    .nbucket{background:rgba(255,255,255,.05);border:1px solid rgba(203,233,255,.16);border-top:2px solid var(--highlighter);border-radius:var(--r-sm);padding:var(--sp-3) var(--sp-4)}
-    .nbucket-eyebrow{font-size:12px;font-weight:800;color:var(--highlighter);text-transform:uppercase;letter-spacing:.08em}
-    .nbucket-owner{font-size:12px;color:var(--lucid-deep);margin-bottom:4px}
-    .nbucket ul{list-style:none;display:flex;flex-direction:column;gap:4px}
-    .nbucket li{font-size:12px;color:var(--lucid-soft);line-height:1.4;padding-left:12px;position:relative}
-    .nbucket li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:1px;background:var(--lucid-deep)}
-    .close-block{margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:1px solid rgba(203,233,255,.2)}
+    .checklist{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-3)}
+    .check-col{background:rgba(255,255,255,.05);border:1px solid rgba(203,233,255,.16);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .check-col.done{border-top:2px solid var(--highlighter)}
+    .check-col.open{border-top:2px solid var(--lucid)}
+    .check-col-head{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--sp-2)}
+    .check-col.done .check-col-head{color:var(--highlighter)}
+    .check-col.open .check-col-head{color:var(--lucid)}
+    .citem{display:flex;gap:10px;align-items:flex-start;padding:7px 0}
+    .citem+.citem{border-top:1px solid rgba(203,233,255,.1)}
+    .cmark{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+    .cmark.is-done{background:var(--highlighter)}
+    .cmark.is-done svg{width:11px;height:11px;fill:none;stroke:var(--azure-900);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .cmark.is-open{border:2px solid var(--lucid-deep);background:transparent}
+    .ctext{font-size:13px;color:var(--lucid-soft);line-height:1.4}
+    .ctext strong{color:var(--ghost);font-weight:600}
+    .ctext .owner{display:block;font-size:12px;color:var(--lucid-deep);margin-top:1px}
+    .close-block{margin-top:var(--sp-3);padding-top:var(--sp-4);border-top:1px solid rgba(203,233,255,.2)}
     .close-line{font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--ghost);line-height:1.35;max-width:70ch}
     .close-sign{margin-top:var(--sp-4);display:flex;flex-wrap:wrap;gap:var(--sp-7)}
     .close-sign-name{font-size:15px;font-weight:700;color:var(--highlighter)}
     .close-sign-title{font-size:12px;color:var(--lucid)}
-    @media (max-width:880px){.dec-grid{grid-template-columns:1fr 1fr}.next-strip{grid-template-columns:1fr}}
+    @media (max-width:880px){.dec-grid{grid-template-columns:1fr 1fr}.checklist{grid-template-columns:1fr}}
     @media (max-width:560px){.dec-grid{grid-template-columns:1fr}}
 
     /* ===== RESPONSIVE (shared) ===== */
     @media (max-width:414px){
       .deck-header-inner{padding:0 var(--sp-4)}
       .header-x{display:none}
-      .header-pippis{font-size:19px}
+      .header-pippis-img{height:20px}
       .header-logo-img{height:21px}
       .slide{padding:calc(var(--header-h) + 14px) var(--sp-4) var(--sp-6)}
       .cover-title{font-size:34px}
       .cover-sub{font-size:16px}
       .slide-title{font-size:26px}
       .slide-lede{font-size:15px}
-      .astop-desc,.scope-item span,.jwhat,.fwin,.drow,.nbucket li{font-size:12px}
+      .astop-desc,.scope-item span,.jwhat,.fwin,.drow{font-size:12px}
       .scope-item b,.panel-body,.approw,.ig-line,.flow-cell,.fstage-headline,.fwin,
       .goal-frame,.capture-body,.vchip,.ask-line,.trigger-q,.inspo-prompt,.mood-note,
-      .sig-strip,.sound-confirm p,.vopt,.last-item p,.calib-intro,.ccard-text,.close-sign-title,
-      .drow,.lock-what,.lock-when,.vrow-label,.nbucket li,.bigquote cite,
-      .sound-block-head .shh-sub,.shoot-note,.shoot-note strong{font-size:14px}
+      .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
+      .drow,.lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
+      .shoot-callout-body,.yourevent-key,.inspo-prompt,.mood-note,
+      .shoot-note,.shoot-note strong{font-size:14px}
     }
     @media (max-width:375px){
       .slide{padding:calc(var(--header-h) + 12px) var(--sp-4) var(--sp-6)}
@@ -356,7 +374,7 @@
       </a>
       <div class="header-co">
         <span class="header-x" aria-hidden="true">&times;</span>
-        <span class="header-pippis">Pippi's</span>
+        <img src="pippis-logo.png" alt="Pippi's" class="header-pippis-img" />
       </div>
     </div>
   </header>
@@ -379,7 +397,7 @@
       <div class="slide-inner">
         <span class="cover-kicker reveal"><span class="dot"></span>Pippi's &times; Scroll Media &middot; Kickoff</span>
         <h1 class="cover-title reveal d1">Welcome to your <span class="hl">kickoff.</span></h1>
-        <p class="cover-sub reveal d2">Raising the standard of the craft and the guest experience. That's the brand we're building. Today is mostly us listening.</p>
+        <p class="cover-sub reveal d2">The official start of your engagement. Today we align on the plan and learn Pippi's inside out, so the strategy we build next fits you exactly.</p>
         <div class="cover-meta reveal d3">
           <div>Prepared for<b>Pippi's on Vine Street</b></div>
           <div>Kickoff<b>Wednesday, July 16, 2026</b></div>
@@ -394,33 +412,33 @@
       <span class="section-num">01</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="eyebrow-num">02</span>What today looks like</span>
-        <h2 class="slide-title reveal">A working session, in three acts.</h2>
-        <p class="slide-lede reveal">This is a working session, not a presentation. Three of these stops are yours entirely. The more you talk, the better we build. Tap any stop to jump to it.</p>
+        <h2 class="slide-title reveal">A working session, in three parts.</h2>
+        <p class="slide-lede reveal">You've hired us to run your organic social. Today we do two things: align on the plan, and learn Pippi's inside out. The middle part is where we learn you, so the strategy we build next is unmistakably yours. Tap any stop to jump to it.</p>
         <div class="agenda-acts">
           <div class="act-band reveal d1">
-            <div class="act-band-head"><span class="act-band-name">Act 1 &middot; The setup</span><span class="act-band-note">We talk, you listen</span></div>
+            <div class="act-band-head"><span class="act-band-name">Part 1 &middot; The setup</span><span class="act-band-note">We walk you through it</span></div>
             <div class="act-stops">
               <a class="astop" href="#s03"><span class="astop-top"><span class="astop-num">03</span><span class="astop-time">5 min</span></span><span class="astop-label">The engagement</span><span class="astop-desc">What we're running</span></a>
               <a class="astop" href="#s04"><span class="astop-top"><span class="astop-num">04</span><span class="astop-time">6 min</span></span><span class="astop-label">Timeline</span><span class="astop-desc">Locking the runway</span></a>
             </div>
           </div>
           <div class="act-band is-yours reveal d2">
-            <div class="act-band-head"><span class="act-band-name">Act 2 &middot; Your brand, in your words</span><span class="act-yours-flag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span><span class="act-band-note">You talk, we capture</span></div>
+            <div class="act-band-head"><span class="act-band-name">Part 2 &middot; Brand immersion</span><span class="act-yours-flag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span><span class="act-band-note">You talk, we learn you</span></div>
             <div class="act-stops">
-              <a class="astop" href="#s05"><span class="astop-top"><span class="astop-num">05</span><span class="astop-time">6 min</span></span><span class="astop-label">Goals</span><span class="astop-desc">What a win looks like</span></a>
+              <a class="astop" href="#s05"><span class="astop-top"><span class="astop-num">05</span><span class="astop-time">5 min</span></span><span class="astop-label">Goals</span><span class="astop-desc">What a win looks like</span></a>
               <a class="astop" href="#s06"><span class="astop-top"><span class="astop-num">06</span><span class="astop-time">11 min</span></span><span class="astop-label">What you stand for</span><span class="astop-desc">In your words</span></a>
               <a class="astop" href="#s07"><span class="astop-top"><span class="astop-num">07</span><span class="astop-time">9 min</span></span><span class="astop-label">How you look</span><span class="astop-desc">The visual target</span></a>
-              <a class="astop" href="#s08"><span class="astop-top"><span class="astop-num">08</span><span class="astop-time">10 min</span></span><span class="astop-label">How you sound</span><span class="astop-desc">Your voice, captured</span></a>
+              <a class="astop" href="#s08"><span class="astop-top"><span class="astop-num">08</span><span class="astop-time">8 min</span></span><span class="astop-label">How you sound</span><span class="astop-desc">Say it your way</span></a>
             </div>
           </div>
           <div class="act-band reveal d3">
-            <div class="act-band-head"><span class="act-band-name">Act 3 &middot; Confirm and go</span><span class="act-band-note">We decide, then we build</span></div>
+            <div class="act-band-head"><span class="act-band-name">Part 3 &middot; Decisions + next steps</span><span class="act-band-note">We lock, then we build</span></div>
             <div class="act-stops">
-              <a class="astop" href="#s09"><span class="astop-top"><span class="astop-num">09</span><span class="astop-time">8 min</span></span><span class="astop-label">Decisions + next steps</span><span class="astop-desc">Confirm and go</span></a>
+              <a class="astop" href="#s09"><span class="astop-top"><span class="astop-num">09</span><span class="astop-time">8 min</span></span><span class="astop-label">Decisions + next steps</span><span class="astop-desc">Lock and go</span></a>
             </div>
           </div>
         </div>
-        <p class="agenda-note reveal d4">Three of these stops are yours entirely. The more you talk, the better we build.</p>
+        <p class="agenda-note reveal d4">The middle part is yours entirely. The more you talk, the sharper we build.</p>
       </div>
     </section>
 
@@ -430,39 +448,51 @@
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="eyebrow-num">03</span>The engagement</span>
         <h2 class="slide-title reveal">Signature Growth. Here's what we're running.</h2>
-        <div class="eng-grid">
-          <div class="scope-grid">
-            <div class="scope-item reveal d1"><svg class="scope-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg><span><b>3 feed posts a week</b><span>Mon, Wed, Fri</span></span></div>
-            <div class="scope-item reveal d1"><svg class="scope-ico" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="12" r="3.5"/></svg><span><b>2 story days a week</b><span>Tue, Thu</span></span></div>
-            <div class="scope-item reveal d2"><svg class="scope-ico" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span><b>3 reshares a week</b><span>Amplify what lands</span></span></div>
-            <div class="scope-item reveal d2"><svg class="scope-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span><b>Community management</b><span>On every post</span></span></div>
-            <div class="scope-item reveal d3"><svg class="scope-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span><b>One content shoot</b><span>Every 3 to 4 weeks</span></span></div>
-            <div class="scope-item reveal d3"><svg class="scope-ico" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span><b>Monthly performance report</b><span>Scored, with your focus</span></span></div>
-            <div class="scope-item reveal d4"><svg class="scope-ico" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.7a1.9 1.9 0 0 0-3 -.3z"/><path d="M12 15l-3-3a11 11 0 0 1 5-7c4-3 7-2 7-2s1 3-2 7a11 11 0 0 1-7 5z"/><path d="M9 12a4 4 0 0 0-2 3l3 3a4 4 0 0 0 3-2"/></svg><span><b>Pre-launch runway program</b><span>Built for your open</span></span></div>
-            <div class="scope-item reveal d4"><svg class="scope-ico" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><b>Collaboration coordination</b><span>Partners and cross-posts</span></span></div>
-            <div class="scope-item reveal d4"><svg class="scope-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span><b>Profile and Instagram SEO</b><span>Found in Instagram search</span></span></div>
+        <div class="pillars">
+          <div class="pillar reveal d1">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="0.6" fill="var(--azure)" stroke="none"/></svg><span class="pillar-name">Strategy</span></div>
+            <p class="pillar-act">Goals, brand and competitive review, your IVP, content architecture, and Instagram SEO. Then creative direction, profile optimization, and your shot list and content plan.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Strategy deck</span><span class="pillar-deliv">Visual deck</span></div>
           </div>
+          <div class="pillar reveal d2">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span class="pillar-name">Content creation</span></div>
+            <p class="pillar-act">Creative planning and ideation, content shoots, and full editing and production.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv lime">Social content &middot; 3 feed posts Mon/Wed/Fri + 2 story days Tue/Thu</span></div>
+          </div>
+          <div class="pillar reveal d3">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span class="pillar-name">Profile management</span></div>
+            <p class="pillar-act">Caption copywriting and publishing, community management on every post, and content calendar management.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Profile maintenance</span></div>
+          </div>
+          <div class="pillar reveal d4">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="pillar-name">Performance</span></div>
+            <p class="pillar-act">A scored performance report every month, and quarterly strategy adjustments as we learn what lands.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Monthly report</span></div>
+          </div>
+        </div>
+        <div class="eng-lower">
           <div class="eng-side">
-            <div class="panel lucid reveal d1"><span class="panel-label">Full service</span><span class="panel-body">This is end to end, not content drops. We run the account: posting, DMs, comments, community. It is still your account, jump in anytime. This is a partnership.</span></div>
-            <div class="panel lime reveal d2"><span class="panel-label">Unique to your engagement</span><span class="panel-body">We will be on-site at two of your launch moments at no extra charge: the friends and family party on August 22 and grand opening on August 31. Training week we can cover as a one-off add-on if you want it. This is a big launch, so we are leaning in.</span></div>
-            <div class="approval reveal d3">
+            <div class="panel lucid reveal d1"><span class="panel-label">Full service</span><span class="panel-body">This is end to end, not content drops. We run the account: posting, captions, DMs, comments, community. It is still your account, jump in anytime. This is a partnership.</span></div>
+            <div class="panel lime reveal d2"><span class="panel-label">Unique to your engagement</span><span class="panel-body">We will be on-site at two of your launch moments at no extra charge, which is not normally part of our scope: the <strong>friends and family party on August 22</strong> and the <strong>grand opening on August 31</strong>. Any other one-off events down the road are handled as à la carte options with a little advance notice.</span></div>
+          </div>
+          <div class="reveal d3">
+            <span class="review-head">Your content review process</span>
+            <div class="approval">
               <div class="approw"><span class="approw-step">1</span>Content lands in Plann 5 business days before publish.</div>
               <div class="approw"><span class="approw-step">2</span>Your approval is due within 2 business days.</div>
               <div class="approw"><span class="approw-step">3</span>2 rounds of edits per batch, flexible the first 30 days while we calibrate.</div>
             </div>
+            <div class="flow-strip">
+              <div class="flow-head keeps">Keeps it moving</div>
+              <div class="flow-head slows">Slows it down</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals in Plann, on time</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Day-before approvals</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One voice, one round</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback scattered across channels</div>
+            </div>
           </div>
         </div>
         <p class="ig-line reveal d4"><strong>Everything we run is Instagram.</strong> When we say search or SEO, we mean Instagram search, location tags, and geo-tags. Not Google.</p>
-        <div class="flow-strip reveal d5">
-          <div class="flow-head keeps">Keeps it moving</div>
-          <div class="flow-head slows">Slows it down</div>
-          <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals in Plann</div>
-          <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Day-before approvals</div>
-          <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One voice and one round</div>
-          <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback scattered across channels</div>
-          <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust in month one</div>
-          <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Re-opening a locked post</div>
-        </div>
       </div>
     </section>
 
@@ -471,29 +501,31 @@
       <span class="section-num">03</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Timeline + key dates</span>
-        <h2 class="slide-title reveal">Here's the runway. Let's lock the dates.</h2>
+        <h2 class="slide-title reveal">Twelve days to the plan. Here's the runway.</h2>
+        <p class="slide-lede reveal">From today to your strategy presentation is about twelve days. Tight, on purpose. We want you posting early so the account is building real excitement well before you open.</p>
         <div class="journey reveal" role="list" aria-label="Runway to launch">
           <div class="jnode here d1" role="listitem"><span class="jdot"></span><span class="jwhen">Thu Jul 16</span><span class="jwhat">Kickoff</span><span class="jhere-lbl">You are here</span></div>
-          <div class="jnode d1" role="listitem"><span class="jdot"></span><span class="jwhen">3 weeks</span><span class="jwhat">Strategy build</span></div>
-          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Tue Jul 28</span><span class="jwhat">Strategy presentation</span></div>
-          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Jul 29 or 30</span><span class="jwhat">First content shoot</span></div>
-          <div class="jnode d3" role="listitem"><span class="jdot"></span><span class="jwhen">Fri Aug 7</span><span class="jwhat">First status call</span></div>
-          <div class="jnode d3" role="listitem"><span class="jdot"></span><span class="jwhen">Aug 8 to 11</span><span class="jwhat">Edits</span></div>
-          <div class="jnode hero d4" role="listitem"><span class="jdot"></span><span class="jwhen">Wed Aug 12</span><span class="jwhat">First post live</span></div>
-          <div class="jnode d4" role="listitem"><span class="jdot"></span><span class="jwhen">Sat Aug 22</span><span class="jwhat">Friends and family party</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
-          <div class="jnode d5" role="listitem"><span class="jdot"></span><span class="jwhen">Week of Aug 24</span><span class="jwhat">Team training</span><span class="jtag addon">Add-on</span></div>
-          <div class="jnode d5" role="listitem"><span class="jdot"></span><span class="jwhen">Mon Aug 31</span><span class="jwhat">Grand opening</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
+          <div class="jnode d1" role="listitem"><span class="jdot"></span><span class="jwhen">Tue Jul 28</span><span class="jwhat">Strategy presentation</span></div>
+          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Fri Aug 7</span><span class="jwhat">First status call</span></div>
+          <div class="jnode hero d3" role="listitem"><span class="jdot"></span><span class="jwhen">Wed Aug 12</span><span class="jwhat">First post live</span></div>
+          <div class="jnode event d4" role="listitem"><span class="jdot"></span><span class="jwhen">Sat Aug 22</span><span class="jwhat">Friends and family party</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
+          <div class="jnode event d4" role="listitem"><span class="jdot"></span><span class="jwhen">Week of Aug 24</span><span class="jwhat">Team training</span><span class="jtag off">Not on-site</span></div>
+          <div class="jnode event d5" role="listitem"><span class="jdot"></span><span class="jwhen">Mon Aug 31</span><span class="jwhat">Grand opening</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Scroll on-site</span></div>
         </div>
-        <p class="shoot-note reveal d3"><strong>Shoot days are Monday to Wednesday, mornings and midday.</strong> Let's pick Wednesday July 29 or Thursday July 30 for the first one. First post holds at August 12 either way. We will bank a second shoot before you travel August 17 to 19, so the account keeps posting through your travel and the construction handoff with nothing needed from you.</p>
-        <div class="lock-band reveal d4">
-          <div class="lock-label">Dates to lock today</div>
+        <span class="yourevent-key reveal d3"><span class="yk-dot"></span>The last three are your events. We're on-site for the party and the grand opening.</span>
+        <div class="shoot-callout reveal d4">
+          <svg class="sc-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <div class="shoot-callout-body">
+            <span class="sc-label">Shoot days</span>
+            Your window is Monday to Wednesday, mornings and midday. Our pick for the first shoot: <strong>Wednesday July 29</strong> (or Thursday July 30). First post holds at August 12 either way, and we'll bank a second shoot before you travel Aug 17 to 19 so the account keeps posting with nothing needed from you.
+          </div>
+        </div>
+        <div class="lock-band reveal d5">
+          <div class="lock-label">Three dates we lock live, right now</div>
           <div class="lock-grid">
             <div class="lock-row"><span class="lock-when">Strategy presentation</span><span class="lock-what">Tuesday, July 28</span></div>
-            <div class="lock-row"><span class="lock-when">First shoot</span><span class="lock-what">Wed Jul 29 or Thu Jul 30</span></div>
-            <div class="lock-row"><span class="lock-when">First post</span><span class="lock-what">Wednesday, August 12</span></div>
-            <div class="lock-row"><span class="lock-when">Check-in cadence</span><span class="lock-what">Recurring slot after Jul 28</span></div>
-            <div class="lock-row"><span class="lock-when">On-site: party</span><span class="lock-what">Saturday, August 22</span></div>
-            <div class="lock-row"><span class="lock-when">On-site: grand opening</span><span class="lock-what">Monday, August 31</span></div>
+            <div class="lock-row"><span class="lock-when">First status call</span><span class="lock-what">Friday, August 7</span></div>
+            <div class="lock-row"><span class="lock-when">First content shoot</span><span class="lock-what">Wed Jul 29 or Thu Jul 30</span></div>
           </div>
         </div>
       </div>
@@ -503,37 +535,34 @@
     <section class="slide" id="s05" data-nav="Goals">
       <span class="section-num">04</span>
       <div class="slide-inner">
-        <span class="eyebrow reveal"><span class="eyebrow-num">05</span><span class="act yours">Yours</span>Goals</span>
-        <h2 class="slide-title reveal">What does a win actually look like?</h2>
-        <p class="slide-lede reveal">A salon launch has two jobs: fill the chairs with clients, and fill them with stylists. We run that through three stages. You tell us what winning looks like at each one.</p>
+        <span class="eyebrow reveal"><span class="eyebrow-num">05</span>Goals</span>
+        <h2 class="slide-title reveal">What success looks like.</h2>
+        <p class="slide-lede reveal">Our job is to turn attention into qualified leads for your business, stage by stage. Here's what a win looks like at each one. This is us leading with the plan.</p>
         <div class="funnel">
           <div class="fstage w1 reveal d1">
-            <div class="fbadge"><span class="fstage-stage">Awareness &middot; Top of funnel</span><span class="fstage-headline">Get seen by the right people</span></div>
+            <div class="fbadge"><span class="fstage-stage">Awareness &middot; Top of funnel</span><span class="fstage-headline">Relatable content</span></div>
             <div class="fwins">
-              <span class="fwin">OTR knows Pippi's exists by open day</span>
-              <span class="fwin">A pre-launch following that shows up to the events</span>
-              <span class="fwin">Known as the new room worth watching get built</span>
+              <span class="fwin">Get Pippi's in front of the right, highest-quality OTR audience and build real brand awareness.</span>
+              <span class="fwin is-success">Success: views from the right audience.</span>
             </div>
           </div>
           <div class="fstage w2 reveal d2">
-            <div class="fbadge"><span class="fstage-stage">Trust and authority &middot; Middle</span><span class="fstage-headline">Earn the trust</span></div>
+            <div class="fbadge"><span class="fstage-stage">Trust and authority &middot; Middle</span><span class="fstage-headline">Real, educational content</span></div>
             <div class="fwins">
-              <span class="fwin">The colorist Cincinnati trusts for lived-in color and correction</span>
-              <span class="fwin">The mentorship room stylists talk about</span>
-              <span class="fwin">The most-saved, most-shared hair content in OTR</span>
+              <span class="fwin">People come to see Pippi's as the expert and trust the brand, then start to engage. That engagement is what qualifies the audience.</span>
+              <span class="fwin is-success">Success: engagement from the right audience.</span>
             </div>
           </div>
           <div class="fstage w3 reveal d3">
-            <div class="fbadge"><span class="fstage-stage">Conversion &middot; Bottom of funnel</span><span class="fstage-headline">Book the chair</span></div>
+            <div class="fbadge"><span class="fstage-stage">Conversion &middot; Bottom of funnel</span><span class="fstage-headline">Proof content</span></div>
             <div class="fwins">
-              <span class="fwin">A full chair calendar at open</span>
-              <span class="fwin">A real waitlist before the doors open</span>
-              <span class="fwin">The last one or two quality stylists landed</span>
+              <span class="fwin">Success stories, FAQs, and testimonials that show the work works and move qualified people to act.</span>
+              <span class="fwin is-success">Success: booked appointments and qualified inquiries.</span>
             </div>
           </div>
         </div>
-        <p class="goal-frame reveal d4"><strong>Relatability earns attention. Authority earns trust. Proof books the chair.</strong> You tell us which win matters most at each stage.</p>
-        <div class="capture-band reveal d4"><span class="capture-tag">Open question</span><span class="capture-body">Now put numbers on it. <strong>What does a win look like at launch, and at 90 days?</strong> Booked chairs, a waitlist size, stylists hired? Name the numbers you would be thrilled with.</span></div>
+        <p class="goal-frame reveal d4"><strong>The one goal underneath all of it: more qualified leads for your business, through organic social.</strong> That is exactly what your monthly performance report tracks, so you always see it working.</p>
+        <div class="capture-band reveal d4"><span class="capture-tag">One for you</span><span class="capture-body">Any business milestones you're driving toward? <strong>Stylists hired, chairs booked, by when?</strong> We aim the content at them and celebrate them with you. Context we build toward, not committed numbers.</span></div>
       </div>
     </section>
 
@@ -553,22 +582,24 @@
             <p class="say-more"><strong>Say more.</strong> What does raising the standard actually look like, day to day, in the room?</p>
           </div>
           <div class="stands-right reveal d2">
-            <div>
-              <div class="picker-eyebrow">What makes someone choose Pippi's?<em>Not what we think. What's actually true. Which are genuinely, only-yours true?</em></div>
-              <div class="chip-cloud">
-                <span class="vchip">a commission room built on mentorship</span>
-                <span class="vchip">one shared table, not a row of stations</span>
-                <span class="vchip">the Rica line, through your mentor</span>
-                <span class="vchip">color and session pedigree at a fashion-week level</span>
-                <span class="vchip">a 130-year-old building on Vine Street</span>
-              </div>
+            <div class="prompt-stack">
+              <div class="prompt-item"><span class="prompt-label">Personal</span><span class="prompt-q">The two or three things that make up you and your life outside the salon that we can lean into.</span></div>
+              <div class="prompt-item"><span class="prompt-label">Professional</span><span class="prompt-q">Where you're taking your career, your aspirations, the behind-the-scenes of building this.</span></div>
+              <div class="prompt-item"><span class="prompt-label">Brand</span><span class="prompt-q">How you want Pippi's portrayed. How you want people to think and feel about it. The behind-the-curtain look.</span></div>
             </div>
-            <p class="ask-line"><span class="ask-tag">Ask</span>Which is the single most central? And what did we miss?</p>
           </div>
         </div>
-        <div class="trigger-strip">
-          <div class="trigger-card reveal d3"><span class="trigger-label">A client who came to you after a bad color</span><span class="trigger-q">Tell us about a real client who came to you after a color went wrong somewhere else. What did she say when she sat down, and what did you say back?</span></div>
-          <div class="trigger-card reveal d4"><span class="trigger-label">A stylist who left a booth for a room like yours</span><span class="trigger-q">What finally makes a great stylist leave a booth for a room like yours? Think of the last one you talked to.</span></div>
+        <div class="diff-block reveal d3">
+          <div class="picker-eyebrow">The three or four things that set Pippi's apart, that we lean into<em>These are stimuli, not our conclusions. Confirm the ones that are genuinely, only-yours true, and edit freely.</em></div>
+          <div class="chip-cloud">
+            <span class="vchip">a commission room built on mentorship</span>
+            <span class="vchip">one shared table, not a row of stations</span>
+            <span class="vchip">the Rica line, through your mentor</span>
+            <span class="vchip">color and session pedigree at a fashion-week level</span>
+            <span class="vchip">a 130-year-old building on Vine Street</span>
+          </div>
+          <div class="form-note"><span class="fn-tag">From your form</span><span class="fn-text">You pointed to the <strong>mentorship-first room</strong>, the <strong>Rica line through your mentor</strong>, and fashion-week color and session pedigree.</span></div>
+          <p class="ask-line"><span class="ask-tag">Ask</span>Which is the single most central? And what did we miss?</p>
         </div>
       </div>
     </section>
@@ -581,7 +612,7 @@
           <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>9 min</div>
         </div>
         <h2 class="slide-title reveal">The look you're building toward.</h2>
-        <p class="inspo-cue reveal">You sent us the feeds you admire. We will open these live and scroll them together.</p>
+        <p class="inspo-cue reveal">This is the creative-direction exercise. Let's look at the feeds you admire and pin down the look we're building toward. We'll open each one live and scroll it together.</p>
         <div class="inspo-grid">
           <div class="inspo-card reveal d1">
             <div class="inspo-headrow"><span class="inspo-name">Amelia Jane</span><a class="inspo-handle" href="https://www.instagram.com/ameliajanehair/" target="_blank" rel="noopener">@ameliajanehair</a></div>
@@ -614,82 +645,38 @@
             <span class="sig-label">Signature elements</span>
             The three you flagged to feature: <strong>the communal table</strong>, <strong>the color bar</strong>, <strong>the backwash area</strong>. The table is the signature image. Agreed, and anything to add? (Keep off-camera: the laundry room. Fine on-camera: the breakroom and lobby.)
           </div>
+          <div class="form-note reveal d5"><span class="fn-tag">From your form</span><span class="fn-text">Visual mood: <strong>minimal and clean</strong>, <strong>craft-forward and detailed</strong>. Accounts you sent: <strong>@ameliajanehair</strong> and <strong>@edwardsandcoeducation</strong>.</span></div>
         </div>
       </div>
     </section>
 
     <!-- ===================== S08 · HOW YOU SOUND ===================== -->
-    <section class="slide is-tight" id="s08" data-nav="How you sound">
+    <section class="slide" id="s08" data-nav="How you sound">
       <div class="slide-inner">
         <div class="slide-head-row reveal">
           <div class="eyebrow"><span class="eyebrow-num">08</span><span class="act yours">Yours</span>How Pippi's sounds</div>
-          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>10 min</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>8 min</div>
         </div>
-        <h2 class="slide-title reveal">Your voice, on every surface we run.</h2>
-        <div class="sound-confirm reveal d1">
-          <span class="sc-label">Your voice, confirmed</span>
-          <p>Your form read as confident, elevated, and down to earth. You liked "the salon Cincinnati didn't know it was missing" and "great hair starts with a great colorist," and you passed on the sharper option. So: confident and warm, not provocative. Did we read that right?</p>
-        </div>
-
-        <div class="sound-block-head reveal d2">Which sounds like you? <span class="shh-sub">Nothing here is the right answer. We want the one that sounds like you.</span></div>
-        <div class="voice-rows reveal d2">
-          <div class="vrow">
-            <span class="vrow-label">What Pippi's is</span>
-            <div class="vrow-opts">
-              <span class="vopt">"a salon that feels like home"</span>
-              <span class="vopt">"the salon Cincinnati didn't know it was missing"</span>
-              <span class="vopt">"a commission room built on mentorship"</span>
-            </div>
+        <h2 class="slide-title reveal">How you sound.</h2>
+        <p class="say-intro reveal">The fastest way to learn your voice is to hear it. Say these your way. We'll capture the actual words.</p>
+        <div class="say-cards">
+          <div class="say-card reveal d1">
+            <span class="say-num">1</span>
+            <span class="say-label">The launch teaser</span>
+            <p class="say-prompt">Announce the opening like you're telling your favorite client. <em>Out loud, in your words.</em></p>
           </div>
-          <div class="vrow">
-            <span class="vrow-label">The chair</span>
-            <div class="vrow-opts">
-              <span class="vopt">"book with us"</span>
-              <span class="vopt">"some chairs are worth the wait"</span>
-              <span class="vopt">"there's a seat with your name on it"</span>
-            </div>
+          <div class="say-card reveal d2">
+            <span class="say-num">2</span>
+            <span class="say-label">A DM reply</span>
+            <p class="say-prompt">Someone asks, "are you taking new clients?" <em>Reply the way you actually would.</em></p>
           </div>
-          <div class="vrow">
-            <span class="vrow-label">The craft</span>
-            <div class="vrow-opts">
-              <span class="vopt">"we do great color"</span>
-              <span class="vopt">"great hair starts with a great colorist"</span>
-              <span class="vopt">"lived-in color that grows out right"</span>
-            </div>
+          <div class="say-card reveal d3">
+            <span class="say-num">3</span>
+            <span class="say-label">A comment reply</span>
+            <p class="say-prompt">Someone comments, "obsessed, finally a salon that gets it." <em>Answer it live.</em></p>
           </div>
         </div>
-
-        <div class="last-strip reveal d3">
-          <div class="last-item"><span class="li-label">The last yes</span><p>Think of a client who booked after a bad color somewhere else, or a stylist you were recruiting. What did they say, and what did you say back?</p></div>
-          <div class="last-item"><span class="li-label">The hard line</span><p>What should we never do in your captions, comments, or DMs, even if it performed? And how do you feel about AI as a behind-the-scenes tool, never on anything that reaches your audience without you seeing it first?</p></div>
-        </div>
-
-        <div class="calib reveal d4" id="calib">
-          <div class="calib-head">
-            <p class="calib-intro">Same launch teaser, three different sounds. Pick the closest. Tell us why. Edit it live.</p>
-            <button class="calib-btn" id="calibBtn" type="button" aria-expanded="false">
-              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Reveal our read
-            </button>
-          </div>
-          <div class="calib-cards">
-            <div class="ccard">
-              <span class="ccard-label">Draft A</span>
-              <span class="ccard-style">Elevated, editorial</span>
-              <p class="ccard-text">"A new room is coming to Vine Street. One shared table. Color built to grow out right. The kind of chair Cincinnati has been waiting for, quietly, for a while now. Doors open soon. The wait is almost over."</p>
-            </div>
-            <div class="ccard is-read">
-              <span class="ccard-read">Scroll's read</span>
-              <span class="ccard-label">Draft B</span>
-              <span class="ccard-style">Warm, founder voice</span>
-              <p class="ccard-text">"I have wanted this room for years. A place where stylists are mentored, not just booked, and where a guest leaves feeling like the best version of themselves. That room is almost real, on Vine Street, and I cannot wait to show you. Opening soon."</p>
-            </div>
-            <div class="ccard">
-              <span class="ccard-label">Draft C</span>
-              <span class="ccard-style">Confident, bold</span>
-              <p class="ccard-text">"Great hair starts with a great colorist. Full stop. We built a room around that idea, on Vine Street, and it opens soon. Come see what the standard is supposed to look like."</p>
-            </div>
-          </div>
-        </div>
+        <div class="form-note reveal d4"><span class="fn-tag">From your form</span><span class="fn-text">Confident, elevated, warm. Not spicy. Emoji rare, exclamations sparingly.</span></div>
       </div>
     </section>
 
@@ -711,7 +698,7 @@
           <div class="dcard reveal d1">
             <div class="dcard-top"><span class="dcard-title">1 &middot; Priority-chair sequencing</span><span class="dchip lock">Lock</span></div>
             <span class="drow"><span class="dl">Your form</span><strong>Both, lean stylists early.</strong></span>
-            <span class="drow"><span class="dl">Our plan</span>Stylist-leaning content through the pre-open runway to land your last one or two, then flip to client-leaning at open.</span>
+            <span class="drow"><span class="dl">Our plan</span>Promote to stylists early through the pre-open runway to land your last one or two, then shift to clients as you get to open.</span>
           </div>
           <div class="dcard reveal d2">
             <div class="dcard-top"><span class="dcard-title">2 &middot; Booking destination</span><span class="dchip confirm">Confirm</span></div>
@@ -726,13 +713,23 @@
           <div class="dcard reveal d4">
             <div class="dcard-top"><span class="dcard-title">4 &middot; Launch coverage</span><span class="dchip confirm">Confirm</span></div>
             <span class="drow"><span class="dl">Our plan</span>On-site at the party (Aug 22) and grand opening (Aug 31).</span>
-            <span class="drow"><span class="dl">Optional</span>Training available as an add-on.</span>
+            <span class="drow"><span class="dl">Team training</span>Not on-site. You have that covered.</span>
           </div>
         </div>
-        <div class="next-strip">
-          <div class="nbucket reveal d5"><span class="nbucket-eyebrow">This week &middot; Access</span><span class="nbucket-owner">Rachel owns</span><ul><li>Instagram 2FA</li><li>Plann setup and walkthrough</li><li>Confirm the Google Drive share</li></ul></div>
-          <div class="nbucket reveal d6"><span class="nbucket-eyebrow">Assets</span><span class="nbucket-owner">You confirm</span><ul><li>Brand folder is complete.</li><li>Booking-link or consent-form logistics before the first shoot.</li></ul></div>
-          <div class="nbucket reveal d7"><span class="nbucket-eyebrow">Already in motion</span><span class="nbucket-owner">Rachel owns</span><ul><li>The 3-week strategy sprint starts now.</li><li>Full reveal at your strategy presentation on Tuesday, July 28.</li></ul></div>
+        <div class="checklist">
+          <div class="check-col done reveal d5">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Handled and in motion</div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Kickoff scheduled and underway</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Onboarding form in</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Brand assets received</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Strategy build starts now<span class="owner">Full reveal Tuesday, July 28</span></span></div>
+          </div>
+          <div class="check-col open reveal d6">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>Still open</div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Instagram 2FA and Plann access<span class="owner">Rachel sets up this week</span></span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Confirm the three dates we locked today<span class="owner">You and Rachel</span></span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Send the Aura booking link<span class="owner">You, the day it goes live Aug 1</span></span></div>
+          </div>
         </div>
         <div class="close-block reveal d8">
           <p class="close-line">You are building something with a real point of view, and the pre-launch window is where we win it. Rachel runs your account from here. Chase is always a call away.</p>
@@ -799,18 +796,6 @@
       else if(e.key==='Home'){e.preventDefault();goTo(0);}
       else if(e.key==='End'){e.preventDefault();goTo(slides.length-1);}
     });
-
-    /* S08 caption calibration · click-to-reveal Scroll's read (draft B) */
-    (function(){
-      var btn=document.getElementById('calibBtn');
-      var calib=document.getElementById('calib');
-      if(!btn||!calib)return;
-      btn.addEventListener('click',function(){
-        var on=calib.classList.toggle('revealed');
-        btn.setAttribute('aria-expanded',on?'true':'false');
-        btn.childNodes[btn.childNodes.length-1].nodeValue = on ? 'Hide our read' : 'Reveal our read';
-      });
-    })();
 
     onScroll();
   </script>

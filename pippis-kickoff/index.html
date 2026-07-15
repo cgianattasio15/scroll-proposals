@@ -133,7 +133,7 @@
     .header-x {
       font-size: 13px; color: var(--fg-subtle); font-weight: 600;
     }
-    /* TODO: swap Pippi's wordmark for official Edelmade logo asset (drop pippis-logo.png here) */
+    /* Pippi's co-brand · azure text wordmark (final, no logo swap) */
     .header-pippis {
       font-size: 21px; font-weight: 800; color: var(--azure);
       letter-spacing: -0.01em; line-height: 1; white-space: nowrap;
@@ -575,18 +575,22 @@
       content: ""; width: 22px; height: 2px; background: var(--highlighter-dark); flex-shrink: 0;
     }
 
-    /* SLIDE 06 · inspiration cards */
-    .inspo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); margin-top: var(--sp-5); }
+    /* SLIDE 06 · inspiration cards (text + live-link handles, reviewed live) */
+    .inspo-cue { margin-top: var(--sp-4); font-size: 14px; font-weight: 700; color: var(--azure); }
+    .inspo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); margin-top: var(--sp-4); }
     .inspo-card {
       background: var(--bg-panel); border: 1px solid var(--rule-faint);
-      border-radius: var(--r-md); overflow: hidden; display: flex; flex-direction: column;
+      border-top: 3px solid var(--azure);
+      border-radius: var(--r-md); padding: var(--sp-5);
+      display: flex; flex-direction: column; gap: var(--sp-3);
     }
-    .inspo-imgwrap { position: relative; width: 100%; aspect-ratio: 4 / 5; background: var(--bg-alt); overflow: hidden; }
-    .inspo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .inspo-body { padding: var(--sp-4); display: flex; flex-direction: column; gap: var(--sp-2); }
     .inspo-headrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
-    .inspo-name { font-size: 15px; font-weight: 800; color: var(--azure); }
-    .inspo-handle { font-size: 13px; color: var(--fg-muted); }
+    .inspo-name { font-size: 16px; font-weight: 800; color: var(--azure); }
+    .inspo-handle-link {
+      font-size: 14px; color: var(--azure-600); font-weight: 700;
+      text-decoration: none; border-bottom: 1px solid var(--azure-200);
+    }
+    .inspo-handle-link:hover { border-bottom-color: var(--azure-600); text-decoration: none; }
     .inspo-add {
       display: inline-block; font-size: 9px; font-weight: 800; color: var(--shadow);
       background: var(--highlighter); padding: 2px 8px; border-radius: 999px;
@@ -751,7 +755,7 @@
       .approw, .work-cell, .rnode-name, .dlock-when, .dlock-what,
       .goal-stage, .goal-headline, .goal-body, .opt, .chip, .opt-input,
       .framing-line, .open-q, .say-more, .open-item, .prompt-q,
-      .inspo-prompt, .inspo-handle, .sig-strip, .vmoment-q, .vp-rowlabel,
+      .inspo-prompt, .inspo-cue, .sig-strip, .vmoment-q, .vp-rowlabel,
       .caption-text, .calib-intro, .decision-row, .bucket-list li, .close-sign-title {
         font-size: 14px;
       }
@@ -780,7 +784,6 @@
       </a>
       <div class="header-co">
         <span class="header-x" aria-hidden="true">&times;</span>
-        <!-- TODO: swap Pippi's wordmark below for the official Edelmade logo asset once in the Drive folder -->
         <span class="header-pippis">Pippi's</span>
       </div>
     </div>
@@ -1033,37 +1036,21 @@
       <h2 id="s06-title" class="slide-title reveal">The look you're building toward.</h2>
       <p class="slide-subtitle reveal">You sent us the feeds you admire. Let's look at them together and pin down exactly what you want.</p>
 
-      <!-- Block 1 · inspiration accounts -->
+      <!-- Block 1 · inspiration accounts · reviewed live, not embedded. Handles link to
+           the live IG profiles (new tab); presenter pulls each up and scrolls it with her. -->
+      <p class="inspo-cue reveal">We will open these live and scroll them together.</p>
       <div class="inspo-grid">
         <div class="inspo-card reveal">
-          <div class="inspo-imgwrap">
-            <!-- TODO: drop real IG grid screenshot for @ameliajanehair -->
-            <img class="inspo-img" src="assets/inspo/ameliajanehair.jpg" alt="Instagram grid for @ameliajanehair, editorial blonde and lived-in color, founder-forward." />
-          </div>
-          <div class="inspo-body">
-            <div class="inspo-headrow"><span class="inspo-name">Amelia Jane</span><span class="inspo-handle">@ameliajanehair</span></div>
-            <p class="inspo-prompt">You sent us this one. What is it about her feed that you want? The color work, the way she shows up, the pace?</p>
-          </div>
+          <div class="inspo-headrow"><span class="inspo-name">Amelia Jane</span><a class="inspo-handle-link" href="https://www.instagram.com/ameliajanehair/" target="_blank" rel="noopener">@ameliajanehair</a></div>
+          <p class="inspo-prompt">You sent us this one. What is it about her feed that you want? The color work, the way she shows up, the pace?</p>
         </div>
         <div class="inspo-card reveal">
-          <div class="inspo-imgwrap">
-            <!-- TODO: drop real IG grid screenshot for @edwardsandcoeducation -->
-            <img class="inspo-img" src="assets/inspo/edwardsandco-education.jpg" alt="Instagram grid for @edwardsandcoeducation, craft-and-mentorship, education-forward." />
-          </div>
-          <div class="inspo-body">
-            <div class="inspo-headrow"><span class="inspo-name">EdwardsAndCo</span><span class="inspo-handle">@edwardsandcoeducation</span></div>
-            <p class="inspo-prompt">You sent Edwards and Co. We are showing their education account, the mentorship side that fits your room. Is this the piece of them you meant?</p>
-          </div>
+          <div class="inspo-headrow"><span class="inspo-name">EdwardsAndCo</span><a class="inspo-handle-link" href="https://www.instagram.com/edwardsandcoeducation/" target="_blank" rel="noopener">@edwardsandcoeducation</a></div>
+          <p class="inspo-prompt">You sent Edwards and Co. We are showing their education account, the mentorship side that fits your room. Is this the piece of them you meant?</p>
         </div>
         <div class="inspo-card reveal">
-          <div class="inspo-imgwrap">
-            <!-- TODO: drop real IG grid screenshot for @menspireacademy -->
-            <img class="inspo-img" src="assets/inspo/menspire-academy.jpg" alt="Instagram grid for @menspireacademy, cinematic, editorial reveal editing." />
-          </div>
-          <div class="inspo-body">
-            <div class="inspo-headrow"><span class="inspo-name">Menspire</span><span class="inspo-handle">@menspireacademy</span><span class="inspo-add">one we'd add</span></div>
-            <p class="inspo-prompt">This one is ours, not yours. We would study their cinematic reveal editing for your hero transformations. Does this energy fit, or is it too much?</p>
-          </div>
+          <div class="inspo-headrow"><span class="inspo-name">Menspire</span><a class="inspo-handle-link" href="https://www.instagram.com/menspireacademy/" target="_blank" rel="noopener">@menspireacademy</a><span class="inspo-add">one we'd add</span></div>
+          <p class="inspo-prompt">This one is ours, not yours. We would study their cinematic reveal editing for your hero transformations. Does this energy fit, or is it too much?</p>
         </div>
       </div>
       <p class="open-q inspo-q reveal"><span>Question</span>Beyond these three, anyone whose feed you love? Drop the @handles and we will study them.</p>

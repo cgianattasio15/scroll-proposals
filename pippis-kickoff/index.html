@@ -258,6 +258,12 @@
     .fwin.is-success{font-weight:800;color:var(--azure);background:var(--lucid-soft);border-color:var(--azure-200)}
     .fstage.w3 .fwin.is-success{color:var(--azure-900);background:rgba(226,237,122,.5);border-color:var(--highlighter-dark)}
     .goal-frame{margin-top:var(--sp-4);font-size:14.5px;color:var(--fg-muted);line-height:1.45;max-width:92ch;font-style:italic}
+    .track-note{margin-top:var(--sp-3);background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5);box-shadow:var(--sh-sm)}
+    .track-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:5px}
+    .track-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .track-body strong{color:var(--azure)}
+    .track-stages{display:inline-flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+    .tstage{font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:2px 9px}
     .goal-frame strong{color:var(--azure);font-style:normal}
     .capture-band{margin-top:var(--sp-3);display:flex;align-items:flex-start;gap:var(--sp-3);background:var(--azure);color:var(--ghost);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
     .capture-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-900);background:var(--highlighter);padding:3px 9px;border-radius:999px;margin-top:2px}
@@ -375,7 +381,7 @@
       .scope-item b,.panel-body,.approw,.ig-line,.flow-cell,.fstage-headline,.fwin,
       .goal-frame,.capture-body,.vchip,.ask-line,.trigger-q,.inspo-prompt,.mood-note,
       .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
-      .pmini-name,.pmini-role,.phase-sub,.phase-name,
+      .pmini-name,.pmini-role,.phase-sub,.phase-name,.track-body,.tstage,
       .drow,.lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
       .shoot-callout-body,.yourevent-key,.inspo-prompt,.mood-note,
       .shoot-note,.shoot-note strong{font-size:14px}
@@ -635,8 +641,12 @@
             </div>
           </div>
         </div>
-        <p class="goal-frame reveal d4"><strong>The one goal underneath all of it: more qualified leads for your business, through organic social.</strong> That is exactly what your monthly performance report tracks, so you always see it working.</p>
-        <div class="capture-band reveal d4"><span class="capture-tag">One for you</span><span class="capture-body">Any business milestones you're driving toward? <strong>Stylists hired, chairs booked, by when?</strong> We aim the content at them and celebrate them with you. Context we build toward, not committed numbers.</span></div>
+        <p class="goal-frame reveal d4"><strong>The one goal underneath all of it: more qualified leads for your business, through organic social.</strong></p>
+        <div class="track-note reveal d4">
+          <span class="track-label">How we track it</span>
+          <span class="track-body">Each metric above gets a <strong>specific target range every month</strong>, set to where your account sits in its maturity stage, so a launching account is measured fairly and never against a mature one. Your <strong>monthly performance report</strong> then scores every metric against its target (exceeding, on track, or watch), so you always see real progress toward these goals, not just activity.<span class="track-stages"><span class="tstage">Spark</span><span class="tstage">Lift</span><span class="tstage">Rise</span><span class="tstage">Thrive</span></span></span>
+        </div>
+        <div class="capture-band reveal d5"><span class="capture-tag">One for you</span><span class="capture-body">Any business milestones you're driving toward? <strong>Stylists hired, chairs booked, by when?</strong> We aim the content at them and celebrate them with you. Context we build toward, not committed numbers.</span></div>
       </div>
     </section>
 

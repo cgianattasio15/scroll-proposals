@@ -97,7 +97,7 @@
     /* ===== COVER + CLOSE (azure, node-network motif) ===== */
     .azure-slide{color:var(--ghost);min-height:100vh;justify-content:center;overflow:hidden}
     #s01{background:radial-gradient(120% 90% at 85% 5%,#16367a 0%,var(--azure) 46%,var(--azure-900) 100%)}
-    #s10{background:radial-gradient(120% 90% at 15% 92%,#16367a 0%,var(--azure) 48%,var(--azure-900) 100%)}
+    #s09{background:radial-gradient(120% 90% at 15% 92%,#16367a 0%,var(--azure) 48%,var(--azure-900) 100%)}
     .net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
     .net line{stroke:rgba(203,233,255,.22);stroke-width:1}
     .net circle{fill:rgba(203,233,255,.5)}
@@ -148,8 +148,22 @@
     .pillar-delivs{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:var(--sp-2)}
     .pillar-deliv{display:inline-flex;align-items:center;font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:4px 10px;line-height:1.2}
     .pillar-deliv.lime{background:rgba(226,237,122,.4)}
-    .eng-lower{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--sp-4);align-items:start;margin-top:var(--sp-4)}
+    .eng-lower{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--sp-4);align-items:start;margin-top:var(--sp-3)}
     .review-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:var(--sp-2)}
+    /* compact pod strip (on engagement) */
+    .pod-strip{margin-top:var(--sp-2)}
+    .pod-strip-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:6px}
+    .pod-mini-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)}
+    .pod-mini{display:flex;align-items:center;gap:9px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:6px 11px;box-shadow:var(--sh-sm)}
+    .pod-mini.primary{background:rgba(226,237,122,.12);border-color:var(--highlighter-dark)}
+    .pmini-mono{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;letter-spacing:.02em}
+    .pod-mini.primary .pmini-mono{background:var(--highlighter);color:var(--azure-900)}
+    .pmini-mono svg{width:15px;height:15px;fill:none;stroke:var(--ghost);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .pmini-body{display:flex;flex-direction:column;min-width:0}
+    .pmini-name{font-size:13px;font-weight:800;color:var(--azure);line-height:1.2}
+    .pmini-role{font-size:12px;color:var(--fg-muted);line-height:1.25}
+    @media (max-width:760px){.pod-mini-row{grid-template-columns:1fr 1fr}}
+    @media (max-width:480px){.pod-mini-row{grid-template-columns:1fr}}
     @media (max-width:900px){.pillars{grid-template-columns:1fr 1fr}.eng-lower{grid-template-columns:1fr}}
     @media (max-width:560px){.pillars{grid-template-columns:1fr}}
     .eng-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-4);align-items:start}
@@ -182,27 +196,6 @@
     .flow-cell.slows .flow-ico{stroke:var(--fg-subtle)}
     @media (max-width:880px){.eng-grid{grid-template-columns:1fr}.scope-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.scope-grid{grid-template-columns:1fr}.flow-strip{grid-template-columns:1fr}.flow-cell.slows{border-left:none}}
-
-    /* ===== TEAM / POD ===== */
-    .pod{display:flex;flex-direction:column;gap:var(--sp-4);margin-top:var(--sp-4)}
-    .pod-tier-label{display:flex;align-items:center;gap:var(--sp-3);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-600);margin-bottom:var(--sp-3)}
-    .pod-tier-label::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
-    .pod-tier-label.day::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--highlighter-dark);flex-shrink:0}
-    .pod-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
-    .pod-card{display:flex;align-items:flex-start;gap:var(--sp-3);background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4);box-shadow:var(--sh-sm)}
-    .pod-card.primary{border-top-color:var(--highlighter-dark);background:rgba(226,237,122,.09)}
-    .pod-mono{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;letter-spacing:.02em}
-    .pod-card.primary .pod-mono{background:var(--highlighter);color:var(--azure-900)}
-    .pod-mono svg{width:20px;height:20px;fill:none;stroke:var(--ghost);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-    .pod-body{display:flex;flex-direction:column;gap:1px;min-width:0}
-    .pod-name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .pod-name{font-size:15px;font-weight:800;color:var(--azure);line-height:1.15}
-    .pod-primary-tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;background:var(--highlighter);color:var(--azure-900);padding:2px 8px;border-radius:999px}
-    .pod-role{font-size:12.5px;font-weight:700;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.05em}
-    .pod-note{font-size:13px;color:var(--shadow);line-height:1.4;margin-top:3px}
-    .pod-flow{margin-top:var(--sp-3);font-size:13.5px;color:var(--fg-muted);line-height:1.5;padding:10px var(--sp-4);background:var(--bg-alt);border-radius:var(--r-sm);border-left:2px solid var(--azure-400)}
-    .pod-flow strong{color:var(--azure)}
-    @media (max-width:760px){.pod-row{grid-template-columns:1fr}}
 
     /* ===== TIMELINE (horizontal journey) ===== */
     .journey{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:var(--sp-5)}
@@ -321,8 +314,8 @@
     @media (max-width:880px){.say-cards{grid-template-columns:1fr;gap:var(--sp-4)}}
 
     /* ===== DECISIONS + CLOSE (on azure) ===== */
-    #s10 .slide-title,#s10 .slide-lede{color:var(--ghost)}
-    #s10 .slide-lede{color:var(--lucid)}
+    #s09 .slide-title,#s09 .slide-lede{color:var(--ghost)}
+    #s09 .slide-lede{color:var(--lucid)}
     .dec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);margin-top:var(--sp-3)}
     .dcard{background:rgba(255,255,255,.06);border:1px solid rgba(203,233,255,.2);border-radius:var(--r-md);padding:var(--sp-4);display:flex;flex-direction:column;gap:8px;backdrop-filter:blur(2px)}
     .dcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
@@ -340,7 +333,7 @@
     .check-col-head{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--sp-2)}
     .check-col.done .check-col-head{color:var(--highlighter)}
     .check-col.open .check-col-head{color:var(--lucid)}
-    .citem{display:flex;gap:10px;align-items:flex-start;padding:5px 0}
+    .citem{display:flex;gap:10px;align-items:flex-start;padding:7px 0}
     .citem+.citem{border-top:1px solid rgba(203,233,255,.1)}
     .cmark{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
     .cmark.is-done{background:var(--highlighter)}
@@ -349,9 +342,9 @@
     .ctext{font-size:13px;color:var(--lucid-soft);line-height:1.4}
     .ctext strong{color:var(--ghost);font-weight:600}
     .ctext .owner{display:block;font-size:12px;color:var(--lucid-deep);margin-top:1px}
-    .close-block{margin-top:var(--sp-2);padding-top:var(--sp-3);border-top:1px solid rgba(203,233,255,.2)}
+    .close-block{margin-top:var(--sp-3);padding-top:var(--sp-4);border-top:1px solid rgba(203,233,255,.2)}
     .close-line{font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--ghost);line-height:1.35;max-width:70ch}
-    .close-sign{margin-top:var(--sp-3);display:flex;flex-wrap:wrap;gap:var(--sp-6)}
+    .close-sign{margin-top:var(--sp-4);display:flex;flex-wrap:wrap;gap:var(--sp-7)}
     .close-sign-name{font-size:15px;font-weight:700;color:var(--highlighter)}
     .close-sign-title{font-size:12px;color:var(--lucid)}
     @media (max-width:880px){.dec-grid{grid-template-columns:1fr 1fr}.checklist{grid-template-columns:1fr}}
@@ -372,7 +365,7 @@
       .scope-item b,.panel-body,.approw,.ig-line,.flow-cell,.fstage-headline,.fwin,
       .goal-frame,.capture-body,.vchip,.ask-line,.trigger-q,.inspo-prompt,.mood-note,
       .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
-      .pod-note,.pod-flow,.pod-role,
+      .pmini-name,.pmini-role,
       .drow,.lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
       .shoot-callout-body,.yourevent-key,.inspo-prompt,.mood-note,
       .shoot-note,.shoot-note strong{font-size:14px}
@@ -382,10 +375,45 @@
       .cover-title{font-size:30px}
       .slide-title{font-size:24px}
     }
-    @media print{.deck-header,.slide-nav,#progress,.scrollcue{display:none}.reveal{opacity:1;transform:none}.slide{page-break-after:always;min-height:auto;padding:40px}}
+    @media print{.deck-header,.slide-nav,#progress,.scrollcue,#sm-gate{display:none}.reveal{opacity:1;transform:none}.slide{page-break-after:always;min-height:auto;padding:40px}}
+
+    /* ===== ACCESS-CODE GATE (Tier 3, client-side; stacked on noindex) ===== */
+    #sm-gate{position:fixed;inset:0;background:var(--ghost);display:flex;align-items:center;justify-content:center;z-index:99999;padding:24px}
+    .sm-gate-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg);padding:44px 38px;width:100%;max-width:400px;text-align:center;box-shadow:var(--sh-lg)}
+    .sm-gate-logo{height:28px;width:auto;margin:0 auto 26px;display:block}
+    .sm-gate-title{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--azure);margin-bottom:6px}
+    .sm-gate-sub{font-size:14px;color:var(--fg-muted);margin-bottom:26px;line-height:1.5}
+    .sm-gate-input-wrap{position:relative;margin-bottom:12px}
+    .sm-gate-input{width:100%;background:var(--bg-alt);border:1.5px solid var(--rule);border-radius:var(--r-md);padding:13px 46px 13px 15px;font-size:15px;font-family:inherit;color:var(--shadow);outline:none;transition:border-color .2s;letter-spacing:.04em}
+    .sm-gate-input:focus{border-color:var(--azure)}
+    .sm-gate-input::placeholder{letter-spacing:0;color:var(--fg-subtle)}
+    .sm-gate-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--fg-muted);padding:4px;display:flex;align-items:center}
+    .sm-gate-btn{width:100%;background:var(--azure);color:var(--white);border:none;border-radius:var(--r-md);padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s,transform .1s;min-height:44px}
+    .sm-gate-btn:hover{background:var(--azure-900)}
+    .sm-gate-btn:active{transform:scale(.98)}
+    .sm-gate-error{font-size:13px;color:#dc2626;margin-top:10px;display:none}
+    .sm-gate-error.visible{display:block}
+    body.sm-locked{overflow:hidden}
   </style>
 </head>
 <body>
+  <!-- ACCESS-CODE GATE (Tier 3) -->
+  <div id="sm-gate">
+    <div class="sm-gate-card">
+      <img class="sm-gate-logo" src="scroll-media-logo.png" alt="Scroll Media" />
+      <div class="sm-gate-title">Private kickoff deck</div>
+      <div class="sm-gate-sub">This kickoff deck is private. Enter your access code to continue.</div>
+      <div class="sm-gate-input-wrap">
+        <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+        <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+          <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <button class="sm-gate-btn" id="sm-gate-btn">View deck</button>
+      <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+    </div>
+  </div>
+
   <div id="progress"></div>
 
   <!-- HEADER · co-branded (Scroll left, Pippi's azure wordmark right) -->
@@ -441,23 +469,22 @@
             <div class="act-band-head"><span class="act-band-name">Part 1 &middot; The setup</span><span class="act-band-note">We walk you through it</span></div>
             <div class="act-stops">
               <a class="astop" href="#s03"><span class="astop-top"><span class="astop-num">03</span><span class="astop-time">5 min</span></span><span class="astop-label">The engagement</span><span class="astop-desc">What we're running</span></a>
-              <a class="astop" href="#s04"><span class="astop-top"><span class="astop-num">04</span><span class="astop-time">3 min</span></span><span class="astop-label">Your Scroll team</span><span class="astop-desc">Your dedicated pod</span></a>
-              <a class="astop" href="#s05"><span class="astop-top"><span class="astop-num">05</span><span class="astop-time">6 min</span></span><span class="astop-label">Timeline</span><span class="astop-desc">Locking the runway</span></a>
+              <a class="astop" href="#s04"><span class="astop-top"><span class="astop-num">04</span><span class="astop-time">6 min</span></span><span class="astop-label">Timeline</span><span class="astop-desc">Locking the runway</span></a>
             </div>
           </div>
           <div class="act-band is-yours reveal d2">
             <div class="act-band-head"><span class="act-band-name">Part 2 &middot; Brand immersion</span><span class="act-yours-flag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span><span class="act-band-note">You talk, we learn you</span></div>
             <div class="act-stops">
-              <a class="astop" href="#s06"><span class="astop-top"><span class="astop-num">06</span><span class="astop-time">5 min</span></span><span class="astop-label">Goals</span><span class="astop-desc">What a win looks like</span></a>
-              <a class="astop" href="#s07"><span class="astop-top"><span class="astop-num">07</span><span class="astop-time">11 min</span></span><span class="astop-label">What you stand for</span><span class="astop-desc">In your words</span></a>
-              <a class="astop" href="#s08"><span class="astop-top"><span class="astop-num">08</span><span class="astop-time">9 min</span></span><span class="astop-label">How you look</span><span class="astop-desc">The visual target</span></a>
-              <a class="astop" href="#s09"><span class="astop-top"><span class="astop-num">09</span><span class="astop-time">8 min</span></span><span class="astop-label">How you sound</span><span class="astop-desc">Say it your way</span></a>
+              <a class="astop" href="#s05"><span class="astop-top"><span class="astop-num">05</span><span class="astop-time">5 min</span></span><span class="astop-label">Goals</span><span class="astop-desc">What a win looks like</span></a>
+              <a class="astop" href="#s06"><span class="astop-top"><span class="astop-num">06</span><span class="astop-time">11 min</span></span><span class="astop-label">What you stand for</span><span class="astop-desc">In your words</span></a>
+              <a class="astop" href="#s07"><span class="astop-top"><span class="astop-num">07</span><span class="astop-time">9 min</span></span><span class="astop-label">How you look</span><span class="astop-desc">The visual target</span></a>
+              <a class="astop" href="#s08"><span class="astop-top"><span class="astop-num">08</span><span class="astop-time">8 min</span></span><span class="astop-label">How you sound</span><span class="astop-desc">Say it your way</span></a>
             </div>
           </div>
           <div class="act-band reveal d3">
             <div class="act-band-head"><span class="act-band-name">Part 3 &middot; Decisions + next steps</span><span class="act-band-note">We lock, then we build</span></div>
             <div class="act-stops">
-              <a class="astop" href="#s10"><span class="astop-top"><span class="astop-num">10</span><span class="astop-time">8 min</span></span><span class="astop-label">Decisions + next steps</span><span class="astop-desc">Lock and go</span></a>
+              <a class="astop" href="#s09"><span class="astop-top"><span class="astop-num">09</span><span class="astop-time">8 min</span></span><span class="astop-label">Decisions + next steps</span><span class="astop-desc">Lock and go</span></a>
             </div>
           </div>
         </div>
@@ -495,8 +522,8 @@
         </div>
         <div class="eng-lower">
           <div class="eng-side">
-            <div class="panel lucid reveal d1"><span class="panel-label">Full service</span><span class="panel-body">This is end to end, not content drops. We run the account: posting, captions, DMs, comments, community. It is still your account, jump in anytime. This is a partnership.</span></div>
-            <div class="panel lime reveal d2"><span class="panel-label">Unique to your engagement</span><span class="panel-body">We will be on-site at two of your launch moments at no extra charge, which is not normally part of our scope: the <strong>friends and family party on August 22</strong> and the <strong>grand opening on August 31</strong>. Any other one-off events down the road are handled as à la carte options with a little advance notice.</span></div>
+            <div class="panel lucid reveal d1"><span class="panel-label">Full service</span><span class="panel-body">End to end, not content drops. We run the account: posting, captions, DMs, comments, community. Still your account, jump in anytime.</span></div>
+            <div class="panel lime reveal d2"><span class="panel-label">Unique to your engagement</span><span class="panel-body">On-site at two launch moments at no extra charge (not normally in scope): the <strong>friends and family party (Aug 22)</strong> and <strong>grand opening (Aug 31)</strong>. Other one-off events are à la carte with advance notice.</span></div>
           </div>
           <div class="reveal d3">
             <span class="review-head">Your content review process</span>
@@ -504,81 +531,28 @@
               <div class="approw"><span class="approw-step">1</span>Content lands in Plann 5 business days before publish.</div>
               <div class="approw"><span class="approw-step">2</span>Your approval is due within 2 business days.</div>
               <div class="approw"><span class="approw-step">3</span>2 rounds of edits per batch, flexible the first 30 days while we calibrate.</div>
-            </div>
-            <div class="flow-strip">
-              <div class="flow-head keeps">Keeps it moving</div>
-              <div class="flow-head slows">Slows it down</div>
-              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals in Plann, on time</div>
-              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Day-before approvals</div>
-              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One voice, one round</div>
-              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback scattered across channels</div>
+              <div class="approw"><span class="approw-step">&check;</span>Approvals in Plann on time and one voice keep it moving. Day-before, scattered feedback slows it down.</div>
             </div>
           </div>
         </div>
-        <p class="ig-line reveal d4"><strong>Everything we run is Instagram.</strong> When we say search or SEO, we mean Instagram search, location tags, and geo-tags. Not Google.</p>
+        <div class="pod-strip reveal d4">
+          <span class="pod-strip-head">Your dedicated pod</span>
+          <div class="pod-mini-row">
+            <div class="pod-mini primary"><span class="pmini-mono">RD</span><div class="pmini-body"><span class="pmini-name">Rachel Dina</span><span class="pmini-role">Account manager &middot; your primary contact</span></div></div>
+            <div class="pod-mini"><span class="pmini-mono"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><div class="pmini-body"><span class="pmini-name">Content editor</span><span class="pmini-role">Production + editing</span></div></div>
+            <div class="pod-mini"><span class="pmini-mono">A</span><div class="pmini-body"><span class="pmini-name">Allison</span><span class="pmini-role">Strategy + quality</span></div></div>
+            <div class="pod-mini"><span class="pmini-mono">CG</span><div class="pmini-body"><span class="pmini-name">Chase</span><span class="pmini-role">Ops + performance reporting</span></div></div>
+          </div>
+        </div>
+        <p class="ig-line reveal d5"><strong>Everything we run is Instagram.</strong> When we say search or SEO, we mean Instagram search, location tags, and geo-tags. Not Google.</p>
       </div>
     </section>
 
-    <!-- ===================== S04 · YOUR SCROLL TEAM ===================== -->
-    <section class="slide" id="s04" data-nav="Your team">
+    <!-- ===================== S04 · TIMELINE ===================== -->
+    <section class="slide" id="s04" data-nav="Timeline">
       <span class="section-num">03</span>
       <div class="slide-inner">
-        <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Your Scroll pod</span>
-        <h2 class="slide-title reveal">One dedicated pod on your account.</h2>
-        <p class="slide-lede reveal">A small, senior team on Pippi's from day one. Rachel is your day-to-day, Allison drives the strategy and holds the quality bar, and Chase keeps the whole thing accountable.</p>
-        <div class="pod">
-          <div class="reveal d1">
-            <div class="pod-tier-label">Strategy + leadership &middot; oversight</div>
-            <div class="pod-row">
-              <div class="pod-card">
-                <span class="pod-mono">A</span>
-                <div class="pod-body">
-                  <div class="pod-name-row"><span class="pod-name">Allison</span></div>
-                  <span class="pod-role">Account Strategist &middot; Delivery oversight</span>
-                  <span class="pod-note">Owns your strategy and holds the quality bar on everything that ships.</span>
-                </div>
-              </div>
-              <div class="pod-card">
-                <span class="pod-mono">CG</span>
-                <div class="pod-body">
-                  <div class="pod-name-row"><span class="pod-name">Chase Gianattasio</span></div>
-                  <span class="pod-role">Co-Founder &amp; COO</span>
-                  <span class="pod-note">Executive sponsor on the account. Always a call away.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="reveal d2">
-            <div class="pod-tier-label day">On your account every day</div>
-            <div class="pod-row">
-              <div class="pod-card primary">
-                <span class="pod-mono">RD</span>
-                <div class="pod-body">
-                  <div class="pod-name-row"><span class="pod-name">Rachel Dina</span><span class="pod-primary-tag">Your primary contact</span></div>
-                  <span class="pod-role">Account Manager</span>
-                  <span class="pod-note">Your day-to-day. Runs the account, the content, and every approval.</span>
-                </div>
-              </div>
-              <div class="pod-card">
-                <span class="pod-mono"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
-                <div class="pod-body">
-                  <div class="pod-name-row"><span class="pod-name">Content Editor</span></div>
-                  <span class="pod-role">Production + editing</span>
-                  <span class="pod-note">Supports Rachel on shoots, editing, and production.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="pod-flow reveal d3"><strong>How it flows:</strong> Rachel runs the day-to-day and is your one point of contact. Allison sets the strategy and signs off on quality. Chase backs the whole engagement. One pod, one contact.</p>
-      </div>
-    </section>
-
-    <!-- ===================== S05 · TIMELINE ===================== -->
-    <section class="slide" id="s05" data-nav="Timeline">
-      <span class="section-num">04</span>
-      <div class="slide-inner">
-        <span class="eyebrow reveal"><span class="eyebrow-num">05</span>Timeline + key dates</span>
+        <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Timeline + key dates</span>
         <h2 class="slide-title reveal">Twelve days to the plan. Here's the runway.</h2>
         <p class="slide-lede reveal">From today to your strategy presentation is about twelve days. Tight, on purpose. We want you posting early so the account is building real excitement well before you open.</p>
         <div class="journey reveal" role="list" aria-label="Runway to launch">
@@ -611,10 +585,10 @@
     </section>
 
     <!-- ===================== S05 · GOALS (funnel) ===================== -->
-    <section class="slide" id="s06" data-nav="Goals">
-      <span class="section-num">05</span>
+    <section class="slide" id="s05" data-nav="Goals">
+      <span class="section-num">04</span>
       <div class="slide-inner">
-        <span class="eyebrow reveal"><span class="eyebrow-num">06</span>Goals</span>
+        <span class="eyebrow reveal"><span class="eyebrow-num">05</span>Goals</span>
         <h2 class="slide-title reveal">What success looks like.</h2>
         <p class="slide-lede reveal">Our job is to turn attention into qualified leads for your business, stage by stage. Here's what a win looks like at each one. This is us leading with the plan.</p>
         <div class="funnel">
@@ -622,21 +596,21 @@
             <div class="fbadge"><span class="fstage-stage">Awareness &middot; Top of funnel</span><span class="fstage-headline">Relatable content</span></div>
             <div class="fwins">
               <span class="fwin">Get Pippi's in front of the right audience so they discover the brand and pay attention.</span>
-              <span class="fwin is-success">Success: views from the right audience.</span>
+              <span class="fwin is-success">Success: views and follows.</span>
             </div>
           </div>
           <div class="fstage w2 reveal d2">
             <div class="fbadge"><span class="fstage-stage">Trust and authority &middot; Middle</span><span class="fstage-headline">Real, educational content</span></div>
             <div class="fwins">
               <span class="fwin">Earn that audience's trust so they engage with Pippi's.</span>
-              <span class="fwin is-success">Success: engagement from the right audience.</span>
+              <span class="fwin is-success">Success: saves, comments, and profile visits.</span>
             </div>
           </div>
           <div class="fstage w3 reveal d3">
             <div class="fbadge"><span class="fstage-stage">Conversion &middot; Bottom of funnel</span><span class="fstage-headline">Proof content</span></div>
             <div class="fwins">
               <span class="fwin">Move that engaged audience to act, into booked chairs and new stylists.</span>
-              <span class="fwin is-success">Success: booked appointments and qualified inquiries.</span>
+              <span class="fwin is-success">Success: link taps and conversion rate.</span>
             </div>
           </div>
         </div>
@@ -646,10 +620,10 @@
     </section>
 
     <!-- ===================== S06 · WHAT YOU STAND FOR ===================== -->
-    <section class="slide" id="s07" data-nav="What you stand for">
+    <section class="slide" id="s06" data-nav="What you stand for">
       <div class="slide-inner">
         <div class="slide-head-row reveal">
-          <div class="eyebrow"><span class="eyebrow-num">07</span><span class="act yours">Yours</span>What Pippi's stands for</div>
+          <div class="eyebrow"><span class="eyebrow-num">06</span><span class="act yours">Yours</span>What Pippi's stands for</div>
           <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>11 min</div>
         </div>
         <h2 class="slide-title reveal">We did our homework. Now we need you.</h2>
@@ -684,10 +658,10 @@
     </section>
 
     <!-- ===================== S07 · HOW YOU LOOK ===================== -->
-    <section class="slide" id="s08" data-nav="How you look">
+    <section class="slide" id="s07" data-nav="How you look">
       <div class="slide-inner">
         <div class="slide-head-row reveal">
-          <div class="eyebrow"><span class="eyebrow-num">08</span><span class="act yours">Yours</span>How Pippi's looks</div>
+          <div class="eyebrow"><span class="eyebrow-num">07</span><span class="act yours">Yours</span>How Pippi's looks</div>
           <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>9 min</div>
         </div>
         <h2 class="slide-title reveal">The look you're building toward.</h2>
@@ -730,10 +704,10 @@
     </section>
 
     <!-- ===================== S08 · HOW YOU SOUND ===================== -->
-    <section class="slide" id="s09" data-nav="How you sound">
+    <section class="slide" id="s08" data-nav="How you sound">
       <div class="slide-inner">
         <div class="slide-head-row reveal">
-          <div class="eyebrow"><span class="eyebrow-num">09</span><span class="act yours">Yours</span>How Pippi's sounds</div>
+          <div class="eyebrow"><span class="eyebrow-num">08</span><span class="act yours">Yours</span>How Pippi's sounds</div>
           <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>8 min</div>
         </div>
         <h2 class="slide-title reveal">How you sound.</h2>
@@ -760,7 +734,7 @@
     </section>
 
     <!-- ===================== S09 · DECISIONS + NEXT STEPS (close) ===================== -->
-    <section class="slide azure-slide is-tight" id="s10" data-nav="Decisions + next steps">
+    <section class="slide azure-slide is-tight" id="s09" data-nav="Decisions + next steps">
       <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700" aria-hidden="true">
         <line x1="110" y1="180" x2="320" y2="290"/><line x1="320" y1="290" x2="540" y2="200"/>
         <line x1="540" y1="200" x2="770" y2="330"/><line x1="770" y1="330" x2="1000" y2="230"/>
@@ -811,10 +785,9 @@
           </div>
         </div>
         <div class="close-block reveal d8">
-          <p class="close-line">You are building something with a real point of view, and the pre-launch window is where we win it. Rachel runs your account day to day, Allison drives the strategy, and Chase is always a call away.</p>
+          <p class="close-line">You are building something with a real point of view, and the pre-launch window is where we win it. Rachel runs your account from here. Chase is always a call away.</p>
           <div class="close-sign">
             <div><div class="close-sign-name">Rachel Dina</div><div class="close-sign-title">Your account manager &middot; Scroll Media</div></div>
-            <div><div class="close-sign-name">Allison</div><div class="close-sign-title">Account strategist &amp; oversight &middot; Scroll Media</div></div>
             <div><div class="close-sign-name">Chase Gianattasio</div><div class="close-sign-title">Co-Founder &amp; COO &middot; Scroll Media</div></div>
           </div>
         </div>
@@ -878,6 +851,37 @@
     });
 
     onScroll();
+
+    /* ===== Access-code gate (pippis.scroll) ===== */
+    (function(){
+      var PASS='pippis.scroll', KEY='sm_pippis_kickoff_v1';
+      var gate=document.getElementById('sm-gate');
+      var inp=document.getElementById('sm-gate-input');
+      var btn=document.getElementById('sm-gate-btn');
+      var err=document.getElementById('sm-gate-error');
+      var tog=document.getElementById('sm-gate-toggle');
+      if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+      else { document.body.classList.add('sm-locked'); inp.focus(); }
+      function unlock(){
+        if(inp.value.trim().toLowerCase()===PASS){
+          sessionStorage.setItem(KEY,'1');
+          document.body.classList.remove('sm-locked');
+          gate.style.opacity='0'; gate.style.transition='opacity .3s';
+          setTimeout(function(){ gate.style.display='none'; },300);
+        } else {
+          err.classList.add('visible'); inp.style.borderColor='#dc2626';
+          setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+        }
+      }
+      btn.addEventListener('click',unlock);
+      inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); unlock(); } });
+      tog.addEventListener('click',function(){
+        var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+        document.getElementById('sm-eye-icon').innerHTML=isPw
+          ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+          :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+      });
+    })();
   </script>
 </body>
 </html>

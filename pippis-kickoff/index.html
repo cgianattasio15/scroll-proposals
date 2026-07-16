@@ -164,6 +164,17 @@
     .pmini-role{font-size:12px;color:var(--fg-muted);line-height:1.25}
     @media (max-width:760px){.pod-mini-row{grid-template-columns:1fr 1fr}}
     @media (max-width:480px){.pod-mini-row{grid-template-columns:1fr}}
+    /* typical-week strip (single row) */
+    .week-strip{margin-top:var(--sp-3);display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+    .week-strip-head{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);line-height:1.3}
+    .week-strip-head span{display:block;font-weight:600;text-transform:none;letter-spacing:0;color:var(--fg-muted)}
+    .week-days{display:flex;gap:7px;flex:1;min-width:300px}
+    .wday{flex:1;display:flex;align-items:baseline;justify-content:center;gap:5px;padding:6px 8px;border-radius:var(--r-sm);border:1px solid var(--rule-faint);white-space:nowrap}
+    .wday.post{background:rgba(226,237,122,.22);border-color:var(--highlighter-dark)}
+    .wday.story{background:var(--lucid-soft);border-color:var(--azure-200)}
+    .wd-day{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.04em}
+    .wd-what{font-size:12px;color:var(--fg-muted)}
+    @media (max-width:620px){.week-days{flex-wrap:wrap}.wday{min-width:calc(33.3% - 5px)}}
     @media (max-width:900px){.pillars{grid-template-columns:1fr 1fr}.eng-lower{grid-template-columns:1fr}}
     @media (max-width:560px){.pillars{grid-template-columns:1fr}}
     .eng-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-4);align-items:start}
@@ -523,7 +534,7 @@
           <div class="pillar reveal d2">
             <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span class="pillar-name">Content creation</span></div>
             <p class="pillar-act">Creative planning and ideation, content shoots, and full editing and production.</p>
-            <div class="pillar-delivs"><span class="pillar-deliv lime">Social content &middot; 3 feed posts Mon/Wed/Fri + 2 story days Tue/Thu</span></div>
+            <div class="pillar-delivs"><span class="pillar-deliv lime">Social content</span></div>
           </div>
           <div class="pillar reveal d3">
             <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span class="pillar-name">Profile management</span></div>
@@ -567,7 +578,16 @@
             <div class="pod-mini"><span class="pmini-mono">CG</span><div class="pmini-body"><span class="pmini-name">Chase</span><span class="pmini-role">Ops + performance reporting</span></div></div>
           </div>
         </div>
-        <p class="ig-line reveal d5"><strong>Everything we run is Instagram.</strong> When we say search or SEO, we mean Instagram search, location tags, and geo-tags. Not Google.</p>
+        <div class="week-strip reveal d5">
+          <span class="week-strip-head">A typical week<span>all on Instagram</span></span>
+          <div class="week-days">
+            <div class="wday post"><span class="wd-day">Mon</span><span class="wd-what">Feed</span></div>
+            <div class="wday story"><span class="wd-day">Tue</span><span class="wd-what">Story</span></div>
+            <div class="wday post"><span class="wd-day">Wed</span><span class="wd-what">Feed</span></div>
+            <div class="wday story"><span class="wd-day">Thu</span><span class="wd-what">Story</span></div>
+            <div class="wday post"><span class="wd-day">Fri</span><span class="wd-what">Feed</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

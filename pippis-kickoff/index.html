@@ -253,22 +253,25 @@
     @media (max-width:900px){.journey{grid-template-columns:1fr;gap:var(--sp-3)}.journey::before{display:none}.jnode{text-align:left;padding-top:0;padding-left:26px}.jdot{top:3px;left:0;transform:none}.jnode.here .jdot{transform:scale(1.2)}.lock-grid{grid-template-columns:1fr}}
 
     /* ===== GOALS (descending funnel) ===== */
-    .funnel{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:var(--sp-2)}
-    .fstage{width:100%;display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-3) var(--sp-5);border-radius:var(--r-lg);border:1px solid var(--rule-faint)}
-    .fstage.w1{width:100%;background:var(--tofu-bg,#eff6ff)}
-    .fstage.w2{width:90%;background:#f0fdf4}
-    .fstage.w3{width:80%;background:rgba(226,237,122,.16);border-color:var(--highlighter-dark);box-shadow:var(--sh-md)}
-    .fbadge{flex:0 0 156px}
+    .funnel{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:var(--sp-2)}
+    /* min-height keeps the descent an even, deliberate staircase */
+    .fstage{width:100%;min-height:98px;display:flex;align-items:center;gap:var(--sp-4);padding:10px var(--sp-5);border-radius:var(--r-lg);border:1px solid var(--rule-faint)}
+    /* on-palette descent: light lucid -> deeper lucid -> highlighter (the payoff) */
+    .fstage.w1{width:100%;background:var(--lucid-soft)}
+    .fstage.w2{width:90%;background:rgba(203,233,255,.72);border-color:var(--azure-200)}
+    .fstage.w3{width:80%;background:rgba(226,237,122,.34);border-color:var(--highlighter-dark);box-shadow:var(--sh-md)}
+    .fbadge{flex:0 0 176px}
     .fstage-stage{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600);line-height:1.3}
     .fstage.w3 .fstage-stage{color:var(--azure-900)}
+    .fpos{display:block;font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--fg-muted);line-height:1.3}
     .fstage-headline{display:block;font-size:17px;font-weight:800;color:var(--azure);line-height:1.15;margin-top:2px;letter-spacing:-.01em}
     .fstage.w3 .fstage-headline{font-size:17px}
     .fwins{flex:1;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
     /* the goal is the hero of each band */
     .fwin{flex:1 1 250px;font-size:15.5px;font-weight:600;color:var(--shadow);line-height:1.35;background:none;border:none;border-radius:0;padding:0}
     /* the metric is a solid pill so it pops */
+    /* one consistent metric component across all three stages */
     .fwin.is-success{flex:0 0 auto;font-size:12.5px;font-weight:800;color:var(--ghost);background:var(--azure);border:none;border-radius:999px;padding:7px 14px;line-height:1.2;letter-spacing:.02em}
-    .fstage.w3 .fwin.is-success{color:var(--azure-900);background:var(--highlighter)}
     /* format examples per stage (names per the Formats Library) */
     .ffmt-row{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:1px}
     .ffmt-lead{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--azure-600);margin-right:2px}
@@ -282,10 +285,11 @@
     .track-stages{display:inline-flex;flex-wrap:wrap;gap:5px;margin-top:7px}
     .tstage{font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:2px 9px}
     .goal-frame strong{color:var(--azure);font-style:normal}
-    .capture-band{margin-top:var(--sp-3);display:flex;align-items:flex-start;gap:var(--sp-3);background:var(--azure);color:var(--ghost);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
+    /* the "your turn" ask: signal-tinted, not a navy slab, so the funnel stays the hero */
+    .capture-band{margin-top:var(--sp-2);display:flex;align-items:flex-start;gap:var(--sp-3);background:rgba(226,237,122,.18);border:1px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
     .capture-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-900);background:var(--highlighter);padding:3px 9px;border-radius:999px;margin-top:2px}
-    .capture-body{font-size:14px;color:var(--lucid-soft);line-height:1.5}
-    .capture-body strong{color:var(--ghost)}
+    .capture-body{font-size:14px;color:var(--shadow);line-height:1.5}
+    .capture-body strong{color:var(--azure)}
     @media (max-width:760px){.fstage{flex-direction:column;align-items:flex-start;gap:10px;width:100%!important}.fbadge{flex-basis:auto}}
 
     /* ===== STANDS FOR ===== */
@@ -398,7 +402,7 @@
       .scope-item b,.panel-body,.approw,.ig-line,.flow-cell,.fstage-headline,.fwin,
       .goal-frame,.capture-body,.vchip,.ask-line,.trigger-q,.inspo-prompt,.mood-note,
       .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
-      .pmini-name,.pmini-role,.phase-sub,.phase-name,.track-body,.tstage,
+      .pmini-name,.pmini-role,.phase-sub,.phase-name,.track-body,.tstage,.fpos,
       .drow,.lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
       .shoot-callout-body,.yourevent-key,.inspo-prompt,.mood-note,
       .shoot-note,.shoot-note strong{font-size:14px}
@@ -646,7 +650,7 @@
         <p class="slide-lede reveal">We build a step-by-step purchasing journey for your ideal customer, turning a high-quality audience into real Pippi's clients.</p>
         <div class="funnel">
           <div class="fstage w1 reveal d1">
-            <div class="fbadge"><span class="fstage-stage">Awareness &middot; Top of funnel</span><span class="fstage-headline">Relatable content</span></div>
+            <div class="fbadge"><span class="fstage-stage">Awareness<span class="fpos">Top of funnel</span></span><span class="fstage-headline">Relatable content</span></div>
             <div class="fwins">
               <span class="fwin">Build brand association and get the right OTR audience interested in Pippi's.</span>
               <span class="fwin is-success">Success: views and follows.</span>
@@ -654,7 +658,7 @@
             </div>
           </div>
           <div class="fstage w2 reveal d2">
-            <div class="fbadge"><span class="fstage-stage">Trust and authority &middot; Middle</span><span class="fstage-headline">Educational + authority</span></div>
+            <div class="fbadge"><span class="fstage-stage">Trust + authority<span class="fpos">Middle of funnel</span></span><span class="fstage-headline">Educational content</span></div>
             <div class="fwins">
               <span class="fwin">Build trust and authority so that audience engages with and believes in Pippi's.</span>
               <span class="fwin is-success">Success: saves, comments, and profile visits.</span>
@@ -662,7 +666,7 @@
             </div>
           </div>
           <div class="fstage w3 reveal d3">
-            <div class="fbadge"><span class="fstage-stage">Conversion &middot; Bottom of funnel</span><span class="fstage-headline">Proof content</span></div>
+            <div class="fbadge"><span class="fstage-stage">Conversion<span class="fpos">Bottom of funnel</span></span><span class="fstage-headline">Proof content</span></div>
             <div class="fwins">
               <span class="fwin">Turn trust into consideration and action, so Pippi's audience clicks and books.</span>
               <span class="fwin is-success">Success: link taps and conversion rate.</span>

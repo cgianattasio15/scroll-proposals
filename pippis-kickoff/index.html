@@ -253,7 +253,7 @@
     @media (max-width:900px){.journey{grid-template-columns:1fr;gap:var(--sp-3)}.journey::before{display:none}.jnode{text-align:left;padding-top:0;padding-left:26px}.jdot{top:3px;left:0;transform:none}.jnode.here .jdot{transform:scale(1.2)}.lock-grid{grid-template-columns:1fr}}
 
     /* ===== GOALS (descending funnel) ===== */
-    .funnel{display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);margin-top:var(--sp-3)}
+    .funnel{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:var(--sp-2)}
     .fstage{width:100%;display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-3) var(--sp-5);border-radius:var(--r-lg);border:1px solid var(--rule-faint)}
     .fstage.w1{width:100%;background:var(--tofu-bg,#eff6ff)}
     .fstage.w2{width:90%;background:#f0fdf4}
@@ -269,6 +269,11 @@
     /* the metric is a solid pill so it pops */
     .fwin.is-success{flex:0 0 auto;font-size:12.5px;font-weight:800;color:var(--ghost);background:var(--azure);border:none;border-radius:999px;padding:7px 14px;line-height:1.2;letter-spacing:.02em}
     .fstage.w3 .fwin.is-success{color:var(--azure-900);background:var(--highlighter)}
+    /* format examples per stage (names per the Formats Library) */
+    .ffmt-row{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:1px}
+    .ffmt-lead{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--azure-600);margin-right:2px}
+    .ffmt{font-size:12px;font-weight:700;color:var(--azure);background:var(--white);border:1px solid var(--rule);border-radius:999px;padding:2px 9px;line-height:1.25}
+    .fstage.w3 .ffmt{border-color:var(--highlighter-dark);color:var(--azure-900)}
     .goal-frame{margin-top:var(--sp-3);font-size:14.5px;color:var(--fg-muted);line-height:1.45;max-width:92ch;font-style:italic}
     .track-note{margin-top:var(--sp-2);background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5);box-shadow:var(--sh-sm)}
     .track-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:5px}
@@ -645,6 +650,7 @@
             <div class="fwins">
               <span class="fwin">Build brand association and get the right OTR audience interested in Pippi's.</span>
               <span class="fwin is-success">Success: views and follows.</span>
+              <span class="ffmt-row"><span class="ffmt-lead">Looks like</span><span class="ffmt">Trend / meme</span><span class="ffmt">Hyper cinematic</span><span class="ffmt">Talking head</span></span>
             </div>
           </div>
           <div class="fstage w2 reveal d2">
@@ -652,6 +658,7 @@
             <div class="fwins">
               <span class="fwin">Build trust and authority so that audience engages with and believes in Pippi's.</span>
               <span class="fwin is-success">Success: saves, comments, and profile visits.</span>
+              <span class="ffmt-row"><span class="ffmt-lead">Looks like</span><span class="ffmt">Educational / how-to</span><span class="ffmt">Tips + listicle</span><span class="ffmt">FAQ / objection</span></span>
             </div>
           </div>
           <div class="fstage w3 reveal d3">
@@ -659,6 +666,7 @@
             <div class="fwins">
               <span class="fwin">Turn trust into consideration and action, so Pippi's audience clicks and books.</span>
               <span class="fwin is-success">Success: link taps and conversion rate.</span>
+              <span class="ffmt-row"><span class="ffmt-lead">Looks like</span><span class="ffmt">Before + after</span><span class="ffmt">Testimonial / case study</span><span class="ffmt">Product / offer</span></span>
             </div>
           </div>
         </div>

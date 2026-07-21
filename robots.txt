@@ -7,3 +7,4 @@ Disallow: /dwell513-proposal/
 Disallow: /client-onboarding/pippis/
 Disallow: /client-onboarding/pippis/recap/
 Disallow: /pippis-kickoff/
+Disallow: /launch-party-wrapped/

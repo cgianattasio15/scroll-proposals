@@ -13,18 +13,17 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     /* =========================================================
-       SCROLL MEDIA DESIGN SYSTEM · Pippi's Strategy Deck
-       Brand-correct per brand_system.md §5 (Azure/Ghost/Lucid/
-       Highlighter + Source Sans 3). Light theme. Skeleton cloned
-       from the deployed Atlas Systems Signature deck (12 + 2).
-       Built to pippis_deck_blueprint_v1.md · B2C, dual-IVP,
-       three equal goals, boutique Cincinnati register.
+       SCROLL MEDIA DESIGN SYSTEM · Pippi's Strategy Deck (v3)
+       Presentation-optimized pass on the live Atlas 12+2 skeleton.
+       Ghost/Azure/Lucid/Highlighter + Source Sans 3, light theme.
+       Highlighter now allowed as a differentiator/pillar accent.
+       Built to pippis_deck_blueprint_v3.md.
        ========================================================= */
     :root {
       --ghost:#FAFDFF; --azure:#0C3387; --azure-900:#071d4f; --azure-800:#0c3387;
       --azure-600:#254fb0; --azure-400:#7a9ad8; --azure-200:#b9cdee;
       --lucid:#CBE9FF; --lucid-deep:#9ecee8; --lucid-soft:#e4f3ff;
-      --highlighter:#E2ED7A; --highlighter-dark:#c8d94a; --shadow:#151516; --white:#fff;
+      --highlighter:#E2ED7A; --highlighter-dark:#c8d94a; --highlighter-soft:#f5f8dd; --shadow:#151516; --white:#fff;
 
       --bg:var(--ghost); --bg-alt:#f4f7fb; --bg-panel:var(--white);
       --fg:var(--shadow); --fg-heading:var(--azure); --fg-muted:#5a6070; --fg-subtle:#9097a6;
@@ -97,10 +96,8 @@
     /* COVER */
     #s01{background:radial-gradient(120% 90% at 85% 5%,#16367a 0%,var(--azure) 46%,var(--azure-900) 100%);color:var(--ghost);min-height:100vh;justify-content:center;overflow:hidden}
     #s01 .slide-inner{position:relative;z-index:2}
-    /* Cover squiggle hero (replaces the node-network on the cover) */
     .cover-squiggle{position:absolute;top:14%;right:-4%;width:min(46%,560px);height:auto;opacity:.5;filter:brightness(0) invert(1);pointer-events:none;z-index:1}
     .cover-squiggle.two{top:auto;bottom:16%;left:-3%;right:auto;width:min(30%,360px);opacity:.28;transform:scaleX(-1)}
-    /* Co-brand lockup */
     .cover-cobrand{display:inline-flex;align-items:center;gap:16px;margin-bottom:var(--sp-6)}
     .cover-cobrand img{display:block;width:auto}
     .cover-cobrand .cb-scroll{height:26px;filter:brightness(0) invert(1)}
@@ -118,52 +115,53 @@
     @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
     @media (max-width:560px){.cover-squiggle{width:70%;opacity:.34}.cover-squiggle.two{display:none}.cover-cobrand .cb-pippis{height:32px}.cover-cobrand .cb-scroll{height:22px}}
 
-    /* AGENDA */
-    .agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3) var(--sp-6)}
-    .agenda-item{display:flex;align-items:flex-start;gap:var(--sp-4);padding:var(--sp-4);border:1px solid var(--rule-faint);border-radius:var(--r-md);background:var(--bg-panel);transition:all .2s var(--ease)}
-    .agenda-item:hover{border-color:var(--azure-400);transform:translateX(4px);box-shadow:var(--sh-sm)}
-    .agenda-num{font-size:13px;font-weight:800;color:var(--azure);min-width:30px;font-variant-numeric:tabular-nums}
-    .agenda-text b{display:block;color:var(--shadow);font-size:15px;font-weight:700}
-    .agenda-text span{font-size:13px;color:var(--fg-muted)}
-    @media (max-width:760px){.agenda-grid{grid-template-columns:1fr}}
-    /* Agenda · two-part meeting framing */
-    .today-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-5)}
-    .today-card{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-4) var(--sp-5)}
-    .today-card.p2{border-top-color:var(--highlighter-dark)}
-    .today-card .tch{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-3)}
-    .today-card .tcp{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600)}
-    .today-card.p2 .tcp{color:var(--highlighter-dark)}
-    .today-card .tcm{font-size:12px;font-weight:800;color:var(--fg-subtle);letter-spacing:.03em;white-space:nowrap}
-    .today-card .tct{font-size:var(--fs-md);font-weight:800;color:var(--azure);margin:2px 0 0}
-    .today-card .tcw{font-size:12px;font-style:italic;color:var(--fg-subtle);margin:2px 0 0}
-    .today-card p{font-size:13.5px;color:var(--fg-muted);line-height:1.45;margin-top:8px}
-    @media (max-width:640px){.today-split{grid-template-columns:1fr}}
+    /* AGENDA · three owned parts */
+    .agenda-parts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-4)}
+    .part-card{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-5);display:flex;flex-direction:column;box-shadow:var(--sh-sm)}
+    .part-card.active{border-top-color:var(--highlighter-dark);box-shadow:var(--sh-md)}
+    .part-head{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);margin-bottom:var(--sp-3)}
+    .part-eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600)}
+    .part-card.active .part-eyebrow{color:var(--highlighter-dark)}
+    .part-time{font-size:12px;font-weight:800;color:var(--fg-subtle);white-space:nowrap}
+    .part-title{font-size:var(--fs-lg);font-weight:800;color:var(--azure);line-height:1.15}
+    .part-lead{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;font-weight:700;color:var(--shadow)}
+    .part-lead .lead-chip{background:var(--lucid-soft);border:1px solid var(--lucid-deep);color:var(--azure);border-radius:999px;padding:2px 9px;font-size:11px;font-weight:800}
+    .part-why{font-size:12.5px;font-style:italic;color:var(--fg-subtle);margin-top:2px}
+    .part-desc{font-size:13px;color:var(--fg-muted);line-height:1.5;margin-top:var(--sp-3)}
+    @media (max-width:820px){.agenda-parts{grid-template-columns:1fr}}
+    .agenda-progress{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:var(--sp-5)}
+    .agenda-progress .aseg{height:5px;border-radius:999px;background:var(--rule-faint)}
+    .agenda-progress .aseg.on{background:var(--highlighter-dark)}
+    .agenda-progress-label{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
     .agenda-frame{background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);font-size:13.5px;color:var(--fg-muted);line-height:1.5;margin-bottom:var(--sp-5)}
     .agenda-frame b{color:var(--azure)}
     .agenda-sublabel{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3);display:flex;align-items:center;gap:10px}
     .agenda-sublabel::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
+    .agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3) var(--sp-6)}
+    .agenda-item{display:flex;align-items:flex-start;gap:var(--sp-4);padding:var(--sp-4);border:1px solid var(--rule-faint);border-radius:var(--r-md);background:var(--bg-panel);transition:all .2s var(--ease)}
+    .agenda-item:hover{border-color:var(--azure-400);transform:translateX(4px);box-shadow:var(--sh-sm)}
+    .agenda-num{font-size:13px;font-weight:800;color:var(--azure);min-width:44px;font-variant-numeric:tabular-nums}
+    .agenda-text b{display:block;color:var(--shadow);font-size:15px;font-weight:700}
+    .agenda-text span{font-size:13px;color:var(--fg-muted)}
+    @media (max-width:760px){.agenda-grid{grid-template-columns:1fr}}
 
     /* CARD GRIDS */
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5)}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5)}
-    .card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);box-shadow:var(--sh-sm)}
-    .card h3{font-size:var(--fs-md);margin-bottom:6px}
-    .card p{font-size:14px;color:var(--fg-muted);line-height:1.55}
     @media (max-width:880px){.grid-3{grid-template-columns:1fr}}
     @media (max-width:560px){.grid-2{grid-template-columns:1fr}}
 
-    /* CALLOUT (organic-social · IVP-ideation · conversion-goal · conversion-lens) */
+    /* CALLOUT (kept for the tightened one-line uses) */
     .callout{background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-left:4px solid var(--azure);border-radius:var(--r-lg);padding:var(--sp-5)}
     .callout .cl-label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
     .callout p{font-size:14.5px;color:var(--fg-muted);line-height:1.6}
-    .callout p + p{margin-top:8px}
     .callout.anchor{background:var(--azure);border-color:var(--azure)}
     .callout.anchor .cl-label{color:var(--highlighter)}
     .callout.anchor p{color:var(--lucid-soft)}
-    .callout.compact{padding:var(--sp-3) var(--sp-4)}
-    .callout.compact p{font-size:13px;line-height:1.5}
+    .anchor-line{background:var(--azure);color:var(--ghost);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);font-size:14px;line-height:1.5;margin-bottom:var(--sp-4)}
+    .anchor-line b{color:var(--highlighter)}
 
-    /* UNDERSTANDING LEAD-IN (editorial hierarchy · bold punch each) */
+    /* RECAP · understanding punches */
     .us-lead{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-6)}
     .us-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
     .us-card .ul{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
@@ -171,55 +169,39 @@
     .us-card p{font-size:12.5px;color:var(--fg-muted);line-height:1.45}
     @media (max-width:760px){.us-lead{grid-template-columns:1fr}}
 
-    /* FOCAL JOURNEY TIMELINE (gray done · spotlight now · lime-flag hot dates) */
+    /* FOCAL JOURNEY TIMELINE */
     .journey{position:relative;margin-top:var(--sp-5);display:grid;grid-template-columns:repeat(8,1fr);gap:var(--sp-2)}
     .journey::before{content:"";position:absolute;top:16px;left:5%;right:5%;height:3px;background:linear-gradient(90deg,var(--azure-200),var(--azure));border-radius:2px}
     .j-step{position:relative;text-align:center;z-index:2}
     .j-dot{width:18px;height:18px;border-radius:50%;background:var(--azure-200);border:3px solid var(--ghost);box-shadow:0 0 0 1px var(--rule);margin:0 auto 14px}
     .j-when{font-size:11px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--azure-600);line-height:1.25}
     .j-what{font-size:12px;color:var(--fg-muted);margin-top:4px;line-height:1.35}
-    /* done · grayed */
     .j-step.done .j-dot{background:var(--fg-subtle);box-shadow:0 0 0 1px var(--rule-faint)}
-    .j-step.done .j-when{color:var(--fg-subtle)}
-    .j-step.done .j-what{color:var(--fg-subtle)}
-    /* now · spotlight box */
+    .j-step.done .j-when,.j-step.done .j-what{color:var(--fg-subtle)}
     .j-step.now{background:var(--lucid-soft);border:1.5px solid var(--lucid-deep);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-2) var(--sp-2);margin-top:-8px;box-shadow:var(--sh-sm)}
     .j-step.now .j-dot{background:var(--highlighter);box-shadow:0 0 0 5px rgba(226,237,122,.4);transform:scale(1.3)}
     .j-step.now .j-when{color:var(--highlighter-dark)}
-    /* hot dates · lime flag */
     .j-tag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 7px;border-radius:999px;margin-top:5px}
-    .j-tag.soft{background:var(--lucid);color:var(--azure)}
-    @media (max-width:900px){.journey{grid-template-columns:1fr;gap:var(--sp-4)}.journey::before{display:none}.j-step{text-align:left;display:flex;gap:12px;align-items:flex-start}.j-dot{margin:3px 0 0;flex:0 0 18px}.j-step.now{margin-top:0}}
-    .living-note{margin-top:var(--sp-6);font-size:13px;color:var(--fg-muted);font-style:italic;line-height:1.5;border-left:3px solid var(--lucid-deep);padding-left:var(--sp-4)}
-    .living-note b{color:var(--azure);font-style:normal}
+    .j-onsite{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--azure);margin-top:4px}
+    .j-onsite::before{content:"";width:9px;height:9px;border-radius:50% 50% 50% 0;background:var(--azure);transform:rotate(-45deg);display:inline-block;flex:0 0 auto}
+    @media (max-width:900px){.journey{grid-template-columns:1fr;gap:var(--sp-4)}.journey::before{display:none}.j-step{text-align:left;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start}.j-dot{margin:3px 0 0;flex:0 0 18px}.j-step.now{margin-top:0}.j-onsite,.j-tag{margin-top:0}}
 
-    /* ENGAGEMENT STRUCTURE (how the engagement works) */
+    /* ENGAGEMENT STRUCTURE */
     .eng-struct{margin-top:var(--sp-7)}
     .eng-label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3)}
-    .eng-bar{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:stretch}
-    .eng-seg{border-radius:var(--r-md);padding:var(--sp-4)}
-    .eng-seg .es-term{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-    .eng-seg .es-when{font-size:12.5px;margin-top:4px;line-height:1.35}
-    .eng-seg.initial{background:var(--azure)}
-    .eng-seg.initial .es-term{color:var(--highlighter)} .eng-seg.initial .es-when{color:var(--lucid-soft)}
-    .eng-seg.ext{background:var(--lucid-soft);border:1px solid var(--lucid-deep)}
-    .eng-seg.ext .es-term{color:var(--azure)} .eng-seg.ext .es-when{color:var(--fg-muted)}
-    .eng-arrow{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--azure-200);font-weight:700;padding:0 6px}
-    .eng-note{font-size:13px;color:var(--fg-muted);line-height:1.55;margin-top:var(--sp-4);max-width:84ch}
+    .eng-bar{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:stretch}
+    .eng-seg{border-radius:var(--r-md);padding:var(--sp-4);display:flex;align-items:center;justify-content:center;text-align:center}
+    .eng-seg .es-term{font-size:12.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase}
+    .eng-seg.initial{background:var(--azure)} .eng-seg.initial .es-term{color:var(--highlighter)}
+    .eng-seg.ext{background:var(--lucid-soft);border:1px solid var(--lucid-deep)} .eng-seg.ext .es-term{color:var(--azure)}
+    .eng-seg.long{background:var(--highlighter-soft);border:1px solid var(--highlighter-dark)} .eng-seg.long .es-term{color:var(--azure-900)}
+    .eng-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--azure-200);font-weight:700}
+    .eng-note{font-size:13px;color:var(--fg-muted);line-height:1.55;margin-top:var(--sp-4);max-width:88ch}
     .eng-note b{color:var(--azure)}
     @media (max-width:760px){.eng-bar{grid-template-columns:1fr}.eng-arrow{display:none}}
 
-    /* FRAMEWORK · 5-STEP FLOW */
-    .fw-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--sp-3);margin-top:var(--sp-5)}
-    .fw-step{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4);position:relative}
-    .fw-step .n{font-size:11px;font-weight:800;color:var(--azure-400);letter-spacing:.05em}
-    .fw-step h4{font-size:14.5px;margin:6px 0 0;color:var(--azure);line-height:1.25}
-    .fw-arrow-note{text-align:center;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--fg-subtle);margin-top:var(--sp-3)}
-    @media (max-width:880px){.fw-flow{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.fw-flow{grid-template-columns:1fr}}
-
-    /* STAGES (Foundation / Execution / Performance · Execution weighted largest) */
-    .stages{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:var(--sp-5);margin-top:var(--sp-6);margin-bottom:var(--sp-6)}
+    /* STAGES (Foundation / Execution / Performance · Execution largest) */
+    .stages{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:var(--sp-5);margin-top:var(--sp-5);margin-bottom:var(--sp-6)}
     .zone{border:1px solid var(--rule);border-radius:var(--r-lg);padding:var(--sp-5);background:var(--bg-panel);position:relative;overflow:hidden}
     .zone::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--azure)}
     .zone.emphasis{background:var(--lucid-soft);border-color:var(--lucid-deep);box-shadow:var(--sh-md)}
@@ -255,37 +237,45 @@
     .mnote{margin-top:var(--sp-5);font-size:13.5px;color:var(--fg-muted);background:var(--bg-alt);border-radius:var(--r-md);padding:var(--sp-4);line-height:1.55}
     .mnote b{color:var(--azure)}
 
-    /* DIFFERENTIATORS */
-    .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}
-    .diff{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:var(--sp-4);border-top:3px solid var(--azure)}
-    .diff b{display:block;font-size:14px;color:var(--azure);margin-bottom:4px}
-    .diff span{font-size:12.5px;color:var(--fg-muted);line-height:1.45}
-    .diff .feeds{display:block;font-size:11.5px;color:var(--azure-600);font-style:italic;line-height:1.4;margin-top:8px;border-top:1px solid var(--rule-faint);padding-top:6px}
-    @media (max-width:880px){.diff-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:480px){.diff-grid{grid-template-columns:1fr}}
-    .objection{margin-top:var(--sp-5);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-lg);padding:var(--sp-5)}
-    .objection .ol{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
-    .objection p{font-size:var(--fs-md);color:var(--shadow);line-height:1.5}
-    .objection p.ans{font-size:14px;color:var(--fg-muted);margin-top:8px}
+    /* DIFFERENTIATORS · pop */
+    .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4);margin-top:var(--sp-5)}
+    .diff{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-5) var(--sp-5) var(--sp-6);border-left:5px solid var(--highlighter-dark);box-shadow:var(--sh-sm);position:relative}
+    .diff .dnum{position:absolute;top:var(--sp-4);right:var(--sp-5);font-size:26px;font-weight:800;color:var(--lucid-deep);line-height:1;font-variant-numeric:tabular-nums}
+    .diff b{display:block;font-size:19px;color:var(--azure);margin-bottom:6px;line-height:1.2;max-width:24ch}
+    .diff span{font-size:13.5px;color:var(--fg-muted);line-height:1.5}
+    .diff .feeds{display:block;font-size:12px;color:var(--azure-600);font-style:italic;line-height:1.4;margin-top:10px;border-top:1px solid var(--rule-faint);padding-top:8px}
+    @media (max-width:720px){.diff-grid{grid-template-columns:1fr}}
+    /* Counter-position · 3-column */
+    .counter{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-6)}
+    .ccol{border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);background:var(--bg-panel)}
+    .ccol.win{background:var(--azure);border-color:var(--azure);box-shadow:var(--sh-md)}
+    .ccol .cch{font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--fg-muted);margin-bottom:8px;line-height:1.25}
+    .ccol.win .cch{color:var(--highlighter)}
+    .ccol p{font-size:13px;color:var(--fg-muted);line-height:1.5}
+    .ccol.win p{color:var(--lucid-soft)}
+    .counter-lead{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3)}
+    @media (max-width:720px){.counter{grid-template-columns:1fr}}
 
-    /* IVP · dual persona */
-    .persona-block{margin-bottom:var(--sp-6)}
-    .persona-divider{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azure-600);margin:var(--sp-6) 0 var(--sp-4);display:flex;align-items:center;gap:10px}
-    .persona-divider::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
-    .ivp-top{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--sp-5);align-items:stretch;margin-bottom:var(--sp-5)}
+    /* IVP · interactive toggle */
+    .ivp-lede{font-size:var(--fs-lg);color:var(--fg-muted);max-width:64ch;margin-bottom:var(--sp-5);line-height:1.5}
+    .ptoggle{display:inline-flex;background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:999px;padding:4px;gap:4px;margin-bottom:var(--sp-5)}
+    .ptab{font-size:14px;font-weight:800;color:var(--fg-muted);padding:9px 20px;border-radius:999px;min-height:44px;transition:all .2s var(--ease)}
+    .ptab[aria-selected="true"]{background:var(--azure);color:var(--ghost);box-shadow:var(--sh-sm)}
+    .ptab:focus-visible{outline:3px solid var(--highlighter-dark);outline-offset:2px}
+    .ppanel[hidden]{display:none}
+    .ppanel{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-5);align-items:stretch}
     .persona{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-6);box-shadow:var(--sh-md)}
     .persona.secondary{background:var(--azure-900)}
     .persona .ptier{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--highlighter);margin-bottom:8px}
-    .persona .pname{font-size:var(--fs-xl);font-weight:800;color:var(--ghost)}
-    .persona .ptag{font-size:13px;color:var(--lucid);margin-top:6px;line-height:1.45}
-    .persona .pstats{display:grid;grid-template-columns:1fr;gap:var(--sp-4);margin-top:var(--sp-5)}
-    .persona .pstat .sl{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--lucid-deep)}
-    .persona .pstat .sv{font-size:13.5px;color:var(--ghost);font-weight:600;margin-top:3px;line-height:1.35}
+    .persona .pname{font-size:var(--fs-2xl);font-weight:800;color:var(--ghost);line-height:1.1}
+    .persona .ptag{font-size:14px;color:var(--lucid);margin-top:8px;line-height:1.45}
+    .persona .pwho{font-size:13px;color:var(--lucid-soft);margin-top:var(--sp-5);line-height:1.4;border-top:1px solid rgba(203,233,255,.25);padding-top:var(--sp-4)}
+    .persona .pwho b{color:var(--ghost)}
     .ivp-quote{background:var(--bg-panel);border:1px solid var(--rule);border-radius:var(--r-lg);padding:var(--sp-5);display:flex;flex-direction:column;justify-content:center}
     .ivp-quote .qm{font-size:46px;line-height:.5;color:var(--azure-200);font-weight:800}
-    .ivp-quote p{font-size:var(--fs-md);color:var(--shadow);font-weight:600;line-height:1.45;margin:8px 0}
+    .ivp-quote p{font-size:var(--fs-lg);color:var(--shadow);font-weight:700;line-height:1.35;margin:8px 0}
     .ivp-quote cite{font-size:12px;color:var(--fg-muted);font-style:normal;line-height:1.45}
-    .contrast{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5)}
+    .contrast{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5);margin-top:var(--sp-5)}
     .cblock{border-radius:var(--r-lg);padding:var(--sp-5);border:1px solid var(--rule-faint)}
     .cblock.pain{background:#fff7f5;border-left:3px solid #e06a52}
     .cblock.dream{background:var(--lucid-soft);border-left:3px solid var(--lucid-deep)}
@@ -295,37 +285,42 @@
     .cblock li{font-size:13.5px;color:var(--fg-muted);line-height:1.45;padding-left:18px;position:relative}
     .cblock li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%}
     .cblock.pain li::before{background:#e06a52} .cblock.dream li::before{background:var(--lucid-deep)}
-    @media (max-width:760px){.ivp-top,.contrast{grid-template-columns:1fr}}
+    @media (max-width:760px){.ppanel,.contrast{grid-template-columns:1fr}}
 
-    /* JOURNEY-TO-A-BOOKED-CHAIR (funnel + goals + CTA) */
-    .funnel-stage{display:flex;align-items:center;gap:var(--sp-5);padding:var(--sp-5);border-radius:var(--r-lg);margin-bottom:var(--sp-3);border:1px solid var(--rule-faint);position:relative}
-    .funnel-stage .fbadge{flex:0 0 130px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
-    .fs-tofu{background:var(--tofu-bg)} .fs-tofu .fbadge{color:var(--tofu-accent)}
-    .fs-mofu{background:var(--mofu-bg)} .fs-mofu .fbadge{color:var(--mofu-accent)}
-    .fs-bofu{background:var(--bofu-bg)} .fs-bofu .fbadge{color:var(--bofu-accent)}
-    .fmain .fstage-label{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:9px}
-    .fmain .fgoal{font-size:clamp(19px,2.2vw,23px);font-weight:800;color:var(--azure);line-height:1.3;letter-spacing:-.01em;display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(transparent 60%,rgba(226,237,122,.6) 60%);padding:1px 4px;margin-left:-4px}
-    .fmain .fsig{font-size:12.5px;font-style:italic;color:var(--fg-subtle);margin-top:10px}
-    @media (max-width:640px){.funnel-stage{flex-direction:column;align-items:flex-start;gap:8px}.funnel-stage .fbadge{flex-basis:auto}}
-    .cta-primary{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-6);margin-top:var(--sp-4);margin-bottom:var(--sp-4)}
-    .cta-primary .cl{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--highlighter)}
-    .cta-primary h3{color:var(--ghost);font-size:var(--fs-xl);margin:8px 0}
-    .cta-primary p{font-size:15px;color:var(--lucid-soft);line-height:1.55;max-width:70ch}
-    .cta-primary .cta-btn{display:inline-block;margin-top:var(--sp-4);background:var(--highlighter);color:var(--azure-900);font-weight:800;font-size:14px;letter-spacing:.02em;padding:11px 22px;border-radius:999px;min-height:44px;line-height:22px}
+    /* JOURNEY · designed arrow → two actions */
+    .jflow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:var(--sp-2);align-items:stretch;margin-top:var(--sp-5)}
+    .jstage{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-5);box-shadow:var(--sh-sm);display:flex;flex-direction:column}
+    .jstage .js-stage{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--azure-600);margin-bottom:8px}
+    .jstage .js-punch{font-size:16px;font-weight:800;color:var(--azure);line-height:1.25}
+    .jstage .js-sig{font-size:12.5px;font-style:italic;color:var(--fg-subtle);margin-top:auto;padding-top:var(--sp-4)}
+    .jflow .jsep{display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--azure-200);font-weight:700}
+    @media (max-width:760px){.jflow{grid-template-columns:1fr}.jflow .jsep{transform:rotate(90deg);padding:2px 0}}
+    .two-actions{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-5)}
+    .action-card{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-6);box-shadow:var(--sh-md);position:relative}
+    .action-card.apply{background:var(--azure-900)}
+    .action-card .ac-eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--highlighter)}
+    .action-card h3{color:var(--ghost);font-size:var(--fs-xl);margin:8px 0 6px}
+    .action-card p{font-size:13.5px;color:var(--lucid-soft);line-height:1.5}
+    .action-card .ac-chip{display:inline-block;margin-top:var(--sp-4);background:var(--highlighter);color:var(--azure-900);font-weight:800;font-size:13px;letter-spacing:.02em;padding:10px 20px;border-radius:999px}
+    .action-card .ac-note{display:block;font-size:11.5px;color:var(--lucid-deep);margin-top:10px}
+    @media (max-width:640px){.two-actions{grid-template-columns:1fr}}
+    .report-line{margin-top:var(--sp-5);font-size:14px;color:var(--fg-muted);background:var(--bg-alt);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
+    .report-line b{color:var(--azure)}
 
-    /* CONTENT PILLARS · ideation matrix */
+    /* CONTENT PILLARS · pop */
     .imatrix{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-5)}
-    .ipillar{border:1px solid var(--rule-faint);border-radius:var(--r-lg);background:var(--bg-panel);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh-sm)}
-    .iph{padding:var(--sp-4);background:var(--azure);color:var(--ghost)}
-    .iph .ipn{font-size:14.5px;font-weight:800;color:var(--ghost);line-height:1.2}
-    .iph .ips{font-size:11.5px;color:var(--lucid);margin-top:4px;line-height:1.35}
+    .ipillar{border:1px solid var(--rule-faint);border-radius:var(--r-lg);background:var(--bg-panel);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh-md)}
+    .iph{padding:var(--sp-5) var(--sp-4);background:var(--azure);color:var(--ghost);border-bottom:4px solid var(--highlighter-dark)}
+    .iph .ipn{font-size:16px;font-weight:800;color:var(--ghost);line-height:1.2}
+    .iph .ips{font-size:11.5px;color:var(--lucid);margin-top:5px;line-height:1.35}
+    .iph .ipaud{display:inline-block;margin-top:8px;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;background:rgba(226,237,122,.2);color:var(--highlighter);border:1px solid rgba(226,237,122,.4);border-radius:999px;padding:2px 8px}
     .icell{padding:var(--sp-3) var(--sp-4);border-top:1px solid var(--rule-faint)}
     .icell .icl{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
     .icell.tofu{background:var(--tofu-bg)} .icell.tofu .icl{color:var(--tofu-accent)}
     .icell.mofu{background:var(--mofu-bg)} .icell.mofu .icl{color:var(--mofu-accent)}
     .icell.bofu{background:var(--bofu-bg)} .icell.bofu .icl{color:var(--bofu-accent)}
     .ichips{display:flex;flex-wrap:wrap;gap:6px}
-    .ichip{font-size:11.5px;font-weight:600;color:var(--shadow);background:var(--white);border:1px solid var(--rule);border-radius:999px;padding:3px 9px;line-height:1.3}
+    .ichip{font-size:11.5px;font-weight:700;color:var(--shadow);background:var(--white);border:1px solid var(--rule);border-radius:999px;padding:3px 10px;line-height:1.3}
     @media (max-width:880px){.imatrix{grid-template-columns:1fr}}
     .iquote-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}
     .iqcol{border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);background:var(--bg-alt);padding:var(--sp-4)}
@@ -334,6 +329,7 @@
     .iqcol li{font-size:12.5px;color:var(--shadow);font-weight:600;line-height:1.35;font-style:italic;padding-left:12px;position:relative}
     .iqcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--highlighter-dark)}
     @media (max-width:880px){.iquote-row{grid-template-columns:1fr}}
+    .pill-guard{margin-top:var(--sp-4);font-size:12.5px;color:var(--fg-muted);font-style:italic;border-left:3px solid var(--lucid-deep);padding-left:var(--sp-4);line-height:1.5}
 
     /* HOW WE REACH THEM · 3-step */
     .reach-steps{display:flex;flex-direction:column;gap:var(--sp-4);margin-top:var(--sp-5)}
@@ -348,19 +344,22 @@
     .rtac b{display:block;font-size:13px;color:var(--azure);margin-bottom:3px}
     .rtac span{font-size:12.5px;color:var(--fg-muted);line-height:1.45}
     @media (max-width:760px){.rstep-tactics{grid-template-columns:1fr}}
-    /* reach keyword accordion */
     .tam{display:flex;flex-direction:column;gap:8px;margin-top:var(--sp-4)}
     .tam-row{display:flex;align-items:center;gap:var(--sp-4);background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
     .tam-row .tl-num{font-size:11px;font-weight:800;color:var(--azure-400);min-width:78px}
-    .tam-row .tk{font-size:14px;font-weight:700;color:var(--azure);display:block}
-    .tam-r1{width:100%} .tam-r2{width:90%} .tam-r3{width:78%} .tam-r4{width:66%}
-    .acc-keys{display:block;font-size:12px;color:var(--fg-muted);margin-top:4px;line-height:1.45}
+    .tam-row .tk{font-size:13.5px;font-weight:700;color:var(--azure);display:block}
+    .tam-r1{width:100%} .tam-r2{width:88%} .tam-r3{width:76%} .tam-r4{width:64%}
+    .acc-keys{display:block;font-size:12px;color:var(--fg-muted);margin-top:2px;line-height:1.4}
     .acc-keys .kw{color:var(--azure);font-weight:600}
-    .reach-axis{margin-top:var(--sp-4);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);font-size:12.5px;color:var(--fg-muted);line-height:1.45}
+    .reach-axis{margin-top:var(--sp-3);font-size:12.5px;color:var(--fg-muted);line-height:1.4}
     .reach-axis b{color:var(--azure)}
     @media (max-width:760px){.tam-row{width:100%!important;flex-wrap:wrap;gap:6px}}
 
-    /* METRICS */
+    /* MEASURE · Spark badge + ranges */
+    .spark-badge{display:flex;align-items:flex-start;gap:var(--sp-4);background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-5);box-shadow:var(--sh-md);margin-bottom:var(--sp-5)}
+    .spark-badge .sb-pill{flex:0 0 auto;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);border-radius:999px;padding:6px 14px;align-self:center}
+    .spark-badge p{font-size:14px;color:var(--lucid-soft);line-height:1.5}
+    .spark-badge p b{color:var(--ghost)}
     .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-5)}
     .mcol{border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);background:var(--bg-panel)}
     .mcol .mhead{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:var(--sp-3);padding-bottom:8px;border-bottom:1px solid var(--rule-faint)}
@@ -373,41 +372,38 @@
     .mcol li.q::before{display:none}
     @media (max-width:880px){.metric-grid{grid-template-columns:1fr}}
 
-    /* VALUE PICTURE (B2C ROI) */
-    .roi-funnel{display:flex;flex-direction:column;gap:5px;margin-top:var(--sp-5)}
-    .rfstep{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:4px solid var(--azure);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);display:flex;align-items:center;gap:var(--sp-5);margin:0 auto}
-    .rfstep .rf-n{flex:0 0 30px;font-size:17px;font-weight:800;color:var(--azure-400);font-variant-numeric:tabular-nums}
-    .rfstep .rf-body{flex:1}
-    .rfstep .rf-body h4{font-size:var(--fs-md);margin-bottom:2px}
-    .rfstep .rf-body p{font-size:12.5px;color:var(--fg-muted);line-height:1.45}
-    .rfstep .rf-metric{flex:0 0 auto;text-align:right}
-    .rfstep .rf-metric .rfv{font-size:18px;font-weight:800;color:var(--azure);line-height:1}
-    .rfstep .rf-metric .rfl{font-size:11px;color:var(--fg-subtle);margin-top:4px}
-    .rfstep.w1{width:100%}.rfstep.w2{width:92%}.rfstep.w3{width:83%}.rfstep.w4{width:74%}
-    .rf-conv{text-align:center;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-600);padding:2px 0}
-    @media (max-width:640px){.rfstep{flex-wrap:wrap;gap:10px;width:100%!important}.rfstep .rf-metric{text-align:left;flex-basis:100%}}
-    .roi-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-top:var(--sp-5)}
-    .rstat{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);position:relative;overflow:hidden}
-    .rstat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--azure)}
-    .rstat .rv{font-size:28px;font-weight:800;color:var(--azure);line-height:1}
-    .rstat .rl{font-size:12.5px;color:var(--fg-muted);margin-top:6px;line-height:1.4}
-    .rstat.flag::after{background:var(--highlighter)}
-    @media (max-width:880px){.roi-stats{grid-template-columns:1fr 1fr}}
-    .roi-chart-wrap{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);position:relative;height:320px;margin-top:var(--sp-3)}
+    /* VALUE PICTURE (monthly value vs fee) */
+    .vpath{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:var(--sp-2);align-items:stretch;margin-top:var(--sp-5)}
+    .vstep{border:1px solid var(--rule-faint);border-left:4px solid var(--azure);border-radius:var(--r-md);background:var(--bg-panel);padding:var(--sp-4)}
+    .vstep b{display:block;font-size:13.5px;color:var(--azure);margin-bottom:3px}
+    .vstep span{font-size:12px;color:var(--fg-muted);line-height:1.4}
+    .vsep{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--azure-200);font-weight:700}
+    @media (max-width:820px){.vpath{grid-template-columns:1fr}.vsep{transform:rotate(90deg);padding:2px 0}}
+    .clv-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .clv-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);position:relative;overflow:hidden}
+    .clv-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--highlighter-dark)}
+    .clv-card .cv{font-size:26px;font-weight:800;color:var(--azure);line-height:1}
+    .clv-card .cl{font-size:12.5px;color:var(--fg-muted);margin-top:6px;line-height:1.4}
+    @media (max-width:640px){.clv-row{grid-template-columns:1fr}}
+    .roi-chart-wrap{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-5);position:relative;height:340px;margin-top:var(--sp-4)}
     .roi-chart-wrap canvas{display:block;width:100%!important;height:100%!important}
-    @media (max-width:768px){.roi-chart-wrap{height:260px}}
+    @media (max-width:768px){.roi-chart-wrap{height:280px}}
     .roi-chart-cap{font-size:12px;color:var(--fg-subtle);line-height:1.45;text-align:center;margin-top:var(--sp-3)}
-    .breakeven{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-6);margin-top:var(--sp-4)}
-    .breakeven .bl{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--highlighter)}
-    .breakeven .bv{font-size:24px;font-weight:800;color:var(--ghost);line-height:1.15;margin:8px 0}
-    .breakeven p{font-size:14px;color:var(--lucid-soft);line-height:1.5}
+    .assump{margin-top:var(--sp-4);font-size:12.5px;color:var(--fg-muted);background:var(--bg-alt);border-radius:var(--r-md);padding:var(--sp-4);line-height:1.55}
+    .assump b{color:var(--azure)}
+    .ramp-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-5)}
+    .ramp-card{border:1px solid var(--rule-faint);border-top:3px solid var(--azure-200);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-5)}
+    .ramp-card .rw{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--azure)}
+    .ramp-card p{font-size:12.5px;color:var(--fg-muted);line-height:1.45;margin-top:6px}
+    @media (max-width:760px){.ramp-row{grid-template-columns:1fr}}
 
     /* CLOSE */
     #s12{background:radial-gradient(120% 90% at 15% 90%,#16367a 0%,var(--azure) 48%,var(--azure-900) 100%);color:var(--ghost);text-align:center;overflow:hidden}
     #s12 .slide-inner{position:relative;z-index:2}
     #s12 h2{color:var(--ghost);font-size:clamp(32px,5vw,54px);max-width:20ch;margin:0 auto var(--sp-5)}
-    #s12 p{color:var(--lucid);font-size:var(--fs-lg);max-width:54ch;margin:0 auto;line-height:1.5}
+    #s12 p{color:var(--lucid);font-size:var(--fs-lg);max-width:56ch;margin:0 auto;line-height:1.5}
     #s12 .signoff{margin-top:var(--sp-7);font-size:14px;color:var(--lucid-soft);letter-spacing:.04em}
+    .upnext{display:inline-block;margin-top:var(--sp-6);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:rgba(226,237,122,.16);border:1px solid rgba(226,237,122,.4);color:var(--highlighter);border-radius:999px;padding:7px 16px}
     .mono-accent{height:30px;width:auto;display:block;margin:0 auto var(--sp-5);opacity:.85}
     .sq-div{display:block;width:150px;max-width:44%;height:auto;opacity:.8}
     .sq-div.center{margin:var(--sp-5) auto 0}
@@ -427,7 +423,7 @@
     .sens-table th{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600)}
     .sens-table td b{color:var(--azure)}
 
-    /* ACCESS-CODE GATE (Tier 3 · client-side) */
+    /* ACCESS-CODE GATE (Tier 3) */
     body.sm-locked{overflow:hidden}
     #sm-gate{position:fixed;inset:0;background:var(--ghost);display:flex;align-items:center;justify-content:center;z-index:99999;padding:24px}
     .sm-gate-card{background:var(--white);border:1px solid var(--rule-faint);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;text-align:center;box-shadow:0 4px 24px rgba(12,51,135,.08)}
@@ -461,19 +457,18 @@
     .eyebrow .act{display:inline-flex;align-items:center;gap:5px}
     .eyebrow .act::before{content:"";width:13px;height:13px;display:inline-block;background:url("https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png") center/contain no-repeat;filter:brightness(0) invert(1);opacity:.92}
 
-    /* MOBILE BODY-TEXT FLOOR (≥14px reading text; sanctioned micro-labels stay ≥12px) */
+    /* MOBILE BODY-TEXT FLOOR (≥14px reading text; sanctioned micro-labels ≥12px) */
     @media (max-width:560px){
       .slide-title{font-size:var(--fs-2xl)}
-      .card p,.zone .zsub,.zone ul.zsteps li,.funnel-stage .fmain .fsig,.fmain .fstage-label,
-      .us-card p,.us-card .us-punch,.j-when,.j-what,.living-note,.eng-note,.eng-seg .es-term,.eng-seg .es-when,
-      .today-card p,.today-card .tcm,.today-card .tcp,.today-card .tcw,.agenda-frame,.agenda-sublabel,
-      .fw-step h4,.mnote,.enode span,.diff span,.diff .feeds,.objection p.ans,
-      .persona .ptag,.persona .pstat .sv,.persona .ptier,.ivp-quote cite,.cblock li,
-      .ichip,.iph .ips,.iqcol li,.icell .icl,
-      .rstep>p,.rstep .rs-n,.rtac b,.rtac span,.acc-keys,.reach-axis,.tam-row .td,
-      .mcol li,.mcol li.q,.rstat .rl,.rfstep .rf-body p,.rfstep .rf-metric .rfl,.rf-conv,
-      .breakeven p,.callout p,.callout.compact p,.ptip p,.sens-table th,.sens-table td{font-size:14px}
-      .cover-sub,.slide-lede{font-size:16px}
+      .zone .zsub,.zone ul.zsteps li,.us-card p,.us-card .us-punch,.j-when,.j-what,.eng-note,.eng-seg .es-term,
+      .part-desc,.part-why,.agenda-frame,.agenda-sublabel,.mnote,.enode span,.diff span,.diff .feeds,
+      .counter .ccol p,.counter .ccol .cch,.persona .ptag,.persona .pwho,.ivp-quote cite,.cblock li,
+      .jstage .js-punch,.jstage .js-sig,.action-card p,.action-card .ac-note,.report-line,
+      .ichip,.iph .ips,.iqcol li,.icell .icl,.pill-guard,
+      .rstep>p,.rstep .rs-n,.rtac b,.rtac span,.acc-keys,.reach-axis,.tam-row .tk,
+      .spark-badge p,.mcol li,.mcol li.q,.vstep span,.clv-card .cl,.assump,.ramp-card p,
+      .callout p,.anchor-line,.ptip p,.sens-table th,.sens-table td{font-size:14px}
+      .cover-sub,.slide-lede,.ivp-lede{font-size:16px}
     }
   </style>
 </head>
@@ -562,7 +557,7 @@
         </div>
         <span class="cover-kicker"><span class="dot"></span>Phase 1 strategy</span>
         <h1>Organic <span class="hl">social media</span> strategy.</h1>
-        <p class="cover-sub">Pippi's organic social media strategy, built on the Scroll System. The foundation for getting the room you're building in front of the right people in Cincinnati, and turning attention into booked chairs. A living document we refine as we grow, not a one-and-done plan.</p>
+        <p class="cover-sub">Pippi's organic social media strategy, built on the Scroll System. The foundation for getting the room you're building in front of the right people in Cincinnati, and turning attention into booked chairs.</p>
         <div class="cover-meta">
           <div>Prepared for<b>Maddie Heile, Pippi's</b></div>
           <div>Strategy presentation<b>July 28, 2026</b></div>
@@ -572,110 +567,110 @@
       <div class="scrollcue"><span>Scroll or press the arrow keys</span><span class="bar"></span></div>
     </section>
 
-    <!-- 02 AGENDA (two-part meeting) -->
+    <!-- 02 AGENDA (three owned parts) -->
     <section class="slide" id="s02" data-nav="Agenda">
       <span class="section-num">02</span>
       <div class="slide-inner">
         <span class="eyebrow reveal">What we'll cover today</span>
         <h2 class="slide-title reveal">The agenda.</h2>
-        <p class="slide-lede reveal">Today is a 90-minute working meeting in two parts. Part 1 is the why, Part 2 is the what. Click any line to jump to it.</p>
-        <div class="today-split">
-          <div class="today-card reveal d1">
-            <div class="tch"><span class="tcp">Part 1</span><span class="tcm">~30 min</span></div>
-            <div class="tct">The Foundation</div>
-            <div class="tcw">The why</div>
-            <p>We walk the strategy together: what we heard, the system and how it works, the two people we get you in front of, the journey to a booked chair, the content, how we get found, how we measure, and the value picture.</p>
+        <p class="slide-lede reveal">Ninety minutes, three parts. Each has a lead. Click any part to jump to it.</p>
+        <div class="agenda-progress-label reveal">You're in Part 1</div>
+        <div class="agenda-progress reveal"><span class="aseg on"></span><span class="aseg"></span><span class="aseg"></span></div>
+        <div class="agenda-parts">
+          <div class="part-card active reveal d1">
+            <div class="part-head"><span class="part-eyebrow">Part 1</span><span class="part-time">~30 min</span></div>
+            <div class="part-title">The Foundation</div>
+            <div class="part-lead"><span class="lead-chip">Chase</span> Co-Founder &amp; COO</div>
+            <div class="part-why">The why.</div>
+            <div class="part-desc">The strategy underneath everything: where we are, the system, who we're reaching, the journey, and how we measure. This deck.</div>
           </div>
-          <div class="today-card p2 reveal d2">
-            <div class="tch"><span class="tcp">Part 2</span><span class="tcm">~60 min</span></div>
-            <div class="tct">The Creative Direction</div>
-            <div class="tcw">The what</div>
-            <p><b>Visual direction</b> &middot; your profile and the grid.<br/><b>Example content on your brand</b> &middot; what the posts look like as Pippi's.<br/><b>The first shot list</b> &middot; walk it together, ready for the July 31 shoot.<br/><b>The launch runway</b> &middot; the first month, planned to the construction.</p>
+          <div class="part-card reveal d2">
+            <div class="part-head"><span class="part-eyebrow">Part 2</span><span class="part-time">~30 min</span></div>
+            <div class="part-title">The Creative Direction</div>
+            <div class="part-lead"><span class="lead-chip">Allison</span> Creative</div>
+            <div class="part-why">The look.</div>
+            <div class="part-desc">Your profile and grid, the visual direction on your brand, and example content that brings the pillars to life.</div>
+          </div>
+          <div class="part-card reveal d3">
+            <div class="part-head"><span class="part-eyebrow">Part 3</span><span class="part-time">~30 min</span></div>
+            <div class="part-title">The Content Plan</div>
+            <div class="part-lead"><span class="lead-chip">Rachel</span> Account manager</div>
+            <div class="part-why">The plan.</div>
+            <div class="part-desc">The content planner and the first shot list, walked together and ready for the July 31 shoot.</div>
           </div>
         </div>
-        <div class="agenda-frame reveal"><b>Part 1 is the why. Part 2 is the what.</b> We present the strategy first, then roll up our sleeves and build the creative direction together.</div>
+        <div class="agenda-frame reveal">Part 1 is the why. Part 2 is the look. Part 3 is the plan.</div>
         <div class="agenda-sublabel reveal">Part 1 &middot; jump to a section</div>
         <div class="agenda-grid">
-          <a class="agenda-item reveal d1" href="#s03"><span class="agenda-num">03</span><span class="agenda-text"><b>Recap &amp; timeline</b><span>What we heard, the journey, how the engagement works</span></span></a>
-          <a class="agenda-item reveal d1" href="#s04"><span class="agenda-num">04</span><span class="agenda-text"><b>Strategic approach</b><span>The system, the engine, where you start</span></span></a>
-          <a class="agenda-item reveal d2" href="#s05"><span class="agenda-num">05</span><span class="agenda-text"><b>What makes Pippi's different</b><span>The four differentiators we weave into content</span></span></a>
-          <a class="agenda-item reveal d2" href="#s06"><span class="agenda-num">06</span><span class="agenda-text"><b>Who we get you in front of</b><span>The two people, in depth</span></span></a>
-          <a class="agenda-item reveal d3" href="#s07"><span class="agenda-num">07</span><span class="agenda-text"><b>How a stranger becomes a booked chair</b><span>The journey, the goals, the ask</span></span></a>
-          <a class="agenda-item reveal d3" href="#s08"><span class="agenda-num">08</span><span class="agenda-text"><b>The content pillars</b><span>Three pillars, every stage of the funnel</span></span></a>
-          <a class="agenda-item reveal d4" href="#s09"><span class="agenda-num">09</span><span class="agenda-text"><b>How we reach them</b><span>Testing, Instagram search, strategic reach</span></span></a>
-          <a class="agenda-item reveal d4" href="#s10"><span class="agenda-num">10</span><span class="agenda-text"><b>How we measure &amp; the value picture</b><span>The signals we track, and what it's worth</span></span></a>
+          <a class="agenda-item reveal d1" href="#s03"><span class="agenda-num">03</span><span class="agenda-text"><b>Recap and where we are</b><span>What we heard, the runway, how we work together</span></span></a>
+          <a class="agenda-item reveal d2" href="#s04"><span class="agenda-num">04</span><span class="agenda-text"><b>The strategy system</b><span>Three stages, the engine, where you start</span></span></a>
+          <a class="agenda-item reveal d3" href="#s05"><span class="agenda-num">05&ndash;06</span><span class="agenda-text"><b>What sets you apart, and who we're reaching</b><span>The differentiators and the two audiences</span></span></a>
+          <a class="agenda-item reveal d3" href="#s07"><span class="agenda-num">07&ndash;08</span><span class="agenda-text"><b>The journey and the content</b><span>How a stranger becomes a booking, and the pillars</span></span></a>
+          <a class="agenda-item reveal d4" href="#s09"><span class="agenda-num">09&ndash;11</span><span class="agenda-text"><b>How we get found, and how we measure</b><span>Reach, the signals, and the value picture</span></span></a>
         </div>
       </div>
     </section>
 
-    <!-- 03 RECAP + TIMELINE (+ how the engagement works) -->
+    <!-- 03 RECAP + TIMELINE + HOW THE ENGAGEMENT WORKS -->
     <section class="slide" id="s03" data-nav="Recap &amp; timeline">
       <span class="section-num">03</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Recap</span></span>
         <h2 class="slide-title reveal">What we heard, and where we are.</h2>
-        <p class="slide-lede reveal">Before any content, we made sure we understand the business. Here's the short version of what we took away, the runway to opening day, and how the engagement works.</p>
+        <p class="slide-lede reveal">Before any content, we made sure we understand the business. Here's the short version, the runway ahead, and how we'll work together.</p>
         <div class="us-lead">
-          <div class="us-card reveal d1"><div class="ul">The business</div><div class="us-punch">A boutique, color-led salon opening in Over-the-Rhine.</div><p>Commission-based, built around one shared table instead of a row of stations, with a fully built brand world already in place.</p></div>
-          <div class="us-card reveal d2"><div class="ul">The opportunity</div><div class="us-punch">A brand-new room with no audience yet, and a hard opening date.</div><p>The pre-launch window is the highest-leverage moment we get. We build demand and trust before the doors open.</p></div>
-          <div class="us-card reveal d3"><div class="ul">The job</div><div class="us-punch">Make Pippi's the elevated colorist home OTR has been missing.</div><p>Lift the brand, the space, and the craft together, so the right clients and the right stylists both find their way to the table.</p></div>
+          <div class="us-card reveal d1"><div class="ul">The business</div><div class="us-punch">A boutique, color-led salon opening in Over-the-Rhine.</div><p>Commission-based, built around one shared table, with a fully built brand world already in place.</p></div>
+          <div class="us-card reveal d2"><div class="ul">The opportunity</div><div class="us-punch">You're not starting from zero.</div><p>Your clientele follows you into a beautiful new room with a real brand and a hard opening date. The work isn't inventing an audience, it's giving an outstanding brand, space, and craft the right message and the reach to match.</p></div>
+          <div class="us-card reveal d3"><div class="ul">The job</div><div class="us-punch">Make Pippi's the elevated colorist home OTR has been missing.</div><p>Lift the brand, the space, and the craft together, so the right clients and the right stylists both find the table.</p></div>
         </div>
-        <h3 class="reveal" style="font-size:var(--fs-md);color:var(--azure);margin-bottom:var(--sp-2)">The journey, kickoff through opening and the ongoing rhythm</h3>
+        <h3 class="reveal" style="font-size:var(--fs-md);color:var(--azure);margin-bottom:var(--sp-2)">The runway, kickoff through opening and the ongoing rhythm</h3>
         <div class="journey reveal d1">
           <div class="j-step done"><div class="j-dot"></div><div class="j-when">Thu Jul 16</div><div class="j-what">Kickoff meeting</div></div>
-          <div class="j-step now"><div class="j-dot"></div><div class="j-when">Tue Jul 28</div><div class="j-what">Strategy presentation + first shot-list review (90 min)</div><span class="j-tag">You are here</span></div>
-          <div class="j-step"><div class="j-dot"></div><div class="j-when">Fri Jul 31</div><div class="j-what">First content shoot</div><span class="j-tag">Shoot day</span></div>
+          <div class="j-step now"><div class="j-dot"></div><div class="j-when">Tue Jul 28</div><div class="j-what">Strategy presentation (90 min)</div><span class="j-tag">You are here</span></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Fri Jul 31</div><div class="j-what">First content shoot</div><span class="j-tag">Shoot day</span><span class="j-onsite">Scroll on-site</span></div>
           <div class="j-step"><div class="j-dot"></div><div class="j-when">Thu Aug 6</div><div class="j-what">First bi-weekly connect</div></div>
           <div class="j-step"><div class="j-dot"></div><div class="j-when">Wed Aug 12</div><div class="j-what">First post live</div><span class="j-tag">First post</span></div>
-          <div class="j-step"><div class="j-dot"></div><div class="j-when">Sat Aug 22</div><div class="j-what">Friends and family party</div><span class="j-tag soft">Scroll on-site</span></div>
-          <div class="j-step"><div class="j-dot"></div><div class="j-when">Mon Aug 31</div><div class="j-what">Grand opening</div><span class="j-tag">Opening day</span></div>
-          <div class="j-step"><div class="j-dot"></div><div class="j-when">Ongoing</div><div class="j-what">Bi-weekly connects + monthly report, first week each month</div></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Sat Aug 22</div><div class="j-what">Friends and family</div><span class="j-tag">F and F</span><span class="j-onsite">Scroll on-site</span></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Mon Aug 31</div><div class="j-what">Grand opening</div><span class="j-tag">Opening day</span><span class="j-onsite">Scroll on-site</span></div>
+          <div class="j-step"><div class="j-dot"></div><div class="j-when">Ongoing</div><div class="j-what">Bi-weekly connects + monthly report</div></div>
         </div>
         <div class="eng-struct reveal">
-          <div class="eng-label">How the engagement works</div>
+          <div class="eng-label">How we'll work together</div>
           <div class="eng-bar">
-            <div class="eng-seg initial reveal d1"><div class="es-term">3-month initial term</div><div class="es-when">The launch quarter</div></div>
-            <div class="eng-seg ext reveal d2"><div class="es-term">6-month extension</div><div class="es-when">Then</div></div>
-            <div class="eng-seg ext reveal d3"><div class="es-term">6-month extension</div><div class="es-when">And on</div></div>
-            <div class="eng-arrow reveal d4">&rarr;</div>
+            <div class="eng-seg initial reveal d1"><div class="es-term">3-month initial term</div></div>
+            <div class="eng-arrow reveal">&rarr;</div>
+            <div class="eng-seg ext reveal d2"><div class="es-term">6-month extensions</div></div>
+            <div class="eng-arrow reveal">&rarr;</div>
+            <div class="eng-seg long reveal d3"><div class="es-term">Built for the long game</div></div>
           </div>
-          <p class="eng-note">We start with a <b>3-month initial term</b>, then extend in <b>6-month terms</b>. Organic social compounds, so we plan for the long game: a <b>12-month-plus commitment</b> where each block builds on the last.</p>
+          <p class="eng-note">We start with three months to get to know each other, test, and find the groove. From there we extend in six-month blocks. Organic social compounds, so the brands that win give it real time. We build for a <b>three-year-plus horizon</b>, and every month builds on the last.</p>
         </div>
-        <div class="living-note reveal"><b>A living document, refined as we learn.</b> This is the foundation, not a fixed plan. We refine it as we learn what your audience responds to.</div>
       </div>
     </section>
 
-    <!-- 04 STRATEGIC APPROACH (stages + 5-step flow + Content Engine + maturity ribbon) -->
+    <!-- 04 STRATEGIC APPROACH (stages + engine + maturity, one slide) -->
     <section class="slide" id="s04" data-nav="Strategic approach">
       <span class="section-num">04</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Strategic approach</span></span>
         <h2 class="slide-title reveal">You're not buying posts. You're buying a system.</h2>
-        <p class="slide-lede reveal">Everything runs on the Scroll System: <strong>three stages</strong>, with a content engine at the core that turns strategy into content that performs. Here's our approach end to end.</p>
-        <div class="fw-flow reveal d1">
-          <div class="fw-step"><div class="n">01</div><h4>Immerse</h4></div>
-          <div class="fw-step"><div class="n">02</div><h4>Understand your audiences</h4></div>
-          <div class="fw-step"><div class="n">03</div><h4>Map the funnel</h4></div>
-          <div class="fw-step"><div class="n">04</div><h4>Run the engine</h4></div>
-          <div class="fw-step"><div class="n">05</div><h4>Measure and refine</h4></div>
-        </div>
-        <div class="fw-arrow-note reveal">Five steps, grouped into three stages. Execution is where most of the work lives.</div>
+        <p class="slide-lede reveal">Everything runs on the Scroll System: <strong>three stages</strong>, with a content engine at the core that turns strategy into content that performs.</p>
         <div class="stages">
           <div class="zone reveal d1">
             <span class="zn">Stage 01</span><h3>Foundation</h3>
-            <div class="zsub">We build the strategy.</div>
-            <ul class="zsteps"><li>Brand immersion</li><li>Understand your two audiences</li><li>Map the funnel</li></ul>
+            <div class="zsub">Build the strategy.</div>
+            <ul class="zsteps"><li>Immerse in the brand</li><li>Understand your two audiences</li><li>Map the funnel</li></ul>
           </div>
           <div class="zone emphasis reveal d2">
-            <span class="zn">Stage 02 &middot; the heart of the work</span><h3>Execution</h3>
-            <div class="zsub">We run the Content Engine.</div>
-            <ul class="zsteps"><li>The Signal Method is the strategic engine inside this stage</li><li>The Idea to Format to Hook to Data loop below</li><li>Test wide, settle on the winners, ship on a consistent cadence</li></ul>
-            <span class="zbadge">Where most of the work lives</span>
+            <span class="zn">Stage 02 &middot; the biggest stage</span><h3>Execution</h3>
+            <div class="zsub">Run the Content Engine.</div>
+            <ul class="zsteps"><li>The Signal Method is the strategic engine inside this stage</li><li>The Idea to Format to Hook to Data loop below</li><li>Test wide, settle on the winners, ship consistently</li></ul>
+            <span class="zbadge">Where the work and the value live</span>
           </div>
           <div class="zone reveal d3">
             <span class="zn">Stage 03</span><h3>Performance</h3>
-            <div class="zsub">We track, learn, and adjust.</div>
-            <ul class="zsteps"><li>Analytics mapped to your goals</li><li>Find the winning formats per stage</li><li>Make strategic adjustments</li></ul>
+            <div class="zsub">Track, learn, adjust.</div>
+            <ul class="zsteps"><li>Measure against your goals</li><li>Find the winning formats per stage</li><li>Refine</li></ul>
           </div>
         </div>
         <div class="zone-detail-label reveal">Execution detail &middot; the Content Engine</div>
@@ -688,14 +683,14 @@
           <div class="earrow">&rarr;</div>
           <div class="enode" data-i="3"><div class="circle">04</div><b>Data</b><span>What the numbers tell us to make more of.</span></div>
         </div>
-        <p class="reveal" style="font-size:13px;color:var(--fg-muted);line-height:1.5;text-align:center;max-width:76ch;margin:var(--sp-4) auto 0">How we evolve it: test heavily in the first months, settle on the winners per stage, monitor monthly, adjust quarterly. The early months are about learning your audience, not chasing views.</p>
+        <p class="reveal" style="font-size:13px;color:var(--fg-muted);line-height:1.5;text-align:center;max-width:74ch;margin:var(--sp-4) auto 0">We test wide early to learn what your audience responds to, then settle on the one or two formats that win at each stage.</p>
         <div class="mat reveal" style="margin-top:var(--sp-7)">
           <div class="mat-stage here d1"><div class="mn">Spark</div><div class="ml">New account, building the foundation. Prove the audience and the formats.</div></div>
           <div class="mat-stage d2"><div class="mn">Lift</div><div class="ml">Reach and engagement start compounding. Winning formats emerge.</div></div>
           <div class="mat-stage d3"><div class="mn">Rise</div><div class="ml">Consistent distribution to new audiences who match the right client.</div></div>
           <div class="mat-stage d4"><div class="mn">Thrive</div><div class="ml">A known Cincinnati name that reliably fills the chairs.</div></div>
         </div>
-        <div class="mnote reveal"><b>We read account maturity on more than follower count.</b> Engagement health, audience quality, content velocity, and business fundamentals all factor in. Pippi's starts at Spark, a new account with a clear runway.</div>
+        <div class="mnote reveal"><b>We read maturity on more than follower count.</b> Engagement health, audience quality, content velocity, and business fundamentals all factor in. Pippi's starts at Spark with a clear runway.</div>
       </div>
     </section>
 
@@ -703,248 +698,205 @@
     <section class="slide" id="s05" data-nav="What makes Pippi's different">
       <span class="section-num">05</span>
       <div class="slide-inner">
-        <div class="callout compact reveal" style="margin-bottom:var(--sp-5)">
-          <div class="cl-label">Why these four</div>
-          <p>Social is crowded, and "another salon" doesn't stand out. Pippi's wins by leaning into what's genuinely unique. These four differentiators are the triggers we weave into every piece of content.</p>
-        </div>
         <span class="eyebrow reveal"><span class="act">Strategic approach</span>What sets you apart</span>
         <h2 class="slide-title reveal">What makes Pippi's different, woven into every post.</h2>
+        <p class="slide-lede reveal">"Another salon" doesn't stand out. These four are what we lean into, in every piece of content.</p>
         <div class="diff-grid">
-          <div class="diff reveal d1"><b>A commission room built on mentorship</b><span>Her most central differentiator, in her words. A room that invests in the people behind the chair, not a booth-rent transaction.</span><span class="feeds">Feeds: the culture content, the recruiting story, the education pillar. Serves both audiences.</span></div>
-          <div class="diff reveal d2"><b>One shared table, not a row of stations</b><span>The physical signature the room is built around, and its focal image.</span><span class="feeds">Feeds: the manifesto, the space tour, the "why we built it this way" story.</span></div>
-          <div class="diff reveal d3"><b>Craft with a direct line to fashion-week</b><span>Session pedigree, a mentor who is Rica's creative director, and her own formulation and application process. The reason the color is right.</span><span class="feeds">Feeds: the education pillar, technique breakdowns, the mentor and product story.</span></div>
-          <div class="diff reveal d4"><b>A premium brand world, already built</b><span>Edelmade built it. We make it move, consistently, while she builds the business.</span><span class="feeds">Feeds: the polished, on-brand grid that reads as a destination from day one.</span></div>
+          <div class="diff reveal d1"><span class="dnum">01</span><b>A commission room built on mentorship</b><span>A room that invests in the people behind the chair, not a booth-rent transaction.</span><span class="feeds">Feeds: the culture, the recruiting story, the education lens. Both audiences.</span></div>
+          <div class="diff reveal d2"><span class="dnum">02</span><b>One shared table, not a row of stations</b><span>The physical signature the room is built around.</span><span class="feeds">Feeds: the manifesto, the space tour, the "why we built it this way."</span></div>
+          <div class="diff reveal d3"><span class="dnum">03</span><b>Craft with a direct line to fashion-week</b><span>Session pedigree, a mentor who is Rica's creative director, her own formulation and application.</span><span class="feeds">Feeds: the education pillar, technique breakdowns, the mentor and product story.</span></div>
+          <div class="diff reveal d4"><span class="dnum">04</span><b>A premium brand world, already built</b><span>Edelmade built it. We make it move consistently, while she builds the business.</span><span class="feeds">Feeds: the polished, on-brand grid that reads as a destination from day one.</span></div>
         </div>
-        <div class="objection reveal">
-          <div class="ol">The objection we counter-position against</div>
-          <p>The elevated-but-not-stuffy white space.</p>
-          <p class="ans">Basic neighborhood salons signal no craft. Intimidating-luxury salons feel cold and priced to exclude. Pippi's is the premium room that still feels warm, and the mentorship room plus the shared table are the proof it is genuinely different, not just nicer.</p>
+        <div class="counter-lead reveal" style="margin-top:var(--sp-6)">The room, against the alternatives</div>
+        <div class="counter">
+          <div class="ccol reveal d1"><div class="cch">The chain or franchise chair</div><p>Volume over craft, and no room to grow. Fast, cheap, forgettable, and no reason to stay.</p></div>
+          <div class="ccol reveal d2"><div class="cch">The rented booth plus solo Instagram</div><p>Real talent with no brand, no team, and no room behind it. Great work that stays invisible.</p></div>
+          <div class="ccol win reveal d3"><div class="cch">Pippi's</div><p>The premium room that still feels warm. The mentorship and the shared table are the proof it's genuinely different, not just nicer.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- 06 IVP (dual persona) -->
+    <!-- 06 THE TWO PEOPLE (interactive dual IVP toggle) -->
     <section class="slide" id="s06" data-nav="Who we're getting you in front of">
       <span class="section-num">06</span>
       <div class="slide-inner">
-        <div class="callout reveal" style="margin-bottom:var(--sp-6)">
-          <div class="cl-label">Why we capture this in depth</div>
-          <p>Pain points and dream outcomes drive every piece of content we create. We use social media as the tool to answer the questions, address the concerns, and show the outcomes that matter most. Content built this way tells your audience: "We understand exactly what you're looking for. Here's what it looks like."</p>
-        </div>
         <span class="eyebrow reveal"><span class="act">Strategic approach</span>Who we're getting you in front of</span>
         <h2 class="slide-title reveal">The two people we're getting you in front of.</h2>
-        <p class="slide-lede reveal">A salon launch has two jobs. Fill the chairs with clients, and fill them with stylists. Every post knows which one it is talking to.</p>
-
-        <div class="persona-block">
-          <div class="ivp-top">
-            <div class="persona reveal d1">
-              <div class="ptier">Primary audience</div>
-              <div class="pname">The Woman in the Chair</div>
-              <div class="ptag">The one who has a stylist, but not a home.</div>
-              <div class="pstats">
-                <div class="pstat"><div class="sl">Who</div><div class="sv">Higher-end OTR and Cincinnati women, roughly 22 to 40, professional.</div></div>
-              </div>
-            </div>
-            <div class="ivp-quote reveal d2">
-              <div class="qm">&ldquo;</div>
-              <p>Will they finally get my color right, and will it feel like mine?&rdquo;</p>
-              <cite>The quiet question behind every booking. We answer it on purpose, in every piece.</cite>
-            </div>
+        <p class="ivp-lede reveal">A salon launch has two jobs, fill the chairs with clients and fill them with stylists. Every post knows which one it's talking to. Their pains and dream outcomes drive the content.</p>
+        <div class="ptoggle reveal" role="tablist" aria-label="Choose an audience">
+          <button class="ptab" id="ptab-client" role="tab" aria-selected="true" aria-controls="ppanel-client" tabindex="0">The Woman in the Chair</button>
+          <button class="ptab" id="ptab-stylist" role="tab" aria-selected="false" aria-controls="ppanel-stylist" tabindex="-1">The Stylist at the Table</button>
+        </div>
+        <div class="ppanel reveal" id="ppanel-client" role="tabpanel" aria-labelledby="ptab-client" tabindex="0">
+          <div class="persona">
+            <div class="ptier">Primary audience</div>
+            <div class="pname">The Woman in the Chair</div>
+            <div class="ptag">The one who has a stylist, but not a home.</div>
+            <div class="pwho"><b>Who:</b> higher-end OTR and Cincinnati women, roughly 22 to 40, professional.</div>
           </div>
-          <div class="contrast">
-            <div class="cblock pain reveal d1">
-              <div class="clabel">Pains we speak to</div>
-              <ul>
-                <li>Burned by a colorist who cut corners.</li>
-                <li>Elevated feels intimidating, basic feels beneath her.</li>
-                <li>Does not know Pippi's exists yet.</li>
-              </ul>
+          <div class="ivp-quote">
+            <div class="qm">&ldquo;</div>
+            <p>Will they finally get my color right, and will it feel like mine?&rdquo;</p>
+            <cite>The quiet question behind every booking. We answer it on purpose, in every piece.</cite>
+          </div>
+          <div class="contrast" style="grid-column:1 / -1">
+            <div class="cblock pain">
+              <div class="clabel">What we speak to</div>
+              <ul><li>Burned by a colorist who cut corners.</li><li>Elevated feels intimidating, basic feels beneath her.</li></ul>
             </div>
-            <div class="cblock dream reveal d2">
-              <div class="clabel">Outcomes we show</div>
-              <ul>
-                <li>The colorist who gets it right, every time.</li>
-                <li>A room that feels like hers.</li>
-                <li>Being a Pippi's regular before everyone else.</li>
-              </ul>
+            <div class="cblock dream">
+              <div class="clabel">What we show</div>
+              <ul><li>The colorist who gets it right, every time.</li><li>A room that feels like hers, and being a regular before everyone else.</li></ul>
             </div>
           </div>
         </div>
-
-        <div class="persona-divider">Secondary audience</div>
-
-        <div class="persona-block">
-          <div class="ivp-top">
-            <div class="persona secondary reveal d1">
-              <div class="ptier">Secondary audience</div>
-              <div class="pname">The Stylist at the Table</div>
-              <div class="ptag">The one who wants more than a booth.</div>
-              <div class="pstats">
-                <div class="pstat"><div class="sl">Who</div><div class="sv">Talented Cincinnati stylists drawn to craft, mentorship, and a community-first room.</div></div>
-              </div>
-            </div>
-            <div class="ivp-quote reveal d2">
-              <div class="qm">&ldquo;</div>
-              <p>Is this real, and will it last?&rdquo;</p>
-              <cite>The quiet question behind every stylist conversation. We answer it in the culture content.</cite>
-            </div>
+        <div class="ppanel reveal" id="ppanel-stylist" role="tabpanel" aria-labelledby="ptab-stylist" tabindex="0" hidden>
+          <div class="persona secondary">
+            <div class="ptier">Secondary audience</div>
+            <div class="pname">The Stylist at the Table</div>
+            <div class="ptag">The one who wants more than a booth.</div>
+            <div class="pwho"><b>Who:</b> talented Cincinnati stylists drawn to craft, mentorship, and a community-first room.</div>
           </div>
-          <div class="contrast">
-            <div class="cblock pain reveal d1">
-              <div class="clabel">Pains we speak to</div>
-              <ul>
-                <li>Stuck in a room that overlooks the people behind the chair.</li>
-                <li>A station, not a table.</li>
-                <li>Booth rent with no support.</li>
-              </ul>
+          <div class="ivp-quote">
+            <div class="qm">&ldquo;</div>
+            <p>Is this real, and will it last?&rdquo;</p>
+            <cite>The quiet question behind every stylist conversation. We answer it in the culture content.</cite>
+          </div>
+          <div class="contrast" style="grid-column:1 / -1">
+            <div class="cblock pain">
+              <div class="clabel">What we speak to</div>
+              <ul><li>Overlooked behind the chair, a station not a table.</li><li>Booth rent with no support.</li></ul>
             </div>
-            <div class="cblock dream reveal d2">
-              <div class="clabel">Outcomes we show</div>
-              <ul>
-                <li>A table, not a row of stations.</li>
-                <li>Real mentorship and a team that invests in them.</li>
-                <li>A commission model in a room that is going somewhere.</li>
-              </ul>
+            <div class="cblock dream">
+              <div class="clabel">What we show</div>
+              <ul><li>A table, not a row of stations, with real mentorship.</li><li>A commission model in a room that's going somewhere.</li></ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 07 HOW A STRANGER BECOMES A BOOKED CHAIR (funnel + goals + CTA) -->
-    <section class="slide" id="s07" data-nav="How a stranger becomes a booked chair">
+    <!-- 07 HOW A STRANGER BECOMES A BOOKING (journey → two actions) -->
+    <section class="slide" id="s07" data-nav="How a stranger becomes a booking">
       <span class="section-num">07</span>
       <div class="slide-inner">
-        <div class="callout compact reveal" style="margin-bottom:var(--sp-5)">
-          <div class="cl-label">Why organic social</div>
-          <p>Over 70% of the world is on social media for an average of 2.5 hours per day. We've never had this level of consumer attention in a single marketing channel. Our strategy captures that attention for Pippi's, and gets you in front of the people who care most about the room you're building. When you do that well, booked chairs follow. You can't grow a salon without people knowing it exists. Organic social is where they're paying attention.</p>
-        </div>
-        <span class="eyebrow reveal"><span class="act">Strategic approach</span>The journey &amp; the goals</span>
-        <h2 class="slide-title reveal">How a stranger becomes a booked chair.</h2>
-        <p class="slide-lede reveal">Nobody books a new colorist from one post. We move the right person through the funnel, each stage with a goal and a signal we track, ending in one clear action. The three goals hold equal weight: awareness earns attention, authority earns trust, proof books the chair.</p>
-        <div class="funnel-stage fs-tofu reveal d1">
-          <div class="fbadge">Relatable</div>
-          <div class="fmain">
-            <div class="fstage-label">Top of funnel &middot; they see themselves</div>
-            <div class="fgoal">OTR knows Pippi's exists before you open.</div>
-            <div class="fsig">Signal we track: views, shares, new followers.</div>
+        <span class="eyebrow reveal"><span class="act">Strategic approach</span>The journey</span>
+        <h2 class="slide-title reveal">How a stranger becomes a booking.</h2>
+        <p class="slide-lede reveal">Nobody books a new colorist from one post. We move the right person along a clear path, and everything points to two simple actions. Organic social is where OTR is already paying attention, so we capture it.</p>
+        <div class="jflow">
+          <div class="jstage reveal d1">
+            <div class="js-stage">They see themselves</div>
+            <div class="js-punch">OTR knows Pippi's exists before you open.</div>
+            <div class="js-sig">Signal: views, shares, new followers.</div>
+          </div>
+          <div class="jsep reveal">&rarr;</div>
+          <div class="jstage reveal d2">
+            <div class="js-stage">They come to trust the craft</div>
+            <div class="js-punch">The colorist Cincinnati trusts, and the room worth watching.</div>
+            <div class="js-sig">Signal: profile visits, retention %, saves.</div>
+          </div>
+          <div class="jsep reveal">&rarr;</div>
+          <div class="jstage reveal d3">
+            <div class="js-stage">They take action</div>
+            <div class="js-punch">Attention becomes a booking.</div>
+            <div class="js-sig">Signal: link taps, conversion rate.</div>
           </div>
         </div>
-        <div class="funnel-stage fs-mofu reveal d2">
-          <div class="fbadge">Authority</div>
-          <div class="fmain">
-            <div class="fstage-label">Middle of funnel &middot; they come to trust the craft</div>
-            <div class="fgoal">Become the colorist Cincinnati trusts.</div>
-            <div class="fsig">Signal we track: profile visits, retention %, saves.</div>
+        <div class="two-actions">
+          <div class="action-card reveal d1">
+            <div class="ac-eyebrow">The client's action</div>
+            <h3>Book an appointment</h3>
+            <p>Every bottom-of-funnel post points the right client here.</p>
+            <span class="ac-chip">Through Aura</span>
+            <span class="ac-note">Aura goes live August 1. The waitlist and DM-to-book carry it until then, so no post ever points to a dead link.</span>
+          </div>
+          <div class="action-card apply reveal d2">
+            <div class="ac-eyebrow">The stylist's action</div>
+            <h3>Fill out an application</h3>
+            <p>The stylist track's action, a conversation about the table.</p>
+            <span class="ac-chip">Apply to the table</span>
+            <span class="ac-note">The application destination is confirmed at build and wired before launch.</span>
           </div>
         </div>
-        <div class="funnel-stage fs-bofu reveal d3">
-          <div class="fbadge">Proof</div>
-          <div class="fmain">
-            <div class="fstage-label">Approaching the ask &middot; they believe it works</div>
-            <div class="fgoal">Turn attention into booked chairs.</div>
-            <div class="fsig">Signal we track: link taps, conversion rate.</div>
-          </div>
-        </div>
-        <div class="callout compact reveal" style="margin-top:var(--sp-3)">
-          <div class="cl-label">The conversion goal</div>
-          <p>Turn attention into booked chairs. Get Pippi's in front of the right people in Cincinnati, walk them through a clear purchasing journey to a booking, and track the interest signals that predict customers. (The stylist track runs the same way to a distinct action: a conversation about the table.)</p>
-        </div>
-        <div class="cta-primary reveal d4">
-          <div class="cl">The action &middot; the funnel's endpoint</div>
-          <h3>Book a chair through Aura.</h3>
-          <p>Every bottom-of-funnel post points here once Aura is live on August 1. Until then, the waitlist and DM-to-book carry it, so no post ever points to a dead link. Stylists have a distinct action: start a conversation about the table. The comment-to-DM keyword and DM automation are the test lane, layered in once the audience and the offer are proven.</p>
-        </div>
-        <div class="mnote reveal">We hold the three goals in balance so Pippi's grows the room, the products, and the space at once, and never reads as chasing bookings. <b>How you'll see it:</b> every monthly report scores against these three goals, by stage. The detailed metric ranges are on the measurement slide.</div>
+        <div class="report-line reveal"><b>You'll get a monthly performance report.</b> The detailed metric ranges are two slides ahead.</div>
       </div>
     </section>
 
-    <!-- 08 THE CONTENT PILLARS (ideation matrix) -->
+    <!-- 08 THE CONTENT PILLARS -->
     <section class="slide" id="s08" data-nav="The content pillars">
       <span class="section-num">08</span>
       <div class="slide-inner">
-        <span class="eyebrow reveal"><span class="act">Strategic approach</span>The content &middot; your pillars</span>
+        <span class="eyebrow reveal"><span class="act">Strategic approach</span>The content pillars</span>
         <h2 class="slide-title reveal">Three pillars. Every stage of the funnel.</h2>
-        <p class="slide-lede reveal">Everything Pippi's posts ladders up to three things you'll be known for. Across each, we test proven formats at every stage, then settle on the winners. Reels drive discovery, carousels drive saves, stories drive conversation.</p>
+        <p class="slide-lede reveal">Everything Pippi's posts ladders up to three things you'll be known for. A color salon behaves like a premium, results-driven, visual niche, so proof and craft win. Across each pillar, we test the two or three best formats at every stage, then settle on the winners.</p>
         <div class="imatrix">
           <div class="ipillar reveal d1">
-            <div class="iph"><div class="ipn">P1 &middot; The Craft, Taught</div><div class="ips">The color work, explained &middot; the educator lens</div></div>
-            <div class="icell tofu"><div class="icl">Discovery &middot; reach &middot; sends &middot; saves</div><div class="ichips"><span class="ichip">Talking Head</span><span class="ichip">B-Roll + Voiceover</span><span class="ichip">Educational / How-To Carousel</span></div></div>
-            <div class="icell mofu"><div class="icl">Authority &middot; saves &middot; profile visits &middot; watch time</div><div class="ichips"><span class="ichip">Myth-Busting Carousel</span><span class="ichip">Whiteboard</span><span class="ichip">Process / Framework Breakdown</span></div></div>
-            <div class="icell bofu"><div class="icl">Proof + ask &middot; DMs &middot; link taps &middot; bookings</div><div class="ichips"><span class="ichip">FAQ / Objection Carousel</span><span class="ichip">Direct Response / Link Story</span></div></div>
+            <div class="iph"><div class="ipn">P1 &middot; The Craft, Taught</div><div class="ips">The color work, explained, the educator lens</div><span class="ipaud">Mainly the client</span></div>
+            <div class="icell tofu"><div class="icl">Reach &middot; discovery</div><div class="ichips"><span class="ichip">Notes App Green Screen</span><span class="ichip">Talking Head</span><span class="ichip">Split Screen</span></div></div>
+            <div class="icell mofu"><div class="icl">Trust &middot; authority</div><div class="ichips"><span class="ichip">Reaction + Commentary</span><span class="ichip">Myth-Busting Carousel</span><span class="ichip">Top Down</span></div></div>
+            <div class="icell bofu"><div class="icl">Convert &middot; the ask</div><div class="ichips"><span class="ichip">FAQ / Objection Carousel</span><span class="ichip">Direct Response / Link Story</span></div></div>
           </div>
           <div class="ipillar reveal d2">
-            <div class="iph"><div class="ipn">P2 &middot; The Room and the People</div><div class="ips">Maddie, the team, and the one shared table</div></div>
-            <div class="icell tofu"><div class="icl">Discovery &middot; reach &middot; sends &middot; saves</div><div class="ichips"><span class="ichip">Talking Head</span><span class="ichip">Photo Dump</span><span class="ichip">Quick-Shot B-Roll</span></div></div>
-            <div class="icell mofu"><div class="icl">Authority &middot; saves &middot; profile visits &middot; watch time</div><div class="ichips"><span class="ichip">Story Carousel</span><span class="ichip">Object Lesson</span><span class="ichip">B-Roll + Voiceover</span></div></div>
-            <div class="icell bofu"><div class="icl">Proof + ask &middot; DMs &middot; link taps &middot; bookings</div><div class="ichips"><span class="ichip">Testimonial / Case Study</span><span class="ichip">Customer Spotlight / UGC</span><span class="ichip">Direct Response / Link Story</span></div></div>
+            <div class="iph"><div class="ipn">P2 &middot; The Room and the People</div><div class="ips">Founder, team, mentor, the shared table</div><span class="ipaud">Both audiences</span></div>
+            <div class="icell tofu"><div class="icl">Reach &middot; discovery</div><div class="ichips"><span class="ichip">Talking Head</span><span class="ichip">Yap</span><span class="ichip">Photo Dump</span><span class="ichip">Quick-Shot B-Roll</span></div></div>
+            <div class="icell mofu"><div class="icl">Trust &middot; authority</div><div class="ichips"><span class="ichip">Story Carousel</span><span class="ichip">B-Roll + Voiceover</span><span class="ichip">BTS / Day-in-the-Life</span></div></div>
+            <div class="icell bofu"><div class="icl">Convert &middot; book or apply</div><div class="ichips"><span class="ichip">Testimonial / Case Study</span><span class="ichip">Direct Response / Link Story</span></div></div>
           </div>
           <div class="ipillar reveal d3">
-            <div class="iph"><div class="ipn">P3 &middot; The Proof in the Chair</div><div class="ips">The transformations, the reveals, the space</div></div>
-            <div class="icell tofu"><div class="icl">Discovery &middot; reach &middot; sends &middot; saves</div><div class="ichips"><span class="ichip">Before/After Reveal</span><span class="ichip">Hyper Cinematic</span></div></div>
-            <div class="icell mofu"><div class="icl">Authority &middot; saves &middot; profile visits &middot; watch time</div><div class="ichips"><span class="ichip">Before/After Transformation</span><span class="ichip">Top Down</span><span class="ichip">Quick-Shot B-Roll</span></div></div>
-            <div class="icell bofu"><div class="icl">Proof + ask &middot; DMs &middot; link taps &middot; bookings</div><div class="ichips"><span class="ichip">Direct Response / Link Story</span><span class="ichip">Case Study / Before-After</span></div></div>
+            <div class="iph"><div class="ipn">P3 &middot; The Proof in the Chair</div><div class="ips">Transformations, the space, the experience</div><span class="ipaud">The client, converting</span></div>
+            <div class="icell tofu"><div class="icl">Reach &middot; discovery</div><div class="ichips"><span class="ichip">Before/After Transformation</span><span class="ichip">Hyper Cinematic</span></div></div>
+            <div class="icell mofu"><div class="icl">Trust &middot; authority</div><div class="ichips"><span class="ichip">Before/After Transformation</span><span class="ichip">Top Down</span><span class="ichip">Quick-Shot B-Roll</span></div></div>
+            <div class="icell bofu"><div class="icl">Convert &middot; the ask</div><div class="ichips"><span class="ichip">Before/After Reveal</span><span class="ichip">Case Study / Before-After</span><span class="ichip">Direct Response / Link Story</span></div></div>
           </div>
         </div>
         <div class="iquote-row">
           <div class="iqcol reveal d1">
             <div class="iqh">P1 &middot; example ideas</div>
-            <ul>
-              <li>"What lived-in color actually means, and why it grows out right."</li>
-              <li>"How to tell if your blonde was done by a specialist."</li>
-              <li>"The one thing to bring to your first color consult."</li>
-            </ul>
+            <ul><li>"What lived-in color actually means, and why it grows out right."</li><li>"How to tell if your blonde was done by a specialist."</li></ul>
           </div>
           <div class="iqcol reveal d2">
             <div class="iqh">P2 &middot; example ideas</div>
-            <ul>
-              <li>"Why we built one shared table instead of a row of mirrors."</li>
-              <li>"The room, three weeks before we open."</li>
-              <li>"What a commission room built on mentorship looks like from the inside."</li>
-            </ul>
+            <ul><li>"Why we built one shared table instead of a row of mirrors."</li><li>"A commission room built on mentorship, from the inside."</li></ul>
           </div>
           <div class="iqcol reveal d3">
             <div class="iqh">P3 &middot; example ideas</div>
-            <ul>
-              <li>"A wall of foils, start to finish."</li>
-              <li>"The first look at the finished space on Vine Street."</li>
-              <li>"What it feels like to sit in this chair."</li>
-            </ul>
+            <ul><li>"A wall of foils, start to finish."</li><li>"The first look at the finished space on Vine Street."</li></ul>
           </div>
         </div>
+        <div class="pill-guard reveal">We skip low-fi and trend-chasing formats. They undercut a premium room.</div>
       </div>
     </section>
 
-    <!-- 09 HOW WE REACH THEM (3-step) -->
+    <!-- 09 HOW WE REACH THE RIGHT AUDIENCE (3-step) -->
     <section class="slide" id="s09" data-nav="How we reach them">
       <span class="section-num">09</span>
       <div class="slide-inner">
-        <span class="eyebrow reveal"><span class="act">Strategic approach</span>Getting found</span>
-        <h2 class="slide-title reveal">Start broad to get found. Narrow to get chosen.</h2>
-        <p class="slide-lede reveal">Reaching the right audience in Cincinnati is a three-step approach. Instagram only: search, location tags, and geo-tags, not Google.</p>
+        <span class="eyebrow reveal"><span class="act">Strategic approach</span>Reaching them</span>
+        <h2 class="slide-title reveal">How we reach the right audience.</h2>
+        <p class="slide-lede reveal">A three-step approach, all on Instagram, search, location, and reach plays, never Google.</p>
         <div class="reach-steps">
           <div class="rstep reveal d1">
             <div class="rs-head"><span class="rs-n">Step 1</span><h3>Test heavily</h3></div>
-            <p>The first couple of months are about <strong>testing, not performance</strong>. We try a wide range of formats and topics to learn what resonates with the exact audience you want, watch the data, and double down on what's working. We are not chasing view counts early. We are learning the audience.</p>
+            <p>The first two months are for testing, not performance. We try a wide range of formats to learn what your exact audience responds to, then double down.</p>
           </div>
           <div class="rstep reveal d2">
-            <div class="rs-head"><span class="rs-n">Step 2</span><h3>Instagram search</h3></div>
-            <p>Instagram is a search engine. It runs on the keywords your client types, not just hashtags. We build a <strong>keyword ladder</strong> so Pippi's surfaces for the right searches from day one, then narrow as the room fills. Keywords live in the name field, bio, highlight covers, caption openers, alt text, and geo-tags.</p>
+            <div class="rs-head"><span class="rs-n">Step 2</span><h3>Instagram SEO</h3></div>
+            <p>Instagram search runs on keywords. We load your name field, bio, and captions with them, broad to get found, narrow to the exact person.</p>
             <div class="tam">
-              <div class="tam-row tam-r1 reveal"><span class="tl-num">Widest</span><span><span class="tk">Broad reach</span><span class="acc-keys"><span class="kw">hair color</span> &middot; <span class="kw">balayage</span> &middot; <span class="kw">blonde specialist</span> &middot; <span class="kw">hair transformation</span></span></span></div>
-              <div class="tam-row tam-r2 reveal"><span class="tl-num">Narrow</span><span><span class="tk">The right category</span><span class="acc-keys"><span class="kw">women's hair salon</span> &middot; <span class="kw">lived-in color</span> &middot; <span class="kw">editorial color</span> &middot; <span class="kw">color correction</span></span></span></div>
-              <div class="tam-row tam-r3 reveal"><span class="tl-num">Metro</span><span><span class="tk">The geography</span><span class="acc-keys"><span class="kw">Cincinnati colorist</span> &middot; <span class="kw">Cincinnati balayage</span> &middot; <span class="kw">Cincinnati blonde</span></span></span></div>
-              <div class="tam-row tam-r4 reveal"><span class="tl-num">Hyper-local</span><span><span class="tk">The exact search</span><span class="acc-keys"><span class="kw">Over-the-Rhine salon</span> &middot; <span class="kw">OTR colorist</span> &middot; <span class="kw">Vine Street salon</span> &middot; <span class="kw">best colorist Cincinnati</span></span></span></div>
+              <div class="tam-row tam-r1 reveal"><span class="tl-num">Widest</span><span><span class="tk">Broad reach</span><span class="acc-keys"><span class="kw">hair color</span> &middot; <span class="kw">balayage</span> &middot; <span class="kw">blonde specialist</span></span></span></div>
+              <div class="tam-row tam-r2 reveal"><span class="tl-num">Narrow</span><span><span class="tk">The right category</span><span class="acc-keys"><span class="kw">lived-in color</span> &middot; <span class="kw">editorial color</span> &middot; <span class="kw">color correction</span></span></span></div>
+              <div class="tam-row tam-r3 reveal"><span class="tl-num">Metro</span><span><span class="tk">The geography</span><span class="acc-keys"><span class="kw">Cincinnati colorist</span> &middot; <span class="kw">Cincinnati balayage</span></span></span></div>
+              <div class="tam-row tam-r4 reveal"><span class="tl-num">Hyper-local</span><span><span class="tk">The exact search</span><span class="acc-keys"><span class="kw">Over-the-Rhine salon</span> &middot; <span class="kw">Vine Street salon</span></span></span></div>
             </div>
-            <div class="reach-axis reveal">Success axis: <b>Month 1: reach</b> &rarr; <b>Month 6+: precision.</b> The audience narrows while the quality rises, mirroring the content funnel.</div>
+            <div class="reach-axis reveal"><b>Month 1: reach</b> &rarr; <b>Month 6+: precision.</b> The audience narrows while the quality rises.</div>
           </div>
           <div class="rstep reveal d3">
-            <div class="rs-head"><span class="rs-n">Step 3</span><h3>Strategic reach tactics</h3></div>
-            <p>To spike a brand-new account into the algorithm, we layer three plays on top of consistent posting.</p>
+            <div class="rs-head"><span class="rs-n">Step 3</span><h3>Strategic reach plays</h3></div>
+            <p>Three plays on top of consistent posting.</p>
             <div class="rstep-tactics">
-              <div class="rtac"><b>Warm local collaborations</b><span>We broker warm collaborations with visible, social-active OTR businesses to co-create a "get the look" piece. The partner shares to their audience, and we anchor every collab on a moment your client also wants. Illustrative, not committed: a Vine Street boutique like Idlewild, a food and coffee spot like Mom n Em for a custom tea blend, and a non-competing beauty studio.</span></div>
-              <div class="rtac"><b>Ignition + community</b><span>Seed from your owned network day one: your following, your book, OTR relationships. About 30 minutes a day of real engagement on the exact accounts your audience follows, plus replying to every comment and DM.</span></div>
-              <div class="rtac"><b>Launch moments</b><span>Capture the friends-and-family party, the grand opening, and any mentor visits with notice. Real moments spike a new account and give the grid its first proof.</span></div>
+              <div class="rtac"><b>Collaborations</b><span>Warm local names we broker: Idlewild, Mom n Em. Their audience meets yours.</span></div>
+              <div class="rtac"><b>Proactive engagement</b><span>About 30 minutes a day on the accounts your audience already follows.</span></div>
+              <div class="rtac"><b>Events and mentor visits</b><span>Captured live, with notice, to spike a new account.</span></div>
             </div>
           </div>
         </div>
@@ -956,58 +908,51 @@
       <span class="section-num">10</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Performance</span>How we measure</span>
-        <h2 class="slide-title reveal">We track the signals that predict customers.</h2>
-        <p class="slide-lede reveal">Followers and views are context, not the scoreboard. Here's what we track at each stage, and how it shows up in your monthly report.</p>
+        <h2 class="slide-title reveal">How we measure, and what good looks like.</h2>
+        <div class="spark-badge reveal">
+          <span class="sb-pill">You're at Spark</span>
+          <p>The first stage. These are <b>Spark-stage targets</b>, set with a semi-aggressive approach given your existing clientele. They rise as you climb to Lift and Rise.</p>
+        </div>
+        <div class="anchor-line reveal">Right audience <b>&middot;</b> clear path <b>&middot;</b> the right signals. When those three work, quality bookings follow. Hard last-mile attribution isn't running yet, so we track signal first, attribution-grade second.</div>
         <div class="metric-grid">
-          <div class="mcol tofu reveal d1"><div class="mhead">Top of funnel</div><ul><li><b>Views</b></li><li><b>Shares</b></li><li><b>New followers</b></li><li class="q">Is the right audience finding us?</li></ul></div>
-          <div class="mcol mofu reveal d2"><div class="mhead">Middle of funnel</div><ul><li><b>Profile visits</b></li><li><b>Retention %</b></li><li><b>Saves</b></li><li class="q">Are they coming to trust the room?</li></ul></div>
-          <div class="mcol bofu reveal d3"><div class="mhead">Bottom of funnel</div><ul><li><b>Link taps</b></li><li><b>Conversion rate</b></li><li class="q">Are they taking action, booking or joining the waitlist?</li></ul></div>
+          <div class="mcol tofu reveal d1"><div class="mhead">Reach</div><ul><li><b>Views</b> &middot; 10,000&ndash;40,000/mo</li><li><b>Shares</b> &middot; 15&ndash;60</li><li><b>New followers</b> &middot; 40&ndash;90</li><li class="q">Is the right audience finding us?</li></ul></div>
+          <div class="mcol mofu reveal d2"><div class="mhead">Trust</div><ul><li><b>Profile visits</b> &middot; 50&ndash;500</li><li><b>Retention</b> &middot; 35&ndash;50%</li><li><b>Saves</b> &middot; 20&ndash;80</li><li class="q">Are they coming to trust the room?</li></ul></div>
+          <div class="mcol bofu reveal d3"><div class="mhead">Convert</div><ul><li><b>Link taps</b> &middot; 5&ndash;40</li><li><b>Click-through</b> &middot; 3&ndash;8%</li><li class="q">Are they taking action, booking or applying?</li></ul></div>
         </div>
-        <div class="mnote reveal"><b>How the score works, at a high level.</b> Every post is scored against the three goals, weighted toward the signals that predict a booking. Saves and click-through carry the most weight.</div>
-        <div class="mnote reveal"><b>Your monthly report.</b> The first week of every month, for the month prior, you get a scored report against these three goals, your top posts, and the focus for next month. Plus a bi-weekly connect and a quarterly re-baseline against your real numbers.</div>
-        <div class="callout anchor reveal" style="margin-top:var(--sp-5)">
-          <div class="cl-label">The conversion lens</div>
-          <p>Right audience. Clear path. The right metrics. Get Pippi's in front of the right audience. Walk them through a clear purchasing journey. Track the metrics aligned to that journey. With those three working, high-quality lead generation follows. Hard last-mile attribution isn't running yet. We track signal first, attribution-grade second.</p>
-        </div>
+        <div class="report-line reveal"><b>Every month you get a report</b> scored against your three goals, plus a bi-weekly check-in.</div>
       </div>
     </section>
 
-    <!-- 11 THE VALUE PICTURE (B2C ROI funnel + projection) -->
+    <!-- 11 THE VALUE PICTURE (monthly value vs fee) -->
     <section class="slide" id="s11" data-nav="The value picture">
       <span class="section-num">11</span>
       <div class="slide-inner">
         <span class="eyebrow reveal"><span class="act">Performance</span>The value picture</span>
-        <h2 class="slide-title reveal">A conservative 12-month picture.</h2>
-        <p class="slide-lede reveal">Here is the whole picture, from the first view to a new regular. This is an illustrative model built on conservative numbers, not a promise. It shows what discipline and a long-term mindset build, at the bottom of every credible range, with zero viral assumption.</p>
-        <div class="roi-funnel">
-          <div class="rfstep w1 reveal d1"><div class="rf-n">01</div><div class="rf-body"><h4>Get in front of the right people</h4><p>Views from people in Cincinnati who care, held through the video.</p></div><div class="rf-metric"><div class="rfv">Reach</div><div class="rfl">the right audience</div></div></div>
-          <div class="rf-conv reveal">&darr; a share of viewers take an action</div>
-          <div class="rfstep w2 reveal d2"><div class="rf-n">02</div><div class="rf-body"><h4>Earn the interaction</h4><p>Saves, shares, profile visits. These signals qualify a viewer as a real prospect.</p></div><div class="rf-metric"><div class="rfv">Engage</div><div class="rfl">qualify the prospect</div></div></div>
-          <div class="rf-conv reveal">&darr; ~0.5% of reach takes a booking-intent action</div>
-          <div class="rfstep w3 reveal d3"><div class="rf-n">03</div><div class="rf-body"><h4>Drive the booking-intent action</h4><p>Link taps to the booking page and the waitlist.</p></div><div class="rf-metric"><div class="rfv">Link taps</div><div class="rfl">booking intent</div></div></div>
-          <div class="rf-conv reveal">&darr; a conservative share become a booked new regular</div>
-          <div class="rfstep w4 reveal d4"><div class="rf-n">04</div><div class="rf-body"><h4>Convert to a new regular</h4><p>A booking becomes a returning client, at your real economics.</p></div><div class="rf-metric"><div class="rfv">$375&ndash;$800</div><div class="rfl">first-year value</div></div></div>
+        <h2 class="slide-title reveal">The value picture.</h2>
+        <p class="slide-lede reveal">The whole path, from the first view to a new regular, modeled on conservative numbers and your own economics. A model, not a promise. It shows what discipline and a long-term mindset build.</p>
+        <div class="vpath">
+          <div class="vstep reveal d1"><b>Reach</b><span>The right audience in Cincinnati.</span></div>
+          <div class="vsep reveal">&rarr;</div>
+          <div class="vstep reveal d2"><b>Interact</b><span>A conservative share save, share, and visit the profile. This qualifies a prospect.</span></div>
+          <div class="vsep reveal">&rarr;</div>
+          <div class="vstep reveal d3"><b>Click</b><span>A conservative share tap the link, join the waitlist, or DM to book.</span></div>
+          <div class="vsep reveal">&rarr;</div>
+          <div class="vstep reveal d4"><b>New regular</b><span>A booking becomes a returning client.</span></div>
         </div>
-        <div class="roi-stats">
-          <div class="rstat reveal d1"><div class="rv"><span data-count="3">0</span></div><div class="rl">new regulars a month, modeled at the conservative floor</div></div>
-          <div class="rstat reveal d2"><div class="rv">$375&ndash;$800</div><div class="rl">first-year value per new regular ($125 to $200 ticket, 3 to 4 visits)</div></div>
-          <div class="rstat reveal d3"><div class="rv">$1,900&ndash;$4,000</div><div class="rl">relationship value per new regular, at 5-plus years</div></div>
-          <div class="rstat flag reveal d4"><div class="rv">A handful</div><div class="rl">retained new regulars to break even on the strategy and first quarter</div></div>
+        <div class="clv-row">
+          <div class="clv-card reveal d1"><div class="cv">$375&ndash;$800</div><div class="cl">what a new regular is worth in the first year ($125 to $200 ticket, 3 to 4 visits)</div></div>
+          <div class="clv-card reveal d2"><div class="cv">$1,900&ndash;$4,000</div><div class="cl">over her 5-plus-year retention</div></div>
         </div>
-        <div class="mnote reveal"><b>Honest expectation.</b> Expect modest view counts in the first two months while the algorithm learns who to show you. We measure those months on audience fit and real conversations, not view counts. You told us clients book within one to two weeks of finding you, so the path from attention to booking is short.</div>
-        <div class="eng-label reveal" style="margin-top:var(--sp-6)">The ramp, as the account matures Spark &rarr; Lift &rarr; Rise</div>
+        <div class="eng-label reveal" style="margin-top:var(--sp-6)">Modeled client value won each month, against your monthly rate</div>
         <div class="roi-chart-wrap reveal d1">
           <canvas id="valueChart"></canvas>
         </div>
-        <p class="roi-chart-cap reveal" style="margin-bottom:var(--sp-4)">Illustrative ramp, new regulars per month. Months 1&ndash;2 are the testing window, no ROI expected yet. The curve climbs as the account matures.</p>
-        <div class="breakeven reveal">
-          <div class="bl">Breakeven</div>
-          <div class="bv">A few new regulars a month who stay pays the engine back.</div>
-          <p>At your retention, the strategy plus the first quarter clears at a small handful of retained clients. The engine is built to produce more, and it compounds as the account matures Spark to Lift to Rise. The stylist track is measured separately, as seats filled, not in this model.</p>
-        </div>
-        <div class="callout reveal" style="margin-top:var(--sp-5)">
-          <div class="cl-label">Read this as a model, not a guarantee</div>
-          <p>The rates here are deliberately conservative, the bottom of every credible range, with no viral assumption. We re-baseline the value model against your real numbers each quarter, because real numbers beat borrowed benchmarks. The full assumptions and sensitivity are in the appendix.</p>
+        <p class="roi-chart-cap reveal">Illustrative model. Each bar is the conservative lifetime value of the new regulars won that month, against your $2,925/month rate. Months 1&ndash;2 are the testing window. Break-even is where modeled value crosses the rate, and it compounds from there as regulars stack.</p>
+        <div class="assump reveal"><b>The assumptions, stated plainly.</b> About 0.5% of reach takes a booking-intent action, and a conservative share of those become booked new regulars. New regulars are valued at the conservative floor of their relationship. Retention is held at her stated 5-plus years, capped at 5. No viral assumption. The full sensitivity is in the appendix.</div>
+        <div class="ramp-row">
+          <div class="ramp-card reveal d1"><div class="rw">First 90 days</div><p>Foundation built, audience proven, first bookings and the launch moment. Months 1 to 2 are measured on audience fit and real conversations, not view counts.</p></div>
+          <div class="ramp-card reveal d2"><div class="rw">6 months</div><p>The account compounding, a steady trickle of new regulars, the waitlist working.</p></div>
+          <div class="ramp-card reveal d3"><div class="rw">12 months</div><p>An established OTR name, the engine paying for itself several times over. The stylist track is measured separately as seats filled.</p></div>
         </div>
       </div>
     </section>
@@ -1019,9 +964,10 @@
       <div class="slide-inner">
         <img class="mono-accent reveal" loading="lazy" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="" aria-hidden="true" style="filter:brightness(0) invert(1)" />
         <h2 class="reveal">Let's make Pippi's the room OTR trusts.</h2>
-        <p class="reveal d1">We've got the system, the audiences, and the plan. Now we build the content that makes it real, starting July 31.</p>
+        <p class="reveal d1">We've got the system, the audiences, and the plan. Now the fun part, the look and the shoot. Over to Allison.</p>
         <img class="sq-div center reveal d2" loading="lazy" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-azure.png" alt="" aria-hidden="true" style="filter:brightness(0) invert(1);opacity:.55" />
-        <div class="signoff reveal d2">Scroll Media &middot; Phase 1 Strategy &middot; Prepared for Pippi's</div>
+        <div class="upnext reveal d2">Up next &middot; Part 2 &middot; The Creative Direction</div>
+        <div class="signoff reveal d2">Scroll Media &middot; Part 1 &middot; Foundation</div>
       </div>
     </section>
 
@@ -1043,7 +989,7 @@
       </div>
     </section>
 
-    <!-- APPENDIX A2 · VALUE-MODEL SENSITIVITY -->
+    <!-- APPENDIX A2 · VALUE SENSITIVITY -->
     <section class="slide appendix-band" id="apx2" data-nav="Appendix &middot; Value range">
       <span class="section-num">A2</span>
       <div class="slide-inner">
@@ -1058,7 +1004,7 @@
             <tr><td><b>High</b></td><td>$200 &times; 4 visits</td><td>$800</td><td>~$4,000</td></tr>
           </tbody>
         </table>
-        <div class="mnote reveal d2" style="margin-top:var(--sp-5)"><b>The assumptions, stated plainly.</b> About 0.5% of reach takes a booking-intent action, and a conservative share of those become a booked new regular. Retention is held at your stated 5-plus years, capped at 5 for the model. No viral assumption. Re-baselined against your real numbers at the first quarterly review, because real numbers beat borrowed benchmarks.</div>
+        <div class="assump reveal d2" style="margin-top:var(--sp-5)"><b>The monthly-value-vs-rate assumptions.</b> About 0.5% of reach takes a booking-intent action, and a conservative share become booked new regulars. Modeled value each month is the new regulars won that month at their conservative lifetime value. Your <b>$2,925/month rate</b> (the founding-client rate for the initial term, reverting to the $3,250 standard on renewal) is the benchmark line, and break-even is shown at the conservative floor. Retention is held at her stated 5-plus years, capped at 5. No viral assumption. Re-baselined on real numbers at the first quarterly review.</div>
       </div>
     </section>
 
@@ -1114,11 +1060,38 @@
     }
     document.addEventListener('keydown',(e)=>{
       if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
+      if(e.target.closest('[role="tab"]'))return;
       if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();goTo(current+1);}
       else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();goTo(current-1);}
       else if(e.key==='Home'){e.preventDefault();goTo(0);}
       else if(e.key==='End'){e.preventDefault();goTo(slides.length-1);}
     });
+
+    /* Persona toggle (slide 06) · keyboard-accessible tablist */
+    (function(){
+      const tabs=[document.getElementById('ptab-client'),document.getElementById('ptab-stylist')];
+      const panels=[document.getElementById('ppanel-client'),document.getElementById('ppanel-stylist')];
+      if(!tabs[0]||!tabs[1])return;
+      function select(i){
+        tabs.forEach((t,j)=>{
+          const on=j===i;
+          t.setAttribute('aria-selected',on?'true':'false');
+          t.tabIndex=on?0:-1;
+          panels[j].hidden=!on;
+        });
+      }
+      tabs.forEach((t,i)=>{
+        t.addEventListener('click',()=>{select(i);t.focus();});
+        t.addEventListener('keydown',(e)=>{
+          if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+            e.preventDefault();
+            const ni=(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length;
+            select(ni);tabs[ni].focus();
+          } else if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(i); }
+        });
+      });
+      select(0);
+    })();
 
     /* Content Engine loop */
     const enodes=Array.from(document.querySelectorAll('#engine .enode'));
@@ -1127,63 +1100,57 @@
       setInterval(()=>{ enodes.forEach(n=>n.classList.remove('lit')); enodes[ei].classList.add('lit'); ei=(ei+1)%enodes.length; },1100);
     }
 
-    /* Count-up stats */
-    const counted=new WeakSet();
-    const cio=new IntersectionObserver((es)=>{
-      es.forEach(e=>{
-        if(e.isIntersecting && !counted.has(e.target)){
-          counted.add(e.target);
-          const el=e.target, target=+el.dataset.count; let n=0;
-          const step=Math.max(1,Math.round(target/30));
-          const t=setInterval(()=>{ n+=step; if(n>=target){n=target;clearInterval(t);} el.textContent=n; },28);
-        }
-      });
-    },{threshold:0.6});
-    document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
-
-    /* Value-model ramp chart */
+    /* Monthly-value-vs-fee chart (slide 11) */
     function drawChart(){
       const ctx=document.getElementById('valueChart'); if(!ctx||!window.Chart)return;
-      // X = months 1..12 (ticks shown only at 3/6/9/12). Months 1-2 = testing window.
-      const months=Array.from({length:12},(_,i)=>i+1);
-      const target=[0,0.3,1,1.6,2.3,3,3.6,4.2,4.7,5.2,5.6,6];
-      const floor =[0,0.2,0.6,1,1.4,1.8,2.1,2.4,2.6,2.8,2.9,3];
+      const FEE=2925; // Pippi's founding-client monthly rate
+      const months=['1','2','3','4','5','6','7','8','9','10','11','12'];
+      // Conservative new regulars won per month, then valued at the floor lifetime (~$1,900).
+      const newReg=[0,0.2,0.6,1,1.4,1.8,2.1,2.4,2.6,2.8,2.9,3];
+      const LIFETIME_FLOOR=1900;
+      const value=newReg.map(r=>Math.round(r*LIFETIME_FLOOR));
+      // Break-even = first month modeled value >= fee.
+      let beIndex=value.findIndex(v=>v>=FEE);
+      const feeLine=months.map(()=>FEE);
+      const barColors=value.map(v=>v>=FEE?'#0C3387':'#b9cdee');
       const testingBand={
         id:'testingBand',
         beforeDatasetsDraw(chart){
           const a=chart.chartArea, x=chart.scales.x; if(!a||!x)return;
+          const c=chart.ctx; c.save();
+          // testing window shade (months 1-2)
           const xEnd=(x.getPixelForValue(1)+x.getPixelForValue(2))/2;
-          const ctx2=chart.ctx;
-          ctx2.save();
-          ctx2.fillStyle='rgba(203,233,255,.45)';
-          ctx2.fillRect(a.left,a.top,xEnd-a.left,a.bottom-a.top);
-          ctx2.fillStyle='#254fb0';
-          ctx2.font='600 10px "Source Sans 3",sans-serif';
-          ctx2.textAlign='left';
-          ctx2.fillText('Testing',a.left+6,a.top+13);
-          ctx2.fillText('no ROI yet',a.left+6,a.top+25);
-          ctx2.restore();
+          c.fillStyle='rgba(203,233,255,.4)';
+          c.fillRect(a.left,a.top,xEnd-a.left,a.bottom-a.top);
+          c.fillStyle='#254fb0';c.font='600 10px "Source Sans 3",sans-serif';c.textAlign='left';
+          c.fillText('Testing',a.left+6,a.top+13);c.fillText('no ROI yet',a.left+6,a.top+25);
+          // break-even marker
+          if(beIndex>=0){
+            const bx=x.getPixelForValue(beIndex);
+            c.strokeStyle='#c8d94a';c.lineWidth=2;c.setLineDash([5,4]);
+            c.beginPath();c.moveTo(bx,a.top);c.lineTo(bx,a.bottom);c.stroke();c.setLineDash([]);
+            c.fillStyle='#0C3387';c.font='800 10px "Source Sans 3",sans-serif';c.textAlign='center';
+            c.fillText('Break-even',bx,a.top-2);
+          }
+          c.restore();
         }
       };
       new Chart(ctx,{
-        type:'line',
+        type:'bar',
         plugins:[testingBand],
         data:{labels:months,
           datasets:[
-            {label:'Target (~1% to a booking)',data:target,
-              borderColor:'#0C3387',backgroundColor:'rgba(12,51,135,.08)',fill:true,tension:.4,
-              pointBackgroundColor:'#0C3387',pointRadius:0,pointHoverRadius:4,borderWidth:2.5},
-            {label:'Conservative floor (~0.5%)',data:floor,
-              borderColor:'#9ecee8',backgroundColor:'transparent',borderDash:[5,4],fill:false,tension:.4,
-              pointBackgroundColor:'#9ecee8',pointRadius:0,pointHoverRadius:4,borderWidth:2}
+            {type:'line',label:'Your rate ($2,925/mo)',data:feeLine,
+              borderColor:'#151516',borderWidth:2,borderDash:[6,4],pointRadius:0,fill:false,tension:0,order:0},
+            {type:'bar',label:'Modeled client value won that month',data:value,
+              backgroundColor:barColors,borderRadius:4,maxBarThickness:34,order:1}
           ]},
         options:{
           plugins:{legend:{display:true,position:'bottom',labels:{color:'#5a6070',font:{size:11},boxWidth:14,padding:12}},
-            tooltip:{callbacks:{title:(t)=>'Month '+t[0].label,label:(c)=>c.dataset.label.split(' (')[0]+': ~'+c.parsed.y+'/mo'}}},
+            tooltip:{callbacks:{title:(t)=>'Month '+t[0].label,label:(c)=>c.dataset.label.split(' (')[0]+': $'+c.parsed.y.toLocaleString()}}},
           scales:{
-            y:{beginAtZero:true,ticks:{color:'#5a6070',stepSize:1},grid:{color:'rgba(12,51,135,.06)'},title:{display:true,text:'New regulars / month',color:'#5a6070',font:{size:12}}},
-            x:{grid:{display:false},title:{display:true,text:'Month',color:'#5a6070',font:{size:12}},
-              ticks:{color:'#5a6070',autoSkip:false,callback:function(v){const m=this.getLabelForValue(v);return [3,6,9,12].includes(m)?m:'';}}}},
+            y:{beginAtZero:true,ticks:{color:'#5a6070',callback:(v)=>'$'+v.toLocaleString()},grid:{color:'rgba(12,51,135,.06)'},title:{display:true,text:'Modeled value / month',color:'#5a6070',font:{size:12}}},
+            x:{grid:{display:false},ticks:{color:'#5a6070'},title:{display:true,text:'Month',color:'#5a6070',font:{size:12}}}},
           responsive:true,maintainAspectRatio:false}
       });
     }

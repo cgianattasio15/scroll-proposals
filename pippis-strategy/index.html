@@ -133,8 +133,6 @@
     .agenda-progress .aseg{height:5px;border-radius:999px;background:var(--rule-faint)}
     .agenda-progress .aseg.on{background:var(--highlighter-dark)}
     .agenda-progress-label{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
-    .agenda-frame{background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4);font-size:13.5px;color:var(--fg-muted);line-height:1.5;margin-bottom:var(--sp-5)}
-    .agenda-frame b{color:var(--azure)}
     .agenda-sublabel{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3);display:flex;align-items:center;gap:10px}
     .agenda-sublabel::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
     .agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3) var(--sp-6)}
@@ -531,7 +529,7 @@
     @media (max-width:560px){
       .slide-title{font-size:var(--fs-2xl)}
       .zone .zsub,.zone ul.zsteps li,.us-card p,.us-card .us-punch,.j-when,.j-what,.eng-note,.eng-seg .es-term,
-      .part-desc,.part-why,.agenda-frame,.agenda-sublabel,.mnote,.enode span,.diff span,.diff .feeds,
+      .part-desc,.part-why,.agenda-sublabel,.mnote,.enode span,.diff span,.diff .feeds,
       .counter .ccol p,.counter .ccol .cch,.persona .ptag,.persona .pwho,.ivp-quote cite,.cblock li,
       .jstage .js-punch,.jstage .js-sig,.action-card p,.action-card .ac-note,.report-line,
       .ichip,.iph .ips,.iqcol li,.icell .icl,.pill-guard,
@@ -643,7 +641,7 @@
       <div class="slide-inner">
         <span class="eyebrow reveal">What we'll cover today</span>
         <h2 class="slide-title reveal">The agenda.</h2>
-        <p class="slide-lede reveal">Today is a 90-minute working session in three parts. Part 1 is the why. Part 2 is the look. Part 3 is the plan.</p>
+        <p class="slide-lede reveal">Today is a 90-minute working session in three parts. Part 1 is <strong>the why</strong>. Part 2 is <strong>the look</strong>. Part 3 is <strong>the plan</strong>.</p>
         <div class="agenda-progress-label reveal">You're in Part 1</div>
         <div class="agenda-progress reveal"><span class="aseg on"></span><span class="aseg"></span><span class="aseg"></span></div>
         <div class="agenda-p1 reveal d1">
@@ -676,7 +674,6 @@
             <p>The first shot list and the launch runway, ready for the July 31 shoot.</p>
           </div>
         </div>
-        <div class="agenda-frame reveal">Part 1 is the why. Part 2 is the look. Part 3 is the plan.</div>
       </div>
     </section>
 

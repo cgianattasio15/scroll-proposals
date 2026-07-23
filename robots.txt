@@ -7,4 +7,5 @@ Disallow: /dr-isha-proposal/
 Disallow: /dwell513-proposal/
 Disallow: /client-onboarding/pippis/
 Disallow: /client-onboarding/pippis/recap/
+Disallow: /client-onboarding/csc/
 Disallow: /pippis-kickoff/

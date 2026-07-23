@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Client Onboarding · Cincinnati Skin Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<!--
+  Scroll Media · Client Onboarding Form — Cincinnati Skin Center (confirm-and-fill, medical-vertical reference build)
+-->
+<style>
+  :root{
+    --shadow:#151516; --azure:#0c3387; --lucid:#cbe9ff;
+    --highlighter:#e2ed7a; --porcelain:#f2f3f4; --ghost:#fafdff;
+    --line:#e4e7ec; --muted:#5b626e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--shadow); background:var(--ghost); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.wordmark{font-family:'Visby CF','Source Sans 3',-apple-system,BlinkMacSystemFont,sans-serif;}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--azure),var(--lucid));transition:width .1s ease-out}
+  header.bar{position:sticky;top:0;z-index:50;background:rgba(250,253,255,.85);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar-inner{max-width:760px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+  .wordmark{font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--azure);text-transform:lowercase}
+  .wordmark span{color:var(--shadow)}
+  .wordmark{display:inline-flex;align-items:center}
+  .wordmark img{display:block;height:28px;width:auto}
+  .bar-tag{font-size:13px;color:var(--muted);font-weight:600}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px 96px}
+  .hero{padding:56px 0 30px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .badge{display:inline-block;background:var(--highlighter);color:var(--shadow);
+    font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:40px;line-height:1.08;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+  .hero p{font-size:17px;color:var(--muted);max-width:600px}
+  .hero p+p{margin-top:12px}
+  section.card{background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:30px 28px;margin-bottom:22px;box-shadow:0 1px 2px rgba(21,21,22,.03)}
+  .sec-num{font-size:13px;font-weight:700;color:var(--azure);letter-spacing:.06em;text-transform:uppercase}
+  section.card h2{font-size:24px;font-weight:700;letter-spacing:-.01em;margin:6px 0 6px}
+  .sec-sub{color:var(--muted);font-size:15px;margin-bottom:22px}
+  .q{margin-bottom:24px}
+  .q:last-child{margin-bottom:0}
+  .q > label.qlabel,.q .qlabel{display:block;font-weight:700;font-size:15.5px;margin-bottom:4px}
+  .q .hint{display:block;color:var(--muted);font-size:13.5px;margin-bottom:10px}
+  .req{color:var(--azure);font-weight:700}
+  input[type=text],input[type=email],input[type=tel],textarea,select{
+    width:100%;font-family:inherit;font-size:15px;color:var(--shadow);
+    background:var(--ghost);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--azure);
+    box-shadow:0 0 0 3px rgba(12,51,135,.12);background:#fff}
+  textarea{min-height:84px;resize:vertical}
+  .prefill{background:#fff;border-style:solid;border-color:var(--lucid)}
+  .options{display:flex;flex-wrap:wrap;gap:9px}
+  .opt{position:relative}
+  .opt input{position:absolute;opacity:0;width:0;height:0}
+  .opt span{display:inline-block;border:1px solid var(--line);background:var(--ghost);
+    border-radius:999px;padding:9px 15px;font-size:14px;cursor:pointer;transition:all .12s;user-select:none}
+  .opt input:checked + span{background:var(--azure);border-color:var(--azure);color:#fff;font-weight:600}
+  .opt input:focus-visible + span{box-shadow:0 0 0 3px rgba(12,51,135,.2)}
+  .opt.multi span::before{content:"+ ";opacity:.5;font-weight:700}
+  .opt.multi input:checked + span::before{content:"✓ ";opacity:1}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .inline-note{font-size:13px;color:var(--muted);margin-top:8px}
+  .divider{height:1px;background:var(--line);margin:22px 0}
+  .callout{background:var(--lucid);border-radius:12px;padding:16px 18px;font-size:14.5px;color:var(--shadow);margin-bottom:22px}
+  .callout b{font-weight:700}
+  .submit-row{margin-top:14px;text-align:center}
+  button.submit{background:var(--azure);color:#fff;font-family:inherit;font-weight:700;font-size:17px;
+    border:none;border-radius:12px;padding:16px 44px;cursor:pointer;transition:transform .12s,background .12s}
+  button.submit:hover{background:#0a2a70;transform:translateY(-1px)}
+  .foot{text-align:center;color:var(--muted);font-size:13px;margin-top:26px}
+  @media(max-width:560px){
+    .hero h1{font-size:31px}
+    section.card{padding:24px 18px}
+    .grid2{grid-template-columns:1fr}
+    .bar-tag{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="bar">
+  <div class="bar-inner">
+    <a href="https://decks.scrollmedia.co/pitch/" class="wordmark"><img src="https://tools.scrollmedia.co/scroll-media-logo-navy.png" alt="Scroll Media" width="60" height="28"></a>
+    <div class="bar-tag">Client Onboarding</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="badge">Cincinnati Skin Center</span>
+    <h1>Let's build your strategy on the right foundation.</h1>
+    <p>Welcome, Dr. Mona. This is the one form that feeds everything we do next: your strategy, your content, and how we position Cincinnati Skin Center on Instagram.</p>
+    <p>We've pre-filled what we already know. Confirm it, fix anything that's off, and fill in the rest. Most answers are quick picks. It takes about 12 minutes, and there are no wrong answers.</p>
+  </div>
+
+  <form id="onboarding" action="https://formspree.io/f/mzdyzeng" method="POST">
+    <!-- Routing / notification wiring (kept out of the client's way) -->
+    <input type="hidden" name="_subject" value="Client Onboarding · Cincinnati Skin Center">
+    <input type="hidden" name="Client Slug" value="csc">
+
+    <!-- SECTION 1 -->
+    <section class="card">
+      <div class="sec-num">Section 1</div>
+      <h2>Confirm the basics</h2>
+      <p class="sec-sub">A quick check that we have your details right.</p>
+
+      <div class="q">
+        <label class="qlabel" for="biz">Business name</label>
+        <input class="prefill" type="text" id="biz" name="Business Name" value="Cincinnati Skin Center">
+      </div>
+      <div class="grid2">
+        <div class="q">
+          <label class="qlabel" for="name">Your name <span class="req">*</span></label>
+          <input class="prefill" type="text" id="name" name="Your Name" value="Dr. Mona Mislankar" required>
+        </div>
+        <div class="q">
+          <label class="qlabel" for="phone">Best phone <span class="req">*</span></label>
+          <input type="tel" id="phone" name="Best Phone" placeholder="(513) 000-0000" required>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="q">
+          <label class="qlabel" for="email">Best email <span class="req">*</span></label>
+          <input class="prefill" type="email" id="email" name="Best Email" value="drmislankar@cincinnatiskincenter.com" required>
+        </div>
+        <div class="q">
+          <label class="qlabel" for="ig">Instagram handle</label>
+          <input class="prefill" type="text" id="ig" name="Instagram Handle" value="@cincinnatiskincenter">
+        </div>
+      </div>
+      <div class="q">
+        <label class="qlabel" for="site">Website</label>
+        <input class="prefill" type="text" id="site" name="Website" value="https://www.cincinnatiskincenter.com/">
+      </div>
+      <div class="q">
+        <label class="qlabel" for="addr">Practice address & neighborhood(s)</label>
+        <span class="hint">Current location(s) you see patients today.</span>
+        <input type="text" id="addr" name="Practice Address" placeholder="Street, neighborhood, Cincinnati">
+      </div>
+      <div class="q">
+        <label class="qlabel" for="newoffice">New office — address & target opening</label>
+        <span class="hint">If the new location is different from above, drop the address and roughly when it opens.</span>
+        <input type="text" id="newoffice" name="New Office" placeholder="Address + target open date">
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="card">
+      <div class="sec-num">Section 2</div>
+      <h2>Your patients</h2>
+      <p class="sec-sub">Who we're really making content for. Pick what fits, add detail where it helps.</p>
+
+      <div class="q">
+        <span class="qlabel">Which side of the practice should we lead with early? <span class="req">*</span></span>
+        <span class="hint">We'll build the whole picture over time. This is just where we point the spotlight first.</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Lead Service Line" value="Cosmetic & aesthetics" required><span>Cosmetic & aesthetics</span></label>
+          <label class="opt"><input type="radio" name="Lead Service Line" value="Medical dermatology"><span>Medical dermatology</span></label>
+          <label class="opt"><input type="radio" name="Lead Service Line" value="Surgical (skin cancer / Mohs)"><span>Surgical (skin cancer / Mohs)</span></label>
+          <label class="opt"><input type="radio" name="Lead Service Line" value="Balanced, lean cosmetic early"><span>Balanced, lean cosmetic early</span></label>
+          <label class="opt"><input type="radio" name="Lead Service Line" value="Balanced, lean medical early"><span>Balanced, lean medical early</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Your ideal cosmetic patient — age</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Cosmetic Patient Age" value="Under 25"><span>Under 25</span></label>
+          <label class="opt multi"><input type="checkbox" name="Cosmetic Patient Age" value="25-34"><span>25-34</span></label>
+          <label class="opt multi"><input type="checkbox" name="Cosmetic Patient Age" value="35-44"><span>35-44</span></label>
+          <label class="opt multi"><input type="checkbox" name="Cosmetic Patient Age" value="45-54"><span>45-54</span></label>
+          <label class="opt multi"><input type="checkbox" name="Cosmetic Patient Age" value="55-64"><span>55-64</span></label>
+          <label class="opt multi"><input type="checkbox" name="Cosmetic Patient Age" value="65+"><span>65+</span></label>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="q">
+          <label class="qlabel" for="cosmwho">Your ideal cosmetic patient — who they are</label>
+          <textarea id="cosmwho" name="Ideal Cosmetic Patient" placeholder="A few words on who they are and what they care about"></textarea>
+        </div>
+        <div class="q">
+          <label class="qlabel" for="medwho">Your ideal medical patient — who they are</label>
+          <textarea id="medwho" name="Ideal Medical Patient" placeholder="A few words on who they are and what they come in for"></textarea>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel" for="want">What does your ideal patient really want?</label>
+        <span class="hint">The dream outcome, in their words.</span>
+        <textarea id="want" name="Patient Wants" placeholder="e.g. to look like themselves, just refreshed and confident"></textarea>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Patient trigger moments — what makes someone finally book?</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="A milestone or event coming up"><span>A milestone or event coming up</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="Aging concerns (lines, volume, skin quality)"><span>Aging concerns</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="Acne or a persistent skin issue"><span>Acne or a persistent skin issue</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="A skin-cancer concern or screening"><span>A skin-cancer concern or screening</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="Frustration with results elsewhere"><span>Frustration with results elsewhere</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="A friend's results they loved"><span>A friend's results they loved</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="New to the area"><span>New to the area</span></label>
+          <label class="opt multi"><input type="checkbox" name="Trigger Moments" value="Finally investing in themselves"><span>Finally investing in themselves</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Patient hesitations — what makes them wait?</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Hesitations" value="Cost / is it worth it"><span>Cost / is it worth it</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hesitations" value="Nervous about procedures or needles"><span>Nervous about procedures or needles</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hesitations" value="Unsure what they actually need"><span>Unsure what they need</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hesitations" value="Downtime"><span>Downtime</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hesitations" value="Trust and credentials"><span>Trust and credentials</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hesitations" value="Will it look natural"><span>Will it look natural</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">FAQs we should answer in content</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="Are you accepting new patients"><span>Accepting new patients?</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="Do you take my insurance"><span>Do you take my insurance?</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="What does a treatment cost"><span>What does it cost?</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="Is there downtime"><span>Is there downtime?</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="Does it hurt"><span>Does it hurt?</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="How do I know what I need"><span>How do I know what I need?</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient FAQs" value="Will results look natural"><span>Will results look natural?</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="card">
+      <div class="sec-num">Section 3</div>
+      <h2>Positioning & voice</h2>
+      <p class="sec-sub">What makes Cincinnati Skin Center different, and how it should sound.</p>
+
+      <div class="q">
+        <label class="qlabel" for="exists">Cincinnati Skin Center exists to…</label>
+        <span class="hint">One line. The real reason, not the brochure version.</span>
+        <input type="text" id="exists" name="Practice Exists To" placeholder="e.g. give Cincinnati expert skin care without the ego">
+      </div>
+
+      <div class="q">
+        <span class="qlabel">What's uniquely yours? <span class="hint" style="display:inline">(pick all that ring true)</span></span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Uniquely Yours" value="Board-certified MD expertise"><span>Board-certified MD expertise</span></label>
+          <label class="opt multi"><input type="checkbox" name="Uniquely Yours" value="Medical + cosmetic + surgical under one roof"><span>Medical + cosmetic + surgical under one roof</span></label>
+          <label class="opt multi"><input type="checkbox" name="Uniquely Yours" value="Specific technology or devices"><span>Specific technology or devices</span></label>
+          <label class="opt multi"><input type="checkbox" name="Uniquely Yours" value="A distinctive patient experience"><span>A distinctive patient experience</span></label>
+          <label class="opt multi"><input type="checkbox" name="Uniquely Yours" value="The new office"><span>The new office</span></label>
+          <label class="opt multi"><input type="checkbox" name="Uniquely Yours" value="Deep roots in Cincinnati"><span>Deep roots in Cincinnati</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel" for="central">Most central differentiator</label>
+        <span class="hint">If a patient remembered one thing about you, what should it be?</span>
+        <input type="text" id="central" name="Central Differentiator" placeholder="The one thing">
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="q">
+        <span class="qlabel">Which line sounds more like you? — Pair A</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Tone Pair A" value="Great skin is built, not bought."><span>A. Great skin is built, not bought.</span></label>
+          <label class="opt"><input type="radio" name="Tone Pair A" value="Confidence starts with your skin."><span>B. Confidence starts with your skin.</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <span class="qlabel">Pair B</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Tone Pair B" value="Medical-grade expertise, a spa-level experience."><span>A. Medical-grade expertise, a spa-level experience.</span></label>
+          <label class="opt"><input type="radio" name="Tone Pair B" value="Serious about skin. Warm about people."><span>B. Serious about skin. Warm about people.</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <span class="qlabel">Pair C</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Tone Pair C" value="Cincinnati's skin experts."><span>A. Cincinnati's skin experts.</span></label>
+          <label class="opt"><input type="radio" name="Tone Pair C" value="The skin care Cincinnati didn't know it was missing."><span>B. The skin care Cincinnati didn't know it was missing.</span></label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="q">
+        <span class="qlabel">Voice descriptors <span class="hint" style="display:inline">(pick 3-4)</span></span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Voice Descriptors" value="Expert and authoritative"><span>Expert and authoritative</span></label>
+          <label class="opt multi"><input type="checkbox" name="Voice Descriptors" value="Warm and reassuring"><span>Warm and reassuring</span></label>
+          <label class="opt multi"><input type="checkbox" name="Voice Descriptors" value="Elevated and editorial"><span>Elevated and editorial</span></label>
+          <label class="opt multi"><input type="checkbox" name="Voice Descriptors" value="Approachable and real"><span>Approachable and real</span></label>
+          <label class="opt multi"><input type="checkbox" name="Voice Descriptors" value="Clean and clinical"><span>Clean and clinical</span></label>
+          <label class="opt multi"><input type="checkbox" name="Voice Descriptors" value="Confident and direct"><span>Confident and direct</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Formatting & punctuation preferences</span>
+        <div class="grid2">
+          <div>
+            <span class="hint">Exclamation points</span>
+            <div class="options">
+              <label class="opt"><input type="radio" name="Punctuation - Exclamation" value="Freely"><span>Freely</span></label>
+              <label class="opt"><input type="radio" name="Punctuation - Exclamation" value="Sparingly"><span>Sparingly</span></label>
+              <label class="opt"><input type="radio" name="Punctuation - Exclamation" value="Never"><span>Never</span></label>
+            </div>
+          </div>
+          <div>
+            <span class="hint">Emoji</span>
+            <div class="options">
+              <label class="opt"><input type="radio" name="Punctuation - Emoji" value="Freely"><span>Freely</span></label>
+              <label class="opt"><input type="radio" name="Punctuation - Emoji" value="Rarely"><span>Rarely</span></label>
+              <label class="opt"><input type="radio" name="Punctuation - Emoji" value="Never"><span>Never</span></label>
+            </div>
+          </div>
+          <div>
+            <span class="hint">All caps for emphasis</span>
+            <div class="options">
+              <label class="opt"><input type="radio" name="Punctuation - All Caps" value="Yes, sparingly"><span>Yes, sparingly</span></label>
+              <label class="opt"><input type="radio" name="Punctuation - All Caps" value="No"><span>No</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Visual mood <span class="hint" style="display:inline">(pick what fits)</span></span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Visual Mood" value="Clean and clinical"><span>Clean and clinical</span></label>
+          <label class="opt multi"><input type="checkbox" name="Visual Mood" value="Warm and luxurious"><span>Warm and luxurious</span></label>
+          <label class="opt multi"><input type="checkbox" name="Visual Mood" value="Minimal and modern"><span>Minimal and modern</span></label>
+          <label class="opt multi"><input type="checkbox" name="Visual Mood" value="Bright and fresh"><span>Bright and fresh</span></label>
+          <label class="opt multi"><input type="checkbox" name="Visual Mood" value="Editorial and moody"><span>Editorial and moody</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel" for="look">The look you're building toward</label>
+        <span class="hint">Optional. Accounts you admire, a vibe, a reference — anything.</span>
+        <textarea id="look" name="The Look" placeholder="Links or a few words"></textarea>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="card">
+      <div class="sec-num">Section 4</div>
+      <h2>Services & the numbers</h2>
+      <p class="sec-sub">What you're known for and a few figures that help us model the strategy. Rough estimates are fine.</p>
+
+      <div class="q">
+        <span class="qlabel">Hero services — what you're known for</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Injectables (neuromodulators)"><span>Injectables (tox)</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Fillers"><span>Fillers</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Laser & energy devices"><span>Laser & energy devices</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Skin cancer & Mohs surgery"><span>Skin cancer & Mohs surgery</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Medical dermatology (acne, rosacea, eczema)"><span>Medical dermatology</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Facials & aesthetician services"><span>Facials & aesthetician services</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Body treatments"><span>Body treatments</span></label>
+          <label class="opt multi"><input type="checkbox" name="Hero Services" value="Medical-grade skincare / retail"><span>Medical-grade skincare / retail</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Which service lines drive the business? <span class="hint" style="display:inline">(rank your top 3)</span></span>
+        <div class="grid2">
+          <input type="text" name="Revenue Rank 1" placeholder="1st — biggest revenue driver">
+          <input type="text" name="Revenue Rank 2" placeholder="2nd">
+        </div>
+        <div style="margin-top:12px"><input type="text" name="Revenue Rank 3" placeholder="3rd"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="q">
+        <span class="qlabel">Average patient spend per visit</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Average Ticket" value="Under $150"><span>Under $150</span></label>
+          <label class="opt"><input type="radio" name="Average Ticket" value="$150-300"><span>$150-300</span></label>
+          <label class="opt"><input type="radio" name="Average Ticket" value="$300-600"><span>$300-600</span></label>
+          <label class="opt"><input type="radio" name="Average Ticket" value="$600-1000"><span>$600-1000</span></label>
+          <label class="opt"><input type="radio" name="Average Ticket" value="$1000+"><span>$1000+</span></label>
+        </div>
+        <input style="margin-top:10px" type="text" name="Average Ticket (exact)" placeholder="Exact, if you know it (optional)">
+      </div>
+
+      <div class="q">
+        <span class="qlabel">How often does a typical patient come in per year?</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Visits Per Year" value="1"><span>1</span></label>
+          <label class="opt"><input type="radio" name="Visits Per Year" value="2"><span>2</span></label>
+          <label class="opt"><input type="radio" name="Visits Per Year" value="3-4"><span>3-4</span></label>
+          <label class="opt"><input type="radio" name="Visits Per Year" value="5+"><span>5+</span></label>
+        </div>
+        <input style="margin-top:10px" type="text" name="Visits Per Year (exact)" placeholder="Exact, if you know it (optional)">
+      </div>
+
+      <div class="q">
+        <span class="qlabel">How long does a patient typically stay with you?</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Retention Years" value="Under 1 year"><span>Under 1 year</span></label>
+          <label class="opt"><input type="radio" name="Retention Years" value="1-2 years"><span>1-2 years</span></label>
+          <label class="opt"><input type="radio" name="Retention Years" value="3-4 years"><span>3-4 years</span></label>
+          <label class="opt"><input type="radio" name="Retention Years" value="5+ years"><span>5+ years</span></label>
+        </div>
+        <input style="margin-top:10px" type="text" name="Retention Years (exact)" placeholder="Exact, if you know it (optional)">
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="q">
+        <span class="qlabel">Where should a patient go to book or inquire?</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Booking Destination" value="Online booking"><span>Online booking</span></label>
+          <label class="opt"><input type="radio" name="Booking Destination" value="Call the office"><span>Call the office</span></label>
+          <label class="opt"><input type="radio" name="Booking Destination" value="Contact / inquiry form"><span>Contact form</span></label>
+          <label class="opt"><input type="radio" name="Booking Destination" value="Referral / insurance-based"><span>Referral / insurance-based</span></label>
+        </div>
+        <input style="margin-top:10px" type="text" name="Booking Platform" placeholder="Which platform or system? (e.g. the EMR, a booking link)">
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Typical decision timeline — seeing you on Instagram to booking</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Decision Timeline" value="Same day / impulse"><span>Same day</span></label>
+          <label class="opt"><input type="radio" name="Decision Timeline" value="1-2 weeks"><span>1-2 weeks</span></label>
+          <label class="opt"><input type="radio" name="Decision Timeline" value="1-2 months"><span>1-2 months</span></label>
+          <label class="opt"><input type="radio" name="Decision Timeline" value="Longer / considered"><span>Longer / considered</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="card">
+      <div class="sec-num">Section 5</div>
+      <h2>The new office & partners</h2>
+      <p class="sec-sub">The launch is a real story we can build content around. Tell us how you see it.</p>
+
+      <div class="q">
+        <label class="qlabel" for="officestory">The new office story</label>
+        <span class="hint">What's opening, roughly when, and what makes it worth talking about.</span>
+        <textarea id="officestory" name="New Office Story" placeholder="The space, the vision, why it matters"></textarea>
+      </div>
+      <div class="q">
+        <label class="qlabel" for="milestones">Milestone dates we can build around</label>
+        <span class="hint">Construction moments, install days, staff move-in, soft open, grand opening — anything with a date.</span>
+        <textarea id="milestones" name="Milestone Dates" placeholder="Even rough dates help"></textarea>
+      </div>
+      <div class="q">
+        <label class="qlabel" for="event830">The Aug 30 launch event (confirmed)</label>
+        <span class="hint">We've got the basics: Aug 30, 10-1 at Marmalade Lily, a ticketed pilates + skincare event with local-vendor collabs (Courtney Plute helping plan). Anything to add, or specific vendors and moments you want us to be sure to capture and tag?</span>
+        <textarea id="event830" name="Aug 30 Event" placeholder="Anything to add, must-capture moments, vendors to tag"></textarea>
+      </div>
+      <div class="q">
+        <label class="qlabel" for="otherdates">Other key dates</label>
+        <textarea id="otherdates" name="Other Key Dates" placeholder="Seasonal pushes, promos, community events"></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="q">
+        <span class="qlabel">Local relationships & collaborations <span class="hint" style="display:inline">(what kinds of partners?)</span></span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Relationship Categories" value="Med spas / wellness (non-competing)"><span>Med spas / wellness</span></label>
+          <label class="opt multi"><input type="checkbox" name="Relationship Categories" value="Beauty & aesthetics brands"><span>Beauty & aesthetics brands</span></label>
+          <label class="opt multi"><input type="checkbox" name="Relationship Categories" value="Local boutiques & lifestyle"><span>Local boutiques & lifestyle</span></label>
+          <label class="opt multi"><input type="checkbox" name="Relationship Categories" value="Referring physicians"><span>Referring physicians</span></label>
+          <label class="opt multi"><input type="checkbox" name="Relationship Categories" value="Event or venue partners"><span>Event or venue partners</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <label class="qlabel" for="relnames">Names, if any come to mind</label>
+        <textarea id="relnames" name="Relationship Names" placeholder="People or brands you already have a relationship with"></textarea>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="card">
+      <div class="sec-num">Section 6</div>
+      <h2>Filming & patient consent</h2>
+      <p class="sec-sub">The practical side of shoots, plus the part that matters most in a medical setting: consent.</p>
+
+      <div class="q">
+        <span class="qlabel">You (Dr. Mona) on camera <span class="req">*</span></span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Founder On Camera" value="Happy on camera regularly" required><span>Happy on camera regularly</span></label>
+          <label class="opt"><input type="radio" name="Founder On Camera" value="Selectively, for key pieces"><span>Selectively, for key pieces</span></label>
+          <label class="opt"><input type="radio" name="Founder On Camera" value="Prefer to feature the team and patients"><span>Prefer team & patients</span></label>
+          <label class="opt"><input type="radio" name="Founder On Camera" value="Behind the scenes only"><span>Behind the scenes only</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel" for="whoelse">Who else can be on camera?</label>
+        <span class="hint">Aestheticians, PAs/NPs, front desk, the team.</span>
+        <input type="text" id="whoelse" name="Others On Camera" placeholder="Names or roles">
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Best shoot days</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Shoot Days" value="Monday"><span>Mon</span></label>
+          <label class="opt multi"><input type="checkbox" name="Shoot Days" value="Tuesday"><span>Tue</span></label>
+          <label class="opt multi"><input type="checkbox" name="Shoot Days" value="Wednesday"><span>Wed</span></label>
+          <label class="opt multi"><input type="checkbox" name="Shoot Days" value="Thursday"><span>Thu</span></label>
+          <label class="opt multi"><input type="checkbox" name="Shoot Days" value="Friday"><span>Fri</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <span class="qlabel">Best time of day</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Shoot Time" value="Morning"><span>Morning</span></label>
+          <label class="opt multi"><input type="checkbox" name="Shoot Time" value="Midday"><span>Midday</span></label>
+          <label class="opt multi"><input type="checkbox" name="Shoot Time" value="Afternoon"><span>Afternoon</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel" for="signature">Signature spaces & elements to feature</label>
+        <span class="hint">The parts of the practice worth showing off. The new office, a specific treatment room, a device or technology, the team, a waiting experience.</span>
+        <textarea id="signature" name="Signature Elements" placeholder="What we should make a point to capture"></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="callout">
+        <b>On patient content.</b> Nothing with a patient goes out without written consent, and we never show anything that isn't cleared. This just tells us what's generally on the table so we can plan. We'll set the exact consent and release process together at kickoff.
+      </div>
+
+      <div class="q">
+        <span class="qlabel">What patient content is generally okay?</span>
+        <div class="options">
+          <label class="opt multi"><input type="checkbox" name="Patient Content Consent" value="In-treatment / process content"><span>In-treatment / process content</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient Content Consent" value="Patient faces shown (with written consent)"><span>Patient faces (with written consent)</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient Content Consent" value="Before / after (with written consent + release)"><span>Before / after (with release)</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient Content Consent" value="Some patients private / case by case"><span>Case by case</span></label>
+          <label class="opt multi"><input type="checkbox" name="Patient Content Consent" value="Confirm a consent process at kickoff"><span>Let's confirm at kickoff</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <label class="qlabel" for="privacy">Privacy & compliance notes</label>
+        <span class="hint">Anything off-limits, HIPAA considerations, spaces or situations we should never film.</span>
+        <textarea id="privacy" name="Privacy Notes" placeholder="What we should be careful about"></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="q">
+        <span class="qlabel">AI & content boundaries</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="AI Boundaries" value="Fine with AI-assisted content"><span>Fine with AI-assisted</span></label>
+          <label class="opt"><input type="radio" name="AI Boundaries" value="Prefer minimal AI"><span>Prefer minimal AI</span></label>
+          <label class="opt"><input type="radio" name="AI Boundaries" value="Not sure, discuss at kickoff"><span>Not sure, discuss at kickoff</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="qlabel">Who approves content?</span>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Content Approver" value="Just me"><span>Just me</span></label>
+          <label class="opt"><input type="radio" name="Content Approver" value="Me + a team member"><span>Me + a team member</span></label>
+          <label class="opt"><input type="radio" name="Content Approver" value="A designated team member"><span>A designated team member</span></label>
+        </div>
+        <input style="margin-top:10px" type="text" name="Content Approver Name" placeholder="Name(s) + best way to reach them">
+      </div>
+
+      <div class="q">
+        <label class="qlabel" for="anything">Anything else we should know?</label>
+        <textarea id="anything" name="Anything Else" placeholder="Anything at all. The more context, the better the work."></textarea>
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <button type="submit" class="submit">Submit onboarding form</button>
+      <div class="foot">Your answers go straight to the Scroll Media team. We'll follow up to lock your kickoff.</div>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Scroll progress bar
+  var bar = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (scrolled * 100) + '%';
+  }, {passive:true});
+</script>
+</body>
+</html>

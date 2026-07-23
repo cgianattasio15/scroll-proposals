@@ -16,6 +16,7 @@
        SCROLL MEDIA DESIGN SYSTEM · Launch Party engagement "Wrapped"
        Media-forward (v3): real Launch Party content as hero media,
        Scroll system as the frame. Full-screen tap-through slides.
+       14-slide comprehensive expansion (content_brief_v3.md).
        Treatment A = full-bleed media + light Ghost anchor.
        Treatment B = light Ghost canvas + hard-cornered media window.
        Light-anchored client-facing deck extension of brand_system §6.1.
@@ -45,7 +46,7 @@
     a{color:inherit;text-decoration:none}
 
     /* ===== Segmented progress bar ===== */
-    #progress{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;gap:5px;
+    #progress{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;gap:4px;
       padding:12px calc(env(safe-area-inset-left) + 16px) 0 calc(env(safe-area-inset-right) + 16px)}
     .pseg{flex:1;height:4px;background:rgba(12,51,135,.14);border:1px solid var(--rule-faint);
       cursor:pointer;position:relative;overflow:hidden}
@@ -71,8 +72,15 @@
     .bleed{position:absolute;inset:0;z-index:0;overflow:hidden}
     .bleed-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .bleed-veil{position:absolute;inset:0}
-    .veil-cover{background:radial-gradient(125% 95% at 50% 48%,rgba(250,253,255,.94) 0%,rgba(250,253,255,.82) 42%,rgba(250,253,255,.6) 100%)}
-    .veil-thanks{background:linear-gradient(to bottom,rgba(250,253,255,.3) 0%,rgba(250,253,255,.68) 44%,rgba(250,253,255,.96) 78%)}
+    /* Veil tuned against the real footage: light enough that the media reads,
+       opaque enough that Azure copy holds contrast over it. The cover veil is
+       heaviest at the center, which also washes out the IG play-button that the
+       floor (Metricool) reel covers carry until Riley's clean covers swap in. */
+    .veil-cover{background:radial-gradient(125% 95% at 50% 48%,rgba(250,253,255,.90) 0%,rgba(250,253,255,.74) 44%,rgba(250,253,255,.40) 100%)}
+    /* Lighter than the original up top so the shop reads, then firmly opaque from
+       ~52% down: this reel carries a burned-in caption that would otherwise
+       collide with the sign-off copy. */
+    .veil-thanks{background:linear-gradient(to bottom,rgba(250,253,255,.14) 0%,rgba(250,253,255,.38) 28%,rgba(250,253,255,.93) 50%,rgba(250,253,255,.995) 62%,rgba(250,253,255,1) 100%)}
 
     /* reveal-on-advance */
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
@@ -95,6 +103,7 @@
     .wfoot{font-size:14px;color:var(--fg-subtle);letter-spacing:.02em;margin-top:var(--sp-2)}
     .big-milestone{font-size:clamp(44px,12vw,104px);font-weight:900;letter-spacing:-.03em;color:var(--azure);line-height:1}
     .lede{font-size:clamp(18px,2.6vw,24px);font-weight:600;color:var(--azure);line-height:1.28;max-width:24ch}
+    .kicker{font-size:clamp(16px,2.4vw,20px);font-weight:700;color:var(--azure);letter-spacing:-.01em}
 
     .taphint{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;
       letter-spacing:.08em;text-transform:uppercase;color:var(--azure);
@@ -109,7 +118,7 @@
     .mw-wide{max-width:420px;aspect-ratio:16/10}
     .mw-portrait{max-width:220px;aspect-ratio:4/5}
 
-    /* ===== Score line (slide 3) ===== */
+    /* ===== Score line (climb) ===== */
     .scorepanel{width:100%;max-width:640px;background:var(--lucid-soft);border:1px solid var(--rule);padding:26px 22px 18px}
     .score-svg{width:100%;height:auto;display:block;overflow:visible}
     .score-path{fill:none;stroke:var(--azure);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
@@ -120,7 +129,7 @@
     .peak-pill{display:inline-block;font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--azure);
       background:var(--highlighter);padding:4px 12px;margin-top:var(--sp-3)}
 
-    /* ===== Stat cells (slide 4) ===== */
+    /* ===== Stat cells (by the numbers) ===== */
     .cellgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;width:100%;max-width:640px;border:1px solid var(--rule)}
     .cell{padding:20px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
     .cellgrid .cell:nth-child(2n){border-right:none}
@@ -129,7 +138,7 @@
     .cell-label{font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--fg)}
     .cell-ctx{font-size:13px;color:var(--fg-muted);line-height:1.4}
 
-    /* ===== Signature stat bars (slide 5) ===== */
+    /* ===== Signature stat bars (clicked) ===== */
     .stat-row{display:flex;gap:22px;align-items:center;width:100%;max-width:660px;text-align:left}
     .stat-row .media-window{flex:0 0 190px}
     .barwrap{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
@@ -143,20 +152,46 @@
     .bar-fill.bench{background:var(--azure-400)}
     .multiple{font-size:clamp(22px,4vw,30px);font-weight:900;color:var(--azure);letter-spacing:-.01em}
 
-    /* ===== Posts (slide 6) · type-led metric cards ===== */
-    .postgrid{display:flex;flex-direction:column;gap:0;width:100%;max-width:660px;border:1px solid var(--rule);text-align:left}
-    .postcell{padding:16px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:16px}
+    /* ===== Posts (top posts) · type-led metric cards ===== */
+    .postgrid{display:flex;flex-direction:column;gap:0;width:100%;max-width:660px;margin-inline:auto;border:1px solid var(--rule);text-align:left}
+    .postcell{padding:14px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:14px}
     .postgrid .postcell:last-child{border-bottom:none}
-    .post-metric{flex:0 0 92px;display:flex;flex-direction:column;gap:2px}
-    .post-num{font-size:clamp(24px,5vw,30px);font-weight:900;color:var(--azure);line-height:1;letter-spacing:-.02em}
+    .post-metric{flex:0 0 104px;display:flex;flex-direction:column;gap:2px}
+    .post-num{font-size:clamp(23px,4.6vw,29px);font-weight:900;color:var(--azure);line-height:1;letter-spacing:-.02em}
     .post-label{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-muted)}
     .post-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
     .post-hook{font-size:15px;font-weight:600;color:var(--azure);font-style:italic;line-height:1.35}
-    .post-tag{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-600);border:1px solid var(--rule);padding:2px 8px;width:fit-content}
-    .post-thumb{flex:0 0 54px;height:54px;border:1px solid var(--rule);overflow:hidden}
-    .post-thumb img{width:100%;height:100%;object-fit:cover}
+    /* Micro-label, not a box: a bordered tag wraps into an ugly rectangle at
+       mobile widths, and the hairline system prefers rules over boxes. */
+    .post-tag{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-600);line-height:1.35}
+    /* portrait crop: these are real 9:16 reel covers */
+    .post-thumb{flex:0 0 58px;height:78px;border:1px solid var(--rule);overflow:hidden;background:var(--bg-alt)}
+    .post-thumb img,.post-thumb video{width:100%;height:100%;object-fit:cover}
 
-    /* ===== Moments timeline (slide 7) ===== */
+    /* ===== Biggest month ===== */
+    .monthwrap{display:flex;flex-direction:column;align-items:center;gap:var(--sp-4);width:100%;max-width:560px}
+    .month-num{font-size:clamp(46px,13vw,96px);font-weight:900;letter-spacing:-.03em;color:var(--azure);line-height:1}
+    .month-num .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em}
+    .month-cap{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-muted)}
+
+    /* ===== Education engine ===== */
+    .edugrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;width:100%;max-width:520px;border:1px solid var(--rule)}
+    .educell{border-right:1px solid var(--rule);aspect-ratio:9/14;overflow:hidden;background:var(--bg-alt)}
+    .edugrid .educell:last-child{border-right:none}
+    .educell img,.educell video{width:100%;height:100%;object-fit:cover}
+    .savesbig{font-size:clamp(38px,10vw,72px);font-weight:900;letter-spacing:-.02em;color:var(--azure);line-height:1}
+    .savesbig .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .06em}
+    .saveslabel{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-muted)}
+
+    /* ===== Brit, in your own words · quote wall ===== */
+    .britwall{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;max-width:700px}
+    .britcard{display:flex;flex-direction:column;gap:10px;text-align:left}
+    .bc-media{border:1px solid var(--rule);aspect-ratio:4/5;overflow:hidden;background:var(--bg-alt)}
+    .bc-media img{width:100%;height:100%;object-fit:cover}
+    .bc-quote{font-size:15px;font-style:italic;font-weight:600;color:var(--azure);line-height:1.38}
+    .bc-when{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-subtle)}
+
+    /* ===== Moments timeline ===== */
     .tlwrap{width:100%;max-width:600px;text-align:left}
     .tl{position:relative;padding-left:26px}
     .tl::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--azure)}
@@ -166,12 +201,14 @@
     .tlnode.flag::before{background:var(--highlighter)}
     .tl-thumb{flex:0 0 52px;height:52px;border:1px solid var(--rule);overflow:hidden}
     .tl-thumb img{width:100%;height:100%;object-fit:cover}
+    .tl-badge{flex:0 0 52px;height:52px;border:1px solid var(--rule);background:var(--highlighter);display:flex;align-items:center;justify-content:center}
+    .tl-badge svg{width:26px;height:26px;stroke:var(--azure)}
     .tl-txt{flex:1;min-width:0}
     .tl-when{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600)}
     .tl-what{font-size:15px;font-weight:600;color:var(--fg);line-height:1.4;margin-top:2px}
     .tl-what em{font-style:italic;color:var(--azure)}
 
-    /* ===== What we built (slide 8) ===== */
+    /* ===== What we built ===== */
     .builtgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;width:100%;max-width:680px;border:1px solid var(--rule);text-align:left}
     .builtcell{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column}
     .builtgrid .builtcell:nth-child(2n){border-right:none}
@@ -184,13 +221,13 @@
     .built-v span{color:var(--fg-muted);font-weight:400}
     .built-close{font-size:clamp(18px,2.6vw,22px);font-weight:700;color:var(--azure)}
 
-    /* ===== Thank you (slide 9) ===== */
+    /* ===== Thank you ===== */
     .sigrow{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:var(--sp-2)}
     .sig{border:1px solid var(--rule);background:rgba(250,253,255,.7);padding:10px 16px;min-width:120px}
     .sig-name{font-size:15px;font-weight:800;color:var(--azure)}
     .sig-role{font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--fg-muted);margin-top:2px}
 
-    /* ===== One ask (slide 10) ===== */
+    /* ===== One ask ===== */
     .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--azure);color:var(--white);font-size:15px;font-weight:700;padding:15px 28px;min-height:48px;border:none;cursor:pointer;transition:background .2s var(--ease)}
     .cta-btn:hover{background:var(--azure-900)}
     .cta-sub{font-size:13px;color:var(--fg-subtle)}
@@ -240,17 +277,34 @@
       .built-thumb{height:84px}
       .built-body{padding:11px 14px}
       .winner{gap:12px}
+      /* Brit quote wall stacks into hairline rows so the quotes stay readable. */
+      .britwall{grid-template-columns:1fr;gap:14px;max-width:440px}
+      .britcard{flex-direction:row;align-items:center;gap:14px}
+      .bc-media{flex:0 0 84px;aspect-ratio:4/5}
     }
     @media(max-width:400px){
       .cellgrid{grid-template-columns:1fr}
       .cellgrid .cell{border-right:none}
       .cellgrid .cell:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
       .cellgrid .cell:last-child{border-bottom:none}
-      .postcell{gap:12px;padding:13px 12px}
-      .post-metric{flex-basis:78px}
-      .post-thumb{flex-basis:44px;height:44px}
+      .postcell{gap:10px;padding:12px 11px}
+      .post-metric{flex-basis:84px}
+      .post-num{font-size:22px}
+      .post-thumb{flex-basis:50px;height:67px}
+      .post-hook{font-size:14px}
+      .post-tag{font-size:11px}
     }
     @media(min-width:768px){ .wslide{padding-left:88px;padding-right:88px} }
+
+    /* Short viewports (iPhone SE and similar): tighten the dense grids so the
+       source footnote stays above the fold rather than needing a scroll. */
+    @media(max-height:700px){
+      .winner{gap:10px}
+      .cell{padding:12px 14px;gap:4px}
+      .cellgrid .cell .cell-ctx{font-size:12px}
+      .built-thumb{height:60px}
+      .built-body{padding:10px 13px;gap:3px}
+    }
 
     /* ===== Reduced motion ===== */
     @media(prefers-reduced-motion:reduce){
@@ -293,8 +347,8 @@
     <!-- Slide 1 · Cover · Treatment A (cover-hero video) -->
     <section class="wslide" data-i="0">
       <div class="bleed">
-        <video class="bleed-media" data-cover-video muted loop playsinline preload="auto" poster="assets/pt2-vanity.jpg" aria-hidden="true">
-          <source src="assets/pt2-vanity.mp4" type="video/mp4" />
+        <video class="bleed-media" data-loop-video muted loop playsinline preload="auto" poster="assets/cover-hero.jpg" aria-hidden="true">
+          <source src="assets/cover-hero.mp4" type="video/mp4" />
         </video>
         <div class="bleed-veil veil-cover"></div>
       </div>
@@ -303,7 +357,7 @@
         <span class="eyebrow reveal d1">Launch Party &times; Scroll Media</span>
         <h1 class="whead reveal d2">Two years, <span class="hl">wrapped</span>.</h1>
         <p class="wsub reveal d3">Everything we built together, in one scroll.</p>
-        <p class="wmeta reveal d4">August 2024 to August 2026</p>
+        <p class="wmeta reveal d4">August 2024 to July 2026</p>
         <span class="taphint reveal d5">Tap to begin <span class="arrow">&rarr;</span></span>
       </div>
     </section>
@@ -314,13 +368,30 @@
         <span class="eyebrow reveal">Where it started</span>
         <p class="big-milestone reveal d1">August 2024</p>
         <div class="media-window mw-wide reveal d2"><img src="assets/brit-store.jpg" alt="Launch Party, Over-the-Rhine" loading="lazy" /></div>
-        <p class="lede reveal d3">Launch Party opened in Over-the-Rhine, and we started telling that story on Instagram.</p>
-        <p class="wcaption reveal d4">Two years later, here is what we built together.</p>
+        <p class="lede reveal d3">It started with more than a storefront. It started with you letting us tell the story.</p>
+        <p class="wcaption reveal d4">Two years later, here is everything we built together.</p>
       </div>
     </section>
 
-    <!-- Slide 3 · The climb · Treatment B (data, no media) -->
+    <!-- Slide 3 · Two years, by the numbers · Treatment B (numbers-still + count-ups) -->
     <section class="wslide" data-i="2">
+      <div class="winner">
+        <span class="eyebrow reveal">Two years</span>
+        <h2 class="whead whead-sm reveal d1">By the numbers.</h2>
+        <div class="media-window mw-wide reveal d2" style="max-width:360px;aspect-ratio:16/7"><img src="assets/post-pov.jpg" alt="Launch Party content" loading="lazy" /></div>
+        <div class="cellgrid reveal d3">
+          <div class="cell"><span class="cell-num" data-count="845511">0</span><span class="cell-label">Views</span><span class="cell-ctx">reels and posts, two years</span></div>
+          <div class="cell"><span class="cell-num" data-count="305">0</span><span class="cell-label">Posts published</span><span class="cell-ctx">plus 1,131 stories</span></div>
+          <div class="cell"><span class="cell-num" data-count="24022">0</span><span class="cell-label">Likes</span><span class="cell-ctx">community love</span></div>
+          <div class="cell"><span class="cell-num" data-count="2993">0</span><span class="cell-label">Comments</span><span class="cell-ctx">conversation</span></div>
+        </div>
+        <p class="kicker reveal d4">Two years of showing up.</p>
+        <p class="wfoot reveal d5">Source: Metricool, organic. Full engagement Aug 2024 &ndash; Jul 2026. Stories captured Sep 2025 &ndash; Jul 2026.</p>
+      </div>
+    </section>
+
+    <!-- Slide 4 · The climb · Treatment B (score line, no media) -->
+    <section class="wslide" data-i="3">
       <div class="winner">
         <span class="eyebrow reveal">The climb</span>
         <h2 class="whead whead-sm reveal d1">The account got stronger.</h2>
@@ -332,74 +403,123 @@
           </svg>
           <div style="text-align:center"><span class="peak-pill reveal d3">Peaked at 8.8 / 10 in May</span></div>
         </div>
-        <p class="wcaption reveal d4">Monthly performance score across 2026. Every month above the line where good work lives.</p>
+        <p class="wcaption reveal d4">Your content quality climbed all year, peaking at 8.8 out of 10 in May.</p>
+        <p class="wfoot reveal d5">Scroll monthly performance scores.</p>
       </div>
     </section>
 
-    <!-- Slide 4 · By the numbers · Treatment B (numbers-still + count-ups) -->
-    <section class="wslide" data-i="3">
-      <div class="winner">
-        <span class="eyebrow reveal">By the numbers</span>
-        <h2 class="whead whead-sm reveal d1">A few of the highs.</h2>
-        <div class="media-window mw-wide reveal d2" style="max-width:360px;aspect-ratio:16/7"><img src="assets/brit-store.jpg" alt="Launch Party storefront" loading="lazy" /></div>
-        <div class="cellgrid reveal d3">
-          <div class="cell"><span class="cell-num" data-count="59545">0</span><span class="cell-label">Views</span><span class="cell-ctx">in a single month (April)</span></div>
-          <div class="cell"><span class="cell-num" data-count="54" data-suffix="%">0</span><span class="cell-label">Retention</span><span class="cell-ctx">up from 32%</span></div>
-          <div class="cell"><span class="cell-num" data-count="110">0</span><span class="cell-label">Saves</span><span class="cell-ctx">May, up 53%</span></div>
-          <div class="cell"><span class="cell-num" data-count="174">0</span><span class="cell-label">Comments</span><span class="cell-ctx">April</span></div>
-        </div>
-        <p class="wfoot reveal d4">Verified across the 2026 reporting window.</p>
-      </div>
-    </section>
-
-    <!-- Slide 5 · The signature stat · Treatment B (trophy-still + bars) -->
+    <!-- Slide 5 · People didn't just watch. They clicked. · Treatment B (trophy-still + bars) -->
     <section class="wslide" data-i="4">
       <div class="winner">
         <span class="eyebrow reveal">The signature stat</span>
         <h2 class="whead whead-sm reveal d1">People didn't just watch. They clicked.</h2>
         <div class="stat-row reveal d2">
-          <div class="media-window mw-portrait"><img src="assets/brit-portrait.jpg" alt="Brit, Launch Party" loading="lazy" /></div>
+          <div class="media-window mw-portrait"><img src="assets/brit-thankful.jpg" alt="Brit, Launch Party" loading="lazy" /></div>
           <div class="barwrap">
             <div class="barrow">
               <div class="bar-top"><span class="bar-name">Launch Party</span><span class="bar-val"><span class="hl">15.2%</span></span></div>
               <div class="bar-track"><div class="bar-fill" data-w="95"></div></div>
             </div>
             <div class="barrow">
-              <div class="bar-top"><span class="bar-name">Typical benchmark</span><span class="bar-val" style="color:var(--fg-muted)">6%</span></div>
+              <div class="bar-top"><span class="bar-name">Industry benchmark</span><span class="bar-val" style="color:var(--fg-muted)">6%</span></div>
               <div class="bar-track"><div class="bar-fill bench" data-w="37.5"></div></div>
             </div>
-            <p class="multiple">2.5x the benchmark.</p>
+            <p class="multiple">2.5&times; the industry benchmark.</p>
           </div>
         </div>
-        <p class="wcaption reveal d3">Click-through ran 10.1% to 15.2% to 13.2% across spring, above the bar every month.</p>
+        <p class="wcaption reveal d3">Click-through ran 10.1% &rarr; 15.2% &rarr; 13.2% across spring, above the bar every month.</p>
+        <p class="wfoot reveal d4">Scroll monthly reports, click-through rate.</p>
       </div>
     </section>
 
-    <!-- Slide 6 · The posts that broke through · Treatment B cards -->
+    <!-- Slide 6 · The posts that broke through · Treatment B cards (4) -->
     <section class="wslide" data-i="5">
       <div class="winner">
         <span class="eyebrow reveal">The posts that broke through</span>
-        <h2 class="whead whead-sm reveal d1">Three that hit.</h2>
+        <h2 class="whead whead-sm reveal d1">Four that hit.</h2>
         <div class="postgrid">
           <div class="postcell reveal d2">
-            <div class="post-metric"><span class="post-num">3,732</span><span class="post-label">Reach</span></div>
-            <div class="post-body"><p class="post-hook">&ldquo;POV: Discovering Launch Party for the first time&rdquo;</p><span class="post-tag">Spring 2026</span></div>
+            <div class="post-thumb"><img src="assets/post-giveaway.jpg" alt="Holiday giveaway reel cover" loading="lazy" /></div>
+            <div class="post-metric"><span class="post-num">21,590</span><span class="post-label">Views</span></div>
+            <div class="post-body"><p class="post-hook">The holiday giveaway</p><span class="post-tag">Biggest post &middot; giveaway &middot; Dec 2025</span></div>
           </div>
           <div class="postcell reveal d3">
-            <div class="post-metric"><span class="post-num">42</span><span class="post-label">Comments</span></div>
-            <div class="post-body"><p class="post-hook">&ldquo;We're a girl's girl&rdquo;</p><span class="post-tag">Spring 2026</span></div>
+            <div class="post-thumb"><img src="assets/post-winter-skin.jpg" alt="Winter skin reel cover" loading="lazy" /></div>
+            <div class="post-metric"><span class="post-num">16,288</span><span class="post-label">Views</span></div>
+            <div class="post-body"><p class="post-hook">&ldquo;Winter skin feeling as dry as tree bark?&rdquo;</p><span class="post-tag">The education engine &middot; Jan 2026</span></div>
           </div>
           <div class="postcell reveal d4">
-            <div class="post-metric"><span class="post-num">30</span><span class="post-label">Saves</span></div>
-            <div class="post-body"><p class="post-hook">&ldquo;French pin, two ways&rdquo;</p><span class="post-tag">Spring 2026</span></div>
-            <div class="post-thumb"><img src="assets/brit-store.jpg" alt="Launch Party french pin content" loading="lazy" /></div>
+            <div class="post-thumb"><img src="assets/post-pov.jpg" alt="POV Discovering Launch Party reel cover" loading="lazy" /></div>
+            <div class="post-metric"><span class="post-num">3,732</span><span class="post-label">Reach</span></div>
+            <div class="post-body"><p class="post-hook">&ldquo;POV: Discovering Launch Party&rdquo;</p><span class="post-tag">The signature format &middot; Apr 2026</span></div>
+          </div>
+          <div class="postcell reveal d5">
+            <div class="post-thumb">
+              <video data-loop-video muted loop playsinline preload="none" poster="assets/post-1.jpg" aria-hidden="true">
+                <source src="assets/post-1.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="post-metric"><span class="post-num">36</span><span class="post-label">Saves</span></div>
+            <div class="post-body"><p class="post-hook">&ldquo;French pin, two ways&rdquo;</p><span class="post-tag">The save-driver &middot; May 2026</span></div>
           </div>
         </div>
+        <p class="wfoot reveal d6">All-time, full engagement. Source: Metricool, organic.</p>
       </div>
     </section>
 
-    <!-- Slide 7 · Moments · Treatment A/chips (moment-1..5 stills) -->
+    <!-- Slide 7 · Your biggest month · Treatment B (month-still, views only) -->
     <section class="wslide" data-i="6">
+      <div class="winner">
+        <span class="eyebrow reveal">Your biggest month</span>
+        <p class="big-milestone reveal d1">December 2025</p>
+        <div class="media-window mw-portrait reveal d2" style="max-width:150px"><img src="assets/post-giveaway.jpg" alt="Holiday giveaway reel cover" loading="lazy" /></div>
+        <div class="monthwrap reveal d3">
+          <p class="month-num"><span class="hl" data-count="56932">0</span></p>
+          <p class="month-cap">Views in a single month</p>
+        </div>
+        <p class="wsub reveal d4">Your holiday season with the community, led by the giveaway.</p>
+        <p class="wfoot reveal d5">Metricool, organic. Views, Dec 2025.</p>
+      </div>
+    </section>
+
+    <!-- Slide 8 · The education engine · Treatment B (covers + saves anchor) -->
+    <section class="wslide" data-i="7">
+      <div class="winner">
+        <span class="eyebrow reveal">The education engine</span>
+        <h2 class="whead whead-sm reveal d1">You didn't just post pretty. You taught.</h2>
+        <div class="edugrid reveal d2">
+          <div class="educell"><img src="assets/post-winter-skin.jpg" alt="Winter skin reel cover" loading="lazy" /></div>
+          <div class="educell"><img src="assets/edu-postpartum.jpg" alt="Postpartum hair loss reel cover" loading="lazy" /></div>
+          <div class="educell"><img src="assets/edu-rosacea.jpg" alt="Rosacea routine reel cover" loading="lazy" /></div>
+          <div class="educell"><img src="assets/post-1.jpg" alt="French pin reel cover" loading="lazy" /></div>
+        </div>
+        <div class="monthwrap reveal d3" style="gap:6px">
+          <p class="savesbig"><span class="hl" data-count="1187">0</span></p>
+          <p class="saveslabel">Saves</p>
+        </div>
+        <p class="wsub reveal d4">The reels people saved to come back to.</p>
+        <p class="wfoot reveal d5">Metricool, organic. Saves, Aug 2024 &ndash; Jul 2026.</p>
+      </div>
+    </section>
+
+    <!-- Slide 9 · A girl's girl · Treatment A (girlsgirl-cover) -->
+    <section class="wslide" data-i="8">
+      <div class="bleed">
+        <img class="bleed-media" src="assets/girlsgirl.jpg" alt="Launch Party, a girl's girl" loading="lazy" />
+        <div class="bleed-veil veil-cover"></div>
+      </div>
+      <div class="winner">
+        <span class="cover-mark reveal"></span>
+        <span class="eyebrow reveal d1">A girl's girl</span>
+        <h2 class="whead whead-sm reveal d2">We're a <span class="hl">girl's girl</span>. Whatever you need, we've got you.</h2>
+        <p class="wsub reveal d3">43 comments, and a room full of people who felt it.</p>
+        <p class="wcaption reveal d4">Your most-shared community moments lived here.</p>
+        <p class="wfoot reveal d5">Metricool, organic. Mar 2026.</p>
+      </div>
+    </section>
+
+    <!-- Slide 10 · Moments · Treatment A/chips (six locked moments) -->
+    <section class="wslide" data-i="9">
       <div class="winner">
         <span class="eyebrow reveal">The moments</span>
         <h2 class="whead whead-sm reveal d1">Two years of them.</h2>
@@ -410,30 +530,59 @@
               <div class="tl-txt"><div class="tl-when">August 2024</div><div class="tl-what">The partnership begins.</div></div>
             </div>
             <div class="tlnode">
-              <div class="tl-thumb"><img src="assets/big-beauty.jpg" alt="Launch Party" loading="lazy" /></div>
-              <div class="tl-txt"><div class="tl-when">Recognition</div><div class="tl-what">CityBeat names Launch Party <em>Best Indie Makeup Boutique</em>, and we put it to work in the content.</div></div>
+              <div class="tl-thumb"><img src="assets/moment-turning2.jpg" alt="Launch Party turns two" loading="lazy" /></div>
+              <div class="tl-txt"><div class="tl-when">September 2024</div><div class="tl-what">Launch Party turns <em>two</em>.</div></div>
+            </div>
+            <div class="tlnode">
+              <div class="tl-thumb"><img src="assets/moment-3years.jpg" alt="Three years of Launch Party" loading="lazy" /></div>
+              <div class="tl-txt"><div class="tl-when">September 2025</div><div class="tl-what"><em>Three years</em> of Launch Party.</div></div>
+            </div>
+            <div class="tlnode flag">
+              <div class="tl-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></div>
+              <div class="tl-txt"><div class="tl-when">Recognition</div><div class="tl-what">Featured in CityBeat's Best of Cincinnati: <em>Best Indie Makeup Boutique</em>.</div></div>
+            </div>
+            <div class="tlnode">
+              <div class="tl-thumb"><img src="assets/moment-undertones.jpg" alt="Undertones, Launch Party on film" loading="lazy" /></div>
+              <div class="tl-txt"><div class="tl-when">April 2026</div><div class="tl-what">Undertones: Launch Party on film.</div></div>
             </div>
             <div class="tlnode">
               <div class="tl-thumb"><img src="assets/cincy-weekend.jpg" alt="Over-the-Rhine" loading="lazy" /></div>
-              <div class="tl-txt"><div class="tl-when">In the neighborhood</div><div class="tl-what">Launch parties and Final Fridays on 13th Street.</div></div>
-            </div>
-            <div class="tlnode flag">
-              <div class="tl-thumb"><img src="assets/brit-portrait.jpg" alt="Brit, Launch Party" loading="lazy" /></div>
-              <div class="tl-txt"><div class="tl-when">Spring 2026</div><div class="tl-what">The <em>&ldquo;girl's girl&rdquo;</em> breakout.</div></div>
-            </div>
-            <div class="tlnode">
-              <div class="tl-thumb"><img src="assets/beach-basket.jpg" alt="Seasonal campaign" loading="lazy" /></div>
-              <div class="tl-txt"><div class="tl-when">Seasonal</div><div class="tl-what">Campaigns from the spring refresh to Mother's Day to summer glow.</div></div>
+              <div class="tl-txt"><div class="tl-when">In the neighborhood</div><div class="tl-what">Final Fridays on 13th Street.</div></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 8 · What we built · Treatment B cells (built-* stills) -->
-    <section class="wslide" data-i="7">
+    <!-- Slide 11 · Brit, in your own words · Treatment A (brit-1..3 covers) -->
+    <section class="wslide" data-i="10">
       <div class="winner">
-        <span class="eyebrow reveal">What we built</span>
+        <span class="eyebrow reveal">In your own words</span>
+        <h2 class="whead whead-sm reveal d1">The community didn't just follow a shop. They followed you.</h2>
+        <div class="britwall reveal d2">
+          <div class="britcard">
+            <div class="bc-media"><img src="assets/brit-thankful.jpg" alt="Brit, Launch Party" loading="lazy" /></div>
+            <p class="bc-quote">&ldquo;I'm so thankful for you.&rdquo;</p>
+            <p class="bc-when">November 2024</p>
+          </div>
+          <div class="britcard">
+            <div class="bc-media"><img src="assets/brit-fun.jpg" alt="Brit, Launch Party" loading="lazy" /></div>
+            <p class="bc-quote">&ldquo;In this space, we've had so much fun.&rdquo;</p>
+            <p class="bc-when">September 2025</p>
+          </div>
+          <div class="britcard">
+            <div class="bc-media"><img src="assets/brit-dreamed.jpg" alt="Brit, Launch Party" loading="lazy" /></div>
+            <p class="bc-quote">&ldquo;When I first started Launch Party I never would have dreamed&hellip;&rdquo;</p>
+            <p class="bc-when">May 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 12 · What we built together · Treatment B cells -->
+    <section class="wslide" data-i="11">
+      <div class="winner">
+        <span class="eyebrow reveal">What we built together</span>
         <h2 class="whead whead-sm reveal d1">More than posts.</h2>
         <div class="builtgrid reveal d2">
           <div class="builtcell">
@@ -445,7 +594,7 @@
             <div class="built-body"><span class="built-k">Four pillars</span><span class="built-v">Discovery, education, <span>OTR community, relatable beauty.</span></span></div>
           </div>
           <div class="builtcell">
-            <div class="built-thumb"><img src="assets/big-beauty.jpg" alt="POV Discovery format" loading="lazy" /></div>
+            <div class="built-thumb"><img src="assets/post-pov.jpg" alt="POV Discovery format" loading="lazy" /></div>
             <div class="built-body"><span class="built-k">A signature format</span><span class="built-v">The POV Discovery reel.</span></div>
           </div>
           <div class="builtcell">
@@ -457,10 +606,12 @@
       </div>
     </section>
 
-    <!-- Slide 9 · Thank you · Treatment A (thanks-hero) -->
-    <section class="wslide" data-i="8">
+    <!-- Slide 13 · Thank you · Treatment A (thanks-hero) -->
+    <section class="wslide" data-i="12">
       <div class="bleed">
-        <img class="bleed-media" src="assets/brit-portrait.jpg" alt="Brit at Launch Party" style="object-position:center 22%" />
+        <video class="bleed-media" data-loop-video muted loop playsinline preload="metadata" poster="assets/thanks-hero.jpg" aria-hidden="true">
+          <source src="assets/thanks-hero.mp4" type="video/mp4" />
+        </video>
         <div class="bleed-veil veil-thanks"></div>
       </div>
       <div class="winner">
@@ -472,12 +623,11 @@
           <div class="sig"><div class="sig-name">Riley</div><div class="sig-role">Account manager</div></div>
           <div class="sig"><div class="sig-name">Chase</div><div class="sig-role">Founder</div></div>
         </div>
-        <p class="wmeta reveal d4" style="color:var(--azure-600);margin-top:6px">5,562 strong, and counting.</p>
       </div>
     </section>
 
-    <!-- Slide 10 · One ask · Treatment B (minimal) -->
-    <section class="wslide" data-i="9">
+    <!-- Slide 14 · One ask · Treatment B (minimal) -->
+    <section class="wslide" data-i="13">
       <div class="winner">
         <span class="eyebrow reveal">One small ask</span>
         <h2 class="whead whead-sm reveal d1">If these two years meant something, we'd love a few words.</h2>
@@ -510,13 +660,17 @@
       setTimeout(function(){ gate.style.display='none'; },300);
       if(!deckStarted){ deckStarted=true; show(0); }
     }
-    if(sessionStorage.getItem(KEY)==='1'){
+    /* Was already unlocked this session? Note the actual show(0) happens at the
+       end of this IIFE, because the deck state it depends on is not built yet. */
+    var preUnlocked=false;
+    try{ preUnlocked = sessionStorage.getItem(KEY)==='1'; }catch(e){}
+    if(preUnlocked){
       document.body.classList.remove('sm-locked'); gate.style.display='none';
-      deckStarted=true; show(0);
+      deckStarted=true;
     } else { try{ inp.focus(); }catch(e){} }
     function unlock(){
       var v=inp.value.trim().toLowerCase().replace(/\s+/g,'');
-      if(v===PASS){ sessionStorage.setItem(KEY,'1'); openDeck(); }
+      if(v===PASS){ try{ sessionStorage.setItem(KEY,'1'); }catch(e){} openDeck(); }
       else{ err.classList.add('visible'); inp.style.borderColor='#dc2626';
         setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000); }
     }
@@ -535,7 +689,7 @@
     var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     var prog=document.getElementById('progress');
     var prevBtn=document.getElementById('wprev'), nextBtn=document.getElementById('wnext');
-    var coverVideo=document.querySelector('[data-cover-video]');
+    var loopVideos=Array.prototype.slice.call(document.querySelectorAll('[data-loop-video]'));
 
     for(var i=0;i<N;i++){
       var s=document.createElement('div'); s.className='pseg'; s.dataset.i=i;
@@ -544,7 +698,7 @@
     }
     var segs=Array.prototype.slice.call(prog.children);
 
-    /* score line geometry (slide 3) */
+    /* score line geometry (climb slide) */
     var scores=[7.5,7.7,7.5,8.5,8.8,7.9], months=['Jan','Feb','Mar','Apr','May','Jun'];
     (function buildScore(){
       var xs=[60,156,252,348,444,540], minS=7.0,maxS=9.0, top=30, bottom=180;
@@ -577,29 +731,44 @@
     function countUp(el){
       var target=parseFloat(el.dataset.count), suffix=el.dataset.suffix||'';
       if(reduce){ el.textContent=fmt(target)+suffix; return; }
-      var dur=900, t0=null;
-      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
-        el.textContent=fmt(target*e)+suffix; if(p<1)requestAnimationFrame(step); else el.textContent=fmt(target)+suffix; }
+      var dur=900, t0=null, done=false;
+      function finish(){ if(done)return; done=true; el.textContent=fmt(target)+suffix; }
+      function step(ts){ if(done)return; if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+        el.textContent=fmt(target*e)+suffix; if(p<1)requestAnimationFrame(step); else finish(); }
       requestAnimationFrame(step);
+      /* rAF is paused while the tab is hidden, which would strand a partial
+         (wrong) number on screen. This guarantees the real figure lands. */
+      setTimeout(finish,dur+150);
     }
     function activateAnims(slide){
       slide.querySelectorAll('[data-count]').forEach(function(el){ el.textContent=el.dataset.suffix?'0'+el.dataset.suffix:'0'; countUp(el); });
       slide.querySelectorAll('.bar-fill').forEach(function(b){ b.style.width='0'; void b.getBoundingClientRect(); requestAnimationFrame(function(){ b.style.width=b.dataset.w+'%'; }); });
-      if(slide.getAttribute('data-i')==='2') drawScore(true);
+      if(slide.querySelector('.score-svg')) drawScore(true);
     }
+    /* prefers-reduced-motion: never call play(), so the poster still is what shows. */
     function handleVideo(idx){
-      if(!coverVideo) return;
-      if(idx===0 && !reduce){ var p=coverVideo.play(); if(p&&p.catch)p.catch(function(){}); }
-      else { try{ coverVideo.pause(); }catch(e){} }
+      var active=slides[idx];
+      loopVideos.forEach(function(v){
+        var inActive=!!(active&&active.contains(v));
+        if(inActive&&!reduce){
+          if(v.getAttribute('preload')==='none'){ v.setAttribute('preload','auto'); try{ v.load(); }catch(e){} }
+          var p=v.play(); if(p&&p.catch)p.catch(function(){});
+        } else {
+          try{ v.pause(); if(!inActive) v.currentTime=0; }catch(e){}
+        }
+      });
     }
     function show(idx){
       if(idx<0)idx=0; if(idx>N-1)idx=N-1; if(idx===cur)return; cur=idx;
       slides.forEach(function(s,i){ s.classList.toggle('active',i===idx); });
       segs.forEach(function(s,i){ s.classList.toggle('done',i<idx); s.classList.toggle('current',i===idx); });
       prevBtn.disabled=idx===0; nextBtn.disabled=idx===N-1;
-      if(idx!==2){ drawScore(false); }
-      handleVideo(idx);
       var active=slides[idx];
+      /* Reset the score line whenever we are not on the slide that owns it, so
+         it re-draws cleanly on every return. Keyed off the element, not an index,
+         so it survives slide reordering. */
+      if(!active.querySelector('.score-svg')){ drawScore(false); }
+      handleVideo(idx);
       setTimeout(function(){ activateAnims(active); },40);
       window.scrollTo(0,0); active.scrollTop=0;
     }
@@ -624,6 +793,9 @@
       var t=e.changedTouches[0], dx=t.clientX-tsx, dy=t.clientY-tsy;
       if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.4){ if(dx<0) next(); else prev(); }
     },{passive:true});
+
+    /* Deck state is built by this point, so it is safe to render slide 1. */
+    if(preUnlocked){ show(0); }
   })();
   </script>
 </body>

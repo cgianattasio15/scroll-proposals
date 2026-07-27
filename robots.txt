@@ -9,3 +9,4 @@ Disallow: /client-onboarding/pippis/
 Disallow: /client-onboarding/pippis/recap/
 Disallow: /client-onboarding/csc/
 Disallow: /pippis-kickoff/
+Disallow: /launch-party-wrapped/

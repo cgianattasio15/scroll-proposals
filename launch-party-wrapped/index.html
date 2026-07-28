@@ -56,12 +56,12 @@
     #deck{position:relative;width:100%;height:100vh;height:100dvh}
     .wslide{
       position:absolute;inset:0;display:none;flex-direction:column;
-      justify-content:center;align-items:center;text-align:center;
+      justify-content:safe center;align-items:center;text-align:center;
       padding:60px calc(env(safe-area-inset-left) + 26px) calc(env(safe-area-inset-bottom) + 72px) calc(env(safe-area-inset-right) + 26px);
       overflow-y:auto;
     }
     .wslide.active{display:flex}
-    .winner{width:100%;max-width:720px;margin:auto;display:flex;flex-direction:column;
+    .winner{width:100%;max-width:720px;margin:0 auto;display:flex;flex-direction:column;
       align-items:center;gap:var(--sp-4);position:relative;z-index:2}
 
     /* ===== Treatment A · full-bleed media + Ghost anchor ===== */
@@ -181,7 +181,7 @@
 
     /* ===== Review panel ===== */
     .review{width:100%;max-width:600px;background:var(--lucid-soft);border:1px solid var(--rule);
-      padding:22px 22px 18px;text-align:left;display:flex;flex-direction:column;gap:10px}
+      padding:18px 20px 16px;text-align:left;display:flex;flex-direction:column;gap:8px}
     .review-stars{font-size:14px;letter-spacing:.18em;color:var(--azure)}
     .review-q{font-size:clamp(17px,2.5vw,21px);font-weight:700;color:var(--azure);line-height:1.34}
     .review-attr{font-size:13px;font-weight:600;color:var(--fg-muted)}
@@ -191,8 +191,8 @@
     .builtcell{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column}
     .builtgrid .builtcell:nth-child(2n){border-right:none}
     .builtgrid .builtcell:nth-last-child(-n+2){border-bottom:none}
-    .built-thumb{height:84px;border-bottom:1px solid var(--rule);overflow:hidden;background:var(--bg-alt)}
-    .built-thumb img,.built-thumb video{width:100%;height:100%;object-fit:cover}
+    .built-thumb{height:128px;border-bottom:1px solid var(--rule);overflow:hidden;background:var(--bg-alt)}
+    .built-thumb img,.built-thumb video{width:100%;height:100%;object-fit:cover;object-position:center}
     .built-body{padding:13px 15px;display:flex;flex-direction:column;gap:4px}
     .built-k{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600)}
     .built-v{font-size:15px;font-weight:600;color:var(--fg);line-height:1.4}
@@ -201,13 +201,13 @@
 
     /* ===== Thank you ===== */
     .sigrow{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:var(--sp-2)}
-    .sig{border:1px solid var(--rule);background:rgba(250,253,255,.72);padding:10px 16px;min-width:118px}
+    .sig{border:1px solid var(--rule);background:rgba(250,253,255,.72);padding:11px 14px;width:162px;text-align:center}
     .sig-name{font-size:15px;font-weight:800;color:var(--azure)}
-    .sig-role{font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--fg-muted);margin-top:2px}
+    .sig-role{font-size:11.5px;font-weight:600;letter-spacing:.01em;color:var(--fg-muted);margin-top:3px;line-height:1.32}
 
     /* ===== CTA ===== */
-    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--azure);color:var(--white);
-      font-size:15px;font-weight:700;padding:15px 28px;min-height:48px;border:none;cursor:pointer;transition:background .2s var(--ease)}
+    .cta-btn{position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;background:var(--azure);color:var(--white);
+      font-size:15px;font-weight:700;padding:15px 28px;min-height:48px;max-width:100%;text-align:center;border:none;cursor:pointer;transition:background .2s var(--ease)}
     .cta-btn:hover{background:var(--azure-900)}
     .cta-sub{font-size:13px;color:var(--fg-subtle)}
 
@@ -260,6 +260,8 @@
       .britcard{flex-direction:row;align-items:center;gap:13px}
       .bc-media{flex:0 0 80px;aspect-ratio:4/5}
       .winner{gap:13px}
+      .sigrow{flex-direction:column;align-items:center;gap:8px}
+      .sig{width:100%;max-width:300px}
     }
     @media(max-width:400px){
       .cellgrid{grid-template-columns:1fr}
@@ -276,7 +278,7 @@
     @media(max-height:700px){
       .winner{gap:10px}
       .cell{padding:12px 13px;gap:4px}
-      .built-thumb{height:60px}
+      .built-thumb{height:104px}
       .built-body{padding:10px 13px;gap:3px}
     }
 
@@ -318,7 +320,7 @@
     <!-- 1 · Cover · A -->
     <section class="wslide" data-i="0">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video muted loop playsinline preload="auto" poster="assets/loop-montage-open.jpg" aria-hidden="true">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="auto" poster="assets/loop-montage-open.jpg" aria-hidden="true">
           <source src="assets/loop-montage-open.mp4" type="video/mp4" />
         </video>
         <div class="bleed-veil veil-cover"></div>
@@ -339,7 +341,7 @@
         <span class="eyebrow reveal">Where it started</span>
         <p class="big-milestone reveal d1">August 2024</p>
         <div class="media-window mw-tall reveal d2">
-          <video data-loop-video muted loop playsinline preload="none" poster="assets/loop-storefront.jpg" aria-hidden="true">
+          <video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/loop-storefront.jpg" aria-hidden="true">
             <source src="assets/loop-storefront.mp4" type="video/mp4" />
           </video>
         </div>
@@ -367,7 +369,7 @@
     <!-- 4 · 31 days of watch time · A -->
     <section class="wslide" data-i="3">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video muted loop playsinline preload="none" poster="assets/loop-products.jpg" aria-hidden="true">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/loop-products.jpg" aria-hidden="true">
           <source src="assets/loop-products.mp4" type="video/mp4" />
         </video>
         <div class="bleed-veil veil-low"></div>
@@ -390,30 +392,30 @@
           <div class="duo-cell"><span class="duo-num"><span class="hl">6</span></span><span class="duo-lab">comments on your typical post</span></div>
           <div class="duo-cell"><span class="duo-num">0</span><span class="duo-lab">on a typical post from a brand your size</span></div>
         </div>
-        <p class="kicker reveal d3">Their median is zero. Yours is six.</p>
-        <p class="wsub reveal d4">Half the posts from shops your size get no comments at all. Yours talked back for two years.</p>
+        <p class="kicker reveal d3">A typical shop your size hears crickets. Your people showed up, six comments deep, post after post.</p>
+        <p class="wsub reveal d4">Every one of those was someone who cared enough to stop and say something. Two years of them.</p>
         <p class="wfoot reveal d5">Launch Party: Metricool, organic, median comments per post. Benchmark: Metricool and HypeAuditor, Instagram Content Playbook 2025, median comments per post for brand accounts with 1,000 to 10,000 followers (480 million posts, first half of 2025).</p>
       </div>
     </section>
 
 
-    <!-- 6 · Against the benchmark · B -->
+    <!-- 6 · How far it traveled · B -->
     <section class="wslide" data-i="5">
       <div class="winner">
-        <span class="eyebrow reveal">Against the benchmark</span>
-        <h2 class="whead whead-sm reveal d1">Your reels reached further.</h2>
+        <span class="eyebrow reveal">How far it traveled</span>
+        <h2 class="whead whead-sm reveal d1">Your reels kept finding new people.</h2>
         <div class="bmwrap reveal d2">
           <div class="bmrow">
-            <div class="bm-top"><span class="bm-name">Launch Party, reach per reel</span><span class="bm-val"><span class="hl">1,194</span></span></div>
+            <div class="bm-top"><span class="bm-name">Your typical reel</span><span class="bm-val"><span class="hl">1,194</span></span></div>
             <div class="bm-track"><div class="bar-fill" data-w="96"></div></div>
           </div>
           <div class="bmrow">
-            <div class="bm-top"><span class="bm-name">Typical brand your size</span><span class="bm-val" style="color:var(--fg-muted)">624</span></div>
+            <div class="bm-top"><span class="bm-name">A typical shop your size</span><span class="bm-val" style="color:var(--fg-muted)">624</span></div>
             <div class="bm-track"><div class="bar-fill bench" data-w="50"></div></div>
           </div>
         </div>
-        <p class="kicker reveal d3">Nearly twice as far, every reel, for two years.</p>
-        <p class="wsub reveal d4">The median reel from a shop your size reaches 624 people. Yours reached almost double that, with no ad spend.</p>
+        <p class="kicker reveal d3">Nearly twice as many new faces, every single reel.</p>
+        <p class="wsub reveal d4">The average reel from a shop your size finds 624 people. Yours kept landing in front of almost double that, month after month, no ad spend behind it.</p>
         <p class="wfoot reveal d5">Launch Party: Metricool, organic, median reach per reel. Benchmark: Metricool and HypeAuditor, Instagram Content Playbook 2025, median reach per reel for brand accounts with 1,000 to 10,000 followers (480 million posts, first half of 2025).</p>
       </div>
     </section>
@@ -441,7 +443,7 @@
           </div>
           <div class="postcell reveal d5">
             <div class="post-thumb">
-              <video data-loop-video muted loop playsinline preload="none" poster="assets/post-1.jpg" aria-hidden="true">
+              <video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/post-1.jpg" aria-hidden="true">
                 <source src="assets/post-1.mp4" type="video/mp4" />
               </video>
             </div>
@@ -469,7 +471,7 @@
     <!-- 9 · The craft curve · A -->
     <section class="wslide" data-i="8">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video muted loop playsinline preload="none" poster="assets/loop-pin-look2.jpg" aria-hidden="true">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/loop-pin-look2.jpg" aria-hidden="true">
           <source src="assets/loop-pin-look2.mp4" type="video/mp4" />
         </video>
         <div class="bleed-veil veil-low"></div>
@@ -481,8 +483,8 @@
           <div class="duo-cell"><span class="duo-num">3.7%</span><span class="duo-lab">of reels held viewers past 10 seconds, first six months</span></div>
           <div class="duo-cell"><span class="duo-num"><span class="hl">18.8%</span></span><span class="duo-lab">of reels held viewers past 10 seconds, last six months</span></div>
         </div>
-        <p class="kicker reveal d3">Same shop. Sharper edit.</p>
-        <p class="wsub reveal d4">Average watch time climbed 20% across the engagement. Seven of your ten longest-held reels were made this year.</p>
+        <p class="kicker reveal d3">Same shop, and folks kept watching a little longer every month.</p>
+        <p class="wsub reveal d4">Average watch time climbed 20% across the two years. Seven of your ten most-watched reels were made this year.</p>
         <p class="wfoot reveal d5">Metricool, organic. Average watch time and 10-second holds, first six months compared with the last six.</p>
       </div>
     </section>
@@ -490,7 +492,7 @@
     <!-- 10 · A girl's girl · A -->
     <section class="wslide" data-i="9">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video muted loop playsinline preload="none" poster="assets/loop-community.jpg" aria-hidden="true">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/loop-community.jpg" aria-hidden="true">
           <source src="assets/loop-community.mp4" type="video/mp4" />
         </video>
         <div class="bleed-veil veil-cover"></div>
@@ -578,7 +580,7 @@
           </div>
           <div class="builtcell">
             <div class="built-thumb">
-              <video data-loop-video muted loop playsinline preload="none" poster="assets/loop-oils.jpg" aria-hidden="true">
+              <video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/loop-oils.jpg" aria-hidden="true">
                 <source src="assets/loop-oils.mp4" type="video/mp4" />
               </video>
             </div>
@@ -600,7 +602,7 @@
     <!-- 14 · Thank you · A -->
     <section class="wslide" data-i="13">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video muted loop playsinline preload="none" poster="assets/thanks-hero.jpg" aria-hidden="true">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/thanks-hero.jpg" aria-hidden="true">
           <source src="assets/thanks-hero.mp4" type="video/mp4" />
         </video>
         <div class="bleed-veil veil-thanks"></div>
@@ -610,16 +612,16 @@
         <h2 class="whead whead-sm reveal d1">Two years, and we're grateful for every one of them.</h2>
         <p class="wsub reveal d2">You gave us a brand with real heart, an Over-the-Rhine community that shows up, and the trust to run with it. That made the work a joy. Whatever's next for Launch Party, we're cheering you on.</p>
         <div class="sigrow reveal d3">
-          <div class="sig"><div class="sig-name">Allison</div><div class="sig-role">Strategy</div></div>
-          <div class="sig"><div class="sig-name">Riley</div><div class="sig-role">Account manager</div></div>
-          <div class="sig"><div class="sig-name">Chase</div><div class="sig-role">Founder</div></div>
+          <div class="sig"><div class="sig-name">Allison</div><div class="sig-role">Chief Delivery and Strategy Officer</div></div>
+          <div class="sig"><div class="sig-name">Riley</div><div class="sig-role">Finance Account Manager</div></div>
+          <div class="sig"><div class="sig-name">Chase</div><div class="sig-role">Chief Operating Officer</div></div>
         </div>
       </div>
     </section>
 
     <!-- 15 · One ask · B -->
     <section class="wslide" data-i="14">
-      <div class="winner">
+      <div class="winner" style="gap:12px;max-width:640px">
         <span class="eyebrow reveal">One small ask</span>
         <div class="review reveal d1">
           <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>

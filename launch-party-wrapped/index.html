@@ -141,10 +141,11 @@
     .post-hook{font-size:14.5px;font-weight:600;color:var(--azure);font-style:italic;line-height:1.32}
     .post-tag{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--azure-600);line-height:1.32}
 
-    /* biggest month (slide 8) */
-    .monthwrap{display:flex;flex-direction:column;align-items:center;gap:var(--sp-3)}
-    .month-num{font-size:clamp(38px,10vw,72px);font-weight:900;letter-spacing:-.02em;color:var(--azure);line-height:1}
-    .month-num .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em}
+    /* biggest month (slide 8) · data-hero, no photo */
+    .monthhero{width:100%;max-width:440px;background:var(--lucid-soft);border:1px solid var(--rule);border-top:4px solid var(--highlighter);
+      padding:30px 22px;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .month-num{font-size:clamp(58px,17vw,120px);font-weight:900;letter-spacing:-.03em;color:var(--azure);line-height:.98}
+    .month-num .hl{background:linear-gradient(transparent 58%,var(--highlighter) 58%);padding:0 .05em}
 
     /* duo comparison + benchmark chart (slide 9) */
     .duo{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:520px;border:1px solid var(--rule)}
@@ -414,7 +415,8 @@
         <h2 class="whead whead-sm reveal d1">Attention, trust, action.</h2>
         <div class="funnel reveal d2">
           <div class="ftier">
-            <div class="ftier-media"><img src="assets/post-winter-skin.jpg" alt="Winter skin reel cover" loading="lazy" /></div>
+            <!-- SWAP-READY: tree bark reel DT0P-zUjmVh. Drop-in: replace <img> with <video autoplay muted loop playsinline preload="none" poster="..."> when a chrome-free Drive export lands. Same .ftier-media frame, zero layout change. -->
+            <div class="ftier-media"><img src="assets/cover-treebark.jpg" alt="Winter skin like tree bark reel cover" loading="lazy" /></div>
             <div class="ftier-body"><div class="ftier-stage">Attention</div><div class="ftier-hook">&ldquo;Winter skin like tree bark&rdquo;</div><div class="ftier-meta">10,943 reached &middot; 16,288 views &middot; Jan 2026</div></div>
           </div>
           <div class="ftier">
@@ -422,7 +424,8 @@
             <div class="ftier-body"><div class="ftier-stage">Trust</div><div class="ftier-hook">&ldquo;French pin, two ways&rdquo;</div><div class="ftier-meta">36 saves &middot; May 2026 &middot; the top save-driver</div></div>
           </div>
           <div class="ftier">
-            <div class="ftier-media"><img src="assets/post-pov.jpg" alt="POV Discovering Launch Party reel cover" loading="lazy" /></div>
+            <!-- SWAP-READY: POV reel DWwKKepjqRE. Drop-in: replace <img> with <video autoplay muted loop playsinline preload="none" poster="..."> when a chrome-free Drive export lands. Same .ftier-media frame, zero layout change. -->
+            <div class="ftier-media"><img src="assets/cover-pov.jpg" alt="POV Discovering Launch Party reel cover" loading="lazy" /></div>
             <div class="ftier-body"><div class="ftier-stage">Action signal</div><div class="ftier-hook">&ldquo;POV: Discovering Launch Party&rdquo;</div><div class="ftier-meta">28 shares &middot; Apr 2026 &middot; the signature discovery format</div></div>
           </div>
         </div>
@@ -438,17 +441,20 @@
         <h2 class="whead whead-sm reveal d1">Four that hit.</h2>
         <div class="postgrid">
           <div class="postcell reveal d2">
-            <div class="post-thumb"><img src="assets/post-giveaway.jpg" alt="Holiday giveaway reel cover" loading="lazy" /></div>
+            <!-- SWAP-READY: giveaway reel DSDBZvCDlUH. Drop-in: replace <img> with <video autoplay muted loop playsinline preload="none" poster="..."> when a chrome-free Drive export lands. Same .post-thumb frame, zero layout change. -->
+            <div class="post-thumb"><img src="assets/cover-giveaway.jpg" alt="Holiday giveaway reel cover" loading="lazy" /></div>
             <div class="post-metric"><span class="post-num">21,590</span><span class="post-label">Views</span></div>
             <div class="post-body"><p class="post-hook">The holiday giveaway</p><span class="post-tag">Giveaway &middot; 13,947 reached &middot; 321 comments &middot; Dec 2025</span></div>
           </div>
           <div class="postcell reveal d3">
-            <div class="post-thumb"><img src="assets/post-winter-skin.jpg" alt="Winter skin reel cover" loading="lazy" /></div>
+            <!-- SWAP-READY: tree bark reel DT0P-zUjmVh. Drop-in: replace <img> with a looping <video>; same .post-thumb frame, zero layout change. -->
+            <div class="post-thumb"><img src="assets/cover-treebark.jpg" alt="Winter skin like tree bark reel cover" loading="lazy" /></div>
             <div class="post-metric"><span class="post-num">16,288</span><span class="post-label">Views</span></div>
             <div class="post-body"><p class="post-hook">&ldquo;Winter skin like tree bark&rdquo;</p><span class="post-tag">10,943 reached &middot; Jan 2026</span></div>
           </div>
           <div class="postcell reveal d4">
-            <div class="post-thumb"><img src="assets/post-pov.jpg" alt="POV Discovering Launch Party reel cover" loading="lazy" /></div>
+            <!-- SWAP-READY: POV reel DWwKKepjqRE. Drop-in: replace <img> with a looping <video>; same .post-thumb frame, zero layout change. -->
+            <div class="post-thumb"><img src="assets/cover-pov.jpg" alt="POV Discovering Launch Party reel cover" loading="lazy" /></div>
             <div class="post-metric"><span class="post-num">28</span><span class="post-label">Shares</span></div>
             <div class="post-body"><p class="post-hook">&ldquo;POV: Discovering Launch Party&rdquo;</p><span class="post-tag">3,732 reached &middot; Apr 2026</span></div>
           </div>
@@ -467,13 +473,12 @@
       <div class="winner">
         <span class="eyebrow reveal">Your biggest month</span>
         <p class="big-milestone reveal d1">December 2025</p>
-        <div class="media-window mw-tall reveal d2" style="max-width:150px"><img src="assets/post-giveaway.jpg" alt="Holiday giveaway reel cover" loading="lazy" /></div>
-        <div class="monthwrap reveal d3">
+        <div class="monthhero reveal d2">
           <p class="month-num"><span class="hl" data-count="56932">0</span></p>
           <p class="unitlabel">Views in a single month</p>
         </div>
-        <p class="wsub reveal d4">Your holiday season with the community, led by the giveaway.</p>
-        <p class="wfoot reveal d5">Metricool, organic. Views, Dec 2025.</p>
+        <p class="wsub reveal d3">Your holiday season with the community, led by the giveaway.</p>
+        <p class="wfoot reveal d4">Metricool, organic. Views, Dec 2025.</p>
       </div>
     </section>
 
@@ -524,6 +529,7 @@
     <!-- 11 · A girl's girl · A -->
     <section class="wslide" data-i="10">
       <div class="bleed">
+        <!-- SWAP-READY: girl's girl reel DV_PKHHDpC5. Drop-in: replace this <img class="bleed-media"> with <video class="bleed-media" autoplay muted loop playsinline poster="assets/girlsgirl.jpg"> when a chrome-free Drive export lands. Same class + veil, zero layout change. -->
         <img class="bleed-media" src="assets/girlsgirl.jpg" alt="Launch Party, a girl's girl" loading="lazy" />
         <div class="bleed-veil veil-cover"></div>
       </div>

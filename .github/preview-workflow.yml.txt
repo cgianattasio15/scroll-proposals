@@ -1,0 +1,77 @@
+name: PR preview deploy
+
+# Publishes every pull request's build to a hosted, gated preview URL so decks
+# and Engagement Wrapped PRs can be reviewed on a real device before merge.
+#
+# WHY CLOUDFLARE PAGES (not GitHub Pages): production is GitHub Pages served
+# from `main` at decks.scrollmedia.co. A repo's GitHub Pages serves exactly one
+# source, so per-PR previews there would require committing builds into `main`
+# (pollutes production) or moving production off `main` (touches production).
+# Cloudflare Pages gives per-branch preview URLs on *.pages.dev and never
+# touches the GitHub Pages production site. See .github/PR_PREVIEW_SETUP.md.
+#
+# This workflow does nothing until the two repo secrets in the setup doc exist.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write   # to post the preview URL as a PR comment
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Secrets are not exposed to fork PRs; only run for same-repo branches.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Checkout PR build
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages (preview)
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Deploy the repo root so every deck gets a preview path.
+          # --branch = the PR branch, which marks this a *preview* (never production).
+          command: >-
+            pages deploy .
+            --project-name=scroll-proposals-preview
+            --branch="${{ github.head_ref || github.ref_name }}"
+            --commit-dirty=true
+
+      - name: Comment the preview URL on the PR
+        if: github.event_name == 'pull_request' && steps.deploy.outputs.deployment-url != ''
+        uses: actions/github-script@v7
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.deployment-url }}
+        with:
+          script: |
+            const base = process.env.PREVIEW_URL.replace(/\/$/, '');
+            const body = [
+              '### 🔎 Preview deploy ready',
+              '',
+              `Root: ${base}`,
+              `Launch Party Wrapped: ${base}/launch-party-wrapped/  (gate code: \`launchparty.scroll\`)`,
+              '',
+              '_Cloudflare Pages preview. Production (decks.scrollmedia.co) is untouched; it deploys from `main` via GitHub Pages only on merge._',
+              '_Previews carry `noindex,nofollow`; the gate still applies._'
+            ].join('\n');
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number
+            });
+            const marker = '### 🔎 Preview deploy ready';
+            const existing = comments.find(c => c.body && c.body.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner: context.repo.owner, repo: context.repo.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, body });
+            }

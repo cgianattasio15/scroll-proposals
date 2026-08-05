@@ -13,9 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet" />
   <style>
     /* =========================================================
-       SCROLL MEDIA · The Chapter · Launch Party (v7, story-driven)
-       Hero/guide, 4-act arc, 14 slides. content_brief_v5.
-       Scroll LIGHT. Native Azure charts + system-map + engine loop.
+       SCROLL MEDIA · The Chapter · Launch Party (v6, goal-anchored, video-forward)
+       16 slides, 4 movements. content_brief_v6.
+       Scroll LIGHT, elevated to a produced-film bar: full-bleed real motion
+       is the default canvas; restrained Azure type + native data-viz over it.
        Video-plays standard. Through-line: qualified attention > views.
        ========================================================= */
     :root{
@@ -51,11 +52,13 @@
     .wslide.active{display:flex}
     .winner{width:100%;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:var(--sp-4);position:relative;z-index:2}
 
-    /* Treatment A */
+    /* Treatment A · full-bleed motion */
     .bleed{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--bg-alt)}
     .bleed-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .bleed-veil{position:absolute;inset:0}
     .veil-cover{background:radial-gradient(125% 95% at 50% 48%,rgba(250,253,255,.90) 0%,rgba(250,253,255,.74) 44%,rgba(250,253,255,.42) 100%)}
+    .veil-goal{background:radial-gradient(120% 92% at 50% 50%,rgba(250,253,255,.86) 0%,rgba(250,253,255,.64) 42%,rgba(250,253,255,.30) 100%)}
+    .veil-wall{background:radial-gradient(130% 100% at 50% 48%,rgba(250,253,255,.88) 0%,rgba(250,253,255,.66) 40%,rgba(250,253,255,.30) 100%)}
     .veil-low{background:linear-gradient(to bottom,rgba(250,253,255,.10) 0%,rgba(250,253,255,.30) 26%,rgba(250,253,255,.88) 52%,rgba(250,253,255,.98) 66%,rgba(250,253,255,1) 100%)}
     .veil-thanks{background:linear-gradient(to bottom,rgba(250,253,255,.14) 0%,rgba(250,253,255,.38) 28%,rgba(250,253,255,.93) 50%,rgba(250,253,255,.995) 62%,rgba(250,253,255,1) 100%)}
 
@@ -80,7 +83,7 @@
     .big-milestone{font-size:clamp(42px,11.5vw,92px);font-weight:900;letter-spacing:-.03em;color:var(--azure);line-height:1}
     .big-milestone .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .04em}
     .lede{font-size:clamp(17px,2.5vw,22px);font-weight:600;color:var(--azure);line-height:1.4;max-width:34ch}
-    .kicker{font-size:clamp(15px,2.3vw,19px);font-weight:700;color:var(--azure);letter-spacing:-.01em;max-width:40ch}
+    .kicker{font-size:clamp(15px,2.3vw,19px);font-weight:700;color:var(--azure);letter-spacing:-.01em;max-width:42ch}
     .kicker.pre{color:var(--azure-600);font-weight:800;letter-spacing:.02em}
     .unitlabel{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-muted)}
 
@@ -95,7 +98,19 @@
     .media-window img,.media-window video{width:100%;height:100%;object-fit:cover;object-position:center}
     .mw-tall{max-width:186px;aspect-ratio:9/14}
 
-    /* SYSTEM-MAP (slide 3) */
+    /* THREE-GOAL FRAME (slide 3) */
+    .three-goals{display:flex;flex-direction:column;gap:12px;width:100%;max-width:540px;text-align:left}
+    .goal-item{display:flex;align-items:center;gap:14px;border:1px solid var(--rule);border-left:4px solid var(--highlighter);
+      background:var(--lucid-soft);padding:15px 16px;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+    .wslide.active .goal-item{opacity:1;transform:none}
+    .wslide.active .goal-item:nth-child(1){transition-delay:.16s}
+    .wslide.active .goal-item:nth-child(2){transition-delay:.30s}
+    .wslide.active .goal-item:nth-child(3){transition-delay:.44s}
+    .goal-num{flex:0 0 auto;width:34px;height:34px;border:2px solid var(--azure);border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:15px;font-weight:900;color:var(--azure)}
+    .goal-txt{font-size:clamp(15px,2.4vw,18px);font-weight:600;color:var(--azure);line-height:1.34}
+
+    /* SYSTEM-MAP (slide 4) */
     .sysmap{position:relative;width:100%;max-width:560px;text-align:left;padding-left:6px}
     .sysmap-spine{position:absolute;left:15px;top:20px;bottom:20px;width:2px;background:var(--rule);overflow:hidden}
     .sysmap-spine::after{content:'';position:absolute;inset:0;background:var(--azure);transform:scaleY(0);transform-origin:top;transition:transform 1s var(--ease) .2s}
@@ -112,68 +127,48 @@
     .sysnode-body{font-size:clamp(15px,2.3vw,18px);line-height:1.42;color:var(--fg-muted);font-weight:500}
     .sysnode-body b{color:var(--azure);font-weight:800}
 
-    /* stat cells (slide 4) */
-    .num-hero{width:100%;max-width:620px;border:1px solid var(--rule);border-top:4px solid var(--highlighter);background:var(--lucid-soft);
-      padding:16px 14px;display:flex;flex-direction:column;align-items:center;gap:3px}
-    .num-hero .cell-num{font-size:clamp(44px,12vw,76px)}
-    .cellgrid{display:grid;grid-template-columns:repeat(2,1fr);width:100%;max-width:620px;border:1px solid var(--rule);border-top:none}
-    .cell{padding:15px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center}
-    .cellgrid .cell:nth-child(2n){border-right:none}
-    .cellgrid .cell:nth-last-child(-n+2){border-bottom:none}
-    .cell-num{font-size:clamp(26px,6.2vw,38px);font-weight:900;letter-spacing:-.02em;color:var(--azure);line-height:1}
-    .cell-label{font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--fg)}
-    .cell-ctx{font-size:12.5px;color:var(--fg-muted);line-height:1.4}
-    .anchorline{font-size:clamp(16px,2.4vw,20px);font-weight:700;color:var(--azure);line-height:1.3;max-width:30ch}
-    .anchorline .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em}
-    .anchor2{font-size:14px;color:var(--fg-muted);line-height:1.45;max-width:40ch}
+    /* VIDEO WALL microstats (slide 5) */
+    .count-hero{font-size:clamp(30px,7vw,54px);font-weight:900;letter-spacing:-.02em;color:var(--azure);line-height:1.04}
+    .count-hero .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .04em}
+    .wall-microstats{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;font-size:14px;font-weight:800;
+      letter-spacing:.02em;color:var(--azure);background:rgba(250,253,255,.72);border:1px solid var(--rule);padding:10px 16px}
+    .wall-sub{font-size:clamp(15px,2.3vw,18px);font-weight:600;color:var(--azure-900);line-height:1.42;max-width:34ch;
+      text-shadow:0 1px 10px rgba(250,253,255,.9)}
 
-    /* ENGINE LOOP (slide 5) */
-    .engineloop{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;max-width:520px}
-    .eloop-node{border:1.5px solid var(--azure);background:var(--lucid-soft);padding:8px 13px;font-size:12.5px;font-weight:900;
-      letter-spacing:.05em;text-transform:uppercase;color:var(--azure);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
-    .wslide.active .eloop-node{opacity:1;transform:none}
-    .wslide.active .eloop-node:nth-of-type(1){transition-delay:.10s}
-    .wslide.active .eloop-node:nth-of-type(2){transition-delay:.26s}
-    .wslide.active .eloop-node:nth-of-type(3){transition-delay:.42s}
-    .wslide.active .eloop-node:nth-of-type(4){transition-delay:.58s}
-    .eloop-arrow{color:var(--azure-400);font-weight:900;padding:0 7px;font-size:15px;opacity:0;transition:opacity .4s var(--ease)}
-    .wslide.active .eloop-arrow{opacity:1}
-    .wslide.active .eloop-arrow:nth-of-type(2){transition-delay:.20s}
-    .wslide.active .eloop-arrow:nth-of-type(4){transition-delay:.36s}
-    .wslide.active .eloop-arrow:nth-of-type(6){transition-delay:.52s}
-    .eloop-repeat{width:100%;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600);margin-top:8px;
-      display:flex;align-items:center;justify-content:center;gap:7px}
-    .eloop-repeat svg{width:15px;height:15px;stroke:var(--azure-600);fill:none}
+    /* GOAL HERO · data over motion (slides 6,7,8) */
+    .goalkicker{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure);
+      background:var(--highlighter);padding:6px 13px}
+    .gstat{width:100%;max-width:460px;background:rgba(250,253,255,.74);border:1px solid var(--rule);border-top:4px solid var(--highlighter);
+      -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);padding:16px 16px;display:flex;flex-direction:column;gap:12px}
+    .gstat-row{display:flex;flex-direction:column;gap:3px;align-items:center;text-align:center}
+    .gstat-num{font-size:clamp(38px,10vw,60px);font-weight:900;letter-spacing:-.02em;color:var(--azure);line-height:1}
+    .gstat-num.sm{font-size:clamp(30px,7.6vw,46px)}
+    .gstat-num .hl{background:linear-gradient(transparent 58%,var(--highlighter) 58%);padding:0 .05em}
+    .gstat-lab{font-size:14px;font-weight:700;color:var(--fg-muted);line-height:1.36;max-width:30ch}
+    .gstat-lab b{color:var(--azure);font-weight:800}
+    .gstat-div{width:100%;height:1px;background:var(--rule)}
+    .gline{font-size:clamp(15px,2.3vw,19px);font-weight:700;color:var(--azure-900);line-height:1.36;max-width:34ch;
+      text-shadow:0 1px 10px rgba(250,253,255,.85)}
+    .gfoot{font-size:12.5px;color:var(--azure-900);line-height:1.5;max-width:46ch;background:rgba(250,253,255,.6);padding:2px 8px}
+    /* CTR bars inside the goal-3 panel */
+    .ctrwrap{width:100%;display:flex;flex-direction:column;gap:9px}
+    .ctrrow{display:flex;flex-direction:column;gap:5px}
+    .ctr-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+    .ctr-name{font-size:12.5px;font-weight:700;color:var(--fg)}
+    .ctr-val{font-size:17px;font-weight:900;color:var(--azure)}
+    .ctr-val .hl{background:linear-gradient(transparent 56%,var(--highlighter) 56%);padding:0 .08em}
+    .ctr-track{height:14px;background:var(--bg-alt);border:1px solid var(--rule);overflow:hidden}
+    .ctr-fill{height:100%;background:var(--azure);width:0;transition:width 1s var(--ease)}
+    .ctr-fill.bench{background:var(--azure-400)}
 
-    /* engine exemplars (slide 5) */
-    .engrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:580px}
-    .engcell{display:flex;flex-direction:column;gap:7px;text-align:left}
-    .eng-media{border:1px solid var(--rule);aspect-ratio:9/14;overflow:hidden;background:var(--bg-alt)}
-    .eng-media img,.eng-media video{width:100%;height:100%;object-fit:cover;object-position:center}
-    .eng-stage{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-600)}
-    .eng-hook{font-size:13.5px;font-weight:700;font-style:italic;color:var(--azure);line-height:1.28}
-    .eng-desc{font-size:12px;color:var(--fg-muted);line-height:1.38}
-    .eng-meta{font-size:12px;font-weight:700;color:var(--fg-subtle);line-height:1.3}
-
-    /* top-post cards (slide 6) */
-    .cardgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;max-width:640px}
-    .pcard{border:1px solid var(--rule);background:var(--white);display:flex;flex-direction:column;text-align:left}
-    .pcard-media{aspect-ratio:16/9;border-bottom:1px solid var(--rule);overflow:hidden;background:var(--bg-alt)}
-    .pcard-media img,.pcard-media video{width:100%;height:100%;object-fit:cover;object-position:center}
-    .pcard-body{padding:9px 12px 10px;display:flex;flex-direction:column;gap:5px}
-    .pcard-hook{font-size:14px;font-weight:800;color:var(--azure);line-height:1.24}
-    .pcard-meta{font-size:12px;font-weight:700;color:var(--azure-600);line-height:1.3}
-    .pcard-line{font-size:12.5px;color:var(--fg-muted);line-height:1.4}
-    .pcard-line b{color:var(--fg);font-weight:700}
-
-    /* duo comparison + benchmark chart (slide 7) */
+    /* duo comparison + benchmark chart (slide 9) */
     .duo{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:540px;border:1px solid var(--rule)}
     .duo-cell{padding:16px 14px;display:flex;flex-direction:column;gap:5px;align-items:center;border-right:1px solid var(--rule)}
     .duo-cell:last-child{border-right:none}
     .duo-num{font-size:clamp(30px,8vw,46px);font-weight:900;letter-spacing:-.02em;color:var(--azure);line-height:1}
     .duo-num .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em}
     .duo-vs{font-size:14px;color:var(--fg-muted);font-weight:700}
-    .duo-lab{font-size:12.5px;color:var(--fg-muted);text-align:center;line-height:1.35;max-width:24ch}
+    .duo-lab{font-size:14px;color:var(--fg-muted);text-align:center;line-height:1.35;max-width:24ch}
     .chartpanel{width:100%;max-width:600px;background:var(--lucid-soft);border:1px solid var(--rule);padding:18px 16px 12px}
     .chart-cap{font-size:13px;font-weight:700;color:var(--azure);margin-bottom:8px;text-align:left}
     .lc-svg{width:100%;height:auto;display:block;overflow:visible}
@@ -185,7 +180,7 @@
     .lc-peaklab{font-size:10.5px;font-weight:800;fill:var(--azure);text-anchor:middle}
     .lc-xlab{font-size:10px;font-weight:700;fill:var(--fg-subtle)}
 
-    /* score line + CTR (slide 8) */
+    /* score line (slide 10) */
     .scorepanel{width:100%;max-width:560px;background:var(--lucid-soft);border:1px solid var(--rule);padding:20px 18px 12px}
     .score-svg{width:100%;height:auto;display:block;overflow:visible}
     .score-path{fill:none;stroke:var(--azure);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
@@ -194,17 +189,15 @@
     .score-vlab{font-size:12px;font-weight:800;fill:var(--azure);text-anchor:middle}
     .score-mlab{font-size:11px;font-weight:700;fill:var(--fg-subtle);text-anchor:middle}
     .peak-pill{display:inline-block;font-size:12.5px;font-weight:800;color:var(--azure);background:var(--highlighter);padding:4px 12px}
-    .ctrwrap{width:100%;max-width:560px;display:flex;flex-direction:column;gap:10px}
-    .ctrrow{display:flex;flex-direction:column;gap:5px}
-    .ctr-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-    .ctr-name{font-size:13px;font-weight:700;color:var(--fg)}
-    .ctr-val{font-size:18px;font-weight:900;color:var(--azure)}
-    .ctr-val .hl{background:linear-gradient(transparent 58%,var(--highlighter) 58%);padding:0 .08em}
-    .ctr-track{height:15px;background:var(--bg-alt);border:1px solid var(--rule);overflow:hidden}
-    .ctr-fill{height:100%;background:var(--azure);width:0;transition:width 1s var(--ease)}
-    .ctr-fill.bench{background:var(--azure-400)}
 
-    /* cincinnati brand tiles (slide 9) */
+    /* then/now transformation (slide 11) */
+    .thennow{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:360px}
+    .tn-cell{display:flex;flex-direction:column;gap:6px}
+    .tn-media{border:1px solid var(--rule);aspect-ratio:9/13;overflow:hidden;background:var(--bg-alt)}
+    .tn-media video{width:100%;height:100%;object-fit:cover;object-position:center}
+    .tn-lab{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600)}
+    .tn-lab b{color:var(--azure)}
+    /* cincinnati brand tiles (slide 11) */
     .brandgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:600px}
     .btile{border:1px solid var(--rule);background:var(--white);overflow:hidden;display:flex;flex-direction:column;text-align:left}
     .btile-media{aspect-ratio:16/10;overflow:hidden;background:var(--bg-alt);border-bottom:1px solid var(--rule)}
@@ -212,35 +205,39 @@
     .btile-badge{aspect-ratio:16/10;background:var(--lucid-soft);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:center}
     .btile-badge svg{width:34px;height:34px;stroke:var(--azure);fill:none}
     .btile.flag .btile-badge{background:var(--highlighter)}
-    .btile-txt{padding:11px 13px;font-size:13px;font-weight:600;color:var(--fg);line-height:1.38}
+    .btile-txt{padding:11px 13px;font-size:14px;font-weight:600;color:var(--fg);line-height:1.4}
     .btile-txt b{color:var(--azure);font-weight:800}
 
-    /* audience voice (slide 10, full-bleed) */
+    /* audience voice (slide 12, full-bleed) */
     .quotes{display:flex;flex-direction:column;gap:14px;width:100%;max-width:460px}
     .quoteline{font-size:clamp(16px,2.6vw,21px);font-weight:700;font-style:italic;color:var(--azure);line-height:1.32}
     .quotewhen{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-subtle);margin-top:2px}
     .quote-src{font-size:12px;font-weight:600;color:var(--fg-subtle);letter-spacing:.02em}
 
-    /* what we built (slide 11) */
+    /* what you keep (slide 13) */
     .builtgrid{display:grid;grid-template-columns:repeat(2,1fr);width:100%;max-width:640px;border:1px solid var(--rule);text-align:left}
     .builtcell{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 16px;display:flex;flex-direction:column;gap:5px}
     .builtgrid .builtcell:nth-child(2n){border-right:none}
     .builtgrid .builtcell:nth-last-child(-n+2){border-bottom:none}
     .built-k{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-600)}
     .built-v{font-size:14.5px;font-weight:600;color:var(--fg);line-height:1.42}
+    .lib-btn{display:inline-flex;flex-direction:column;align-items:center;gap:2px;border:1.5px solid var(--azure);
+      background:rgba(250,253,255,.9);color:var(--azure);padding:12px 22px;min-height:48px;justify-content:center;
+      font-size:14.5px;font-weight:800;letter-spacing:.01em;cursor:pointer}
+    .lib-btn .tbd-note{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-subtle)}
     .built-close{font-size:clamp(18px,2.6vw,22px);font-weight:700;color:var(--azure)}
     .built-close .hl{background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em}
 
-    /* keep performing (slide 12) */
-    .keepgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:680px;text-align:left}
+    /* keep performing (slide 14) */
+    .keepgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:700px;text-align:left}
     .keepcol{display:flex;flex-direction:column;gap:10px}
     .keep-head{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--azure);border-bottom:2px solid var(--highlighter);padding-bottom:6px}
-    .keep-item{font-size:12.5px;color:var(--fg-muted);line-height:1.42}
+    .keep-item{font-size:14px;color:var(--fg-muted);line-height:1.44}
     .keep-item b{color:var(--azure);font-weight:700}
 
-    /* thank you (slide 13) */
+    /* thank you (slide 15) */
     .sigrow{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:var(--sp-2)}
-    .sig{border:1px solid var(--rule);background:rgba(250,253,255,.78);padding:11px 14px;width:180px;text-align:center}
+    .sig{border:1px solid var(--rule);background:rgba(250,253,255,.78);padding:11px 14px;width:190px;text-align:center}
     .sig-name{font-size:15px;font-weight:800;color:var(--azure)}
     .sig-role{font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--fg-muted);margin-top:3px;line-height:1.32}
 
@@ -292,38 +289,30 @@
       .sig{width:100%;max-width:300px}
     }
     @media(max-width:440px){
-      .cardgrid{grid-template-columns:1fr}
       .brandgrid{grid-template-columns:1fr}
-      .engrid{gap:8px}
-      .eng-hook{font-size:13px}
-    }
-    @media(max-width:400px){
-      .cellgrid{grid-template-columns:1fr}
-      .cellgrid .cell{border-right:none}
-      .cellgrid .cell:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
-      .cellgrid .cell:last-child{border-bottom:none}
     }
     @media(min-width:768px){ .wslide{padding-left:80px;padding-right:80px} }
     /* desktop single-screen-fit compaction for the dense slides */
     @media(min-width:768px) and (max-height:920px){
-      .winner{gap:12px}
-      .engrid .eng-media{aspect-ratio:9/12.5}
-      .pcard-media{aspect-ratio:16/8.5}
+      .winner{gap:11px}
+      /* slide 11 single-screen compaction (then/now + 4 milestone tiles) */
+      .thennow{max-width:250px;gap:8px}
+      .tn-media{aspect-ratio:9/9}
+      .btile-media{aspect-ratio:16/7}
+      .brandgrid{gap:8px}
+      .btile-txt{padding:8px 12px}
     }
     @media(min-width:768px) and (max-height:820px){
       .winner{gap:9px}
       .whead-sm{font-size:clamp(25px,4.6vw,34px)}
       .sysnode{padding-bottom:14px}
       .sysnode-body{font-size:16px;line-height:1.36}
-      .engrid .eng-media{aspect-ratio:9/11.5}
-      .pcard-media{aspect-ratio:16/8}
-      .pcard-body{padding:8px 11px 9px;gap:4px}
       .chartpanel{padding:14px 14px 10px}
       .scorepanel{padding:14px 16px 10px}
-      .num-hero{padding:12px 14px}
-      .num-hero .cell-num{font-size:clamp(40px,10vw,60px)}
+      .gstat{padding:12px 16px}
+      .gstat-num{font-size:clamp(34px,8vw,50px)}
     }
-    @media(max-height:700px){ .winner{gap:10px} .cell{padding:11px 13px;gap:3px} }
+    @media(max-height:700px){ .winner{gap:10px} }
 
     @media(prefers-reduced-motion:reduce){
       .reveal{opacity:1 !important;transform:none !important;transition:none !important}
@@ -331,8 +320,7 @@
       .taphint .arrow{animation:none}
       .score-path,.lc-line{transition:none !important}
       .sysmap-spine::after{transform:scaleY(1) !important;transition:none !important}
-      .sysnode .snode-dot,.eloop-node{opacity:1 !important;transform:none !important;transition:none !important}
-      .eloop-arrow{opacity:1 !important;transition:none !important}
+      .sysnode .snode-dot,.goal-item{opacity:1 !important;transform:none !important;transition:none !important}
     }
   </style>
 </head>
@@ -362,11 +350,11 @@
 
   <main id="deck">
 
-    <!-- ============ ACT 1 · FOUNDATION ============ -->
-    <!-- 1 · Cover · A · cover-hero video loop -->
+    <!-- ============ MOVEMENT 1 · THE BEGINNING ============ -->
+    <!-- 1 · Cover · A · cold-open montage -->
     <section class="wslide" data-i="0">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="auto" poster="assets/cover-hero.jpg" aria-hidden="true"><source src="assets/cover-hero.mp4" type="video/mp4" /></video>
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="auto" poster="assets/video/cover.jpg" aria-hidden="true"><source src="assets/video/cover.mp4" type="video/mp4" /></video>
         <div class="bleed-veil veil-cover"></div>
       </div>
       <div class="winner">
@@ -378,10 +366,10 @@
       </div>
     </section>
 
-    <!-- 2 · Where it started · B · store still -->
+    <!-- 2 · Where we started · B · origin still -->
     <section class="wslide" data-i="1">
       <div class="winner">
-        <span class="eyebrow reveal">Where it started</span>
+        <span class="eyebrow reveal">Where we started</span>
         <p class="big-milestone reveal d1">August 2024</p>
         <div class="media-window mw-tall reveal d2">
           <img src="assets/brit-store.jpg" alt="Launch Party, Over-the-Rhine" loading="lazy" />
@@ -390,8 +378,23 @@
       </div>
     </section>
 
-    <!-- 3 · How we approached your brand · B · designed methodology system-map -->
+    <!-- 3 · What we focused on · B · designed three-goal frame -->
     <section class="wslide" data-i="2">
+      <div class="winner">
+        <span class="eyebrow reveal">Three jobs</span>
+        <h2 class="whead whead-sm reveal d1">Everything we did came back to three things.</h2>
+        <div class="three-goals">
+          <div class="goal-item"><span class="goal-num">1</span><span class="goal-txt">Grow your community and get you discovered.</span></div>
+          <div class="goal-item"><span class="goal-num">2</span><span class="goal-txt">Build trust by teaching what you know.</span></div>
+          <div class="goal-item"><span class="goal-num">3</span><span class="goal-txt">Turn that trust into sales, in the shop and online.</span></div>
+        </div>
+        <p class="kicker reveal d3">Here is how <span style="background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em">each one</span> went.</p>
+      </div>
+    </section>
+
+    <!-- ============ MOVEMENT 2 · THE WORK ============ -->
+    <!-- 4 · How we approached your brand · B · methodology system-map (no reel media) -->
+    <section class="wslide" data-i="3">
       <div class="winner">
         <span class="eyebrow reveal">How we approached it</span>
         <h2 class="whead whead-sm reveal d1">We started with you, not a calendar.</h2>
@@ -399,163 +402,151 @@
           <div class="sysmap-spine"></div>
           <div class="sysnode">
             <span class="snode-dot">1</span>
-            <p class="sysnode-body"><b>First we got to know you.</b> Your voice, your taste, the way you make people feel welcome.</p>
+            <p class="sysnode-body"><b>Get to know you.</b> Your voice, your taste, the way you make people feel welcome.</p>
           </div>
           <div class="sysnode">
             <span class="snode-dot">2</span>
-            <p class="sysnode-body"><b>Then we got clear on who Launch Party is for.</b> What she wants, what gets in her way, what she is looking for.</p>
+            <p class="sysnode-body"><b>Get clear on who Launch Party is for.</b> What she wants, what gets in her way.</p>
           </div>
           <div class="sysnode">
             <span class="snode-dot">3</span>
-            <p class="sysnode-body"><b>Then we showed up across a funnel</b> built to earn the right attention and walk it toward the shop.</p>
+            <p class="sysnode-body"><b>Show up across a funnel</b> built to earn the right attention and walk it toward the shop.</p>
           </div>
         </div>
         <p class="kicker reveal d3">Great content was the start. The <span style="background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em">system</span> grew around your brand as we went.</p>
+        <p class="wcaption reveal d4">We were never chasing views. We were earning the right attention.</p>
       </div>
     </section>
 
-    <!-- ============ ACT 2 · THE WORK ============ -->
-    <!-- 4 · Two years, by the numbers · B · count-ups -->
-    <section class="wslide" data-i="3">
-      <div class="winner">
-        <span class="eyebrow reveal">Two years</span>
-        <h2 class="whead whead-sm reveal d1">By the numbers.</h2>
-        <div class="num-hero reveal d2">
-          <span class="cell-num" data-count="845511">0</span>
-          <span class="cell-label">Views</span>
-          <span class="cell-ctx">reels and posts, two years</span>
-        </div>
-        <div class="cellgrid reveal d3">
-          <div class="cell"><span class="cell-num" data-count="305">0</span><span class="cell-label">Posts</span><span class="cell-ctx">plus 1,131 stories</span></div>
-          <div class="cell"><span class="cell-num" data-count="24022">0</span><span class="cell-label">Likes</span><span class="cell-ctx">community love</span></div>
-          <div class="cell"><span class="cell-num" data-count="2993">0</span><span class="cell-label">Comments</span><span class="cell-ctx">conversation</span></div>
-          <div class="cell"><span class="cell-num" data-count="1187">0</span><span class="cell-label">Saves</span><span class="cell-ctx">worth coming back to</span></div>
-        </div>
-        <p class="anchorline reveal d4">845,511 views is <span class="hl">nearly 13 sold-out Paycor Stadiums</span>.</p>
-        <p class="anchor2 reveal d4">Plus 31 days of total watch time. A full month of eyes on Launch Party.</p>
-        <p class="kicker reveal d5">Reach was never the point. The point was reaching the right people, and getting them to save, share, and come in.</p>
-        <p class="wfoot reveal d5">Source: Metricool, organic. Full engagement Aug 2024 to Jul 2026. Stories captured Sep 2025 to Jul 2026. Stadium capacity 65,515 (Paycor Stadium).</p>
-      </div>
-    </section>
-
-    <!-- 5 · How we showed up · B · engine loop + 3 exemplars (VIDEO, frame-verified) -->
+    <!-- 5 · Everything it took · A · VIDEO WALL · body-of-work hero moment -->
     <section class="wslide" data-i="4">
+      <div class="bleed">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/wall.jpg" aria-hidden="true"><source src="assets/video/wall.mp4" type="video/mp4" /></video>
+        <div class="bleed-veil veil-wall"></div>
+      </div>
       <div class="winner">
-        <span class="eyebrow reveal">How we showed up</span>
-        <h2 class="whead whead-sm reveal d1">Every post had a job.</h2>
-        <div class="reveal d2" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:6px">
-          <div class="engineloop">
-            <span class="eloop-node">Idea</span><span class="eloop-arrow">&rarr;</span>
-            <span class="eloop-node">Format</span><span class="eloop-arrow">&rarr;</span>
-            <span class="eloop-node">Hook</span><span class="eloop-arrow">&rarr;</span>
-            <span class="eloop-node">Data</span>
-          </div>
-          <div class="eloop-repeat"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> and do it again</div>
-        </div>
-        <p class="wcaption reveal d2">We built each one the same way. Find the idea, pick the format, earn the first three seconds, then read the data and do it again.</p>
-        <div class="engrid reveal d3">
-          <!-- VERIFIED: reel-pov.mp4 on-screen "POV: you found your new favorite place" = discovery format -->
-          <div class="engcell">
-            <div class="eng-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/reel-pov.jpg" aria-hidden="true"><source src="assets/reel-pov.mp4" type="video/mp4" /></video></div>
-            <span class="eng-stage">Earn attention</span>
-            <span class="eng-hook">&ldquo;POV: Discovering Launch Party&rdquo;</span>
-            <span class="eng-desc">The discovery format that introduces the brand to someone new.</span>
-            <span class="eng-meta">3,732 reached &middot; 28 shares &middot; Apr 2026</span>
-          </div>
-          <!-- VERIFIED: reel-treebark.mp4 on-screen "Applying body butter in the winter feels like:" = skin education -->
-          <div class="engcell">
-            <div class="eng-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/reel-treebark.jpg" aria-hidden="true"><source src="assets/reel-treebark.mp4" type="video/mp4" /></video></div>
-            <span class="eng-stage">Build trust</span>
-            <span class="eng-hook">&ldquo;Winter skin like tree bark&rdquo;</span>
-            <span class="eng-desc">The education that makes you the expert people trust.</span>
-            <span class="eng-meta">10,943 reached &middot; 16,288 views &middot; Jan 2026</span>
-          </div>
-          <!-- VERIFIED: loop-pin-look2.mp4 on-screen "2 Ways to Wear a French Pin" = tutorial -->
-          <div class="engcell">
-            <div class="eng-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/loop-pin-look2.jpg" aria-hidden="true"><source src="assets/loop-pin-look2.mp4" type="video/mp4" /></video></div>
-            <span class="eng-stage">Move to act</span>
-            <span class="eng-hook">&ldquo;French pin, two ways&rdquo;</span>
-            <span class="eng-desc">The tutorial people save to come back and shop.</span>
-            <span class="eng-meta">36 saves &middot; May 2026</span>
-          </div>
-        </div>
-        <p class="wcaption reveal d4">Attention earns the room. Trust keeps it. Then the saves, shares, and visits that predict new customers start showing up.</p>
-        <p class="wfoot reveal d5">Metricool, organic. Full engagement. Every reel shown is the real post.</p>
+        <span class="goalkicker reveal">What it took</span>
+        <h2 class="count-hero reveal d1"><span class="hl" data-count="310">0</span> pieces of content. Two years of showing up.</h2>
+        <p class="wall-sub reveal d2">Every reel, every shoot, every idea. This is the work behind the numbers.</p>
+        <div class="wall-microstats reveal d3"><span>241 reels</span><span>&middot;</span><span>69 posts</span><span>&middot;</span><span>1,131 stories</span><span>&middot;</span><span>dozens of shoots</span></div>
+        <p class="gfoot reveal d4">Metricool, organic. Aug 2024 to Jul 2026. Stories captured Sep 2025 to Jul 2026.</p>
       </div>
     </section>
 
-    <!-- 6 · The posts that broke through · B · four cards (VIDEO, frame-verified) -->
+    <!-- ============ MOVEMENT 3 · WHAT HAPPENED (goal by goal) ============ -->
+    <!-- 6 · Goal 1 · community · A · goal1.mp4 · data over motion -->
     <section class="wslide" data-i="5">
+      <div class="bleed">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/goal1.jpg" aria-hidden="true"><source src="assets/video/goal1.mp4" type="video/mp4" /></video>
+        <div class="bleed-veil veil-goal"></div>
+      </div>
       <div class="winner">
-        <span class="eyebrow reveal">The posts that broke through</span>
-        <h2 class="whead whead-sm reveal d1">The four that broke through.</h2>
-        <div class="cardgrid reveal d2">
-          <!-- VERIFIED: reel-giveaway.mp4 "GIVEAWAY! Launch Party + Brown Bear Bakery" -->
-          <div class="pcard">
-            <div class="pcard-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/reel-giveaway.jpg" aria-hidden="true"><source src="assets/reel-giveaway.mp4" type="video/mp4" /></video></div>
-            <div class="pcard-body">
-              <span class="pcard-hook">The holiday giveaway</span>
-              <span class="pcard-meta">13,947 reached &middot; 21,590 views &middot; 150 shares &middot; Dec 2025</span>
-              <span class="pcard-line"><b>Why it broke through:</b> a beauty moment the whole community wanted in on.</span>
-              <span class="pcard-line"><b>What it drove:</b> your biggest surge of new eyes all year, right into the holiday shopping window.</span>
-            </div>
+        <span class="goalkicker reveal">Goal one: grow your community and get discovered</span>
+        <h2 class="whead whead-sm reveal d1">You built an audience, not just a following.</h2>
+        <div class="gstat reveal d2">
+          <div class="gstat-row">
+            <span class="gstat-num" data-count="858935">0</span>
+            <span class="gstat-lab">views</span>
           </div>
-          <!-- VERIFIED: reel-treebark.mp4 -->
-          <div class="pcard">
-            <div class="pcard-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/reel-treebark.jpg" aria-hidden="true"><source src="assets/reel-treebark.mp4" type="video/mp4" /></video></div>
-            <div class="pcard-body">
-              <span class="pcard-hook">&ldquo;Winter skin like tree bark&rdquo;</span>
-              <span class="pcard-meta">10,943 reached &middot; 16,288 views &middot; Jan 2026</span>
-              <span class="pcard-line"><b>Why it broke through:</b> a skin-education hook that stopped the scroll.</span>
-              <span class="pcard-line"><b>What it drove:</b> your top-performing content reel, proof that teaching earns reach.</span>
-            </div>
+          <div class="gstat-div"></div>
+          <div class="gstat-row">
+            <span class="gline">nearly <span style="background:linear-gradient(transparent 58%,var(--highlighter) 58%);padding:0 .05em">13 sold-out Paycor Stadiums</span></span>
           </div>
-          <!-- VERIFIED: reel-pov.mp4 -->
-          <div class="pcard">
-            <div class="pcard-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/reel-pov.jpg" aria-hidden="true"><source src="assets/reel-pov.mp4" type="video/mp4" /></video></div>
-            <div class="pcard-body">
-              <span class="pcard-hook">&ldquo;POV: Discovering Launch Party&rdquo;</span>
-              <span class="pcard-meta">3,732 reached &middot; 28 shares &middot; Apr 2026</span>
-              <span class="pcard-line"><b>Why it broke through:</b> the signature format that makes a stranger feel like they just walked in.</span>
-              <span class="pcard-line"><b>What it drove:</b> shares from people showing their friends the shop.</span>
-            </div>
-          </div>
-          <!-- VERIFIED: loop-pin-look2.mp4 (french pin) -->
-          <div class="pcard">
-            <div class="pcard-media"><video data-loop-video autoplay muted loop playsinline preload="metadata" poster="assets/loop-pin-look2.jpg" aria-hidden="true"><source src="assets/loop-pin-look2.mp4" type="video/mp4" /></video></div>
-            <div class="pcard-body">
-              <span class="pcard-hook">&ldquo;French pin, two ways&rdquo;</span>
-              <span class="pcard-meta">36 saves &middot; May 2026</span>
-              <span class="pcard-line"><b>Why it broke through:</b> a two-in-one tutorial worth keeping.</span>
-              <span class="pcard-line"><b>What it drove:</b> your top save-driver, the bookmark that brings people back to buy.</span>
-            </div>
+          <div class="gstat-div"></div>
+          <div class="gstat-row">
+            <span class="gstat-num sm">31</span>
+            <span class="gstat-lab">days of total watch time</span>
           </div>
         </div>
-        <p class="wfoot reveal d3">All-time, full engagement. Source: Metricool, organic.</p>
+        <p class="gline reveal d3">Two years of showing up put Launch Party in front of the right people, again and again.</p>
+        <p class="gfoot reveal d4">Metricool, organic. Full engagement. Stadium capacity 65,515 (Paycor Stadium).</p>
       </div>
     </section>
 
-    <!-- ============ ACT 3 · THE TURN ============ -->
-    <!-- 7 · You beat brands your size · B · native Azure charts · THE REVEAL -->
+    <!-- 7 · Goal 2 · trust · A · goal2.mp4 · data over motion -->
     <section class="wslide" data-i="6">
+      <div class="bleed">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/goal2.jpg" aria-hidden="true"><source src="assets/video/goal2.mp4" type="video/mp4" /></video>
+        <div class="bleed-veil veil-goal"></div>
+      </div>
+      <div class="winner">
+        <span class="goalkicker reveal">Goal two: build trust by teaching</span>
+        <h2 class="whead whead-sm reveal d1">They did not just watch. They saved, and they talked.</h2>
+        <div class="gstat reveal d2">
+          <div class="gstat-row">
+            <span class="gstat-num"><span class="hl" data-count="1217">0</span></span>
+            <span class="gstat-lab">saves</span>
+          </div>
+          <div class="gstat-div"></div>
+          <div class="gstat-row">
+            <span class="gstat-num sm" data-count="3028">0</span>
+            <span class="gstat-lab">comments</span>
+          </div>
+          <div class="gstat-div"></div>
+          <div class="gstat-row">
+            <span class="gstat-lab" style="max-width:34ch"><b>Saves are people bookmarking to come back and buy.</b> That is trust you can measure.</span>
+          </div>
+        </div>
+        <p class="gline reveal d3">Your education content is the engine. Teaching is what turned viewers into a community that trusts you.</p>
+        <p class="gfoot reveal d4">Metricool, organic. Full engagement.</p>
+      </div>
+    </section>
+
+    <!-- 8 · Goal 3 · sales · A · goal3.mp4 · the crescendo -->
+    <section class="wslide" data-i="7">
+      <div class="bleed">
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/goal3.jpg" aria-hidden="true"><source src="assets/video/goal3.mp4" type="video/mp4" /></video>
+        <div class="bleed-veil veil-goal"></div>
+      </div>
+      <div class="winner">
+        <span class="goalkicker reveal">Goal three: drive sales, in the shop and online</span>
+        <h2 class="whead whead-sm reveal d1">And the work sent people to shop.</h2>
+        <div class="gstat reveal d2">
+          <div class="ctrwrap">
+            <div class="ctrrow">
+              <div class="ctr-top"><span class="ctr-name">Link click-through, peak</span><span class="ctr-val"><span class="hl">15.2%</span></span></div>
+              <div class="ctr-track"><div class="ctr-fill" data-w="95"></div></div>
+            </div>
+            <div class="ctrrow">
+              <div class="ctr-top"><span class="ctr-name">Industry benchmark</span><span class="ctr-val" style="color:var(--fg-muted)">6%</span></div>
+              <div class="ctr-track"><div class="ctr-fill bench" data-w="37"></div></div>
+            </div>
+          </div>
+          <div class="gstat-div"></div>
+          <div class="gstat-row">
+            <span class="gstat-num sm">16.6%</span>
+            <span class="gstat-lab">profile conversion</span>
+          </div>
+          <div class="gstat-div"></div>
+          <div class="gstat-row">
+            <span class="gstat-lab" style="max-width:34ch"><b>Link taps climbing toward your Q3 goal.</b></span>
+          </div>
+        </div>
+        <p class="gline reveal d3">This is the whole point. Attention that turns into visits, in-store and online.</p>
+        <p class="gfoot reveal d4">Scroll monthly reports. Click-through rate, benchmark 6%.</p>
+      </div>
+    </section>
+
+    <!-- 9 · You beat brands your size · B · native Azure charts · the capstone -->
+    <section class="wslide" data-i="8">
       <div class="winner">
         <span class="kicker pre reveal">Here is the part most brands never see.</span>
         <h2 class="whead whead-sm reveal d1">You beat brands your size. Every month.</h2>
         <div class="duo reveal d2">
           <div class="duo-cell"><span class="duo-num"><span class="hl">1,194</span></span><span class="duo-vs">vs 624</span><span class="duo-lab">reached per reel &middot; nearly twice as far as the average brand your size</span></div>
-          <div class="duo-cell"><span class="duo-num">6</span><span class="duo-vs">vs 0</span><span class="duo-lab">comments per post &middot; a real conversation, where most brands see none</span></div>
+          <div class="duo-cell"><span class="duo-num">6</span><span class="duo-vs">vs 0</span><span class="duo-lab">comments per post &middot; a real conversation, where most see none</span></div>
         </div>
         <div class="chartpanel reveal d3">
           <div class="chart-cap">Median reach per reel, above the benchmark every month for two years</div>
           <svg class="lc-svg" id="reachChart" viewBox="0 0 600 240" role="img" aria-label="Monthly median reach per reel, August 2024 through July 2026, every month above the 624 benchmark line, holiday peaks in December."></svg>
         </div>
-        <p class="wcaption reveal d4">This is the difference between chasing views and building an audience. You did not ride one spike and fade. You stayed above the average brand your size, month after month, for two straight years. That is a high-quality audience, and it is yours.</p>
+        <p class="wcaption reveal d4">You did not ride one spike and fade. You stayed above the average brand your size, month after month, for two straight years. That is a high-quality audience, and it is yours.</p>
         <p class="wfoot reveal d5">Median vs median. Source: Metricool x HypeAuditor Instagram Content Playbook 2025, 1K to 10K followers, Brands panel, p.8 (median comments 0, median reach 624).</p>
       </div>
     </section>
 
-    <!-- 8 · The work got sharper · B · Azure score line + CTR -->
-    <section class="wslide" data-i="7">
+    <!-- 10 · The work got sharper · B · Azure score line -->
+    <section class="wslide" data-i="9">
       <div class="winner">
         <span class="kicker pre reveal">And the work kept getting better.</span>
         <h2 class="whead whead-sm reveal d1">The work got sharper.</h2>
@@ -564,36 +555,35 @@
           <div style="text-align:center;margin-top:8px"><span class="peak-pill">Peaked at 8.8 in May, back to 8.5 in July</span></div>
         </div>
         <p class="wcaption reveal d3">Your content quality climbed to a peak of 8.8 in May. When June dipped, we read the data and brought it back to 8.5 in July.</p>
-        <div class="ctrwrap reveal d4">
-          <div class="ctrrow">
-            <div class="ctr-top"><span class="ctr-name">Link click-through, peak</span><span class="ctr-val"><span class="hl">15.2%</span></span></div>
-            <div class="ctr-track"><div class="ctr-fill" data-w="95"></div></div>
-          </div>
-          <div class="ctrrow">
-            <div class="ctr-top"><span class="ctr-name">Industry benchmark</span><span class="ctr-val" style="color:var(--fg-muted)">6%</span></div>
-            <div class="ctr-track"><div class="ctr-fill bench" data-w="37"></div></div>
-          </div>
-        </div>
-        <p class="wcaption reveal d4">Click-through stayed above the 6% industry bar every month, peaking at 15.2%.</p>
-        <p class="kicker reveal d5">Good months and tougher months. What mattered is we kept sharpening.</p>
-        <p class="wfoot reveal d5">Scroll monthly performance scores. Scroll monthly reports, click-through rate. Benchmark 6%.</p>
+        <p class="kicker reveal d4">Good months and tougher months. What mattered is we kept sharpening.</p>
+        <p class="wfoot reveal d5">Scroll monthly performance scores.</p>
       </div>
     </section>
 
-    <!-- ============ ACT 4 · RESOLUTION ============ -->
-    <!-- 9 · The Cincinnati brand we built · A/tiles -->
-    <section class="wslide" data-i="8">
+    <!-- ============ MOVEMENT 4 · WHERE YOU ARE NOW ============ -->
+    <!-- 11 · The brand we built in Cincinnati · A/chips · then/now transformation + milestones -->
+    <section class="wslide" data-i="10">
       <div class="winner">
         <span class="eyebrow reveal">What we built in Cincinnati</span>
         <h2 class="whead whead-sm reveal d1">A brand this city knows.</h2>
-        <div class="brandgrid reveal d2">
+        <div class="thennow reveal d2">
+          <div class="tn-cell">
+            <div class="tn-media"><video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/then.jpg" aria-hidden="true"><source src="assets/video/then.mp4" type="video/mp4" /></video></div>
+            <span class="tn-lab">Then &middot; <b>2024</b></span>
+          </div>
+          <div class="tn-cell">
+            <div class="tn-media"><video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/now.jpg" aria-hidden="true"><source src="assets/video/now.mp4" type="video/mp4" /></video></div>
+            <span class="tn-lab">Now &middot; <b>2026</b></span>
+          </div>
+        </div>
+        <div class="brandgrid reveal d3">
           <div class="btile flag">
             <div class="btile-badge"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
             <div class="btile-txt">Featured in CityBeat's Best of Cincinnati: <b>Best Indie Makeup Boutique</b>.</div>
           </div>
           <div class="btile">
             <div class="btile-media"><img src="assets/moment-undertones.jpg" alt="Undertones series" loading="lazy" /></div>
-            <div class="btile-txt">Launch Party on film in the <b>Undertones series</b>, April 2026.</div>
+            <div class="btile-txt">Launch Party on film in the <b>Undertones series</b>.</div>
           </div>
           <div class="btile">
             <div class="btile-media"><img src="assets/moment-3years.jpg" alt="Anniversary with the community" loading="lazy" /></div>
@@ -604,12 +594,12 @@
             <div class="btile-txt">A regular on the <b>Final Friday</b> scene on 13th Street.</div>
           </div>
         </div>
-        <p class="wcaption reveal d3">Two years of showing up made Launch Party a name people in this city recognize, and made you the person they trust for beauty.</p>
+        <p class="wcaption reveal d4">Two years turned a new shop into a name people in this city recognize, and made you the person they trust for beauty.</p>
       </div>
     </section>
 
-    <!-- 10 · What they said about you · A · audience voice (VALIDATED FALLBACK: Brit's community posts) -->
-    <section class="wslide" data-i="9">
+    <!-- 12 · What they said about you · A · audience voice · VALIDATED FALLBACK (Brit's community posts) -->
+    <section class="wslide" data-i="11">
       <div class="bleed">
         <img class="bleed-media" src="assets/brit-portrait.jpg" alt="Brit, Launch Party" loading="lazy" />
         <div class="bleed-veil veil-cover"></div>
@@ -617,19 +607,19 @@
       <div class="winner">
         <span class="cover-mark reveal"></span>
         <span class="eyebrow reveal d1">And the community felt it.</span>
-        <h2 class="whead whead-sm reveal d2">People love what you built.</h2>
+        <h2 class="whead whead-sm reveal d2">This is what people said.</h2>
         <div class="quotes reveal d3">
           <div><p class="quoteline">&ldquo;I'm so thankful for you.&rdquo;</p><p class="quotewhen">November 2024</p></div>
           <div><p class="quoteline">&ldquo;In this space, we've had so much fun.&rdquo;</p><p class="quotewhen">September 2025</p></div>
-          <div><p class="quoteline">&ldquo;When I first started Launch Party I never would have dreamed...&rdquo;</p><p class="quotewhen">May 2025</p></div>
+          <div><p class="quoteline">&ldquo;When I first started Launch Party I never would have dreamed&hellip;&rdquo;</p><p class="quotewhen">May 2025</p></div>
         </div>
         <p class="quote-src reveal d4">From Launch Party's own community posts, 2024 to 2026.</p>
-        <p class="wsub reveal d4">They did not just follow a shop. They followed you.</p>
+        <p class="wsub reveal d4">Two years of this is easy to take for granted when you are living it. So here it is in one place: people love what you built.</p>
       </div>
     </section>
 
-    <!-- 11 · What we built together · B · four cells -->
-    <section class="wslide" data-i="10">
+    <!-- 13 · What you keep · B · four cells + library handoff -->
+    <section class="wslide" data-i="12">
       <div class="winner">
         <span class="eyebrow reveal">What we built together</span>
         <h2 class="whead whead-sm reveal d1">Yours to keep.</h2>
@@ -637,41 +627,44 @@
           <div class="builtcell"><span class="built-k">A voice</span><span class="built-v">The beauty big sis. Girl's-girl warmth. Do what feels good.</span></div>
           <div class="builtcell"><span class="built-k">Four content types</span><span class="built-v">Discovery, education, community, and the relatable beauty that started it all.</span></div>
           <div class="builtcell"><span class="built-k">The POV Discovery format</span><span class="built-v">Your signature way to introduce the brand to someone new.</span></div>
-          <div class="builtcell"><span class="built-k">A path to the shop</span><span class="built-v">Profile to link to shop and store, so attention has somewhere to go.</span></div>
+          <div class="builtcell"><span class="built-k">A path to the shop</span><span class="built-v">Profile to link to shop and store.</span></div>
         </div>
-        <p class="built-close reveal d3">All of it is yours to <span class="hl">keep</span> running.</p>
+        <p class="wcaption reveal d3">Plus your complete content library. Every post, every number, in one place to keep learning from.</p>
+        <!-- TBD-library-link: replace href with the real Notion content library URL in the final Aug-14 pass -->
+        <a class="lib-btn reveal d3" href="TBD-library-link" data-tbd-library>Open your content library<span class="tbd-note">link set in final pass</span></a>
+        <p class="built-close reveal d4">All of it is yours to <span class="hl">keep</span> running.</p>
       </div>
     </section>
 
-    <!-- 12 · Keep performing · B · NEW · recommendations from the two-year export -->
-    <section class="wslide" data-i="11">
+    <!-- 14 · Keep performing · B · data-driven recommendations -->
+    <section class="wslide" data-i="13">
       <div class="winner">
         <span class="kicker pre reveal">Before we go, here is what your data says.</span>
         <h2 class="whead whead-sm reveal d1">How to keep this going.</h2>
         <div class="keepgrid reveal d2">
           <div class="keepcol">
             <div class="keep-head">What your audience taught us</div>
-            <p class="keep-item"><b>The first three seconds are everything.</b> The reels that hooked people up front reached nearly twice as far and earned twice the saves. Open on a hook, not a warm-up.</p>
-            <p class="keep-item"><b>Tutorials are your engine.</b> Hair and skin how-tos are the content people save to come back and buy. Saves matter more than views.</p>
-            <p class="keep-item"><b>Carousels are underused.</b> Your feed posts save at twice the rate of your reels. Post more of them.</p>
-            <p class="keep-item"><b>Shares come from heart.</b> Your most-shared posts are the community and founder moments, not the tutorials. Keep both lanes running.</p>
+            <p class="keep-item"><b>Open on a hook.</b> The reels that grabbed people in the first three seconds reached nearly twice as far and earned twice the saves.</p>
+            <p class="keep-item"><b>Keep the tutorials coming.</b> Hair and skin how-tos are your save engine, the content people bookmark to buy.</p>
+            <p class="keep-item"><b>Post more carousels.</b> Your carousels save at twice the rate of your reels, and you post far fewer.</p>
+            <p class="keep-item"><b>Shares come from heart.</b> Your community and founder moments travel further than your tutorials. Keep both lanes.</p>
           </div>
           <div class="keepcol">
             <div class="keep-head">How to keep it sharp</div>
             <p class="keep-item"><b>Stay consistent.</b> Tuesday and Thursday are your proven rhythm.</p>
             <p class="keep-item"><b>Keep it human.</b> Raw, real, human-sounding content is what built this. Do not over-edit it into an ad.</p>
-            <p class="keep-item"><b>Watch the right numbers.</b> Track saves, shares, and link taps over views. Watch your three-second view rate as the early sign a hook is working.</p>
-            <p class="keep-item"><b>Read monthly, adjust quarterly.</b> Do not react to one post.</p>
+            <p class="keep-item"><b>Watch saves, shares, and link taps over views.</b></p>
+            <p class="keep-item"><b>Read monthly, adjust quarterly.</b></p>
           </div>
         </div>
-        <p class="wfoot reveal d3">From your two-year Metricool data.</p>
+        <p class="wfoot reveal d3">From your two-year content library.</p>
       </div>
     </section>
 
-    <!-- 13 · Thank you · A · full-bleed Brit video (soul of this place) -->
-    <section class="wslide" data-i="12">
+    <!-- 15 · Thank you · A · full-bleed Brit video (soul of this place) -->
+    <section class="wslide" data-i="14">
       <div class="bleed">
-        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/thanks-hero.jpg" aria-hidden="true"><source src="assets/thanks-hero.mp4" type="video/mp4" /></video>
+        <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/thanks.jpg" aria-hidden="true"><source src="assets/video/thanks.mp4" type="video/mp4" /></video>
         <div class="bleed-veil veil-thanks"></div>
       </div>
       <div class="winner">
@@ -686,8 +679,8 @@
       </div>
     </section>
 
-    <!-- 14 · Final note · B · warm no-ask close (Brit build) -->
-    <section class="wslide" data-i="13">
+    <!-- 16 · Final note · B · warm no-ask close -->
+    <section class="wslide" data-i="15">
       <div class="winner">
         <span class="eyebrow reveal">One last thing</span>
         <h2 class="whead whead-sm reveal d1">Two years, one chapter.</h2>
@@ -706,7 +699,7 @@
   <script>
   (function(){
     /* gate */
-    var PASS='launchparty.scroll', KEY='sm_lp_chapter_v7';
+    var PASS='launchparty.scroll', KEY='sm_lp_chapter_v6';
     var gate=document.getElementById('sm-gate'), inp=document.getElementById('sm-gate-input'),
         btn=document.getElementById('sm-gate-btn'), err=document.getElementById('sm-gate-error'), tog=document.getElementById('sm-gate-toggle');
     var deckStarted=false;
@@ -742,7 +735,7 @@
         el.textContent=fmt(target*e); if(p<1)requestAnimationFrame(step); else finish(); }
       requestAnimationFrame(step); setTimeout(finish,dur+150); }
 
-    /* reach line chart (slide 7) · real 24-month median reach, every month above 624, no trend line */
+    /* reach line chart (slide 9) · real 24-month median reach, every month above 624, no trend line */
     var reachData=[878,921,1331,1763,2237,1248,2115,1695,1162,1518,979,1173,1292,973,1156,1018,1264,1408,1158,1194,960,1117,1041,741];
     var reachMonths=['Aug 24','','','','Dec','','','','','','','','Aug 25','','','','Dec','','','','','','','Jul 26'];
     var decIdx=[4,16]; // Dec 2024, Dec 2025
@@ -768,7 +761,7 @@
       if(reduce||!active){ p.style.transition='none'; p.style.strokeDashoffset=active?0:len; return; }
       p.style.strokeDashoffset=len; void p.getBoundingClientRect(); p.style.transition='stroke-dashoffset 1.3s var(--ease)'; p.style.strokeDashoffset=0; }
 
-    /* score line (slide 8) · real monthly Scroll scores · peak/dip/recovery */
+    /* score line (slide 10) · real monthly Scroll scores · peak/dip/recovery */
     var scores=[7.5,8.8,7.9,8.5], smonths=['Mar','May','Jun','Jul'];
     (function buildScore(){
       var svg=document.getElementById('scoreChart'); if(!svg)return;

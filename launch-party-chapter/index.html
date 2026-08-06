@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet" />
   <style>
     /* =========================================================
-       SCROLL MEDIA · The Chapter · Launch Party (v6, goal-anchored, video-forward)
-       16 slides, 4 movements. content_brief_v6.
+       SCROLL MEDIA · The Chapter · Launch Party (v6-r2, goal-anchored, video-forward)
+       10 slides, tightened arc. content_brief_v6 + Aug 6 2026 revision.
        Scroll LIGHT, elevated to a produced-film bar: full-bleed real motion
        is the default canvas; restrained Azure type + native data-viz over it.
        Video-plays standard. Through-line: qualified attention > views.
@@ -58,6 +58,7 @@
     .bleed-veil{position:absolute;inset:0}
     .veil-cover{background:radial-gradient(125% 95% at 50% 48%,rgba(250,253,255,.90) 0%,rgba(250,253,255,.74) 44%,rgba(250,253,255,.42) 100%)}
     .veil-goal{background:radial-gradient(120% 92% at 50% 50%,rgba(250,253,255,.86) 0%,rgba(250,253,255,.64) 42%,rgba(250,253,255,.30) 100%)}
+    .veil-hero{background:radial-gradient(125% 98% at 50% 50%,rgba(250,253,255,.60) 0%,rgba(250,253,255,.40) 46%,rgba(250,253,255,.14) 100%)}
     .veil-wall{background:radial-gradient(130% 100% at 50% 48%,rgba(250,253,255,.88) 0%,rgba(250,253,255,.66) 40%,rgba(250,253,255,.30) 100%)}
     .veil-low{background:linear-gradient(to bottom,rgba(250,253,255,.10) 0%,rgba(250,253,255,.30) 26%,rgba(250,253,255,.88) 52%,rgba(250,253,255,.98) 66%,rgba(250,253,255,1) 100%)}
     .veil-thanks{background:linear-gradient(to bottom,rgba(250,253,255,.14) 0%,rgba(250,253,255,.38) 28%,rgba(250,253,255,.93) 50%,rgba(250,253,255,.995) 62%,rgba(250,253,255,1) 100%)}
@@ -76,6 +77,9 @@
     .whead-sm{font-size:clamp(25px,5.4vw,42px)}
     .whead-xl{font-size:clamp(32px,7.6vw,60px)}
     .wsub{font-size:clamp(16px,2.3vw,20px);color:var(--fg-muted);line-height:1.5;max-width:46ch}
+    /* on-video anchor: keeps type legible over a richer, less-washed hero video */
+    .onvid{text-shadow:0 2px 22px rgba(250,253,255,.94),0 1px 5px rgba(250,253,255,.9)}
+    .onvid.wsub{color:var(--azure-900)}
     .wmeta{font-size:14px;font-weight:600;color:var(--fg-subtle)}
     .wcaption{font-size:15px;color:var(--fg-muted);line-height:1.6;max-width:56ch}
     .wcaption strong{color:var(--azure);font-weight:700}
@@ -351,40 +355,29 @@
   <main id="deck">
 
     <!-- ============ MOVEMENT 1 · THE BEGINNING ============ -->
-    <!-- 1 · Cover · A · cold-open montage -->
+    <!-- 1 · Cover · A · cold-open montage (rich full-bleed) -->
     <section class="wslide" data-i="0">
       <div class="bleed">
         <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="auto" poster="assets/video/cover.jpg" aria-hidden="true"><source src="assets/video/cover.mp4" type="video/mp4" /></video>
-        <div class="bleed-veil veil-cover"></div>
+        <div class="bleed-veil veil-hero"></div>
       </div>
       <div class="winner">
         <span class="cover-mark reveal"></span>
         <span class="eyebrow reveal d1">Launch Party &times; Scroll Media</span>
-        <h1 class="whead whead-xl reveal d2">Two years, one <span class="hl">chapter</span>.</h1>
-        <p class="wsub reveal d3">Everything we built together, in one scroll.</p>
+        <h1 class="whead whead-xl onvid reveal d2">Two years, one <span class="hl">chapter</span>.</h1>
+        <p class="wsub onvid reveal d3">Everything we built together, in one scroll.</p>
         <span class="taphint reveal d4">Tap to begin <span class="arrow">&rarr;</span></span>
       </div>
     </section>
 
-    <!-- 2 · Where we started · B · origin still -->
+    <!-- 2 · How we approached it + the three jobs · B (merged) -->
     <section class="wslide" data-i="1">
       <div class="winner">
-        <span class="eyebrow reveal">Where we started</span>
-        <p class="big-milestone reveal d1">August 2024</p>
-        <div class="media-window mw-tall reveal d2">
-          <img src="assets/brit-store.jpg" alt="Launch Party, Over-the-Rhine" loading="lazy" />
-        </div>
-        <p class="lede reveal d3">It started in Over-the-Rhine, with a conversation and a lot of trust. You let us tell the story of Launch Party, and we did not take a single week of that for granted.</p>
-      </div>
-    </section>
-
-    <!-- 3 · What we focused on · B · designed three-goal frame -->
-    <section class="wslide" data-i="2">
-      <div class="winner">
-        <span class="eyebrow reveal">Three jobs</span>
+        <span class="eyebrow reveal">How we approached it</span>
         <h2 class="whead whead-sm reveal d1">Everything we did came back to three things.</h2>
+        <p class="wcaption reveal d2">We got to know your brand, got clear on who it is for, and showed up across a funnel built to move people to act.</p>
         <div class="three-goals">
-          <div class="goal-item"><span class="goal-num">1</span><span class="goal-txt">Grow your community and get you discovered.</span></div>
+          <div class="goal-item"><span class="goal-num">1</span><span class="goal-txt">Grow your community and get discovered.</span></div>
           <div class="goal-item"><span class="goal-num">2</span><span class="goal-txt">Build trust by teaching what you know.</span></div>
           <div class="goal-item"><span class="goal-num">3</span><span class="goal-txt">Turn that trust into sales, in the shop and online.</span></div>
         </div>
@@ -393,33 +386,8 @@
     </section>
 
     <!-- ============ MOVEMENT 2 · THE WORK ============ -->
-    <!-- 4 · How we approached your brand · B · methodology system-map (no reel media) -->
-    <section class="wslide" data-i="3">
-      <div class="winner">
-        <span class="eyebrow reveal">How we approached it</span>
-        <h2 class="whead whead-sm reveal d1">We started with you, not a calendar.</h2>
-        <div class="sysmap reveal d2">
-          <div class="sysmap-spine"></div>
-          <div class="sysnode">
-            <span class="snode-dot">1</span>
-            <p class="sysnode-body"><b>Get to know you.</b> Your voice, your taste, the way you make people feel welcome.</p>
-          </div>
-          <div class="sysnode">
-            <span class="snode-dot">2</span>
-            <p class="sysnode-body"><b>Get clear on who Launch Party is for.</b> What she wants, what gets in her way.</p>
-          </div>
-          <div class="sysnode">
-            <span class="snode-dot">3</span>
-            <p class="sysnode-body"><b>Show up across a funnel</b> built to earn the right attention and walk it toward the shop.</p>
-          </div>
-        </div>
-        <p class="kicker reveal d3">Great content was the start. The <span style="background:linear-gradient(transparent 60%,var(--highlighter) 60%);padding:0 .05em">system</span> grew around your brand as we went.</p>
-        <p class="wcaption reveal d4">We were never chasing views. We were earning the right attention.</p>
-      </div>
-    </section>
-
-    <!-- 5 · Everything it took · A · VIDEO WALL · body-of-work hero moment -->
-    <section class="wslide" data-i="4">
+    <!-- 3 · Everything it took · A · VIDEO WALL · body-of-work hero moment (source box removed) -->
+    <section class="wslide" data-i="2">
       <div class="bleed">
         <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/wall.jpg" aria-hidden="true"><source src="assets/video/wall.mp4" type="video/mp4" /></video>
         <div class="bleed-veil veil-wall"></div>
@@ -429,13 +397,12 @@
         <h2 class="count-hero reveal d1"><span class="hl" data-count="310">0</span> pieces of content. Two years of showing up.</h2>
         <p class="wall-sub reveal d2">Every reel, every shoot, every idea. This is the work behind the numbers.</p>
         <div class="wall-microstats reveal d3"><span>241 reels</span><span>&middot;</span><span>69 posts</span><span>&middot;</span><span>1,131 stories</span><span>&middot;</span><span>dozens of shoots</span></div>
-        <p class="gfoot reveal d4">Metricool, organic. Aug 2024 to Jul 2026. Stories captured Sep 2025 to Jul 2026.</p>
       </div>
     </section>
 
     <!-- ============ MOVEMENT 3 · WHAT HAPPENED (goal by goal) ============ -->
-    <!-- 6 · Goal 1 · community · A · goal1.mp4 · data over motion -->
-    <section class="wslide" data-i="5">
+    <!-- 4 · Goal 1 · community · A · goal1.mp4 · data over motion (source box removed) -->
+    <section class="wslide" data-i="3">
       <div class="bleed">
         <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/goal1.jpg" aria-hidden="true"><source src="assets/video/goal1.mp4" type="video/mp4" /></video>
         <div class="bleed-veil veil-goal"></div>
@@ -459,12 +426,11 @@
           </div>
         </div>
         <p class="gline reveal d3">Two years of showing up put Launch Party in front of the right people, again and again.</p>
-        <p class="gfoot reveal d4">Metricool, organic. Full engagement. Stadium capacity 65,515 (Paycor Stadium).</p>
       </div>
     </section>
 
-    <!-- 7 · Goal 2 · trust · A · goal2.mp4 · data over motion -->
-    <section class="wslide" data-i="6">
+    <!-- 5 · Goal 2 · trust · A · goal2.mp4 · data over motion (source box removed) -->
+    <section class="wslide" data-i="4">
       <div class="bleed">
         <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/goal2.jpg" aria-hidden="true"><source src="assets/video/goal2.mp4" type="video/mp4" /></video>
         <div class="bleed-veil veil-goal"></div>
@@ -488,12 +454,11 @@
           </div>
         </div>
         <p class="gline reveal d3">Your education content is the engine. Teaching is what turned viewers into a community that trusts you.</p>
-        <p class="gfoot reveal d4">Metricool, organic. Full engagement.</p>
       </div>
     </section>
 
-    <!-- 8 · Goal 3 · sales · A · goal3.mp4 · the crescendo -->
-    <section class="wslide" data-i="7">
+    <!-- 6 · Goal 3 · sales · A · goal3.mp4 · the crescendo (citation KEPT) -->
+    <section class="wslide" data-i="5">
       <div class="bleed">
         <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/goal3.jpg" aria-hidden="true"><source src="assets/video/goal3.mp4" type="video/mp4" /></video>
         <div class="bleed-veil veil-goal"></div>
@@ -527,8 +492,8 @@
       </div>
     </section>
 
-    <!-- 9 · You beat brands your size · B · native Azure charts · the capstone -->
-    <section class="wslide" data-i="8">
+    <!-- 7 · You beat brands your size · B · native Azure charts · the capstone (citation KEPT) -->
+    <section class="wslide" data-i="6">
       <div class="winner">
         <span class="kicker pre reveal">Here is the part most brands never see.</span>
         <h2 class="whead whead-sm reveal d1">You beat brands your size. Every month.</h2>
@@ -545,99 +510,24 @@
       </div>
     </section>
 
-    <!-- 10 · The work got sharper · B · Azure score line -->
-    <section class="wslide" data-i="9">
+    <!-- 8 · The work got sharper · B · Azure score line (full documented monthly history) -->
+    <section class="wslide" data-i="7">
       <div class="winner">
         <span class="kicker pre reveal">And the work kept getting better.</span>
         <h2 class="whead whead-sm reveal d1">The work got sharper.</h2>
         <div class="scorepanel reveal d2">
-          <svg class="score-svg" id="scoreChart" viewBox="0 0 560 200" role="img" aria-label="Monthly performance score: 7.5 in March, peaking at 8.8 in May, dipping to 7.9 in June, recovering to 8.5 in July."></svg>
+          <svg class="score-svg" id="scoreChart" viewBox="0 0 560 200" role="img" aria-label="Monthly performance score, January through July 2026: 7.5, 7.7, 7.5, 8.5, peaking at 8.8 in May, dipping to 7.9 in June, recovering to 8.5 in July."></svg>
           <div style="text-align:center;margin-top:8px"><span class="peak-pill">Peaked at 8.8 in May, back to 8.5 in July</span></div>
         </div>
         <p class="wcaption reveal d3">Your content quality climbed to a peak of 8.8 in May. When June dipped, we read the data and brought it back to 8.5 in July.</p>
         <p class="kicker reveal d4">Good months and tougher months. What mattered is we kept sharpening.</p>
-        <p class="wfoot reveal d5">Scroll monthly performance scores.</p>
+        <p class="wfoot reveal d5">Scroll monthly performance scores, Jan to Jul 2026.</p>
       </div>
     </section>
 
-    <!-- ============ MOVEMENT 4 · WHERE YOU ARE NOW ============ -->
-    <!-- 11 · The brand we built in Cincinnati · A/chips · then/now transformation + milestones -->
-    <section class="wslide" data-i="10">
-      <div class="winner">
-        <span class="eyebrow reveal">What we built in Cincinnati</span>
-        <h2 class="whead whead-sm reveal d1">A brand this city knows.</h2>
-        <div class="thennow reveal d2">
-          <div class="tn-cell">
-            <div class="tn-media"><video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/then.jpg" aria-hidden="true"><source src="assets/video/then.mp4" type="video/mp4" /></video></div>
-            <span class="tn-lab">Then &middot; <b>2024</b></span>
-          </div>
-          <div class="tn-cell">
-            <div class="tn-media"><video data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/now.jpg" aria-hidden="true"><source src="assets/video/now.mp4" type="video/mp4" /></video></div>
-            <span class="tn-lab">Now &middot; <b>2026</b></span>
-          </div>
-        </div>
-        <div class="brandgrid reveal d3">
-          <div class="btile flag">
-            <div class="btile-badge"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
-            <div class="btile-txt">Featured in CityBeat's Best of Cincinnati: <b>Best Indie Makeup Boutique</b>.</div>
-          </div>
-          <div class="btile">
-            <div class="btile-media"><img src="assets/moment-undertones.jpg" alt="Undertones series" loading="lazy" /></div>
-            <div class="btile-txt">Launch Party on film in the <b>Undertones series</b>.</div>
-          </div>
-          <div class="btile">
-            <div class="btile-media"><img src="assets/moment-3years.jpg" alt="Anniversary with the community" loading="lazy" /></div>
-            <div class="btile-txt"><b>Two years, then three</b>, celebrated with the community.</div>
-          </div>
-          <div class="btile">
-            <div class="btile-media"><img src="assets/cincy-weekend.jpg" alt="Final Friday on 13th Street" loading="lazy" /></div>
-            <div class="btile-txt">A regular on the <b>Final Friday</b> scene on 13th Street.</div>
-          </div>
-        </div>
-        <p class="wcaption reveal d4">Two years turned a new shop into a name people in this city recognize, and made you the person they trust for beauty.</p>
-      </div>
-    </section>
-
-    <!-- 12 · What they said about you · A · audience voice · VALIDATED FALLBACK (Brit's community posts) -->
-    <section class="wslide" data-i="11">
-      <div class="bleed">
-        <img class="bleed-media" src="assets/brit-portrait.jpg" alt="Brit, Launch Party" loading="lazy" />
-        <div class="bleed-veil veil-cover"></div>
-      </div>
-      <div class="winner">
-        <span class="cover-mark reveal"></span>
-        <span class="eyebrow reveal d1">And the community felt it.</span>
-        <h2 class="whead whead-sm reveal d2">This is what people said.</h2>
-        <div class="quotes reveal d3">
-          <div><p class="quoteline">&ldquo;I'm so thankful for you.&rdquo;</p><p class="quotewhen">November 2024</p></div>
-          <div><p class="quoteline">&ldquo;In this space, we've had so much fun.&rdquo;</p><p class="quotewhen">September 2025</p></div>
-          <div><p class="quoteline">&ldquo;When I first started Launch Party I never would have dreamed&hellip;&rdquo;</p><p class="quotewhen">May 2025</p></div>
-        </div>
-        <p class="quote-src reveal d4">From Launch Party's own community posts, 2024 to 2026.</p>
-        <p class="wsub reveal d4">Two years of this is easy to take for granted when you are living it. So here it is in one place: people love what you built.</p>
-      </div>
-    </section>
-
-    <!-- 13 · What you keep · B · four cells + library handoff -->
-    <section class="wslide" data-i="12">
-      <div class="winner">
-        <span class="eyebrow reveal">What we built together</span>
-        <h2 class="whead whead-sm reveal d1">Yours to keep.</h2>
-        <div class="builtgrid reveal d2">
-          <div class="builtcell"><span class="built-k">A voice</span><span class="built-v">The beauty big sis. Girl's-girl warmth. Do what feels good.</span></div>
-          <div class="builtcell"><span class="built-k">Four content types</span><span class="built-v">Discovery, education, community, and the relatable beauty that started it all.</span></div>
-          <div class="builtcell"><span class="built-k">The POV Discovery format</span><span class="built-v">Your signature way to introduce the brand to someone new.</span></div>
-          <div class="builtcell"><span class="built-k">A path to the shop</span><span class="built-v">Profile to link to shop and store.</span></div>
-        </div>
-        <p class="wcaption reveal d3">Plus your complete content library. Every post, every number, in one place to keep learning from.</p>
-        <!-- TBD-library-link: replace href with the real Notion content library URL in the final Aug-14 pass -->
-        <a class="lib-btn reveal d3" href="TBD-library-link" data-tbd-library>Open your content library<span class="tbd-note">link set in final pass</span></a>
-        <p class="built-close reveal d4">All of it is yours to <span class="hl">keep</span> running.</p>
-      </div>
-    </section>
-
-    <!-- 14 · Keep performing · B · data-driven recommendations -->
-    <section class="wslide" data-i="13">
+    <!-- ============ MOVEMENT 4 · WHAT YOU KEEP ============ -->
+    <!-- 9 · Keep performing · B · data-driven recommendations + library handoff -->
+    <section class="wslide" data-i="8">
       <div class="winner">
         <span class="kicker pre reveal">Before we go, here is what your data says.</span>
         <h2 class="whead whead-sm reveal d1">How to keep this going.</h2>
@@ -657,35 +547,26 @@
             <p class="keep-item"><b>Read monthly, adjust quarterly.</b></p>
           </div>
         </div>
-        <p class="wfoot reveal d3">From your two-year content library.</p>
+        <p class="wcaption reveal d3">Plus your complete content library. Every post, every number, in one place to keep.</p>
+        <!-- TBD-library-link: replace href with the real Notion content library URL in the final Aug-14 pass -->
+        <a class="lib-btn reveal d3" href="TBD-library-link" data-tbd-library>Open your content library<span class="tbd-note">link set in final pass</span></a>
       </div>
     </section>
 
-    <!-- 15 · Thank you · A · full-bleed Brit video (soul of this place) -->
-    <section class="wslide" data-i="14">
+    <!-- 10 · Thank you · A · rich full-bleed hero · the close (simplified) -->
+    <section class="wslide" data-i="9">
       <div class="bleed">
         <video class="bleed-media" data-loop-video autoplay muted loop playsinline preload="none" poster="assets/video/thanks.jpg" aria-hidden="true"><source src="assets/video/thanks.mp4" type="video/mp4" /></video>
-        <div class="bleed-veil veil-thanks"></div>
+        <div class="bleed-veil veil-hero"></div>
       </div>
       <div class="winner">
         <span class="cover-mark reveal"></span>
-        <h2 class="whead whead-sm reveal d1">Thank you, Brit.</h2>
-        <p class="wsub reveal d2">Two years ago you handed us something you built from nothing. Getting to help the rest of the city see it has been the best kind of work. Thank you for trusting us with it.</p>
-        <div class="sigrow reveal d3">
+        <h2 class="whead whead-sm onvid reveal d1">Thank you, Brit.</h2>
+        <div class="sigrow reveal d2">
           <div class="sig"><div class="sig-name">Riley</div><div class="sig-role">Social Media Account Manager</div></div>
           <div class="sig"><div class="sig-name">Allison</div><div class="sig-role">Lead Strategist</div></div>
           <div class="sig"><div class="sig-name">Chase</div><div class="sig-role">Performance &amp; Operations</div></div>
         </div>
-      </div>
-    </section>
-
-    <!-- 16 · Final note · B · warm no-ask close -->
-    <section class="wslide" data-i="15">
-      <div class="winner">
-        <span class="eyebrow reveal">One last thing</span>
-        <h2 class="whead whead-sm reveal d1">Two years, one chapter.</h2>
-        <p class="wsub reveal d2">No ask here. Just gratitude. Two years, one chapter, and a brand you can be proud of. The door is always open.</p>
-        <span class="cover-mark reveal d3"></span>
       </div>
     </section>
 
@@ -762,7 +643,7 @@
       p.style.strokeDashoffset=len; void p.getBoundingClientRect(); p.style.transition='stroke-dashoffset 1.3s var(--ease)'; p.style.strokeDashoffset=0; }
 
     /* score line (slide 10) · real monthly Scroll scores · peak/dip/recovery */
-    var scores=[7.5,8.8,7.9,8.5], smonths=['Mar','May','Jun','Jul'];
+    var scores=[7.5,7.7,7.5,8.5,8.8,7.9,8.5], smonths=['Jan','Feb','Mar','Apr','May','Jun','Jul'];
     (function buildScore(){
       var svg=document.getElementById('scoreChart'); if(!svg)return;
       var W=560,H=200,L=30,R=20,T=26,B=34, minS=7.0,maxS=9.0;

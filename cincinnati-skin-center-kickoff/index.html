@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="googlebot" content="noindex,nofollow" />
+  <title>Cincinnati Skin Center &middot; Kickoff | Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="../scroll-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       SCROLL MEDIA DESIGN SYSTEM · Cincinnati Skin Center Kickoff
+       kickoff_deck SKILL v4.2 · cloned + re-tokened from the deck named
+       in the SKILL's CURRENT BASELINE block at build time.
+       Light client palette, Scheme B. Per brand_system.md §5 +
+       scroll-web-design v2.1. 9 slides, reveal-only interaction.
+       Real Cincinnati Skin Center lockup in the topbar.
+       ========================================================= */
+    :root {
+      --ghost:#FAFDFF; --azure:#0C3387; --azure-900:#071d4f; --azure-800:#0c3387;
+      --azure-600:#254fb0; --azure-400:#7a9ad8; --azure-200:#b9cdee;
+      --lucid:#CBE9FF; --lucid-deep:#9ecee8; --lucid-soft:#e4f3ff;
+      --highlighter:#E2ED7A; --highlighter-dark:#c8d94a; --shadow:#151516; --white:#fff;
+
+      --bg:var(--ghost); --bg-alt:#f4f7fb; --bg-panel:var(--white);
+      --fg:var(--shadow); --fg-heading:var(--azure); --fg-muted:#5a6070; --fg-subtle:#9097a6;
+      --fg-on-azure:var(--white);
+      --rule:rgba(12,51,135,.20); --rule-strong:rgba(12,51,135,.40); --rule-faint:rgba(12,51,135,.08);
+
+      --fs-xs:11px; --fs-sm:13px; --fs-base:15px; --fs-md:17px; --fs-lg:20px;
+      --fs-xl:24px; --fs-2xl:32px; --fs-3xl:44px; --fs-4xl:60px;
+      --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:40px; --sp-8:56px; --sp-9:80px;
+      --header-h:60px; --content-max:1120px; --slide-max:1040px;
+      --r-sm:4px; --r-md:8px; --r-lg:16px;
+      --sh-sm:0 1px 2px rgba(12,51,135,.06); --sh-md:0 6px 24px rgba(12,51,135,.08); --sh-lg:0 18px 60px rgba(12,51,135,.10);
+      --ease:cubic-bezier(.22,.61,.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--header-h)}
+    body{font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);font-size:var(--fs-base);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:inherit;font-weight:800;color:var(--fg-heading);letter-spacing:-.01em;line-height:1.12}
+    a{color:var(--azure-600);text-decoration:none}
+    button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0}
+    strong{font-weight:700;color:var(--shadow)}
+    em{font-style:italic}
+
+    /* HEADER · co-branded (Scroll left, Cincinnati Skin Center lockup right) */
+    .deck-header{position:sticky;top:0;height:var(--header-h);background:rgba(250,253,255,.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule-faint);z-index:100;display:flex;align-items:center}
+    .deck-header-inner{width:100%;max-width:var(--content-max);margin:0 auto;padding:0 var(--sp-5);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)}
+    .header-logo{display:flex;align-items:center;gap:var(--sp-3);min-height:44px;padding:4px 0}
+    .header-logo-img{height:24px;width:auto;display:block}
+    .header-co{display:flex;align-items:center;gap:var(--sp-4);min-height:44px}
+    .header-x{font-size:13px;color:var(--fg-subtle);font-weight:600}
+    /* stacked three-tier lockup, so it carries more height than a single-line wordmark */
+    .header-client-img{height:34px;width:auto;display:block}
+
+    /* SCROLL PROGRESS */
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--azure),var(--azure-400));z-index:120;transition:width .1s linear}
+
+    /* SLIDE NAV DOTS */
+    .slide-nav{display:none;position:fixed;top:50%;right:var(--sp-5);transform:translateY(-50%);z-index:50;flex-direction:column;gap:7px}
+    .slide-nav a{width:8px;height:8px;background:var(--azure-200);border-radius:50%;transition:all .2s var(--ease);position:relative}
+    .slide-nav a:hover{background:var(--azure-600);transform:scale(1.4)}
+    .slide-nav a.active{background:var(--azure);transform:scale(1.6)}
+    .slide-nav a span{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--azure);color:var(--ghost);padding:4px 10px;font-size:12px;white-space:nowrap;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .18s var(--ease)}
+    .slide-nav a:hover span{opacity:1}
+    @media (min-width:1340px){.slide-nav{display:flex}}
+
+    /* SLIDE SHELL · one screen per slide */
+    .slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + 12px) var(--sp-6) var(--sp-5);border-bottom:1px solid var(--rule-faint);position:relative;scroll-margin-top:var(--header-h)}
+    .slide.is-tight{padding-top:calc(var(--header-h) + 8px);padding-bottom:var(--sp-4)}
+    .slide-inner{width:100%;max-width:var(--slide-max);margin:0 auto}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-2)}
+    .eyebrow .act{background:var(--azure);color:var(--ghost);padding:3px 9px;border-radius:999px;font-size:12px;letter-spacing:.1em}
+    .eyebrow .act.yours{background:var(--highlighter);color:var(--azure-900)}
+    .eyebrow-num{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;background:var(--azure);color:var(--ghost);font-size:12px;font-weight:800}
+    .slide-title{font-size:clamp(26px,3.5vw,40px);margin-bottom:10px;max-width:24ch}
+    .slide-lede{font-size:clamp(15px,1.65vw,18px);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-3);line-height:1.45}
+    .section-num{position:absolute;top:var(--sp-7);right:var(--sp-7);font-size:13px;font-weight:700;color:var(--azure-200);letter-spacing:.05em}
+    @media (max-width:560px){.section-num{display:none}}
+
+    /* clock chip (working slides) */
+    .slide-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
+    .slide-clock{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(226,237,122,.18);border:1px solid var(--highlighter-dark);font-size:12px;font-weight:800;color:var(--shadow);text-transform:uppercase;letter-spacing:.06em}
+    .slide-clock svg{width:14px;height:14px;fill:none;stroke:var(--shadow);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal.d1{transition-delay:.06s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.22s}
+    .reveal.d4{transition-delay:.30s}.reveal.d5{transition-delay:.38s}.reveal.d6{transition-delay:.46s}
+    .reveal.d7{transition-delay:.54s}.reveal.d8{transition-delay:.62s}.reveal.d9{transition-delay:.70s}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+    /* ===== COVER + CLOSE (azure, node-network motif) ===== */
+    .azure-slide{color:var(--ghost);min-height:100vh;justify-content:center;overflow:hidden}
+    #s01{background:radial-gradient(120% 90% at 85% 5%,#16367a 0%,var(--azure) 46%,var(--azure-900) 100%)}
+    #s09{background:radial-gradient(120% 90% at 15% 92%,#16367a 0%,var(--azure) 48%,var(--azure-900) 100%)}
+    .net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
+    .net line{stroke:rgba(203,233,255,.22);stroke-width:1}
+    .net circle{fill:rgba(203,233,255,.5)}
+    .net circle.hl{fill:var(--highlighter)}
+    .azure-slide .slide-inner{position:relative;z-index:2}
+    .cover-kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lucid);margin-bottom:var(--sp-5)}
+    .cover-kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--highlighter);box-shadow:0 0 12px var(--highlighter)}
+    .cover-title{color:var(--ghost);font-size:clamp(38px,6.6vw,72px);line-height:1.03;letter-spacing:-.02em;max-width:15ch;font-weight:800}
+    .cover-title .hl{color:var(--highlighter)}
+    .cover-sub{font-size:clamp(17px,2vw,var(--fs-xl));color:var(--lucid);margin-top:var(--sp-5);max-width:52ch;font-weight:400;line-height:1.45}
+    .cover-meta{margin-top:var(--sp-8);display:flex;flex-wrap:wrap;gap:var(--sp-6);font-size:14px;color:var(--lucid-soft)}
+    .cover-meta b{display:block;color:var(--ghost);font-size:16px;font-weight:700;margin-top:2px}
+    .scrollcue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--lucid);font-size:12px;letter-spacing:.1em;text-transform:uppercase;z-index:2}
+    .scrollcue .bar{width:1px;height:28px;background:linear-gradient(var(--highlighter),transparent);animation:cue 1.8s ease-in-out infinite}
+    @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+    @media (prefers-reduced-motion:reduce){.scrollcue .bar{animation:none}}
+
+    /* ===== AGENDA (three part bands) ===== */
+    .agenda-acts{display:flex;flex-direction:column;gap:var(--sp-3);margin-top:var(--sp-2)}
+    .act-band{border:1px solid var(--rule-faint);border-left:4px solid var(--azure);border-radius:var(--r-md);background:var(--bg-panel);padding:var(--sp-3) var(--sp-4);box-shadow:var(--sh-sm)}
+    .act-band.is-yours{border-left-color:var(--highlighter-dark);background:rgba(226,237,122,.08)}
+    .act-band-head{display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-2)}
+    .act-band-name{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azure-600)}
+    .act-band.is-yours .act-band-name{color:var(--azure)}
+    .act-yours-flag{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:999px;background:var(--highlighter);color:var(--azure-900);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .act-yours-flag svg{width:12px;height:12px;fill:none;stroke:var(--azure-900);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .act-band-note{margin-left:auto;font-size:12px;color:var(--fg-subtle)}
+    .act-stops{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)}
+    .astop{display:flex;flex-direction:column;gap:1px;padding:var(--sp-2) var(--sp-3);border-radius:var(--r-sm);background:var(--bg-alt);transition:all .18s var(--ease);cursor:pointer;min-height:44px}
+    .astop:hover{background:var(--lucid-soft);transform:translateY(-2px)}
+    .act-band.is-yours .astop{background:rgba(226,237,122,.10)}
+    .act-band.is-yours .astop:hover{background:rgba(226,237,122,.20)}
+    .astop-top{display:flex;align-items:baseline;gap:6px}
+    .astop-num{font-size:12px;font-weight:800;color:var(--azure);font-variant-numeric:tabular-nums}
+    .astop-time{margin-left:auto;font-size:12px;color:var(--fg-subtle);letter-spacing:.04em;text-transform:uppercase}
+    .astop-label{font-size:14px;font-weight:700;color:var(--shadow);line-height:1.2}
+    .astop-desc{font-size:12px;color:var(--fg-muted);line-height:1.3}
+    .agenda-note{margin-top:var(--sp-4);font-size:15px;color:var(--azure);font-weight:700;line-height:1.4;max-width:82ch}
+    @media (max-width:760px){.act-stops{grid-template-columns:1fr 1fr}}
+
+    /* ===== ENGAGEMENT ===== */
+    .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);margin-top:var(--sp-1)}
+    .pillar{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-3);display:flex;flex-direction:column;gap:6px;box-shadow:var(--sh-sm)}
+    .pillar-head{display:flex;align-items:center;gap:9px}
+    .pillar-ico{flex-shrink:0;width:19px;height:19px;fill:none;stroke:var(--azure);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .pillar-name{font-size:14px;font-weight:800;color:var(--azure);line-height:1.15}
+    .pillar-act{font-size:12.5px;color:var(--fg-muted);line-height:1.35}
+    .pillar-delivs{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:var(--sp-2)}
+    .pillar-deliv{display:inline-flex;align-items:center;font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:4px 10px;line-height:1.2}
+    .pillar-deliv.lime{background:rgba(226,237,122,.4)}
+    .eng-lower{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--sp-3);align-items:start;margin-top:var(--sp-2)}
+    .review-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:6px}
+    /* compact pod strip (on engagement) · three seats */
+    .pod-strip{margin-top:var(--sp-2)}
+    .pod-strip-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:6px}
+    .pod-mini-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3)}
+    .pod-mini{display:flex;align-items:center;gap:9px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:6px 11px;box-shadow:var(--sh-sm)}
+    .pod-mini.primary{background:rgba(226,237,122,.12);border-color:var(--highlighter-dark)}
+    .pmini-mono{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;letter-spacing:.02em}
+    .pod-mini.primary .pmini-mono{background:var(--highlighter);color:var(--azure-900)}
+    .pmini-body{display:flex;flex-direction:column;min-width:0}
+    .pmini-name{font-size:13px;font-weight:800;color:var(--azure);line-height:1.2}
+    .pmini-role{font-size:12px;color:var(--fg-muted);line-height:1.25}
+    @media (max-width:760px){.pod-mini-row{grid-template-columns:1fr 1fr}}
+    @media (max-width:480px){.pod-mini-row{grid-template-columns:1fr}}
+    /* typical-week strip (single row) */
+    .week-strip{margin-top:var(--sp-2);display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+    .week-strip-head{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);line-height:1.3}
+    .week-strip-head span{display:block;font-weight:600;text-transform:none;letter-spacing:0;color:var(--fg-muted)}
+    .week-days{display:flex;gap:7px;flex:1;min-width:300px}
+    .wday{flex:1;display:flex;align-items:baseline;justify-content:center;gap:5px;padding:6px 8px;border-radius:var(--r-sm);border:1px solid var(--rule-faint);white-space:nowrap}
+    .wday.post{background:rgba(226,237,122,.22);border-color:var(--highlighter-dark)}
+    .wday.story{background:var(--lucid-soft);border-color:var(--azure-200)}
+    .wd-day{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.04em}
+    .wd-what{font-size:12px;color:var(--fg-muted)}
+    .week-extra{flex-basis:100%;font-size:12.5px;color:var(--fg-muted);line-height:1.4}
+    .week-extra strong{color:var(--azure);font-weight:700}
+    @media (max-width:620px){.week-days{flex-wrap:wrap}.wday{min-width:calc(33.3% - 5px)}}
+    @media (max-width:900px){.pillars{grid-template-columns:1fr 1fr}.eng-lower{grid-template-columns:1fr}}
+    @media (max-width:560px){.pillars{grid-template-columns:1fr}}
+    .eng-side{display:flex;flex-direction:column;gap:6px}
+    .panel{padding:10px var(--sp-4);border-radius:var(--r-md);border:1px solid var(--rule-faint)}
+    .panel.lucid{background:var(--lucid-soft);border-left:3px solid var(--azure)}
+    .panel.lime{background:rgba(226,237,122,.16);border-left:3px solid var(--highlighter-dark)}
+    .panel-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:6px}
+    .panel.lime .panel-label{color:var(--azure-900)}
+    .panel-body{display:block;font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .panel-body strong{color:var(--azure)}
+    .panel-body + .panel-body{margin-top:7px}
+    .approval{display:flex;flex-direction:column;gap:4px;margin-top:2px}
+    .approw{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--shadow);line-height:1.4}
+    .approw-step{flex-shrink:0;width:20px;height:20px;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+    .approw-note{font-size:12.5px;color:var(--fg-muted);line-height:1.4;margin-top:2px;font-style:italic}
+    .scope-line{margin-top:var(--sp-2);font-size:13.5px;color:var(--shadow);line-height:1.45;padding:7px var(--sp-4);background:var(--bg-alt);border-radius:var(--r-sm);border-left:2px solid var(--azure-400)}
+    .scope-line strong{color:var(--azure)}
+    .flow-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:var(--sp-2);border:1px solid var(--rule-faint);border-radius:var(--r-md);overflow:hidden}
+    .flow-head{padding:5px var(--sp-4);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .flow-head.keeps{background:var(--lucid-soft);color:var(--azure)}
+    .flow-head.slows{background:var(--bg-alt);color:var(--fg-muted)}
+    .flow-cell{padding:3px var(--sp-4);font-size:13px;line-height:1.3;border-top:1px solid var(--rule-faint);display:flex;align-items:flex-start;gap:8px}
+    .flow-cell.slows{color:var(--fg-muted);border-left:1px solid var(--rule-faint)}
+    .flow-ico{width:15px;height:15px;flex-shrink:0;margin-top:2px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .flow-cell.keeps .flow-ico{stroke:var(--azure)}
+    .flow-cell.slows .flow-ico{stroke:var(--fg-subtle)}
+    @media (max-width:560px){.flow-strip{grid-template-columns:1fr}.flow-cell.slows{border-left:none}}
+
+    /* ===== TIMELINE (horizontal runway) ===== */
+    .phase-band{display:grid;grid-template-columns:2fr 6fr;gap:10px;margin-top:var(--sp-4)}
+    .phase-seg{border-radius:var(--r-md);padding:8px var(--sp-4);position:relative}
+    .phase-seg.p1{background:var(--lucid-soft);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400)}
+    .phase-seg.p2{background:rgba(226,237,122,.16);border:1px solid var(--highlighter-dark);border-left:3px solid var(--highlighter-dark)}
+    .phase-name{display:block;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--azure);line-height:1.2}
+    .phase-seg.p2 .phase-name{color:var(--azure-900)}
+    .phase-sub{display:block;font-size:12px;color:var(--fg-muted);line-height:1.25;margin-top:1px}
+    .phase-seg.p2::before{content:"";position:absolute;left:-7px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:7px solid var(--highlighter-dark)}
+    @media (max-width:640px){.phase-band{grid-template-columns:1fr}.phase-seg.p2::before{display:none}}
+    .runway{position:relative;display:grid;grid-template-columns:repeat(9,1fr);gap:5px;margin-top:var(--sp-5)}
+    .runway::before{content:"";position:absolute;top:9px;left:3%;right:3%;height:2px;background:var(--rule)}
+    .jnode{position:relative;z-index:2;text-align:center;padding-top:22px}
+    .jdot{position:absolute;top:2px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:var(--azure-200);border:3px solid var(--ghost);box-shadow:0 0 0 1px var(--rule)}
+    .jnode.here .jdot{background:var(--highlighter);box-shadow:0 0 0 4px rgba(226,237,122,.4);transform:translateX(-50%) scale(1.2)}
+    .jnode.hero .jdot{background:var(--azure);width:18px;height:18px;box-shadow:0 0 0 4px rgba(12,51,135,.14)}
+    .jwhen{display:block;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--azure-600);line-height:1.2}
+    .jnode.here .jwhen{color:var(--highlighter-dark)}
+    .jwhat{display:block;font-size:12px;color:var(--fg-muted);margin-top:3px;line-height:1.25}
+    .jnode.hero .jwhat{font-weight:700;color:var(--azure)}
+    .jtag{display:inline-flex;align-items:center;gap:3px;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 6px;border-radius:999px}
+    .jtag.off{background:var(--bg-alt);color:var(--fg-muted);border:1px solid var(--rule)}
+    .jtag svg{width:9px;height:9px;fill:none;stroke:var(--azure-900);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .jnode.event .jdot{background:var(--lucid-deep);box-shadow:0 0 0 3px rgba(158,206,232,.32)}
+    .jnode.event .jwhen{color:var(--azure)}
+    .yourevent-key{display:inline-flex;align-items:center;gap:7px;margin-top:var(--sp-4);font-size:12.5px;color:var(--fg-muted)}
+    .yourevent-key .yk-dot{width:11px;height:11px;border-radius:50%;background:var(--lucid-deep);box-shadow:0 0 0 3px rgba(158,206,232,.32);flex-shrink:0}
+    .shoot-callout{display:flex;align-items:flex-start;gap:13px;margin-top:var(--sp-4);background:var(--lucid-soft);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
+    .shoot-callout .sc-ico{flex-shrink:0;width:24px;height:24px;fill:none;stroke:var(--azure);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+    .shoot-callout-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .shoot-callout-body .sc-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:3px}
+    .shoot-callout-body strong{color:var(--azure)}
+    .jhere-lbl{display:inline-block;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:2px 6px;border-radius:999px}
+    .lock-band{margin-top:var(--sp-4);background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-5)}
+    .lock-label{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:var(--sp-2)}
+    .lock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3) var(--sp-5)}
+    .lock-row{display:flex;flex-direction:column;gap:1px;padding-left:var(--sp-3);border-left:2px solid var(--highlighter-dark)}
+    .lock-when{font-size:13px;font-weight:800;color:var(--shadow)}
+    .lock-what{font-size:13px;color:var(--fg-muted)}
+    @media (max-width:900px){.runway{grid-template-columns:1fr;gap:var(--sp-3)}.runway::before{display:none}.jnode{text-align:left;padding-top:0;padding-left:26px}.jdot{top:3px;left:0;transform:none}.jnode.here .jdot{transform:scale(1.2)}.lock-grid{grid-template-columns:1fr}}
+
+    /* ===== GOALS (descending funnel) ===== */
+    .funnel{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:var(--sp-1)}
+    .fstage{width:100%;min-height:70px;display:flex;align-items:center;gap:var(--sp-4);padding:7px var(--sp-5);border-radius:var(--r-lg);border:1px solid var(--rule-faint)}
+    /* on-palette descent: light lucid -> deeper lucid -> highlighter (the payoff) */
+    .fstage.w1{width:100%;background:var(--lucid-soft)}
+    .fstage.w2{width:90%;background:rgba(203,233,255,.72);border-color:var(--azure-200)}
+    .fstage.w3{width:80%;background:rgba(226,237,122,.34);border-color:var(--highlighter-dark);box-shadow:var(--sh-md)}
+    .fbadge{flex:0 0 176px}
+    .fstage-stage{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600);line-height:1.3}
+    .fstage.w3 .fstage-stage{color:var(--azure-900)}
+    .fpos{display:block;font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--fg-muted);line-height:1.3}
+    .fstage-headline{display:block;font-size:17px;font-weight:800;color:var(--azure);line-height:1.15;margin-top:2px;letter-spacing:-.01em}
+    .fwins{flex:1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    /* the goal is the hero of each band */
+    .fwin{flex:1 1 250px;font-size:15.5px;font-weight:600;color:var(--shadow);line-height:1.35;background:none;border:none;border-radius:0;padding:0}
+    /* one consistent metric component across all three stages */
+    .fwin.is-success{flex:0 0 auto;font-size:12.5px;font-weight:800;color:var(--ghost);background:var(--azure);border:none;border-radius:999px;padding:7px 14px;line-height:1.2;letter-spacing:.02em}
+    /* format examples per stage (names per the Formats Library) */
+    .ffmt-row{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:0}
+    .ffmt-lead{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--azure-600);margin-right:2px}
+    .ffmt{font-size:12px;font-weight:700;color:var(--azure);background:var(--white);border:1px solid var(--rule);border-radius:999px;padding:2px 9px;line-height:1.25}
+    .fstage.w3 .ffmt{border-color:var(--highlighter-dark);color:var(--azure-900)}
+    .mason-under{margin-top:var(--sp-2);display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--shadow);line-height:1.45;padding:7px var(--sp-4);background:var(--bg-alt);border-radius:var(--r-sm);border-left:2px solid var(--azure-400)}
+    .mason-under strong{color:var(--azure)}
+    .goal-frame{margin-top:var(--sp-2);font-size:14.5px;color:var(--shadow);line-height:1.45;max-width:96ch}
+    .goal-frame strong{color:var(--azure)}
+    .goal-frame .inwords{display:block;margin-top:5px;font-size:13.5px;color:var(--fg-muted);font-style:italic}
+    .track-note{margin-top:var(--sp-2);background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:9px var(--sp-5);box-shadow:var(--sh-sm)}
+    .track-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:5px}
+    .track-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .track-body strong{color:var(--azure)}
+    .track-stages{display:inline-flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+    .tstage{font-size:12px;font-weight:700;color:var(--azure-900);background:var(--lucid);border-radius:999px;padding:2px 9px}
+    .tstage.now{background:var(--highlighter);color:var(--azure-900)}
+    .range-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+    .rchip{font-size:12px;font-weight:600;color:var(--shadow);background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-sm);padding:2px 8px;line-height:1.25}
+    .rchip b{font-weight:800;color:var(--azure)}
+    /* the "your turn" ask: signal-tinted, not a navy slab, so the funnel stays the hero */
+    .capture-band{margin-top:var(--sp-2);display:flex;align-items:flex-start;gap:var(--sp-3);background:rgba(226,237,122,.18);border:1px solid var(--highlighter-dark);border-radius:var(--r-md);padding:9px var(--sp-5)}
+    .capture-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-900);background:var(--highlighter);padding:3px 9px;border-radius:999px;margin-top:2px}
+    .capture-body{font-size:14px;color:var(--shadow);line-height:1.5}
+    .capture-body strong{color:var(--azure)}
+    @media (max-width:760px){.fstage{flex-direction:column;align-items:flex-start;gap:10px}.fstage.w1,.fstage.w2,.fstage.w3{width:100%}.fbadge{flex-basis:auto}}
+
+    /* ===== STANDS FOR ===== */
+    .stands-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--sp-5);align-items:stretch;margin-top:var(--sp-3)}
+    .bigquote{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6);box-shadow:var(--sh-md);display:flex;flex-direction:column;justify-content:center}
+    .bigquote .qm{font-size:52px;line-height:.4;color:var(--azure-400);font-weight:800}
+    .bigquote p{font-size:clamp(19px,2.2vw,26px);font-weight:700;line-height:1.28;letter-spacing:-.01em;margin:12px 0 10px}
+    .bigquote cite{font-size:12px;font-weight:600;color:var(--lucid);text-transform:uppercase;letter-spacing:.1em;font-style:normal}
+    .bigquote .say-more{margin-top:var(--sp-4);font-size:14px;color:var(--lucid-soft);line-height:1.5;font-style:italic}
+    .bigquote .say-more strong{color:var(--ghost);font-style:normal}
+    .stands-right{display:flex;flex-direction:column;gap:var(--sp-4);justify-content:center}
+    .picker-eyebrow{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.1em;line-height:1.4;margin-bottom:var(--sp-3)}
+    .picker-eyebrow em{font-style:normal;color:var(--fg-muted);font-weight:600;text-transform:none;letter-spacing:0;display:block;margin-top:4px;font-size:14px}
+    .chip-cloud{display:flex;flex-wrap:wrap;gap:8px}
+    .vchip{font-size:13.5px;color:var(--shadow);line-height:1.3;background:var(--bg-panel);border:1.5px solid var(--rule);padding:8px 14px;border-radius:999px}
+    .vchip.is-prior{background:rgba(226,237,122,.22);border-color:var(--highlighter-dark);font-weight:700}
+    .ask-line{margin-top:var(--sp-3);font-size:14px;font-weight:700;color:var(--azure);line-height:1.5}
+    .ask-line .ask-tag{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);background:var(--lucid);border-radius:999px;padding:2px 8px;margin-right:8px}
+    .prompt-stack{display:flex;flex-direction:column;gap:var(--sp-3)}
+    .prompt-item{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:var(--sp-3) var(--sp-4)}
+    .prompt-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:4px}
+    .prompt-q{font-size:13.5px;color:var(--shadow);line-height:1.45}
+    .diff-block{margin-top:var(--sp-4)}
+    /* two trigger stories */
+    .story-block{margin-top:var(--sp-4)}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
+    .story-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5);display:flex;gap:var(--sp-3);align-items:flex-start}
+    .story-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--highlighter);color:var(--azure-900);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+    .story-q{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .story-q strong{color:var(--azure)}
+    @media (max-width:880px){.stands-grid{grid-template-columns:1fr}.story-grid{grid-template-columns:1fr}}
+
+    /* ===== LOOKS ===== */
+    .inspo-cue{font-size:14px;font-weight:700;color:var(--azure);margin-bottom:var(--sp-3)}
+    /* two verified cards this build; the local reference is still being picked */
+    .inspo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4)}
+    .inspo-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3)}
+    .inspo-headrow{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2)}
+    .inspo-name{font-size:16px;font-weight:800;color:var(--azure)}
+    .inspo-handle{font-size:14px;color:var(--azure-600);font-weight:700;border-bottom:1px solid var(--azure-200);display:inline-flex;align-items:center;min-height:44px}
+    .inspo-handle:hover{border-bottom-color:var(--azure-600)}
+    .inspo-add{display:inline-block;font-size:12px;font-weight:800;color:var(--azure-900);background:var(--highlighter);padding:2px 8px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+    .inspo-prompt{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .looks-lower{display:grid;grid-template-columns:1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .mood-block .picker-eyebrow{margin-bottom:var(--sp-2)}
+    .sig-strip{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5);font-size:13.5px;color:var(--shadow);line-height:1.6}
+    .sig-strip strong{color:var(--azure)}
+    .sig-label{display:block;font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+    @media (max-width:880px){.inspo-grid{grid-template-columns:1fr}}
+
+    /* ===== SHARED · "from your form" note ===== */
+    .form-note{display:flex;align-items:flex-start;gap:10px;background:var(--lucid-soft);border-left:3px solid var(--azure-400);border-radius:var(--r-sm);padding:8px var(--sp-4);margin-top:var(--sp-3)}
+    .fn-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-top:1px}
+    .fn-text{font-size:13px;color:var(--shadow);line-height:1.45}
+    .fn-text strong{color:var(--azure)}
+
+    /* ===== SOUNDS · say it your way ===== */
+    .say-intro{font-size:clamp(15px,1.65vw,18px);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-4);line-height:1.45}
+    .say-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-3)}
+    .say-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3);box-shadow:var(--sh-sm)}
+    .say-num{width:30px;height:30px;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;border-radius:50%}
+    .say-label{font-size:16px;font-weight:800;color:var(--azure);line-height:1.2}
+    .say-prompt{font-size:14.5px;color:var(--shadow);line-height:1.55}
+    .say-prompt em{color:var(--fg-muted);font-style:italic}
+    /* Voice Canon Field 2 capture + the hard line */
+    .voice-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .voice-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .voice-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:5px}
+    .voice-q{font-size:13.5px;color:var(--shadow);line-height:1.5}
+    .voice-q em{color:var(--fg-muted)}
+    @media (max-width:880px){.say-cards{grid-template-columns:1fr;gap:var(--sp-3)}.voice-pair{grid-template-columns:1fr}}
+
+    /* ===== DECISIONS + CLOSE (on azure) ===== */
+    #s09 .slide-title,#s09 .slide-lede{color:var(--ghost)}
+    #s09 .slide-lede{color:var(--lucid)}
+    #s09 .cover-kicker{margin-bottom:10px}
+    .dec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);margin-top:var(--sp-2)}
+    .dcard{background:rgba(255,255,255,.06);border:1px solid rgba(203,233,255,.2);border-radius:var(--r-md);padding:var(--sp-3);display:flex;flex-direction:column;gap:5px}
+    .dcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .dcard-title{font-size:14px;font-weight:800;color:var(--ghost);line-height:1.2}
+    .dchip{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:999px}
+    .dchip.lock{background:var(--highlighter);color:var(--azure-900)}
+    .dchip.confirm{background:var(--lucid);color:var(--azure-900)}
+    .drow{font-size:12px;line-height:1.36;color:var(--lucid-soft)}
+    .drow .dl{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--lucid-deep);margin-bottom:1px}
+    .drow strong{color:var(--ghost);font-weight:600}
+    .checklist{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);margin-top:var(--sp-2)}
+    .check-col{background:rgba(255,255,255,.05);border:1px solid rgba(203,233,255,.16);border-radius:var(--r-md);padding:9px var(--sp-3)}
+    .check-col.done{border-top:2px solid var(--highlighter)}
+    .check-col.open{border-top:2px solid var(--lucid)}
+    .check-col-head{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+    .check-col.done .check-col-head{color:var(--highlighter)}
+    .check-col.open .check-col-head{color:var(--lucid)}
+    .check-col-owner{display:block;font-size:12px;font-weight:600;color:var(--lucid-deep);text-transform:none;letter-spacing:0;margin-left:auto}
+    .citem{display:flex;gap:8px;align-items:flex-start;padding:3px 0}
+    .citem+.citem{border-top:1px solid rgba(203,233,255,.1)}
+    .cmark{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+    .cmark.is-done{background:var(--highlighter)}
+    .cmark.is-done svg{width:11px;height:11px;fill:none;stroke:var(--azure-900);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .cmark.is-open{border:2px solid var(--lucid-deep);background:transparent}
+    .ctext{font-size:12.5px;color:var(--lucid-soft);line-height:1.33}
+    .ctext strong{color:var(--ghost);font-weight:600}
+    .dates-strip{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3);margin-top:var(--sp-2);background:rgba(226,237,122,.14);border:1px solid var(--highlighter-dark);border-radius:var(--r-md);padding:6px var(--sp-5)}
+    .dates-tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure-900);background:var(--highlighter);padding:3px 9px;border-radius:999px}
+    .dates-body{font-size:13px;color:var(--ghost);line-height:1.45}
+    .dates-body strong{color:var(--highlighter);font-weight:700}
+    .close-block{margin-top:var(--sp-2);padding-top:10px;border-top:1px solid rgba(203,233,255,.2)}
+    .close-line{font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--ghost);line-height:1.35;max-width:70ch}
+    .close-sign{margin-top:10px;display:flex;flex-wrap:wrap;gap:var(--sp-7)}
+    .close-sign-name{font-size:15px;font-weight:700;color:var(--highlighter)}
+    .close-sign-title{font-size:12px;color:var(--lucid)}
+    @media (max-width:1000px){.dec-grid{grid-template-columns:1fr 1fr}.checklist{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.dec-grid{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}}
+
+    /* ===== COMPACT DESKTOP TIER =====
+       Single-screen fit is bound by viewport HEIGHT, not width: the 1100x800
+       presenter case is ~100px tighter than 1440x900. This tier trims rhythm
+       (never substance) on short desktop viewports only. Ceiling is 940px so the
+       two gated presenter cases (1440x900 and 1100x800) both get it; only genuinely
+       tall displays keep the roomy rhythm. Scoped >=901px wide so the mobile 14px
+       reading floor below is never affected. */
+    @media (min-width:901px) and (max-height:940px){
+      .slide{padding-top:calc(var(--header-h) + 8px);padding-bottom:var(--sp-4)}
+      .slide-title{font-size:clamp(24px,3vw,32px);margin-bottom:7px}
+      .slide-lede{font-size:15px;margin-bottom:10px;line-height:1.4}
+      .eyebrow{margin-bottom:6px}
+      .cover-meta{margin-top:var(--sp-6)}
+      /* S03 */
+      .pillar{padding:10px}
+      .pillar-act{font-size:12px;line-height:1.3}
+      .panel{padding:8px var(--sp-4)}
+      .panel-body{line-height:1.4}
+      .approw{line-height:1.3}
+      .flow-cell{padding:2px var(--sp-4);line-height:1.25}
+      .pod-strip,.week-strip{margin-top:6px}
+      .pod-mini{padding:4px 10px}
+      .scope-line{padding:6px var(--sp-4);line-height:1.35}
+      /* S05 */
+      .fstage{min-height:62px;padding:5px var(--sp-5)}
+      .fwin{font-size:14.5px;line-height:1.3}
+      .mason-under{padding:6px var(--sp-4);line-height:1.35}
+      .goal-frame{line-height:1.35}
+      .track-note{padding:8px var(--sp-5)}
+      .track-body{line-height:1.4}
+      .capture-band{padding:7px var(--sp-5)}
+      .capture-body{line-height:1.4}
+      /* S09 */
+      .dcard{padding:10px}
+      .drow{line-height:1.3}
+      .check-col{padding:8px 10px}
+      .citem{padding:2px 0}
+      .ctext{line-height:1.28}
+      .dates-strip{padding:5px var(--sp-5)}
+      .close-block{margin-top:6px;padding-top:8px}
+      .close-line{font-size:17px;line-height:1.28}
+      .close-sign{margin-top:8px}
+      /* second stage: the three dense slides (S03 exemption load, S05 ranges, S09 four decisions) */
+      .slide-title{font-size:clamp(23px,2.7vw,28px)}
+      .pillars{gap:6px}
+      .pillar{padding:8px;gap:4px}
+      .pillar-delivs{padding-top:4px;gap:4px}
+      .pillar-deliv{padding:3px 9px}
+      .eng-lower{margin-top:6px;gap:10px}
+      .approval{gap:3px}
+      .approw-note{margin-top:1px}
+      .flow-cell{padding:1px var(--sp-4)}
+      .flow-head{padding:3px var(--sp-4)}
+      .pod-mini{padding:3px 10px}
+      .pmini-mono{width:28px;height:28px}
+      .week-strip{gap:10px}
+      .wday{padding:4px 8px}
+      .scope-line{padding:5px var(--sp-4);margin-top:6px}
+      .week-extra{margin-top:2px}
+      .funnel{gap:3px}
+      .fstage{min-height:56px;padding:4px var(--sp-5)}
+      .track-note{padding:7px var(--sp-5);margin-top:6px}
+      .range-row{margin-top:5px}
+      .mason-under{margin-top:6px}
+      .goal-frame{margin-top:6px}
+      .capture-band{margin-top:6px;padding:6px var(--sp-5)}
+      .dec-grid{gap:6px}
+      .dcard{padding:9px;gap:4px}
+      .checklist{gap:6px;margin-top:6px}
+      .check-col{padding:7px 9px}
+      .check-col-head{margin-bottom:4px}
+      .citem{padding:1px 0}
+      .dates-strip{margin-top:6px}
+      /* final trim to close single-screen fit at the 1100x800 presenter case */
+      .slide{padding-top:calc(var(--header-h) + 4px);padding-bottom:var(--sp-3)}
+      .slide.is-tight{padding-top:calc(var(--header-h) + 4px);padding-bottom:var(--sp-3)}
+      .eyebrow{margin-bottom:4px}
+      .pillar-act{line-height:1.25}
+      .pillar-deliv{padding:2px 9px}
+      .panel-label{margin-bottom:4px}
+      .review-head{margin-bottom:4px}
+      .flow-head{padding:2px var(--sp-4)}
+      .pod-strip-head{margin-bottom:4px}
+      .week-extra{font-size:12px}
+      .scope-line{margin-top:4px}
+      .track-label{margin-bottom:3px}
+      .sig-label,.voice-label{margin-bottom:4px}
+      .range-row{margin-top:4px}
+      .dcard{gap:3px}
+      .dates-strip{padding:4px var(--sp-5)}
+      .close-block{padding-top:6px}
+      .close-line{font-size:16px;line-height:1.25}
+      .close-sign{margin-top:6px}
+    }
+
+    /* ===== RESPONSIVE (shared) ===== */
+    @media (max-width:414px){
+      .deck-header-inner{padding:0 var(--sp-4)}
+      .header-x{display:none}
+      .header-client-img{height:28px}
+      .header-logo-img{height:21px}
+      .slide{padding:calc(var(--header-h) + 14px) var(--sp-4) var(--sp-6)}
+      .cover-title{font-size:34px}
+      .cover-sub{font-size:16px}
+      .slide-title{font-size:26px}
+      .slide-lede{font-size:15px}
+      .astop-desc,.jwhat{font-size:12px}
+      .panel-body,.approw,.approw-note,.scope-line,.flow-cell,.fstage-headline,.fwin,
+      .goal-frame,.goal-frame .inwords,.capture-body,.vchip,.ask-line,.inspo-prompt,
+      .sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,.close-sign-title,
+      .pmini-name,.pmini-role,.phase-sub,.phase-name,.track-body,.tstage,.rchip,.fpos,
+      .lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,.week-extra,
+      .shoot-callout-body,.yourevent-key,.mason-under,.story-q,.voice-q,
+      .dates-body,.check-col-owner,.drow{font-size:14px}
+      /* 2-class base rules must be beaten with equal specificity, per gate 6 */
+      .fwin.is-success{font-size:14px}
+      .drow strong{font-size:14px}
+    }
+    @media (max-width:375px){
+      .slide{padding:calc(var(--header-h) + 12px) var(--sp-4) var(--sp-6)}
+      .cover-title{font-size:30px}
+      .slide-title{font-size:24px}
+    }
+    @media print{.deck-header,.slide-nav,#progress,.scrollcue,#sm-gate{display:none}.reveal{opacity:1;transform:none}.slide{page-break-after:always;min-height:auto;padding:40px}}
+
+    /* ===== ACCESS-CODE GATE (Tier 3, client-side; stacked on noindex) ===== */
+    #sm-gate{position:fixed;inset:0;background:var(--ghost);display:flex;align-items:center;justify-content:center;z-index:99999;padding:24px}
+    .sm-gate-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg);padding:44px 38px;width:100%;max-width:400px;text-align:center;box-shadow:var(--sh-lg)}
+    .sm-gate-logo{height:28px;width:auto;margin:0 auto 26px;display:block}
+    .sm-gate-title{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--azure);margin-bottom:6px}
+    .sm-gate-sub{font-size:14px;color:var(--fg-muted);margin-bottom:26px;line-height:1.5}
+    .sm-gate-input-wrap{position:relative;margin-bottom:12px}
+    .sm-gate-input{width:100%;background:var(--bg-alt);border:1.5px solid var(--rule);border-radius:var(--r-md);padding:13px 46px 13px 15px;font-size:15px;font-family:inherit;color:var(--shadow);outline:none;transition:border-color .2s;letter-spacing:.04em}
+    .sm-gate-input:focus{border-color:var(--azure)}
+    .sm-gate-input::placeholder{letter-spacing:0;color:var(--fg-subtle)}
+    .sm-gate-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--fg-muted);padding:4px;display:flex;align-items:center}
+    .sm-gate-btn{width:100%;background:var(--azure);color:var(--white);border:none;border-radius:var(--r-md);padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s,transform .1s;min-height:44px}
+    .sm-gate-btn:hover{background:var(--azure-900)}
+    .sm-gate-btn:active{transform:scale(.98)}
+    .sm-gate-error{font-size:13px;color:#dc2626;margin-top:10px;display:none}
+    .sm-gate-error.visible{display:block}
+    body.sm-locked{overflow:hidden}
+  </style>
+</head>
+<body>
+  <!-- ACCESS-CODE GATE (Tier 3) -->
+  <div id="sm-gate">
+    <div class="sm-gate-card">
+      <img class="sm-gate-logo" src="scroll-media-logo.png" alt="Scroll Media" />
+      <div class="sm-gate-title">Private kickoff deck</div>
+      <div class="sm-gate-sub">This kickoff deck is private. Enter your access code to continue.</div>
+      <div class="sm-gate-input-wrap">
+        <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+        <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+          <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <button class="sm-gate-btn" id="sm-gate-btn">View deck</button>
+      <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+    </div>
+  </div>
+
+  <div id="progress"></div>
+
+  <!-- HEADER · co-branded (Scroll left, Cincinnati Skin Center right) -->
+  <header class="deck-header">
+    <div class="deck-header-inner">
+      <a href="https://decks.scrollmedia.co/pitch/" target="_blank" rel="noopener" class="header-logo" aria-label="Scroll Media">
+        <img src="scroll-media-logo.png" alt="Scroll Media" class="header-logo-img" width="1001" height="463" />
+      </a>
+      <div class="header-co">
+        <span class="header-x" aria-hidden="true">&times;</span>
+        <img src="csc-logo.png" alt="Cincinnati Skin Center" class="header-client-img" width="409" height="102" />
+      </div>
+    </div>
+  </header>
+
+  <nav class="slide-nav" id="slideNav" aria-label="Slide navigation"></nav>
+
+  <main>
+
+    <!-- ===================== S01 · COVER ===================== -->
+    <section class="slide azure-slide" id="s01" data-nav="Welcome">
+      <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700" aria-hidden="true">
+        <line x1="120" y1="130" x2="330" y2="250"/><line x1="330" y1="250" x2="560" y2="170"/>
+        <line x1="560" y1="170" x2="780" y2="310"/><line x1="780" y1="310" x2="1000" y2="210"/>
+        <line x1="330" y1="250" x2="430" y2="470"/><line x1="780" y1="310" x2="650" y2="530"/>
+        <line x1="1000" y1="210" x2="1090" y2="430"/><line x1="430" y1="470" x2="650" y2="530"/>
+        <circle cx="120" cy="130" r="5"/><circle class="hl" cx="330" cy="250" r="7"/><circle cx="560" cy="170" r="5"/>
+        <circle cx="780" cy="310" r="6"/><circle class="hl" cx="1000" cy="210" r="6"/><circle cx="430" cy="470" r="5"/>
+        <circle cx="650" cy="530" r="6"/><circle cx="1090" cy="430" r="5"/>
+      </svg>
+      <div class="slide-inner">
+        <span class="cover-kicker reveal"><span class="dot"></span>Cincinnati Skin Center &times; Scroll Media &middot; Kickoff</span>
+        <h1 class="cover-title reveal d1">Welcome to your <span class="hl">kickoff.</span></h1>
+        <p class="cover-sub reveal d2">Today we align on the plan and learn Cincinnati Skin Center inside out, so the strategy we build next fits you exactly.</p>
+        <div class="cover-meta reveal d3">
+          <div>Prepared for<b>Dr. Mona Mislankar</b></div>
+          <div>Kickoff<b>Wednesday, August 19, 2026</b></div>
+          <div>Your Scroll lead<b>Riley Walker</b></div>
+        </div>
+      </div>
+      <div class="scrollcue"><span>Scroll or press the arrow keys</span><span class="bar"></span></div>
+    </section>
+
+    <!-- ===================== S02 · AGENDA ===================== -->
+    <section class="slide" id="s02" data-nav="Agenda">
+      <span class="section-num">01</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">02</span>What today looks like</span>
+        <h2 class="slide-title reveal">A working session, in three parts.</h2>
+        <p class="slide-lede reveal">We walk you through the first part, the middle part is yours, and we close by locking a few decisions. We did our homework so we can ask the right questions, not re-ask your form. Tap any stop to jump to it.</p>
+        <div class="agenda-acts">
+          <div class="act-band reveal d1">
+            <div class="act-band-head"><span class="act-band-name">Part 1 &middot; The setup</span><span class="act-band-note">We walk you through it</span></div>
+            <div class="act-stops">
+              <a class="astop" href="#s03"><span class="astop-top"><span class="astop-num">03</span><span class="astop-time">6 min</span></span><span class="astop-label">The engagement</span><span class="astop-desc">What you signed</span></a>
+              <a class="astop" href="#s04"><span class="astop-top"><span class="astop-num">04</span><span class="astop-time">6 min</span></span><span class="astop-label">Timeline</span><span class="astop-desc">Locking the runway</span></a>
+            </div>
+          </div>
+          <div class="act-band is-yours reveal d2">
+            <div class="act-band-head"><span class="act-band-name">Part 2 &middot; Brand immersion</span><span class="act-yours-flag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>yours</span><span class="act-band-note">You talk, we learn you</span></div>
+            <div class="act-stops">
+              <a class="astop" href="#s05"><span class="astop-top"><span class="astop-num">05</span><span class="astop-time">6 min</span></span><span class="astop-label">Goals</span><span class="astop-desc">What winning looks like</span></a>
+              <a class="astop" href="#s06"><span class="astop-top"><span class="astop-num">06</span><span class="astop-time">11 min</span></span><span class="astop-label">What you stand for</span><span class="astop-desc">In your words</span></a>
+              <a class="astop" href="#s07"><span class="astop-top"><span class="astop-num">07</span><span class="astop-time">9 min</span></span><span class="astop-label">How you look</span><span class="astop-desc">The visual target</span></a>
+              <a class="astop" href="#s08"><span class="astop-top"><span class="astop-num">08</span><span class="astop-time">10 min</span></span><span class="astop-label">How you sound</span><span class="astop-desc">Say it your way</span></a>
+            </div>
+          </div>
+          <div class="act-band reveal d3">
+            <div class="act-band-head"><span class="act-band-name">Part 3 &middot; Decisions + next steps</span><span class="act-band-note">We lock, then we build</span></div>
+            <div class="act-stops">
+              <a class="astop" href="#s09"><span class="astop-top"><span class="astop-num">09</span><span class="astop-time">7 min</span></span><span class="astop-label">Decisions + next steps</span><span class="astop-desc">Lock and go</span></a>
+            </div>
+          </div>
+        </div>
+        <p class="agenda-note reveal d4">Part two is yours entirely. The more you talk in that stretch, the better the strategy we bring back on September 9.</p>
+      </div>
+    </section>
+
+    <!-- ===================== S03 · THE ENGAGEMENT ===================== -->
+    <!-- Locked Principle 3.1 engagement-slide exemption (locked Aug 17, 2026): this is a
+         scope-confirmation surface, not an at-a-glance surface, so it carries more than
+         four blocks by design. No other slide inherits the exemption. -->
+    <section class="slide" id="s03" data-nav="The engagement">
+      <span class="section-num">02</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">03</span>The engagement</span>
+        <h2 class="slide-title reveal">What you signed, in plain language.</h2>
+        <div class="pillars">
+          <div class="pillar reveal d1">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="0.6" fill="var(--azure)" stroke="none"/></svg><span class="pillar-name">Strategy</span></div>
+            <p class="pillar-act">Goal setting, brand and competitive review, both Ideal Viewer Profiles, content architecture, social SEO planning, creative direction, profile optimization, and your shot list and content plan.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Strategy deck</span><span class="pillar-deliv">Visual deck</span></div>
+          </div>
+          <div class="pillar reveal d2">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span class="pillar-name">Content creation</span></div>
+            <p class="pillar-act">Creative planning and ideation, on-site content shoots, editing and production.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv lime">Social content</span></div>
+          </div>
+          <div class="pillar reveal d3">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span class="pillar-name">Profile management</span></div>
+            <p class="pillar-act">Copywriting and publishing, community management, content calendar management.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Profile maintenance</span></div>
+          </div>
+          <div class="pillar reveal d4">
+            <div class="pillar-head"><svg class="pillar-ico" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="pillar-name">Performance</span></div>
+            <p class="pillar-act">Performance reporting and strategy adjustments as we learn what lands.</p>
+            <div class="pillar-delivs"><span class="pillar-deliv">Monthly report</span></div>
+          </div>
+        </div>
+        <div class="eng-lower">
+          <div class="eng-side">
+            <div class="panel lucid reveal d1"><span class="panel-label">Full service</span><span class="panel-body">You approve. We handle the rest. Posting, captions, DMs, comments, community, all of it. Still your account, jump in anytime.</span></div>
+            <div class="panel lime reveal d2"><span class="panel-label">Unique to your engagement</span><span class="panel-body"><strong>The Mason build series.</strong> New office launch content is a named deliverable in your contract, not an add-on. It depends on getting milestone dates with lead time, and it flexes with your build schedule. If Mason slips, we slip with it.</span><span class="panel-body"><strong>August 30 is on us.</strong> Rachel from our team is covering your launch event at Marmalade Lily, complimentary, outside the standard scope. Event coverage is normally a separate add-on with about thirty days' notice.</span></div>
+          </div>
+          <div class="reveal d3">
+            <span class="review-head">Your content review process</span>
+            <div class="approval">
+              <div class="approw"><span class="approw-step">1</span>We deliver into Plann, five business days before it publishes.</div>
+              <div class="approw"><span class="approw-step">2</span>You review within two business days.</div>
+              <div class="approw"><span class="approw-step">3</span>Final approval, three business days before publish.</div>
+            </div>
+            <p class="approw-note">Up to two rounds of edits per cycle after the first thirty days.</p>
+            <div class="flow-strip">
+              <div class="flow-head keeps">Keeps it moving</div>
+              <div class="flow-head slows">Slows it down</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Approvals inside Plann</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Approvals the day before publish</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Feedback consolidated into one round</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Feedback spread across three channels</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>You as the single approver</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Pulling content mid-queue</div>
+              <div class="flow-cell keeps"><svg class="flow-ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Clinical corrections at review, always</div>
+              <div class="flow-cell slows"><svg class="flow-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Clinical notes after something is live</div>
+            </div>
+          </div>
+        </div>
+        <div class="pod-strip reveal d4">
+          <span class="pod-strip-head">Your dedicated pod</span>
+          <div class="pod-mini-row">
+            <div class="pod-mini primary"><span class="pmini-mono">RW</span><div class="pmini-body"><span class="pmini-name">Riley Walker</span><span class="pmini-role">Account manager, content lead and editor &middot; your primary contact</span></div></div>
+            <div class="pod-mini"><span class="pmini-mono">AG</span><div class="pmini-body"><span class="pmini-name">Allison Gianattasio</span><span class="pmini-role">Strategy and quality oversight</span></div></div>
+            <div class="pod-mini"><span class="pmini-mono">CG</span><div class="pmini-body"><span class="pmini-name">Chase Gianattasio</span><span class="pmini-role">Business operations and performance reporting</span></div></div>
+          </div>
+        </div>
+        <div class="week-strip reveal d5">
+          <span class="week-strip-head">A typical week<span>all on Instagram</span></span>
+          <div class="week-days">
+            <div class="wday post"><span class="wd-day">Mon</span><span class="wd-what">Feed</span></div>
+            <div class="wday story"><span class="wd-day">Tue</span><span class="wd-what">Story</span></div>
+            <div class="wday post"><span class="wd-day">Wed</span><span class="wd-what">Feed</span></div>
+            <div class="wday story"><span class="wd-day">Thu</span><span class="wd-what">Story</span></div>
+            <div class="wday post"><span class="wd-day">Fri</span><span class="wd-what">Feed</span></div>
+          </div>
+          <span class="week-extra">Plus <strong>community management daily</strong>, a <strong>30-minute check-in every other week</strong>, and a <strong>content shoot every 3 to 4 weeks</strong>.</span>
+        </div>
+        <p class="scope-line reveal d5"><strong>Instagram only.</strong> Social SEO means Instagram search, location tags, and geo-tags. This engagement covers @cincinnatiskincenter.</p>
+      </div>
+    </section>
+
+    <!-- ===================== S04 · TIMELINE ===================== -->
+    <section class="slide" id="s04" data-nav="Timeline">
+      <span class="section-num">03</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Timeline + key dates</span>
+        <h2 class="slide-title reveal">The runway.</h2>
+        <p class="slide-lede reveal">Month one is strategy only. Nothing publishes until September 21, by design. That gives us three weeks to build the two patient profiles, the architecture, the keyword bank, and the first calendar, so every post that goes live is a decision instead of a guess.</p>
+        <div class="phase-band reveal">
+          <div class="phase-seg p1"><span class="phase-name">Phase 1 &middot; Strategy build</span><span class="phase-sub">August 19 through your strategy presentation</span></div>
+          <div class="phase-seg p2"><span class="phase-name">Phase 2 &middot; Execution retainer</span><span class="phase-sub">Posting and ongoing execution begin right after the strategy presentation, when the monthly retainer picks up</span></div>
+        </div>
+        <div class="runway reveal" role="list" aria-label="The runway">
+          <div class="jnode here d1" role="listitem"><span class="jdot"></span><span class="jwhen">Wed Aug 19</span><span class="jwhat">Kickoff</span><span class="jhere-lbl">You are here</span></div>
+          <div class="jnode event d1" role="listitem"><span class="jdot"></span><span class="jwhen">Sun Aug 30</span><span class="jwhat">Your launch event &middot; Marmalade Lily</span><span class="jtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>On us</span></div>
+          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Wed Sep 9</span><span class="jwhat">Strategy presentation &middot; 10:00 AM</span></div>
+          <div class="jnode d2" role="listitem"><span class="jdot"></span><span class="jwhen">Fri Sep 11</span><span class="jwhat">First content shoot</span><span class="jtag">Confirm today</span></div>
+          <div class="jnode d3" role="listitem"><span class="jdot"></span><span class="jwhen">The week after</span><span class="jwhat">Editing and approval</span></div>
+          <div class="jnode d3" role="listitem"><span class="jdot"></span><span class="jwhen">Fri Sep 18</span><span class="jwhat">First status call</span><span class="jtag">Lock a time</span></div>
+          <div class="jnode hero d4" role="listitem"><span class="jdot"></span><span class="jwhen">Mon Sep 21</span><span class="jwhat">First post live</span></div>
+          <div class="jnode event d4" role="listitem"><span class="jdot"></span><span class="jwhen">Sat Oct 24</span><span class="jwhat">Your practice anniversary, party the week after</span><span class="jtag off">Let's talk</span></div>
+          <div class="jnode d5" role="listitem"><span class="jdot"></span><span class="jwhen">Dec / Jan</span><span class="jwhat">Mason opening window</span><span class="jtag off">Flexes with the build</span></div>
+        </div>
+        <span class="yourevent-key reveal d3"><span class="yk-dot"></span>August 30 and October 24 are your events. We're on-site for August 30.</span>
+        <div class="shoot-callout reveal d4">
+          <svg class="sc-ico" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <div class="shoot-callout-body">
+            <span class="sc-label">Shoot day, one to confirm</span>
+            Your onboarding form said <strong>Wednesdays, midday or afternoon</strong>. The timeline we sent you in July has the first shoot on <strong>Friday, September 11</strong>. Which one is right? If Fridays work, we keep September 11 and nothing moves. If it has to be a Wednesday, the clean swap is <strong>Wednesday, September 16</strong>, and first post moves to <strong>Monday, September 28</strong>.
+          </div>
+        </div>
+        <div class="lock-band reveal d5">
+          <div class="lock-label">Three things we lock live, right now</div>
+          <div class="lock-grid">
+            <div class="lock-row"><span class="lock-when">First content shoot</span><span class="lock-what">Friday, September 11, or the Wednesday swap</span></div>
+            <div class="lock-row"><span class="lock-when">Biweekly status call</span><span class="lock-what">Friday, September 18, day and time</span></div>
+            <div class="lock-row"><span class="lock-when">October 24 coverage</span><span class="lock-what">Your anniversary, on-site or not</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== S05 · GOALS (funnel, expert-led) ===================== -->
+    <section class="slide" id="s05" data-nav="Goals">
+      <span class="section-num">04</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="eyebrow-num">05</span>Goals</span>
+        <h2 class="slide-title reveal">What winning looks like, stage by stage.</h2>
+        <p class="slide-lede reveal">Attention, then trust, then bookings. Every post we make has a job at one of those three stages.</p>
+        <div class="funnel">
+          <div class="fstage w1 reveal d1">
+            <div class="fbadge"><span class="fstage-stage">Awareness<span class="fpos">Top of funnel</span></span><span class="fstage-headline">Relatable content</span></div>
+            <div class="fwins">
+              <span class="fwin">Be the name Cincinnati says when a friend asks who to see.</span>
+              <span class="fwin is-success">Success: views and follows.</span>
+              <span class="ffmt-row"><span class="ffmt-lead">Looks like</span><span class="ffmt">Talking head</span><span class="ffmt">B-roll + voiceover</span><span class="ffmt">Hot-take carousel</span></span>
+            </div>
+          </div>
+          <div class="fstage w2 reveal d2">
+            <div class="fbadge"><span class="fstage-stage">Trust + authority<span class="fpos">Middle of funnel</span></span><span class="fstage-headline">Educational content</span></div>
+            <div class="fwins">
+              <span class="fwin">The cosmetic patient believes the expertise is real before she ever calls.</span>
+              <span class="fwin is-success">Success: saves, comments, and profile visits.</span>
+              <span class="ffmt-row"><span class="ffmt-lead">Looks like</span><span class="ffmt">Educational / how-to carousel</span><span class="ffmt">Myth-busting carousel</span><span class="ffmt">Object lesson</span></span>
+            </div>
+          </div>
+          <div class="fstage w3 reveal d3">
+            <div class="fbadge"><span class="fstage-stage">Conversion<span class="fpos">Bottom of funnel</span></span><span class="fstage-headline">Proof content</span></div>
+            <div class="fwins">
+              <span class="fwin">Followers who become patients.</span>
+              <span class="fwin is-success">Success: link taps and conversion rate.</span>
+              <span class="ffmt-row"><span class="ffmt-lead">Looks like</span><span class="ffmt">Direct response / link story</span><span class="ffmt">Product feature</span><span class="ffmt">Before and after transformation</span></span>
+            </div>
+          </div>
+          <p class="mason-under reveal d4"><span><strong>Running underneath all three: Mason.</strong> The new office is not a fourth goal. It is the storyline that feeds all three. It makes you the expert with the newest space in the area, it gives the cosmetic audience the room they will sit in, and it gives every post a reason to exist right now.</span></p>
+        </div>
+        <p class="goal-frame reveal d4"><strong>The overarching goal: qualified new patients through organic social.</strong><span class="inwords">In your words: &ldquo;More followers that translate into actual patients for the office.&rdquo;</span></p>
+        <div class="track-note reveal d5">
+          <span class="track-label">How we track it</span>
+          <span class="track-body">We assess maturity using a multi-metric framework. Follower count is one signal, but engagement health, audience quality, content velocity, and business fundamentals all factor in. Cincinnati Skin Center starts at the <strong>Spark</strong> stage, so every metric in your monthly report is scored against Spark ranges and marked exceeding, on track, or watch.<span class="track-stages"><span class="tstage now">Spark</span><span class="tstage">Lift</span><span class="tstage">Rise</span><span class="tstage">Thrive</span></span>
+          <span class="range-row"><span class="rchip"><b>Views</b> 10,000 to 40,000</span><span class="rchip"><b>New followers</b> 40 to 90</span><span class="rchip"><b>Saves</b> 20 to 80</span><span class="rchip"><b>Comments</b> 15 to 75</span><span class="rchip"><b>Profile visits</b> 50 to 500</span><span class="rchip"><b>Link taps</b> 5 to 40</span><span class="rchip"><b>Profile conversion rate</b> 10 to 18 percent</span><span class="rchip"><b>Reel retention</b> 35 to 50 percent</span></span></span>
+        </div>
+        <div class="capture-band reveal d6"><span class="capture-tag">One for you</span><span class="capture-body">On your form you picked four goals. <strong>We ranked three. Tell us if we got the order wrong.</strong> And any business milestones you're driving toward? Context we aim at, not committed numbers.</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== S06 · WHAT YOU STAND FOR ===================== -->
+    <!-- Working slide: may run taller than one screen by design (kickoff_deck v4.2
+         pre-deploy gate 3). Readability and stimulus room beat single-screen fit here. -->
+    <section class="slide" id="s06" data-nav="What you stand for">
+      <div class="slide-inner">
+        <div class="slide-head-row reveal">
+          <div class="eyebrow"><span class="eyebrow-num">06</span><span class="act yours">Yours</span>What Cincinnati Skin Center stands for</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>11 min</div>
+        </div>
+        <h2 class="slide-title reveal">We did our homework. Now we need you.</h2>
+        <div class="stands-grid">
+          <div class="bigquote reveal d1">
+            <div class="qm">&ldquo;</div>
+            <p>Deliver expert care to Cincinnati while still being patient focused.</p>
+            <cite>Dr. Mona Mislankar, from your onboarding form</cite>
+            <p class="say-more"><strong>Say more about that.</strong> What does delivering expert care actually look like, day to day, in the room?</p>
+          </div>
+          <div class="stands-right reveal d2">
+            <div class="prompt-stack">
+              <div class="prompt-item"><span class="prompt-label">Personal</span><span class="prompt-q">Two or three things that matter to you outside the practice.</span></div>
+              <div class="prompt-item"><span class="prompt-label">Professional</span><span class="prompt-q">Two or three things that matter to you as a physician running your own practice.</span></div>
+              <div class="prompt-item"><span class="prompt-label">Brand</span><span class="prompt-q">Two or three things Cincinnati Skin Center stands for, whether or not we ever post about them.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="diff-block reveal d3">
+          <!-- discovery stimulus: static by design; client reacts aloud, captured via Gemini;
+               nothing pre-selected, no recommended pick -->
+          <div class="picker-eyebrow">What makes someone choose Cincinnati Skin Center?<em>These are candidates we pulled from your form, your feed, and your site. Confirm what's real, cross out what isn't, and tell us what's missing.</em></div>
+          <div class="chip-cloud">
+            <span class="vchip">Board-certified MD expertise</span>
+            <span class="vchip">Medical, surgical and cosmetic under one roof</span>
+            <span class="vchip">The technology</span>
+            <span class="vchip">A distinctive patient experience</span>
+            <span class="vchip">The new office</span>
+            <span class="vchip">How personable you are as a physician</span>
+            <span class="vchip">How warm the office feels</span>
+            <span class="vchip">Rooted in science, not fads</span>
+            <span class="vchip">Top Doc, four years running</span>
+            <span class="vchip">National press</span>
+            <span class="vchip">Marie Claire Beauty Awards judge</span>
+            <span class="vchip">Deep roots in Cincinnati</span>
+          </div>
+          <div class="form-note"><span class="fn-tag">From your form</span><span class="fn-text">&ldquo;How personable I am as a physician and how warm our office feels, while still being at the leading edge of technology. Everything is rooted in science, not fads.&rdquo;</span></div>
+          <p class="ask-line"><span class="ask-tag">Ask</span>Which one is most central? And what did we miss?</p>
+        </div>
+        <div class="story-block reveal d4">
+          <div class="picker-eyebrow">Two stories we want to hear</div>
+          <div class="story-grid">
+            <div class="story-card">
+              <span class="story-num">1</span>
+              <p class="story-q">Tell us about a patient who came to you <strong>after a result they got somewhere else</strong>. What had gone wrong, and what did you have to fix?</p>
+            </div>
+            <div class="story-card">
+              <span class="story-num">2</span>
+              <p class="story-q">Tell us about a patient who <strong>sat on it for months</strong> and then finally booked. What tipped her?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== S07 · HOW YOU LOOK ===================== -->
+    <!-- Working slide: may run taller than one screen by design. -->
+    <section class="slide" id="s07" data-nav="How you look">
+      <div class="slide-inner">
+        <div class="slide-head-row reveal">
+          <div class="eyebrow"><span class="eyebrow-num">07</span><span class="act yours">Yours</span>How Cincinnati Skin Center looks</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>9 min</div>
+        </div>
+        <h2 class="slide-title reveal">The look you're building toward.</h2>
+        <p class="inspo-cue reveal">This is the creative-direction exercise. We'll open each of these live and scroll it together.</p>
+        <div class="inspo-grid">
+          <div class="inspo-card reveal d1">
+            <div class="inspo-headrow"><span class="inspo-name">The Fitz Aesthetic Club</span><a class="inspo-handle" href="https://www.instagram.com/thefitz/" target="_blank" rel="noopener">@thefitz</a></div>
+            <p class="inspo-prompt">The account you named, as best we could pin it down. Confirm this is the one, then tell us what specifically: the education, the color, the pacing?</p>
+          </div>
+          <div class="inspo-card reveal d2">
+            <div class="inspo-headrow"><span class="inspo-name">Andrea Suarez, MD PhD FAAD</span><a class="inspo-handle" href="https://www.instagram.com/drdrayzday/" target="_blank" rel="noopener">@drdrayzday</a><span class="inspo-add">one we'd add</span></div>
+            <p class="inspo-prompt">A board-certified dermatologist who turns credentials into content. Proof the science lane works at scale. What lands for you here, and what doesn't?</p>
+          </div>
+        </div>
+        <div class="looks-lower">
+          <div class="mood-block reveal d3">
+            <!-- discovery stimulus: static by design; client reacts aloud, captured via Gemini;
+                 lime marks HER form picks, never our recommendation -->
+            <div class="picker-eyebrow">Visual mood<em>Your own form picks are shown in lime. Still right? Anything to add now that you see them together?</em></div>
+            <div class="chip-cloud">
+              <span class="vchip">Clean and clinical</span>
+              <span class="vchip is-prior">Warm and luxurious</span>
+              <span class="vchip">Minimal and modern</span>
+              <span class="vchip is-prior">Bright and fresh</span>
+              <span class="vchip">Editorial and moody</span>
+            </div>
+          </div>
+          <div class="sig-strip reveal d4">
+            <span class="sig-label">Signature elements to feature</span>
+            <strong>The Mason construction</strong>, <strong>the technology</strong>, <strong>aesthetic services</strong>, <strong>the Kenwood space</strong>, <strong>you</strong>, <strong>Rosie</strong>, and <strong>the team</strong>. Agreed, and anything to add? Off camera: any patient without signed consent.
+          </div>
+          <div class="form-note reveal d4"><span class="fn-tag">From your form</span><span class="fn-text">&ldquo;Educational, different colors while still meshing together, very informative. Very millennial catchy.&rdquo; Visual mood: <strong>warm and luxurious</strong>, <strong>bright and fresh</strong>.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== S08 · HOW YOU SOUND ===================== -->
+    <!-- Working slide: may run taller than one screen by design. -->
+    <section class="slide" id="s08" data-nav="How you sound">
+      <div class="slide-inner">
+        <div class="slide-head-row reveal">
+          <div class="eyebrow"><span class="eyebrow-num">08</span><span class="act yours">Yours</span>How Cincinnati Skin Center sounds</div>
+          <div class="slide-clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>10 min</div>
+        </div>
+        <h2 class="slide-title reveal">Say it your way.</h2>
+        <p class="say-intro reveal">The fastest way to learn your voice is to hear it. Three real moments. Say each one out loud, your way, and we'll capture the actual words.</p>
+        <div class="say-cards">
+          <div class="say-card reveal d1">
+            <span class="say-num">1</span>
+            <span class="say-label">The announcement</span>
+            <p class="say-prompt">A patient asks what's happening with the new office. <em>Say your actual answer.</em></p>
+          </div>
+          <div class="say-card reveal d2">
+            <span class="say-num">2</span>
+            <span class="say-label">The DM</span>
+            <p class="say-prompt">Someone DMs, &ldquo;How much is Botox?&rdquo; <em>Say your actual reply.</em></p>
+          </div>
+          <div class="say-card reveal d3">
+            <span class="say-num">3</span>
+            <span class="say-label">The comment</span>
+            <p class="say-prompt">Someone comments on a treatment post, &ldquo;Is this even worth it?&rdquo; <em>Say your actual reply.</em></p>
+          </div>
+        </div>
+        <div class="voice-pair">
+          <div class="voice-card reveal d4">
+            <span class="voice-label">Words that are yours</span>
+            <p class="voice-q">Give us three to five phrases you actually say to patients, and three to five you would never say.</p>
+          </div>
+          <div class="voice-card reveal d5">
+            <span class="voice-label">The hard line</span>
+            <p class="voice-q">What would you never say, or never let us say, about skin or a treatment? <em>Where is the boundary between confident and a claim you're not willing to stand behind?</em></p>
+          </div>
+        </div>
+        <div class="form-note reveal d6"><span class="fn-tag">From your form</span><span class="fn-text">Expert and authoritative. Warm and reassuring. Approachable and real. Confident and direct. Exclamation points sparingly, emoji rarely, all caps sparingly. You picked <strong>&ldquo;Confidence starts with your skin&rdquo;</strong>, <strong>&ldquo;Serious about skin. Warm about people.&rdquo;</strong> and <strong>&ldquo;Cincinnati's skin experts.&rdquo;</strong></span></div>
+      </div>
+    </section>
+
+    <!-- ===================== S09 · DECISIONS + NEXT STEPS (close) ===================== -->
+    <section class="slide azure-slide is-tight" id="s09" data-nav="Decisions + next steps">
+      <svg class="net" preserveAspectRatio="none" viewBox="0 0 1200 700" aria-hidden="true">
+        <line x1="110" y1="180" x2="320" y2="290"/><line x1="320" y1="290" x2="540" y2="200"/>
+        <line x1="540" y1="200" x2="770" y2="330"/><line x1="770" y1="330" x2="1000" y2="230"/>
+        <line x1="320" y1="290" x2="420" y2="500"/><line x1="770" y1="330" x2="640" y2="540"/>
+        <line x1="1000" y1="230" x2="1090" y2="450"/><line x1="420" y1="500" x2="640" y2="540"/>
+        <circle cx="110" cy="180" r="5"/><circle class="hl" cx="320" cy="290" r="7"/><circle cx="540" cy="200" r="5"/>
+        <circle cx="770" cy="330" r="6"/><circle class="hl" cx="1000" cy="230" r="6"/><circle cx="420" cy="500" r="5"/>
+        <circle cx="640" cy="540" r="6"/><circle cx="1090" cy="450" r="5"/>
+      </svg>
+      <div class="slide-inner">
+        <span class="cover-kicker reveal"><span class="dot"></span>Confirm and go</span>
+        <h2 class="slide-title reveal">Four decisions, then we're off.</h2>
+        <div class="dec-grid">
+          <div class="dcard reveal d1">
+            <div class="dcard-top"><span class="dcard-title">1 &middot; Where the runway leans</span><span class="dchip lock">Lock</span></div>
+            <span class="drow"><span class="dl">Your form</span><strong>Balanced, lean cosmetic early.</strong></span>
+            <span class="drow"><span class="dl">Our plan</span>Cosmetic leads from post one. Medical stays in the mix, but its job becomes authority rather than bookings. The medical explainers are the clearest proof that the board certification is real, and that proof is what converts the cosmetic patient. We revisit at ninety days.</span>
+          </div>
+          <div class="dcard reveal d2">
+            <div class="dcard-top"><span class="dcard-title">2 &middot; Patient consent and release</span><span class="dchip lock">Lock</span></div>
+            <span class="drow"><span class="dl">Your form</span><strong>Fine with written consent and release. You asked to confirm the process today.</strong></span>
+            <span class="drow"><span class="dl">Our plan</span>You own the instrument. Your practice, your compliance, your counsel. We build the workflow around it: who signs, when, where the form lives, how we tag content as cleared. Anything with no patient identity needs nothing signed. Faces and before-and-afters wait for the paperwork. No patient health information in frame, ever.</span>
+            <span class="drow"><span class="dl">We need today</span><strong>Who owns it, and roughly when.</strong></span>
+          </div>
+          <div class="dcard reveal d3">
+            <div class="dcard-top"><span class="dcard-title">3 &middot; Where we send people</span><span class="dchip lock">Lock</span></div>
+            <span class="drow"><span class="dl">Your form</span><strong>Online booking link, and they can text the office.</strong></span>
+            <span class="drow"><span class="dl">Our plan</span>One primary call to action everywhere. We never point a launch at a link we haven't tested.</span>
+            <span class="drow"><span class="dl">We need</span><strong>The exact booking URL and the exact office number, before the first post.</strong></span>
+          </div>
+          <div class="dcard reveal d4">
+            <div class="dcard-top"><span class="dcard-title">4 &middot; AI and formatting</span><span class="dchip confirm">Confirm</span></div>
+            <span class="drow"><span class="dl">Your form</span><strong>Not sure, discuss at kickoff.</strong></span>
+            <span class="drow"><span class="dl">Our plan</span>AI assists research, structure, and first drafts. Every caption is written and edited by a human who knows your voice, and nothing clinical ships without your review. House rules straight from your form: exclamation points sparingly, emoji rarely, all caps sparingly.</span>
+          </div>
+        </div>
+        <div class="checklist">
+          <div class="check-col done reveal d5">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Done</div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Contract signed</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Onboarding form in</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Kickoff held</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Strategy build underway</span></div>
+          </div>
+          <div class="check-col open reveal d6">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>Access<span class="check-col-owner">Riley owns</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Instagram login and 2FA</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Plann walkthrough, sent this week</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Riley and Chase added as admins</span></div>
+          </div>
+          <div class="check-col open reveal d7">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>Assets<span class="check-col-owner">You confirm</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Logo files, fonts, brand colors</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Past photos and headshots, plus inspiration for the new location</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">The press features, the booking URL, and the office number</span></div>
+            <div class="citem"><span class="cmark is-open"></span><span class="ctext">Vendor and collaborator list for August 30</span></div>
+          </div>
+          <div class="check-col done reveal d8">
+            <div class="check-col-head"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>In motion<span class="check-col-owner">Allison owns</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">Both Ideal Viewer Profiles, the content architecture</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">The social SEO keyword bank</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext">The profile and highlights rebuild, and the first calendar</span></div>
+            <div class="citem"><span class="cmark is-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="ctext"><strong>All of it lands September 9.</strong></span></div>
+          </div>
+        </div>
+        <div class="dates-strip reveal d8">
+          <span class="dates-tag">Locked today</span>
+          <span class="dates-body"><strong>First content shoot</strong> &middot; <strong>biweekly status day and time</strong> &middot; <strong>October 24 coverage</strong></span>
+        </div>
+        <div class="close-block reveal d9">
+          <p class="close-line">You've built something in this city that most practices can't claim. Let's make sure Cincinnati knows it.</p>
+          <div class="close-sign">
+            <div><div class="close-sign-name">Riley Walker</div><div class="close-sign-title">Your account manager &middot; Scroll Media</div></div>
+            <div><div class="close-sign-name">Chase Gianattasio</div><div class="close-sign-title">Co-Founder &amp; COO &middot; Scroll Media</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* Build slide nav dots */
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var navWrap = document.getElementById('slideNav');
+    slides.forEach(function(s,i){
+      var a=document.createElement('a');
+      a.href='#'+s.id;
+      a.innerHTML='<span>'+(s.dataset.nav||('Slide '+(i+1)))+'</span>';
+      navWrap.appendChild(a);
+    });
+    var navDots=Array.prototype.slice.call(navWrap.querySelectorAll('a'));
+
+    /* Scroll progress + active dot */
+    var progress=document.getElementById('progress');
+    var current=0;
+    function onScroll(){
+      var h=document.documentElement;
+      var max=h.scrollHeight-h.clientHeight;
+      progress.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+      var idx=0, mid=window.scrollY+window.innerHeight/2;
+      slides.forEach(function(s,i){ if(s.offsetTop<=mid) idx=i; });
+      navDots.forEach(function(d,i){ d.classList.toggle('active',i===idx); });
+      current=idx;
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+
+    /* Reveal on scroll (respects reduced motion) */
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduced){
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    } else {
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    }
+
+    /* Arrow-key navigation (presenter-driven) */
+    function goTo(i){
+      i=Math.max(0,Math.min(slides.length-1,i));
+      slides[i].scrollIntoView({behavior:'smooth'});
+      current=i;
+    }
+    document.addEventListener('keydown',function(e){
+      var tag=(document.activeElement&&document.activeElement.tagName)||'';
+      if(tag==='INPUT'||tag==='TEXTAREA')return;
+      if(e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();goTo(current+1);}
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();goTo(current-1);}
+      else if(e.key==='Home'){e.preventDefault();goTo(0);}
+      else if(e.key==='End'){e.preventDefault();goTo(slides.length-1);}
+    });
+
+    onScroll();
+
+    /* ===== Access-code gate (csc.scroll) ===== */
+    (function(){
+      var PASS='csc.scroll', KEY='sm_csc_kickoff_v1';
+      var gate=document.getElementById('sm-gate');
+      var inp=document.getElementById('sm-gate-input');
+      var btn=document.getElementById('sm-gate-btn');
+      var err=document.getElementById('sm-gate-error');
+      var tog=document.getElementById('sm-gate-toggle');
+      if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+      else { document.body.classList.add('sm-locked'); inp.focus(); }
+      function unlock(){
+        if(inp.value.trim().toLowerCase()===PASS){
+          sessionStorage.setItem(KEY,'1');
+          document.body.classList.remove('sm-locked');
+          gate.style.opacity='0'; gate.style.transition='opacity .3s';
+          setTimeout(function(){ gate.style.display='none'; },300);
+        } else {
+          err.classList.add('visible'); inp.style.borderColor='#dc2626';
+          setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+        }
+      }
+      btn.addEventListener('click',unlock);
+      inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); unlock(); } });
+      tog.addEventListener('click',function(){
+        var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+        document.getElementById('sm-eye-icon').innerHTML=isPw
+          ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+          :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -149,6 +149,9 @@
     /* ===== ENGAGEMENT ===== */
     /* ---- zone system: each zone gets a label + a divider so no two read as one block ---- */
     .zone{margin-top:var(--sp-3);padding-top:var(--sp-2);border-top:1px solid var(--rule)}
+    /* one rhythm for stacked rows inside a zone, so nothing collides or drifts */
+    .zone-stack{display:flex;flex-direction:column;gap:8px}
+    .zone-stack > *{margin-top:0}
     .zone:first-of-type{margin-top:var(--sp-2);padding-top:0;border-top:none}
     .zone-head{display:flex;align-items:baseline;gap:9px;margin-bottom:7px}
     .zone-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure)}
@@ -183,7 +186,7 @@
     .pod-strip{margin-top:var(--sp-2)}
     .pod-strip-head{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--azure);margin-bottom:6px}
     .pod-mini-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3)}
-    .pod-mini{display:flex;align-items:center;gap:9px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:6px 11px;box-shadow:var(--sh-sm)}
+    .pod-mini{display:flex;align-items:center;gap:9px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:7px 11px;box-shadow:var(--sh-sm);min-height:46px}
     .pod-mini.primary{background:rgba(226,237,122,.12);border-color:var(--highlighter-dark)}
     .pmini-mono{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--azure);color:var(--ghost);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;letter-spacing:.02em}
     .pod-mini.primary .pmini-mono{background:var(--highlighter);color:var(--azure-900)}
@@ -197,7 +200,8 @@
     .week-strip-head{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);line-height:1.3}
     .week-strip-head span{display:block;font-weight:600;text-transform:none;letter-spacing:0;color:var(--fg-muted)}
     .week-days{display:flex;gap:7px;flex:1;min-width:300px}
-    .wday{flex:1;display:flex;align-items:baseline;justify-content:center;gap:5px;padding:6px 8px;border-radius:var(--r-sm);border:1px solid var(--rule-faint);white-space:nowrap}
+    .zone-stack .week-days{flex:none;width:100%}
+    .wday{flex:1;display:flex;align-items:baseline;justify-content:center;gap:5px;padding:7px 8px;min-height:32px;border-radius:var(--r-sm);border:1px solid var(--rule-faint);white-space:nowrap}
     .wday.post{background:rgba(226,237,122,.22);border-color:var(--highlighter-dark)}
     .wday.story{background:var(--lucid-soft);border-color:var(--azure-200)}
     .wd-day{font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.04em}
@@ -211,7 +215,7 @@
     .calib-note{margin-top:var(--sp-2);font-size:13px;color:var(--fg-muted);line-height:1.45;font-style:italic;padding-left:10px;border-left:2px solid var(--highlighter-dark)}
     .calib-note strong{color:var(--azure);font-style:normal}
     /* bubble row: same visual language as the typical-week strip */
-    .bubble-row{margin-top:var(--sp-2);display:flex;gap:7px;flex-wrap:wrap}
+    .bubble-row{display:flex;gap:7px;flex-wrap:wrap}
     .bubble{flex:1;min-width:150px;display:flex;align-items:baseline;justify-content:center;gap:5px;padding:6px 10px;border-radius:var(--r-sm);border:1px solid var(--azure-200);background:var(--lucid-soft);white-space:nowrap}
     /* nowrap clips the value text once the row stacks; let it wrap on narrow screens */
     @media (max-width:620px){.bubble{white-space:normal;justify-content:flex-start;flex-basis:100%}}
@@ -310,7 +314,7 @@
       display:grid;
       grid-template-columns:210px 1fr 290px 64px;
       grid-template-rows:repeat(3,auto);
-      column-gap:14px;row-gap:5px;
+      column-gap:16px;row-gap:7px;
       align-items:stretch;margin-top:6px}
 
     /* --- col 1 + col 5: the two vertical rails, each spanning all three rows --- */
@@ -324,13 +328,13 @@
 
     /* --- col 2: the goal of each stage, right-aligned against the funnel --- */
     .fgoal{grid-column:1;display:flex;flex-direction:column;justify-content:center;text-align:right;gap:1px}
-    .fgoal b{font-size:14.5px;font-weight:800;color:var(--azure);line-height:1.2}
+    .fgoal b{font-size:15px;font-weight:800;color:var(--azure);line-height:1.2}
     .fgoal span{font-size:13px;color:var(--fg-muted);line-height:1.3}
 
     /* --- col 3: the funnel bands. centered inner div + max-width is what makes
            this read as a funnel instead of three stacked boxes --- */
     .fband-cell{grid-column:2;display:flex;align-items:center}
-    .fband{min-height:58px;width:100%;margin:0 auto;border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:6px 14px;text-align:center}
+    .fband{min-height:66px;width:100%;margin:0 auto;border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:8px 16px;text-align:center}
     .fband.b1{max-width:100%;background:var(--lucid-soft);border:1px solid var(--azure-200)}
     .fband.b2{max-width:80%;background:var(--lucid);border:1px solid var(--lucid-deep)}
     .fband.b3{max-width:62%;background:var(--highlighter);border:1px solid var(--highlighter-dark);box-shadow:var(--sh-md)}
@@ -339,9 +343,9 @@
     .fband span{font-size:13px;color:var(--shadow);line-height:1.3}
 
     /* --- col 4: KPIs, each metric next to its own target range --- */
-    .fkpi{grid-column:3;display:flex;flex-direction:column;justify-content:center;gap:2px}
-    .fkpi-head{grid-column:3;grid-row:1;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure-600);align-self:start}
-    .krow{font-size:14px;color:var(--shadow);line-height:1.3}
+    .fkpi{grid-column:3;display:flex;flex-direction:column;justify-content:center;gap:2px;padding-left:14px;border-left:1px solid var(--rule-faint)}
+    .fkpi-head{grid-column:3;grid-row:1;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure-600);align-self:start;padding-left:14px;margin-bottom:1px}
+    .krow{font-size:14px;color:var(--shadow);line-height:1.35}
     .krow b{color:var(--azure);font-weight:800}
     @media (max-width:1000px){
       .fgrid{grid-template-columns:1fr;row-gap:var(--sp-3)}
@@ -358,24 +362,24 @@
     /* --- beneath the grid --- */
     .goal-frame{margin-top:var(--sp-2);font-size:14.5px;color:var(--shadow);line-height:1.45;max-width:96ch}
     .goal-frame strong{color:var(--azure)}
-    .track-note{margin-top:var(--sp-2);background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:9px var(--sp-5);box-shadow:var(--sh-sm)}
+    .track-note{margin-top:9px;background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:10px var(--sp-5);box-shadow:var(--sh-sm)}
     .track-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azure);margin-bottom:3px}
     .track-body{font-size:13.5px;color:var(--shadow);line-height:1.5}
     .track-body strong{color:var(--azure)}
     /* the slide's closing statement: one action, one destination */
     /* Mason runs under the whole funnel: a slim horizontal strip reads far better
        than a rotated rail label, so legibility wins over the vertical treatment. */
-    .mason-strip{margin-top:6px;display:flex;align-items:center;gap:9px;background:var(--lucid-soft);border:1px solid var(--azure-200);border-radius:var(--r-sm);padding:5px var(--sp-4)}
+    .mason-strip{margin-top:9px;display:flex;align-items:center;gap:10px;background:var(--lucid-soft);border:1px solid var(--azure-200);border-radius:var(--r-md);padding:7px var(--sp-4)}
     .mason-strip svg{width:15px;height:15px;flex-shrink:0;fill:none;stroke:var(--azure);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .mason-strip span{font-size:13px;color:var(--shadow);line-height:1.3}
     .mason-strip b{color:var(--azure);font-weight:800}
     /* the overarching goal: one line, full width, high impact */
-    .goal-band{margin-top:6px;background:var(--azure);border-radius:var(--r-md);padding:9px var(--sp-5);text-align:center}
-    .goal-band b{font-size:17px;font-weight:800;color:var(--ghost);letter-spacing:-.01em;line-height:1.25}
+    .goal-band{margin-top:9px;background:var(--azure);border-radius:var(--r-md);padding:11px var(--sp-5);text-align:center;box-shadow:var(--sh-md)}
+    .goal-band b{font-size:19px;font-weight:800;color:var(--ghost);letter-spacing:-.01em;line-height:1.25}
     .goal-band b .hl{color:var(--highlighter)}
     /* maturity ladder: the stage assignment becomes legible instead of asserted */
-    .ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:7px}
-    .lcell{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-sm);padding:5px 9px;text-align:center}
+    .ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:9px}
+    .lcell{background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:7px 9px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:1px;min-height:52px}
     .lcell.is-here{background:rgba(226,237,122,.28);border-color:var(--highlighter-dark);box-shadow:var(--sh-sm)}
     .lname{display:block;font-size:12.5px;font-weight:800;color:var(--azure);line-height:1.2}
     .lcell.is-here .lname{color:var(--azure-900)}
@@ -383,10 +387,10 @@
     .lhere{display:inline-block;margin-top:2px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--highlighter);color:var(--azure-900);padding:1px 6px;border-radius:999px}
     @media (max-width:760px){.ladder{grid-template-columns:1fr 1fr}}
     /* the CTA gets its own full-width row */
-    .cta-block{margin-top:6px;display:flex;align-items:center;gap:var(--sp-4);background:rgba(226,237,122,.20);border:1px solid var(--highlighter-dark);border-left:4px solid var(--highlighter-dark);border-radius:var(--r-md);padding:9px var(--sp-5)}
+    .cta-block{margin-top:9px;display:flex;align-items:center;gap:var(--sp-4);background:rgba(226,237,122,.20);border:1px solid var(--highlighter-dark);border-left:4px solid var(--highlighter-dark);border-radius:var(--r-md);padding:11px var(--sp-5)}
     .cta-ico{flex-shrink:0;width:22px;height:22px;fill:none;stroke:var(--azure);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
     .cta-body{font-size:14px;color:var(--shadow);line-height:1.45}
-    .cta-body b{display:block;font-size:15.5px;color:var(--azure);font-weight:800;line-height:1.25}
+    .cta-body b{display:block;font-size:16px;color:var(--azure);font-weight:800;line-height:1.25}
     .cta-body em{display:block;margin-top:2px;font-size:13px;color:var(--fg-muted)}
     /* CTA and the form pull-out share one row: S5 carries the most content on the
        deck and this recovers a full block height without touching the KPIs. */
@@ -462,20 +466,6 @@
     .sig-strip strong{color:var(--azure)}
     .sig-label{display:block;font-size:12px;font-weight:800;color:var(--azure);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
     @media (max-width:880px){.inspo-grid{grid-template-columns:1fr}}
-
-    /* ===== SHARED · "from your form" pull-out =====
-       Was a footer strip and got glossed over. Now a bulleted pull-out in her
-       own phrases: a presenter prompt as much as a signal back to her. */
-    /* Deck-wide treatment: always the LAST element on its slide, always the same
-       muted tint, never a focal point. It is a quiet "we read your form" signal. */
-    .form-note{display:flex;align-items:flex-start;gap:var(--sp-4);background:var(--bg-alt);border:1px dashed var(--azure-200);border-radius:var(--r-md);padding:8px var(--sp-4);margin-top:var(--sp-3)}
-    .fn-tag{flex-shrink:0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-subtle);margin-top:2px;line-height:1.3}
-    .fn-list{display:flex;flex-direction:column;gap:3px;margin:0;padding:0;list-style:none}
-    .fn-list li{position:relative;padding-left:14px;font-size:13.5px;color:var(--fg-muted);line-height:1.4}
-    .fn-list li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--azure-200)}
-    .fn-list li strong{color:var(--shadow);font-weight:700}
-    .fn-text{font-size:13px;color:var(--shadow);line-height:1.45}
-    .fn-text strong{color:var(--azure)}
 
     /* ===== SOUNDS · say it your way ===== */
     .say-intro{font-size:clamp(15px,1.65vw,18px);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-4);line-height:1.45}
@@ -625,9 +615,6 @@
       .track-note{margin-top:6px;padding:7px var(--sp-5)}
       .track-body{line-height:1.4}
       .cta-block{margin-top:6px;padding:8px var(--sp-5)}
-      .form-note{margin-top:6px;padding:7px var(--sp-4)}
-      .fn-list{gap:2px}
-      .fn-list li{line-height:1.35}
       .hero-diffs{gap:var(--sp-2);margin-top:5px}
       .hdiff{padding:8px var(--sp-3);font-size:14px}
       .also-label{margin:var(--sp-2) 0 5px}
@@ -647,9 +634,9 @@
       .krow{line-height:1.25}
       .fgoal span{line-height:1.25}
       .cta-body{line-height:1.4}
-      .fband{min-height:48px;padding:4px 12px}
+      .fband{min-height:58px;padding:6px 14px}
       .fband b{font-size:15px}
-      .track-note{margin-top:5px;padding:6px var(--sp-5)}
+      .track-note{margin-top:7px;padding:8px var(--sp-5)}
       /* v3: zoned S3, per-phase deliverables, the tightened funnel + ladder */
       .zone{margin-top:var(--sp-2);padding-top:6px}
       .zone-head{margin-bottom:5px}
@@ -658,14 +645,13 @@
       .cycle-steps{gap:6px}
       .deliv{padding:5px 8px}
       .deliv-set{gap:5px;margin-top:5px}
-      .fgrid{row-gap:4px;margin-top:5px}
-      .mason-strip{margin-top:5px;padding:4px var(--sp-4)}
-      .goal-band{margin-top:5px;padding:7px var(--sp-5)}
-      .goal-band b{font-size:16px}
-      .ladder{margin-top:5px;gap:5px}
-      .lcell{padding:4px 8px}
-      .cta-block{margin-top:5px;padding:7px var(--sp-5)}
-      .form-note{margin-top:6px;padding:6px var(--sp-4)}
+      .fgrid{row-gap:6px;margin-top:6px}
+      .mason-strip{margin-top:7px;padding:6px var(--sp-4)}
+      .goal-band{margin-top:7px;padding:9px var(--sp-5)}
+      .goal-band b{font-size:17px}
+      .ladder{margin-top:7px;gap:6px}
+      .lcell{padding:5px 8px;min-height:46px}
+      .cta-block{margin-top:7px;padding:9px var(--sp-5)}
     }
 
     /* ===== RESPONSIVE (shared) ===== */
@@ -681,7 +667,7 @@
       .slide-lede{font-size:15px}
       .astop-desc,.jwhat{font-size:12px}
       .panel-body,.approw,.flow-cell,.vchip,.ask-line,.inspo-prompt,
-      .goal-frame,.sig-strip,.say-intro,.say-prompt,.say-label,.fn-text,.ctext,.prompt-q,
+      .goal-frame,.sig-strip,.say-intro,.say-prompt,.say-label,.ctext,.prompt-q,
       .close-sign-title,.pmini-name,.pmini-role,.phase-sub,.phase-name,.track-body,
       .lock-what,.lock-when,.bigquote cite,.pillar-deliv,.pillar-act,
       .shoot-callout-body,.yourevent-key,.story-q,.voice-q,.check-col-owner,
@@ -689,7 +675,7 @@
          .krow carries the Spark ranges, which are figures, not micro-labels. */
       .krow,.fgoal b,.fgoal span,.fband span,.cycle-line,.calib-note,.bub-k,.bub-v,
       .pact,.hdiff,.miss-line,.ideal-q,.sig-chip,.collab-lede,.collab-ask,.collab-k,
-      .cta-body,.fn-list li,.inspo-job,
+            .cta-body,.inspo-job,
       /* v3: ladder cells and phase sub-bullets are substantive content */
       .lname,.lrange,.deliv-name,.deliv-list li,.cstep-t,.mason-strip span,.pillar-when,.zone-note{font-size:14px}
       /* 2-class base rules must be beaten with equal specificity, per gate 6 */
@@ -896,6 +882,7 @@
 
         <div class="zone reveal">
           <div class="zone-head"><span class="zone-title">Your pod and your week</span><span class="zone-note">All on Instagram</span></div>
+          <div class="zone-stack">
           <div class="pod-mini-row">
             <div class="pod-mini primary"><span class="pmini-mono">RW</span><div class="pmini-body"><span class="pmini-name">Riley Walker</span><span class="pmini-role">Account manager, content lead and editor &middot; your primary contact</span></div></div>
             <div class="pod-mini"><span class="pmini-mono">AG</span><div class="pmini-body"><span class="pmini-name">Allison Gianattasio</span><span class="pmini-role">Strategy and quality oversight</span></div></div>
@@ -914,6 +901,7 @@
             <div class="bubble"><span class="bub-k">Content shoot</span><span class="bub-v">every 3 to 4 weeks</span></div>
             <div class="bubble"><span class="bub-k">Instagram only</span></div>
           </div>
+          </div>
         </div>
       </div>
     </section>
@@ -929,14 +917,14 @@
             <span class="phase-name">Phase 1 &middot; Strategy build</span><span class="phase-sub">August 19 to September 9</span>
             <div class="deliv-set">
               <div class="deliv"><span class="deliv-name">Strategy deck</span><ul class="deliv-list">
-                <li>Both audience profiles and what drives them</li>
-                <li>Content architecture and the social SEO keyword plan</li>
-                <li>Goals and how every month gets measured</li>
+                <li>Both audience profiles, and what drives them</li>
+                <li>Content architecture and social SEO keywords</li>
+                <li>Goals, and how each month is measured</li>
               </ul></div>
               <div class="deliv"><span class="deliv-name">Creative direction deck</span><ul class="deliv-list">
-                <li>The visual target: mood, references, signature elements</li>
-                <li>Profile and story-highlight rebuild</li>
-                <li>Your first shot list and content calendar</li>
+                <li>The visual target: mood and references</li>
+                <li>Profile and highlights rebuild</li>
+                <li>Your first shot list and calendar</li>
               </ul></div>
             </div>
           </div>
@@ -944,16 +932,16 @@
             <span class="phase-name">Phase 2 &middot; Execution</span><span class="phase-sub">September 9 onward</span>
             <div class="deliv-set">
               <div class="deliv"><span class="deliv-name">Content creation</span><ul class="deliv-list">
-                <li>Shoots every 3 to 4 weeks, edited and ready to publish</li>
-                <li>Concepts, hooks, and scripts built from the approved strategy</li>
+                <li>Shoots every 3 to 4 weeks, edited and ready</li>
+                <li>Concepts, hooks, and scripts</li>
               </ul></div>
               <div class="deliv"><span class="deliv-name">Profile management</span><ul class="deliv-list">
-                <li>Publishing, captions, and calendar management</li>
-                <li>Community management and DM routing</li>
+                <li>Publishing, captions, and the calendar</li>
+                <li>Community management and DMs</li>
               </ul></div>
               <div class="deliv"><span class="deliv-name">Performance</span><ul class="deliv-list">
-                <li>Monthly report on what worked and what changes next</li>
-                <li>Biweekly check-ins to batch approvals and review signals</li>
+                <li>Monthly report: what worked, what changes</li>
+                <li>Biweekly check-ins for approvals and signals</li>
               </ul></div>
             </div>
           </div>
@@ -1044,10 +1032,6 @@
           <svg class="cta-ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <span class="cta-body"><b>Everything points to one action: book an appointment.</b>Online booking via Klara, or text the office.<em>Every proof-stage piece drives here. One destination, everywhere.</em></span>
         </div>
-        <div class="form-note reveal d5"><span class="fn-tag">From your form</span><ul class="fn-list">
-          <li><strong>"More followers that translate into actual patients for the office."</strong></li>
-          <li>You picked <strong>four goals</strong>. We ranked three.</li>
-        </ul></div>
       </div>
     </section>
 
@@ -1112,10 +1096,6 @@
             </div>
           </div>
         </div>
-        <div class="form-note reveal d5"><span class="fn-tag">From your form</span><ul class="fn-list">
-          <li><strong>"How personable I am as a physician and how warm our office feels."</strong></li>
-          <li><strong>"Everything is rooted in science, not fads."</strong></li>
-        </ul></div>
       </div>
     </section>
 
@@ -1173,10 +1153,6 @@
             <div class="collab-row"><span class="collab-k">Ones we'd add</span><span class="sig-chip">Local boutiques and lifestyle brands</span><span class="sig-chip">A Cincinnati wellness or fitness studio</span><span class="sig-chip">An event venue or florist from the August 30 vendors</span></div>
             <p class="collab-ask">Who else should be on this list, and is there anyone you would rather we stay away from?</p>
           </div>
-          <div class="form-note reveal d5"><span class="fn-tag">From your form</span><ul class="fn-list">
-            <li><strong>"Educational, different colors while still meshing together. Very millennial catchy."</strong></li>
-            <li>Visual mood: <strong>warm and luxurious</strong>, <strong>bright and fresh</strong>.</li>
-          </ul></div>
         </div>
       </div>
     </section>
@@ -1218,10 +1194,6 @@
             <p class="voice-q">What would you never say, or never let us say, about skin or a treatment? <em>Where is the boundary between confident and a claim you're not willing to stand behind?</em></p>
           </div>
         </div>
-        <div class="form-note reveal d6"><span class="fn-tag">From your form</span><ul class="fn-list">
-          <li><strong>Expert and authoritative. Warm and reassuring. Approachable and real.</strong></li>
-          <li>Exclamation points <strong>sparingly</strong>, emoji <strong>rarely</strong>, all caps <strong>sparingly</strong>.</li>
-        </ul></div>
       </div>
     </section>
 

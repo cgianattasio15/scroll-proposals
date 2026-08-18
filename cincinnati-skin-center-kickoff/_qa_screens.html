@@ -724,6 +724,11 @@
     .sm-gate-error{font-size:13px;color:#dc2626;margin-top:10px;display:none}
     .sm-gate-error.visible{display:block}
     body.sm-locked{overflow:hidden}
+  
+    /* QA CAPTURE ONLY */
+    html{scroll-behavior:auto !important}
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    #sm-gate{display:none !important}
   </style>
 </head>
 <body>
@@ -1342,7 +1347,7 @@
 
     /* ===== Access-code gate (csc.scroll) ===== */
     (function(){
-      var PASS='csc.scroll', KEY='sm_csc_kickoff_v1';
+      var PASS='csc.scroll', KEY='sm_csc_kickoff_v1'; sessionStorage.setItem(KEY,'1');
       var gate=document.getElementById('sm-gate');
       var inp=document.getElementById('sm-gate-input');
       var btn=document.getElementById('sm-gate-btn');
@@ -1370,6 +1375,12 @@
           :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
       });
     })();
+  </script>
+  <script>
+  (function(){var w=new URLSearchParams(location.search).get('s');if(!w)return;
+   document.querySelectorAll('.slide').forEach(function(x){if(x.id!==w)x.style.display='none';});
+   if(w!=='s01')document.querySelector('.deck-header').classList.remove('on-cover');
+   window.scrollTo(0,0);})();
   </script>
 </body>
 </html>

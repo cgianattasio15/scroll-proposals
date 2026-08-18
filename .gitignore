@@ -1,2 +1,6 @@
 .claude/
 .DS_Store
+
+# QA capture scratch files must never ship (they disable the Tier 3 gate)
+_qa_screens.html
+**/_qa_screens.html

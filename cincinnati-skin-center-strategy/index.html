@@ -448,11 +448,11 @@
     .iqcol li::before{content:"";position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--highlighter-dark)}
     .iqcol li.hers::after{content:"yours";display:inline-block;margin-left:6px;font-style:normal;font-size:12px;font-weight:800;letter-spacing:.03em;background:var(--highlighter);color:var(--azure-900);border-radius:999px;padding:0 7px}
     @media (max-width:900px){.iqrow{grid-template-columns:1fr}}
-    .notthis{display:flex;align-items:flex-start;gap:var(--sp-4);background:var(--bg-panel);border:1px solid var(--rule);border-left:4px solid var(--azure);border-radius:var(--r-md);padding:10px var(--sp-5);margin-top:var(--sp-3)}
-    .notthis .ntl{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-top:2px}
-    .notthis p{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
-    .notthis p b{color:var(--azure)}
-    @media (max-width:700px){.notthis{flex-direction:column;gap:6px}}
+    .seqnote{display:flex;align-items:center;gap:var(--sp-4);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-md);padding:9px var(--sp-5);margin-top:var(--sp-3)}
+    .seqnote .sql{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600)}
+    .seqnote p{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .seqnote p b{color:var(--azure)}
+    @media (max-width:700px){.seqnote{flex-direction:column;align-items:flex-start;gap:6px}}
     .ifoot{margin-top:var(--sp-3);font-size:13px;color:var(--fg-subtle);font-style:italic;line-height:1.45;border-left:3px solid var(--lucid-deep);padding-left:var(--sp-4)}
 
     /* =========================================================
@@ -689,19 +689,24 @@
       .cblock .clabel{margin-bottom:var(--sp-2)}
       .tailband{margin-top:10px;padding-top:8px;padding-bottom:8px}
 
-      /* 10 */
-      .imatrix{margin-top:10px}
-      .iqrow,.notthis,.ifoot{margin-top:8px}
+      /* 10 · retuned Aug 20, after the consent block was replaced by a shorter
+             one-line note. The height that freed up is split two ways: some
+             back into the matrix and idea strip (cell and column padding sit
+             at 8px rather than the 7px they were squeezed to, list gaps back
+             to 5px), and the rest into headroom, which went from +6px to a
+             margin that survives a copy edit. The fit gate comes first;
+             breathing room is what is left after it passes. */
+      .imatrix,.iqrow,.seqnote,.ifoot{margin-top:8px}
       .iph{padding-top:9px;padding-bottom:9px}
       .iph .ips{margin-top:2px}
-      .icell{padding-top:7px;padding-bottom:7px}
+      .icell{padding-top:8px;padding-bottom:8px}
       .icell .icl{margin-bottom:4px}
       .ichips{gap:4px}
       .ichip{padding-top:2px;padding-bottom:2px}
-      .iqcol{padding-top:7px;padding-bottom:7px}
+      .iqcol{padding-top:8px;padding-bottom:8px}
       .iqcol .iqh{margin-bottom:4px}
-      .iqcol ul{gap:4px}
-      .notthis{padding-top:7px;padding-bottom:7px}
+      .iqcol ul{gap:5px}
+      .seqnote{padding-top:8px;padding-bottom:8px}
     }
 
     /* =========================================================
@@ -738,7 +743,7 @@
       .callout p,
       .goal h3,.goal>p,.goal .gwhy,.objband p,.seenote,
       .persona .pname,.persona .ptag,.pfact .fv,.pquote p,.cblock li,.tailband p,
-      .iph .ipn,.iph .ips,.iqcol li,.notthis p,.ifoot,
+      .iph .ipn,.iph .ips,.iqcol li,.seqnote p,.ifoot,
       .reach-rung .rr-k,.reach-axis p,.masonline span,.landing p,
       .ig b,.ig span,.collab .cnote,
       .diff b,.diff span,.diff .dq,.counterband p,
@@ -758,7 +763,7 @@
       .zone .zn,.frail-label,
       .callout .cl-label,.goal .gnum,.goal .gpri,.goal .gtl,.objband .obl,
       .persona .ptier,.pfact .fl,.cblock .clabel,.tailband .tl,.pquote cite,
-      .icell .icl,.iqcol .iqh,.notthis .ntl,
+      .icell .icl,.iqcol .iqh,.seqnote .sql,
       .reach-rung .rr-n,.reach-axis .ral,.landing .lal,.seoloop .sl,.collab .cl,
       .counterband .cbl,.mcol .mhead,.baseline .bl,
       .ctahero .che,.tl-card .tle,.masonband .mbl,
@@ -771,6 +776,12 @@
       .apx-strip a{display:flex;align-items:center;min-height:44px;width:100%;border-bottom:1px solid var(--rule-faint);padding-bottom:0}
     }
   </style>
+  <noscript>
+    <!-- Design tier standard 15, guard 2a. 175 elements sit at opacity:0 waiting
+         on an IntersectionObserver. With JS off there is no observer and the
+         client opens a working header, a working gate, and a blank deck. -->
+    <style>.reveal{opacity:1 !important;transform:none !important}</style>
+  </noscript>
 </head>
 <body>
 
@@ -1348,9 +1359,9 @@
             </ul>
           </div>
         </div>
-        <div class="notthis reveal d5">
-          <span class="ntl">Not this term</span>
-          <p><b>Before and after content, and anything else that needs a patient&rsquo;s consent on file.</b> Five of the strongest proof formats depend on a release we do not have yet, which is why the conversion row leans on service features and direct asks instead. Standing up a release is the single change that unlocks the most, at exactly the stage where you want results.</p>
+        <div class="seqnote reveal d5">
+          <span class="sql">How the set evolves</span>
+          <p><b>The starting set leads with education and community</b>, because that is what builds an audience the practice does not have yet. Patient-featuring formats come in as the account matures.</p>
         </div>
         <p class="ifoot reveal d5">We test widely in months one to three, then consolidate to what works. The library is bigger than this. These are the starting bets for your brand.</p>
       </div>
@@ -1666,11 +1677,26 @@
     window.addEventListener('scroll',onScroll,{passive:true});
     window.addEventListener('resize',onScroll);
 
-    /* ── Scroll reveal ── */
-    const io=new IntersectionObserver((es)=>{
-      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    },{threshold:0.1});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    /* ── Scroll reveal ──
+       Design tier standard 15, guard 2b. The reveal system parks 175 elements
+       at opacity:0 and depends on an IntersectionObserver to restore them, so
+       ANY failure before or during observer registration blanks the entire
+       deliverable with no graceful degradation. Observed for real on this
+       build: a backgrounded tab suspends rendering and the observer never
+       fires at all. The timeout below force-reveals everything if nothing has
+       been revealed after ~2s, and the try/catch force-reveals immediately if
+       registration itself throws. Never remove one without the other. */
+    let revealFired=false;
+    function forceRevealAll(){
+      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    }
+    try{
+      const io=new IntersectionObserver((es)=>{
+        es.forEach(e=>{ if(e.isIntersecting){ revealFired=true; e.target.classList.add('in'); io.unobserve(e.target);} });
+      },{threshold:0.1});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      setTimeout(function(){ if(!revealFired) forceRevealAll(); },2000);
+    }catch(err){ forceRevealAll(); }
 
     /* ── Arrow-key navigation ── */
     function goTo(i){

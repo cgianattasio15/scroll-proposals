@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <title>Cincinnati Skin Center &middot; Phase 1 Strategy | Scroll Media</title>
+  <link rel="icon" type="image/svg+xml" href="https://tools.scrollmedia.co/assets/scroll-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       SCROLL MEDIA DESIGN SYSTEM
+       Cincinnati Skin Center &middot; Signature Phase 1 Strategy Deck
+       Built to csc_deck_blueprint_v1.md against
+       strategy_deck_design_tier_v1.md (v2, incl. standard 14).
+       Security: noindex + robots Disallow + access-code gate from delivery.
+       Scroll LIGHT system: Ghost / Azure / Lucid / Highlighter /
+       Shadow in Source Sans 3. Azure full-bleed on cover + close only.
+       Cloned from the current rolling baseline deck, not the older reference build.
+       ========================================================= */
+
+    :root{
+      /* ===== CSC CLIENT MARK &middot; SINGLE SWAP POINT =====================
+         The CSC brand kit has not landed yet. The THREE lines below are the
+         ONLY place the client mark is described in this deck. Every client-mark
+         placement (topbar, cover, close) resolves through them.
+
+         WHEN THE REAL KIT ARRIVES, ALL THREE CHANGE TOGETHER.
+         The ratio is not optional bookkeeping: the marks are sized by height
+         and derive their width from it, so swapping only the two URLs to a
+         mark of a different aspect ratio distorts the logo silently. It shows
+         up first on the cover at 44px tall, with no error anywhere.
+         Measure the new files, set the ratio, then swap the URLs.
+         Do not inline a mark path anywhere else in this file.
+         ================================================================= */
+      --csc-mark-ratio: 4.01;  /* intrinsic width / height of BOTH marks */
+      --csc-mark-dark: url("csc-logo.png");
+      --csc-mark-light: url("csc-logo-white.png");
+
+      /* Scroll brand tokens (brand_system.md §5.1) */
+      --ghost:#FAFDFF; --azure:#0C3387; --azure-900:#071d4f; --azure-800:#0c3387;
+      --azure-600:#254fb0; --azure-400:#7a9ad8; --azure-200:#b9cdee;
+      --lucid:#CBE9FF; --lucid-deep:#9ecee8; --lucid-soft:#e4f3ff;
+      --highlighter:#E2ED7A; --highlighter-dark:#c8d94a; --highlighter-soft:#f5f8dd;
+      --shadow:#151516; --white:#fff;
+
+      --bg:var(--ghost); --bg-alt:#f4f7fb; --bg-panel:var(--white);
+      --fg:var(--shadow); --fg-heading:var(--azure); --fg-muted:#5a6070; --fg-subtle:#9097a6;
+      --fg-on-azure:var(--white);
+      --rule:rgba(12,51,135,.20); --rule-strong:rgba(12,51,135,.40); --rule-faint:rgba(12,51,135,.08);
+
+      /* funnel stage tints (labels are written out in plain English in copy) */
+      --st1-bg:#eff6ff; --st1-accent:#2563eb;
+      --st2-bg:#f0fdf4; --st2-accent:#16a34a;
+      --st3-bg:#fdf4ff; --st3-accent:#9333ea;
+
+      --fs-xs:11px; --fs-sm:13px; --fs-base:15px; --fs-md:17px; --fs-lg:20px;
+      --fs-xl:24px; --fs-2xl:32px; --fs-3xl:42px; --fs-4xl:60px;
+      --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:40px; --sp-8:56px; --sp-9:80px;
+      --header-h:58px; --content-max:1140px; --slide-max:1060px;
+      --r-sm:4px; --r-md:8px; --r-lg:16px;
+      --sh-sm:0 1px 2px rgba(12,51,135,.06); --sh-md:0 6px 24px rgba(12,51,135,.08); --sh-lg:0 18px 60px rgba(12,51,135,.10);
+      --ease:cubic-bezier(.22,.61,.36,1);
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    /* overflow-x lives on <html> ONLY. Putting it on <body> as well makes body a
+       scroll container and silently kills the sticky header. Do not re-add it. */
+    html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--header-h)}
+    body{font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);font-size:var(--fs-base);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    h1,h2,h3,h4{font-family:inherit;font-weight:800;color:var(--fg-heading);letter-spacing:-.01em;line-height:1.12}
+    a{color:var(--azure-600);text-decoration:none}
+    button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0}
+    strong,b{font-weight:700;color:var(--shadow)}
+    em{font-style:italic}
+    img{max-width:100%}
+
+    /* ── CLIENT MARK PRIMITIVE (resolves the two swap-point variables) ── */
+    .csc-mark{display:block;background-image:var(--csc-mark-dark);background-size:contain;background-repeat:no-repeat;background-position:center;flex:0 0 auto}
+    .csc-mark.on-azure{background-image:var(--csc-mark-light)}
+
+    /* ── HEADER ── */
+    .deck-header{position:sticky;top:0;height:var(--header-h);background:rgba(250,253,255,.93);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule-faint);z-index:100;display:flex;align-items:center}
+    .deck-header-inner{width:100%;max-width:var(--content-max);margin:0 auto;padding:0 var(--sp-5);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)}
+    .header-logo{display:flex;align-items:center;gap:var(--sp-3);min-height:44px}
+    .header-logo-img{height:22px;width:auto;display:block}
+    .header-logo-text{font-weight:800;font-size:15px;color:var(--azure);letter-spacing:-.01em;display:none}
+    .header-right{display:flex;align-items:center;gap:13px}
+    .header-divider{width:1px;height:20px;background:var(--rule)}
+    .header-client{font-size:13px;font-weight:700;color:var(--fg-muted);white-space:nowrap}
+    .header-client-mark{height:20px;width:calc(20px * var(--csc-mark-ratio))}
+    .header-meta{font-size:12px;color:var(--fg-subtle);display:flex;align-items:center;gap:var(--sp-3);white-space:nowrap}
+    .header-meta-dot{width:4px;height:4px;background:var(--azure-400);border-radius:50%}
+    @media (max-width:760px){.header-meta{display:none}}
+    @media (max-width:470px){.header-client-mark,.header-divider{display:none}}
+
+    /* ── SCROLL PROGRESS ── */
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--azure),var(--azure-400));z-index:120;transition:width .1s linear}
+
+    /* ── RIGHT-RAIL DOT NAV ──
+       DELIBERATE EXCEPTION to the 44px touch-target gate (Chase, Aug 19 2026).
+       These dots are 8px and stay 8px. They are pointer-only (shown at
+       >=1380px), and arrow-key nav plus the clickable agenda already provide
+       the same function, so this is redundant navigation, which is where a
+       small target is acceptable. A 44px hit area would also overlap its
+       neighbours at this pitch. Settled. Do not re-litigate. */
+    .slide-nav{display:none;position:fixed;top:50%;right:var(--sp-5);transform:translateY(-50%);z-index:50;flex-direction:column;gap:7px}
+    .slide-nav a{width:8px;height:8px;background:var(--azure-200);border-radius:50%;transition:all .2s var(--ease);position:relative}
+    .slide-nav a:hover{background:var(--azure-600);transform:scale(1.4)}
+    .slide-nav a.active{background:var(--azure);transform:scale(1.6)}
+    .slide-nav a span{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--azure);color:var(--ghost);padding:4px 10px;font-size:11px;white-space:nowrap;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .18s var(--ease)}
+    .slide-nav a:hover span{opacity:1}
+    @media (min-width:1380px){.slide-nav{display:flex}}
+
+    /* ── SLIDE SHELL ── */
+    .slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + var(--sp-6)) var(--sp-5) var(--sp-7);border-bottom:1px solid var(--rule-faint);position:relative;scroll-margin-top:var(--header-h)}
+    .slide-inner{width:100%;max-width:var(--slide-max);margin:0 auto}
+    .slide.wide .slide-inner{max-width:var(--content-max)}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-3)}
+    .eyebrow .act{background:var(--azure);color:var(--ghost);padding:3px 10px;border-radius:999px;font-size:10px;letter-spacing:.1em;display:inline-flex;align-items:center;gap:5px}
+    /* monogram accent on the three act eyebrows */
+    .eyebrow .act::before{content:"";width:13px;height:13px;display:inline-block;background:url("https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png") center/contain no-repeat;filter:brightness(0) invert(1);opacity:.92;flex:0 0 auto}
+    .slide-title{font-size:var(--fs-3xl);margin-bottom:var(--sp-3);max-width:22ch}
+    .slide-lede{font-size:var(--fs-lg);color:var(--fg-muted);max-width:66ch;margin-bottom:var(--sp-5);line-height:1.45}
+    .section-num{position:absolute;top:calc(var(--header-h) + 10px);right:var(--sp-6);z-index:6;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--azure);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:999px;padding:3px 10px;font-variant-numeric:tabular-nums}
+
+    .section-num.on-dark{background:rgba(203,233,255,.18);border-color:rgba(203,233,255,.40);color:var(--ghost)}
+
+    /* ── REVEAL ── */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal.d1{transition-delay:.07s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.21s}.reveal.d4{transition-delay:.28s}.reveal.d5{transition-delay:.35s}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+    /* =========================================================
+       01 · COVER  (Azure full-bleed · bespoke node-network motif)
+       ========================================================= */
+    #s01{background:radial-gradient(120% 92% at 84% 4%,#16367a 0%,var(--azure) 46%,var(--azure-900) 100%);color:var(--ghost);min-height:100vh;justify-content:center;overflow:hidden}
+    #s01 .slide-inner{position:relative;z-index:2}
+    .nodenet{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+    .nodenet .nn-link{stroke:var(--lucid);stroke-width:.7;opacity:.13}
+    .nodenet .nn-node{fill:var(--lucid);opacity:.34;r:2.2}
+    .nodenet .nn-node.hi{fill:var(--highlighter);opacity:.72}
+    .nodenet .nn-ring{fill:none;stroke:var(--lucid);stroke-width:.7;opacity:.16}
+    .nodenet .pulse{animation:nnPulse 5.2s ease-in-out infinite}
+    .nodenet .pulse.p2{animation-delay:1.3s}.nodenet .pulse.p3{animation-delay:2.6s}.nodenet .pulse.p4{animation-delay:3.9s}
+    @keyframes nnPulse{0%,100%{opacity:.16;r:2}50%{opacity:.62;r:3.4}}
+    @media (prefers-reduced-motion:reduce){.nodenet .pulse{animation:none}}
+    @media (max-width:820px){.nodenet{opacity:.7}}
+
+    .cover-cobrand{display:flex;align-items:center;gap:18px;margin-bottom:var(--sp-5);width:fit-content}
+    .cover-cobrand .cb-scroll{height:26px;width:auto;display:block}
+    .cover-cobrand .cb-x{font-size:17px;font-weight:400;color:var(--lucid);opacity:.65}
+    .cover-cobrand .cb-csc{height:44px;width:calc(44px * var(--csc-mark-ratio))}
+    .cover-kicker{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lucid);margin-bottom:var(--sp-5);width:fit-content}
+    .cover-kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--highlighter);box-shadow:0 0 12px var(--highlighter)}
+    #s01 h1{color:var(--ghost);font-size:clamp(40px,6.6vw,74px);line-height:1.04;letter-spacing:-.02em;max-width:15ch}
+    .cover-sub{font-size:var(--fs-xl);color:var(--lucid);margin-top:var(--sp-5);max-width:52ch;font-weight:400;line-height:1.4}
+    .cover-meta{margin-top:var(--sp-8);display:flex;flex-wrap:wrap;gap:var(--sp-5) var(--sp-8);font-size:13px;color:var(--lucid-soft)}
+    .cover-meta .cm{display:block}
+    .cover-meta .cm-l{display:block;font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--lucid-deep)}
+    .cover-meta .cm-v{display:block;color:var(--ghost);font-size:16px;font-weight:700;margin-top:3px}
+    .scrollcue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--lucid);font-size:11px;letter-spacing:.1em;text-transform:uppercase;z-index:2}
+    .scrollcue .bar{width:1px;height:28px;background:linear-gradient(var(--highlighter),transparent);animation:cue 1.8s ease-in-out infinite}
+    @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+    @media (prefers-reduced-motion:reduce){.scrollcue .bar{animation:none}}
+    @media (max-width:620px){.cover-cobrand{gap:13px}.cover-cobrand .cb-csc{height:32px;width:calc(32px * var(--csc-mark-ratio))}.cover-cobrand .cb-scroll{height:20px}.cover-meta{gap:var(--sp-4) var(--sp-6)}}
+
+    /* =========================================================
+       02 · AGENDA  (three act-bands · clickable anchor rows)
+       ========================================================= */
+    .acts{display:grid;grid-template-columns:1.28fr 1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .act-band{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-lg);background:var(--bg-panel);box-shadow:var(--sh-sm);display:flex;flex-direction:column;overflow:hidden}
+    .act-band .ab-head{padding:var(--sp-4) var(--sp-5) var(--sp-3)}
+    .act-band .ab-pill{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--ghost);background:var(--azure);border-radius:999px;padding:3px 10px}
+    .act-band .ab-t{font-size:var(--fs-lg);font-weight:800;color:var(--azure);margin-top:9px;line-height:1.15}
+    .act-band .ab-d{font-size:12.5px;color:var(--fg-muted);line-height:1.45;margin-top:5px}
+    .act-rows{list-style:none;border-top:1px solid var(--rule-faint);display:flex;flex-direction:column}
+    .act-rows li{border-bottom:1px solid var(--rule-faint)}
+    .act-rows li:last-child{border-bottom:none}
+    .act-rows a{display:flex;align-items:flex-start;gap:11px;padding:9px var(--sp-5);transition:background .18s var(--ease),padding .18s var(--ease);min-height:44px}
+    .act-rows a:hover{background:var(--lucid-soft);padding-left:calc(var(--sp-5) + 4px)}
+    .act-rows .n{flex:0 0 auto;font-size:11px;font-weight:800;color:var(--azure);background:var(--white);border:1px solid var(--lucid-deep);border-radius:999px;width:23px;height:23px;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;margin-top:1px}
+    .act-rows .rt{display:block;font-size:14px;font-weight:700;color:var(--shadow);line-height:1.25}
+    .act-rows .rd{display:block;font-size:12px;color:var(--fg-muted);line-height:1.35;margin-top:1px}
+    .apx-strip{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-top:var(--sp-4);background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:10px var(--sp-4)}
+    .apx-strip .al{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--azure-600)}
+    .apx-strip a{font-size:13px;font-weight:600;color:var(--shadow);border-bottom:1px solid var(--rule);padding-bottom:1px}
+    .apx-strip a:hover{color:var(--azure);border-color:var(--azure)}
+    @media (max-width:900px){.acts{grid-template-columns:1fr}}
+
+    /* =========================================================
+       03 · OUR UNDERSTANDING  (lead strip + focal journey timeline)
+       ========================================================= */
+    .us-lead{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-4)}
+    .us-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5);box-shadow:var(--sh-sm)}
+    .us-card .ul{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
+    .us-card .us-punch{font-size:16px;font-weight:800;color:var(--azure);line-height:1.22;letter-spacing:-.01em;margin-bottom:6px}
+    .us-card p{font-size:13px;color:var(--fg-muted);line-height:1.45}
+    @media (max-width:820px){.us-lead{grid-template-columns:1fr}}
+    .living-note{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:var(--fg-muted);line-height:1.45;background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:var(--r-md);padding:9px var(--sp-4);margin-bottom:var(--sp-5)}
+    .living-note b{color:var(--azure)}
+
+    .jwrap{position:relative}
+    .jlabel{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--azure-600);margin-bottom:var(--sp-4);display:flex;align-items:center;gap:10px}
+    .jlabel::after{content:"";flex:1;height:1px;background:var(--rule-faint)}
+    .journey{position:relative;display:grid;grid-template-columns:repeat(9,1fr);gap:6px}
+    .journey::before{content:"";position:absolute;top:15px;left:5.5%;right:16%;height:3px;background:linear-gradient(90deg,var(--azure-200),var(--azure));border-radius:2px}
+    .journey::after{content:"";position:absolute;top:16px;right:5.5%;width:11%;height:0;border-top:2px dashed var(--azure-200)}
+    .j-step{position:relative;text-align:center;z-index:2;padding-top:2px}
+    .j-dot{display:block;width:16px;height:16px;border-radius:50%;background:var(--azure-200);border:3px solid var(--ghost);box-shadow:0 0 0 1px var(--rule);margin:2px auto 11px}
+    .j-when{font-size:11px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--azure-600);line-height:1.2;display:block}
+    .j-what{font-size:12px;color:var(--fg-muted);margin-top:3px;line-height:1.3;display:block}
+    .j-step.done .j-dot{background:var(--fg-subtle);box-shadow:0 0 0 1px var(--rule-faint)}
+    .j-step.done .j-when,.j-step.done .j-what{color:var(--fg-subtle)}
+    .j-step.now{background:var(--lucid-soft);border:1.5px solid var(--lucid-deep);border-radius:var(--r-md);padding:6px 4px 8px;margin-top:-6px;box-shadow:var(--sh-sm)}
+    .j-step.now .j-dot{background:var(--highlighter);box-shadow:0 0 0 5px rgba(226,237,122,.4);transform:scale(1.22)}
+    .j-step.now .j-when{color:var(--azure)}
+    .j-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--highlighter);color:var(--azure-900);padding:1px 8px;border-radius:999px;margin-top:5px}
+    .j-step.later .j-dot{background:var(--white);border-color:var(--ghost);box-shadow:0 0 0 1.5px var(--azure-200)}
+    .j-step.later .j-when{color:var(--azure-400)}
+    .j-step.later .j-what{color:var(--fg-subtle)}
+    .j-step.key .j-dot{background:var(--azure)}
+    .rhythm{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-5)}
+    .rband{display:flex;align-items:center;gap:10px;background:var(--bg-alt);border:1px solid var(--rule-faint);border-left:3px solid var(--azure-400);border-radius:var(--r-md);padding:9px var(--sp-4)}
+    .rband .rb-t{font-size:13px;font-weight:700;color:var(--azure);line-height:1.25;display:block}
+    .rband .rb-s{font-size:12px;color:var(--fg-muted);line-height:1.3;display:block}
+    @media (max-width:1000px){
+      .journey{grid-template-columns:1fr;gap:var(--sp-3)}
+      .journey::before,.journey::after{display:none}
+      .j-step{text-align:left;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;border-left:2px solid var(--azure-200);padding-left:12px}
+      .j-dot{display:none}
+      .j-step.now{margin-top:0;border-left-color:var(--highlighter-dark)}
+      .j-when{min-width:120px}
+      .j-tag{margin-top:0}
+    }
+    @media (max-width:820px){.rhythm{grid-template-columns:1fr}}
+
+    /* =========================================================
+       04 · BRAND AND COMPETITIVE REVIEW
+       (three reference cards · counter-set band · direction split)
+       ========================================================= */
+    .refs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}
+    .ref{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:flex;flex-direction:column;overflow:hidden}
+    .ref .rf-head{background:var(--azure);padding:var(--sp-4) var(--sp-5);border-bottom:3px solid var(--lucid-deep)}
+    .ref .rf-job{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--lucid)}
+    .ref .rf-name{font-size:var(--fs-md);font-weight:800;color:var(--ghost);line-height:1.2;margin-top:5px}
+    .ref .rf-body{padding:var(--sp-4) var(--sp-5) var(--sp-5);display:flex;flex-direction:column;gap:9px;flex:1}
+    .ref .rf-l{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600)}
+    .ref .rf-take{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .ref .rf-take b{color:var(--azure)}
+    .ref .rf-quote{font-size:13px;color:var(--shadow);font-style:italic;line-height:1.4;border-left:3px solid var(--lucid-deep);padding-left:11px;margin-top:auto}
+    .ref .rf-quote cite{display:block;font-style:normal;font-size:11px;color:var(--fg-subtle);margin-top:4px}
+    @media (max-width:900px){.refs{grid-template-columns:1fr}}
+
+    .counterset{display:flex;align-items:flex-start;gap:var(--sp-5);background:var(--azure-900);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);margin-top:var(--sp-4);box-shadow:var(--sh-md)}
+    .counterset .cs-l{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--highlighter);background:rgba(226,237,122,.14);border:1px solid rgba(226,237,122,.34);border-radius:999px;padding:4px 11px;margin-top:2px}
+    .counterset p{font-size:14px;color:var(--lucid-soft);line-height:1.5}
+    .counterset p b{color:var(--ghost)}
+    @media (max-width:700px){.counterset{flex-direction:column;gap:10px}}
+
+    .splitpanel{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .sp-col{border:1px solid var(--rule-faint);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-4) var(--sp-5);box-shadow:var(--sh-sm)}
+    .sp-col.page{background:var(--lucid-soft);border-color:var(--lucid-deep)}
+    .sp-col .sp-l{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--azure-600);margin-bottom:5px}
+    .sp-col .sp-v{font-size:var(--fs-md);font-weight:800;color:var(--azure);line-height:1.25}
+    .sp-note{font-size:13.5px;color:var(--fg-muted);line-height:1.5;margin-top:var(--sp-3);border-left:3px solid var(--highlighter-dark);padding-left:var(--sp-4)}
+    .sp-note b{color:var(--azure)}
+    @media (max-width:640px){.splitpanel{grid-template-columns:1fr}}
+
+
+    /* =========================================================
+       05 · STRATEGIC FRAMEWORK (connected zone map, nested steps)
+       ========================================================= */
+    .zones{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:var(--sp-2);align-items:stretch;margin-top:var(--sp-4)}
+    .zone{border:1px solid var(--rule);border-radius:var(--r-lg);padding:var(--sp-5);background:var(--bg-panel);position:relative;overflow:hidden;box-shadow:var(--sh-sm)}
+    .zone::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--azure)}
+    .zone .zn{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--azure-400)}
+    .zone h3{font-size:var(--fs-lg);margin:6px 0 4px}
+    .zone .zsub{font-size:14px;font-weight:700;color:var(--shadow);margin:4px 0 10px;line-height:1.35}
+    .zone ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .zone li{font-size:13px;color:var(--fg-muted);line-height:1.4;padding-left:15px;position:relative}
+    .zone li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--azure-400)}
+    .zsep{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--azure-200);font-weight:700}
+    @media (max-width:880px){.zones{grid-template-columns:1fr}.zsep{transform:rotate(90deg);padding:2px 0}}
+
+    /* =========================================================
+       06 · CONTENT FUNNEL
+       Geometry ported from the CSC kickoff deck S5: narrowing bands
+       in a fixed grid with a vertical viewer-journey rail, so the
+       stage label, the band and the job stay aligned per row.
+       ========================================================= */
+    #s06 .slide-inner{max-width:var(--content-max)}
+    .fgrid{display:grid;grid-template-columns:190px 1fr 300px 62px;grid-template-rows:repeat(4,auto);column-gap:16px;row-gap:9px;align-items:stretch;margin-top:var(--sp-4)}
+    .fstage{grid-column:1;display:flex;flex-direction:column;justify-content:center;text-align:right;gap:2px}
+    .fstage b{font-size:16px;font-weight:800;color:var(--azure);line-height:1.2}
+    .fstage span{font-size:12px;color:var(--fg-subtle);line-height:1.25}
+    .fband-cell{grid-column:2;display:flex;align-items:center}
+    .fband{min-height:62px;width:100%;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;padding:8px 18px;text-align:center}
+    .fband.b1{max-width:100%;background:var(--lucid-soft);border:1px solid var(--azure-200)}
+    .fband.b2{max-width:88%;background:var(--lucid);border:1px solid var(--lucid-deep)}
+    .fband.b3{max-width:75%;background:var(--azure-200);border:1px solid var(--azure-400)}
+    .fband.b4{max-width:60%;background:var(--highlighter);border:1px solid var(--highlighter-dark);box-shadow:var(--sh-md)}
+    .fband b{font-size:16px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--azure);line-height:1.15}
+    .fband.b4 b{color:var(--azure-900)}
+    .fjob{grid-column:3;display:flex;flex-direction:column;justify-content:center;padding-left:15px;border-left:1px solid var(--rule-faint)}
+    .fjob span{font-size:14px;color:var(--fg-muted);line-height:1.4}
+    .frail{grid-column:4;grid-row:1 / 5;position:relative;display:flex;align-items:center;justify-content:center}
+    .frail-label{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--azure);line-height:1.2;text-align:center;margin-right:14px}
+    .jarrow{position:absolute;top:6px;bottom:6px;right:12px;width:2px;background:var(--azure)}
+    .jarrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:11px solid var(--azure)}
+    @media (max-width:900px){
+      .fgrid{grid-template-columns:1fr;row-gap:var(--sp-2)}
+      .fstage,.fband-cell,.fjob{grid-column:1;text-align:left}
+      .fjob{padding-left:0;border-left:none;padding-bottom:var(--sp-3)}
+      .fband.b1,.fband.b2,.fband.b3,.fband.b4{max-width:100%}
+      .frail{grid-column:1;grid-row:auto;border:1px solid var(--azure-200);background:var(--lucid-soft);border-radius:var(--r-md);padding:8px 12px;justify-content:flex-start}
+      .frail-label{writing-mode:horizontal-tb;transform:none;margin-right:0}
+      .jarrow{display:none}
+    }
+
+    /* =========================================================
+       07 · CONTENT ENGINE + MATURITY RIBBON
+       ========================================================= */
+    .engine{display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;margin-top:var(--sp-4)}
+    .enode{text-align:center;width:158px;cursor:pointer}
+    .enode .circle{width:76px;height:76px;border-radius:50%;margin:0 auto;background:var(--bg-panel);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--azure);box-shadow:var(--sh-sm);transition:all .5s var(--ease)}
+    .enode.lit .circle{background:var(--azure);color:var(--highlighter);transform:scale(1.08)}
+    .enode b{display:block;font-size:15px;margin-top:9px;color:var(--azure)}
+    .enode span{display:block;font-size:13px;color:var(--fg-muted);margin-top:2px;line-height:1.35}
+    .earrow{font-size:21px;color:var(--azure-200);font-weight:700;margin:26px -8px 0}
+    @media (max-width:900px){.enode{width:132px}.enode .circle{width:60px;height:60px;font-size:19px}.earrow{display:none}}
+    .evolve{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);margin-top:var(--sp-5)}
+    .evolve .ev{background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:9px var(--sp-4)}
+    .evolve .ev b{display:block;font-size:13px;color:var(--azure);line-height:1.25}
+    .evolve .ev span{display:block;font-size:12.5px;color:var(--fg-muted);line-height:1.3;margin-top:2px}
+    @media (max-width:820px){.evolve{grid-template-columns:1fr 1fr}}
+    .mat{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);margin-top:var(--sp-6)}
+    .mat-stage{border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-3);background:var(--bg-panel);text-align:center;position:relative}
+    .mat-stage .mn{font-size:17px;font-weight:800;color:var(--azure)}
+    .mat-stage .ml{font-size:12.5px;color:var(--fg-muted);margin-top:3px;line-height:1.35}
+    .mat-stage.here{background:var(--azure);border-color:var(--azure)}
+    .mat-stage.here .mn{color:var(--highlighter)}
+    .mat-stage.here .ml{color:var(--lucid-soft)}
+    .mat-stage.here::after{content:"You are here";position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--highlighter);color:var(--azure-900);font-size:12px;font-weight:800;letter-spacing:.04em;padding:2px 10px;border-radius:999px;white-space:nowrap}
+    @media (max-width:640px){.mat{grid-template-columns:1fr 1fr;gap:var(--sp-5) var(--sp-3)}}
+    .mnote{margin-top:var(--sp-4);font-size:14px;color:var(--fg-muted);background:var(--bg-alt);border-radius:var(--r-md);padding:11px var(--sp-4);line-height:1.5}
+    .mnote b{color:var(--azure)}
+
+    /* =========================================================
+       CALLOUT PRIMITIVE (canonical callouts A-F)
+       ========================================================= */
+    .callout{background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-left:4px solid var(--azure);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5)}
+    .callout .cl-label{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-bottom:5px}
+    .callout p{font-size:14px;color:var(--fg-muted);line-height:1.55}
+    .callout p b{color:var(--azure)}
+    .callout.anchor{background:var(--azure);border-color:var(--azure)}
+    .callout.anchor .cl-label{color:var(--highlighter)}
+    .callout.anchor p{color:var(--lucid-soft)}
+    .callout.anchor p b{color:var(--ghost)}
+    .callout.top{margin-bottom:var(--sp-4)}
+
+    /* =========================================================
+       08 · GOALS + TRACKING
+       ========================================================= */
+    .goals{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}
+    .goal{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-lg);background:var(--bg-panel);padding:var(--sp-4) var(--sp-5) var(--sp-5);display:flex;flex-direction:column;box-shadow:var(--sh-sm)}
+    .goal.is-priority{border-top-color:var(--highlighter-dark);background:var(--highlighter-soft);box-shadow:var(--sh-md)}
+    .goal .gn{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .goal .gnum{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600)}
+    .goal.is-priority .gnum{color:var(--azure-900)}
+    .goal .gpri{font-size:12px;font-weight:800;letter-spacing:.04em;background:var(--highlighter);color:var(--azure-900);border-radius:999px;padding:2px 9px;white-space:nowrap}
+    .goal h3{font-size:var(--fs-md);margin:7px 0 6px;line-height:1.25}
+    .goal>p{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .goal .gwhy{font-size:13px;color:var(--azure);font-style:italic;line-height:1.4;margin-top:9px;border-left:3px solid var(--highlighter-dark);padding-left:11px}
+    .goal .gtrack{margin-top:auto;padding-top:var(--sp-4)}
+    .goal .gtl{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
+    .gchips{display:flex;flex-wrap:wrap;gap:6px}
+    .gchip{font-size:12.5px;font-weight:600;color:var(--azure);background:var(--white);border:1px solid var(--lucid-deep);border-radius:999px;padding:3px 10px;line-height:1.3}
+    @media (max-width:900px){.goals{grid-template-columns:1fr}}
+    .objband{display:flex;align-items:center;gap:var(--sp-4);background:var(--azure);border-radius:var(--r-md);padding:11px var(--sp-5);margin-top:var(--sp-4);box-shadow:var(--sh-md)}
+    .objband .obl{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--highlighter)}
+    .objband p{font-size:14px;color:var(--lucid-soft);line-height:1.45}
+    .objband p b{color:var(--ghost)}
+    @media (max-width:700px){.objband{flex-direction:column;align-items:flex-start;gap:7px}}
+    .seenote{margin-top:var(--sp-3);font-size:13px;color:var(--fg-subtle);line-height:1.45}
+
+    /* =========================================================
+       09 · WHO WE ARE TALKING TO
+       ========================================================= */
+    .pgrid{display:grid;grid-template-columns:1.12fr 1fr;gap:var(--sp-4);align-items:stretch;margin-top:var(--sp-4)}
+    .persona{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-5);box-shadow:var(--sh-md)}
+    .persona .ptier{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--highlighter);margin-bottom:7px}
+    .persona .pname{font-size:var(--fs-xl);font-weight:800;color:var(--ghost);line-height:1.15}
+    .persona .ptag{font-size:14px;color:var(--lucid);margin-top:8px;line-height:1.45}
+    .pfacts{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3) var(--sp-4);margin-top:var(--sp-4);border-top:1px solid rgba(203,233,255,.25);padding-top:var(--sp-4)}
+    .pfact .fl{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--lucid-deep)}
+    .pfact .fv{font-size:13px;color:var(--ghost);font-weight:600;margin-top:2px;line-height:1.35}
+    .pquote{background:var(--bg-panel);border:1px solid var(--rule);border-radius:var(--r-lg);padding:var(--sp-5);display:flex;flex-direction:column;justify-content:center}
+    .pquote .qm{font-size:44px;line-height:.5;color:var(--azure-200);font-weight:800}
+    .pquote p{font-size:14.5px;color:var(--shadow);font-weight:600;line-height:1.45;margin:10px 0 8px}
+    .pquote cite{font-size:12px;color:var(--fg-muted);font-style:normal}
+    .contrast{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-4)}
+    .cblock{border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);border:1px solid var(--rule-faint)}
+    .cblock.pain{background:#fff7f5;border-left:3px solid #e06a52}
+    .cblock.dream{background:var(--lucid-soft);border-left:3px solid var(--lucid-deep)}
+    .cblock .clabel{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;margin-bottom:9px}
+    .cblock.pain .clabel{color:#c4502f}
+    .cblock.dream .clabel{color:var(--azure-600)}
+    .cblock ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .cblock li{font-size:13.5px;color:var(--fg-muted);line-height:1.4;padding-left:17px;position:relative}
+    .cblock li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%}
+    .cblock.pain li::before{background:#e06a52}
+    .cblock.dream li::before{background:var(--lucid-deep)}
+    @media (max-width:820px){.pgrid,.contrast{grid-template-columns:1fr}}
+    .tailband{display:flex;align-items:center;gap:var(--sp-4);background:var(--bg-alt);border:1px solid var(--rule-faint);border-left:3px solid var(--highlighter-dark);border-radius:var(--r-md);padding:10px var(--sp-5);margin-top:var(--sp-4)}
+    .tailband .tl{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600)}
+    .tailband p{font-size:14px;color:var(--fg-muted);line-height:1.45}
+    .tailband p b{color:var(--azure)}
+    @media (max-width:700px){.tailband{flex-direction:column;align-items:flex-start;gap:6px}}
+
+
+    /* =========================================================
+       10 · THE CONTENT SYSTEM (ideation matrix) · DENSEST SLIDE
+       ========================================================= */
+    #s10 .slide-inner{max-width:var(--content-max)}
+    .imatrix{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-3)}
+    .ipillar{border:1px solid var(--rule-faint);border-radius:var(--r-lg);background:var(--bg-panel);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh-md)}
+    .iph{padding:var(--sp-3) var(--sp-4);background:var(--azure);border-bottom:3px solid var(--highlighter-dark)}
+    .iph .ipn{font-size:15px;font-weight:800;color:var(--ghost);line-height:1.2}
+    .iph .ips{font-size:12px;color:var(--lucid);margin-top:3px;line-height:1.3}
+    .icell{padding:9px var(--sp-4);border-top:1px solid var(--rule-faint);flex:1}
+    .icell .icl{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+    .icell.st1{background:var(--st1-bg)} .icell.st1 .icl{color:var(--st1-accent)}
+    .icell.st2{background:var(--st2-bg)} .icell.st2 .icl{color:var(--st2-accent)}
+    .icell.st3{background:var(--st3-bg)} .icell.st3 .icl{color:var(--st3-accent)}
+    .ichips{display:flex;flex-wrap:wrap;gap:5px}
+    .ichip{font-size:12px;font-weight:600;color:var(--shadow);background:var(--white);border:1px solid var(--rule);border-radius:999px;padding:3px 9px;line-height:1.3}
+    @media (max-width:900px){.imatrix{grid-template-columns:1fr}}
+    .iqrow{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-3)}
+    .iqcol{border:1px solid var(--rule-faint);border-top:3px solid var(--highlighter-dark);border-radius:var(--r-md);background:var(--bg-alt);padding:9px var(--sp-4)}
+    .iqcol .iqh{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azure-600);margin-bottom:6px}
+    .iqcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .iqcol li{font-size:12.5px;color:var(--shadow);font-weight:600;line-height:1.3;font-style:italic;padding-left:12px;position:relative}
+    .iqcol li::before{content:"";position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--highlighter-dark)}
+    .iqcol li.hers::after{content:"yours";display:inline-block;margin-left:6px;font-style:normal;font-size:12px;font-weight:800;letter-spacing:.03em;background:var(--highlighter);color:var(--azure-900);border-radius:999px;padding:0 7px}
+    @media (max-width:900px){.iqrow{grid-template-columns:1fr}}
+    .notthis{display:flex;align-items:flex-start;gap:var(--sp-4);background:var(--bg-panel);border:1px solid var(--rule);border-left:4px solid var(--azure);border-radius:var(--r-md);padding:10px var(--sp-5);margin-top:var(--sp-3)}
+    .notthis .ntl{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-top:2px}
+    .notthis p{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .notthis p b{color:var(--azure)}
+    @media (max-width:700px){.notthis{flex-direction:column;gap:6px}}
+    .ifoot{margin-top:var(--sp-3);font-size:13px;color:var(--fg-subtle);font-style:italic;line-height:1.45;border-left:3px solid var(--lucid-deep);padding-left:var(--sp-4)}
+
+    /* =========================================================
+       11 · HOW WE REACH THEM
+       CSS namespaced .reach-* so nothing collides with the shared
+       .accordion UI component used elsewhere in the design system.
+       ========================================================= */
+    #s11 .slide-inner{max-width:var(--content-max)}
+    .reach-wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:var(--sp-4);margin-top:var(--sp-3)}
+    .reach-ladder{display:flex;flex-direction:column;gap:7px}
+    .reach-rung{display:flex;align-items:center;gap:var(--sp-4);background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:8px var(--sp-4)}
+    .reach-rung.r1{width:100%} .reach-rung.r2{width:93%} .reach-rung.r3{width:86%} .reach-rung.r4{width:79%;background:var(--lucid-soft);border-color:var(--lucid-deep)}
+    .reach-rung .rr-n{flex:0 0 86px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure)}
+    .reach-rung .rr-k{font-size:13px;color:var(--fg-muted);line-height:1.35}
+    .reach-rung .rr-k b{color:var(--azure);font-weight:700}
+    @media (max-width:760px){.reach-rung{width:100%!important;flex-direction:column;align-items:flex-start;gap:3px}.reach-rung .rr-n{flex-basis:auto}}
+    .reach-side{display:flex;flex-direction:column;gap:var(--sp-3)}
+    .reach-axis{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:3px solid var(--azure);border-radius:var(--r-md);padding:9px var(--sp-4)}
+    .reach-axis .ral{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-bottom:4px}
+    .reach-axis p{font-size:13px;color:var(--fg-muted);line-height:1.4}
+    .reach-axis p b{color:var(--azure)}
+    .masonline{display:flex;align-items:center;gap:10px;background:var(--highlighter-soft);border:1px solid var(--highlighter-dark);border-radius:var(--r-md);padding:9px var(--sp-4)}
+    .masonline span{font-size:13.5px;color:var(--shadow);line-height:1.4}
+    .masonline b{color:var(--azure-900)}
+    .landing{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:9px var(--sp-4)}
+    .landing .lal{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-bottom:5px}
+    .landing p{font-size:13px;color:var(--fg-muted);line-height:1.4}
+    .seoloop{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:var(--sp-3)}
+    .seoloop .sl{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-right:4px}
+    .seoloop .sstep{font-size:12.5px;font-weight:600;color:var(--azure);background:var(--lucid-soft);border:1px solid var(--lucid-deep);border-radius:999px;padding:3px 11px}
+    .seoloop .sarrow{color:var(--azure-200);font-weight:700}
+    @media (max-width:900px){.reach-wrap{grid-template-columns:1fr}}
+    .ignite{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-4)}
+    .ig{border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);background:var(--bg-panel);padding:9px var(--sp-4)}
+    .ig b{display:block;font-size:13.5px;color:var(--azure);line-height:1.25;margin-bottom:3px}
+    .ig span{font-size:12.5px;color:var(--fg-muted);line-height:1.4}
+    @media (max-width:820px){.ignite{grid-template-columns:1fr}}
+    .collab{display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 10px;background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:10px var(--sp-4);margin-top:var(--sp-3)}
+    .collab .cl{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-top:4px}
+    .cchip{font-size:12.5px;font-weight:600;color:var(--azure);background:var(--white);border:1px solid var(--lucid-deep);border-radius:999px;padding:3px 11px;line-height:1.35}
+    .collab .cnote{flex:1 0 100%;font-size:13px;color:var(--fg-muted);line-height:1.4;margin-top:2px}
+    .collab .cnote b{color:var(--azure)}
+
+    /* =========================================================
+       12 · DIFFERENTIATORS / COUNTER-POSITIONING
+       ========================================================= */
+    .diffs{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-4)}
+    .diff{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:5px solid var(--highlighter-dark);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);box-shadow:var(--sh-sm);position:relative}
+    .diff .dnum{position:absolute;top:var(--sp-3);right:var(--sp-4);font-size:24px;font-weight:800;color:var(--lucid-deep);line-height:1;font-variant-numeric:tabular-nums}
+    .diff b{display:block;font-size:17px;color:var(--azure);margin-bottom:5px;line-height:1.22;max-width:26ch}
+    .diff span{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .diff .dq{display:block;font-size:13px;color:var(--shadow);font-style:italic;line-height:1.4;margin-top:8px;border-top:1px solid var(--rule-faint);padding-top:7px}
+    @media (max-width:760px){.diffs{grid-template-columns:1fr}}
+    .counterband{background:var(--azure-900);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);margin-top:var(--sp-4);box-shadow:var(--sh-md)}
+    .counterband .cbl{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--highlighter);margin-bottom:6px}
+    .counterband p{font-size:14px;color:var(--lucid-soft);line-height:1.55}
+    .counterband p b{color:var(--ghost)}
+
+    /* =========================================================
+       13 · METRICS
+       ========================================================= */
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}
+    .mcol{border:1px solid var(--rule-faint);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);background:var(--bg-panel)}
+    .mcol .mhead{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--rule-faint)}
+    .mcol.st1 .mhead{color:var(--st1-accent)} .mcol.st2 .mhead{color:var(--st2-accent)} .mcol.st3 .mhead{color:var(--st3-accent)}
+    .mcol ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .mcol li{font-size:14px;color:var(--fg-muted);line-height:1.35;padding-left:16px;position:relative}
+    .mcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--azure-400)}
+    .mcol li b{color:var(--shadow)}
+    @media (max-width:900px){.metrics{grid-template-columns:1fr}}
+    .scorenote{margin-top:var(--sp-3);font-size:13.5px;color:var(--fg-muted);background:var(--bg-alt);border-radius:var(--r-md);padding:9px var(--sp-4);line-height:1.45}
+    .scorenote b{color:var(--azure)}
+    .baseline{background:var(--bg-panel);border:1px solid var(--rule);border-left:4px solid var(--highlighter-dark);border-radius:var(--r-md);padding:10px var(--sp-5);margin-top:var(--sp-3)}
+    .baseline .bl{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-bottom:4px}
+    .baseline p{font-size:13.5px;color:var(--fg-muted);line-height:1.5}
+    .baseline p b{color:var(--azure)}
+
+    /* =========================================================
+       14 · VALUE MODEL
+       ========================================================= */
+    .assump-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1.1fr;gap:var(--sp-2);align-items:stretch;margin-top:var(--sp-4)}
+    .as{border:1px solid var(--rule-faint);border-radius:var(--r-md);background:var(--bg-panel);padding:var(--sp-4);text-align:center;display:flex;flex-direction:column;justify-content:center}
+    .as .av{font-size:28px;font-weight:800;color:var(--azure);line-height:1;font-variant-numeric:tabular-nums}
+    .as .al2{font-size:12.5px;color:var(--fg-muted);line-height:1.35;margin-top:6px}
+    .as.total{background:var(--azure);border-color:var(--azure);box-shadow:var(--sh-md)}
+    .as.total .av{color:var(--highlighter)}
+    .as.total .al2{color:var(--lucid-soft)}
+    .asep{display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--azure-200);font-weight:700}
+    @media (max-width:860px){.assump-row{grid-template-columns:1fr}.asep{transform:rotate(90deg);padding:1px 0}}
+    .be-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-4)}
+    .be{background:var(--bg-panel);border:1px solid var(--rule-faint);border-left:4px solid var(--highlighter-dark);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .be .bev{font-size:24px;font-weight:800;color:var(--azure);line-height:1;font-variant-numeric:tabular-nums}
+    .be .bel{font-size:13px;color:var(--fg-muted);margin-top:5px;line-height:1.4}
+    @media (max-width:640px){.be-row{grid-template-columns:1fr}}
+    .honesty{margin-top:var(--sp-3);font-size:13.5px;color:var(--fg-muted);background:var(--bg-alt);border-radius:var(--r-md);padding:10px var(--sp-4);line-height:1.5}
+    .honesty b{color:var(--azure)}
+    .vlines{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-3)}
+    .vline{font-size:13px;color:var(--fg-muted);line-height:1.45;border-left:3px solid var(--lucid-deep);padding-left:var(--sp-4)}
+    .vline b{color:var(--azure)}
+    @media (max-width:760px){.vlines{grid-template-columns:1fr}}
+
+    /* =========================================================
+       15 · PLAN + CTA
+       ========================================================= */
+    .ctahero{background:var(--azure);color:var(--ghost);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6);box-shadow:var(--sh-md);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-5);flex-wrap:wrap;margin-top:var(--sp-4)}
+    .ctahero .che{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--highlighter)}
+    .ctahero h3{color:var(--ghost);font-size:var(--fs-xl);margin:6px 0 5px;line-height:1.2}
+    .ctahero p{font-size:14px;color:var(--lucid-soft);line-height:1.45;max-width:52ch}
+    .ctahero .chbtn{flex:0 0 auto;background:var(--highlighter);color:var(--azure-900);font-weight:800;font-size:14px;padding:12px 22px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+    .testlanes{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-3)}
+    .tl-card{border:1px solid var(--highlighter-dark);background:var(--highlighter-soft);border-radius:var(--r-md);padding:10px var(--sp-4)}
+    .tl-card .tle{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-900)}
+    .tl-card b{display:block;font-size:14px;color:var(--azure);margin:4px 0 3px}
+    .tl-card span{font-size:13px;color:var(--fg-muted);line-height:1.4}
+    .tl-card .tlwhen{display:block;font-size:12.5px;color:var(--azure-900);font-weight:700;margin-top:6px}
+    @media (max-width:700px){.testlanes{grid-template-columns:1fr}}
+    .masonband{display:flex;align-items:flex-start;gap:var(--sp-4);background:var(--bg-panel);border:1px solid var(--rule);border-left:4px solid var(--azure);border-radius:var(--r-md);padding:10px var(--sp-5);margin-top:var(--sp-3)}
+    .masonband .mbl{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-top:3px}
+    .masonband p{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .masonband p b{color:var(--azure)}
+    .masonband .dep{display:block;font-size:12.5px;font-style:italic;color:var(--fg-subtle);margin-top:4px}
+    @media (max-width:700px){.masonband{flex-direction:column;gap:6px}}
+    .rhythm-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-3)}
+    .rs{background:var(--bg-alt);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:9px var(--sp-4);font-size:13.5px;color:var(--fg-muted);line-height:1.35}
+    .rs b{display:block;color:var(--azure);font-size:13.5px}
+    @media (max-width:760px){.rhythm-strip{grid-template-columns:1fr}}
+    .nextline{margin-top:var(--sp-3);font-size:14px;color:var(--fg-muted);line-height:1.45;border-left:3px solid var(--highlighter-dark);padding-left:var(--sp-4)}
+    .nextline b{color:var(--azure)}
+
+    /* =========================================================
+       16 · CLOSE (Azure full-bleed · the one sanctioned squiggle)
+       ========================================================= */
+    #s16{background:radial-gradient(120% 90% at 14% 92%,#16367a 0%,var(--azure) 48%,var(--azure-900) 100%);color:var(--ghost);text-align:center;overflow:hidden}
+    #s16 .slide-inner{position:relative;z-index:2}
+    .close-squiggle{position:absolute;top:13%;right:-4%;width:min(30%,360px);height:auto;opacity:.13;filter:brightness(0) invert(1);pointer-events:none;z-index:1}
+    #s16 .close-mark{height:40px;width:calc(40px * var(--csc-mark-ratio));margin:0 auto var(--sp-5)}
+    #s16 h2{color:var(--ghost);font-size:clamp(30px,4.6vw,50px);max-width:21ch;margin:0 auto var(--sp-4)}
+    #s16 p{color:var(--lucid);font-size:var(--fs-lg);max-width:54ch;margin:0 auto;line-height:1.5}
+    #s16 .signoff{margin-top:var(--sp-7);font-size:14px;color:var(--lucid-soft);letter-spacing:.04em}
+    @media (max-width:620px){.close-squiggle{width:58%;opacity:.10}#s16 .close-mark{height:30px;width:calc(30px * var(--csc-mark-ratio))}}
+
+    /* =========================================================
+       APPENDIX
+       ========================================================= */
+    .appendix-band{background:var(--bg-alt)}
+    .appendix-band .eyebrow{color:var(--fg-subtle)}
+    .apx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-4)}
+    .apx-card{background:var(--bg-panel);border:1px solid var(--rule-faint);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-5)}
+    .apx-card .apl{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600);margin-bottom:5px}
+    .apx-card h4{font-size:15px;margin-bottom:4px;line-height:1.25}
+    .apx-card p{font-size:13.5px;color:var(--fg-muted);line-height:1.45}
+    .apx-card p b{color:var(--azure)}
+    @media (max-width:900px){.apx-grid{grid-template-columns:1fr}}
+    .pins{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-3)}
+    .pin{background:var(--bg-panel);border:1px solid var(--rule-faint);border-top:3px solid var(--azure);border-radius:var(--r-md);padding:9px var(--sp-4)}
+    .pin .pn{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--azure-600)}
+    .pin b{display:block;font-size:14px;color:var(--azure);margin-top:3px;line-height:1.3}
+    @media (max-width:760px){.pins{grid-template-columns:1fr}}
+    .sens-table{width:100%;border-collapse:collapse;margin-top:var(--sp-4);font-size:14px}
+    .sens-table th,.sens-table td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule-faint)}
+    .sens-table th{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-600)}
+    .sens-table td b{color:var(--azure)}
+    .sens-table tr.lead{background:var(--lucid-soft)}
+    .sens-table tr.lead td{font-weight:700}
+    .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+    /* =========================================================
+       ACCESS-CODE GATE (client-side, gated from delivery)
+       ========================================================= */
+    body.sm-locked{overflow:hidden}
+    #sm-gate{position:fixed;inset:0;background:var(--ghost);display:flex;align-items:center;justify-content:center;z-index:99999;padding:24px}
+    .sm-gate-card{background:var(--white);border:1px solid var(--rule-faint);border-radius:20px;padding:44px 38px;width:100%;max-width:400px;text-align:center;box-shadow:0 4px 24px rgba(12,51,135,.08)}
+    .sm-gate-logo{height:30px;width:auto;margin:0 auto 24px;display:block}
+    .sm-gate-title{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--shadow);margin-bottom:6px}
+    .sm-gate-sub{font-size:14px;color:var(--fg-muted);margin-bottom:24px;line-height:1.5}
+    .sm-gate-input-wrap{position:relative;margin-bottom:12px}
+    .sm-gate-input{width:100%;background:var(--bg-alt);border:1.5px solid var(--rule);border-radius:8px;padding:13px 48px 13px 16px;font-size:15px;font-family:inherit;color:var(--shadow);outline:none;transition:border-color .2s;letter-spacing:.06em}
+    .sm-gate-input:focus{border-color:var(--azure)}
+    .sm-gate-input::placeholder{letter-spacing:0;color:var(--fg-subtle)}
+    .sm-gate-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--fg-muted);padding:4px;display:flex;align-items:center}
+    .sm-gate-btn{width:100%;background:var(--azure);color:var(--white);border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s,transform .1s;min-height:44px}
+    .sm-gate-btn:hover{background:var(--azure-900)}
+    .sm-gate-btn:active{transform:scale(.98)}
+    .sm-gate-error{font-size:13px;color:#c0392b;margin-top:10px;display:none}
+    .sm-gate-error.visible{display:block}
+
+    /* =========================================================
+       REVIEW MODE (?review)
+       ========================================================= */
+    #reviewBar{display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:200;background:var(--azure);color:var(--ghost);border-radius:999px;padding:8px 10px 8px 16px;box-shadow:var(--sh-lg);align-items:center;gap:10px;font-size:13px;font-weight:600}
+    body.review #reviewBar{display:flex}
+    #reviewBar .rdot{width:8px;height:8px;border-radius:50%;background:var(--highlighter)}
+    #reviewBar button{background:var(--azure-600);color:var(--ghost);font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;transition:background .2s;min-height:34px}
+    #reviewBar button:hover{background:var(--azure-400)}
+    #reviewBar button.armed{background:var(--highlighter);color:var(--azure-900)}
+    body.review.arming .slide{cursor:crosshair}
+    .cmt-badge{position:absolute;top:14px;left:14px;z-index:8;background:var(--highlighter);color:var(--azure-900);font-size:11px;font-weight:800;border-radius:999px;padding:3px 9px;box-shadow:var(--sh-sm)}
+    #reviewHint{display:none;position:fixed;bottom:64px;left:50%;transform:translateX(-50%);z-index:200;background:var(--shadow);color:var(--ghost);font-size:12px;padding:6px 14px;border-radius:999px;opacity:.94}
+    body.review.arming #reviewHint{display:block}
+
+    /* SHORT-VIEWPORT COMPRESSION.
+       Fires at BOTH presented gates (1440x900 and 1100x800) so the two
+       behave the same way. Threshold is 940px, not 880px: at 880 the tier
+       silently skipped 1440x900, which is the gate most likely to be the
+       actual presentation window. Buys height by tightening padding and
+       leading only. It never cuts content. Re-check headroom after adding
+       any slide. */
+    @media (min-width:901px) and (max-height:940px){
+      .slide{padding-top:calc(var(--header-h) + var(--sp-5));padding-bottom:var(--sp-6)}
+      .slide-title{margin-bottom:var(--sp-2)}
+      .slide-lede{margin-bottom:var(--sp-4)}
+      .act-rows a{padding-top:8px;padding-bottom:8px}
+      .act-band .ab-head{padding-bottom:var(--sp-2)}
+      .ref .rf-body{padding-bottom:var(--sp-4)}
+
+      /* -- second compression pass, for the two densest slides (09, 10).
+            Padding, leading, gaps and block margins only. No content is cut
+            and no type drops below its floor; line-heights land on the brand
+            token --lh-normal (1.45) rather than below it. -- */
+      .slide{padding-top:calc(var(--header-h) + var(--sp-4));padding-bottom:var(--sp-5)}
+      .eyebrow{margin-bottom:var(--sp-2)}
+      .slide-title{margin-bottom:var(--sp-1);line-height:1.06}
+      .slide-lede{margin-bottom:var(--sp-3);line-height:1.35}
+
+      /* 09 */
+      .callout{padding-top:var(--sp-3);padding-bottom:var(--sp-3)}
+      .callout p{line-height:1.45}
+      .pgrid,.contrast{margin-top:var(--sp-3)}
+      .persona{padding:var(--sp-4) var(--sp-5)}
+      .pfacts{margin-top:var(--sp-3);padding-top:var(--sp-3);gap:var(--sp-2) var(--sp-4)}
+      .pquote{padding:var(--sp-4) var(--sp-5)}
+      .cblock{padding-top:var(--sp-3);padding-bottom:var(--sp-3)}
+      .cblock ul{gap:6px}
+      .cblock .clabel{margin-bottom:var(--sp-2)}
+      .tailband{margin-top:10px;padding-top:8px;padding-bottom:8px}
+
+      /* 10 */
+      .imatrix{margin-top:10px}
+      .iqrow,.notthis,.ifoot{margin-top:8px}
+      .iph{padding-top:9px;padding-bottom:9px}
+      .iph .ips{margin-top:2px}
+      .icell{padding-top:7px;padding-bottom:7px}
+      .icell .icl{margin-bottom:4px}
+      .ichips{gap:4px}
+      .ichip{padding-top:2px;padding-bottom:2px}
+      .iqcol{padding-top:7px;padding-bottom:7px}
+      .iqcol .iqh{margin-bottom:4px}
+      .iqcol ul{gap:4px}
+      .notthis{padding-top:7px;padding-bottom:7px}
+    }
+
+    /* =========================================================
+       MOBILE TYPE FLOORS  ·  allowlist rebuilt from scratch for the
+       FULL 16 + 3 deck (it does not carry over between decks, and it
+       does not carry over between passes within a deck either).
+
+       RULE A · reading text >= 14px. Anything the client reads as prose
+                or substantive content, and every line carrying a claim,
+                figure, date, price, guardrail or source.
+       RULE B · non-reading micro-labels may sit at 12px. Hard floor.
+                Never below 12. Never for substantive content.
+                Micro-label == uppercase category label, eyebrow, pill,
+                number chip, table header, or quote attribution.
+
+       Gated at 900px, not 560px: Procedural Gate 9 runs the floor at
+       768 as well as 414/375, and 768 sits on the desktop type scale
+       unless the query reaches it.
+       ========================================================= */
+    @media (max-width:900px){
+      .slide-title{font-size:var(--fs-2xl)}
+      .cover-sub,.slide-lede{font-size:16px}
+
+      /* ---- RULE A · reading text, hard floor 14px ---- */
+      .act-band .ab-d,.act-rows .rt,.act-rows .rd,.apx-strip a,
+      .us-card p,.us-card .us-punch,.living-note,
+      .j-when,.j-what,.j-tag,.rband .rb-t,.rband .rb-s,
+      .ref .rf-take,.ref .rf-quote,.counterset p,.sp-col .sp-v,.sp-note,
+      .header-client,.cover-meta,.cover-meta .cm-v,
+      .zone .zsub,.zone li,
+      .fstage b,.fstage span,.fjob span,.fband b,
+      .enode b,.enode span,.evolve .ev b,.evolve .ev span,
+      .mat-stage .mn,.mat-stage .ml,.mnote,
+      .callout p,
+      .goal h3,.goal>p,.goal .gwhy,.objband p,.seenote,
+      .persona .pname,.persona .ptag,.pfact .fv,.pquote p,.cblock li,.tailband p,
+      .iph .ipn,.iph .ips,.iqcol li,.notthis p,.ifoot,
+      .reach-rung .rr-k,.reach-axis p,.masonline span,.landing p,
+      .ig b,.ig span,.collab .cnote,
+      .diff b,.diff span,.diff .dq,.counterband p,
+      .mcol li,.scorenote,.baseline p,
+      .as .av,.as .al2,.be .bev,.be .bel,.honesty,.vline,
+      .ctahero h3,.ctahero p,.ctahero .chbtn,
+      .tl-card b,.tl-card span,.tl-card .tlwhen,
+      .masonband p,.masonband .dep,.rs,.rs b,.nextline,
+      #s16 p,#s16 .signoff,
+      .apx-card h4,.apx-card p,.pin b,.sens-table td{font-size:14px}
+
+      /* ---- RULE B · sanctioned micro-labels, hard floor 12px ---- */
+      .eyebrow,.eyebrow .act,.section-num,.act-band .ab-pill,.act-rows .n,
+      .apx-strip .al,.us-card .ul,.jlabel,.ref .rf-job,.ref .rf-l,
+      .ref .rf-quote cite,.counterset .cs-l,.sp-col .sp-l,
+      .cover-meta .cm-l,.cover-kicker,.scrollcue,.header-meta,.cmt-badge,
+      .zone .zn,.frail-label,
+      .callout .cl-label,.goal .gnum,.goal .gpri,.goal .gtl,.objband .obl,
+      .persona .ptier,.pfact .fl,.cblock .clabel,.tailband .tl,.pquote cite,
+      .icell .icl,.iqcol .iqh,.notthis .ntl,
+      .reach-rung .rr-n,.reach-axis .ral,.landing .lal,.seoloop .sl,.collab .cl,
+      .counterband .cbl,.mcol .mhead,.baseline .bl,
+      .ctahero .che,.tl-card .tle,.masonband .mbl,
+      .apx-card .apl,.pin .pn,.sens-table th,
+      .ichip,.gchip,.cchip,.sstep,.iqcol li.hers::after{font-size:12px}
+    }
+    /* touch targets on every touch-class breakpoint, not just phones */
+    @media (max-width:900px){
+      .apx-strip{gap:4px}
+      .apx-strip a{display:flex;align-items:center;min-height:44px;width:100%;border-bottom:1px solid var(--rule-faint);padding-bottom:0}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─────────────── ACCESS-CODE GATE (client-side, gated from delivery) ─────────────── -->
+  <div id="sm-gate">
+    <div class="sm-gate-card">
+      <img class="sm-gate-logo" src="https://tools.scrollmedia.co/assets/logos/scroll-monogram-azure.png" alt="Scroll Media" width="60" height="30" />
+      <div class="sm-gate-title">Private strategy deck</div>
+      <div class="sm-gate-sub">This strategy deck is private. Enter your access code to continue.</div>
+      <div class="sm-gate-input-wrap">
+        <input class="sm-gate-input" id="sm-gate-input" type="password" placeholder="Access code" autocomplete="off" />
+        <button class="sm-gate-toggle" id="sm-gate-toggle" type="button" aria-label="Toggle visibility">
+          <svg id="sm-eye-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <button class="sm-gate-btn" id="sm-gate-btn">View deck</button>
+      <div class="sm-gate-error" id="sm-gate-error">Incorrect access code. Try again.</div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var PASS='csc.scroll', KEY='sm_csc_strategy_v1';
+    var gate=document.getElementById('sm-gate');
+    var inp=document.getElementById('sm-gate-input');
+    var btn=document.getElementById('sm-gate-btn');
+    var err=document.getElementById('sm-gate-error');
+    var tog=document.getElementById('sm-gate-toggle');
+    if(sessionStorage.getItem(KEY)==='1'){ gate.style.display='none'; }
+    else { document.body.classList.add('sm-locked'); inp.focus(); }
+    function unlock(){
+      if(inp.value.trim().toLowerCase()===PASS){
+        sessionStorage.setItem(KEY,'1');
+        document.body.classList.remove('sm-locked');
+        gate.style.opacity='0'; gate.style.transition='opacity .3s';
+        setTimeout(function(){ gate.style.display='none'; },300);
+      } else {
+        err.classList.add('visible'); inp.style.borderColor='#c0392b';
+        setTimeout(function(){ err.classList.remove('visible'); inp.style.borderColor=''; },3000);
+      }
+    }
+    btn.addEventListener('click',unlock);
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') unlock(); });
+    tog.addEventListener('click',function(){
+      var isPw=inp.type==='password'; inp.type=isPw?'text':'password';
+      document.getElementById('sm-eye-icon').innerHTML=isPw
+        ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+        :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    });
+  })();
+  </script>
+
+  <div id="progress"></div>
+
+  <header class="deck-header">
+    <div class="deck-header-inner">
+      <a class="header-logo" href="#s01" aria-label="Scroll Media">
+        <img class="header-logo-img" src="https://tools.scrollmedia.co/assets/logos/scroll-primary-azure.png" alt="Scroll Media" width="2001" height="925"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
+        <span class="header-logo-text">Scroll Media</span>
+      </a>
+      <div class="header-right">
+        <span class="csc-mark header-client-mark" role="img" aria-label="Cincinnati Skin Center"></span>
+        <span class="header-divider"></span>
+        <span class="header-client">Cincinnati Skin Center</span>
+        <span class="header-meta"><span class="header-meta-dot"></span>Phase 1 Strategy<span class="header-meta-dot"></span>September 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="slide-nav" id="slideNav"></nav>
+
+  <main>
+
+    <!-- ═══════════════ 01 · COVER ═══════════════ -->
+    <section class="slide" id="s01" data-nav="Cover">
+      <span class="section-num on-dark">01</span>
+      <svg class="nodenet" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <g class="nn-links">
+          <line class="nn-link" x1="1006" y1="72"  x2="1082" y2="128"/>
+          <line class="nn-link" x1="1006" y1="72"  x2="948"  y2="146"/>
+          <line class="nn-link" x1="1082" y1="128" x2="1148" y2="96"/>
+          <line class="nn-link" x1="1082" y1="128" x2="1040" y2="206"/>
+          <line class="nn-link" x1="948"  y1="146" x2="1040" y2="206"/>
+          <line class="nn-link" x1="948"  y1="146" x2="906"  y2="236"/>
+          <line class="nn-link" x1="1040" y1="206" x2="1124" y2="242"/>
+          <line class="nn-link" x1="906"  y1="236" x2="978"  y2="292"/>
+          <line class="nn-link" x1="1124" y1="242" x2="978"  y2="292"/>
+          <line class="nn-link" x1="1124" y1="242" x2="1166" y2="188"/>
+          <line class="nn-link" x1="978"  y1="292" x2="1058" y2="356"/>
+          <line class="nn-link" x1="1058" y1="356" x2="1146" y2="330"/>
+          <line class="nn-link" x1="1058" y1="356" x2="1016" y2="438"/>
+          <line class="nn-link" x1="1016" y1="438" x2="1112" y2="472"/>
+          <line class="nn-link" x1="1112" y1="472" x2="1168" y2="410"/>
+          <line class="nn-link" x1="94"  y1="668" x2="164" y2="712"/>
+          <line class="nn-link" x1="94"  y1="668" x2="42"  y2="740"/>
+          <line class="nn-link" x1="164" y1="712" x2="112" y2="778"/>
+          <line class="nn-link" x1="42"  y1="740" x2="112" y2="778"/>
+          <line class="nn-link" x1="164" y1="712" x2="238" y2="762"/>
+        </g>
+        <g class="nn-nodes">
+          <circle class="nn-node pulse"       cx="1006" cy="72"/>
+          <circle class="nn-node"             cx="1082" cy="128"/>
+          <circle class="nn-node"             cx="1148" cy="96"/>
+          <circle class="nn-node hi pulse p2" cx="948"  cy="146"/>
+          <circle class="nn-node"             cx="1040" cy="206"/>
+          <circle class="nn-node"             cx="906"  cy="236"/>
+          <circle class="nn-node pulse p3"    cx="1124" cy="242"/>
+          <circle class="nn-node"             cx="1166" cy="188"/>
+          <circle class="nn-node"             cx="978"  cy="292"/>
+          <circle class="nn-node pulse p4"    cx="1058" cy="356"/>
+          <circle class="nn-node"             cx="1146" cy="330"/>
+          <circle class="nn-node"             cx="1016" cy="438"/>
+          <circle class="nn-node pulse p2"    cx="1112" cy="472"/>
+          <circle class="nn-node"             cx="1168" cy="410"/>
+          <circle class="nn-node"             cx="94"   cy="668"/>
+          <circle class="nn-node pulse p3"    cx="164"  cy="712"/>
+          <circle class="nn-node"             cx="42"   cy="740"/>
+          <circle class="nn-node"             cx="112"  cy="778"/>
+          <circle class="nn-node"             cx="238"  cy="762"/>
+          <circle class="nn-ring" cx="948"  cy="146" r="10"/>
+          <circle class="nn-ring" cx="1058" cy="356" r="8"/>
+          <circle class="nn-ring" cx="164"  cy="712" r="9"/>
+        </g>
+      </svg>
+      <div class="slide-inner">
+        <div class="cover-cobrand reveal">
+          <img class="cb-scroll" src="https://tools.scrollmedia.co/assets/logos/scroll-primary-ghost.png" alt="Scroll Media" width="2001" height="925" />
+          <span class="cb-x" aria-hidden="true">&times;</span>
+          <span class="csc-mark on-azure cb-csc" role="img" aria-label="Cincinnati Skin Center"></span>
+        </div>
+        <div class="cover-kicker reveal d1"><span class="dot"></span>Cincinnati Skin Center &times; Scroll Media</div>
+        <h1 class="reveal d1">Organic social media strategy.</h1>
+        <p class="cover-sub reveal d2">The foundation we build on, and refine as we learn what your audience responds to.</p>
+        <div class="cover-meta reveal d3">
+          <span class="cm"><span class="cm-l">Prepared for</span><span class="cm-v">Dr. Mona Mislankar, MD, FAAD</span></span>
+          <span class="cm"><span class="cm-l">Strategy presentation</span><span class="cm-v">September 9, 2026</span></span>
+          <span class="cm"><span class="cm-l">Your Scroll lead</span><span class="cm-v">Riley Walker</span></span>
+        </div>
+      </div>
+      <div class="scrollcue" aria-hidden="true"><span>Scroll</span><span class="bar"></span></div>
+    </section>
+
+    <!-- ═══════════════ 02 · AGENDA ═══════════════ -->
+    <section class="slide" id="s02" data-nav="Agenda">
+      <span class="section-num">02</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal">Agenda</span>
+        <h2 class="slide-title reveal">Where we are going today.</h2>
+        <p class="slide-lede reveal d1">Three acts, and each one builds on the one before it.</p>
+
+        <div class="acts">
+          <div class="act-band reveal d1">
+            <div class="ab-head">
+              <span class="ab-pill">Act one</span>
+              <div class="ab-t">Foundation</div>
+              <p class="ab-d">What we learned, what we studied, and how the system works.</p>
+            </div>
+            <ul class="act-rows">
+              <li><a href="#s03"><span class="n">03</span><span><span class="rt">What we heard</span><span class="rd">The business, the moment, and the job</span></span></a></li>
+              <li><a href="#s04"><span class="n">04</span><span><span class="rt">Brand and competitive review</span><span class="rd">The accounts you pointed at, and why</span></span></a></li>
+              <li><a href="#s05"><span class="n">05</span><span><span class="rt">The system</span><span class="rd">Foundation, execution, performance</span></span></a></li>
+              <li><a href="#s06"><span class="n">06</span><span><span class="rt">The content funnel</span><span class="rd">How a stranger becomes a booked appointment</span></span></a></li>
+              <li><a href="#s07"><span class="n">07</span><span><span class="rt">The content engine</span><span class="rd">How we make strong content, on repeat</span></span></a></li>
+              <li><a href="#s08"><span class="n">08</span><span><span class="rt">Goals and tracking</span><span class="rd">Three goals, one per stage</span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="act-band reveal d2">
+            <div class="ab-head">
+              <span class="ab-pill">Act two</span>
+              <div class="ab-t">Execution</div>
+              <p class="ab-d">Who we are talking to, what we make, and how they find you.</p>
+            </div>
+            <ul class="act-rows">
+              <li><a href="#s09"><span class="n">09</span><span><span class="rt">Who we are talking to</span><span class="rd">One person, made specific</span></span></a></li>
+              <li><a href="#s10"><span class="n">10</span><span><span class="rt">The content system</span><span class="rd">Three content types, every stage</span></span></a></li>
+              <li><a href="#s11"><span class="n">11</span><span><span class="rt">How we reach them</span><span class="rd">Getting found, and getting chosen</span></span></a></li>
+              <li><a href="#s12"><span class="n">12</span><span><span class="rt">What makes you different</span><span class="rd">Woven into every post</span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="act-band reveal d3">
+            <div class="ab-head">
+              <span class="ab-pill">Act three</span>
+              <div class="ab-t">Performance</div>
+              <p class="ab-d">What we track, what it is worth, and what happens next.</p>
+            </div>
+            <ul class="act-rows">
+              <li><a href="#s13"><span class="n">13</span><span><span class="rt">How we measure</span><span class="rd">The signals that predict patients</span></span></a></li>
+              <li><a href="#s14"><span class="n">14</span><span><span class="rt">The value picture</span><span class="rd">A conservative twelve-month model</span></span></a></li>
+              <li><a href="#s15"><span class="n">15</span><span><span class="rt">The plan</span><span class="rd">The one action, and how we work</span></span></a></li>
+              <li><a href="#s16"><span class="n">16</span><span><span class="rt">Close</span><span class="rd">What happens from here</span></span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="apx-strip reveal d4">
+          <span class="al">Appendix</span>
+          <a href="#a1">A1 &middot; Profile direction</a>
+          <a href="#a2">A2 &middot; Posting cadence and timing</a>
+          <a href="#a3">A3 &middot; Value model, the full range</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 03 · OUR UNDERSTANDING ═══════════════ -->
+    <section class="slide wide" id="s03" data-nav="What we heard">
+      <span class="section-num">03</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act one</span>Foundation</span>
+        <h2 class="slide-title reveal">What we heard, and what it means.</h2>
+
+        <div class="us-lead">
+          <div class="us-card reveal d1">
+            <div class="ul">The business</div>
+            <div class="us-punch">Dermatology and aesthetics, physician led.</div>
+            <p>A board-certified dermatology and aesthetics practice in Kenwood, running medical, surgical, and cosmetic care, with a second office under construction in Mason.</p>
+          </div>
+          <div class="us-card reveal d2">
+            <div class="ul">The moment</div>
+            <div class="us-punch">Kenwood is near capacity. Mason opens in January.</div>
+            <p>Growth has come almost entirely from word of mouth. Mason opens with roughly <b>10 rooms to fill</b> and <b>one to two new providers</b> starting in January.</p>
+          </div>
+          <div class="us-card reveal d3">
+            <div class="ul">The job</div>
+            <div class="us-punch">Build the audience before the doors open.</div>
+            <p>Build it now so the new space opens to demand that already exists. That means reaching <b>the cosmetic patient you do not have yet</b>, not the medical patient you already do.</p>
+          </div>
+        </div>
+
+        <div class="living-note reveal d3"><span><b>This is a foundation, not a fixed plan.</b> We refine it every month against what the audience actually responds to.</span></div>
+
+        <div class="jwrap reveal d4">
+          <div class="jlabel">The engagement, end to end</div>
+          <div class="journey">
+            <div class="j-step done"><span class="j-dot"></span><span class="j-when">Aug 19</span><span class="j-what">Kickoff</span></div>
+            <div class="j-step done"><span class="j-dot"></span><span class="j-when">Aug 30</span><span class="j-what">Petals and Pilates event</span></div>
+            <div class="j-step now"><span class="j-dot"></span><span class="j-when">Sep 9</span><span class="j-what">Strategy presentation</span><span class="j-tag">You are here</span></div>
+            <div class="j-step key"><span class="j-dot"></span><span class="j-when">Sep 11</span><span class="j-what">First content shoot</span></div>
+            <div class="j-step"><span class="j-dot"></span><span class="j-when">Sep 18</span><span class="j-what">First connect</span></div>
+            <div class="j-step key"><span class="j-dot"></span><span class="j-when">Sep 21</span><span class="j-what">First post goes live</span></div>
+            <div class="j-step"><span class="j-dot"></span><span class="j-when">Week of Oct 5</span><span class="j-what">First performance report</span></div>
+            <div class="j-step"><span class="j-dot"></span><span class="j-when">Oct 24</span><span class="j-what">Practice anniversary</span></div>
+            <div class="j-step later"><span class="j-dot"></span><span class="j-when">Late Jan / early Feb</span><span class="j-what">Mason opens</span></div>
+          </div>
+          <div class="rhythm">
+            <div class="rband reveal d5"><span><span class="rb-t">Connects, every two weeks</span><span class="rb-s">Approvals batched, signals reviewed</span></span></div>
+            <div class="rband reveal d5"><span><span class="rb-t">Reporting, every month</span><span class="rb-s">Scored, read, and folded into the plan</span></span></div>
+            <div class="rband reveal d5"><span><span class="rb-t">Mason build milestones</span><span class="rb-s">Captured as they happen, flexing with your schedule</span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 04 · BRAND AND COMPETITIVE REVIEW ═══════════════ -->
+    <section class="slide wide" id="s04" data-nav="Brand and competitive review">
+      <span class="section-num">04</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act one</span>Foundation</span>
+        <h2 class="slide-title reveal">What you pointed at, and what we took from it.</h2>
+        <p class="slide-lede reveal d1">Three accounts, three different jobs. Here is what each one earns a place for.</p>
+
+        <div class="refs">
+          <div class="ref reveal d1">
+            <div class="rf-head">
+              <div class="rf-job">The feeling</div>
+              <div class="rf-name">The Fitz</div>
+            </div>
+            <div class="rf-body">
+              <div class="rf-l">What we take</div>
+              <p class="rf-take"><b>The club, not the clinic.</b> A community people want to belong to rather than a menu of specials. Worth noting: they documented their own build, which is exactly the arc Mason gives you.</p>
+              <p class="rf-quote">&ldquo;It&rsquo;s this cool club that you want to be a part of.&rdquo;<cite>Your words, at kickoff</cite></p>
+            </div>
+          </div>
+
+          <div class="ref reveal d2">
+            <div class="rf-head">
+              <div class="rf-job">The formats</div>
+              <div class="rf-name">Kainos Aesthetics</div>
+            </div>
+            <div class="rf-body">
+              <div class="rf-l">What we take</div>
+              <p class="rf-take"><b>Service education done properly.</b> What a treatment is, who it suits, and what the risk is. Plus how they turn in-house events into content.</p>
+            </div>
+          </div>
+
+          <div class="ref reveal d3">
+            <div class="rf-head">
+              <div class="rf-job">The community</div>
+              <div class="rf-name">Gunn Dermatology</div>
+            </div>
+            <div class="rf-body">
+              <div class="rf-l">What we take</div>
+              <p class="rf-take"><b>Being the practice everyone in town knows.</b> Built through events and real local collaborations, not through reach alone.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="counterset reveal d3">
+          <span class="cs-l">What we are not</span>
+          <p><b>A dense field of practices that all look alike.</b> Menu posts, unit pricing, and trend audio. That is the field. It is not the position.</p>
+        </div>
+
+        <div class="splitpanel reveal d4">
+          <div class="sp-col">
+            <div class="sp-l">The office</div>
+            <div class="sp-v">Elegant and high end.</div>
+          </div>
+          <div class="sp-col page">
+            <div class="sp-l">The page</div>
+            <div class="sp-v">Younger and clubbier.</div>
+          </div>
+        </div>
+        <p class="sp-note reveal d4"><b>That split is on purpose.</b> It is what makes the account feel like somewhere to be rather than somewhere to go.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 05 · STRATEGIC FRAMEWORK ═══════════════ -->
+    <section class="slide" id="s05" data-nav="The system">
+      <span class="section-num">05</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act one</span>Foundation</span>
+        <h2 class="slide-title reveal">You are not buying posts. You are buying a system.</h2>
+        <p class="slide-lede reveal d1">Three zones, running in order and then on a loop. Everything in this deck sits inside one of them.</p>
+        <div class="zones">
+          <div class="zone reveal d1">
+            <div class="zn">Foundation &middot; 01</div>
+            <h3>We build the strategy.</h3>
+            <div class="zsub">Before anything gets made.</div>
+            <ul>
+              <li>Who we are talking to</li>
+              <li>What we stand for</li>
+              <li>How we get found</li>
+            </ul>
+          </div>
+          <div class="zsep reveal d1" aria-hidden="true">&rarr;</div>
+          <div class="zone reveal d2">
+            <div class="zn">Execution &middot; 02</div>
+            <h3>We run the Content Engine.</h3>
+            <div class="zsub">The part that repeats every week.</div>
+            <ul>
+              <li>Ideas become formats</li>
+              <li>Formats become posts</li>
+              <li>Posts become conversations</li>
+            </ul>
+          </div>
+          <div class="zsep reveal d2" aria-hidden="true">&rarr;</div>
+          <div class="zone reveal d3">
+            <div class="zn">Performance &middot; 03</div>
+            <h3>We track, learn, and adjust.</h3>
+            <div class="zsub">The loop back into the strategy.</div>
+            <ul>
+              <li>Monthly reporting</li>
+              <li>Quarterly re-baseline</li>
+              <li>The strategy moves with the data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 06 · CONTENT FUNNEL ═══════════════ -->
+    <section class="slide wide" id="s06" data-nav="The content funnel">
+      <span class="section-num">06</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act one</span>Foundation</span>
+        <h2 class="slide-title reveal">How a stranger becomes a booked appointment.</h2>
+        <p class="slide-lede reveal d1">Four stages. Every post has a job at one of them, and the audience narrows as it moves down.</p>
+        <div class="fgrid">
+          <div class="fstage reveal d1"><b>Stop the scroll</b><span>Get seen</span></div>
+          <div class="fband-cell reveal d1"><div class="fband b1"><b>Relatable</b></div></div>
+          <div class="fjob reveal d1"><span>She stops scrolling because it is about her life, not your services.</span></div>
+
+          <div class="fstage reveal d2"><b>Earn belief</b><span>Build trust</span></div>
+          <div class="fband-cell reveal d2"><div class="fband b2"><b>Authority</b></div></div>
+          <div class="fjob reveal d2"><span>She believes the expertise is real before she ever calls.</span></div>
+
+          <div class="fstage reveal d3"><b>Show it working</b><span>Remove doubt</span></div>
+          <div class="fband-cell reveal d3"><div class="fband b3"><b>Proof</b></div></div>
+          <div class="fjob reveal d3"><span>She sees it working, on real people, in your rooms.</span></div>
+
+          <div class="fstage reveal d4"><b>Make it easy</b><span>Convert</span></div>
+          <div class="fband-cell reveal d4"><div class="fband b4"><b>The ask</b></div></div>
+          <div class="fjob reveal d4"><span>She books, in one tap.</span></div>
+
+          <div class="frail reveal">
+            <span class="jarrow" aria-hidden="true"></span>
+            <span class="frail-label">Viewer journey</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 07 · CONTENT ENGINE + MATURITY RIBBON ═══════════════ -->
+    <section class="slide" id="s07" data-nav="The content engine">
+      <span class="section-num">07</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act one</span>Foundation</span>
+        <h2 class="slide-title reveal">How we make strong content, on repeat.</h2>
+        <div class="engine reveal d1" id="engine">
+          <div class="enode"><div class="circle">01</div><b>Idea</b><span>What is worth saying</span></div>
+          <div class="earrow" aria-hidden="true">&rarr;</div>
+          <div class="enode"><div class="circle">02</div><b>Format</b><span>The shape that carries it</span></div>
+          <div class="earrow" aria-hidden="true">&rarr;</div>
+          <div class="enode"><div class="circle">03</div><b>Hook</b><span>The first three seconds</span></div>
+          <div class="earrow" aria-hidden="true">&rarr;</div>
+          <div class="enode"><div class="circle">04</div><b>Data</b><span>What the audience told us</span></div>
+        </div>
+        <div class="evolve">
+          <div class="ev reveal d2"><b>Months one to three</b><span>Test widely</span></div>
+          <div class="ev reveal d2"><b>Then</b><span>Consolidate to the winners</span></div>
+          <div class="ev reveal d3"><b>Every month</b><span>Read the data</span></div>
+          <div class="ev reveal d3"><b>Every quarter</b><span>Adjust the plan</span></div>
+        </div>
+        <div class="mat">
+          <div class="mat-stage here reveal d3"><div class="mn">Spark</div><div class="ml">Building the audience</div></div>
+          <div class="mat-stage reveal d3"><div class="mn">Lift</div><div class="ml">Reach compounds</div></div>
+          <div class="mat-stage reveal d4"><div class="mn">Rise</div><div class="ml">Known in the category</div></div>
+          <div class="mat-stage reveal d4"><div class="mn">Thrive</div><div class="ml">The name people say first</div></div>
+        </div>
+        <div class="mnote reveal d4"><b>Cincinnati Skin Center starts at Spark.</b> Follower count is one signal. Engagement health, audience quality, content velocity, and business fundamentals set the rest. Every metric is scored against your stage, not against an account ten times your size.</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 08 · GOALS + TRACKING ═══════════════ -->
+    <section class="slide wide" id="s08" data-nav="Goals and tracking">
+      <span class="section-num">08</span>
+      <div class="slide-inner">
+        <div class="callout top reveal">
+          <div class="cl-label">Why organic social</div>
+          <p>Over <b>70% of the world</b> is on social media for an average of <b>2.5 hours per day</b>. We have never had this level of consumer attention in a single marketing channel. Our strategy captures that attention for Cincinnati Skin Center, and gets you in front of the audience that cares most about what you do. When you do that well, qualified leads follow. You cannot grow a business without people knowing about you. Organic social is where they are paying attention.</p>
+        </div>
+        <span class="eyebrow reveal"><span class="act">Act one</span>Foundation</span>
+        <h2 class="slide-title reveal">Three goals. One for each stage of the funnel.</h2>
+        <div class="goals">
+          <div class="goal is-priority reveal d1">
+            <div class="gn"><span class="gnum">Goal 1 &middot; Awareness</span><span class="gpri">Priority</span></div>
+            <h3>Be the name Cincinnati says when a friend asks who to see.</h3>
+            <p class="gwhy">Why this one leads: Kenwood is near capacity today and Mason opens in January. This term&rsquo;s job is to build the audience that fills it.</p>
+            <div class="gtrack">
+              <div class="gtl">How we track it</div>
+              <div class="gchips"><span class="gchip">Views</span><span class="gchip">Shares</span><span class="gchip">New followers</span></div>
+            </div>
+          </div>
+          <div class="goal reveal d2">
+            <div class="gn"><span class="gnum">Goal 2 &middot; Trust and authority</span></div>
+            <h3>The cosmetic patient believes the expertise is real before she ever calls.</h3>
+            <div class="gtrack">
+              <div class="gtl">How we track it</div>
+              <div class="gchips"><span class="gchip">Profile visits</span><span class="gchip">Reel retention</span><span class="gchip">Saves</span></div>
+            </div>
+          </div>
+          <div class="goal reveal d3">
+            <div class="gn"><span class="gnum">Goal 3 &middot; Conversion</span></div>
+            <h3>Generate qualified new-patient signal.</h3>
+            <p>Get Cincinnati Skin Center in front of the right cosmetic audience, walk them through a clear path to booking, and track the interest signals that predict patients.</p>
+            <div class="gtrack">
+              <div class="gtl">How we track it</div>
+              <div class="gchips"><span class="gchip">Link taps</span><span class="gchip">Profile conversion rate</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="objband reveal d4">
+          <span class="obl">The business objective underneath all three</span>
+          <p>Roughly <b>10 rooms and two new providers to fill by January</b>. The three goals are how we get there.</p>
+        </div>
+        <p class="seenote reveal d4">Every metric above appears in the monthly report, scored against Spark ranges and marked exceeding, on track, or watch.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 09 · WHO WE ARE TALKING TO ═══════════════ -->
+    <section class="slide wide" id="s09" data-nav="Who we are talking to">
+      <span class="section-num">09</span>
+      <div class="slide-inner">
+        <div class="callout top reveal">
+          <div class="cl-label">Why we capture this in depth</div>
+          <p>Pain points and dream outcomes drive <b>every piece of content we create</b>. We use social media as the tool to answer the questions, address the concerns, and showcase the outcomes that matter most. Content built this way tells your audience: <b>&ldquo;We understand exactly what you&rsquo;re dealing with. Here&rsquo;s how we&rsquo;re solving it.&rdquo;</b></p>
+        </div>
+        <span class="eyebrow reveal"><span class="act">Act two</span>Execution</span>
+        <h2 class="slide-title reveal">Who we are getting you in front of.</h2>
+        <div class="pgrid">
+          <div class="persona reveal d1">
+            <div class="ptier">The one person we build for</div>
+            <div class="pname">The Cosmetic-Curious Millennial</div>
+            <p class="ptag">She is not shopping for a dermatologist. She is looking for somewhere she wants to belong.</p>
+            <div class="pfacts">
+              <div class="pfact"><div class="fl">Who</div><div class="fv">Women 25 to 45, skewing 30 to 40</div></div>
+              <div class="pfact"><div class="fl">Where</div><div class="fv">Cincinnati and the eastern suburbs</div></div>
+              <div class="pfact"><div class="fl">Mindset</div><div class="fv">Cosmetic-first, medically curious</div></div>
+              <div class="pfact"><div class="fl">Speed</div><div class="fv">Books within one to two weeks of finding you</div></div>
+            </div>
+          </div>
+          <div class="pquote reveal d2">
+            <span class="qm" aria-hidden="true">&ldquo;</span>
+            <p>Maybe she just had a baby or two, her hair is falling out, she&rsquo;s thinking &lsquo;I want some botox but I don&rsquo;t know,&rsquo; she&rsquo;d love to get her girlfriends together for a pilates event, and she also needs a skin check. Maybe she brings her mom in too.</p>
+            <cite>Dr. Mona Mislankar, at kickoff</cite>
+          </div>
+        </div>
+        <div class="contrast">
+          <div class="cblock pain reveal d3">
+            <div class="clabel">What is in her way</div>
+            <ul>
+              <li>Cost, and whether it is worth it</li>
+              <li>She does not know what she actually needs</li>
+              <li>Every place she has looked at feels the same</li>
+              <li>She is worried about looking overdone</li>
+            </ul>
+          </div>
+          <div class="cblock dream reveal d3">
+            <div class="clabel">What she wants</div>
+            <ul>
+              <li>To look like a better version of herself, confident and refreshed, not overdone</li>
+              <li>Natural results from someone she genuinely trusts</li>
+              <li>To be part of something, not to be a transaction</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tailband reveal d4">
+          <span class="tl">The tail worth naming</span>
+          <p><b>She brings her mother in for a skin check.</b> The younger patient you attract feeds the practice you already have.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 10 · THE CONTENT SYSTEM (ideation matrix) ═══════════════ -->
+    <section class="slide wide" id="s10" data-nav="The content system">
+      <span class="section-num">10</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act two</span>Execution</span>
+        <h2 class="slide-title reveal">Three content types. Every stage of the funnel.</h2>
+        <p class="slide-lede reveal d1">Your three content types are the columns. Reels, carousels, and stories are how each one gets made, and none of them is locked to a single job.</p>
+        <div class="imatrix">
+          <div class="ipillar reveal d1">
+            <div class="iph"><div class="ipn">Skin, Explained</div><div class="ips">What you know that they do not</div></div>
+            <div class="icell st1"><div class="icl">Awareness</div><div class="ichips"><span class="ichip">Reaction + Commentary</span><span class="ichip">Hot-Take / Opinion Carousel</span></div></div>
+            <div class="icell st2"><div class="icl">Trust</div><div class="ichips"><span class="ichip">Educational / How-To Carousel</span><span class="ichip">Myth-Busting Carousel</span></div></div>
+            <div class="icell st3"><div class="icl">Conversion</div><div class="ichips"><span class="ichip">Direct Response / Link Story</span></div></div>
+          </div>
+          <div class="ipillar reveal d2">
+            <div class="iph"><div class="ipn">The Club</div><div class="ips">Who you are, and who gets to be part of it</div></div>
+            <div class="icell st1"><div class="icl">Awareness</div><div class="ichips"><span class="ichip">Talking Head</span><span class="ichip">BTS / Day-in-the-Life</span></div></div>
+            <div class="icell st2"><div class="icl">Trust</div><div class="ichips"><span class="ichip">Story Carousel</span><span class="ichip">Question Box / AMA</span></div></div>
+            <div class="icell st3"><div class="icl">Conversion</div><div class="ichips"><span class="ichip">Countdown / Event Tease</span></div></div>
+          </div>
+          <div class="ipillar reveal d3">
+            <div class="iph"><div class="ipn">In the Room</div><div class="ips">What it is actually like to be your patient</div></div>
+            <div class="icell st1"><div class="icl">Awareness</div><div class="ichips"><span class="ichip">Hyper Cinematic</span><span class="ichip">B-Roll + Voiceover</span></div></div>
+            <div class="icell st2"><div class="icl">Trust</div><div class="ichips"><span class="ichip">Object Lesson</span><span class="ichip">Top Down</span></div></div>
+            <div class="icell st3"><div class="icl">Conversion</div><div class="ichips"><span class="ichip">Product Feature</span></div></div>
+          </div>
+        </div>
+        <div class="iqrow">
+          <div class="iqcol reveal d3">
+            <div class="iqh">Skin, Explained &middot; starting ideas</div>
+            <ul>
+              <li>Why your hair is falling out after a baby, and what actually helps</li>
+              <li>What TikTok gets wrong about melasma</li>
+              <li>Retinol versus tretinoin, explained in sixty seconds</li>
+            </ul>
+          </div>
+          <div class="iqcol reveal d4">
+            <div class="iqh">The Club &middot; starting ideas</div>
+            <ul>
+              <li class="hers">Building My Dream Clinic</li>
+              <li class="hers">Construction Archives</li>
+              <li>Petals and Pilates, the recap</li>
+            </ul>
+          </div>
+          <div class="iqcol reveal d4">
+            <div class="iqh">In the Room &middot; starting ideas</div>
+            <ul>
+              <li class="hers">Things Patients Say</li>
+              <li>A day in three rooms</li>
+              <li>What a first visit actually looks like</li>
+            </ul>
+          </div>
+        </div>
+        <div class="notthis reveal d5">
+          <span class="ntl">Not this term</span>
+          <p><b>Before and after content, and anything else that needs a patient&rsquo;s consent on file.</b> Five of the strongest proof formats depend on a release we do not have yet, which is why the conversion row leans on service features and direct asks instead. Standing up a release is the single change that unlocks the most, at exactly the stage where you want results.</p>
+        </div>
+        <p class="ifoot reveal d5">We test widely in months one to three, then consolidate to what works. The library is bigger than this. These are the starting bets for your brand.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 11 · HOW WE REACH THEM ═══════════════ -->
+    <section class="slide wide" id="s11" data-nav="How we reach them">
+      <span class="section-num">11</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act two</span>Execution</span>
+        <h2 class="slide-title reveal">Start broad to get found. Narrow to get chosen.</h2>
+        <div class="reach-wrap">
+          <div class="reach-ladder reveal d1">
+            <div class="reach-rung r1"><span class="rr-n">Widest</span><span class="rr-k">dermatologist &middot; botox &middot; hair loss &middot; skincare</span></div>
+            <div class="reach-rung r2"><span class="rr-n">Category</span><span class="rr-k">board certified dermatologist &middot; melasma treatment &middot; skin of color dermatology &middot; postpartum hair loss</span></div>
+            <div class="reach-rung r3"><span class="rr-n">Metro</span><span class="rr-k">Cincinnati dermatologist &middot; Cincinnati botox &middot; dermatologist near me Cincinnati</span></div>
+            <div class="reach-rung r4"><span class="rr-n">Hyper-local</span><span class="rr-k">Kenwood dermatologist &middot; <b>Mason dermatologist</b> &middot; Montgomery &middot; Blue Ash</span></div>
+          </div>
+          <div class="reach-side">
+            <div class="reach-axis reveal d2">
+              <div class="ral">The success axis</div>
+              <p><b>Month 1: reach.</b> <b>Month 6 and beyond: precision.</b> The audience narrows while the quality rises, mirroring the content funnel.</p>
+            </div>
+            <div class="masonline reveal d2"><span>We start seeding <b>Mason keywords now</b>, months before the doors open.</span></div>
+            <div class="landing reveal d3">
+              <div class="lal">Where the keywords land</div>
+              <p>Profile name field &middot; bio &middot; caption opening lines &middot; alt text &middot; geo-tags &middot; highlight covers</p>
+            </div>
+          </div>
+        </div>
+        <div class="seoloop reveal d3">
+          <span class="sl">The loop</span>
+          <span class="sstep">Spike early</span><span class="sarrow" aria-hidden="true">&rarr;</span>
+          <span class="sstep">Learn which formats travel</span><span class="sarrow" aria-hidden="true">&rarr;</span>
+          <span class="sstep">Read the data</span><span class="sarrow" aria-hidden="true">&rarr;</span>
+          <span class="sstep">Refine and repeat</span>
+        </div>
+        <div class="ignite">
+          <div class="ig reveal d4"><b>Seed from what you already have.</b><span>Your personal account already reaches this exact audience, and cross-posting between the two is the fastest way to give the practice page a real starting audience.</span></div>
+          <div class="ig reveal d4"><b>Show up in the comments.</b><span>Around thirty minutes a day of real engagement on the accounts your patients already follow.</span></div>
+          <div class="ig reveal d5"><b>Borrow the audience.</b><span>Around two collaborations a month with non-competing local businesses.</span></div>
+        </div>
+        <div class="collab reveal d5">
+          <span class="cl">Collaboration targets</span>
+          <span class="cchip">A local salon</span>
+          <span class="cchip">A pilates or fitness studio</span>
+          <span class="cchip">A wellness or recovery studio</span>
+          <span class="cchip">Neighbourhood boutiques and lifestyle brands</span>
+          <span class="cnote"><b>Anchor every collaboration on something she already wants to do with her friends, not on a service.</b> Never another aesthetics practice.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 12 · DIFFERENTIATORS ═══════════════ -->
+    <section class="slide wide" id="s12" data-nav="What makes you different">
+      <span class="section-num">12</span>
+      <div class="slide-inner">
+        <div class="callout top reveal">
+          <div class="cl-label">How we use these</div>
+          <p>These <b>four differentiators are the triggers we weave into the content</b>. They are not a page on your website. They show up in the hook, the script, and the caption of individual posts, over and over, until they are the thing people associate with your name.</p>
+        </div>
+        <span class="eyebrow reveal"><span class="act">Act two</span>Execution</span>
+        <h2 class="slide-title reveal">What makes you different, woven into every post.</h2>
+        <div class="diffs">
+          <div class="diff reveal d1">
+            <span class="dnum">01</span>
+            <b>Board certified, and a real person.</b>
+            <span>A board-certified dermatologist and a four-year Top Doc. We put that on the page the way you asked for it: as context, not a pedestal.</span>
+            <span class="dq">&ldquo;This is your friend and she&rsquo;s a mom, but she&rsquo;s also very well trained and an expert in her field.&rdquo;</span>
+          </div>
+          <div class="diff reveal d2">
+            <span class="dnum">02</span>
+            <b>The hair loss expert in town.</b>
+            <span>A territory people are actively searching for, that you are known for, and that almost nobody local is claiming.</span>
+          </div>
+          <div class="diff reveal d2">
+            <span class="dnum">03</span>
+            <b>Skin of colour, hyperpigmentation, melasma.</b>
+            <span>Clinical depth that comes from experience, for an audience Cincinnati underserves.</span>
+          </div>
+          <div class="diff reveal d3">
+            <span class="dnum">04</span>
+            <b>Warm room, serious technology.</b>
+            <span>Rooted in science, not fads.</span>
+          </div>
+        </div>
+        <div class="counterband reveal d4">
+          <div class="cbl">The objection we are answering</div>
+          <p><b>&ldquo;Aren&rsquo;t they all the same?&rdquo;</b> Cincinnati has a practice on every corner and they all feel alike. The answer is not to say we are better. It is to make content only a board-certified dermatologist could make, and to build a room people want to be in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 13 · METRICS ═══════════════ -->
+    <section class="slide wide" id="s13" data-nav="How we measure">
+      <span class="section-num">13</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act three</span>Performance</span>
+        <h2 class="slide-title reveal">We track the signals that predict patients.</h2>
+        <div class="metrics">
+          <div class="mcol st1 reveal d1">
+            <div class="mhead">Awareness</div>
+            <ul><li><b>Views</b></li><li><b>Shares</b></li><li><b>New followers</b></li></ul>
+          </div>
+          <div class="mcol st2 reveal d2">
+            <div class="mhead">Trust</div>
+            <ul><li><b>Profile visits</b></li><li><b>Reel retention</b></li><li><b>Saves</b></li></ul>
+          </div>
+          <div class="mcol st3 reveal d3">
+            <div class="mhead">Conversion</div>
+            <ul><li><b>Link taps</b></li><li><b>Profile conversion rate</b></li></ul>
+          </div>
+        </div>
+        <p class="scorenote reveal d3"><b>How the score works.</b> Every metric is scored against Spark-stage ranges and marked exceeding, on track, or watch. You see the same set every month, so the comparison is always like for like.</p>
+        <div class="baseline reveal d4">
+          <div class="bl">A note on your follower count</div>
+          <p>A meaningful share of your current followers came in through <b>giveaway promotions rather than through your content</b>, so early engagement rates will read lower than the work deserves. We measure months one and two on <b>audience fit and real conversations</b>, not on rate against a number that was never yours.</p>
+        </div>
+        <div class="callout anchor reveal d4" style="margin-top:var(--sp-3)">
+          <div class="cl-label">The conversion lens</div>
+          <p><b>Right audience. Clear path. The right metrics.</b> Get Cincinnati Skin Center in front of the right audience. Walk them through a clear path to booking. Track the metrics aligned to that path. With those three working, high-quality lead generation follows. Hard last-mile attribution is not running yet. We track signal first, attribution-grade second.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 14 · VALUE MODEL ═══════════════ -->
+    <section class="slide wide" id="s14" data-nav="The value picture">
+      <span class="section-num">14</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act three</span>Performance</span>
+        <h2 class="slide-title reveal">A conservative twelve-month picture.</h2>
+        <p class="slide-lede reveal d1">Built on the bottom of every range, with no assumption that anything goes viral. This is a model, not a projection, and we re-baseline it against your own numbers at the first quarterly review.</p>
+        <div class="assump-row">
+          <div class="as reveal d1"><span class="av" data-countup="300" data-prefix="$">$300</span><span class="al2">A cosmetic visit, the bottom of your range</span></div>
+          <div class="asep reveal d1" aria-hidden="true">&times;</div>
+          <div class="as reveal d2"><span class="av" data-countup="3">3</span><span class="al2">Visits a year, the bottom of your range</span></div>
+          <div class="asep reveal d2" aria-hidden="true">&times;</div>
+          <div class="as reveal d2"><span class="av" data-countup="5">5</span><span class="al2">Years, your own retention number</span></div>
+          <div class="asep reveal d3" aria-hidden="true">=</div>
+          <div class="as total reveal d3"><span class="av" data-countup="4500" data-prefix="$">$4,500</span><span class="al2">Lifetime value from one new cosmetic patient</span></div>
+        </div>
+        <div class="be-row">
+          <div class="be reveal d3"><div class="bev"><span data-countup="2">2</span> new cosmetic patients</div><div class="bel">is what it takes to pay for your initial three-month term</div></div>
+          <div class="be reveal d4"><div class="bev"><span data-countup="8">8</span> new cosmetic patients</div><div class="bel">is what it takes to pay for a full year</div></div>
+        </div>
+        <div class="honesty reveal d5"><b>The honest version.</b> Those numbers use lifetime value, which assumes she stays with you for five years, because that is your own retention figure. On first-year spending alone the same math needs about <b>ten patients over the term</b>. We think the five-year number is the truer one, and we are showing you both so you can decide.</div>
+        <div class="vlines">
+          <p class="vline reveal d5"><b>Months one and two are testing months.</b> Expect modest view counts while the algorithm learns who to show you. We measure those months on audience fit and real conversations.</p>
+          <p class="vline reveal d5"><b>We rebuild this model on your actual numbers</b> at the first quarterly review. Real data beats a conservative estimate every time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 15 · PLAN + CTA ═══════════════ -->
+    <section class="slide wide" id="s15" data-nav="The plan">
+      <span class="section-num">15</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal"><span class="act">Act three</span>Performance</span>
+        <h2 class="slide-title reveal">The one action we drive people to.</h2>
+        <div class="ctahero reveal d1">
+          <div>
+            <div class="che">The primary call to action</div>
+            <h3>Book online, through Klara.</h3>
+            <p>One tap from the bio, one tap from a story, one tap from a comment reply. Secondary path: text the office.</p>
+          </div>
+          <a class="chbtn" href="https://l.klara.com/6XM6i6dUF7aZeJxV" target="_blank" rel="noopener">Book an appointment</a>
+        </div>
+        <div class="testlanes">
+          <div class="tl-card reveal d2">
+            <div class="tle">Active Scroll capability</div>
+            <b>Comment-to-DM keywords</b>
+            <span>A keyword in the caption that both boosts the post and starts the conversation.</span>
+            <span class="tlwhen">We layer this in once the audience is proven, not on day one.</span>
+          </div>
+          <div class="tl-card reveal d2">
+            <div class="tle">Active Scroll capability</div>
+            <b>DM automation</b>
+            <span>The first reply lands in seconds, and a person takes it from there.</span>
+            <span class="tlwhen">We layer this in once the audience is proven, not on day one.</span>
+          </div>
+        </div>
+        <div class="masonband reveal d3">
+          <span class="mbl">The Mason series</span>
+          <p><b>&ldquo;Building My Dream Clinic&rdquo; starts now.</b> Your build is the strongest awareness content you have and it only exists once. We capture it as it happens, in stages, and it flexes with your schedule.<span class="dep">This depends on getting milestone dates with lead time.</span></p>
+        </div>
+        <div class="rhythm-strip">
+          <div class="rs reveal d4"><b>Connects</b>Every two weeks</div>
+          <div class="rs reveal d4"><b>Performance report</b>Every month</div>
+          <div class="rs reveal d4"><b>Strategy re-baseline</b>Every quarter</div>
+        </div>
+        <p class="nextline reveal d5"><b>What is next, today.</b> The creative direction, your profile, the grid, and the shot list for Friday.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ 16 · CLOSE ═══════════════ -->
+    <section class="slide" id="s16" data-nav="Close">
+      <span class="section-num on-dark">16</span>
+      <img class="close-squiggle" loading="lazy" src="https://tools.scrollmedia.co/assets/squiggles/scroll-squiggle2-ghost.png" alt="" aria-hidden="true" />
+      <div class="slide-inner">
+        <span class="csc-mark on-azure close-mark" role="img" aria-label="Cincinnati Skin Center"></span>
+        <h2 class="reveal">The expert Cincinnati already trusts. Now everyone else finds out.</h2>
+        <p class="reveal d1">We have the audience, the system, and the plan. The building starts Friday.</p>
+        <div class="signoff reveal d2">Scroll Media &middot; Phase 1 Strategy &middot; Prepared for Cincinnati Skin Center</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ A1 · PROFILE DIRECTION ═══════════════ -->
+    <section class="slide wide appendix-band" id="a1" data-nav="Appendix &middot; Profile">
+      <span class="section-num">A1</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal">Appendix A1</span>
+        <h2 class="slide-title reveal">Your profile, ready for the working session.</h2>
+        <p class="slide-lede reveal d1">Reference for the second half of today. We agree these live, then Riley ships them.</p>
+        <div class="apx-grid">
+          <div class="apx-card reveal d1"><div class="apl">Handle</div><h4>@cincinnatiskincenter</h4><p>Keep it. It is keyword-clean and already established.</p></div>
+          <div class="apx-card reveal d1"><div class="apl">Name field</div><h4>The 30-character window</h4><p>The most valuable search real estate you own. We load it with the terms she actually types, and we bring options to the session.</p></div>
+          <div class="apx-card reveal d2"><div class="apl">Bio</div><h4>Three lines, expert-friend register</h4><p>Who you help, what you are known for, and the <b>Klara booking link</b>.</p></div>
+        </div>
+        <div class="pins">
+          <div class="pin reveal d2"><span class="pn">Pin 1</span><b>How to work with us</b></div>
+          <div class="pin reveal d3"><span class="pn">Pin 2</span><b>The founder journey</b></div>
+          <div class="pin reveal d3"><span class="pn">Pin 3</span><b>Proof</b></div>
+        </div>
+        <div class="apx-grid" style="margin-top:var(--sp-3)">
+          <div class="apx-card reveal d4"><div class="apl">Highlights</div><h4>The fastest win on the list</h4><p>You have <b>one highlight</b> today against a benchmark of six to ten. Building these out is high value and quick.</p></div>
+          <div class="apx-card reveal d4"><div class="apl">Profile photo</div><h4>Recognisable at 40 pixels</h4><p>It has to read at thumbnail size in a crowded search result, not just on a profile page.</p></div>
+          <div class="apx-card reveal d4"><div class="apl">The grid</div><h4>A reset, agreed live</h4><p>We bring the mockup, agree the scope together in the working session, and log what we are keeping.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ A2 · POSTING CADENCE AND TIMING ═══════════════ -->
+    <section class="slide wide appendix-band" id="a2" data-nav="Appendix &middot; Cadence">
+      <span class="section-num">A2</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal">Appendix A2</span>
+        <h2 class="slide-title reveal">The rhythm behind the plan.</h2>
+        <div class="apx-grid">
+          <div class="apx-card reveal d1"><div class="apl">Feed</div><h4>Three posts a week</h4><p>Monday, Wednesday, Friday.</p></div>
+          <div class="apx-card reveal d1"><div class="apl">Stories</div><h4>Two story days a week</h4><p>Tuesday and Thursday.</p></div>
+          <div class="apx-card reveal d2"><div class="apl">Format mix</div><h4>40 / 35 / 25</h4><p>The universal split across the three stages of the funnel.</p></div>
+          <div class="apx-card reveal d2"><div class="apl">Shoots</div><h4>Every three to four weeks</h4><p>One session feeds several weeks of posts.</p></div>
+          <div class="apx-card reveal d3"><div class="apl">Engagement</div><h4>Around thirty minutes a day</h4><p>Real comments on the accounts your patients already follow.</p></div>
+          <div class="apx-card reveal d3"><div class="apl">Approvals</div><h4>Five business days ahead, in Plann</h4><p>With a text nudge, because that is how we actually reach you.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ A3 · VALUE-MODEL SENSITIVITY RANGE ═══════════════ -->
+    <section class="slide wide appendix-band" id="a3" data-nav="Appendix &middot; Value range">
+      <span class="section-num">A3</span>
+      <div class="slide-inner">
+        <span class="eyebrow reveal">Appendix A3</span>
+        <h2 class="slide-title reveal">The full range behind the floor model.</h2>
+        <p class="slide-lede reveal d1">Slide 14 uses the bottom of every range. Here is the rest of it.</p>
+        <div class="table-scroll reveal d1">
+          <table class="sens-table">
+            <thead>
+              <tr><th>&nbsp;</th><th>Low &middot; the slide</th><th>Mid</th><th>High</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cosmetic visit value</td><td><b>$300</b></td><td>$450</td><td>$600</td></tr>
+              <tr><td>Visits per year</td><td><b>3</b></td><td>3.5</td><td>4</td></tr>
+              <tr><td>Retention</td><td><b>5 years</b></td><td>5 years</td><td>5 years</td></tr>
+              <tr class="lead"><td>Lifetime value</td><td><b>$4,500</b></td><td>$7,875</td><td>$12,000</td></tr>
+              <tr><td>Patients to break even &middot; three-month term</td><td><b>2.0</b></td><td>1.1</td><td>0.7</td></tr>
+              <tr><td>Patients to break even &middot; full year</td><td><b>7.9</b></td><td>4.5</td><td>3.0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="vlines" style="margin-top:var(--sp-4)">
+          <p class="vline reveal d2"><b>Every figure here comes from numbers you gave us.</b> Nothing is borrowed from an industry benchmark.</p>
+          <p class="vline reveal d2"><b>Break-even is measured against your investment</b> over each period, and rebuilt on your actual numbers at the first quarterly review.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- REVIEW MODE -->
+  <div id="reviewHint">Click any slide to leave a comment</div>
+  <div id="reviewBar">
+    <span class="rdot"></span><span>Review mode</span>
+    <button id="rvAdd">+ Comment</button>
+    <button id="rvCopy">Copy for Slack</button>
+    <button id="rvClear">Clear</button>
+  </div>
+
+  <script>
+    /* ── Right-rail dot nav ── */
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const navWrap = document.getElementById('slideNav');
+    slides.forEach((s,i)=>{
+      const a=document.createElement('a');
+      a.href='#'+s.id;
+      a.innerHTML='<span>'+(s.dataset.nav||('Slide '+(i+1)))+'</span>';
+      navWrap.appendChild(a);
+    });
+    const navDots=Array.from(navWrap.querySelectorAll('a'));
+
+    /* ── Scroll progress + active dot ── */
+    const progress=document.getElementById('progress');
+    let current=0;
+    function onScroll(){
+      const h=document.documentElement;
+      const max=h.scrollHeight-h.clientHeight;
+      progress.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+      let idx=0, mid=window.scrollY+window.innerHeight/2;
+      slides.forEach((s,i)=>{ if(s.offsetTop<=mid) idx=i; });
+      navDots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+      current=idx;
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+
+    /* ── Scroll reveal ── */
+    const io=new IntersectionObserver((es)=>{
+      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    /* ── Arrow-key navigation ── */
+    function goTo(i){
+      i=Math.max(0,Math.min(slides.length-1,i));
+      slides[i].scrollIntoView({behavior:'smooth'});
+      current=i;
+    }
+    document.addEventListener('keydown',(e)=>{
+      if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
+      /* e.target is not always an Element (a synthetic event dispatched on
+         document is not), and an unguarded .closest() here throws and kills
+         the whole handler, taking arrow-key nav with it. */
+      if(e.target && e.target.closest && e.target.closest('[role="tab"]'))return;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();goTo(current+1);}
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();goTo(current-1);}
+      else if(e.key==='Home'){e.preventDefault();goTo(0);}
+      else if(e.key==='End'){e.preventDefault();goTo(slides.length-1);}
+    });
+
+    /* ── Count-up stats ── */
+    (function(){
+      const els=document.querySelectorAll('[data-countup]');
+      if(!els.length)return;
+      const cio=new IntersectionObserver((es)=>{
+        es.forEach(e=>{
+          if(!e.isIntersecting)return;
+          const el=e.target; cio.unobserve(el);
+          const end=parseFloat(el.dataset.countup);
+          /* The static markup already carries the FINAL value, so the numbers
+             are correct with JS off. Only animate when frames will actually
+             run: requestAnimationFrame is suspended in a hidden tab, which
+             would otherwise freeze the counter mid-count and display a wrong
+             figure ($9 instead of $300). Reduced-motion users skip it too. */
+          if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+          const pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+          const dec=parseInt(el.dataset.decimals||'0',10);
+          const dur=900; const t0=performance.now();
+          function tick(t){
+            const p=Math.min(1,(t-t0)/dur);
+            const v=end*(1-Math.pow(1-p,3));
+            el.textContent=pre+v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
+            if(p<1)requestAnimationFrame(tick);
+            else el.textContent=pre+end.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
+          }
+          requestAnimationFrame(tick);
+        });
+      },{threshold:0.4});
+      els.forEach(el=>cio.observe(el));
+    })();
+
+    /* ── Content Engine loop ── */
+    (function(){
+      const enodes=Array.from(document.querySelectorAll('#engine .enode'));
+      if(!enodes.length)return;
+      let ei=0, timer=null;
+      function step(){ enodes.forEach(n=>n.classList.remove('lit')); enodes[ei].classList.add('lit'); ei=(ei+1)%enodes.length; }
+      function start(){ if(!timer){ step(); timer=setInterval(step,1200); } }
+      function stop(){ clearInterval(timer); timer=null; }
+      const wrap=document.getElementById('engine');
+      wrap.addEventListener('mouseenter',stop);
+      wrap.addEventListener('mouseleave',start);
+      enodes.forEach((n,i)=>n.addEventListener('click',()=>{ stop(); enodes.forEach(x=>x.classList.remove('lit')); n.classList.add('lit'); ei=(i+1)%enodes.length; }));
+      const eio=new IntersectionObserver((es)=>{ es.forEach(e=>e.isIntersecting?start():stop()); },{threshold:0.25});
+      eio.observe(wrap);
+    })();
+
+    /* ── Review mode (gated by ?review) ── */
+    (function(){
+      if(!/review/i.test(location.search))return;
+      document.body.classList.add('review');
+      const KEY='csc-strategy-comments-v1';
+      let comments=JSON.parse(localStorage.getItem(KEY)||'[]');
+      const addBtn=document.getElementById('rvAdd');
+      let arming=false;
+      function save(){localStorage.setItem(KEY,JSON.stringify(comments));renderBadges();}
+      function renderBadges(){
+        document.querySelectorAll('.cmt-badge').forEach(b=>b.remove());
+        const counts={};
+        comments.forEach(c=>counts[c.id]=(counts[c.id]||0)+1);
+        Object.keys(counts).forEach(id=>{
+          const s=document.getElementById(id); if(!s)return;
+          const b=document.createElement('div');b.className='cmt-badge';b.textContent=counts[id]+' note'+(counts[id]>1?'s':'');
+          s.appendChild(b);
+        });
+      }
+      addBtn.addEventListener('click',()=>{arming=!arming;addBtn.classList.toggle('armed',arming);document.body.classList.toggle('arming',arming);});
+      document.querySelectorAll('.slide').forEach(s=>{
+        s.addEventListener('click',(e)=>{
+          if(!arming)return;
+          if(e.target.closest('a,button'))return;
+          const txt=prompt('Comment on "'+(s.dataset.nav||s.id)+'":');
+          if(txt && txt.trim()){comments.push({id:s.id,nav:s.dataset.nav||s.id,text:txt.trim(),t:new Date().toLocaleString()});save();}
+          arming=false;addBtn.classList.remove('armed');document.body.classList.remove('arming');
+        });
+      });
+      document.getElementById('rvCopy').addEventListener('click',()=>{
+        if(!comments.length){alert('No comments yet.');return;}
+        let out='Cincinnati Skin Center strategy deck - review notes\n\n';
+        comments.forEach((c,i)=>{out+=(i+1)+'. ['+c.nav+'] '+c.text+'\n';});
+        navigator.clipboard.writeText(out).then(()=>alert('Copied '+comments.length+' comment(s). Paste into Slack.'),
+          ()=>{prompt('Copy these comments:',out);});
+      });
+      document.getElementById('rvClear').addEventListener('click',()=>{
+        if(comments.length && confirm('Clear all '+comments.length+' comment(s) on this device?')){comments=[];save();}
+      });
+      renderBadges();
+    })();
+
+    onScroll();
+  </script>
+</body>
+</html>

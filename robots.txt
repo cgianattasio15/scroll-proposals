@@ -10,3 +10,4 @@ Disallow: /client-onboarding/csc/
 Disallow: /pippis-kickoff/
 Disallow: /launch-party-chapter/
 Disallow: /cincinnati-skin-center-kickoff/
+Disallow: /cincinnati-skin-center-strategy/
